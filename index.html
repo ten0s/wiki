@@ -193,8 +193,6 @@ Error message and password prompt
 
 <li>Clone Github repo via https</li>
 
-<li>Draft of 'Apply a patch'</li>
-
 <li>Fix blocked git:// protocol</li>
 
 <li>Make a patch</li>
@@ -9658,7 +9656,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200423164921221" list="[[Make empty commit]] [[Clone Github repo via https]] [[Fix blocked git:// protocol]] [[Short hash]] [[Draft of 'Apply a patch']] [[Make a patch]] [[Online Markdown Editor]]" modified="20200423165952063" title="$:/StoryList">
+<div created="20200423164921221" list="[[Make empty commit]] [[Clone Github repo via https]] [[Fix blocked git:// protocol]] [[Short hash]] [[Apply a patch]] [[Make a patch]] [[Online Markdown Editor]]" modified="20200423165952063" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9834,9 +9832,11 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200423170701554" modified="20200423170721019" tags="Git" title="Apply a patch">
-<pre>```
-git apply my.patch
+<div created="20200423170701554" modified="20200423171429459" tags="Git" title="Apply a patch">
+<pre>[[Make a patch]]
+
+```
+$ git apply my.patch
 ```
 </pre>
 </div>
@@ -9857,12 +9857,6 @@ $ git clone https://github.com/organization/repo.git
 
 </pre>
 </div>
-<div created="20200423170701554" draft.of="Apply a patch" draft.title="Apply a patch" modified="20200423171245177" tags="Git" title="Draft of 'Apply a patch'">
-<pre>```
-git apply my.patch
-```
-</pre>
-</div>
 <div created="20200423170859498" modified="20200423171225254" tags="Git" title="Fix blocked git:// protocol">
 <pre>```
 $ git config --global url.https://.insteadOf git://
@@ -9870,7 +9864,7 @@ $ git config --global url.https://.insteadOf git://
 
 </pre>
 </div>
-<div created="20200423170542846" modified="20200423171343759" tags="Git" title="Make a patch">
+<div created="20200423170542846" modified="20200423171443879" tags="Git" title="Make a patch">
 <pre>```
 $ git diff &gt; my.patch
 ```
@@ -9882,7 +9876,8 @@ $ git diff 0da94be 59ff30c &gt; my.patch
 ```
 $ git diff master..my_branch &gt; my.patch
 ```
-</pre>
+
+[[Apply a patch]]</pre>
 </div>
 <div created="20200423171141917" modified="20200423171215346" tags="Git" title="Make empty commit">
 <pre>```
