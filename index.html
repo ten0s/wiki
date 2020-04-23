@@ -267,11 +267,11 @@ Error message and password prompt
 
 <li>Remove last commit pushed to server</li>
 
+<li>Reset working dir prior to last commit</li>
+
 <li>Reset working dir to HEAD</li>
 
 <li>Restore all current dir</li>
-
-<li>Restore everything back prior to last commit</li>
 
 <li>Short hash</li>
 
@@ -9769,7 +9769,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200423185524315" list="[[Reset working dir to HEAD]]" modified="20200423190841975" title="$:/StoryList">
+<div created="20200423185524315" list="[[Reset working dir prior to last commit]] [[Reset working dir to HEAD]]" modified="20200423191100932" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10149,7 +10149,13 @@ $ git push origin master --force
 ```
 </pre>
 </div>
-<div created="20200423190921948" modified="20200423191042741" tags="" title="Reset working dir to HEAD">
+<div created="20200423165728758" modified="20200423191201390" tags="Git" title="Reset working dir prior to last commit">
+<pre>```
+$ git reset --soft HEAD^
+```
+</pre>
+</div>
+<div created="20200423190921948" modified="20200423191047912" tags="Git" title="Reset working dir to HEAD">
 <pre>```
 $ git reset --hard &lt;HEAD | HASH&gt;
 ```</pre>
@@ -10157,12 +10163,6 @@ $ git reset --hard &lt;HEAD | HASH&gt;
 <div created="20200423172909750" modified="20200423172926877" tags="Git" title="Restore all current dir">
 <pre>```
 $ git checkout -- .
-```
-</pre>
-</div>
-<div created="20200423165728758" modified="20200423171541880" tags="" title="Restore everything back prior to last commit">
-<pre>```
-$ git reset --soft HEAD^
 ```
 </pre>
 </div>
