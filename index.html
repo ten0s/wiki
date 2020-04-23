@@ -199,6 +199,8 @@ Error message and password prompt
 
 <li>Commit changes up to commit</li>
 
+<li>Create new annotated tag ()</li>
+
 <li>Debug &quot;Error: repository not found&quot;</li>
 
 <li>Export a branch</li>
@@ -9680,7 +9682,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200423164921221" list="[[List available tags]] [[Fix submodule error]] [[Get submodules]] [[Restore all current dir]] [[Debug &quot;Error: repository not found&quot;]] [[Blame in terminal]] [[Export a branch]] [[Commit changes up to commit]] [[Include specific commit]] [[Untrack tracked files]] [[Init local file system repo]] [[Change remote repo]] [[Squash a branch into one commit]] [[Remove last commit pushed to server]] [[Restore everything back prior to last commit]] [[Mirror a repo to Github]] [[Make empty commit]] [[Clone Github repo via https]] [[Fix blocked git:// protocol]] [[Short hash]] [[Apply a patch]] [[Make a patch]] [[Online Markdown Editor]]" modified="20200423171559245" title="$:/StoryList">
+<div created="20200423164921221" list="[[Create new annotated tag ()]] [[List available tags]] [[Fix submodule error]] [[Get submodules]] [[Restore all current dir]] [[Debug &quot;Error: repository not found&quot;]] [[Blame in terminal]] [[Export a branch]] [[Commit changes up to commit]] [[Include specific commit]] [[Untrack tracked files]] [[Init local file system repo]] [[Change remote repo]] [[Squash a branch into one commit]] [[Remove last commit pushed to server]] [[Restore everything back prior to last commit]] [[Mirror a repo to Github]] [[Make empty commit]] [[Clone Github repo via https]] [[Fix blocked git:// protocol]] [[Short hash]] [[Apply a patch]] [[Make a patch]] [[Online Markdown Editor]]" modified="20200423171559245" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9897,6 +9899,18 @@ $ git clone https://github.com/organization/repo.git
 <div created="20200423172338483" modified="20200423172406649" tags="Git" title="Commit changes up to commit">
 <pre>```
 $ git merge SHA
+```
+</pre>
+</div>
+<div created="20200423173246385" modified="20200423173351697" tags="Git" title="Create new annotated tag ()">
+<pre>Annotated tag stores dates, author, comment
+
+```
+$ git tag -a &quot;2.0.0&quot; -m &quot;Roll 2.0.0&quot; # HEAD
+```
+
+```
+$ git tag -a &quot;2.0.2&quot; -m &quot;Roll 2.0.2&quot; &lt;hash&gt; 
 ```
 </pre>
 </div>
