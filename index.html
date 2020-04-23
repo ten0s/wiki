@@ -215,6 +215,8 @@ Error message and password prompt
 
 <li>Squash a branch into one commit</li>
 
+<li>Untrack tracked files</li>
+
 </ul>
 </p>
 
@@ -9660,7 +9662,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200423164921221" list="[[Init local file system repo]] [[Change remote repo]] [[Squash a branch into one commit]] [[Remove last commit pushed to server]] [[Restore everything back prior to last commit]] [[Mirror a repo to Github]] [[Make empty commit]] [[Clone Github repo via https]] [[Fix blocked git:// protocol]] [[Short hash]] [[Apply a patch]] [[Make a patch]] [[Online Markdown Editor]]" modified="20200423171559245" title="$:/StoryList">
+<div created="20200423164921221" list="[[Untrack tracked files]] [[Init local file system repo]] [[Change remote repo]] [[Squash a branch into one commit]] [[Remove last commit pushed to server]] [[Restore everything back prior to last commit]] [[Mirror a repo to Github]] [[Make empty commit]] [[Clone Github repo via https]] [[Fix blocked git:// protocol]] [[Short hash]] [[Apply a patch]] [[Make a patch]] [[Online Markdown Editor]]" modified="20200423171559245" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9875,7 +9877,7 @@ $ git config --global url.https://.insteadOf git://
 
 </pre>
 </div>
-<div created="20200423171811147" modified="20200423171946509" tags="" title="Init local file system repo">
+<div created="20200423171811147" modified="20200423172150218" tags="Git" title="Init local file system repo">
 <pre>```
 $ mkdir NEW_REPO
 $ cd NEW_REPO
@@ -9947,6 +9949,12 @@ f75ba70
 <pre>```
 $ git merge --squash &lt;BRANCH&gt;
 $ git commit -m &lt;MESSAGE&gt;
+```
+</pre>
+</div>
+<div created="20200423172053785" modified="20200423172119084" tags="Git" title="Untrack tracked files">
+<pre>```
+$ git rm --cached &lt;file&gt;
 ```
 </pre>
 </div>
