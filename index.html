@@ -189,6 +189,8 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla</li>
 
+<li>Make a patch</li>
+
 <li>Mirror a repo to Github</li>
 
 <li>Online Markdown Editor</li>
@@ -9644,7 +9646,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200423164921221" list="[[Online Markdown Editor]]" modified="20200423165952063" title="$:/StoryList">
+<div created="20200423164921221" list="[[Make a patch]] [[Online Markdown Editor]]" modified="20200423165952063" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9708,8 +9710,8 @@ Error message and password prompt
 <div created="20200423165127488" modified="20200423165127488" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200423170003524" title="$:/temp/search">
-<pre></pre>
+<div created="20200422190456346" modified="20200423170514170" title="$:/temp/search">
+<pre>markd</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -9819,6 +9821,14 @@ Error message and password prompt
         }
     }
 }</pre>
+</div>
+<div created="20200423170542846" modified="20200423170658682" tags="Git" title="Make a patch">
+<pre>```
+git diff &gt; my.patch
+git diff 0da94be 59ff30c &gt; my.patch
+git diff master..my_branch &gt; my.patch
+```
+</pre>
 </div>
 <div created="20200423170056916" modified="20200423170232853" tags="Git" title="Mirror a repo to Github">
 <pre>```
