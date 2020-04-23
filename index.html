@@ -9767,7 +9767,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200423185524315" list="[[Commit changes up to commit]]" modified="20200423190531739" title="$:/StoryList">
+<div created="20200423185524315" list="[[Squash a branch into one commit]] [[Remove last commit pushed to server]] [[Make empty commit]] [[Make a patch]] [[Include specific commit]] [[Commit changes up to commit]]" modified="20200423190650438" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9831,8 +9831,8 @@ Error message and password prompt
 <div created="20200423165127488" modified="20200423172810768" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200423190529046" title="$:/temp/search">
-<pre>sha</pre>
+<div created="20200422190456346" modified="20200423190636797" title="$:/temp/search">
+<pre>commit</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10073,9 +10073,9 @@ $ git submodule update --init --recursive
 ```
 </pre>
 </div>
-<div created="20200423172248757" modified="20200423172327615" tags="Git" title="Include specific commit">
+<div created="20200423172248757" modified="20200423190605721" tags="Git" title="Include specific commit">
 <pre>```
-$ git cherry-pick SHA
+$ git cherry-pick HASH
 ```
 </pre>
 </div>
@@ -10098,13 +10098,13 @@ $ git remote add origin PATH_TO/NEW_REPO/
 $ git tag
 ```</pre>
 </div>
-<div created="20200423170542846" modified="20200423172042647" tags="Git" title="Make a patch">
+<div created="20200423170542846" modified="20200423190630641" tags="Git" title="Make a patch">
 <pre>```
 $ git diff &gt; my.patch
 ```
 
 ```
-$ git diff SHA1 SHA2 &gt; my.patch
+$ git diff HASH1 HASH2 &gt; my.patch
 ```
 
 ```
@@ -10113,9 +10113,9 @@ $ git diff BRANCH1..BRANCH2 &gt; my.patch
 
 [[Apply a patch]]</pre>
 </div>
-<div created="20200423171141917" modified="20200423171215346" tags="Git" title="Make empty commit">
+<div created="20200423171141917" modified="20200423190729464" tags="Git" title="Make empty commit">
 <pre>```
-$ git commit --allow-empty -m &quot;MESAGE&quot;
+$ git commit --allow-empty -m &lt;MESAGE&gt;
 ```
 </pre>
 </div>
