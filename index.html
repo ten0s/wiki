@@ -191,11 +191,15 @@ Error message and password prompt
 
 <li>Apply a patch</li>
 
+<li>Blame in terminal</li>
+
 <li>Change remote repo</li>
 
 <li>Clone Github repo via https</li>
 
 <li>Commit changes up to commit</li>
+
+<li>Debug &quot;Error: repository not found&quot;</li>
 
 <li>Export a branch</li>
 
@@ -9668,7 +9672,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200423164921221" list="[[Export a branch]] [[Commit changes up to commit]] [[Include specific commit]] [[Untrack tracked files]] [[Init local file system repo]] [[Change remote repo]] [[Squash a branch into one commit]] [[Remove last commit pushed to server]] [[Restore everything back prior to last commit]] [[Mirror a repo to Github]] [[Make empty commit]] [[Clone Github repo via https]] [[Fix blocked git:// protocol]] [[Short hash]] [[Apply a patch]] [[Make a patch]] [[Online Markdown Editor]]" modified="20200423171559245" title="$:/StoryList">
+<div created="20200423164921221" list="[[Debug &quot;Error: repository not found&quot;]] [[Blame in terminal]] [[Export a branch]] [[Commit changes up to commit]] [[Include specific commit]] [[Untrack tracked files]] [[Init local file system repo]] [[Change remote repo]] [[Squash a branch into one commit]] [[Remove last commit pushed to server]] [[Restore everything back prior to last commit]] [[Mirror a repo to Github]] [[Make empty commit]] [[Clone Github repo via https]] [[Fix blocked git:// protocol]] [[Short hash]] [[Apply a patch]] [[Make a patch]] [[Online Markdown Editor]]" modified="20200423171559245" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9729,7 +9733,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200423165127488" modified="20200423165127488" title="$:/temp/NewTagName">
+<div created="20200423165127488" modified="20200423172810768" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
 <div created="20200422190456346" modified="20200423171250073" title="$:/temp/search">
@@ -9852,6 +9856,12 @@ $ git apply my.patch
 ```
 </pre>
 </div>
+<div created="20200423172613094" modified="20200423172640553" tags="Git" title="Blame in terminal">
+<pre>```
+$ git blame -L FROM,TO FILE
+```
+</pre>
+</div>
 <div created="20200423171716490" modified="20200423171752415" tags="Git" title="Change remote repo">
 <pre>```
 $ git remote -v
@@ -9880,6 +9890,22 @@ $ git clone https://github.com/organization/repo.git
 <pre>```
 $ git merge SHA
 ```
+</pre>
+</div>
+<div created="20200423172701086" modified="20200423172813494" tags="Git Ssh" title="Debug &quot;Error: repository not found&quot;">
+<pre>https://help.github.com/articles/error-repository-not-found/
+https://developer.github.com/v3/guides/managing-deploy-keys/
+
+#. Check repository exists
+#. Check repository name
+#. Check permissions
+#. Check ssh access
+```
+$ ssh -T git@github.com
+```
+#. Check deploy keys
+#. Check ~/.ssh/config
+
 </pre>
 </div>
 <div created="20200423172455192" modified="20200423172600898" tags="Git" title="Export a branch">
