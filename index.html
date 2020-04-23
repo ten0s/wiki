@@ -197,6 +197,8 @@ Error message and password prompt
 
 <li>Make a patch</li>
 
+<li>Make empty commit</li>
+
 <li>Mirror a repo to Github</li>
 
 <li>Online Markdown Editor</li>
@@ -9654,7 +9656,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200423164921221" list="[[Clone Github repo via https]] [[Fix blocked git:// protocol]] [[Short hash]] [[Apply a patch]] [[Make a patch]] [[Online Markdown Editor]]" modified="20200423165952063" title="$:/StoryList">
+<div created="20200423164921221" list="[[Make empty commit]] [[Clone Github repo via https]] [[Fix blocked git:// protocol]] [[Short hash]] [[Apply a patch]] [[Make a patch]] [[Online Markdown Editor]]" modified="20200423165952063" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9836,16 +9838,19 @@ git apply my.patch
 ```
 </pre>
 </div>
-<div created="20200423170939522" modified="20200423171030944" tags="Git" title="Clone Github repo via https">
+<div created="20200423170939522" modified="20200423171111103" tags="Git" title="Clone Github repo via https">
 <pre>http://stackoverflow.com/questions/5343068/is-there-a-way-to-skip-password-typing-when-using-https-github
 
 ```
-git clone https://USER:PASSWORD@github.com/organization/repo.git
+$ git clone https://USER:PASSWORD@github.com/organization/repo.git
 ```
+
+or
+
 ```
-cat ~/.netrc
+$ cat ~/.netrc
 machine github.com login USER password PASSWORD
-git clone https://github.com/organization/repo.git
+$ git clone https://github.com/organization/repo.git
 ```
 
 </pre>
@@ -9862,6 +9867,12 @@ git config --global url.https://.insteadOf git://
 git diff &gt; my.patch
 git diff 0da94be 59ff30c &gt; my.patch
 git diff master..my_branch &gt; my.patch
+```
+</pre>
+</div>
+<div created="20200423171141917" modified="20200423171215346" tags="Git" title="Make empty commit">
+<pre>```
+$ git commit --allow-empty -m &quot;MESAGE&quot;
 ```
 </pre>
 </div>
