@@ -213,6 +213,8 @@ Error message and password prompt
 
 <li>Init local file system repo</li>
 
+<li>List available tags</li>
+
 <li>Make a patch</li>
 
 <li>Make empty commit</li>
@@ -9678,7 +9680,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200423164921221" list="[[Fix submodule error]] [[Get submodules]] [[Restore all current dir]] [[Debug &quot;Error: repository not found&quot;]] [[Blame in terminal]] [[Export a branch]] [[Commit changes up to commit]] [[Include specific commit]] [[Untrack tracked files]] [[Init local file system repo]] [[Change remote repo]] [[Squash a branch into one commit]] [[Remove last commit pushed to server]] [[Restore everything back prior to last commit]] [[Mirror a repo to Github]] [[Make empty commit]] [[Clone Github repo via https]] [[Fix blocked git:// protocol]] [[Short hash]] [[Apply a patch]] [[Make a patch]] [[Online Markdown Editor]]" modified="20200423171559245" title="$:/StoryList">
+<div created="20200423164921221" list="[[List available tags]] [[Fix submodule error]] [[Get submodules]] [[Restore all current dir]] [[Debug &quot;Error: repository not found&quot;]] [[Blame in terminal]] [[Export a branch]] [[Commit changes up to commit]] [[Include specific commit]] [[Untrack tracked files]] [[Init local file system repo]] [[Change remote repo]] [[Squash a branch into one commit]] [[Remove last commit pushed to server]] [[Restore everything back prior to last commit]] [[Mirror a repo to Github]] [[Make empty commit]] [[Clone Github repo via https]] [[Fix blocked git:// protocol]] [[Short hash]] [[Apply a patch]] [[Make a patch]] [[Online Markdown Editor]]" modified="20200423171559245" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9927,8 +9929,9 @@ $ git config --global url.https://.insteadOf git://
 
 </pre>
 </div>
-<div created="20200423173046861" modified="20200423173112828" tags="Git" title="Fix submodule error">
+<div created="20200423173046861" modified="20200423173123050" tags="Git" title="Fix submodule error">
 <pre>Problem:
+
 ```
 $ git submodule update
 fatal: reference is not a tree: da68efd2a86c71332f361246a5ad30f216a5bd80
@@ -9936,6 +9939,7 @@ Unable to checkout 'da68efd2a86c71332f361246a5ad30f216a5bd80' in submodule path 
 ```
 
 Solution:
+
 ```
 $ git submodule sync
 $ git submodule update
@@ -9968,6 +9972,11 @@ $ git remote add origin PATH_TO/NEW_REPO/
 ```
 
 </pre>
+</div>
+<div created="20200423173200242" modified="20200423173218251" tags="Git" title="List available tags">
+<pre>```
+$ git tag
+```</pre>
 </div>
 <div created="20200423170542846" modified="20200423172042647" tags="Git" title="Make a patch">
 <pre>```
