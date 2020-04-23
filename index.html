@@ -9656,7 +9656,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200423164921221" list="[[Make empty commit]] [[Clone Github repo via https]] [[Fix blocked git:// protocol]] [[Short hash]] [[Apply a patch]] [[Make a patch]] [[Online Markdown Editor]]" modified="20200423165952063" title="$:/StoryList">
+<div created="20200423164921221" list="[[Remove last commit pushed to server]] [[Restore everything back prior to last commit]] [[Mirror a repo to Github]] [[Make empty commit]] [[Clone Github repo via https]] [[Fix blocked git:// protocol]] [[Short hash]] [[Apply a patch]] [[Make a patch]] [[Online Markdown Editor]]" modified="20200423171547037" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9885,11 +9885,11 @@ $ git commit --allow-empty -m &quot;MESAGE&quot;
 ```
 </pre>
 </div>
-<div created="20200423170056916" modified="20200423170232853" tags="Git" title="Mirror a repo to Github">
+<div created="20200423170056916" modified="20200423171530404" tags="Git" title="Mirror a repo to Github">
 <pre>```
-git clone --mirror git@OLD_HOST:OLD_REPO
-cd OLD_REPO
-git push --mirror git@github.com:ORG/NEW_REPO.git
+$ git clone --mirror git@OLD_HOST:OLD_REPO
+$ cd OLD_REPO
+$ git push --mirror git@github.com:ORGANISATION/NEW_REPO.git
 ```
 </pre>
 </div>
@@ -9898,16 +9898,16 @@ git push --mirror git@github.com:ORG/NEW_REPO.git
 
 </pre>
 </div>
-<div created="20200423165627536" modified="20200423165653702" tags="Git" title="Remove last commit pushed to server">
+<div created="20200423165627536" modified="20200423171557639" tags="Git" title="Remove last commit pushed to server">
 <pre>```
-git reset --hard HEAD^
-git push origin master --force
+$ git reset --hard HEAD^
+$ git push origin master --force
 ```
 </pre>
 </div>
-<div created="20200423165728758" modified="20200423165754618" tags="" title="Restore everything back prior to last commit">
+<div created="20200423165728758" modified="20200423171541880" tags="" title="Restore everything back prior to last commit">
 <pre>```
-git reset --soft HEAD^
+$ git reset --soft HEAD^
 ```
 </pre>
 </div>
