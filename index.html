@@ -197,7 +197,7 @@ Error message and password prompt
 
 <li>Fix blocked git:// protocol</li>
 
-<li>Init local file system rep</li>
+<li>Init local file system repo</li>
 
 <li>Make a patch</li>
 
@@ -9660,7 +9660,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200423164921221" list="[[Init local file system rep]] [[Change remote repo]] [[Squash a branch into one commit]] [[Remove last commit pushed to server]] [[Restore everything back prior to last commit]] [[Mirror a repo to Github]] [[Make empty commit]] [[Clone Github repo via https]] [[Fix blocked git:// protocol]] [[Short hash]] [[Apply a patch]] [[Make a patch]] [[Online Markdown Editor]]" modified="20200423171559245" title="$:/StoryList">
+<div created="20200423164921221" list="[[Init local file system repo]] [[Change remote repo]] [[Squash a branch into one commit]] [[Remove last commit pushed to server]] [[Restore everything back prior to last commit]] [[Mirror a repo to Github]] [[Make empty commit]] [[Clone Github repo via https]] [[Fix blocked git:// protocol]] [[Short hash]] [[Apply a patch]] [[Make a patch]] [[Online Markdown Editor]]" modified="20200423171559245" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9875,7 +9875,7 @@ $ git config --global url.https://.insteadOf git://
 
 </pre>
 </div>
-<div created="20200423171811147" modified="20200423171937926" tags="" title="Init local file system rep">
+<div created="20200423171811147" modified="20200423171946509" tags="" title="Init local file system repo">
 <pre>```
 $ mkdir NEW_REPO
 $ cd NEW_REPO
@@ -9889,17 +9889,17 @@ $ git remote add origin PATH_TO/NEW_REPO/
 
 </pre>
 </div>
-<div created="20200423170542846" modified="20200423171443879" tags="Git" title="Make a patch">
+<div created="20200423170542846" modified="20200423172042647" tags="Git" title="Make a patch">
 <pre>```
 $ git diff &gt; my.patch
 ```
 
 ```
-$ git diff 0da94be 59ff30c &gt; my.patch
+$ git diff SHA1 SHA2 &gt; my.patch
 ```
 
 ```
-$ git diff master..my_branch &gt; my.patch
+$ git diff BRANCH1..BRANCH2 &gt; my.patch
 ```
 
 [[Apply a patch]]</pre>
