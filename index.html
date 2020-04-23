@@ -199,7 +199,9 @@ Error message and password prompt
 
 <li>Commit changes up to commit</li>
 
-<li>Create new annotated tag ()</li>
+<li>Create annotated tag</li>
+
+<li>Create lightweight tag</li>
 
 <li>Debug &quot;Error: repository not found&quot;</li>
 
@@ -224,6 +226,8 @@ Error message and password prompt
 <li>Mirror a repo to Github</li>
 
 <li>Online Markdown Editor</li>
+
+<li>Push tag</li>
 
 <li>Remove last commit pushed to server</li>
 
@@ -9682,7 +9686,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200423164921221" list="[[Create new annotated tag ()]] [[List available tags]] [[Fix submodule error]] [[Get submodules]] [[Restore all current dir]] [[Debug &quot;Error: repository not found&quot;]] [[Blame in terminal]] [[Export a branch]] [[Commit changes up to commit]] [[Include specific commit]] [[Untrack tracked files]] [[Init local file system repo]] [[Change remote repo]] [[Squash a branch into one commit]] [[Remove last commit pushed to server]] [[Restore everything back prior to last commit]] [[Mirror a repo to Github]] [[Make empty commit]] [[Clone Github repo via https]] [[Fix blocked git:// protocol]] [[Short hash]] [[Apply a patch]] [[Make a patch]] [[Online Markdown Editor]]" modified="20200423171559245" title="$:/StoryList">
+<div created="20200423164921221" list="[[Push tag]] [[Create lightweight tag]] [[Create annotated tag]] [[List available tags]] [[Fix submodule error]] [[Get submodules]] [[Restore all current dir]] [[Debug &quot;Error: repository not found&quot;]] [[Blame in terminal]] [[Export a branch]] [[Commit changes up to commit]] [[Include specific commit]] [[Untrack tracked files]] [[Init local file system repo]] [[Change remote repo]] [[Squash a branch into one commit]] [[Remove last commit pushed to server]] [[Restore everything back prior to last commit]] [[Mirror a repo to Github]] [[Make empty commit]] [[Clone Github repo via https]] [[Fix blocked git:// protocol]] [[Short hash]] [[Apply a patch]] [[Make a patch]] [[Online Markdown Editor]]" modified="20200423171559245" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9902,7 +9906,7 @@ $ git merge SHA
 ```
 </pre>
 </div>
-<div created="20200423173246385" modified="20200423173351697" tags="Git" title="Create new annotated tag ()">
+<div created="20200423173246385" modified="20200423173405452" tags="Git" title="Create annotated tag">
 <pre>Annotated tag stores dates, author, comment
 
 ```
@@ -9912,6 +9916,14 @@ $ git tag -a &quot;2.0.0&quot; -m &quot;Roll 2.0.0&quot; # HEAD
 ```
 $ git tag -a &quot;2.0.2&quot; -m &quot;Roll 2.0.2&quot; &lt;hash&gt; 
 ```
+</pre>
+</div>
+<div created="20200423173407537" modified="20200423173437610" tags="Git" title="Create lightweight tag">
+<pre>```
+$ git tag &quot;1.0.0&quot; # HEAD
+$ git tag &quot;1.0.2&quot; &lt;hash&gt;
+```
+
 </pre>
 </div>
 <div created="20200423172701086" modified="20200423172823336" tags="Git Ssh" title="Debug &quot;Error: repository not found&quot;">
@@ -10023,6 +10035,14 @@ $ git push --mirror git@github.com:ORGANISATION/NEW_REPO.git
 </div>
 <div created="20200423170328416" modified="20200423170509049" tags="" title="Online Markdown Editor">
 <pre>http://markdown.pioul.fr/
+
+</pre>
+</div>
+<div created="20200423173457326" modified="20200423173512162" tags="" title="Push tag">
+<pre>```
+$ git push origin &quot;1.0.0&quot; # specific tag
+$ git push origin --tags  # all tags
+```
 
 </pre>
 </div>
