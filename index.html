@@ -289,6 +289,8 @@ Error message and password prompt
 
 <li>Online Markdown Editor</li>
 
+<li>Open Printing</li>
+
 <li>Prune unused images</li>
 
 <li>Push tag</li>
@@ -306,6 +308,8 @@ Error message and password prompt
 <li>Set default USB connection type</li>
 
 <li>Short hash</li>
+
+<li>Show HTML in terminal</li>
 
 <li>Squash a branch into one commit</li>
 
@@ -9805,7 +9809,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
+<div list="[[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10262,6 +10266,11 @@ tesseract input.png output.txt
 
 </pre>
 </div>
+<div created="20200424081612003" modified="20200424081639805" tags="Linux" title="Open Printing">
+<pre>http://www.openprinting.org/printers
+http://www.openprinting.org/drivers
+</pre>
+</div>
 <div created="20200423193924839" modified="20200423194007244" tags="Docker" title="Prune unused images">
 <pre>Will prune dangling images (the ones that are tagged and not referenced by any container)
 
@@ -10320,6 +10329,12 @@ Settings -&gt; Developer Options -&gt; Select USB Configuration
 <pre>```
 $ git rev-parse --short HEAD
 f75ba70
+```
+</pre>
+</div>
+<div created="20200424081655014" modified="20200424081724872" tags="Linux Bash" title="Show HTML in terminal">
+<pre>```
+$ echo $HTML | lynx -stdin -dump
 ```
 </pre>
 </div>
