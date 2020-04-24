@@ -247,6 +247,8 @@ Error message and password prompt
 
 <li>Change forgotten password</li>
 
+<li>Change GRUB boot order</li>
+
 <li>Change remote repo</li>
 
 <li>Clear Chrome internal DNS</li>
@@ -9905,7 +9907,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[Enter GRUB menu]] [[Boot into single user mode using GRUB]] [[Basic GRUB console commands]] [[Recover Ubuntu after unsuccessful upgrade]] [[Change forgotten password]] [[Bash process substitution]] [[Bash redirection (stdin, stdout, stderr)]] [[Linux special files]] [[Make xargs to execute each input line as a command]] [[Open man page on first pattern match]] [[Pass args to bash script read from stdin]] [[Add line numbers to output]] [[Network emulation (netem)]] [[See man as pdf]] [[Simulate `make' without actual execution]] [[Add TLS encryption to existing clients and servers]] [[Suspend/Resume running program]] [[CPU Steal time]] [[See network traces]] [[Determine your external IP]] [[Info about IP]] [[Reverse DNS lookup]] [[DNS lookup]] [[Set DNS]] [[Network Manager tool]] [[DNS servers used]] [[Where DNS utils]] [[Docker fails to resolve names]] [[Run commands in parallel]] [[Extent image canvas size]] [[Resize image and draw text on it]] [[Resize image]] [[Make gif from pngs]] [[Convert dot file to png]] [[Flush file system buffers]] [[Get UPS info]] [[Linux Standard Base]] [[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
+<div created="20200424091924309" list="[[Change GRUB boot order]] [[Enter GRUB menu]] [[Boot into single user mode using GRUB]] [[Basic GRUB console commands]] [[Recover Ubuntu after unsuccessful upgrade]] [[Change forgotten password]] [[Bash process substitution]] [[Bash redirection (stdin, stdout, stderr)]] [[Linux special files]] [[Make xargs to execute each input line as a command]] [[Open man page on first pattern match]] [[Pass args to bash script read from stdin]] [[Add line numbers to output]] [[Network emulation (netem)]] [[See man as pdf]] [[Simulate `make' without actual execution]] [[Add TLS encryption to existing clients and servers]] [[Suspend/Resume running program]] [[CPU Steal time]] [[See network traces]] [[Determine your external IP]] [[Info about IP]] [[Reverse DNS lookup]] [[DNS lookup]] [[Set DNS]] [[Network Manager tool]] [[DNS servers used]] [[Where DNS utils]] [[Docker fails to resolve names]] [[Run commands in parallel]] [[Extent image canvas size]] [[Resize image and draw text on it]] [[Resize image]] [[Make gif from pngs]] [[Convert dot file to png]] [[Flush file system buffers]] [[Get UPS info]] [[Linux Standard Base]] [[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" modified="20200424091924309" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10185,8 +10187,8 @@ $ git blame -L FROM,TO FILE
 ```
 </pre>
 </div>
-<div created="20200424091730965" modified="20200424091827731" tags="Linux" title="Boot into single user mode using GRUB">
-<pre># Enter grub menu.
+<div created="20200424091730965" modified="20200424091947567" tags="Linux" title="Boot into single user mode using GRUB">
+<pre># [[Enter GRUB menu]].
 # Press 'e'.
 # Choose 'kernel /boot/kernel-X.Y.Z...', then press 'e'.
 # Scroll to end and add '1', or 'init=/bin/bash', or 'single', or 'emergency'. This tells the kernel to boot in runlevel 1. Press ENTER.
@@ -10205,6 +10207,29 @@ $ git blame -L FROM,TO FILE
 # # passwd [USER]
 # # reboot
 
+</pre>
+</div>
+<div created="20200424092006216" modified="20200424092057535" tags="Linux" title="Change GRUB boot order">
+<pre>https://help.ubuntu.com/community/Grub2/Setup
+
+* Determine boot order
+
+```
+grep menuentry /boot/grub/grub.cfg
+```
+
+* Edit /etc/default/grub
+```
+GRUB_DEFAULT=Number | Title | saved
+Number - menuentry order, like 4
+Title - menuentry title, like 'Linux Mint 17.3 Xfce 64-bit (on /dev/sda5)'
+saved - see man grub-set-default (default until changed), grub-reboot (next boot only), GRUB_SAVEDEFAULT=true | false
+```
+
+* Update GRUB
+```
+sudo update-grub
+```
 </pre>
 </div>
 <div created="20200423171716490" modified="20200423171752415" tags="Git" title="Change remote repo">
