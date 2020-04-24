@@ -421,6 +421,8 @@ Error message and password prompt
 
 <li>SSH local port forwarding</li>
 
+<li>SSH remote port forwarding</li>
+
 <li>SSH tricks</li>
 
 <li>Start HTTP server</li>
@@ -9925,7 +9927,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200424091924309" list="[[SSH local port forwarding]] [[Troubleshoot ssh-agent forwarding]] [[Keep SSH On]] [[SSH tricks]] [[Get SSH key fingerprint]] [[Check SSH key]] [[Force SSH password authentication]] [[Force specific SSH algorithm]] [[Run to interactive program through SSH]] [[Change GRUB boot order]] [[Enter GRUB menu]] [[Boot into single user mode using GRUB]] [[Basic GRUB console commands]] [[Recover Ubuntu after unsuccessful upgrade]] [[Change forgotten password]] [[Bash process substitution]] [[Bash redirection (stdin, stdout, stderr)]] [[Linux special files]] [[Make xargs to execute each input line as a command]] [[Open man page on first pattern match]] [[Pass args to bash script read from stdin]] [[Add line numbers to output]] [[Network emulation (netem)]] [[See man as pdf]] [[Simulate `make' without actual execution]] [[Add TLS encryption to existing clients and servers]] [[Suspend/Resume running program]] [[CPU Steal time]] [[See network traces]] [[Determine your external IP]] [[Info about IP]] [[Reverse DNS lookup]] [[DNS lookup]] [[Set DNS]] [[Network Manager tool]] [[DNS servers used]] [[Where DNS utils]] [[Docker fails to resolve names]] [[Run commands in parallel]] [[Extent image canvas size]] [[Resize image and draw text on it]] [[Resize image]] [[Make gif from pngs]] [[Convert dot file to png]] [[Flush file system buffers]] [[Get UPS info]] [[Linux Standard Base]] [[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" modified="20200424091924309" title="$:/StoryList">
+<div created="20200424091924309" list="[[SSH remote port forwarding]] [[SSH local port forwarding]] [[Troubleshoot ssh-agent forwarding]] [[Keep SSH On]] [[SSH tricks]] [[Get SSH key fingerprint]] [[Check SSH key]] [[Force SSH password authentication]] [[Force specific SSH algorithm]] [[Run to interactive program through SSH]] [[Change GRUB boot order]] [[Enter GRUB menu]] [[Boot into single user mode using GRUB]] [[Basic GRUB console commands]] [[Recover Ubuntu after unsuccessful upgrade]] [[Change forgotten password]] [[Bash process substitution]] [[Bash redirection (stdin, stdout, stderr)]] [[Linux special files]] [[Make xargs to execute each input line as a command]] [[Open man page on first pattern match]] [[Pass args to bash script read from stdin]] [[Add line numbers to output]] [[Network emulation (netem)]] [[See man as pdf]] [[Simulate `make' without actual execution]] [[Add TLS encryption to existing clients and servers]] [[Suspend/Resume running program]] [[CPU Steal time]] [[See network traces]] [[Determine your external IP]] [[Info about IP]] [[Reverse DNS lookup]] [[DNS lookup]] [[Set DNS]] [[Network Manager tool]] [[DNS servers used]] [[Where DNS utils]] [[Docker fails to resolve names]] [[Run commands in parallel]] [[Extent image canvas size]] [[Resize image and draw text on it]] [[Resize image]] [[Make gif from pngs]] [[Convert dot file to png]] [[Flush file system buffers]] [[Get UPS info]] [[Linux Standard Base]] [[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" modified="20200424091924309" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -11049,12 +11051,12 @@ $ git commit -m MESSAGE
 ```
 </pre>
 </div>
-<div created="20200424093326631" modified="20200424093419384" tags="Ssh" title="SSH local port forwarding">
+<div created="20200424093326631" modified="20200424093440989" tags="Ssh" title="SSH local port forwarding">
 <pre>Forward localhost:57017 to demo:27017
 
-# -f put ssh in background
-# -N don't exec any command remotely
-# [localIP:]localPort:remoteIP:remotePort
+* -f put ssh in background
+* -N don't exec any command remotely
+* [localIP:]localPort:remoteIP:remotePort
 
 ```
 $ ssh -f -N -L localhost:57017:localhost:27017 demo
@@ -11074,6 +11076,24 @@ Host demo-mongo
 ```
 $ ssh -f -N demo-mongo
 $ mongo localhost:57017
+```
+</pre>
+</div>
+<div created="20200424093456058" modified="20200424093608171" tags="Ssh" title="SSH remote port forwarding">
+<pre>Forward guest's localhost:80 to host's localhost:8080
+
+*  [remoteIP:]remotePort:localIP:localPort
+*  Inside a vagrant box (w/o any port forwarding enabled)
+
+```
+ssh -N -R localhost:8080:localhost:80 ten0s@mintws
+```
+
+Forward remote 0.0.0.0:4369 to localhost:4369
+
+* Remote erl is started with -start_epmd false and uses local epmd
+```
+ssh -N -R 0.0.0.0:4369:localhost:4369 ten0s@xos.mooo.com
 ```
 </pre>
 </div>
