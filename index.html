@@ -237,7 +237,11 @@ Error message and password prompt
 
 <li>Bash redirection (stdin, stdout, stderr)</li>
 
+<li>Basic GRUB console commands</li>
+
 <li>Blame in terminal</li>
+
+<li>Boot into single user mode using GRUB</li>
 
 <li>ByFly Speedtest</li>
 
@@ -9899,7 +9903,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[Recover Ubuntu after unsuccessful upgrade]] [[Change forgotten password]] [[Bash process substitution]] [[Bash redirection (stdin, stdout, stderr)]] [[Linux special files]] [[Make xargs to execute each input line as a command]] [[Open man page on first pattern match]] [[Pass args to bash script read from stdin]] [[Add line numbers to output]] [[Network emulation (netem)]] [[See man as pdf]] [[Simulate `make' without actual execution]] [[Add TLS encryption to existing clients and servers]] [[Suspend/Resume running program]] [[CPU Steal time]] [[See network traces]] [[Determine your external IP]] [[Info about IP]] [[Reverse DNS lookup]] [[DNS lookup]] [[Set DNS]] [[Network Manager tool]] [[DNS servers used]] [[Where DNS utils]] [[Docker fails to resolve names]] [[Run commands in parallel]] [[Extent image canvas size]] [[Resize image and draw text on it]] [[Resize image]] [[Make gif from pngs]] [[Convert dot file to png]] [[Flush file system buffers]] [[Get UPS info]] [[Linux Standard Base]] [[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
+<div list="[[Boot into single user mode using GRUB]] [[Basic GRUB console commands]] [[Recover Ubuntu after unsuccessful upgrade]] [[Change forgotten password]] [[Bash process substitution]] [[Bash redirection (stdin, stdout, stderr)]] [[Linux special files]] [[Make xargs to execute each input line as a command]] [[Open man page on first pattern match]] [[Pass args to bash script read from stdin]] [[Add line numbers to output]] [[Network emulation (netem)]] [[See man as pdf]] [[Simulate `make' without actual execution]] [[Add TLS encryption to existing clients and servers]] [[Suspend/Resume running program]] [[CPU Steal time]] [[See network traces]] [[Determine your external IP]] [[Info about IP]] [[Reverse DNS lookup]] [[DNS lookup]] [[Set DNS]] [[Network Manager tool]] [[DNS servers used]] [[Where DNS utils]] [[Docker fails to resolve names]] [[Run commands in parallel]] [[Extent image canvas size]] [[Resize image and draw text on it]] [[Resize image]] [[Make gif from pngs]] [[Convert dot file to png]] [[Flush file system buffers]] [[Get UPS info]] [[Linux Standard Base]] [[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10161,10 +10165,30 @@ cat settings | ./get_alerts 3&lt;&amp;0- 4&gt;&amp;1-
 [n]&lt;&gt;word
 ```</pre>
 </div>
+<div created="20200424091704359" modified="20200424091721428" tags="Linux" title="Basic GRUB console commands">
+<pre>```
+ls
+ls (hd0,msdos?)/
+ls (hd0,?)/?/?/
+set
+cat (hd0,?)/?/?/
+linux (hd0,?)/boot/?/vmliz-VERSION
+initrd (hd0,?)boot/?/initrd-VERSION
+boot
+```</pre>
+</div>
 <div created="20200423172613094" modified="20200423172640553" tags="Git" title="Blame in terminal">
 <pre>```
 $ git blame -L FROM,TO FILE
 ```
+</pre>
+</div>
+<div created="20200424091730965" modified="20200424091755137" tags="Linux" title="Boot into single user mode using GRUB">
+<pre># Enter grub menu.
+# Press `e'.
+# Choose `kernel /boot/kernel-X.Y.Z...', then press `e'.
+# Scroll to end and add `1', or `init=/bin/bash', or `single', or `emergency'. This tells the kernel to boot in runlevel 1. Press ENTER.
+# Press `b'.
 </pre>
 </div>
 <div created="20200423193054185" modified="20200423193106543" tags="" title="ByFly Speedtest">
