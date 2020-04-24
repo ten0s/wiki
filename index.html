@@ -227,6 +227,8 @@ Error message and password prompt
 
 <li>ARP cache</li>
 
+<li>Associate files</li>
+
 <li>Blame in terminal</li>
 
 <li>ByFly Speedtest</li>
@@ -9825,7 +9827,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
+<div list="[[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10020,6 +10022,22 @@ $ git apply my.patch
 $ arp -a
 ```
 </pre>
+</div>
+<div created="20200424082708184" modified="20200424082746701" tags="Linux" title="Associate files">
+<pre>https://linux.die.net/man/1/xdg-desktop-menu
+
+```
+$ xdg-mime query filetype FILE.pdf
+application/pdf
+# /usr/share/applications/defaults.list
+# ~/.local/share/applications/defaults.list
+# ~/.local/share/applications/mimeapps.list
+$ xdg-mime query default application/pdf
+evince.desktop
+$ locate evince.desktop
+/usr/share/applications/evince.desktop
+$ xdg-mime default MY_PDF.desktop
+```</pre>
 </div>
 <div created="20200423172613094" modified="20200423172640553" tags="Git" title="Blame in terminal">
 <pre>```
@@ -10353,12 +10371,12 @@ tesseract input.png output.txt
 
 </pre>
 </div>
-<div created="20200424082329224" modified="20200424082424170" tags="" title="Open file or URL in user's preferred application">
+<div created="20200424082329224" modified="20200424082640469" tags="Linux" title="Open file or URL in user's preferred application">
 <pre>How Zoom opens app? Use remsh to open a remote erlang shell from Xymon/Grafana
 
 xdg-open
 
-See 'How to create custom URI handler?'
+[[Create custom URI handler]]
 </pre>
 </div>
 <div created="20200424081612003" modified="20200424081639805" tags="Linux" title="Open Printing">
