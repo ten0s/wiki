@@ -275,6 +275,8 @@ Error message and password prompt
 
 <li>Init local file system repo</li>
 
+<li>Interact with X Window Manager</li>
+
 <li>Internet Printing Protocol (IPP)</li>
 
 <li>List available tags</li>
@@ -304,6 +306,8 @@ Error message and password prompt
 <li>Reset working dir to HEAD</li>
 
 <li>Restore all current dir</li>
+
+<li>rsync local dirs</li>
 
 <li>Run script under debugger</li>
 
@@ -9811,7 +9815,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
+<div list="[[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10219,6 +10223,12 @@ $ git remote add origin PATH_TO/NEW_REPO/
 
 </pre>
 </div>
+<div created="20200424081836261" modified="20200424081902945" tags="Linux" title="Interact with X Window Manager">
+<pre>```
+$ man wmctrl
+```
+</pre>
+</div>
 <div created="20200424081533952" modified="20200424081556131" tags="Linux" title="Internet Printing Protocol (IPP)">
 <pre>https://www.pwg.org/ipp/ippguide.html
 https://www.tldp.org/HOWTO/Printing-HOWTO/
@@ -10318,6 +10328,13 @@ $ git reset --hard &lt;HEAD | HASH&gt;
 <pre>```
 $ git checkout -- .
 ```
+</pre>
+</div>
+<div created="20200424081914812" modified="20200424081944033" tags="Linux" title="rsync local dirs">
+<pre>```
+rsync -avh [--delete] SRC/ DST/
+```
+
 </pre>
 </div>
 <div created="20200423194858355" modified="20200423194925309" tags="Python" title="Run script under debugger">
