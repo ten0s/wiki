@@ -295,6 +295,8 @@ Error message and password prompt
 
 <li>Include specific commit</li>
 
+<li>Info about IP</li>
+
 <li>Init local file system repo</li>
 
 <li>Interact with X Window Manager</li>
@@ -9863,7 +9865,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[Reverse DNS lookup]] $:/Import [[DNS lookup]] [[Set DNS]] [[Network Manager tool]] [[DNS servers used]] [[Where DNS utils]] [[Docker fails to resolve names]] [[Run commands in parallel]] [[Extent image canvas size]] [[Resize image and draw text on it]] [[Resize image]] [[Make gif from pngs]] [[Convert dot file to png]] [[Flush file system buffers]] [[Get UPS info]] [[Linux Standard Base]] [[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
+<div list="[[Info about IP]] [[Reverse DNS lookup]] [[DNS lookup]] [[Set DNS]] [[Network Manager tool]] [[DNS servers used]] [[Where DNS utils]] [[Docker fails to resolve names]] [[Run commands in parallel]] [[Extent image canvas size]] [[Resize image and draw text on it]] [[Resize image]] [[Make gif from pngs]] [[Convert dot file to png]] [[Flush file system buffers]] [[Get UPS info]] [[Linux Standard Base]] [[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10265,14 +10267,15 @@ dns=default
 sudo systemctl restart NetworkManager
 ```</pre>
 </div>
-<div created="20200424084611466" modified="20200424084632826" tags="Linux" title="DNS lookup">
+<div created="20200424084611466" modified="20200424084734096" tags="Linux" title="DNS lookup">
 <pre>```
 $ dig google.com [@8.8.8.8]
 $ dig google.com [@a.root-servers.net]
 $ host google.com [8.8.8.8]
 $ nslookup google.com [8.8.8.8]
 ```
-</pre>
+
+[[Reverse DNS lookup]]</pre>
 </div>
 <div created="20200424084305050" modified="20200424084453591" tags="Linux" title="DNS servers used">
 <pre>```
@@ -10418,6 +10421,12 @@ done
 <div created="20200423172248757" modified="20200423190605721" tags="Git" title="Include specific commit">
 <pre>```
 $ git cherry-pick HASH
+```
+</pre>
+</div>
+<div created="20200424084749322" modified="20200424084809587" tags="Linux" title="Info about IP">
+<pre>```
+$ whois IP
 ```
 </pre>
 </div>
