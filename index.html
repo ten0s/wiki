@@ -261,6 +261,8 @@ Error message and password prompt
 
 <li>Get submodules</li>
 
+<li>Get user confirmation</li>
+
 <li>Good commit messages</li>
 
 <li>Include specific commit</li>
@@ -9797,7 +9799,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="OCR" title="$:/StoryList">
+<div list="[[Get user confirmation]] OCR" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9858,7 +9860,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200423165127488" modified="20200424080933665" title="$:/temp/NewTagName">
+<div created="20200423165127488" modified="20200424081122832" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
 <div created="20200422190456346" modified="20200423190859601" title="$:/temp/search">
@@ -10136,6 +10138,23 @@ $ git submodule sync
 $ git submodule update --init --recursive
 ```
 </pre>
+</div>
+<div created="20200424081043519" modified="20200424081141683" tags="Bash Linux" title="Get user confirmation">
+<pre>```
+echo &quot;Do you really want to do this?&quot;
+PS3=&quot;&gt; &quot;
+opts=&quot;Yes No&quot;
+select opt in $opts; do
+   case $opt in
+   Yes)
+       exit
+       ;;
+   No)
+       exit
+       ;;
+   esac
+done
+```</pre>
 </div>
 <div created="20200423193712056" modified="20200423193732045" tags="Git" title="Good commit messages">
 <pre>* https://github.com/erlang/otp/wiki/Writing-good-commit-messages
