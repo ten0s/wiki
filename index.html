@@ -251,6 +251,8 @@ Error message and password prompt
 
 <li>Change remote repo</li>
 
+<li>Check SSH key</li>
+
 <li>Clear Chrome internal DNS</li>
 
 <li>Clone Github repo via https</li>
@@ -310,6 +312,8 @@ Error message and password prompt
 <li>Force SSH password authentication</li>
 
 <li>Generate random string of length 50</li>
+
+<li>Get SSH key fingerprint</li>
 
 <li>Get submodules</li>
 
@@ -9913,7 +9917,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200424091924309" list="[[Force SSH password authentication]] [[Force specific SSH algorithm]] [[Run to interactive program through SSH]] [[Change GRUB boot order]] [[Enter GRUB menu]] [[Boot into single user mode using GRUB]] [[Basic GRUB console commands]] [[Recover Ubuntu after unsuccessful upgrade]] [[Change forgotten password]] [[Bash process substitution]] [[Bash redirection (stdin, stdout, stderr)]] [[Linux special files]] [[Make xargs to execute each input line as a command]] [[Open man page on first pattern match]] [[Pass args to bash script read from stdin]] [[Add line numbers to output]] [[Network emulation (netem)]] [[See man as pdf]] [[Simulate `make' without actual execution]] [[Add TLS encryption to existing clients and servers]] [[Suspend/Resume running program]] [[CPU Steal time]] [[See network traces]] [[Determine your external IP]] [[Info about IP]] [[Reverse DNS lookup]] [[DNS lookup]] [[Set DNS]] [[Network Manager tool]] [[DNS servers used]] [[Where DNS utils]] [[Docker fails to resolve names]] [[Run commands in parallel]] [[Extent image canvas size]] [[Resize image and draw text on it]] [[Resize image]] [[Make gif from pngs]] [[Convert dot file to png]] [[Flush file system buffers]] [[Get UPS info]] [[Linux Standard Base]] [[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" modified="20200424091924309" title="$:/StoryList">
+<div created="20200424091924309" list="[[Get SSH key fingerprint]] [[Check SSH key]] [[Force SSH password authentication]] [[Force specific SSH algorithm]] [[Run to interactive program through SSH]] [[Change GRUB boot order]] [[Enter GRUB menu]] [[Boot into single user mode using GRUB]] [[Basic GRUB console commands]] [[Recover Ubuntu after unsuccessful upgrade]] [[Change forgotten password]] [[Bash process substitution]] [[Bash redirection (stdin, stdout, stderr)]] [[Linux special files]] [[Make xargs to execute each input line as a command]] [[Open man page on first pattern match]] [[Pass args to bash script read from stdin]] [[Add line numbers to output]] [[Network emulation (netem)]] [[See man as pdf]] [[Simulate `make' without actual execution]] [[Add TLS encryption to existing clients and servers]] [[Suspend/Resume running program]] [[CPU Steal time]] [[See network traces]] [[Determine your external IP]] [[Info about IP]] [[Reverse DNS lookup]] [[DNS lookup]] [[Set DNS]] [[Network Manager tool]] [[DNS servers used]] [[Where DNS utils]] [[Docker fails to resolve names]] [[Run commands in parallel]] [[Extent image canvas size]] [[Resize image and draw text on it]] [[Resize image]] [[Make gif from pngs]] [[Convert dot file to png]] [[Flush file system buffers]] [[Get UPS info]] [[Linux Standard Base]] [[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" modified="20200424091924309" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10245,6 +10249,12 @@ $ git remote rm origin
 $ git remote add origin &lt;NEW_REPO_PATH&gt;
 ```</pre>
 </div>
+<div created="20200424092723375" modified="20200424092757087" tags="Ssh Git" title="Check SSH key">
+<pre>```
+$ ssh -T git@github.com
+```
+</pre>
+</div>
 <div created="20200423195502424" modified="20200423195516478" tags="" title="Clear Chrome internal DNS">
 <pre>chrome://net-internals/#dns
 </pre>
@@ -10573,6 +10583,13 @@ $ ssh -F /dev/null -o PubkeyAuthentication=no pi@printerpi
 <pre>```
 base64 /dev/urandom | head -1 | cut -c1-50
 ```
+</pre>
+</div>
+<div created="20200424092814132" modified="20200424092838952" tags="Ssh" title="Get SSH key fingerprint">
+<pre>```
+$ ssh-keygen -l -f ~/.ssh/id_rsa.pub
+```
+
 </pre>
 </div>
 <div created="20200423172949019" modified="20200423173025268" tags="Git" title="Get submodules">
