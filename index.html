@@ -243,6 +243,8 @@ Error message and password prompt
 
 <li>Create lightweight tag</li>
 
+<li>Date tricks</li>
+
 <li>Debug &quot;Error: repository not found&quot;</li>
 
 <li>Debug Javascript in Android Chrome</li>
@@ -316,6 +318,8 @@ Error message and password prompt
 <li>Short hash</li>
 
 <li>Show HTML in terminal</li>
+
+<li>Speedtest in terminal</li>
 
 <li>Squash a branch into one commit</li>
 
@@ -9815,7 +9819,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
+<div list="$:/Import [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10073,6 +10077,24 @@ $ git tag &quot;1.0.2&quot; &lt;hash&gt;
 ```
 
 </pre>
+</div>
+<div created="20200424081958465" modified="20200424082025445" tags="Linux" title="Date tricks">
+<pre>```
+$ date +%j # current day of year
+$ date +%s # current time to utc unix epoch
+$ date +%s%N # current time to utc unix epoch plus nanoseconds
+$ date -d @1358165496 [--utc] # unix epoch to current time [utc]
+$ date -d @1358165496 [--utc] --iso-8601=seconds # unix epoch to ISO8601 [utc]
+$ date -d &quot;Jan 29, 2013 17:08:03.415290000&quot; +%s.%N # 1359468483.415290000
+$ date -Iseconds [--utc] # current [utc] time in ISO8601?
+$ date +'%Y-%m-%dT%H:%M:%S' # as above but w/o TZ
+$ date +'%FT%T' # as above but simpler (?)
+$ sudo date -s '+1 hour' # '-2 mins' # set
+$ date -d '-20 secs'           # calculate
+$ date +%s -d '1 hour ago' # utc unix epoch 1 hour ago
+$ date +'%d/%m/%Y' -d '2013-04-08 +2 days' # reformat and calculate
+$ TZ=America/New_York date # what time in NYC now
+```</pre>
 </div>
 <div created="20200423172701086" modified="20200423172823336" tags="Git Ssh" title="Debug &quot;Error: repository not found&quot;">
 <pre>https://help.github.com/articles/error-repository-not-found/
@@ -10360,6 +10382,15 @@ f75ba70
 <div created="20200424081655014" modified="20200424081724872" tags="Linux Bash" title="Show HTML in terminal">
 <pre>```
 $ echo $HTML | lynx -stdin -dump
+```
+</pre>
+</div>
+<div created="20200424082051179" modified="20200424082136698" tags="" title="Speedtest in terminal">
+<pre>https://binarynature.blogspot.com/2013/03/measure-internet-connection-speed-from-linux-command-line.html
+https://askubuntu.com/questions/104755/how-to-check-internet-speed-via-terminal
+
+```
+$ curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -
 ```
 </pre>
 </div>
