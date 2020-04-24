@@ -255,6 +255,8 @@ Error message and password prompt
 
 <li>Delete tag</li>
 
+<li>Determine folders size</li>
+
 <li>Disable Developer Options</li>
 
 <li>Disable systemd-resolved</li>
@@ -318,6 +320,8 @@ Error message and password prompt
 <li>rsync local dirs</li>
 
 <li>Run script under debugger</li>
+
+<li>Set default browser</li>
 
 <li>Set default USB connection type</li>
 
@@ -9827,7 +9831,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
+<div list="[[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10196,6 +10200,12 @@ $ git push origin :&quot;2.0.0&quot;
 ```
 </pre>
 </div>
+<div created="20200424082919727" modified="20200424082939726" tags="Linux Bash" title="Determine folders size">
+<pre>```
+du -sh * | sort -h
+```
+</pre>
+</div>
 <div created="20200423193246200" modified="20200423193326738" tags="Android" title="Disable Developer Options">
 <pre>Settings -&gt; Storage -&gt; Apps -&gt; Settings -&gt; Clear Data
 </pre>
@@ -10438,6 +10448,19 @@ $ python -m pdb script.py
 ```
 
 </pre>
+</div>
+<div created="20200424082813846" modified="20200424082837360" tags="Linux" title="Set default browser">
+<pre>```
+$ xdg-settings --list
+Known properties:
+  default-web-browser           Default web browser
+$ xdg-settings get default-web-browser
+chromium.desktop
+$ update-alternatives --display x-www-browser
+$ less /usr/share/applications/defaults.list # mime list
+$ xdg-settings set default-web-browser firefox.desktop
+$ xdg-settings get default-web-browser
+```</pre>
 </div>
 <div created="20200423192402727" modified="20200423192435212" tags="Android" title="Set default USB connection type">
 <pre>[[Enable Developer Options]]
