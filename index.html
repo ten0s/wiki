@@ -313,6 +313,8 @@ Error message and password prompt
 
 <li>Mirror a repo to Github</li>
 
+<li>Network Manager tool</li>
+
 <li>OCR</li>
 
 <li>Online Markdown Editor</li>
@@ -346,6 +348,8 @@ Error message and password prompt
 <li>Set default browser</li>
 
 <li>Set default USB connection type</li>
+
+<li>Set DNS</li>
 
 <li>Share big files</li>
 
@@ -9855,7 +9859,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[DNS servers used]] [[Where DNS utils]] [[Docker fails to resolve names]] [[Run commands in parallel]] [[Extent image canvas size]] [[Resize image and draw text on it]] [[Resize image]] [[Make gif from pngs]] [[Convert dot file to png]] [[Flush file system buffers]] [[Get UPS info]] [[Linux Standard Base]] [[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
+<div list="[[Set DNS]] [[Network Manager tool]] [[DNS servers used]] [[Where DNS utils]] [[Docker fails to resolve names]] [[Run commands in parallel]] [[Extent image canvas size]] [[Resize image and draw text on it]] [[Resize image]] [[Make gif from pngs]] [[Convert dot file to png]] [[Flush file system buffers]] [[Get UPS info]] [[Linux Standard Base]] [[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10257,14 +10261,13 @@ dns=default
 sudo systemctl restart NetworkManager
 ```</pre>
 </div>
-<div created="20200424084305050" modified="20200424084442446" tags="Linux" title="DNS servers used">
-<pre>Which ?
-===
+<div created="20200424084305050" modified="20200424084453591" tags="Linux" title="DNS servers used">
+<pre>```
 $ cat /etc/resolv.conf
 $ nm-tool
 $ nmcli dev list tun0    # Ubuntu &lt;= 14
 $ nmcli device show eth0 # Ubuntu &gt;= 15
-</pre>
+```</pre>
 </div>
 <div created="20200424084024304" modified="20200424084124481" tags="Docker Linux" title="Docker fails to resolve names">
 <pre>* https://development.robinwinslow.uk/2016/06/23/fix-docker-networking-dns/
@@ -10484,6 +10487,10 @@ $ git push --mirror git@github.com:ORGANISATION/NEW_REPO.git
 ```
 </pre>
 </div>
+<div created="20200424084502615" modified="20200424084519639" tags="Linux" title="Network Manager tool">
+<pre>nm-tool
+</pre>
+</div>
 <div created="20200424080859944" modified="20200424080935973" tags="Linux" title="OCR">
 <pre>```
 sudo apt install tesseract-ocr
@@ -10619,6 +10626,15 @@ $ xdg-settings get default-web-browser
 <pre>[[Enable Developer Options]]
 
 Settings -&gt; Developer Options -&gt; Select USB Configuration
+</pre>
+</div>
+<div created="20200424084529908" modified="20200424084548422" tags="" title="Set DNS">
+<pre>```
+$ cat /etc/resolv.conf
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+search example.com
+```
 </pre>
 </div>
 <div created="20200424082218342" modified="20200424082241702" tags="" title="Share big files">
