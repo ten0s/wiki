@@ -263,6 +263,8 @@ Error message and password prompt
 
 <li>Disable systemd-resolved</li>
 
+<li>Docker fails to resolve names</li>
+
 <li>Enable debugger by request</li>
 
 <li>Enable Developer Options</li>
@@ -9849,7 +9851,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[Run commands in parallel]] [[Extent image canvas size]] [[Resize image and draw text on it]] [[Resize image]] [[Make gif from pngs]] [[Convert dot file to png]] [[Flush file system buffers]] [[Get UPS info]] [[Linux Standard Base]] [[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
+<div list="[[Docker fails to resolve names]] [[Run commands in parallel]] [[Extent image canvas size]] [[Resize image and draw text on it]] [[Resize image]] [[Make gif from pngs]] [[Convert dot file to png]] [[Flush file system buffers]] [[Get UPS info]] [[Linux Standard Base]] [[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10250,6 +10252,41 @@ add into [main] of /etc/NetworkManager/NetworkManager.conf
 dns=default
 sudo systemctl restart NetworkManager
 ```</pre>
+</div>
+<div created="20200424084024304" modified="20200424084124481" tags="Docker Linux" title="Docker fails to resolve names">
+<pre>* https://development.robinwinslow.uk/2016/06/23/fix-docker-networking-dns/
+* https://serverfault.com/questions/642981/docker-containers-cant-resolve-dns-on-ubuntu-14-04-desktop-host
+
+```
+$ docker run busybox nslookup google.com
+Server: 8.8.8.8
+Address 1: 8.8.8.8
+nslookup: can't resolve 'google.com'
+$ nmcli dev show | grep 'IP4.DNS'
+IP4.DNS[1]: 10.6.0.6
+IP4.DNS[2]: 10.6.0.16
+$ docker run --dns 10.6.0.6 --dns 10.6.0.16 busybox nslookup google.com
+Server: 10.6.0.6
+Address 1: 10.6.0.6
+EVBYMINSA0044.minsk.epam.com Name: google.com
+Address 1: 2a00:1450:4001:81d::200e fra15s18-in-x0e.1e100.net
+Address 2: 172.217.22.110 fra15s18-in-f110.1e100.net
+```
+
+Edit /etc/docker/daemon.json
+
+```
+{
+    &quot;dns&quot;: [&quot;10.6.0.6&quot;, &quot;10.6.0.16&quot;]
+}
+```
+
+```
+$ sudo systemctl restart docker
+$ sudo service docker restart
+```
+
+</pre>
 </div>
 <div created="20200423194939882" modified="20200423195013841" tags="Python" title="Enable debugger by request">
 <pre>```
