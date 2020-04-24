@@ -323,6 +323,8 @@ Error message and password prompt
 
 <li>Make Mobile Web App fullscreen</li>
 
+<li>Make xargs to execute each input line as a command</li>
+
 <li>Mirror a repo to Github</li>
 
 <li>Network emulation (netem)</li>
@@ -334,6 +336,8 @@ Error message and password prompt
 <li>Online Markdown Editor</li>
 
 <li>Open file or URL in user's preferred application</li>
+
+<li>Open man page on first pattern match</li>
 
 <li>Open Printing</li>
 
@@ -9885,7 +9889,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[Pass args to bash script read from stdin]] [[Add line numbers to output]] [[Network emulation (netem)]] [[See man as pdf]] [[Simulate `make' without actual execution]] [[Add TLS encryption to existing clients and servers]] [[Suspend/Resume running program]] [[CPU Steal time]] [[See network traces]] [[Determine your external IP]] [[Info about IP]] [[Reverse DNS lookup]] [[DNS lookup]] [[Set DNS]] [[Network Manager tool]] [[DNS servers used]] [[Where DNS utils]] [[Docker fails to resolve names]] [[Run commands in parallel]] [[Extent image canvas size]] [[Resize image and draw text on it]] [[Resize image]] [[Make gif from pngs]] [[Convert dot file to png]] [[Flush file system buffers]] [[Get UPS info]] [[Linux Standard Base]] [[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
+<div list="[[Make xargs to execute each input line as a command]] [[Open man page on first pattern match]] [[Pass args to bash script read from stdin]] [[Add line numbers to output]] [[Network emulation (netem)]] [[See man as pdf]] [[Simulate `make' without actual execution]] [[Add TLS encryption to existing clients and servers]] [[Suspend/Resume running program]] [[CPU Steal time]] [[See network traces]] [[Determine your external IP]] [[Info about IP]] [[Reverse DNS lookup]] [[DNS lookup]] [[Set DNS]] [[Network Manager tool]] [[DNS servers used]] [[Where DNS utils]] [[Docker fails to resolve names]] [[Run commands in parallel]] [[Extent image canvas size]] [[Resize image and draw text on it]] [[Resize image]] [[Make gif from pngs]] [[Convert dot file to png]] [[Flush file system buffers]] [[Get UPS info]] [[Linux Standard Base]] [[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10553,6 +10557,20 @@ $ convert -delay 120 -loop 0 -gravity center -background white -extent 300x450 *
 <pre>https://developers.google.com/web/fundamentals/native-hardware/fullscreen/
 </pre>
 </div>
+<div created="20200424090505327" modified="20200424090534442" tags="Linux Bash" title="Make xargs to execute each input line as a command">
+<pre>```
+$ echo -e '1\n2\n3' | xargs echo
+1 2 3
+```
+
+```
+$ echo -e '1\n2\n3' | xargs -n1 echo
+1
+2
+3
+```
+</pre>
+</div>
 <div created="20200423170056916" modified="20200423171530404" tags="Git" title="Mirror a repo to Github">
 <pre>```
 $ git clone --mirror git@OLD_HOST:OLD_REPO
@@ -10590,6 +10608,14 @@ tesseract input.png output.txt
 xdg-open
 
 [[Create custom URI handler]]
+</pre>
+</div>
+<div created="20200424090413095" modified="20200424090447307" tags="Bash Linux" title="Open man page on first pattern match">
+<pre>```
+man grep | less +/&quot;REGULAR EXPRESSIONS&quot;
+man grep | less --pattern &quot;REGULAR EXPRESSIONS&quot;
+```
+
 </pre>
 </div>
 <div created="20200424081612003" modified="20200424081639805" tags="Linux" title="Open Printing">
