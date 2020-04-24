@@ -357,6 +357,8 @@ Error message and password prompt
 
 <li>Run script under debugger</li>
 
+<li>See man as pdf</li>
+
 <li>See network traces</li>
 
 <li>Set default browser</li>
@@ -370,6 +372,8 @@ Error message and password prompt
 <li>Short hash</li>
 
 <li>Show HTML in terminal</li>
+
+<li>Simulate `make' without actual execution</li>
 
 <li>Speedtest in terminal</li>
 
@@ -9875,7 +9879,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[Add TLS encryption to existing clients and servers]] [[Suspend/Resume running program]] [[CPU Steal time]] [[See network traces]] [[Determine your external IP]] [[Info about IP]] [[Reverse DNS lookup]] [[DNS lookup]] [[Set DNS]] [[Network Manager tool]] [[DNS servers used]] [[Where DNS utils]] [[Docker fails to resolve names]] [[Run commands in parallel]] [[Extent image canvas size]] [[Resize image and draw text on it]] [[Resize image]] [[Make gif from pngs]] [[Convert dot file to png]] [[Flush file system buffers]] [[Get UPS info]] [[Linux Standard Base]] [[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
+<div list="[[See man as pdf]] [[Simulate `make' without actual execution]] [[Add TLS encryption to existing clients and servers]] [[Suspend/Resume running program]] [[CPU Steal time]] [[See network traces]] [[Determine your external IP]] [[Info about IP]] [[Reverse DNS lookup]] [[DNS lookup]] [[Set DNS]] [[Network Manager tool]] [[DNS servers used]] [[Where DNS utils]] [[Docker fails to resolve names]] [[Run commands in parallel]] [[Extent image canvas size]] [[Resize image and draw text on it]] [[Resize image]] [[Make gif from pngs]] [[Convert dot file to png]] [[Flush file system buffers]] [[Get UPS info]] [[Linux Standard Base]] [[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10676,6 +10680,12 @@ $ python -m pdb script.py
 
 </pre>
 </div>
+<div created="20200424085451036" modified="20200424090109325" tags="Linux Bash" title="See man as pdf">
+<pre>```
+$ tmp=$(mktemp --suffix &quot;.ps&quot;); man -t bash &gt;$tmp; open $tmp
+```
+</pre>
+</div>
 <div created="20200424084943507" modified="20200424085004712" tags="Linux" title="See network traces">
 <pre>```
 $ traceroute &lt;ipaddr | webaddr&gt;
@@ -10728,6 +10738,12 @@ f75ba70
 <div created="20200424081655014" modified="20200424081724872" tags="Linux Bash" title="Show HTML in terminal">
 <pre>```
 $ echo $HTML | lynx -stdin -dump
+```
+</pre>
+</div>
+<div created="20200424085359454" modified="20200424085425359" tags="Linux" title="Simulate `make' without actual execution">
+<pre>```
+$ make -n
 ```
 </pre>
 </div>
