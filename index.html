@@ -233,6 +233,8 @@ Error message and password prompt
 
 <li>Associate files</li>
 
+<li>Bash redirection (stdin, stdout, stderr)</li>
+
 <li>Blame in terminal</li>
 
 <li>ByFly Speedtest</li>
@@ -9891,7 +9893,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[Linux special files]] [[Make xargs to execute each input line as a command]] [[Open man page on first pattern match]] [[Pass args to bash script read from stdin]] [[Add line numbers to output]] [[Network emulation (netem)]] [[See man as pdf]] [[Simulate `make' without actual execution]] [[Add TLS encryption to existing clients and servers]] [[Suspend/Resume running program]] [[CPU Steal time]] [[See network traces]] [[Determine your external IP]] [[Info about IP]] [[Reverse DNS lookup]] [[DNS lookup]] [[Set DNS]] [[Network Manager tool]] [[DNS servers used]] [[Where DNS utils]] [[Docker fails to resolve names]] [[Run commands in parallel]] [[Extent image canvas size]] [[Resize image and draw text on it]] [[Resize image]] [[Make gif from pngs]] [[Convert dot file to png]] [[Flush file system buffers]] [[Get UPS info]] [[Linux Standard Base]] [[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
+<div list="[[Bash redirection (stdin, stdout, stderr)]] [[Linux special files]] [[Make xargs to execute each input line as a command]] [[Open man page on first pattern match]] [[Pass args to bash script read from stdin]] [[Add line numbers to output]] [[Network emulation (netem)]] [[See man as pdf]] [[Simulate `make' without actual execution]] [[Add TLS encryption to existing clients and servers]] [[Suspend/Resume running program]] [[CPU Steal time]] [[See network traces]] [[Determine your external IP]] [[Info about IP]] [[Reverse DNS lookup]] [[DNS lookup]] [[Set DNS]] [[Network Manager tool]] [[DNS servers used]] [[Where DNS utils]] [[Docker fails to resolve names]] [[Run commands in parallel]] [[Extent image canvas size]] [[Resize image and draw text on it]] [[Resize image]] [[Make gif from pngs]] [[Convert dot file to png]] [[Flush file system buffers]] [[Get UPS info]] [[Linux Standard Base]] [[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10111,6 +10113,37 @@ evince.desktop
 $ locate evince.desktop
 /usr/share/applications/evince.desktop
 $ xdg-mime default MY_PDF.desktop
+```</pre>
+</div>
+<div created="20200424090746103" modified="20200424090851760" tags="Bash" title="Bash redirection (stdin, stdout, stderr)">
+<pre>```
+man bash | less +/&quot;^REDIRECTION&quot;
+man bash | less +/&quot;   Moving File Descriptors&quot;
+```
+
+```
+cat settings | ./get_alerts 3&lt;&amp;0- 4&gt;&amp;1-
+```
+
+```
+/dev/fd/[n] when [n] is a valid integer
+/dev/tcp/[host]/[port]
+/dev/udp/[host]/[port]
+# redirection
+&lt; == 0&lt; == /dev/stdin
+&gt; == 1&gt; == /dev/stdout
+2&gt; == /dev/stderr
+[n]&lt;word
+[n]&gt;word
+[n]&gt;&gt;word
+&amp;&gt;word == &gt;word 2&gt;&amp;1
+&amp;&gt;&gt;word == &gt;&gt;word 2&gt;&amp;1
+|&amp; == 2&gt;&amp;1 |
+# duplication or moving fds
+[n]&lt;&amp;digit[-], # if - [n] is closed
+[n]&gt;&amp;digit[-]
+# open for read and write
+[n]&lt;&gt;word
 ```</pre>
 </div>
 <div created="20200423172613094" modified="20200423172640553" tags="Git" title="Blame in terminal">
