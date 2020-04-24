@@ -263,6 +263,8 @@ Error message and password prompt
 
 <li>Disable systemd-resolved</li>
 
+<li>Draft of 'New Tiddler'</li>
+
 <li>Enable debugger by request</li>
 
 <li>Enable Developer Options</li>
@@ -9839,7 +9841,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[Convert dot file to png]] [[Flush file system buffers]] [[Get UPS info]] [[Linux Standard Base]] [[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
+<div list="[[Draft of 'New Tiddler']] [[Convert dot file to png]] [[Flush file system buffers]] [[Get UPS info]] [[Linux Standard Base]] [[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9900,7 +9902,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200423165127488" modified="20200424083320115" title="$:/temp/NewTagName">
+<div created="20200423165127488" modified="20200424083456265" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
 <div created="20200422190456346" modified="20200423190859601" title="$:/temp/search">
@@ -10094,7 +10096,7 @@ $ git merge HASH
 ```
 </pre>
 </div>
-<div created="20200424083254976" modified="20200424083347924" tags="Linux Bash Graphviz" title="Convert dot file to png">
+<div created="20200424083254976" modified="20200424083533227" tags="Graphviz" title="Convert dot file to png">
 <pre>```
 $ dot -Tpng -O file.dot &gt; file.png
 $ dot -Tpng -O file.dot -o file.png
@@ -10240,6 +10242,13 @@ add into [main] of /etc/NetworkManager/NetworkManager.conf
 dns=default
 sudo systemctl restart NetworkManager
 ```</pre>
+</div>
+<div created="20200424083407280" draft.of="New Tiddler" draft.title="Make gif from pngs" modified="20200424083513840" tags="Imagemagick" title="Draft of 'New Tiddler'">
+<pre>```
+$ convert -delay 120 -loop 0 -gravity center -background white -extent 300x450 *.png tree.gif
+```
+
+</pre>
 </div>
 <div created="20200423194939882" modified="20200423195013841" tags="Python" title="Enable debugger by request">
 <pre>```
