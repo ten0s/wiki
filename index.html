@@ -263,6 +263,8 @@ Error message and password prompt
 
 <li>Disable systemd-resolved</li>
 
+<li>DNS lookup</li>
+
 <li>DNS servers used</li>
 
 <li>Docker fails to resolve names</li>
@@ -338,6 +340,8 @@ Error message and password prompt
 <li>Resize image and draw text on it</li>
 
 <li>Restore all current dir</li>
+
+<li>Reverse DNS lookup</li>
 
 <li>rsync local dirs</li>
 
@@ -9859,7 +9863,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[Set DNS]] [[Network Manager tool]] [[DNS servers used]] [[Where DNS utils]] [[Docker fails to resolve names]] [[Run commands in parallel]] [[Extent image canvas size]] [[Resize image and draw text on it]] [[Resize image]] [[Make gif from pngs]] [[Convert dot file to png]] [[Flush file system buffers]] [[Get UPS info]] [[Linux Standard Base]] [[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
+<div list="[[Reverse DNS lookup]] $:/Import [[DNS lookup]] [[Set DNS]] [[Network Manager tool]] [[DNS servers used]] [[Where DNS utils]] [[Docker fails to resolve names]] [[Run commands in parallel]] [[Extent image canvas size]] [[Resize image and draw text on it]] [[Resize image]] [[Make gif from pngs]] [[Convert dot file to png]] [[Flush file system buffers]] [[Get UPS info]] [[Linux Standard Base]] [[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10261,6 +10265,15 @@ dns=default
 sudo systemctl restart NetworkManager
 ```</pre>
 </div>
+<div created="20200424084611466" modified="20200424084632826" tags="Linux" title="DNS lookup">
+<pre>```
+$ dig google.com [@8.8.8.8]
+$ dig google.com [@a.root-servers.net]
+$ host google.com [8.8.8.8]
+$ nslookup google.com [8.8.8.8]
+```
+</pre>
+</div>
 <div created="20200424084305050" modified="20200424084453591" tags="Linux" title="DNS servers used">
 <pre>```
 $ cat /etc/resolv.conf
@@ -10572,6 +10585,16 @@ $ git checkout -- .
 ```
 </pre>
 </div>
+<div created="20200424084644986" modified="20200424084714251" tags="Linux" title="Reverse DNS lookup">
+<pre>```
+$ dig -x IP
+$ nslookup IP
+```
+
+[[DNS lookup]]
+
+</pre>
+</div>
 <div created="20200424081914812" modified="20200424081944033" tags="Linux" title="rsync local dirs">
 <pre>```
 rsync -avh [--delete] SRC/ DST/
@@ -10628,7 +10651,7 @@ $ xdg-settings get default-web-browser
 Settings -&gt; Developer Options -&gt; Select USB Configuration
 </pre>
 </div>
-<div created="20200424084529908" modified="20200424084548422" tags="" title="Set DNS">
+<div created="20200424084529908" modified="20200424084554075" tags="Linux" title="Set DNS">
 <pre>```
 $ cat /etc/resolv.conf
 nameserver 8.8.8.8
