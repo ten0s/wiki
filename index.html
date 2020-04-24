@@ -425,6 +425,8 @@ Error message and password prompt
 
 <li>Suspend/Resume running program</li>
 
+<li>Troubleshoot ssh-agent forwarding</li>
+
 <li>Untrack tracked files</li>
 
 <li>Use ssh-agent in Docker container</li>
@@ -9921,7 +9923,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200424091924309" list="[[Keep SSH On]] [[SSH tricks]] [[Get SSH key fingerprint]] [[Check SSH key]] [[Force SSH password authentication]] [[Force specific SSH algorithm]] [[Run to interactive program through SSH]] [[Change GRUB boot order]] [[Enter GRUB menu]] [[Boot into single user mode using GRUB]] [[Basic GRUB console commands]] [[Recover Ubuntu after unsuccessful upgrade]] [[Change forgotten password]] [[Bash process substitution]] [[Bash redirection (stdin, stdout, stderr)]] [[Linux special files]] [[Make xargs to execute each input line as a command]] [[Open man page on first pattern match]] [[Pass args to bash script read from stdin]] [[Add line numbers to output]] [[Network emulation (netem)]] [[See man as pdf]] [[Simulate `make' without actual execution]] [[Add TLS encryption to existing clients and servers]] [[Suspend/Resume running program]] [[CPU Steal time]] [[See network traces]] [[Determine your external IP]] [[Info about IP]] [[Reverse DNS lookup]] [[DNS lookup]] [[Set DNS]] [[Network Manager tool]] [[DNS servers used]] [[Where DNS utils]] [[Docker fails to resolve names]] [[Run commands in parallel]] [[Extent image canvas size]] [[Resize image and draw text on it]] [[Resize image]] [[Make gif from pngs]] [[Convert dot file to png]] [[Flush file system buffers]] [[Get UPS info]] [[Linux Standard Base]] [[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" modified="20200424091924309" title="$:/StoryList">
+<div created="20200424091924309" list="[[Troubleshoot ssh-agent forwarding]] [[Keep SSH On]] [[SSH tricks]] [[Get SSH key fingerprint]] [[Check SSH key]] [[Force SSH password authentication]] [[Force specific SSH algorithm]] [[Run to interactive program through SSH]] [[Change GRUB boot order]] [[Enter GRUB menu]] [[Boot into single user mode using GRUB]] [[Basic GRUB console commands]] [[Recover Ubuntu after unsuccessful upgrade]] [[Change forgotten password]] [[Bash process substitution]] [[Bash redirection (stdin, stdout, stderr)]] [[Linux special files]] [[Make xargs to execute each input line as a command]] [[Open man page on first pattern match]] [[Pass args to bash script read from stdin]] [[Add line numbers to output]] [[Network emulation (netem)]] [[See man as pdf]] [[Simulate `make' without actual execution]] [[Add TLS encryption to existing clients and servers]] [[Suspend/Resume running program]] [[CPU Steal time]] [[See network traces]] [[Determine your external IP]] [[Info about IP]] [[Reverse DNS lookup]] [[DNS lookup]] [[Set DNS]] [[Network Manager tool]] [[DNS servers used]] [[Where DNS utils]] [[Docker fails to resolve names]] [[Run commands in parallel]] [[Extent image canvas size]] [[Resize image and draw text on it]] [[Resize image]] [[Make gif from pngs]] [[Convert dot file to png]] [[Flush file system buffers]] [[Get UPS info]] [[Linux Standard Base]] [[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" modified="20200424091924309" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -11067,6 +11069,28 @@ kill -STOP PID
 
 ```
 kill -CONT PID
+```
+</pre>
+</div>
+<div created="20200424093131169" modified="20200424093214394" tags="Ssh" title="Troubleshoot ssh-agent forwarding">
+<pre>https://developer.github.com/guides/using-ssh-agent-forwarding/
+
+* make sure local identity work
+* add ForwardAgent yes to remote ~/.ssh/config
+* ssh to the server
+* check locally and remotely the output is NOT empty
+```
+$ echo &quot;$SSH_AUTH_SOCK&quot;
+/tmp/ssh-4Cf2gNq2uZc2/agent.1741
+```
+*  check locally
+```
+$ ssh-add -L
+The agent has no identities.
+```
+* if above `no identites' then
+```
+$ ssh-add -k id_rsa
 ```
 </pre>
 </div>
