@@ -223,6 +223,8 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla/options/stickytitles</li>
 
+<li>Add line numbers to output</li>
+
 <li>Add TLS encryption to existing clients and servers</li>
 
 <li>Apply a patch</li>
@@ -334,6 +336,8 @@ Error message and password prompt
 <li>Open file or URL in user's preferred application</li>
 
 <li>Open Printing</li>
+
+<li>Pass args to bash script read from stdin</li>
 
 <li>Prune unused images</li>
 
@@ -9881,7 +9885,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[Network emulation (netem)]] [[See man as pdf]] [[Simulate `make' without actual execution]] [[Add TLS encryption to existing clients and servers]] [[Suspend/Resume running program]] [[CPU Steal time]] [[See network traces]] [[Determine your external IP]] [[Info about IP]] [[Reverse DNS lookup]] [[DNS lookup]] [[Set DNS]] [[Network Manager tool]] [[DNS servers used]] [[Where DNS utils]] [[Docker fails to resolve names]] [[Run commands in parallel]] [[Extent image canvas size]] [[Resize image and draw text on it]] [[Resize image]] [[Make gif from pngs]] [[Convert dot file to png]] [[Flush file system buffers]] [[Get UPS info]] [[Linux Standard Base]] [[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
+<div list="[[Pass args to bash script read from stdin]] [[Add line numbers to output]] [[Network emulation (netem)]] [[See man as pdf]] [[Simulate `make' without actual execution]] [[Add TLS encryption to existing clients and servers]] [[Suspend/Resume running program]] [[CPU Steal time]] [[See network traces]] [[Determine your external IP]] [[Info about IP]] [[Reverse DNS lookup]] [[DNS lookup]] [[Set DNS]] [[Network Manager tool]] [[DNS servers used]] [[Where DNS utils]] [[Docker fails to resolve names]] [[Run commands in parallel]] [[Extent image canvas size]] [[Resize image and draw text on it]] [[Resize image]] [[Make gif from pngs]] [[Convert dot file to png]] [[Flush file system buffers]] [[Get UPS info]] [[Linux Standard Base]] [[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10062,6 +10066,13 @@ Error message and password prompt
 </div>
 <div created="20200423190007675" modified="20200423190009699" title="$:/themes/tiddlywiki/vanilla/options/stickytitles">
 <pre>no</pre>
+</div>
+<div created="20200424090229068" modified="20200424090248094" tags="Linux Bash" title="Add line numbers to output">
+<pre>```
+cat -n
+nl
+```
+</pre>
 </div>
 <div created="20200424085339651" modified="20200424085351431" tags="" title="Add TLS encryption to existing clients and servers">
 <pre>https://www.stunnel.org/index.html</pre>
@@ -10584,6 +10595,12 @@ xdg-open
 <div created="20200424081612003" modified="20200424081639805" tags="Linux" title="Open Printing">
 <pre>http://www.openprinting.org/printers
 http://www.openprinting.org/drivers
+</pre>
+</div>
+<div created="20200424090301626" modified="20200424090354478" tags="Linux Bash" title="Pass args to bash script read from stdin">
+<pre>```
+cat SCRIPT.sh | bash -s - ARGS
+```
 </pre>
 </div>
 <div created="20200423193924839" modified="20200423194007244" tags="Docker" title="Prune unused images">
