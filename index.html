@@ -355,6 +355,8 @@ Error message and password prompt
 
 <li>Push tag</li>
 
+<li>Recover Ubuntu after unsuccessful upgrade</li>
+
 <li>Remove last commit pushed to server</li>
 
 <li>Reset working dir prior to last commit</li>
@@ -9897,7 +9899,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[Change forgotten password]] [[Bash process substitution]] [[Bash redirection (stdin, stdout, stderr)]] [[Linux special files]] [[Make xargs to execute each input line as a command]] [[Open man page on first pattern match]] [[Pass args to bash script read from stdin]] [[Add line numbers to output]] [[Network emulation (netem)]] [[See man as pdf]] [[Simulate `make' without actual execution]] [[Add TLS encryption to existing clients and servers]] [[Suspend/Resume running program]] [[CPU Steal time]] [[See network traces]] [[Determine your external IP]] [[Info about IP]] [[Reverse DNS lookup]] [[DNS lookup]] [[Set DNS]] [[Network Manager tool]] [[DNS servers used]] [[Where DNS utils]] [[Docker fails to resolve names]] [[Run commands in parallel]] [[Extent image canvas size]] [[Resize image and draw text on it]] [[Resize image]] [[Make gif from pngs]] [[Convert dot file to png]] [[Flush file system buffers]] [[Get UPS info]] [[Linux Standard Base]] [[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
+<div list="[[Recover Ubuntu after unsuccessful upgrade]] [[Change forgotten password]] [[Bash process substitution]] [[Bash redirection (stdin, stdout, stderr)]] [[Linux special files]] [[Make xargs to execute each input line as a command]] [[Open man page on first pattern match]] [[Pass args to bash script read from stdin]] [[Add line numbers to output]] [[Network emulation (netem)]] [[See man as pdf]] [[Simulate `make' without actual execution]] [[Add TLS encryption to existing clients and servers]] [[Suspend/Resume running program]] [[CPU Steal time]] [[See network traces]] [[Determine your external IP]] [[Info about IP]] [[Reverse DNS lookup]] [[DNS lookup]] [[Set DNS]] [[Network Manager tool]] [[DNS servers used]] [[Where DNS utils]] [[Docker fails to resolve names]] [[Run commands in parallel]] [[Extent image canvas size]] [[Resize image and draw text on it]] [[Resize image]] [[Make gif from pngs]] [[Convert dot file to png]] [[Flush file system buffers]] [[Get UPS info]] [[Linux Standard Base]] [[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10717,6 +10719,33 @@ $ git push origin &quot;1.0.0&quot; # specific tag
 $ git push origin --tags  # all tags
 ```
 
+</pre>
+</div>
+<div created="20200424091234316" modified="20200424091450054" tags="Linux" title="Recover Ubuntu after unsuccessful upgrade">
+<pre>#  Boot from the live CD
+# Determine partition
+```
+ # fdisk -l =&gt; /dev/sda1
+```
+# Mounts
+```
+# mount /dev/sda1 /mnt
+# mount --bind /proc /mnt/proc
+# mount --bind /sys /mnt/sys
+# mount --bind /dev /mnt/dev
+# mount --bind /run /mnt/run
+```
+# Change root
+```
+# chroot /mnt
+```
+# ping google.com. if doesn't work add
+nameserver 8.8.8.8 to /etc/resolv.conf
+# apt-get update
+# maybe dpkg --??? if is shown
+# maybe update-grub
+# maybe grub-install /dev/sda
+# reboot
 </pre>
 </div>
 <div created="20200423165627536" modified="20200423171557639" tags="Git" title="Remove last commit pushed to server">
