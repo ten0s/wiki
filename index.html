@@ -269,6 +269,8 @@ Error message and password prompt
 
 <li>Export a branch</li>
 
+<li>Extent image canvas size</li>
+
 <li>Fix blocked git:// protocol</li>
 
 <li>Fix submodule error</li>
@@ -332,6 +334,8 @@ Error message and password prompt
 <li>Restore all current dir</li>
 
 <li>rsync local dirs</li>
+
+<li>Run commands in parallel</li>
 
 <li>Run script under debugger</li>
 
@@ -9845,7 +9849,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[Resize image and draw text on it]] [[Resize image]] [[Make gif from pngs]] [[Convert dot file to png]] [[Flush file system buffers]] [[Get UPS info]] [[Linux Standard Base]] [[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
+<div list="[[Run commands in parallel]] [[Extent image canvas size]] [[Resize image and draw text on it]] [[Resize image]] [[Make gif from pngs]] [[Convert dot file to png]] [[Flush file system buffers]] [[Get UPS info]] [[Linux Standard Base]] [[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10264,6 +10268,15 @@ $ git archive BRANCH | tar -x -C /EXISTING/PATH/TO/EXPORT/
 ```
 </pre>
 </div>
+<div created="20200424083721700" modified="20200424083746741" tags="Imagemagick" title="Extent image canvas size">
+<pre>http://www.imagemagick.org/Usage/crop/#extent
+
+```
+$ convert uf-01.png -gravity center -extent 1200x400  uf-01-1.png
+```
+
+</pre>
+</div>
 <div created="20200423170859498" modified="20200423171225254" tags="Git" title="Fix blocked git:// protocol">
 <pre>```
 $ git config --global url.https://.insteadOf git://
@@ -10507,6 +10520,29 @@ $ git checkout -- .
 rsync -avh [--delete] SRC/ DST/
 ```
 
+</pre>
+</div>
+<div created="20200424083808418" modified="20200424083910477" tags="Linux Bash" title="Run commands in parallel">
+<pre>```
+xargs
+```
+
+```
+parallel
+```
+
+Bash:
+
+```
+man bash | less +/&quot;wait \[&quot;
+```
+
+```
+cmd1 &amp;
+cmd2 &amp;
+cmd3 &amp;
+wait
+```
 </pre>
 </div>
 <div created="20200423194858355" modified="20200423194925309" tags="Python" title="Run script under debugger">
