@@ -353,6 +353,8 @@ Error message and password prompt
 
 <li>Mirror a repo to Github</li>
 
+<li>Mount ISO image</li>
+
 <li>Network emulation (netem)</li>
 
 <li>Network Manager tool</li>
@@ -9929,7 +9931,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200424091924309" list="[[SSH remote X forwarding]] [[SSH remote port forwarding]] [[SSH local port forwarding]] [[Troubleshoot ssh-agent forwarding]] [[Keep SSH On]] [[SSH tricks]] [[Get SSH key fingerprint]] [[Check SSH key]] [[Force SSH password authentication]] [[Force specific SSH algorithm]] [[Run to interactive program through SSH]] [[Change GRUB boot order]] [[Enter GRUB menu]] [[Boot into single user mode using GRUB]] [[Basic GRUB console commands]] [[Recover Ubuntu after unsuccessful upgrade]] [[Change forgotten password]] [[Bash process substitution]] [[Bash redirection (stdin, stdout, stderr)]] [[Linux special files]] [[Make xargs to execute each input line as a command]] [[Open man page on first pattern match]] [[Pass args to bash script read from stdin]] [[Add line numbers to output]] [[Network emulation (netem)]] [[See man as pdf]] [[Simulate `make' without actual execution]] [[Add TLS encryption to existing clients and servers]] [[Suspend/Resume running program]] [[CPU Steal time]] [[See network traces]] [[Determine your external IP]] [[Info about IP]] [[Reverse DNS lookup]] [[DNS lookup]] [[Set DNS]] [[Network Manager tool]] [[DNS servers used]] [[Where DNS utils]] [[Docker fails to resolve names]] [[Run commands in parallel]] [[Extent image canvas size]] [[Resize image and draw text on it]] [[Resize image]] [[Make gif from pngs]] [[Convert dot file to png]] [[Flush file system buffers]] [[Get UPS info]] [[Linux Standard Base]] [[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" modified="20200424091924309" title="$:/StoryList">
+<div created="20200424091924309" list="[[Mount ISO image]] [[SSH remote X forwarding]] [[SSH remote port forwarding]] [[SSH local port forwarding]] [[Troubleshoot ssh-agent forwarding]] [[Keep SSH On]] [[SSH tricks]] [[Get SSH key fingerprint]] [[Check SSH key]] [[Force SSH password authentication]] [[Force specific SSH algorithm]] [[Run to interactive program through SSH]] [[Change GRUB boot order]] [[Enter GRUB menu]] [[Boot into single user mode using GRUB]] [[Basic GRUB console commands]] [[Recover Ubuntu after unsuccessful upgrade]] [[Change forgotten password]] [[Bash process substitution]] [[Bash redirection (stdin, stdout, stderr)]] [[Linux special files]] [[Make xargs to execute each input line as a command]] [[Open man page on first pattern match]] [[Pass args to bash script read from stdin]] [[Add line numbers to output]] [[Network emulation (netem)]] [[See man as pdf]] [[Simulate `make' without actual execution]] [[Add TLS encryption to existing clients and servers]] [[Suspend/Resume running program]] [[CPU Steal time]] [[See network traces]] [[Determine your external IP]] [[Info about IP]] [[Reverse DNS lookup]] [[DNS lookup]] [[Set DNS]] [[Network Manager tool]] [[DNS servers used]] [[Where DNS utils]] [[Docker fails to resolve names]] [[Run commands in parallel]] [[Extent image canvas size]] [[Resize image and draw text on it]] [[Resize image]] [[Make gif from pngs]] [[Convert dot file to png]] [[Flush file system buffers]] [[Get UPS info]] [[Linux Standard Base]] [[Determine folders size]] [[Set default browser]] [[Associate files]] [[Create custom URI handler]] [[Open file or URL in user's preferred application]] [[Share big files]] [[Speedtest in terminal]] [[Date tricks]] [[rsync local dirs]] [[Interact with X Window Manager]] [[Generate random string of length 50]] [[Show HTML in terminal]] [[Open Printing]] [[Internet Printing Protocol (IPP)]] [[Disable systemd-resolved]] [[ARP cache]] [[Get user confirmation]] OCR" modified="20200424091924309" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9993,7 +9995,7 @@ Error message and password prompt
 <div created="20200423165127488" modified="20200424083456265" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200423190859601" title="$:/temp/search">
+<div created="20200422190456346" modified="20200424093833195" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
@@ -10762,6 +10764,13 @@ $ echo -e '1\n2\n3' | xargs -n1 echo
 $ git clone --mirror git@OLD_HOST:OLD_REPO
 $ cd OLD_REPO
 $ git push --mirror git@github.com:ORGANISATION/NEW_REPO.git
+```
+</pre>
+</div>
+<div created="20200424093911110" modified="20200424093938629" tags="Linux" title="Mount ISO image">
+<pre>```
+$ sudo mount -t iso9660 -o loop /path/to/iso /mount/point
+$ sudo mount -t udf -o loop,ro,unhide /path/to/iso /mount/point
 ```
 </pre>
 </div>
