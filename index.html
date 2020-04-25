@@ -269,6 +269,8 @@ Error message and password prompt
 
 <li>Change user's login shell</li>
 
+<li>Change/spoof MAC address</li>
+
 <li>Check SSH key</li>
 
 <li>Clear Chrome internal DNS</li>
@@ -10163,7 +10165,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[Determine IP address]] [[Stack of a thread]] [[See what the process's threads are doing]] [[Enable core dump for current shell]] [[Change core dump file name format]] [[System uptime]] [[Max PID value]] [[Configure kernel parameters at runtime]] [[System limits]] [[System info]] [[Files process uses]] [[Dynamic libs process uses]] [[TCP client (w/o netcat)]] [[Convert binary to hexdump]] [[Convert hexdump to binary]]" modified="20200425154633789" title="$:/StoryList">
+<div created="20200425102841584" list="[[Change/spoof MAC address]] [[Determine IP address]] [[Stack of a thread]] [[See what the process's threads are doing]] [[Enable core dump for current shell]] [[Change core dump file name format]] [[System uptime]] [[Max PID value]] [[Configure kernel parameters at runtime]] [[System limits]] [[System info]] [[Files process uses]] [[Dynamic libs process uses]] [[TCP client (w/o netcat)]] [[Convert binary to hexdump]] [[Convert hexdump to binary]]" modified="20200425154633789" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10564,6 +10566,26 @@ $ cd -
 <pre>```
 $ usermod -s /bin/bash USER
 ```</pre>
+</div>
+<div created="20200425163100997" modified="20200425163151500" tags="Linux" title="Change/spoof MAC address">
+<pre>```
+# ifconfig eth0 down
+# ifconfig eth0 hw ether XX:XX:XX:XX:XX:XX
+# ifconfig eth0 up
+# ifconfig eth0
+```
+
+```
+# ip link set dev eth0 down
+# ip link set dev eth0 XX:XX:XX:XX:XX:XX
+# ip link set dev eth0 up
+# ip link link show eth0
+```
+
+https://github.com/kumina/fakemac
+
+/etc/udev/rules.d/70-persistent-net.rules
+</pre>
 </div>
 <div created="20200424092723375" modified="20200424092757087" tags="Ssh Git" title="Check SSH key">
 <pre>```
