@@ -389,6 +389,8 @@ Error message and password prompt
 
 <li>Download video from Youtube</li>
 
+<li>Draft of 'New Tiddler'</li>
+
 <li>Dump network traffic on specific port</li>
 
 <li>Dynamic libs process uses</li>
@@ -555,6 +557,8 @@ Error message and password prompt
 
 <li>Pass dir over network (tar pipe)</li>
 
+<li>Postfix via gmail.com</li>
+
 <li>Pretty print XML</li>
 
 <li>Print X event coming to window</li>
@@ -600,8 +604,6 @@ Error message and password prompt
 <li>See network traces</li>
 
 <li>See what the process's threads are doing</li>
-
-<li>Send email via gmail.com</li>
 
 <li>Send notification from terminal</li>
 
@@ -10193,7 +10195,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[Send email via gmail.com]]" modified="20200425154633789" title="$:/StoryList">
+<div created="20200425102841584" list="[[Draft of 'New Tiddler']] [[Postfix via gmail.com]]" modified="20200425154633789" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -11276,6 +11278,22 @@ $ curl -JO URL
 $ youtube-dl -f bestvideo+bestaudio FILE_OR_PLAYLIST_URL
 ```</pre>
 </div>
+<div created="20200425170554214" draft.of="New Tiddler" draft.title="Netcat SMTP client" modified="20200425170627586" tags="" title="Draft of 'New Tiddler'">
+<pre>https://eax.me/smtp-descr/
+
+```
+$ nc -v localhost 25 &lt;&lt;EOF
+EHLO localhost
+MAIL FROM: &lt;@gmail.com&gt;
+RCPT TO: &lt;wgnc.develop@gmail.com&gt;
+DATA
+From: Develop &lt;wgnc.develop@gmail.com&gt;
+Subject: Test mail 3
+This is a test mail 3
+.
+quit
+EOF</pre>
+</div>
 <div created="20200425153107784" modified="20200425153158473" tags="Linux" title="Dump network traffic on specific port">
 <pre>```
 $ sudo tcpdump -ni docker0 port 5061 -v # print whole message bodies to console
@@ -11979,6 +11997,62 @@ Receiver:
 $ nc -l PORT | tar x
 ```</pre>
 </div>
+<div created="20200425170253897" modified="20200425170700155" tags="Linux" title="Postfix via gmail.com">
+<pre>https://opensource.com/article/18/8/postfix-open-source-mail-transfer-agent
+
+```
+$ sudo apt install postfix mailutils
+```
+
+/etc/postfix/sasl/sasl_passwd
+
+```
+[smtp.gmail.com]:587   user@gmail.com:password
+```
+
+```
+$ sudo chmod 600 /etc/postfix/sasl/sasl_passwd
+```
+
+/etc/postfix/main.cf
+
+```
+relayhost = [smtp.gmail.com]:587
+smtp_use_tls = yes
+smtp_sasl_auth_enable = yes
+smtp_sasl_security_options =
+smtp_sasl_password_maps = hash:/etc/postfix/sasl/sasl_passwd
+smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
+smtpd_relay_restrictions = permit_mynetworks, reject_unauth_destination
+```
+
+```
+$ sudo cat /etc/postfix/master.cf | grep tlsmgr
+tlsmgr    unix  -       -       y       1000?   1       tlsmgr
+```
+
+```
+$ sudo postmap /etc/postfix/sasl/sasl_passwd
+```
+
+```
+$ sudo service postfix restart
+```
+
+```
+$ sendmail user@gmail.com &lt;&lt;EOF
+From: user@gmail.com
+Subject: Test mail
+This is a test mail
+.
+EOF
+
+```
+$ echo &quot;This is a test mail 2&quot; | mail -s &quot;Test mail 2&quot; user@gmail.com
+```
+
+</pre>
+</div>
 <div created="20200425150030659" modified="20200425150057047" tags="Linux" title="Pretty print XML">
 <pre>```
 $ cat data.xml | xmllint --format -
@@ -12203,62 +12277,6 @@ http://www.traceroute.org (from diff country)
 <pre>```
 $ for tid in `ls /proc/$pid/task`; do echo $tid; sudo cat /proc/$pid/task/$tid/stack; done
 ```
-</pre>
-</div>
-<div created="20200425170253897" modified="20200425170522364" tags="Linux" title="Send email via gmail.com">
-<pre>https://opensource.com/article/18/8/postfix-open-source-mail-transfer-agent
-
-```
-$ sudo apt install postfix mailutils
-```
-
-/etc/postfix/sasl/sasl_passwd
-
-```
-[smtp.gmail.com]:587   user@gmail.com:password
-```
-
-```
-$ sudo chmod 600 /etc/postfix/sasl/sasl_passwd
-```
-
-/etc/postfix/main.cf
-
-``
-relayhost = [smtp.gmail.com]:587
-smtp_use_tls = yes
-smtp_sasl_auth_enable = yes
-smtp_sasl_security_options =
-smtp_sasl_password_maps = hash:/etc/postfix/sasl/sasl_passwd
-smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
-smtpd_relay_restrictions = permit_mynetworks, reject_unauth_destination
-```
-
-```
-$ sudo cat /etc/postfix/master.cf | grep tlsmgr
-tlsmgr    unix  -       -       y       1000?   1       tlsmgr
-```
-
-```
-$ sudo postmap /etc/postfix/sasl/sasl_passwd
-```
-
-```
-$ sudo service postfix restart
-```
-
-```
-$ sendmail user@gmail.com &lt;&lt;EOF
-From: user@gmail.com
-Subject: Test mail
-This is a test mail
-.
-EOF
-
-```
-$ echo &quot;This is a test mail 2&quot; | mail -s &quot;Test mail 2&quot; user@gmail.com
-```
-
 </pre>
 </div>
 <div created="20200425151036533" modified="20200425151059622" tags="Linux" title="Send notification from terminal">
