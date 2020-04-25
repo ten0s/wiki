@@ -10199,7 +10199,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[Create a new user]]" modified="20200425172915100" title="$:/StoryList">
+<div created="20200425102841584" list="[[Delete empty lines (newlines only)]] [[SSH remote port forwarding]] [[Sync with upstream]] [[Use ssh-agent in Docker container]] [[Create custom URI handler]]" modified="20200425173011415" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -11029,7 +11029,7 @@ $ echo -e '1\n \t \n2\n3\n   \n4\n\n5' | awk 'NF &gt; 0'
 $ awk -F: '!/^$/ { print $2 }' /etc/nodes.cfg
 ```</pre>
 </div>
-<div created="20200425130813376" modified="20200425130940618" tags="Linux" title="Delete empty lines (newlines only)">
+<div created="20200425130813376" modified="20200425173026811" tags="Linux" title="Delete empty lines (newlines only)">
 <pre>```
 $ echo -e '1\n2\n3\n4\n\n5' | awk '!/^$/'
 1
@@ -11037,7 +11037,10 @@ $ echo -e '1\n2\n3\n4\n\n5' | awk '!/^$/'
 3
 4
 5
-ten0s@tuna ~ $ echo -e '1\n2\n3\n4\n\n5' | sed '/^$/d'
+```
+
+```
+$ echo -e '1\n2\n3\n4\n\n5' | sed '/^$/d'
 1
 2
 3
@@ -12603,11 +12606,11 @@ rsync -avh [--delete] SRC/ DST/
 
 </pre>
 </div>
-<div created="20200425114959653" modified="20200425115633545" tags="Git" title="Sync with upstream">
+<div created="20200425114959653" modified="20200425173053771" tags="Git" title="Sync with upstream">
 <pre>* Fork https://github.com/ORG/REPO/ 
 
 ```
-$ git clone git@github.com:ten0s/REPO.git
+$ git clone git@github.com:USER/REPO.git
 $ cd REPO
 ```
 
