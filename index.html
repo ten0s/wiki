@@ -255,6 +255,8 @@ Error message and password prompt
 
 <li>C++ preprocessor definitions</li>
 
+<li>Change core dump file name format</li>
+
 <li>Change forgotten password</li>
 
 <li>Change GRUB boot order</li>
@@ -630,6 +632,8 @@ Error message and password prompt
 <li>System info</li>
 
 <li>System limits</li>
+
+<li>System uptime</li>
 
 <li>TCP client (w/o netcat)</li>
 
@@ -10151,7 +10155,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[Max PID value]] [[Configure kernel parameters at runtime]] [[System limits]] [[System info]] [[Files process uses]] [[Dynamic libs process uses]] [[TCP client (w/o netcat)]] [[Convert binary to hexdump]] [[Convert hexdump to binary]]" modified="20200425154633789" title="$:/StoryList">
+<div created="20200425102841584" list="[[Change core dump file name format]] [[System uptime]] [[Max PID value]] [[Configure kernel parameters at runtime]] [[System limits]] [[System info]] [[Files process uses]] [[Dynamic libs process uses]] [[TCP client (w/o netcat)]] [[Convert binary to hexdump]] [[Convert hexdump to binary]]" modified="20200425154633789" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10466,6 +10470,17 @@ $ git blame -L FROM,TO FILE
 <pre>```
 $ cpp -dM /dev/null
 ```
+</pre>
+</div>
+<div created="20200425162644289" modified="20200425162729312" tags="Linux" title="Change core dump file name format">
+<pre>core-PID-SIG-TIME
+
+```
+# echo 'core-%p-%s-%t' &gt; /proc/sys/kernel/core_pattern
+# sysctl -w kernel.core_pattern=core
+```
+
+for persistence store to /etc/sysctl.conf
 </pre>
 </div>
 <div created="20200424091111624" modified="20200424091156647" tags="Linux" title="Change forgotten password">
@@ -12399,6 +12414,13 @@ $ free
 ```
 
 /etc/security/limits.conf</pre>
+</div>
+<div created="20200425162601223" modified="20200425162626630" tags="Linux" title="System uptime">
+<pre>```
+$ uptime
+$ cat /proc/uptime # total uptime(secs) idle time(secs)
+```
+</pre>
 </div>
 <div created="20200425161848192" modified="20200425161940628" tags="Bash Linux" title="TCP client (w/o netcat)">
 <pre>Server:
