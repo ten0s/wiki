@@ -10197,7 +10197,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[Implement library function hooking]] [[Debug shared library dependencies]] [[How to SOCKsify?]] [[Netcat SMTP client]] [[Postfix via gmail.com]]" modified="20200425171749838" title="$:/StoryList">
+<div created="20200425102841584" list="[[Fix: cannot load shared object file]] [[Implement library function hooking]] [[Debug shared library dependencies]] [[How to SOCKsify?]] [[Netcat SMTP client]] [[Postfix via gmail.com]]" modified="20200425172054738" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -11455,8 +11455,10 @@ $ reset
 ```
 </pre>
 </div>
-<div created="20200425154708085" modified="20200425154749281" tags="Linux" title="Fix: cannot load shared object file">
-<pre># $ sudo ldconfig
+<div created="20200425154708085" modified="20200425172101733" tags="Linux" title="Fix: cannot load shared object file">
+<pre>https://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html
+
+# $ sudo ldconfig
 # check LD_LIBRARY_PATH
 # check and update /etc/ld.so.conf and then run `sudo ldconfig'
 </pre>
