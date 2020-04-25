@@ -379,6 +379,8 @@ Error message and password prompt
 
 <li>Download video from Youtube</li>
 
+<li>Draft of 'Netcat oneshot HTTP server'</li>
+
 <li>Dump network traffic on specific port</li>
 
 <li>Dynamic libs process uses</li>
@@ -519,7 +521,7 @@ Error message and password prompt
 
 <li>Netcat port forwarding</li>
 
-<li>Netcat server and client</li>
+<li>Netcat TCP server and client</li>
 
 <li>Network emulation (netem)</li>
 
@@ -667,7 +669,7 @@ Error message and password prompt
 
 <li>Tshark use</li>
 
-<li>Turn process a server (netcat)</li>
+<li>Turn console process to server (netcat)</li>
 
 <li>Untrack tracked files</li>
 
@@ -10175,7 +10177,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[Turn process a server (netcat)]] [[Netcat oneshot HTTP server]] [[Netcat server and client]] [[Netcat port forwarding]] [[List network interfaces]] [[Change/spoof MAC address]] [[Determine IP address]] [[Stack of a thread]] [[See what the process's threads are doing]] [[Enable core dump for current shell]] [[Change core dump file name format]] [[System uptime]] [[Max PID value]] [[Configure kernel parameters at runtime]] [[System limits]] [[System info]] [[Files process uses]] [[Dynamic libs process uses]] [[TCP client (w/o netcat)]] [[Convert binary to hexdump]] [[Convert hexdump to binary]]" modified="20200425154633789" title="$:/StoryList">
+<div created="20200425102841584" list="[[Turn console process to server (netcat)]] [[Draft of 'Netcat oneshot HTTP server']] [[Netcat TCP server and client]] [[Netcat port forwarding]] [[List network interfaces]] [[Change/spoof MAC address]] [[Determine IP address]] [[Stack of a thread]] [[See what the process's threads are doing]] [[Enable core dump for current shell]] [[Change core dump file name format]] [[System uptime]] [[Max PID value]] [[Configure kernel parameters at runtime]] [[System limits]] [[System info]] [[Files process uses]] [[Dynamic libs process uses]] [[TCP client (w/o netcat)]] [[Convert binary to hexdump]] [[Convert hexdump to binary]]" modified="20200425154633789" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -11197,6 +11199,20 @@ $ curl -JO URL
 $ youtube-dl -f bestvideo+bestaudio FILE_OR_PLAYLIST_URL
 ```</pre>
 </div>
+<div created="20200425163839931" draft.of="Netcat oneshot HTTP server" draft.title="Netcat dummy HTTP server" modified="20200425164742368" tags="Linux" title="Draft of 'Netcat oneshot HTTP server'">
+<pre>```
+$ echo -en &quot;GET /api/config HTTP/1.1\r\nHost: 127.0.0.1:8080\r\n\r\n&quot; | nc -v -q-1 127.0.0.1 8080
+```
+
+```
+RESPONSE=&quot;HTTP/1.1 200 OK\nContent-Type: text/plain\nContent-Length: 0\n\n&quot;
+while true; do
+  date
+  echo -e $RESPONSE | nc -l 8080
+done
+```
+</pre>
+</div>
 <div created="20200425153107784" modified="20200425153158473" tags="Linux" title="Dump network traffic on specific port">
 <pre>```
 $ sudo tcpdump -ni docker0 port 5061 -v # print whole message bodies to console
@@ -11793,7 +11809,7 @@ $ sudo bash -c 'while true; do nc -l 80 &lt; /tmp/backpipe | nc localhost 8080 |
 ```
 </pre>
 </div>
-<div created="20200425163711467" modified="20200425163811231" tags="Linux" title="Netcat server and client">
+<div created="20200425163711467" modified="20200425164959989" tags="Linux" title="Netcat TCP server and client">
 <pre>Server:
 
 ```
@@ -12629,7 +12645,7 @@ $ sudo tshark -i eth0 port 2905 -a duration:100 -w 10secs.pcap
 
 </pre>
 </div>
-<div created="20200425163925502" modified="20200425164551905" tags="Linux" title="Turn process a server (netcat)">
+<div created="20200425163925502" modified="20200425164639116" tags="Linux Bash" title="Turn console process to server (netcat)">
 <pre>Server single session: 
 
 ```
