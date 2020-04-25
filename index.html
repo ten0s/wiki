@@ -457,6 +457,8 @@ Error message and password prompt
 
 <li>Groups user belogs to</li>
 
+<li>How to SOCKsify?</li>
+
 <li>Implement library function hooking</li>
 
 <li>Include specific commit</li>
@@ -10195,7 +10197,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[Netcat SMTP client]] [[Postfix via gmail.com]]" modified="20200425154633789" title="$:/StoryList">
+<div created="20200425102841584" list="[[How to SOCKsify?]] [[Netcat SMTP client]] [[Postfix via gmail.com]]" modified="20200425154633789" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -11565,6 +11567,16 @@ $ groups
 ```
 </pre>
 </div>
+<div created="20200425170920294" modified="20200425171033973" tags="Linux" title="How to SOCKsify?">
+<pre>* https://plenz.com/tunnel-everything.php
+* http://etherealmind.com/fast-introduction-to-socks-proxy/
+* sudo apt-get install dante-client
+
+```
+$ LD_PRELOAD=/PATH/TO/lib/libdsocks.so
+$ SOCKS_SERVER=localhost:5050 /PROG/TO/RUN
+```</pre>
+</div>
 <div created="20200425154049157" modified="20200425154133115" tags="Linux" title="Implement library function hooking">
 <pre>hooking interposition
 
@@ -12000,7 +12012,7 @@ Receiver:
 $ nc -l PORT | tar x
 ```</pre>
 </div>
-<div created="20200425170253897" modified="20200425170718762" tags="Linux" title="Postfix via gmail.com">
+<div created="20200425170253897" modified="20200425170817472" tags="Linux" title="Postfix via gmail.com">
 <pre>https://opensource.com/article/18/8/postfix-open-source-mail-transfer-agent
 
 ```
@@ -12055,7 +12067,7 @@ EOF
 $ echo &quot;This is a test mail 2&quot; | mail -s &quot;Test mail 2&quot; user@gmail.com
 ```
 
-</pre>
+[[Netcat SMTP client]]</pre>
 </div>
 <div created="20200425150030659" modified="20200425150057047" tags="Linux" title="Pretty print XML">
 <pre>```
