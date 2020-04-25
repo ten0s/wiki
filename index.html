@@ -275,6 +275,8 @@ Error message and password prompt
 
 <li>Clone Github repo via https</li>
 
+<li>Colors in Bash</li>
+
 <li>Commit changes up to commit</li>
 
 <li>Configure NTP</li>
@@ -10087,7 +10089,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[Fix signature verification error]] [[Delete huge number of files]] [[Send notification from terminal]] [[Download file with name from 'Content-Disposition']] [[Use curl to post data from stdin]] [[Verify HTTPS site]] [[Connect to gmail using SSL]] [[Verify SSL connection]] [[Show/kill/signal process that use file]] [[Pretty print XML]] [[Create a new user]] [[Generate password]] [[Fix 'locate' error]] [[Make 'locate' work]] [[Add user to group]] [[Groups user belogs to]]" modified="20200425145226913" title="$:/StoryList">
+<div created="20200425102841584" list="[[Colors in Bash]] [[Fix signature verification error]] [[Delete huge number of files]] [[Send notification from terminal]] [[Download file with name from 'Content-Disposition']] [[Use curl to post data from stdin]] [[Verify HTTPS site]] [[Connect to gmail using SSL]] [[Verify SSL connection]] [[Show/kill/signal process that use file]] [[Pretty print XML]] [[Create a new user]] [[Generate password]] [[Fix 'locate' error]] [[Make 'locate' work]] [[Add user to group]] [[Groups user belogs to]]" modified="20200425145226913" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10510,6 +10512,21 @@ $ git clone https://github.com/organization/repo.git
 ```
 
 </pre>
+</div>
+<div created="20200425151427450" modified="20200425151609662" tags="Bash" title="Colors in Bash">
+<pre>```
+$ echo -e &quot;\e[01;32;42mTEXT\e[0m&quot;
+```
+
+```
+&quot;\e[ATTR;FG;BGmTEXT\e[0m&quot;
+
+ATTR ::= 00=none 01=bold 04=underscore 05=blink 07=reverse 08=concealed
+FG ::= 30=black 31=red 32=green 33=yellow 34=blue 35=magenta 36=cyan 37=white
+BG ::= 40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
+```
+
+http://misc.flogisoft.com/bash/tip_colors_and_formatting</pre>
 </div>
 <div created="20200423172338483" modified="20200423190551415" tags="Git" title="Commit changes up to commit">
 <pre>```
