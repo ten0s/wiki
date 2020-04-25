@@ -357,6 +357,8 @@ Error message and password prompt
 
 <li>Docker fails to resolve names</li>
 
+<li>Download audio from Youtube</li>
+
 <li>Download file with name from 'Content-Disposition'</li>
 
 <li>Download video from Youtube</li>
@@ -378,6 +380,8 @@ Error message and password prompt
 <li>Export a branch</li>
 
 <li>Extent image canvas size</li>
+
+<li>Extract audio from video files</li>
 
 <li>Fix 'locate' error</li>
 
@@ -10103,7 +10107,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[Download video from Youtube]] [[Trace malloc calls]] [[Trace dynamic libs calls]] [[Trace system calls and signals]] [[Sync local dirs]] [[Create and use a shared library]] [[Get X selection]] [[Print X event coming to window]] [[Colors in Bash]] [[Fix signature verification error]] [[Delete huge number of files]] [[Send notification from terminal]] [[Download file with name from 'Content-Disposition']] [[Use curl to post data from stdin]] [[Verify HTTPS site]] [[Connect to gmail using SSL]] [[Verify SSL connection]] [[Show/kill/signal process that use file]] [[Pretty print XML]] [[Create a new user]] [[Generate password]] [[Fix 'locate' error]] [[Make 'locate' work]] [[Add user to group]] [[Groups user belogs to]]" modified="20200425152106275" title="$:/StoryList">
+<div created="20200425102841584" list="[[Extract audio from video files]] [[Download audio from Youtube]] [[Download video from Youtube]] [[Trace malloc calls]] [[Trace dynamic libs calls]] [[Trace system calls and signals]] [[Sync local dirs]] [[Create and use a shared library]] [[Get X selection]] [[Print X event coming to window]] [[Colors in Bash]] [[Fix signature verification error]] [[Delete huge number of files]] [[Send notification from terminal]] [[Download file with name from 'Content-Disposition']] [[Use curl to post data from stdin]] [[Verify HTTPS site]] [[Connect to gmail using SSL]] [[Verify SSL connection]] [[Show/kill/signal process that use file]] [[Pretty print XML]] [[Create a new user]] [[Generate password]] [[Fix 'locate' error]] [[Make 'locate' work]] [[Add user to group]] [[Groups user belogs to]]" modified="20200425152106275" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -11026,6 +11030,12 @@ $ sudo service docker restart
 
 </pre>
 </div>
+<div created="20200425152833348" modified="20200425152903561" tags="" title="Download audio from Youtube">
+<pre>```
+$ youtube-dl --extract-audio --audio-format mp3 URL
+```
+</pre>
+</div>
 <div created="20200425150859413" modified="20200425150926048" tags="" title="Download file with name from 'Content-Disposition'">
 <pre>```
 $ curl -JO URL
@@ -11117,6 +11127,15 @@ $ convert uf-01.png -gravity center -extent 1200x400  uf-01-1.png
 ```
 
 </pre>
+</div>
+<div created="20200425152925829" modified="20200425152943462" tags="Bash" title="Extract audio from video files">
+<pre>```
+for f in *.mp4; do
+    if [[ ! -f ${f%.mp4}.mp3 ]]; then
+        avconv -i $f ${f%.mp4}.mp3;
+    fi
+done
+```</pre>
 </div>
 <div created="20200425145503133" modified="20200425145552153" tags="Linux Centos" title="Fix 'locate' error">
 <pre>```
