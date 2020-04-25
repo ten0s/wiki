@@ -667,6 +667,8 @@ Error message and password prompt
 
 <li>Tshark use</li>
 
+<li>Turn process a server (netcat)</li>
+
 <li>Untrack tracked files</li>
 
 <li>Use curl to post data from stdin</li>
@@ -10173,7 +10175,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[Netcat oneshot HTTP server]] [[Netcat server and client]] [[Netcat port forwarding]] [[List network interfaces]] [[Change/spoof MAC address]] [[Determine IP address]] [[Stack of a thread]] [[See what the process's threads are doing]] [[Enable core dump for current shell]] [[Change core dump file name format]] [[System uptime]] [[Max PID value]] [[Configure kernel parameters at runtime]] [[System limits]] [[System info]] [[Files process uses]] [[Dynamic libs process uses]] [[TCP client (w/o netcat)]] [[Convert binary to hexdump]] [[Convert hexdump to binary]]" modified="20200425154633789" title="$:/StoryList">
+<div created="20200425102841584" list="[[Turn process a server (netcat)]] [[Netcat oneshot HTTP server]] [[Netcat server and client]] [[Netcat port forwarding]] [[List network interfaces]] [[Change/spoof MAC address]] [[Determine IP address]] [[Stack of a thread]] [[See what the process's threads are doing]] [[Enable core dump for current shell]] [[Change core dump file name format]] [[System uptime]] [[Max PID value]] [[Configure kernel parameters at runtime]] [[System limits]] [[System info]] [[Files process uses]] [[Dynamic libs process uses]] [[TCP client (w/o netcat)]] [[Convert binary to hexdump]] [[Convert hexdump to binary]]" modified="20200425154633789" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -12625,6 +12627,39 @@ $ sudo tshark -D # list interfaces
 $ sudo tshark -i eth0 port 2905 -a duration:100 -w 10secs.pcap
 ```
 
+</pre>
+</div>
+<div created="20200425163925502" modified="20200425164551905" tags="Linux" title="Turn process a server (netcat)">
+<pre>Server single session: 
+
+```
+$ mkfifo /tmp/backpipe
+$ nc -l 1234 &lt; /tmp/backpipe | `which erl` &gt; /tmp/backpipe
+```
+
+Client:
+
+```
+$ nc localhost 1234
+Eshell V8.3  (abort with ^G)
+1&gt; 
+```
+
+Server multiple sessions: 
+
+```
+$ mkfifo /tmp/backpipe
+while true; do
+    nc -z localhost 1234
+    if [[ $? -ne 0 ]]; then
+        sleep 5
+	echo Waiting for session to start...
+    else
+        nc localhost 1234 &lt; /tmp/backpipe | `which erl` &gt; /tmp/backpipe
+	echo Session stopped
+    fi
+done
+```
 </pre>
 </div>
 <div created="20200423172053785" modified="20200423172119084" tags="Git" title="Untrack tracked files">
