@@ -287,6 +287,8 @@ Error message and password prompt
 
 <li>Convert dot file to png</li>
 
+<li>Convert hexdump to binary</li>
+
 <li>Copy only first bytes from file</li>
 
 <li>CPU Steal time</li>
@@ -10133,7 +10135,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[Pass dir over network (tar pipe)?]] [[Network utils]] [[Fix: cannot load shared object file]] [[Debug shared library dependencies]] [[Implement library function hooking]] [[Mirror a repo to Github]] [[Shared library path]] [[Linker library path]] [[Get GLIBC version binary is linked against]] [[List symbols and other info of an object file]] [[Record and play sound in terminal]] [[Tshark use]] [[Dump network traffic on specific port]] [[Cut tailing 20s of mp3 files]] [[Extract audio from video files]] [[Download audio from Youtube]] [[Download video from Youtube]] [[Trace malloc calls]] [[Trace dynamic libs calls]] [[Trace system calls and signals]] [[Sync local dirs]] [[Create and use a shared library]] [[Get X selection]] [[Print X event coming to window]] [[Colors in Bash]] [[Fix signature verification error]] [[Delete huge number of files]] [[Send notification from terminal]] [[Download file with name from 'Content-Disposition']] [[Use curl to post data from stdin]] [[Verify HTTPS site]] [[Connect to gmail using SSL]] [[Verify SSL connection]] [[Show/kill/signal process that use file or socket]] [[Pretty print XML]] [[Create a new user]] [[Generate password]] [[Fix 'locate' error]] [[Make 'locate' work]] [[Add user to group]] [[Groups user belogs to]]" modified="20200425154633789" title="$:/StoryList">
+<div created="20200425102841584" list="[[Convert hexdump to binary]] [[Pass dir over network (tar pipe)?]] [[Network utils]] [[Fix: cannot load shared object file]] [[Debug shared library dependencies]] [[Implement library function hooking]] [[Mirror a repo to Github]] [[Shared library path]] [[Linker library path]] [[Get GLIBC version binary is linked against]] [[List symbols and other info of an object file]] [[Record and play sound in terminal]] [[Tshark use]] [[Dump network traffic on specific port]] [[Cut tailing 20s of mp3 files]] [[Extract audio from video files]] [[Download audio from Youtube]] [[Download video from Youtube]] [[Trace malloc calls]] [[Trace dynamic libs calls]] [[Trace system calls and signals]] [[Sync local dirs]] [[Create and use a shared library]] [[Get X selection]] [[Print X event coming to window]] [[Colors in Bash]] [[Fix signature verification error]] [[Delete huge number of files]] [[Send notification from terminal]] [[Download file with name from 'Content-Disposition']] [[Use curl to post data from stdin]] [[Verify HTTPS site]] [[Connect to gmail using SSL]] [[Verify SSL connection]] [[Show/kill/signal process that use file or socket]] [[Pretty print XML]] [[Create a new user]] [[Generate password]] [[Fix 'locate' error]] [[Make 'locate' work]] [[Add user to group]] [[Groups user belogs to]]" modified="20200425154633789" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10631,6 +10633,13 @@ $ dot -Tpng -O file.dot -O
 ```
 
 see also -Gsize=3,3\! -Gdpi=100 -Gratio=fill -Nshape=box
+</pre>
+</div>
+<div created="20200425161407976" modified="20200425161500753" tags="Linux" title="Convert hexdump to binary">
+<pre>```
+$ echo 303132333435 | xxd -r -p 
+01234
+```
 </pre>
 </div>
 <div created="20200425130546232" modified="20200425130605887" tags="Linux" title="Copy only first bytes from file">
