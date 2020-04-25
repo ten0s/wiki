@@ -521,6 +521,8 @@ Error message and password prompt
 
 <li>See network traces</li>
 
+<li>Send notification from terminal</li>
+
 <li>Set default browser</li>
 
 <li>Set default USB connection type</li>
@@ -10081,7 +10083,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[Download file with name from 'Content-Disposition']] [[Use curl to post data from stdin]] [[Verify HTTPS site]] [[Connect to gmail using SSL]] [[Verify SSL connection]] [[Show/kill/signal process that use file]] [[Pretty print XML]] [[Create a new user]] [[Generate password]] [[Fix 'locate' error]] [[Make 'locate' work]] [[Add user to group]] [[Groups user belogs to]]" modified="20200425145226913" title="$:/StoryList">
+<div created="20200425102841584" list="[[Send notification from terminal]] [[Download file with name from 'Content-Disposition']] [[Use curl to post data from stdin]] [[Verify HTTPS site]] [[Connect to gmail using SSL]] [[Verify SSL connection]] [[Show/kill/signal process that use file]] [[Pretty print XML]] [[Create a new user]] [[Generate password]] [[Fix 'locate' error]] [[Make 'locate' work]] [[Add user to group]] [[Groups user belogs to]]" modified="20200425145226913" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10145,7 +10147,7 @@ Error message and password prompt
 <div created="20200423165127488" modified="20200425150426802" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200425150329957" title="$:/temp/search">
+<div created="20200422190456346" modified="20200425151035525" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
@@ -11720,6 +11722,12 @@ $ mtr &lt;ipaddr | webaddr&gt;
 ```
 
 http://www.traceroute.org (from diff country)
+</pre>
+</div>
+<div created="20200425151036533" modified="20200425151059622" tags="Linux" title="Send notification from terminal">
+<pre>```
+$ notify-send -i /etc/alternatives/start-here-32.png &quot;Hello&quot; &quot;This is notification&quot;
+```
 </pre>
 </div>
 <div created="20200424082813846" modified="20200424082837360" tags="Linux" title="Set default browser">
