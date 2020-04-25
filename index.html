@@ -381,6 +381,8 @@ Error message and password prompt
 
 <li>Fstab example</li>
 
+<li>Generate password</li>
+
 <li>Generate random string of length 50</li>
 
 <li>Get SSH key fingerprint</li>
@@ -431,6 +433,8 @@ Error message and password prompt
 
 <li>List open ports and their programs</li>
 
+<li>Make 'locate' work</li>
+
 <li>Make a patch</li>
 
 <li>Make alias work under sudo</li>
@@ -438,8 +442,6 @@ Error message and password prompt
 <li>Make empty commit</li>
 
 <li>Make gif from pngs</li>
-
-<li>Make locate work</li>
 
 <li>Make Mobile Web App fullscreen</li>
 
@@ -10063,7 +10065,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[Fix 'locate' error]] [[Make locate work]] [[Add user to group]] [[Groups user belogs to]]" modified="20200425145226913" title="$:/StoryList">
+<div created="20200425102841584" list="[[Generate password]] [[Fix 'locate' error]] [[Make 'locate' work]] [[Add user to group]] [[Groups user belogs to]]" modified="20200425145226913" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -11084,6 +11086,16 @@ $ ssh -F /dev/null -o PubkeyAuthentication=no pi@printerpi
 # to apply changes: sudo mount -a
 ```</pre>
 </div>
+<div created="20200425145656395" modified="20200425145823581" tags="Linux" title="Generate password">
+<pre>```
+$ pwgen -1
+$ pwgen | cut -c1-8
+```
+
+```
+$ openssl passwd -1 PASSWD
+```</pre>
+</div>
 <div created="20200424081758913" modified="20200424081829913" tags="Linux Bash" title="Generate random string of length 50">
 <pre>```
 base64 /dev/urandom | head -1 | cut -c1-50
@@ -11289,6 +11301,12 @@ $ netstat -tuapn
 $ lsof -i
 ```</pre>
 </div>
+<div created="20200425145405345" modified="20200425145601900" tags="Linux Centos" title="Make 'locate' work">
+<pre>```
+$ sudo yum install mlocate
+$ sudo updatedb
+```</pre>
+</div>
 <div created="20200423170542846" modified="20200423190630641" tags="Git" title="Make a patch">
 <pre>```
 $ git diff &gt; my.patch
@@ -11325,12 +11343,6 @@ $ convert -delay 120 -loop 0 -gravity center -background white -extent 300x450 *
 ```
 
 </pre>
-</div>
-<div created="20200425145405345" modified="20200425145431523" tags="Linux Centos" title="Make locate work">
-<pre>```
-$ sudo yum install mlocate
-$ sudo updatedb
-```</pre>
 </div>
 <div created="20200423193556357" modified="20200423193619127" tags="Android" title="Make Mobile Web App fullscreen">
 <pre>https://developers.google.com/web/fundamentals/native-hardware/fullscreen/
