@@ -641,6 +641,8 @@ Error message and password prompt
 
 <li>Start HTTP server</li>
 
+<li>Stress test CPU, IO, memory</li>
+
 <li>Suspend/Resume running program</li>
 
 <li>Sync local dirs</li>
@@ -654,6 +656,8 @@ Error message and password prompt
 <li>System uptime</li>
 
 <li>TCP client (w/o netcat)</li>
+
+<li>Test network throughput (iperf)</li>
 
 <li>Test network throughput (netcat)</li>
 
@@ -10177,7 +10181,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[Test network throughput (netcat)]] [[Turn console process to server (netcat)]] [[Netcat HTTP server and client]] [[Netcat TCP server and client]] [[Netcat port forwarding]] [[List network interfaces]] [[Change/spoof MAC address]] [[Determine IP address]] [[Stack of a thread]] [[See what the process's threads are doing]] [[Enable core dump for current shell]] [[Change core dump file name format]] [[System uptime]] [[Max PID value]] [[Configure kernel parameters at runtime]] [[System limits]] [[System info]] [[Files process uses]] [[Dynamic libs process uses]] [[TCP client (w/o netcat)]] [[Convert binary to hexdump]] [[Convert hexdump to binary]]" modified="20200425154633789" title="$:/StoryList">
+<div created="20200425102841584" list="[[Stress test CPU, IO, memory]] [[Test network throughput (iperf)]] [[Test network throughput (netcat)]] [[Turn console process to server (netcat)]] [[Netcat HTTP server and client]] [[Netcat TCP server and client]] [[Netcat port forwarding]] [[List network interfaces]] [[Change/spoof MAC address]] [[Determine IP address]] [[Stack of a thread]] [[See what the process's threads are doing]] [[Enable core dump for current shell]] [[Change core dump file name format]] [[System uptime]] [[Max PID value]] [[Configure kernel parameters at runtime]] [[System limits]] [[System info]] [[Files process uses]] [[Dynamic libs process uses]] [[TCP client (w/o netcat)]] [[Convert binary to hexdump]] [[Convert hexdump to binary]]" modified="20200425154633789" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -12391,6 +12395,11 @@ $ python -m SimpleHTTPServer &amp;
 ```
 </pre>
 </div>
+<div created="20200425165343687" modified="20200425165408772" tags="Linux" title="Stress test CPU, IO, memory">
+<pre>```
+$ stress --cpu 4
+```</pre>
+</div>
 <div created="20200424085157832" modified="20200424085228592" tags="Linux" title="Suspend/Resume running program">
 <pre>```
 kill -STOP PID
@@ -12559,6 +12568,22 @@ Client:
 $ exec 3&lt;&gt;/dev/tcp/localhost/1234 || (echo &quot;Can't connect&quot; ; exit 1)
 $ echo &quot;Hello&quot; &gt;&amp;3
 ```</pre>
+</div>
+<div created="20200425165251222" modified="20200425165326804" tags="Linux" title="Test network throughput (iperf)">
+<pre>http://openmaniak.com/iperf.php
+
+Server:
+
+```
+$ iperf -s
+```
+
+Client:
+
+```
+$ iperf -c localhost
+```
+</pre>
 </div>
 <div created="20200425165156510" modified="20200425165248962" tags="Linux" title="Test network throughput (netcat)">
 <pre>Server:
