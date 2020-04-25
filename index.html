@@ -509,6 +509,8 @@ Error message and password prompt
 
 <li>Query system configuration vars</li>
 
+<li>Record and play sound in terminal</li>
+
 <li>Recover Ubuntu after unsuccessful upgrade</li>
 
 <li>Remove last commit pushed to server</li>
@@ -604,6 +606,8 @@ Error message and password prompt
 <li>Trace system calls and signals</li>
 
 <li>Troubleshoot ssh-agent forwarding</li>
+
+<li>Tshark use</li>
 
 <li>Untrack tracked files</li>
 
@@ -10111,7 +10115,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[Dump network traffic on specific port]] $:/Import [[Cut tailing 20s of mp3 files]] [[Extract audio from video files]] [[Download audio from Youtube]] [[Download video from Youtube]] [[Trace malloc calls]] [[Trace dynamic libs calls]] [[Trace system calls and signals]] [[Sync local dirs]] [[Create and use a shared library]] [[Get X selection]] [[Print X event coming to window]] [[Colors in Bash]] [[Fix signature verification error]] [[Delete huge number of files]] [[Send notification from terminal]] [[Download file with name from 'Content-Disposition']] [[Use curl to post data from stdin]] [[Verify HTTPS site]] [[Connect to gmail using SSL]] [[Verify SSL connection]] [[Show/kill/signal process that use file]] [[Pretty print XML]] [[Create a new user]] [[Generate password]] [[Fix 'locate' error]] [[Make 'locate' work]] [[Add user to group]] [[Groups user belogs to]]" modified="20200425152106275" title="$:/StoryList">
+<div created="20200425102841584" list="[[Record and play sound in terminal]] [[Tshark use]] [[Dump network traffic on specific port]] [[Cut tailing 20s of mp3 files]] [[Extract audio from video files]] [[Download audio from Youtube]] [[Download video from Youtube]] [[Trace malloc calls]] [[Trace dynamic libs calls]] [[Trace system calls and signals]] [[Sync local dirs]] [[Create and use a shared library]] [[Get X selection]] [[Print X event coming to window]] [[Colors in Bash]] [[Fix signature verification error]] [[Delete huge number of files]] [[Send notification from terminal]] [[Download file with name from 'Content-Disposition']] [[Use curl to post data from stdin]] [[Verify HTTPS site]] [[Connect to gmail using SSL]] [[Verify SSL connection]] [[Show/kill/signal process that use file]] [[Pretty print XML]] [[Create a new user]] [[Generate password]] [[Fix 'locate' error]] [[Make 'locate' work]] [[Add user to group]] [[Groups user belogs to]]" modified="20200425152106275" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -11657,6 +11661,12 @@ $ getconf -a
 ```
 </pre>
 </div>
+<div created="20200425153403557" modified="20200425153427619" tags="Linux" title="Record and play sound in terminal">
+<pre>```
+$ arecord | aplay
+```
+</pre>
+</div>
 <div created="20200424091234316" modified="20200424091644239" tags="Linux" title="Recover Ubuntu after unsuccessful upgrade">
 <pre>#  Boot from the live CD
 # Determine partition
@@ -12202,6 +12212,14 @@ The agent has no identities.
 ```
 $ ssh-add -k id_rsa
 ```
+</pre>
+</div>
+<div created="20200425153209827" modified="20200425153249484" tags="Linux" title="Tshark use">
+<pre>```
+$ sudo tshark -D # list interfaces
+$ sudo tshark -i eth0 port 2905 -a duration:100 -w 10secs.pcap
+```
+
 </pre>
 </div>
 <div created="20200423172053785" modified="20200423172119084" tags="Git" title="Untrack tracked files">
