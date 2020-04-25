@@ -279,6 +279,8 @@ Error message and password prompt
 
 <li>Commit changes up to commit</li>
 
+<li>Configure kernel parameters at runtime</li>
+
 <li>Configure NTP</li>
 
 <li>Connect to gmail using SSL</li>
@@ -624,6 +626,8 @@ Error message and password prompt
 <li>Sync with upstream</li>
 
 <li>System info</li>
+
+<li>System limits</li>
 
 <li>TCP client (w/o netcat)</li>
 
@@ -10145,7 +10149,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[System info]] [[Files process uses]] [[Dynamic libs process uses]] [[TCP client (w/o netcat)]] [[Convert binary to hexdump]] [[Convert hexdump to binary]]" modified="20200425154633789" title="$:/StoryList">
+<div created="20200425102841584" list="[[Configure kernel parameters at runtime]] [[System limits]] [[System info]] [[Files process uses]] [[Dynamic libs process uses]] [[TCP client (w/o netcat)]] [[Convert binary to hexdump]] [[Convert hexdump to binary]]" modified="20200425154633789" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10588,6 +10592,11 @@ http://misc.flogisoft.com/bash/tip_colors_and_formatting</pre>
 <pre>```
 $ git merge HASH
 ```
+</pre>
+</div>
+<div created="20200425162419987" modified="20200425162447153" tags="Linux" title="Configure kernel parameters at runtime">
+<pre>* sysctl 
+* /etc/sysctl.conf
 </pre>
 </div>
 <div created="20200425123323757" modified="20200425123412435" tags="Linux Centos" title="Configure NTP">
@@ -12372,6 +12381,15 @@ $ sudo dmidecode
 $ sudo biosdecode
 ```
 </pre>
+</div>
+<div created="20200425162341927" modified="20200425162406247" tags="Linux" title="System limits">
+<pre>```
+$ ulimit -a
+$ sysctl -a
+$ free
+```
+
+/etc/security/limits.conf</pre>
 </div>
 <div created="20200425161848192" modified="20200425161940628" tags="Bash Linux" title="TCP client (w/o netcat)">
 <pre>Server:
