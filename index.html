@@ -359,6 +359,8 @@ Error message and password prompt
 
 <li>Download file with name from 'Content-Disposition'</li>
 
+<li>Draft of 'New Tiddler'</li>
+
 <li>Enable debugger by request</li>
 
 <li>Enable Developer Options</li>
@@ -10097,7 +10099,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[Trace system calls and signals]] [[Sync local dirs]] [[Create and use a shared library]] [[Get X selection]] [[Print X event coming to window]] [[Colors in Bash]] [[Fix signature verification error]] [[Delete huge number of files]] [[Send notification from terminal]] [[Download file with name from 'Content-Disposition']] [[Use curl to post data from stdin]] [[Verify HTTPS site]] [[Connect to gmail using SSL]] [[Verify SSL connection]] [[Show/kill/signal process that use file]] [[Pretty print XML]] [[Create a new user]] [[Generate password]] [[Fix 'locate' error]] [[Make 'locate' work]] [[Add user to group]] [[Groups user belogs to]]" modified="20200425152106275" title="$:/StoryList">
+<div created="20200425102841584" list="[[Draft of 'New Tiddler']] [[Trace system calls and signals]] [[Sync local dirs]] [[Create and use a shared library]] [[Get X selection]] [[Print X event coming to window]] [[Colors in Bash]] [[Fix signature verification error]] [[Delete huge number of files]] [[Send notification from terminal]] [[Download file with name from 'Content-Disposition']] [[Use curl to post data from stdin]] [[Verify HTTPS site]] [[Connect to gmail using SSL]] [[Verify SSL connection]] [[Show/kill/signal process that use file]] [[Pretty print XML]] [[Create a new user]] [[Generate password]] [[Fix 'locate' error]] [[Make 'locate' work]] [[Add user to group]] [[Groups user belogs to]]" modified="20200425152106275" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -11024,6 +11026,13 @@ $ sudo service docker restart
 <pre>```
 $ curl -JO URL
 ```</pre>
+</div>
+<div created="20200425152254642" draft.of="New Tiddler" draft.title="Trace dynamic libs calls" modified="20200425152344831" tags="Linux" title="Draft of 'New Tiddler'">
+<pre>```
+$ ltrace COMMAND [ARGS]
+```
+
+[[Trace system calls and signals]]</pre>
 </div>
 <div created="20200423194939882" modified="20200423195013841" tags="Python" title="Enable debugger by request">
 <pre>```
@@ -12093,10 +12102,12 @@ throttle=256k
 limit-rate=256k
 ```</pre>
 </div>
-<div created="20200425152142012" modified="20200425152251537" tags="Linux" title="Trace system calls and signals">
+<div created="20200425152142012" modified="20200425152408168" tags="Linux" title="Trace system calls and signals">
 <pre>```
 $ strace COMMAND [ARGS]
-```</pre>
+```
+
+[[Trace dynamic libs calls]]</pre>
 </div>
 <div created="20200424093131169" modified="20200424093300848" tags="Ssh" title="Troubleshoot ssh-agent forwarding">
 <pre>https://developer.github.com/guides/using-ssh-agent-forwarding/
