@@ -373,6 +373,8 @@ Error message and password prompt
 
 <li>Dump network traffic on specific port</li>
 
+<li>Dynamic libs process uses</li>
+
 <li>Enable debugger by request</li>
 
 <li>Enable Developer Options</li>
@@ -392,6 +394,8 @@ Error message and password prompt
 <li>Extent image canvas size</li>
 
 <li>Extract audio from video files</li>
+
+<li>Files process uses</li>
 
 <li>Fix 'locate' error</li>
 
@@ -10139,7 +10143,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[TCP client (w/o netcat)]] [[Convert binary to hexdump]] [[Convert hexdump to binary]]" modified="20200425154633789" title="$:/StoryList">
+<div created="20200425102841584" list="[[Files process uses]] [[Dynamic libs process uses]] [[TCP client (w/o netcat)]] [[Convert binary to hexdump]] [[Convert hexdump to binary]]" modified="20200425154633789" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -11121,6 +11125,12 @@ https://clutterbox.de/2010/08/tcpdump-with-rotating-capture-files/
 $ sudo tcpdump -ni eth0 port 2775 -C 100 -W 10 -w smpp -Z root
 ```</pre>
 </div>
+<div created="20200425161957515" modified="20200425162032883" tags="Linux" title="Dynamic libs process uses">
+<pre>```
+$ lsof -p PID
+```
+</pre>
+</div>
 <div created="20200423194939882" modified="20200423195013841" tags="Python" title="Enable debugger by request">
 <pre>```
 import pdb; pdb.set_trace()
@@ -11210,6 +11220,11 @@ for f in *.mp4; do
         avconv -i $f ${f%.mp4}.mp3;
     fi
 done
+```</pre>
+</div>
+<div created="20200425162047058" modified="20200425162109798" tags="Linux" title="Files process uses">
+<pre>```
+$ lsof -P -T -p PID
 ```</pre>
 </div>
 <div created="20200425145503133" modified="20200425145552153" tags="Linux Centos" title="Fix 'locate' error">
