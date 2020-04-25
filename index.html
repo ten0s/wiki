@@ -379,6 +379,8 @@ Error message and password prompt
 
 <li>Dynamic libs process uses</li>
 
+<li>Enable core dump for current shell</li>
+
 <li>Enable debugger by request</li>
 
 <li>Enable Developer Options</li>
@@ -572,6 +574,8 @@ Error message and password prompt
 <li>See man as pdf</li>
 
 <li>See network traces</li>
+
+<li>See what the process's threads are doing</li>
 
 <li>Send notification from terminal</li>
 
@@ -10155,7 +10159,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[Change core dump file name format]] [[System uptime]] [[Max PID value]] [[Configure kernel parameters at runtime]] [[System limits]] [[System info]] [[Files process uses]] [[Dynamic libs process uses]] [[TCP client (w/o netcat)]] [[Convert binary to hexdump]] [[Convert hexdump to binary]]" modified="20200425154633789" title="$:/StoryList">
+<div created="20200425102841584" list="[[See what the process's threads are doing]] [[Enable core dump for current shell]] [[Change core dump file name format]] [[System uptime]] [[Max PID value]] [[Configure kernel parameters at runtime]] [[System limits]] [[System info]] [[Files process uses]] [[Dynamic libs process uses]] [[TCP client (w/o netcat)]] [[Convert binary to hexdump]] [[Convert hexdump to binary]]" modified="20200425154633789" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -11159,6 +11163,14 @@ $ lsof -p PID
 ```
 </pre>
 </div>
+<div created="20200425162743158" modified="20200425162824981" tags="Bash Linux" title="Enable core dump for current shell">
+<pre>https://linux-audit.com/understand-and-configure-core-dumps-work-on-linux/
+
+```
+$ ulimit -c unlimited
+```
+</pre>
+</div>
 <div created="20200423194939882" modified="20200423195013841" tags="Python" title="Enable debugger by request">
 <pre>```
 import pdb; pdb.set_trace()
@@ -11998,6 +12010,12 @@ $ mtr &lt;ipaddr | webaddr&gt;
 ```
 
 http://www.traceroute.org (from diff country)
+</pre>
+</div>
+<div created="20200425162835777" modified="20200425162910011" tags="Linux" title="See what the process's threads are doing">
+<pre>```
+$ for tid in `ls /proc/$pid/task`; do echo $tid; sudo cat /proc/$pid/task/$tid/stack; done
+```
 </pre>
 </div>
 <div created="20200425151036533" modified="20200425151059622" tags="Linux" title="Send notification from terminal">
