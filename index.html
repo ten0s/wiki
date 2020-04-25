@@ -515,8 +515,6 @@ Error message and password prompt
 
 <li>Reverse DNS lookup</li>
 
-<li>rsync local dirs</li>
-
 <li>Run commands in parallel</li>
 
 <li>Run script under debugger</li>
@@ -582,6 +580,8 @@ Error message and password prompt
 <li>Start HTTP server</li>
 
 <li>Suspend/Resume running program</li>
+
+<li>Sync local dirs</li>
 
 <li>Sync with upstream</li>
 
@@ -10095,7 +10095,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[Create and use a shared library]] [[Get X selection]] [[Print X event coming to window]] [[Colors in Bash]] [[Fix signature verification error]] [[Delete huge number of files]] [[Send notification from terminal]] [[Download file with name from 'Content-Disposition']] [[Use curl to post data from stdin]] [[Verify HTTPS site]] [[Connect to gmail using SSL]] [[Verify SSL connection]] [[Show/kill/signal process that use file]] [[Pretty print XML]] [[Create a new user]] [[Generate password]] [[Fix 'locate' error]] [[Make 'locate' work]] [[Add user to group]] [[Groups user belogs to]]" modified="20200425145226913" title="$:/StoryList">
+<div created="20200425102841584" list="[[Sync local dirs]] [[Create and use a shared library]] [[Get X selection]] [[Print X event coming to window]] [[Colors in Bash]] [[Fix signature verification error]] [[Delete huge number of files]] [[Send notification from terminal]] [[Download file with name from 'Content-Disposition']] [[Use curl to post data from stdin]] [[Verify HTTPS site]] [[Connect to gmail using SSL]] [[Verify SSL connection]] [[Show/kill/signal process that use file]] [[Pretty print XML]] [[Create a new user]] [[Generate password]] [[Fix 'locate' error]] [[Make 'locate' work]] [[Add user to group]] [[Groups user belogs to]]" modified="20200425152106275" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -11677,13 +11677,6 @@ $ nslookup IP
 
 </pre>
 </div>
-<div created="20200424081914812" modified="20200424081944033" tags="Linux" title="rsync local dirs">
-<pre>```
-rsync -avh [--delete] SRC/ DST/
-```
-
-</pre>
-</div>
 <div created="20200424083808418" modified="20200424083910477" tags="Linux Bash" title="Run commands in parallel">
 <pre>```
 xargs
@@ -12048,6 +12041,13 @@ kill -STOP PID
 ```
 kill -CONT PID
 ```
+</pre>
+</div>
+<div created="20200424081914812" modified="20200425152116143" tags="Linux" title="Sync local dirs">
+<pre>```
+rsync -avh [--delete] SRC/ DST/
+```
+
 </pre>
 </div>
 <div created="20200425114959653" modified="20200425115633545" tags="Git" title="Sync with upstream">
