@@ -623,6 +623,8 @@ Error message and password prompt
 
 <li>Sync with upstream</li>
 
+<li>System info</li>
+
 <li>TCP client (w/o netcat)</li>
 
 <li>Throttle wget, yum, etc download rate</li>
@@ -10143,7 +10145,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[Files process uses]] [[Dynamic libs process uses]] [[TCP client (w/o netcat)]] [[Convert binary to hexdump]] [[Convert hexdump to binary]]" modified="20200425154633789" title="$:/StoryList">
+<div created="20200425102841584" list="[[System info]] [[Files process uses]] [[Dynamic libs process uses]] [[TCP client (w/o netcat)]] [[Convert binary to hexdump]] [[Convert hexdump to binary]]" modified="20200425154633789" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -12271,6 +12273,105 @@ $ git merge upstream/master
 
 $ git push [-f] origin master
 ```</pre>
+</div>
+<div created="20200425162140021" modified="20200425162320783" tags="Linux" title="System info">
+<pre>Great terminal tool
+
+```
+$ inxi -Fi
+```
+
+Nice graphical tool
+
+```
+$ sysinfo
+```
+
+Kernel
+
+```
+$ cat /proc/version
+$ uname -a
+```
+
+Distribution
+
+```
+$ cat /etc/issue
+```
+
+CPU
+
+```
+$ cat /proc/cpuinfo
+$ lscpu
+```
+
+Memory
+
+```
+$ cat /proc/meminfo
+$ free
+```
+
+UDP (dropping packets)
+
+```
+$ cat /proc/net/udp
+```
+
+Partitions
+
+```
+$ cat /proc/partitions
+$ sudo fdisk -l
+```
+
+Disks
+
+```
+$ df -h
+$ sudo hdparm -I /dev/sda1
+```
+
+Modules
+
+```
+$ lsmod
+```
+
+Hardware
+
+```
+$ lshw [-htmo]
+$ lshw-gtk
+$ lspci
+$ lsusb
+$ lspci
+$ lspcmcia
+$ lsblk
+```
+
+Open files
+
+```
+$ lsof
+```
+
+Swap
+
+```
+$ cat /proc/swaps
+$ swapon -n (swapoff)
+```
+
+Bios http://www.linux-mag.com/id/7768/
+
+```
+$ sudo dmidecode
+$ sudo biosdecode
+```
+</pre>
 </div>
 <div created="20200425161848192" modified="20200425161940628" tags="Bash Linux" title="TCP client (w/o netcat)">
 <pre>Server:
