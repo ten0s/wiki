@@ -619,6 +619,8 @@ Error message and password prompt
 
 <li>Sync with upstream</li>
 
+<li>TCP client (w/o netcat)</li>
+
 <li>Throttle wget, yum, etc download rate</li>
 
 <li>Trace dynamic libs calls</li>
@@ -10137,7 +10139,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[Convert binary to hexdump]] [[Convert hexdump to binary]] [[Pass dir over network (tar pipe)]] [[Network utils]] [[Fix: cannot load shared object file]] [[Debug shared library dependencies]] [[Implement library function hooking]] [[Mirror a repo to Github]] [[Shared library path]] [[Linker library path]] [[Get GLIBC version binary is linked against]] [[List symbols and other info of an object file]] [[Record and play sound in terminal]] [[Tshark use]] [[Dump network traffic on specific port]] [[Cut tailing 20s of mp3 files]] [[Extract audio from video files]] [[Download audio from Youtube]] [[Download video from Youtube]] [[Trace malloc calls]] [[Trace dynamic libs calls]] [[Trace system calls and signals]] [[Sync local dirs]] [[Create and use a shared library]] [[Get X selection]] [[Print X event coming to window]] [[Colors in Bash]] [[Fix signature verification error]] [[Delete huge number of files]] [[Send notification from terminal]] [[Download file with name from 'Content-Disposition']] [[Use curl to post data from stdin]] [[Verify HTTPS site]] [[Connect to gmail using SSL]] [[Verify SSL connection]] [[Show/kill/signal process that use file or socket]] [[Pretty print XML]] [[Create a new user]] [[Generate password]] [[Fix 'locate' error]] [[Make 'locate' work]] [[Add user to group]] [[Groups user belogs to]]" modified="20200425154633789" title="$:/StoryList">
+<div created="20200425102841584" list="[[TCP client (w/o netcat)]] [[Convert binary to hexdump]] [[Convert hexdump to binary]]" modified="20200425154633789" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -12253,6 +12255,20 @@ $ git rebase upstream/master
 $ git merge upstream/master
 
 $ git push [-f] origin master
+```</pre>
+</div>
+<div created="20200425161848192" modified="20200425161940628" tags="Bash Linux" title="TCP client (w/o netcat)">
+<pre>Server:
+
+```
+$ nc -v -k -l 1234
+```
+
+Client:
+
+```
+$ exec 3&lt;&gt;/dev/tcp/localhost/1234 || (echo &quot;Can't connect&quot; ; exit 1)
+$ echo &quot;Hello&quot; &gt;&amp;3
 ```</pre>
 </div>
 <div created="20200425121928277" modified="20200425122011184" tags="Linux" title="Throttle wget, yum, etc download rate">
