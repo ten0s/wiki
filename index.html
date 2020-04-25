@@ -377,6 +377,8 @@ Error message and password prompt
 
 <li>Install EPEL</li>
 
+<li>Install kernel headers</li>
+
 <li>Interact with X Window Manager</li>
 
 <li>Internet Printing Protocol (IPP)</li>
@@ -10021,7 +10023,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[Run script when file has changed]] [[Use pstree]] [[Share ISO image via SAMBA]] [[Use emacs in visudo]] [[Determine process that uses port]] [[Determine what ports process uses]] [[List open ports and their programs]] [[Scan network for open ports]] [[Scan network for active IP addresses]] [[Investigate WLAN network]] [[Convert bases in terminal]] [[Encode/decode base64]] [[Encode/decode URL]] [[Error code description]] [[Disable/enable/list services]] [[Configure NTP]] [[Determine timezone]] [[Change timezone]] [[Split big files to chunks]] [[CPU temperature]] [[Make alias work under sudo]] [[Alias with args]] [[Mirror whole site]] [[Throttle wget, yum, etc download rate]] [[Query system configuration vars]] [[C++ preprocessor definitions]] [[Install debuginfo for kernel]] [[Install EPEL]] [[Last argument]] [[Last command]] [[Change to prev dir]] [[Diff zip files]] [[Diff binary files]] [[Diff dirs]] [[Diff files side-by-size]] [[Diff files on remote hosts]] [[Diff of two files (like file -- file2)]] [[SSH connection is too slow]] [[Disable SSH root login]] [[Setup SSH keys]] [[Sync with upstream]] [[Multiple projects using github deploy keys]] [[Fix submodule error]] [[Get submodules]] [[Clone Github repo via https]] [[Reset working dir prior to last commit]] [[Remove last commit pushed to server]] [[Change remote repo]]" modified="20200425114508204" title="$:/StoryList">
+<div created="20200425102841584" list="[[Install kernel headers]] [[Run script when file has changed]] [[Use pstree]] [[Share ISO image via SAMBA]] [[Use emacs in visudo]] [[Determine process that uses port]] [[Determine what ports process uses]] [[List open ports and their programs]] [[Scan network for open ports]] [[Scan network for active IP addresses]] [[Investigate WLAN network]] [[Convert bases in terminal]] [[Encode/decode base64]] [[Encode/decode URL]] [[Error code description]] [[Disable/enable/list services]] [[Configure NTP]] [[Determine timezone]] [[Change timezone]] [[Split big files to chunks]] [[CPU temperature]] [[Make alias work under sudo]] [[Alias with args]] [[Mirror whole site]] [[Throttle wget, yum, etc download rate]] [[Query system configuration vars]] [[C++ preprocessor definitions]] [[Install debuginfo for kernel]] [[Install EPEL]] [[Last argument]] [[Last command]] [[Change to prev dir]] [[Diff zip files]] [[Diff binary files]] [[Diff dirs]] [[Diff files side-by-size]] [[Diff files on remote hosts]] [[Diff of two files (like file -- file2)]] [[SSH connection is too slow]] [[Disable SSH root login]] [[Setup SSH keys]] [[Sync with upstream]] [[Multiple projects using github deploy keys]] [[Fix submodule error]] [[Get submodules]] [[Clone Github repo via https]] [[Reset working dir prior to last commit]] [[Remove last commit pushed to server]] [[Change remote repo]]" modified="20200425114508204" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10082,7 +10084,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200423165127488" modified="20200425121351744" title="$:/temp/NewTagName">
+<div created="20200423165127488" modified="20200425130016768" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
 <div created="20200422190456346" modified="20200425120238969" title="$:/temp/search">
@@ -11025,6 +11027,11 @@ $ sudo debuginfo-install kernel --enablerepo=&quot;*debuginfo*&quot;
 </div>
 <div created="20200425121252389" modified="20200425121314002" tags="Linux" title="Install EPEL">
 <pre>http://www.tecmint.com/how-to-enable-epel-repository-for-rhel-centos-6-5/</pre>
+</div>
+<div created="20200425130000916" modified="20200425130024518" tags="Linux Ubuntu" title="Install kernel headers">
+<pre>```
+$ sudo apt-get install linux-headers-generic
+```</pre>
 </div>
 <div created="20200424081836261" modified="20200424081902945" tags="Linux" title="Interact with X Window Manager">
 <pre>```
