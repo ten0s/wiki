@@ -359,8 +359,6 @@ Error message and password prompt
 
 <li>Download file with name from 'Content-Disposition'</li>
 
-<li>Draft of 'New Tiddler'</li>
-
 <li>Enable debugger by request</li>
 
 <li>Enable Developer Options</li>
@@ -588,6 +586,10 @@ Error message and password prompt
 <li>Sync with upstream</li>
 
 <li>Throttle wget, yum, etc download rate</li>
+
+<li>Trace dynamic libs calls</li>
+
+<li>Trace malloc calls</li>
 
 <li>Trace system calls and signals</li>
 
@@ -10099,7 +10101,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[Draft of 'New Tiddler']] [[Trace system calls and signals]] [[Sync local dirs]] [[Create and use a shared library]] [[Get X selection]] [[Print X event coming to window]] [[Colors in Bash]] [[Fix signature verification error]] [[Delete huge number of files]] [[Send notification from terminal]] [[Download file with name from 'Content-Disposition']] [[Use curl to post data from stdin]] [[Verify HTTPS site]] [[Connect to gmail using SSL]] [[Verify SSL connection]] [[Show/kill/signal process that use file]] [[Pretty print XML]] [[Create a new user]] [[Generate password]] [[Fix 'locate' error]] [[Make 'locate' work]] [[Add user to group]] [[Groups user belogs to]]" modified="20200425152106275" title="$:/StoryList">
+<div created="20200425102841584" list="[[Trace malloc calls]] [[Trace dynamic libs calls]] [[Trace system calls and signals]] [[Sync local dirs]] [[Create and use a shared library]] [[Get X selection]] [[Print X event coming to window]] [[Colors in Bash]] [[Fix signature verification error]] [[Delete huge number of files]] [[Send notification from terminal]] [[Download file with name from 'Content-Disposition']] [[Use curl to post data from stdin]] [[Verify HTTPS site]] [[Connect to gmail using SSL]] [[Verify SSL connection]] [[Show/kill/signal process that use file]] [[Pretty print XML]] [[Create a new user]] [[Generate password]] [[Fix 'locate' error]] [[Make 'locate' work]] [[Add user to group]] [[Groups user belogs to]]" modified="20200425152106275" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -11026,13 +11028,6 @@ $ sudo service docker restart
 <pre>```
 $ curl -JO URL
 ```</pre>
-</div>
-<div created="20200425152254642" draft.of="New Tiddler" draft.title="Trace dynamic libs calls" modified="20200425152344831" tags="Linux" title="Draft of 'New Tiddler'">
-<pre>```
-$ ltrace COMMAND [ARGS]
-```
-
-[[Trace system calls and signals]]</pre>
 </div>
 <div created="20200423194939882" modified="20200423195013841" tags="Python" title="Enable debugger by request">
 <pre>```
@@ -12101,6 +12096,25 @@ throttle=256k
 ```
 limit-rate=256k
 ```</pre>
+</div>
+<div created="20200425152254642" modified="20200425152412310" tags="Linux" title="Trace dynamic libs calls">
+<pre>```
+$ ltrace COMMAND [ARGS]
+```
+
+[[Trace system calls and signals]]</pre>
+</div>
+<div created="20200425152451080" modified="20200425152715699" tags="Linux" title="Trace malloc calls">
+<pre>* #include &lt;mcheck.h&gt;
+* call mtrace() at the start of the program.
+
+```
+$ export MALLOC_TRACE=mem.log
+$ mtrace &lt;prog name&gt; $MALLOC_TRACE
+```
+
+[[Trace system calls and signals]]
+[[Trace dynamic libs calls]]</pre>
 </div>
 <div created="20200425152142012" modified="20200425152408168" tags="Linux" title="Trace system calls and signals">
 <pre>```
