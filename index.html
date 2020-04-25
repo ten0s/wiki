@@ -315,6 +315,8 @@ Error message and password prompt
 
 <li>Debug Javascript in Android Chrome</li>
 
+<li>Debug shared library dependencies</li>
+
 <li>Delete almost empty lines (spaces, tabs)</li>
 
 <li>Delete empty lines (newlines only)</li>
@@ -10123,7 +10125,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[Implement library function hooking]] [[Setup library path for linker]] [[Get GLIBC version binary is linked against]] [[List symbols and other info of an object file]] [[Record and play sound in terminal]] [[Tshark use]] [[Dump network traffic on specific port]] [[Cut tailing 20s of mp3 files]] [[Extract audio from video files]] [[Download audio from Youtube]] [[Download video from Youtube]] [[Trace malloc calls]] [[Trace dynamic libs calls]] [[Trace system calls and signals]] [[Sync local dirs]] [[Create and use a shared library]] [[Get X selection]] [[Print X event coming to window]] [[Colors in Bash]] [[Fix signature verification error]] [[Delete huge number of files]] [[Send notification from terminal]] [[Download file with name from 'Content-Disposition']] [[Use curl to post data from stdin]] [[Verify HTTPS site]] [[Connect to gmail using SSL]] [[Verify SSL connection]] [[Show/kill/signal process that use file]] [[Pretty print XML]] [[Create a new user]] [[Generate password]] [[Fix 'locate' error]] [[Make 'locate' work]] [[Add user to group]] [[Groups user belogs to]]" modified="20200425152106275" title="$:/StoryList">
+<div created="20200425102841584" list="[[Debug shared library dependencies]] [[Implement library function hooking]] [[Setup library path for linker]] [[Get GLIBC version binary is linked against]] [[List symbols and other info of an object file]] [[Record and play sound in terminal]] [[Tshark use]] [[Dump network traffic on specific port]] [[Cut tailing 20s of mp3 files]] [[Extract audio from video files]] [[Download audio from Youtube]] [[Download video from Youtube]] [[Trace malloc calls]] [[Trace dynamic libs calls]] [[Trace system calls and signals]] [[Sync local dirs]] [[Create and use a shared library]] [[Get X selection]] [[Print X event coming to window]] [[Colors in Bash]] [[Fix signature verification error]] [[Delete huge number of files]] [[Send notification from terminal]] [[Download file with name from 'Content-Disposition']] [[Use curl to post data from stdin]] [[Verify HTTPS site]] [[Connect to gmail using SSL]] [[Verify SSL connection]] [[Show/kill/signal process that use file]] [[Pretty print XML]] [[Create a new user]] [[Generate password]] [[Fix 'locate' error]] [[Make 'locate' work]] [[Add user to group]] [[Groups user belogs to]]" modified="20200425152106275" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10809,6 +10811,14 @@ $ ssh -T git@github.com
 # Enter/select URL and Inspect
 # Open the same URL in Android Chrome
 </pre>
+</div>
+<div created="20200425154146448" modified="20200425154202629" tags="Linux" title="Debug shared library dependencies">
+<pre>```
+$ ldd -r &lt;shared lib&gt;
+$ LD_DEBUG=help cat        # print help message
+$ LD_DEBUG=libs libtoke.so # print how dependencies of libtoke.so are resolved
+$ man ld.so | man ld-linux.so
+```</pre>
 </div>
 <div created="20200425130900989" modified="20200425131056475" tags="" title="Delete almost empty lines (spaces, tabs)">
 <pre>```
@@ -11914,8 +11924,10 @@ search example.com
 ```
 </pre>
 </div>
-<div created="20200425154024174" modified="20200425154039535" tags="Linux" title="Setup library path for linker">
+<div created="20200425154024174" modified="20200425154324407" tags="Linux" title="Setup library path for linker">
 <pre>LIBRARY_PATH or -L flag
+
+LIBRARY_PATH is used by gcc before compilation to search directories containing static and shared libraries that need to be linked to your program.
 </pre>
 </div>
 <div created="20200425115702390" modified="20200425115749446" tags="Ssh" title="Setup SSH keys">
