@@ -389,8 +389,6 @@ Error message and password prompt
 
 <li>Download video from Youtube</li>
 
-<li>Draft of 'New Tiddler'</li>
-
 <li>Dump network traffic on specific port</li>
 
 <li>Dynamic libs process uses</li>
@@ -532,6 +530,8 @@ Error message and password prompt
 <li>Netcat HTTP server and client</li>
 
 <li>Netcat port forwarding</li>
+
+<li>Netcat SMTP client</li>
 
 <li>Netcat TCP server and client</li>
 
@@ -10195,7 +10195,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[Draft of 'New Tiddler']] [[Postfix via gmail.com]]" modified="20200425154633789" title="$:/StoryList">
+<div created="20200425102841584" list="[[Netcat SMTP client]] [[Postfix via gmail.com]]" modified="20200425154633789" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -11278,22 +11278,6 @@ $ curl -JO URL
 $ youtube-dl -f bestvideo+bestaudio FILE_OR_PLAYLIST_URL
 ```</pre>
 </div>
-<div created="20200425170554214" draft.of="New Tiddler" draft.title="Netcat SMTP client" modified="20200425170627586" tags="" title="Draft of 'New Tiddler'">
-<pre>https://eax.me/smtp-descr/
-
-```
-$ nc -v localhost 25 &lt;&lt;EOF
-EHLO localhost
-MAIL FROM: &lt;@gmail.com&gt;
-RCPT TO: &lt;wgnc.develop@gmail.com&gt;
-DATA
-From: Develop &lt;wgnc.develop@gmail.com&gt;
-Subject: Test mail 3
-This is a test mail 3
-.
-quit
-EOF</pre>
-</div>
 <div created="20200425153107784" modified="20200425153158473" tags="Linux" title="Dump network traffic on specific port">
 <pre>```
 $ sudo tcpdump -ni docker0 port 5061 -v # print whole message bodies to console
@@ -11912,6 +11896,25 @@ $ sudo bash -c 'while true; do nc -l 80 &lt; /tmp/backpipe | nc localhost 8080 |
 ```
 </pre>
 </div>
+<div created="20200425170554214" modified="20200425170801936" tags="Linux" title="Netcat SMTP client">
+<pre>https://eax.me/smtp-descr/
+
+```
+$ nc -v localhost 25 &lt;&lt;EOF
+EHLO localhost
+MAIL FROM: &lt;user@gmail.com&gt;
+RCPT TO: &lt;user@gmail.com&gt;
+DATA
+From: Develop &lt;user@gmail.com&gt;
+Subject: Test mail 3
+This is a test mail 3
+.
+quit
+EOF
+```
+
+[[Postfix via gmail.com]]</pre>
+</div>
 <div created="20200425163711467" modified="20200425164959989" tags="Linux" title="Netcat TCP server and client">
 <pre>Server:
 
@@ -11997,7 +12000,7 @@ Receiver:
 $ nc -l PORT | tar x
 ```</pre>
 </div>
-<div created="20200425170253897" modified="20200425170700155" tags="Linux" title="Postfix via gmail.com">
+<div created="20200425170253897" modified="20200425170718762" tags="Linux" title="Postfix via gmail.com">
 <pre>https://opensource.com/article/18/8/postfix-open-source-mail-transfer-agent
 
 ```
@@ -12046,6 +12049,7 @@ Subject: Test mail
 This is a test mail
 .
 EOF
+```
 
 ```
 $ echo &quot;This is a test mail 2&quot; | mail -s &quot;Test mail 2&quot; user@gmail.com
