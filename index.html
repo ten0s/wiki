@@ -227,6 +227,8 @@ Error message and password prompt
 
 <li>Add TLS encryption to existing clients and servers</li>
 
+<li>Add user to group</li>
+
 <li>Alias with args</li>
 
 <li>Apply a patch</li>
@@ -434,6 +436,8 @@ Error message and password prompt
 <li>Make empty commit</li>
 
 <li>Make gif from pngs</li>
+
+<li>Make locate work</li>
 
 <li>Make Mobile Web App fullscreen</li>
 
@@ -10057,7 +10061,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[Groups user belogs to]]" modified="20200425145226913" title="$:/StoryList">
+<div created="20200425102841584" list="[[Make locate work]] [[Add user to group]] [[Groups user belogs to]]" modified="20200425145226913" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10248,6 +10252,13 @@ nl
 </div>
 <div created="20200424085339651" modified="20200424085351431" tags="" title="Add TLS encryption to existing clients and servers">
 <pre>https://www.stunnel.org/index.html</pre>
+</div>
+<div created="20200425145328796" modified="20200425145343846" tags="Linux" title="Add user to group">
+<pre>```
+$ sudo usermod -a -G GROUP USER
+```
+
+</pre>
 </div>
 <div created="20200425122732985" modified="20200425122759904" tags="Bash" title="Alias with args">
 <pre>```
@@ -11300,6 +11311,12 @@ $ convert -delay 120 -loop 0 -gravity center -background white -extent 300x450 *
 ```
 
 </pre>
+</div>
+<div created="20200425145405345" modified="20200425145431523" tags="Linux Centos" title="Make locate work">
+<pre>```
+$ sudo yum install mlocate
+$ sudo updatedb
+```</pre>
 </div>
 <div created="20200423193556357" modified="20200423193619127" tags="Android" title="Make Mobile Web App fullscreen">
 <pre>https://developers.google.com/web/fundamentals/native-hardware/fullscreen/
