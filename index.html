@@ -275,6 +275,8 @@ Error message and password prompt
 
 <li>Convert dot file to png</li>
 
+<li>Copy only first bytes from file</li>
+
 <li>CPU Steal time</li>
 
 <li>CPU temperature</li>
@@ -360,6 +362,8 @@ Error message and password prompt
 <li>Force specific SSH algorithm</li>
 
 <li>Force SSH password authentication</li>
+
+<li>Fstab example</li>
 
 <li>Generate random string of length 50</li>
 
@@ -10029,7 +10033,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[Create file system on file]] [[Assign CPU to application]] [[CSV utility]] [[Install kernel headers]] [[Run script when file has changed]] [[Use pstree]] [[Share ISO image via SAMBA]] [[Use emacs in visudo]] [[Determine process that uses port]] [[Determine what ports process uses]] [[List open ports and their programs]] [[Scan network for open ports]] [[Scan network for active IP addresses]] [[Investigate WLAN network]] [[Convert bases in terminal]] [[Encode/decode base64]] [[Encode/decode URL]] [[Error code description]] [[Disable/enable/list services]] [[Configure NTP]] [[Determine timezone]] [[Change timezone]] [[Split big files to chunks]] [[CPU temperature]] [[Make alias work under sudo]] [[Alias with args]] [[Mirror whole site]] [[Throttle wget, yum, etc download rate]] [[Query system configuration vars]] [[C++ preprocessor definitions]] [[Install debuginfo for kernel]] [[Install EPEL]] [[Last argument]] [[Last command]] [[Change to prev dir]] [[Diff zip files]] [[Diff binary files]] [[Diff dirs]] [[Diff files side-by-size]] [[Diff files on remote hosts]] [[Diff of two files (like file -- file2)]] [[SSH connection is too slow]] [[Disable SSH root login]] [[Setup SSH keys]] [[Sync with upstream]] [[Multiple projects using github deploy keys]] [[Fix submodule error]] [[Get submodules]] [[Clone Github repo via https]] [[Reset working dir prior to last commit]] [[Remove last commit pushed to server]] [[Change remote repo]]" modified="20200425114508204" title="$:/StoryList">
+<div created="20200425102841584" list="[[Copy only first bytes from file]] [[Fstab example]] [[Create file system on file]] [[Assign CPU to application]] [[CSV utility]] [[Install kernel headers]] [[Run script when file has changed]] [[Use pstree]] [[Share ISO image via SAMBA]] [[Use emacs in visudo]] [[Determine process that uses port]] [[Determine what ports process uses]] [[List open ports and their programs]] [[Scan network for open ports]] [[Scan network for active IP addresses]] [[Investigate WLAN network]] [[Convert bases in terminal]] [[Encode/decode base64]] [[Encode/decode URL]] [[Error code description]] [[Disable/enable/list services]] [[Configure NTP]] [[Determine timezone]] [[Change timezone]] [[Split big files to chunks]] [[CPU temperature]] [[Make alias work under sudo]] [[Alias with args]] [[Mirror whole site]] [[Throttle wget, yum, etc download rate]] [[Query system configuration vars]] [[C++ preprocessor definitions]] [[Install debuginfo for kernel]] [[Install EPEL]] [[Last argument]] [[Last command]] [[Change to prev dir]] [[Diff zip files]] [[Diff binary files]] [[Diff dirs]] [[Diff files side-by-size]] [[Diff files on remote hosts]] [[Diff of two files (like file -- file2)]] [[SSH connection is too slow]] [[Disable SSH root login]] [[Setup SSH keys]] [[Sync with upstream]] [[Multiple projects using github deploy keys]] [[Fix submodule error]] [[Get submodules]] [[Clone Github repo via https]] [[Reset working dir prior to last commit]] [[Remove last commit pushed to server]] [[Change remote repo]]" modified="20200425114508204" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10474,6 +10478,13 @@ $ dot -Tpng -O file.dot -O
 ```
 
 see also -Gsize=3,3\! -Gdpi=100 -Gratio=fill -Nshape=box
+</pre>
+</div>
+<div created="20200425130546232" modified="20200425130605887" tags="Linux" title="Copy only first bytes from file">
+<pre>```
+dd if=calls.bin of=calls3.bin bs=7744 count=1
+```
+
 </pre>
 </div>
 <div created="20200424085043246" modified="20200424085141455" tags="Linux" title="CPU Steal time">
@@ -10964,6 +10975,15 @@ $ ssh -F /dev/null -o PubkeyAuthentication=no pi@printerpi
 ```
 
 </pre>
+</div>
+<div created="20200425130423643" modified="20200425130442246" tags="Linux" title="Fstab example">
+<pre>```
+# automount disk by id
+/dev/disk/by-id/usb-StoreJet_Transcend_700FFFFFFFFF-0:0-part1 /media/ten0s/Transcend auto nosuid,nodev,nofail,noauto,x-gvfs-show 0 0
+# automount samba share (make sure /media/Transcend exists)
+//serverpi/Transcend /media/Transcend cifs guest,uid=1000,iocharset=utf8 0 0
+# to apply changes: sudo mount -a
+```</pre>
 </div>
 <div created="20200424081758913" modified="20200424081829913" tags="Linux Bash" title="Generate random string of length 50">
 <pre>```
