@@ -515,6 +515,8 @@ Error message and password prompt
 
 <li>Multiple projects using github deploy keys</li>
 
+<li>Netcat oneshot HTTP server</li>
+
 <li>Netcat port forwarding</li>
 
 <li>Netcat server and client</li>
@@ -10171,7 +10173,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[Netcat server and client]] [[Netcat port forwarding]] [[List network interfaces]] [[Change/spoof MAC address]] [[Determine IP address]] [[Stack of a thread]] [[See what the process's threads are doing]] [[Enable core dump for current shell]] [[Change core dump file name format]] [[System uptime]] [[Max PID value]] [[Configure kernel parameters at runtime]] [[System limits]] [[System info]] [[Files process uses]] [[Dynamic libs process uses]] [[TCP client (w/o netcat)]] [[Convert binary to hexdump]] [[Convert hexdump to binary]]" modified="20200425154633789" title="$:/StoryList">
+<div created="20200425102841584" list="[[Netcat oneshot HTTP server]] [[Netcat server and client]] [[Netcat port forwarding]] [[List network interfaces]] [[Change/spoof MAC address]] [[Determine IP address]] [[Stack of a thread]] [[See what the process's threads are doing]] [[Enable core dump for current shell]] [[Change core dump file name format]] [[System uptime]] [[Max PID value]] [[Configure kernel parameters at runtime]] [[System limits]] [[System info]] [[Files process uses]] [[Dynamic libs process uses]] [[TCP client (w/o netcat)]] [[Convert binary to hexdump]] [[Convert hexdump to binary]]" modified="20200425154633789" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -11772,6 +11774,12 @@ Host project-one.github.com
 * Clone your Git repository with the fake subdomain
 ```
 $  git clone git@project-one.github.com:vendor/project-one.git
+```
+</pre>
+</div>
+<div created="20200425163839931" modified="20200425163917268" tags="Linux" title="Netcat oneshot HTTP server">
+<pre>```
+$ echo -en &quot;GET /api/config HTTP/1.1\r\nHost: 127.0.0.1:8080\r\n\r\n&quot; | nc -v -q-1 127.0.0.1 8080
 ```
 </pre>
 </div>
