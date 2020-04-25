@@ -517,6 +517,8 @@ Error message and password prompt
 
 <li>Netcat port forwarding</li>
 
+<li>Netcat server and client</li>
+
 <li>Network emulation (netem)</li>
 
 <li>Network Manager tool</li>
@@ -10169,7 +10171,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[Netcat port forwarding]] [[List network interfaces]] [[Change/spoof MAC address]] [[Determine IP address]] [[Stack of a thread]] [[See what the process's threads are doing]] [[Enable core dump for current shell]] [[Change core dump file name format]] [[System uptime]] [[Max PID value]] [[Configure kernel parameters at runtime]] [[System limits]] [[System info]] [[Files process uses]] [[Dynamic libs process uses]] [[TCP client (w/o netcat)]] [[Convert binary to hexdump]] [[Convert hexdump to binary]]" modified="20200425154633789" title="$:/StoryList">
+<div created="20200425102841584" list="[[Netcat server and client]] [[Netcat port forwarding]] [[List network interfaces]] [[Change/spoof MAC address]] [[Determine IP address]] [[Stack of a thread]] [[See what the process's threads are doing]] [[Enable core dump for current shell]] [[Change core dump file name format]] [[System uptime]] [[Max PID value]] [[Configure kernel parameters at runtime]] [[System limits]] [[System info]] [[Files process uses]] [[Dynamic libs process uses]] [[TCP client (w/o netcat)]] [[Convert binary to hexdump]] [[Convert hexdump to binary]]" modified="20200425154633789" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -11780,6 +11782,19 @@ $ sudo bash -c 'while true; do nc -l 80 &lt; /tmp/backpipe | nc localhost 8080 &
 $ sudo bash -c 'while true; do nc -l 80 &lt; /tmp/backpipe | nc localhost 8080 | tee /tmp/backpipe; done'
 ```
 </pre>
+</div>
+<div created="20200425163711467" modified="20200425163811231" tags="Linux" title="Netcat server and client">
+<pre>Server:
+
+```
+$ nc -k -l 1234  # -k stay up after the client disconnects
+```
+
+Client:
+
+```
+$ nc localhost 1234
+```</pre>
 </div>
 <div created="20200424090146466" modified="20200424090209380" tags="Linux" title="Network emulation (netem)">
 <pre>```
