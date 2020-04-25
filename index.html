@@ -255,6 +255,8 @@ Error message and password prompt
 
 <li>Change remote repo</li>
 
+<li>Change timezone</li>
+
 <li>Change to prev dir</li>
 
 <li>Check SSH key</li>
@@ -312,6 +314,8 @@ Error message and password prompt
 <li>DNS servers used</li>
 
 <li>Docker fails to resolve names</li>
+
+<li>Draft of 'New Tiddler 1'</li>
 
 <li>Enable debugger by request</li>
 
@@ -462,6 +466,8 @@ Error message and password prompt
 <li>Simulate `make' without actual execution</li>
 
 <li>Speedtest in terminal</li>
+
+<li>Split big files to chunks</li>
 
 <li>Squash a branch into one commit</li>
 
@@ -9981,7 +9987,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[CPU temperature]] [[Make alias work under sudo]] [[Alias with args]] [[Mirror whole site]] [[Throttle wget, yum, etc download rate]] [[Query system configuration vars]] [[C++ preprocessor definitions]] [[Install debuginfo for kernel]] [[Install EPEL]] [[Last argument]] [[Last command]] [[Change to prev dir]] [[Diff zip files]] [[Diff binary files]] [[Diff dirs]] [[Diff files side-by-size]] [[Diff files on remote hosts]] [[Diff of two files (like file -- file2)]] [[SSH connection is too slow]] [[Disable SSH root login]] [[Setup SSH keys]] [[Sync with upstream]] [[Multiple projects using github deploy keys]] [[Fix submodule error]] [[Get submodules]] [[Clone Github repo via https]] [[Reset working dir prior to last commit]] [[Remove last commit pushed to server]] [[Change remote repo]]" modified="20200425114508204" title="$:/StoryList">
+<div created="20200425102841584" list="[[Draft of 'New Tiddler 1']] [[Change timezone]] [[Split big files to chunks]] [[CPU temperature]] [[Make alias work under sudo]] [[Alias with args]] [[Mirror whole site]] [[Throttle wget, yum, etc download rate]] [[Query system configuration vars]] [[C++ preprocessor definitions]] [[Install debuginfo for kernel]] [[Install EPEL]] [[Last argument]] [[Last command]] [[Change to prev dir]] [[Diff zip files]] [[Diff binary files]] [[Diff dirs]] [[Diff files side-by-size]] [[Diff files on remote hosts]] [[Diff of two files (like file -- file2)]] [[SSH connection is too slow]] [[Disable SSH root login]] [[Setup SSH keys]] [[Sync with upstream]] [[Multiple projects using github deploy keys]] [[Fix submodule error]] [[Get submodules]] [[Clone Github repo via https]] [[Reset working dir prior to last commit]] [[Remove last commit pushed to server]] [[Change remote repo]]" modified="20200425114508204" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10324,6 +10330,27 @@ $ git remote rm origin
 $ git remote add origin &lt;NEW_REPO_PATH&gt;
 ```</pre>
 </div>
+<div created="20200425123025759" modified="20200425123223181" tags="Linux" title="Change timezone">
+<pre>* Backup
+```
+$ sudo mv /etc/localtime /etc/localtime.bak
+```
+
+* Copy
+
+```
+$ sudo cp /usr/share/zoneinfo/UTC /etc/localtime
+$ sudo cp /usr/share/zoneinfo/Europe/Minsk /etc/localtime
+```
+
+# Or better make link
+
+```
+$ sudo ln -sf /usr/share/zoneinfo/UTC /etc/localtime
+$ sudo ln -s /usr/share/zoneinfo/Europe/Minsk /etc/localtime
+```
+</pre>
+</div>
 <div created="20200425120805241" modified="20200425120830763" tags="Bash" title="Change to prev dir">
 <pre>```
 $ cd -
@@ -10665,6 +10692,13 @@ $ sudo service docker restart
 ```
 
 </pre>
+</div>
+<div created="20200425123050678" draft.of="New Tiddler 1" draft.title="Determine timezone" modified="20200425123135560" tags="Linux" title="Draft of 'New Tiddler 1'">
+<pre>```
+$ tzselect
+```
+
+[[Change timezone]]</pre>
 </div>
 <div created="20200423194939882" modified="20200423195013841" tags="Python" title="Enable debugger by request">
 <pre>```
@@ -11334,6 +11368,14 @@ $ make -n
 
 ```
 $ curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -
+```
+</pre>
+</div>
+<div created="20200425122950204" modified="20200425123013050" tags="Linux" title="Split big files to chunks">
+<pre>```
+$ split -l 1000 log.txt new
+$ split --lines=1KB log.txt new
+$ split --bytes=1M image.jpg new
 ```
 </pre>
 </div>
