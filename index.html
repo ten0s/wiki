@@ -575,11 +575,15 @@ Error message and password prompt
 
 <li>Untrack tracked files</li>
 
+<li>Use curl to post data from stdin</li>
+
 <li>Use emacs in visudo</li>
 
 <li>Use pstree</li>
 
 <li>Use ssh-agent in Docker container</li>
+
+<li>Verify HTTPS site</li>
 
 <li>Verify SSL connection</li>
 
@@ -10075,7 +10079,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[Connect to gmail using SSL]] [[Verify SSL connection]] [[Show/kill/signal process that use file]] [[Pretty print XML]] [[Create a new user]] [[Generate password]] [[Fix 'locate' error]] [[Make 'locate' work]] [[Add user to group]] [[Groups user belogs to]]" modified="20200425145226913" title="$:/StoryList">
+<div created="20200425102841584" list="[[Use curl to post data from stdin]] [[Verify HTTPS site]] [[Connect to gmail using SSL]] [[Verify SSL connection]] [[Show/kill/signal process that use file]] [[Pretty print XML]] [[Create a new user]] [[Generate password]] [[Fix 'locate' error]] [[Make 'locate' work]] [[Add user to group]] [[Groups user belogs to]]" modified="20200425145226913" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -12050,6 +12054,13 @@ $ git rm --cached &lt;file&gt;
 ```
 </pre>
 </div>
+<div created="20200425150651505" modified="20200425150722777" tags="" title="Use curl to post data from stdin">
+<pre>```
+$ curl -X POST -d @- http://localhost/cgi-bin/echo.pl
+$ curl -i       # print headers
+$ curl -H '...' # add http header
+```</pre>
+</div>
 <div created="20200425125348548" modified="20200425125422447" tags="Bash" title="Use emacs in visudo">
 <pre>$ sudo EDITOR=emacs visudo
 </pre>
@@ -12074,6 +12085,10 @@ $ apt update &amp;&amp; apt -y install openssh-client
 $ ssh -T git@github.com
 Hi ten0s! You've successfully authenticated, but GitHub does not provide shell access.
 ```
+</pre>
+</div>
+<div created="20200425150606530" modified="20200425150625277" tags="" title="Verify HTTPS site">
+<pre>https://www.ssllabs.com/ssltest/analyze.html?d=sandbox.itunes.apple.com
 </pre>
 </div>
 <div created="20200425150403987" modified="20200425150439059" tags="Linux Ssl" title="Verify SSL connection">
