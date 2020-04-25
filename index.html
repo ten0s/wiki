@@ -389,8 +389,6 @@ Error message and password prompt
 
 <li>Download video from Youtube</li>
 
-<li>Draft of 'Debug shared library dependencies'</li>
-
 <li>Dump network traffic on specific port</li>
 
 <li>Dynamic libs process uses</li>
@@ -10199,7 +10197,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[Implement library function hooking]] [[Draft of 'Debug shared library dependencies']] [[How to SOCKsify?]] [[Netcat SMTP client]] [[Postfix via gmail.com]]" modified="20200425171749838" title="$:/StoryList">
+<div created="20200425102841584" list="[[Implement library function hooking]] [[Debug shared library dependencies]] [[How to SOCKsify?]] [[Netcat SMTP client]] [[Postfix via gmail.com]]" modified="20200425171749838" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -11006,8 +11004,10 @@ $ ssh -T git@github.com
 # Open the same URL in Android Chrome
 </pre>
 </div>
-<div created="20200425154146448" modified="20200425154202629" tags="Linux" title="Debug shared library dependencies">
-<pre>```
+<div created="20200425154146448" modified="20200425171958490" tags="Linux" title="Debug shared library dependencies">
+<pre>https://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html
+
+```
 $ ldd -r &lt;shared lib&gt;
 $ LD_DEBUG=help cat        # print help message
 $ LD_DEBUG=libs libtoke.so # print how dependencies of libtoke.so are resolved
@@ -11280,16 +11280,6 @@ $ curl -JO URL
 <div created="20200425152750407" modified="20200425152823233" tags="" title="Download video from Youtube">
 <pre>```
 $ youtube-dl -f bestvideo+bestaudio FILE_OR_PLAYLIST_URL
-```</pre>
-</div>
-<div created="20200425154146448" draft.of="Debug shared library dependencies" draft.title="Debug shared library dependencies" modified="20200425171634524" tags="Linux" title="Draft of 'Debug shared library dependencies'">
-<pre>https://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html
-
-```
-$ ldd -r &lt;shared lib&gt;
-$ LD_DEBUG=help cat        # print help message
-$ LD_DEBUG=libs libtoke.so # print how dependencies of libtoke.so are resolved
-$ man ld.so | man ld-linux.so
 ```</pre>
 </div>
 <div created="20200425153107784" modified="20200425153158473" tags="Linux" title="Dump network traffic on specific port">
