@@ -225,6 +225,8 @@ Error message and password prompt
 
 <li>Add line numbers to output</li>
 
+<li>Add shared library dir</li>
+
 <li>Add TLS encryption to existing clients and servers</li>
 
 <li>Add user to group</li>
@@ -453,6 +455,8 @@ Error message and password prompt
 
 <li>Last command</li>
 
+<li>Linker library path</li>
+
 <li>Linux special files</li>
 
 <li>Linux Standard Base</li>
@@ -558,8 +562,6 @@ Error message and password prompt
 <li>Set default USB connection type</li>
 
 <li>Set DNS</li>
-
-<li>Setup library path for linker</li>
 
 <li>Setup SSH keys</li>
 
@@ -10125,7 +10127,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[Debug shared library dependencies]] [[Implement library function hooking]] [[Setup library path for linker]] [[Get GLIBC version binary is linked against]] [[List symbols and other info of an object file]] [[Record and play sound in terminal]] [[Tshark use]] [[Dump network traffic on specific port]] [[Cut tailing 20s of mp3 files]] [[Extract audio from video files]] [[Download audio from Youtube]] [[Download video from Youtube]] [[Trace malloc calls]] [[Trace dynamic libs calls]] [[Trace system calls and signals]] [[Sync local dirs]] [[Create and use a shared library]] [[Get X selection]] [[Print X event coming to window]] [[Colors in Bash]] [[Fix signature verification error]] [[Delete huge number of files]] [[Send notification from terminal]] [[Download file with name from 'Content-Disposition']] [[Use curl to post data from stdin]] [[Verify HTTPS site]] [[Connect to gmail using SSL]] [[Verify SSL connection]] [[Show/kill/signal process that use file]] [[Pretty print XML]] [[Create a new user]] [[Generate password]] [[Fix 'locate' error]] [[Make 'locate' work]] [[Add user to group]] [[Groups user belogs to]]" modified="20200425152106275" title="$:/StoryList">
+<div created="20200425102841584" list="[[Add shared library dir]] [[Debug shared library dependencies]] [[Implement library function hooking]] [[Linker library path]] [[Get GLIBC version binary is linked against]] [[List symbols and other info of an object file]] [[Record and play sound in terminal]] [[Tshark use]] [[Dump network traffic on specific port]] [[Cut tailing 20s of mp3 files]] [[Extract audio from video files]] [[Download audio from Youtube]] [[Download video from Youtube]] [[Trace malloc calls]] [[Trace dynamic libs calls]] [[Trace system calls and signals]] [[Sync local dirs]] [[Create and use a shared library]] [[Get X selection]] [[Print X event coming to window]] [[Colors in Bash]] [[Fix signature verification error]] [[Delete huge number of files]] [[Send notification from terminal]] [[Download file with name from 'Content-Disposition']] [[Use curl to post data from stdin]] [[Verify HTTPS site]] [[Connect to gmail using SSL]] [[Verify SSL connection]] [[Show/kill/signal process that use file]] [[Pretty print XML]] [[Create a new user]] [[Generate password]] [[Fix 'locate' error]] [[Make 'locate' work]] [[Add user to group]] [[Groups user belogs to]]" modified="20200425152106275" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10313,6 +10315,14 @@ cat -n
 nl
 ```
 </pre>
+</div>
+<div created="20200425154330474" modified="20200425154406581" tags="Linux" title="Add shared library dir">
+<pre>```
+$ export LD_LIBRARY_PATH=&lt;lib dir&gt;
+$ man ldconfig
+```
+
+LD_LIBRARY_PATH is used by your program to search directories containing shared libraries after it has been successfully compiled and linked.</pre>
 </div>
 <div created="20200424085339651" modified="20200424085351431" tags="" title="Add TLS encryption to existing clients and servers">
 <pre>https://www.stunnel.org/index.html</pre>
@@ -11444,6 +11454,12 @@ $ !!
 
 [[Last argument]]</pre>
 </div>
+<div created="20200425154024174" modified="20200425154440282" tags="Linux" title="Linker library path">
+<pre>LIBRARY_PATH or -L flag
+
+LIBRARY_PATH is used by gcc before compilation to search directories containing static and shared libraries that need to be linked to your program.
+</pre>
+</div>
 <div created="20200424090639849" modified="20200424090717856" tags="Linux" title="Linux special files">
 <pre>* /dev/null
 * /dev/zero
@@ -11922,12 +11938,6 @@ nameserver 8.8.8.8
 nameserver 8.8.4.4
 search example.com
 ```
-</pre>
-</div>
-<div created="20200425154024174" modified="20200425154324407" tags="Linux" title="Setup library path for linker">
-<pre>LIBRARY_PATH or -L flag
-
-LIBRARY_PATH is used by gcc before compilation to search directories containing static and shared libraries that need to be linked to your program.
 </pre>
 </div>
 <div created="20200425115702390" modified="20200425115749446" tags="Ssh" title="Setup SSH keys">
