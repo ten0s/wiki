@@ -279,6 +279,8 @@ Error message and password prompt
 
 <li>Configure NTP</li>
 
+<li>Connect to gmail using SSL</li>
+
 <li>Convert bases in terminal</li>
 
 <li>Convert dot file to png</li>
@@ -10073,7 +10075,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="[[Verify SSL connection]] [[Show/kill/signal process that use file]] [[Pretty print XML]] [[Create a new user]] [[Generate password]] [[Fix 'locate' error]] [[Make 'locate' work]] [[Add user to group]] [[Groups user belogs to]]" modified="20200425145226913" title="$:/StoryList">
+<div created="20200425102841584" list="[[Connect to gmail using SSL]] [[Verify SSL connection]] [[Show/kill/signal process that use file]] [[Pretty print XML]] [[Create a new user]] [[Generate password]] [[Fix 'locate' error]] [[Make 'locate' work]] [[Add user to group]] [[Groups user belogs to]]" modified="20200425145226913" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10517,6 +10519,22 @@ For correct synchronization, the delay and offset values should be non-zero and 
 
 ```
 $ ntpstat
+```
+</pre>
+</div>
+<div created="20200425150454702" modified="20200425150550430" tags="Linux Ssl" title="Connect to gmail using SSL">
+<pre>```
+$ openssl s_client -starttls smtp -connect smtp.gmail.com:587 -crlf -ign_eof
+EHLO localhost
+AUTH LOGIN
+$EMAIL
+$PASSW
+MAIL FROM: &lt;USER@gmail.com&gt;
+RCPT TO: &lt;USER@gmail.com&gt;
+DATA
+Helo
+.
+quit
 ```
 </pre>
 </div>
