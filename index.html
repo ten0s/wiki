@@ -141,6 +141,8 @@ Error message and password prompt
 
 <p>This <a class="tc-tiddlylink-external" href="https://tiddlywiki.com" rel="noopener noreferrer" target="_blank">TiddlyWiki</a> contains the following tiddlers:</p><p><ul>
 
+<li>$:/config/AutoSave</li>
+
 <li>$:/config/NewJournal/Title</li>
 
 <li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/close-all</li>
@@ -171,9 +173,13 @@ Error message and password prompt
 
 <li>$:/state/sidebar</li>
 
+<li>$:/state/tab--1498284803</li>
+
 <li>$:/state/tab--1936963165</li>
 
 <li>$:/state/tab--1963855381</li>
+
+<li>$:/state/tab--2112689675</li>
 
 <li>$:/state/tab-1163638994</li>
 
@@ -208,6 +214,8 @@ Error message and password prompt
 <li>$:/status/RequireReloadDueToPluginChange</li>
 
 <li>$:/StoryList</li>
+
+<li>$:/temp/advancedsearch</li>
 
 <li>$:/temp/info-plugin</li>
 
@@ -456,8 +464,6 @@ Error message and password prompt
 <li>Good commit messages</li>
 
 <li>Groups user belogs to</li>
-
-<li>How to make libraries</li>
 
 <li>How to SOCKsify?</li>
 
@@ -723,8 +729,11 @@ Error message and password prompt
 <!--~~ Ordinary tiddlers ~~-->
 
 <div id="storeArea" style="display:none;">
-<div created="20200423164939733" modified="20200423164948788" title="$:/config/NewJournal/Title">
-<pre>DD MM YYYY</pre>
+<div created="20200426080701886" modified="20200426080701886" title="$:/config/AutoSave">
+<pre>no</pre>
+</div>
+<div created="20200423164939733" modified="20200426080919508" title="$:/config/NewJournal/Title">
+<pre>YYYY-MM-DD</pre>
 </div>
 <div created="20200423165821213" modified="20200423165821213" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/close-all">
 <pre>show</pre>
@@ -10145,26 +10154,32 @@ Error message and password prompt
 <div created="20200423185759928" modified="20200423190429557" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
+<div created="20200426080944128" modified="20200426081003367" title="$:/state/tab--1498284803">
+<pre>$:/core/ui/AdvancedSearch/Filter</pre>
+</div>
 <div created="20200423165015115" modified="20200423165020537" title="$:/state/tab--1936963165">
 <pre>$:/core/ui/TiddlerInfo/Fields</pre>
 </div>
 <div created="20200423185936241" modified="20200423185936241" title="$:/state/tab--1963855381">
 <pre>$:/themes/tiddlywiki/vanilla/themetweaks</pre>
 </div>
+<div created="20200426080923623" modified="20200426080927963" title="$:/state/tab--2112689675">
+<pre>$:/core/ui/ControlPanel/Basics</pre>
+</div>
 <div created="20200423185746824" modified="20200423185748566" title="$:/state/tab-1163638994">
 <pre>$:/core/ui/MoreSideBar/Plugins/Theme</pre>
 </div>
-<div created="20200422190448118" modified="20200423185934726" title="$:/state/tab-1749438307">
+<div created="20200422190448118" modified="20200426081011211" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Appearance</pre>
 </div>
-<div created="20200422190449586" modified="20200422190449586" title="$:/state/tab-2065006209">
-<pre>$:/core/ui/ControlPanel/Saving/GitHub</pre>
+<div created="20200422190449586" modified="20200426080700019" title="$:/state/tab-2065006209">
+<pre>$:/core/ui/ControlPanel/Saving/General</pre>
 </div>
 <div created="20200423185505844" modified="20200423185751758" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/All</pre>
 </div>
-<div created="20200422191529492" modified="20200425170212330" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/Open</pre>
+<div created="20200422191529492" modified="20200426080717963" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Recent</pre>
 </div>
 <div created="20200423185641804" modified="20200423185641804" title="$:/state/tree/$:/config/">
 <pre>show</pre>
@@ -10199,7 +10214,10 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200425102841584" list="" modified="20200425173204026" title="$:/StoryList">
+<div created="20200426080655420" list="" modified="20200426081055885" title="$:/StoryList">
+<pre></pre>
+</div>
+<div created="20200426080944127" modified="20200426081006916" title="$:/temp/advancedsearch">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10263,7 +10281,7 @@ Error message and password prompt
 <div created="20200423165127488" modified="20200425150426802" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200425173236376" title="$:/temp/search">
+<div created="20200422190456346" modified="20200426080711672" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
@@ -10846,11 +10864,11 @@ $ sensors
 ```
 </pre>
 </div>
-<div created="20200425145843386" modified="20200425172930119" tags="Linux" title="Create a new user">
+<div created="20200425145843386" modified="20200425145941868" tags="Linux" title="Create a new user">
 <pre>```
 # adduser -c &quot;User Name&quot; -d /home/USER-s /bin/bash USER
 # passwd USER
-# echo 'USER ALL=(ALL) ALL' &gt;&gt; 
+# echo 'ten0s ALL=(ALL) ALL' &gt;&gt; 
 ```
 
 /etc/sudoers
@@ -11006,7 +11024,7 @@ $ ssh -T git@github.com
 # Open the same URL in Android Chrome
 </pre>
 </div>
-<div created="20200425154146448" modified="20200425171958490" tags="Linux" title="Debug shared library dependencies">
+<div created="20200425154146448" modified="20200426081101516" tags="Linux" title="Debug shared library dependencies">
 <pre>https://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html
 
 ```
@@ -11029,7 +11047,7 @@ $ echo -e '1\n \t \n2\n3\n   \n4\n\n5' | awk 'NF &gt; 0'
 $ awk -F: '!/^$/ { print $2 }' /etc/nodes.cfg
 ```</pre>
 </div>
-<div created="20200425130813376" modified="20200425173026811" tags="Linux" title="Delete empty lines (newlines only)">
+<div created="20200425130813376" modified="20200425130940618" tags="Linux" title="Delete empty lines (newlines only)">
 <pre>```
 $ echo -e '1\n2\n3\n4\n\n5' | awk '!/^$/'
 1
@@ -11037,10 +11055,7 @@ $ echo -e '1\n2\n3\n4\n\n5' | awk '!/^$/'
 3
 4
 5
-```
-
-```
-$ echo -e '1\n2\n3\n4\n\n5' | sed '/^$/d'
+ten0s@tuna ~ $ echo -e '1\n2\n3\n4\n\n5' | sed '/^$/d'
 1
 2
 3
@@ -11460,10 +11475,8 @@ $ reset
 ```
 </pre>
 </div>
-<div created="20200425154708085" modified="20200425172101733" tags="Linux" title="Fix: cannot load shared object file">
-<pre>https://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html
-
-# $ sudo ldconfig
+<div created="20200425154708085" modified="20200425154749281" tags="Linux" title="Fix: cannot load shared object file">
+<pre># $ sudo ldconfig
 # check LD_LIBRARY_PATH
 # check and update /etc/ld.so.conf and then run `sudo ldconfig'
 </pre>
@@ -11489,8 +11502,10 @@ $ ssh -F /dev/null -o PubkeyAuthentication=no pi@printerpi
 
 </pre>
 </div>
-<div created="20200425130423643" modified="20200425130442246" tags="Linux" title="Fstab example">
-<pre>```
+<div created="20200425130423643" modified="20200426080849493" tags="Linux" title="Fstab example">
+<pre>/etc/fstab
+
+```
 # automount disk by id
 /dev/disk/by-id/usb-StoreJet_Transcend_700FFFFFFFFF-0:0-part1 /media/ten0s/Transcend auto nosuid,nodev,nofail,noauto,x-gvfs-show 0 0
 # automount samba share (make sure /media/Transcend exists)
@@ -11574,10 +11589,6 @@ $ xsel
 <pre>```
 $ groups
 ```
-</pre>
-</div>
-<div created="20200425172529957" modified="20200425172609447" tags="Linux" title="How to make libraries">
-<pre>https://tldp.org/HOWTO/Program-Library-HOWTO/index.html
 </pre>
 </div>
 <div created="20200425170920294" modified="20200425171828671" tags="Linux" title="How to SOCKsify?">
@@ -12606,11 +12617,11 @@ rsync -avh [--delete] SRC/ DST/
 
 </pre>
 </div>
-<div created="20200425114959653" modified="20200425173053771" tags="Git" title="Sync with upstream">
+<div created="20200425114959653" modified="20200425115633545" tags="Git" title="Sync with upstream">
 <pre>* Fork https://github.com/ORG/REPO/ 
 
 ```
-$ git clone git@github.com:USER/REPO.git
+$ git clone git@github.com:ten0s/REPO.git
 $ cd REPO
 ```
 
@@ -12895,7 +12906,7 @@ $ curl -H '...' # add http header
 $ pstree -hapc | less -R
 ```</pre>
 </div>
-<div created="20200423191811323" modified="20200425173155518" tags="Git Ssh Docker" title="Use ssh-agent in Docker container">
+<div created="20200423191811323" modified="20200423195718405" tags="Git Ssh Docker" title="Use ssh-agent in Docker container">
 <pre>HOST:
 
 ```
@@ -12908,7 +12919,7 @@ GUEST:
 ```
 $ apt update &amp;&amp; apt -y install openssh-client
 $ ssh -T git@github.com
-Hi USER! You've successfully authenticated, but GitHub does not provide shell access.
+Hi ten0s! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 </pre>
 </div>
