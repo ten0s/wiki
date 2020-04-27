@@ -163,6 +163,8 @@ Error message and password prompt
 
 <li>$:/Import</li>
 
+<li>$:/Import!!popup-Untitled</li>
+
 <li>$:/isEncrypted</li>
 
 <li>$:/SiteSubtitle</li>
@@ -204,6 +206,8 @@ Error message and password prompt
 <li>$:/state/toc/TableOfContents-Linux--118161433</li>
 
 <li>$:/state/toc/TableOfContents-Ssh--118161433</li>
+
+<li>$:/state/toc/TableOfContents-TiddlyWiki--118161433</li>
 
 <li>$:/state/toc/TableOfContents-Ubuntu--118161433</li>
 
@@ -423,6 +427,8 @@ Error message and password prompt
 
 <li>Download video from Youtube</li>
 
+<li>DraggableTaskTemplate</li>
+
 <li>Dump network traffic on specific port</li>
 
 <li>Dynamic libs process uses</li>
@@ -559,6 +565,8 @@ Error message and password prompt
 
 <li>Make Mobile Web App fullscreen</li>
 
+<li>Make wiki work offline on Android</li>
+
 <li>Make xargs to execute each input line as a command</li>
 
 <li>Max PID value</li>
@@ -614,6 +622,20 @@ Error message and password prompt
 <li>Python</li>
 
 <li>Query system configuration vars</li>
+
+<li>Read &quot;Customise TW&quot;</li>
+
+<li>Read &quot;Editions&quot;</li>
+
+<li>Read &quot;Features&quot;</li>
+
+<li>Read &quot;Platforms&quot;</li>
+
+<li>Read &quot;Reference&quot;</li>
+
+<li>Read &quot;TW dev&quot;</li>
+
+<li>Read &quot;Working with TW&quot;</li>
 
 <li>Record and play sound in terminal</li>
 
@@ -725,11 +747,15 @@ Error message and password prompt
 
 <li>TableOfContents</li>
 
+<li>task</li>
+
 <li>TCP client (w/o netcat)</li>
 
 <li>Throttle wget, yum, etc download rate</li>
 
 <li>TiddlyWiki</li>
+
+<li>ToDo</li>
 
 <li>Trace dynamic libs calls</li>
 
@@ -739,11 +765,15 @@ Error message and password prompt
 
 <li>Troubleshoot ssh-agent forwarding</li>
 
+<li>Try Node.js version</li>
+
 <li>Tshark use</li>
 
 <li>Turn console process to server (netcat)</li>
 
 <li>Ubuntu</li>
+
+<li>Untitled</li>
 
 <li>Untrack tracked files</li>
 
@@ -10177,15 +10207,13 @@ Error message and password prompt
 <div created="20200422190452018" modified="20200422190452463" title="$:/GitHub/Username">
 <pre>ten0s</pre>
 </div>
-<div plugin-type="import" status="pending" title="$:/Import" type="application/json">
-<pre>{
-    &quot;tiddlers&quot;: {
-        &quot;Untitled&quot;: {
-            &quot;title&quot;: &quot;Untitled&quot;,
-            &quot;text&quot;: &quot;convert binary to hexdump&quot;
-        }
-    }
-}</pre>
+<div status="complete" title="$:/Import">
+<pre>The following tiddlers were imported:
+
+# [[DraggableTaskTemplate]]</pre>
+</div>
+<div created="20200427171345454" modified="20200427171345454" title="$:/Import!!popup-Untitled">
+<pre>yes</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -10247,8 +10275,11 @@ Error message and password prompt
 <div created="20200426101649048" modified="20200426101709644" title="$:/state/toc/TableOfContents-Linux--118161433">
 <pre>close</pre>
 </div>
-<div created="20200426101725065" modified="20200426101732344" title="$:/state/toc/TableOfContents-Ssh--118161433">
+<div created="20200426101725065" modified="20200427170600322" title="$:/state/toc/TableOfContents-Ssh--118161433">
 <pre>close</pre>
+</div>
+<div created="20200427165444695" modified="20200427170606609" title="$:/state/toc/TableOfContents-TiddlyWiki--118161433">
+<pre>open</pre>
 </div>
 <div created="20200426101657879" modified="20200426101738390" title="$:/state/toc/TableOfContents-Ubuntu--118161433">
 <pre>close</pre>
@@ -10286,7 +10317,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200426080655420" list="" modified="20200426101849172" title="$:/StoryList">
+<div created="20200427165445786" list="[[Read &quot;TW dev&quot;]] ToDo" modified="20200427171452497" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200426081006916" title="$:/temp/advancedsearch">
@@ -10350,7 +10381,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200423165127488" modified="20200426101803779" title="$:/temp/NewTagName">
+<div created="20200423165127488" modified="20200427173150343" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
 <div created="20200422190456346" modified="20200426080711672" title="$:/temp/search">
@@ -11430,6 +11461,9 @@ $ curl -JO URL
 $ youtube-dl -f bestvideo+bestaudio FILE_OR_PLAYLIST_URL
 ```</pre>
 </div>
+<div created="20180307153530187" modified="20200427171503827" tags="TiddlyWiki" title="DraggableTaskTemplate" type="text/vnd.tiddlywiki">
+<pre>&lt;$checkbox tag=&quot;done&quot;&gt; &lt;$link to={{!!title}}&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt;&lt;/$checkbox&gt;</pre>
+</div>
 <div created="20200425153107784" modified="20200425153158473" tags="Linux" title="Dump network traffic on specific port">
 <pre>```
 $ sudo tcpdump -ni docker0 port 5061 -v # print whole message bodies to console
@@ -11983,6 +12017,11 @@ $ convert -delay 120 -loop 0 -gravity center -background white -extent 300x450 *
 <pre>https://developers.google.com/web/fundamentals/native-hardware/fullscreen/
 </pre>
 </div>
+<div created="20200427171823897" modified="20200427171937097" tags="task" title="Make wiki work offline on Android">
+<pre>* JS doesn't work
+* See apps/random gym. Manifect?
+</pre>
+</div>
 <div created="20200424090505327" modified="20200424090534442" tags="Linux Bash" title="Make xargs to execute each input line as a command">
 <pre>```
 $ echo -e '1\n2\n3' | xargs echo
@@ -12271,6 +12310,28 @@ $ git push origin --tags  # all tags
 $ getconf -a
 ```
 </pre>
+</div>
+<div created="20200427170828372" modified="20200427170918009" tags="task" title="Read &quot;Customise TW&quot;">
+<pre></pre>
+</div>
+<div created="20200427171635970" modified="20200427171745085" tags="task" title="Read &quot;Editions&quot;">
+<pre>https://tiddlywiki.com/#Editions</pre>
+</div>
+<div created="20200427171558055" modified="20200427171612088" tags="task" title="Read &quot;Features&quot;">
+<pre>https://tiddlywiki.com/#Features</pre>
+</div>
+<div created="20200427171650608" modified="20200427171711718" tags="task" title="Read &quot;Platforms&quot;">
+<pre>https://tiddlywiki.com/#Platforms</pre>
+</div>
+<div created="20200427171722709" modified="20200427171734370" tags="task" title="Read &quot;Reference&quot;">
+<pre>https://tiddlywiki.com/#Reference</pre>
+</div>
+<div created="20200427173129614" modified="20200427173151972" tags="task" title="Read &quot;TW dev&quot;">
+<pre>https://tiddlywiki.com/dev/
+</pre>
+</div>
+<div created="20200427170634403" modified="20200427171027005" tags="task" title="Read &quot;Working with TW&quot;">
+<pre>https://tiddlywiki.com/#Working%20with%20TiddlyWiki</pre>
 </div>
 <div created="20200425153403557" modified="20200425153512744" tags="Linux" title="Record and play sound in terminal">
 <pre>```
@@ -12912,6 +12973,9 @@ $ cat /proc/uptime # total uptime(secs) idle time(secs)
 &lt;/div&gt;
 </pre>
 </div>
+<div created="20200427173158521" list="[[Read &quot;TW dev&quot;]] [[Read &quot;Working with TW&quot;]] [[Read &quot;Customise TW&quot;]] [[Read &quot;Features&quot;]] [[Read &quot;Editions&quot;]] [[Read &quot;Platforms&quot;]] [[Read &quot;Reference&quot;]] [[Try Node.js version]] [[Make wiki work offline on Android]]" modified="20200427173158521" title="task">
+<pre></pre>
+</div>
 <div created="20200425161848192" modified="20200425161940628" tags="Bash Linux" title="TCP client (w/o netcat)">
 <pre>Server:
 
@@ -12947,6 +13011,24 @@ limit-rate=256k
 </div>
 <div created="20200426101521895" modified="20200426101530502" tags="TableOfContents" title="TiddlyWiki">
 <pre></pre>
+</div>
+<div created="20200427170202612" modified="20200427171523845" tags="TiddlyWiki" title="ToDo">
+<pre>! Outstanding tasks
+
+//Drag the tasks to re-order them//
+
+&lt;&lt;list-tagged-draggable tag:&quot;task&quot; subFilter:&quot;!has[draft.of]!tag[done]&quot; itemTemplate:&quot;DraggableTaskTemplate&quot; emptyMessage:&quot;You don't have any active tasks&quot;&gt;&gt;
+
+! Completed tasks
+
+//(Listed in reverse order of completion)//
+
+&lt;$list filter=&quot;[!has[draft.of]tag[task]tag[done]sort[created]]&quot;&gt;
+&lt;div&gt;
+&lt;$checkbox tag=&quot;done&quot;&gt; ~~&lt;$link to={{!!title}}&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt;~~&lt;/$checkbox&gt;
+&lt;/div&gt;
+&lt;/$list&gt;
+</pre>
 </div>
 <div created="20200425152254642" modified="20200425152412310" tags="Linux" title="Trace dynamic libs calls">
 <pre>```
@@ -13004,6 +13086,9 @@ $ ssh-add -k id_rsa
 ```
 </pre>
 </div>
+<div created="20200427171801608" modified="20200427171820595" tags="task" title="Try Node.js version">
+<pre></pre>
+</div>
 <div created="20200425153209827" modified="20200425153249484" tags="Linux" title="Tshark use">
 <pre>```
 $ sudo tshark -D # list interfaces
@@ -13047,6 +13132,9 @@ done
 </div>
 <div created="20200426101443212" modified="20200426101456211" tags="TableOfContents" title="Ubuntu">
 <pre></pre>
+</div>
+<div title="Untitled">
+<pre>convert binary to hexdump</pre>
 </div>
 <div created="20200423172053785" modified="20200423172119084" tags="Git" title="Untrack tracked files">
 <pre>```
