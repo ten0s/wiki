@@ -515,6 +515,8 @@ Error message and password prompt
 
 <li>Extract audio from video files</li>
 
+<li>Fault, Error and Failure</li>
+
 <li>Fibonacci and Factorial using math</li>
 
 <li>Files process uses</li>
@@ -10439,8 +10441,8 @@ Error message and password prompt
 <div created="20200428101546086" modified="20200428102659163" title="$:/state/toc/TableOfContents/Dev-Algorithm--118161433">
 <pre>close</pre>
 </div>
-<div created="20200428102954871" modified="20200428102954871" title="$:/state/toc/TableOfContents/Dev-Erlang--118161433">
-<pre>open</pre>
+<div created="20200428102954871" modified="20200428105054432" title="$:/state/toc/TableOfContents/Dev-Erlang--118161433">
+<pre>close</pre>
 </div>
 <div created="20200423185641804" modified="20200423185641804" title="$:/state/tree/$:/config/">
 <pre>show</pre>
@@ -10475,7 +10477,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200428091224083" list="" modified="20200428104353773" title="$:/StoryList">
+<div created="20200428091224083" list="Principles [[Fault, Error and Failure]] [[Erlang links]]" modified="20200428105056065" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200426081006916" title="$:/temp/advancedsearch">
@@ -13609,10 +13611,36 @@ Erlware Commons (Erlang components)
 https://github.com/erlware/erlware_commons
 </pre>
 </div>
-<div created="20200428103529540" modified="20200428103539779" tags="Erlang" title="Erlang links">
+<div created="20200428103529540" modified="20200428104932985" tags="Erlang" title="Erlang links">
 <pre>Best articles, videos, etc about Erlang
 ===
 https://spawnedshelter.com/
+
+Self healing systems
+===
+https://en.wikipedia.org/wiki/Autonomic_computing
+http://ubiquity.acm.org/article.cfm?id=1241853
+http://www.ics.uci.edu/~andre/papers/C23.pdf
+http://www.clei.org/cleiej/papers/v10i2p5.pdf
+
+
+https://www.youtube.com/watch?v=rSxinQVWQf0
+https://www.youtube.com/watch?v=NoR-Z3PZqq0
+https://www.youtube.com/watch?v=v31RH8fA_N4
+https://www.youtube.com/watch?v=FnhvxnlF2xE
+https://www.youtube.com/watch?v=CQyt9Vlkbis
+https://www.youtube.com/watch?v=4LU4k2nFTKs
+https://www.youtube.com/watch?v=iquZl-CUR_U
+https://www.youtube.com/watch?v=IdJwECjylB4
+
+Rainbows and Unikernels
+https://www.youtube.com/watch?v=cUvNths_5RA
+
+http://advanced-erlang.com/videos/
+
+Distributed systems for fun and profit
+http://book.mixu.net/distsys/single-page.html
+
 
 EJabberD docs
 ===
@@ -14078,6 +14106,25 @@ for f in *.mp4; do
     fi
 done
 ```</pre>
+</div>
+<div created="20200428105003694" modified="20200428105026110" tags="Erlang" title="Fault, Error and Failure">
+<pre>A_comparative_analysis_of_hardware_and_s.pdf
+
+1.1 Coping with Faults
+* Fault avoidance
+* Fault removal
+* Fault tolerance
+1.2 Fault, Error and Failure
+1.3  Fault Tolerance
+* Detecting Errors
+* Assessing Damage
+* Error Recovery
+* Fault Removal (see 1.1)
+
+http://www.cse.cuhk.edu.hk/~lyu/book/sft/
+http://www.amazon.com/Fault-Tolerant-Systems-Israel-Koren/dp/0120885255
+http://www.amazon.com/Fault-Tolerant-Design-Elena-Dubrova/dp/1461421128
+</pre>
 </div>
 <div created="20200428101614852" modified="20200428101629767" tags="Algorithm" title="Fibonacci and Factorial using math">
 <pre>https://www.evanmiller.org/mathematical-hacker.html
@@ -15269,7 +15316,7 @@ $ cat data.xml | xmllint --format -
 ```
 </pre>
 </div>
-<div created="20200428101236702" modified="20200428101341948" tags="Dev" title="Principles">
+<div created="20200428101236702" modified="20200428105116627" tags="Dev" title="Principles">
 <pre>* Parse raw data from file, db, etc into intermediate internal representation (AST)
 
 * Every periodic task should be disableable at startup and/or runtime.
@@ -15277,7 +15324,8 @@ $ cat data.xml | xmllint --format -
 * Every const should go into config.
 &gt; You cannot hard code any constants in your code. It all has to be in flash, accessible and changeable by the most rudimentary means from a remote system control that might have the equivalent of a 300 baud connection
 https://www.johndcook.com/blog/2008/06/17/software-in-space/
-</pre>
+
+* Server in general must not crash due to bad data</pre>
 </div>
 <div created="20200425151647650" modified="20200425151721199" tags="Linux" title="Print X event coming to window">
 <pre>```
