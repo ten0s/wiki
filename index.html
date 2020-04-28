@@ -499,6 +499,8 @@ Error message and password prompt
 
 <li>Erlang links</li>
 
+<li>Erlang setup</li>
+
 <li>Error code description</li>
 
 <li>Error codes</li>
@@ -12529,6 +12531,157 @@ http://rickosborne.org/blog/2010/02/playing-around-with-mongodb-and-mapreduce-fu
 Trees in Erlang
 ===
 http://mark.aufflick.com/blog/2007/11/30/trees-in-erlang
+</pre>
+</div>
+<div created="20200428103642253" modified="20200428103653367" tags="Erlang" title="Erlang setup">
+<pre>export OTP_LIB_DIR=/opt/r16b03-1/lib
+dialyzer --build_plt --apps `ls -d $OTP_LIB_DIR/*/ebin | sed -E &quot;s:$OTP_LIB_DIR/(.*)-.*:\1:&quot; | xargs`
+dialyzer -r ebin deps/*/ebin
+
+# build global plt
+dialyzer --build_plt --output_plt ~/.r18.1.plt --apps kernel stdlib erts crypto public_key mnesia sasl common_test eunit ssh ssl asn1 compiler syntax_tools tools inets snmp xmerl
+# built local plt
+dialyzer --add_to_plt --plt ~/.r18.1.plt --output_plt ./.dyn_tracer.plt -r ./deps/*/ebin/ ./apps/*/ebin/
+# check
+dialyzer --plt .dyn_tracer.plt -r ./apps/*/ebin/ -Wno_improper_lists
+
+kerl
+====
+
+Debian/Ubuntu
+$ sudo apt-get install build-essential libwxgtk2.8-dev libglu-dev xsltproc libssl-dev libncurses5-dev fop unixodbc-dev default-jdk libtk-img-dev
+RHEL/CentOS
+$ sudo yum install gcc glibc-devel make ncurses-devel openssl-devel autoconf wxGTK-devel fop unixODBC-devel java-1.6.0-openjdk-devel libxslt # with wx, javac
+$ sudo yum install gcc glibc-devel make ncurses-devel openssl-devel autoconf # without
+
+cat &gt; ~/.kerlrc
+KERL_CONFIGURE_OPTIONS=&quot;--with-wx&quot; # &quot;--without-wx --without-javac --without-odbc&quot;
+KERL_DEFAULT_INSTALL_DIR=/opt
+KERL_INSTALL_MANPAGES=
+KERL_INSTALL_HTMLDOCS=0
+
+sudo mkdir -p /opt/bin
+
+pushd /opt/bin
+sudo curl -O https://raw.githubusercontent.com/spawngrid/kerl/master/kerl
+sudo chmod +x kerl
+pushd /etc/bash_completion.d
+sudo curl -O https://raw.githubusercontent.com/yrashk/kerl/master/bash_completion/kerl
+popd
+
+add to /etc/profile
+export PATH=/opt/bin:$PATH
+
+kerl list releases
+
+kerl build R15B03-1 r15b03-1
+kerl build R16B03-1 r16b03-1
+kerl build 17.5 r17.5
+
+kerl list builds
+sudo kerl install r15b03-1
+sudo kerl install r16b03-1
+sudo kerl install r17.5
+
+
+R16B03-1
+$ wget http://www.erlang.org/download/otp_src_R16B03-1.tar.gz
+$ wget http://www.erlang.org/download/otp_doc_html_R16B03-1.tar.gz
+$ wget http://www.erlang.org/download/otp_doc_man_R16B03-1.tar.gz
+$ tar xfz otp_src_R16B03-1.tar.gz
+$ cd otp_src_R16B03-1
+$ ./configure --prefix=/opt/otp-r16b03-1 CFLAGS=&quot;-DOPENSSL_NO_EC=1 -g -O2&quot;
+$ make
+$ sudo make install
+$ sudo tar xfz otp_doc_html_R16B03-1.tar.gz -C /opt/otp-r16b03-1/lib/erlang
+$ sudo tar xfz otp_doc_man_R16B03-1.tar.gz -C /opt/otp-r16b03-1/lib/erlang
+$ cd ~/.emacs.d
+$ find /opt/otp-r16b03-1/lib/erlang/lib -name &quot;*.[e,h]rl&quot; -print | sudo etags -
+
+!!
+!! CentOS 6.5 and probably RHEL specific
+!! CFLAGS=&quot;-DOPENSSL_NO_EC=1 -g -O2&quot;
+!!
+
+R17
+$ wget http://www.erlang.org/download/otp_src_17.0.tar.gz
+$ wget http://www.erlang.org/download/otp_doc_html_17.0.tar.gz
+$ tar xfz otp_src_17.0.tar.gz
+$ cd otp_src_17.0
+$ ./configure --prefix=/opt/otp-r17
+$ make
+$ sudo make install
+$ sudo tar xfz otp_doc_html_17.0.tar.gz -C /opt/otp-r17/lib/erlang
+
+2. Download, build, and install Erlang R14B04 release
+$ wget http://www.erlang.org/download/otp_src_R14B04.tar.gz
+$ wget http://www.erlang.org/download/otp_doc_html_R14B04.tar.gz
+$ wget http://www.erlang.org/download/otp_doc_man_R14B04.tar.gz
+$ tar xfz otp_src_R14B04.tar.gz
+$ cd otp_src_R14B04/
+$ ./configure --prefix=/opt/otp-r14b04
+$ make
+$ sudo make install
+$ sudo tar xfz otp_doc_html_R14B04.tar.gz -C /opt/otp-r14b04/lib/erlang
+$ sudo tar xfz otp_doc_man_R14B04.tar.gz  -C /opt/otp-r14b04/lib/erlang
+
+3. Download, build, and install Erlang R15B01 release
+$ wget http://www.erlang.org/download/otp_src_R15B01.tar.gz
+$ wget http://www.erlang.org/download/otp_doc_html_R15B01.tar.gz
+$ wget http://www.erlang.org/download/otp_doc_man_R15B01.tar.gz
+$ tar xfz otp_src_R15B01.tar.gz
+$ cd otp_src_R15B01/
+$ ./configure --prefix=/opt/otp-r15b01
+$ make
+$ sudo make install
+$ sudo tar xfz otp_doc_html_R15B01.tar.gz -C /opt/otp-r15b01/lib/erlang
+$ sudo tar xfz otp_doc_man_R15B01.tar.gz -C /opt/otp-r15b01/lib/erlang
+
+R15B03-1
+$ wget http://www.erlang.org/download/otp_src_R15B03-1.tar.gz
+$ wget http://www.erlang.org/download/otp_doc_html_R15B03-1.tar.gz
+$ wget http://www.erlang.org/download/otp_doc_man_R15B03-1.tar.gz
+$ tar xfz otp_src_R15B03-1.tar.gz
+$ cd otp_src_R15B03
+$ ./configure --prefix=/opt/otp-r15b03-1
+$ make
+$ sudo make install
+$ sudo tar xfz otp_doc_html_R15B03-1.tar.gz -C /opt/otp-r15b03-1/lib/erlang
+$ sudo tar xfz otp_doc_man_R15B03-1.tar.gz -C /opt/otp-r15b03-1/lib/erlang
+
+4. Insert into /etc/manpath.config
+
+MANPATH_MAP /opt/otp-r14b04/bin    /opt/otp-r14b04/lib/erlang/man
+MANPATH_MAP /opt/otp-r15b01/bin    /opt/otp-r15b01/lib/erlang/man
+MANPATH_MAP /opt/otp-r15b03-1/bin    /opt/otp-r15b03-1/lib/erlang/man
+
+MANPATH_MAP /opt/otp-r16b03/bin    /opt/otp-r16b03/lib/erlang/man
+
+5. Append to the .bashrc
+
+########### SHOULD BE THE LAST SECTION ##############
+
+function set-erlang-root() {
+    export ERL_ROOT=$1
+    export ERL_MANPATH=$ERL_ROOT/lib/erlang/man
+    export PATH=$ERL_ROOT/bin:$PATH
+}
+
+function set-r14b04() {
+    set-erlang-root &quot;/opt/otp-r14b04&quot;
+}
+
+function set-r15b01() {
+    set-erlang-root &quot;/opt/otp-r15b01&quot;
+}
+
+function set-r15b03-1() {
+    set-erlang-root &quot;/opt/otp-r15b03-1&quot;
+}
+
+set-r15b03-1
+
+########### DO NOT MODIFY PATH AFTER HERE ##########
 </pre>
 </div>
 <div created="20200425123925856" modified="20200425124216352" tags="Linux Bash Python" title="Error code description">
