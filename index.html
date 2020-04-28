@@ -223,6 +223,8 @@ Error message and password prompt
 
 <li>$:/state/toc/TableOfContents/Dev-Algorithm--118161433</li>
 
+<li>$:/state/toc/TableOfContents/Dev-Erlang--118161433</li>
+
 <li>$:/state/tree/$:/config/</li>
 
 <li>$:/state/tree/$:/config/BitmapEditor/</li>
@@ -347,6 +349,8 @@ Error message and password prompt
 
 <li>Cocktail party situation</li>
 
+<li>Coding Style Guidelines</li>
+
 <li>Colors in Bash</li>
 
 <li>Commit changes up to commit</li>
@@ -368,6 +372,8 @@ Error message and password prompt
 <li>Convert hexdump to binary</li>
 
 <li>Copy only first bytes from file</li>
+
+<li>Cover</li>
 
 <li>CPU Steal time</li>
 
@@ -420,6 +426,8 @@ Error message and password prompt
 <li>Determine your external IP</li>
 
 <li>Dev</li>
+
+<li>Dev Links</li>
 
 <li>Diff binary files</li>
 
@@ -480,6 +488,16 @@ Error message and password prompt
 <li>Enter GRUB menu</li>
 
 <li>Entropy</li>
+
+<li>Erlang</li>
+
+<li>Erlang core dump</li>
+
+<li>Erlang GC</li>
+
+<li>Erlang libs</li>
+
+<li>Erlang links</li>
 
 <li>Error code description</li>
 
@@ -571,6 +589,8 @@ Error message and password prompt
 
 <li>Investigate WLAN network</li>
 
+<li>Jobs</li>
+
 <li>Kademlia</li>
 
 <li>Keep SSH On</li>
@@ -586,8 +606,6 @@ Error message and password prompt
 <li>Lindy effect</li>
 
 <li>Linker library path</li>
-
-<li>Links</li>
 
 <li>Linux</li>
 
@@ -646,6 +664,8 @@ Error message and password prompt
 <li>Netcat SMTP client</li>
 
 <li>Netcat TCP server and client</li>
+
+<li>Netsplit</li>
 
 <li>Network emulation (netem)</li>
 
@@ -10397,7 +10417,10 @@ Error message and password prompt
 <div created="20200426101657879" modified="20200426101738390" title="$:/state/toc/TableOfContents-Ubuntu--118161433">
 <pre>close</pre>
 </div>
-<div created="20200428101546086" modified="20200428101546086" title="$:/state/toc/TableOfContents/Dev-Algorithm--118161433">
+<div created="20200428101546086" modified="20200428102659163" title="$:/state/toc/TableOfContents/Dev-Algorithm--118161433">
+<pre>close</pre>
+</div>
+<div created="20200428102954871" modified="20200428102954871" title="$:/state/toc/TableOfContents/Dev-Erlang--118161433">
 <pre>open</pre>
 </div>
 <div created="20200423185641804" modified="20200423185641804" title="$:/state/tree/$:/config/">
@@ -10433,7 +10456,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200428091224083" list="" modified="20200428101231421" title="$:/StoryList">
+<div created="20200428091224083" list="" modified="20200428102752373" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200426081006916" title="$:/temp/advancedsearch">
@@ -11004,6 +11027,32 @@ $ git clone https://github.com/organization/repo.git
 <div created="20200428093525928" modified="20200428093536682" tags="MentalModel" title="Cocktail party situation">
 <pre>Friends vs Strangers</pre>
 </div>
+<div created="20200428102754461" modified="20200428102923486" tags="Dev" title="Coding Style Guidelines">
+<pre>https://tiddlywiki.com/dev/#TiddlyWiki%20Coding%20Style%20Guidelines
+
+!!! Programming rules
+
+http://www.erlang.se/doc/programming_rules.shtml
+
+!!! Versionning for libraries
+
+in xxx.app.src use
+{vsn, git} -&gt; this way rebar replaces `git' with current tag name
+
+Принцип скаутского лагеря - уходя с поляны оставь ее чище, чем она была
+
+!!! Программист ставить свое время:
+* 20% - на написание кода
+* 80% - на чтение кода
+
+!!! Средство борьбы с говнокодом:
+* Self review
+* Unit tests
+* [Automatic code review] ??? what tools to use?
+* Парное программирование
+
+</pre>
+</div>
 <div created="20200425151427450" modified="20200425151609662" tags="Bash" title="Colors in Bash">
 <pre>```
 $ echo -e &quot;\e[01;32;42mTEXT\e[0m&quot;
@@ -11120,6 +11169,38 @@ $ echo 303132333435 | xxd -r -p
 dd if=calls.bin of=calls3.bin bs=7744 count=1
 ```
 
+</pre>
+</div>
+<div created="20200428103002758" modified="20200428103009314" tags="Erlang" title="Cover">
+<pre>http://www.erlang.org/documentation/doc-5.10.4/lib/tools-2.6.13/doc/html/cover.html
+
+cover:start().
+cover:compile_directory(&quot;../../src&quot;).
+
+START TESTS
+
+Modules = [module1, module2].
+
+[cover:analyse(M, coverage, module) || M &lt;- Modules].
+[{ok,{module1,{79,14}}},
+ {ok,{module2,{72,9}}}]
+
+[cover:analyse_to_file(M, [html]) || M &lt;- Modules].
+
+cover:stop().
+
+
+See define cover_report.erl in erlang.mk
+
+
+
+
+cover:compile_directory(&quot;../../../test/lib/swagger/src&quot;).
+art_api_backend_stub:enable().
+sso_api_stub:enable().
+TEST
+cover:export(&quot;../../../test/cover/art_api.coverdata&quot;).
+cover:export(&quot;../../../test/cover/sso_api.coverdata&quot;).
 </pre>
 </div>
 <div created="20200424085043246" modified="20200424085141455" tags="Linux" title="CPU Steal time">
@@ -11450,6 +11531,59 @@ $ curl api.ipify.org
 </div>
 <div created="20200428101055859" modified="20200428101102172" tags="TableOfContents" title="Dev">
 <pre></pre>
+</div>
+<div created="20200428101106124" modified="20200428102708735" tags="Dev" title="Dev Links">
+<pre>API design
+===
+http://apistylebook.com/
+https://www.restapitutorial.com/
+
+Graph/charts tools
+===
+https://github.com/stathissideris/ditaa
+http://plantuml.com/
+http://www.mcternan.me.uk/mscgen/
+https://github.com/bramp/js-sequence-diagrams
+https://github.com/adrai/flowchart.js
+https://github.com/morrisjs/morris.js
+https://mermaidjs.github.io/
+
+Syntax (railroad) diagram
+===
+https://en.wikipedia.org/wiki/Syntax_diagram
+http://bottlecaps.de/rr/ui
+http://www.json.org/
+http://www2.informatik.uni-freiburg.de/~thiemann/haskell/ebnf2ps/
+
+How Google Backs Up The Internet
+===
+https://www.youtube.com/watch?v=eNliOm9NtCM
+http://highscalability.com/blog/2014/2/3/how-google-backs-up-the-internet-along-with-exabytes-of-othe.html
+
+Don't Call Yourself A Programmer, And Other Career Advice
+developing software isn’t about programming, it’s about improving a business
+===
+http://www.kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/
+
+Code Reading
+===
+http://www.spinellis.gr/codereading/
+http://c2.com/cgi/wiki?TipsForReadingCode
+
+Scaling Experts
+===
+http://scalingexperts.com/
+
+Architecture of open source applications
+===
+http://www.aosabook.org/en/index.html
+
+On Motivation:
+- &quot;Carrot and stick&quot; doesn't work for anything that requires cognitive skill
+- Autonomy, mastery, purpose
+- ROWE: results-only work environment
+http://www.ted.com/talks/dan_pink_on_motivation
+</pre>
 </div>
 <div created="20200425120614329" modified="20200425120713884" tags="Bash" title="Diff binary files">
 <pre>```
@@ -11881,6 +12015,522 @@ Disorder always increases. This is known as the Second Law of Thermodynamics:
 entropy of a closed system will never decrease.
 </pre>
 </div>
+<div created="20200428102945495" modified="20200428102953270" tags="Dev" title="Erlang">
+<pre></pre>
+</div>
+<div created="20200428103115323" modified="20200428103127578" tags="Erlang" title="Erlang core dump">
+<pre>https://www.erlang-solutions.com/blog/how-to-analyse-a-beam-core-dump.html
+https://rkallos.com/blog/2018/04/22/erlang-debug-vms-what-why-and-how/
+
+Download core.23344 to workstation
+
+Let's find out what information is available
+$ gdb --core core.23344
+...
+Core was generated by `/home/hermes/art_helper/erts-8.3.5/bin/beam.smp -Bi -A16 -K true -- -root /home'.
+Program terminated with signal SIGSEGV, Segmentation fault.
+...
+
+Go to https://erlang.org/download/otp_versions_tree.html, find what version introduced erts-8.3.5. It's https://github.com/erlang/otp/tree/OTP-19.3.6
+
+$ docker run -it --rm centos7.x86_64-r19.3.6 bash
+
+$ git clone --branch OTP-19.3.6 https://github.com/erlang/otp.git
+$ cd otp
+
+https://erlang.org/doc/installation_guide/INSTALL.html
+https://github.com/erlang/otp/blob/OTP-19.3.6/HOWTO/INSTALL.md
+
+$ export ERL_TOP=`pwd`
+
+$ ./otp_build autoconf # not needed when building an unmodified version of the released source
+$ touch $ERL_TOP/lib/{debugger,et,jinterface,observer,odbc,wx}/SKIP
+$ ./configure # --without-debugger --without-javac --without-odbc --without-wx
+$ make
+
+How to Build a Debug Enabled Erlang RunTime System
+
+$ pushd $ERL_TOP/erts/emulator
+$ make debug FLAVOR=smp
+$ popd
+
+$ make install
+
+$ yum debuginfo-install boost-filesystem boost-system glibc keyutils-libs krb5 libcom_err libgcc libselinux libstdc++ ncurses-libs openssl-libs zlib
+$ yum install gdb
+
+$ gdb /usr/local/lib/erlang/erts-8.3.5/bin/beam.smp ~/core.23344 -d otp/erts/emulator/beam/
+(gdb) source otp/erts/etc/unix/etp-commands.in
+(gdb) bt
+</pre>
+</div>
+<div created="20200428103034928" modified="20200428103045649" tags="Erlang" title="Erlang GC">
+<pre>dse - Designing for Scalability with Erlang/OTP
+sgb - Stuff goes bad
+
+Erlang Garbage Collector
+https://www.erlang-solutions.com/blog/erlang-garbage-collector.html
+
+Erlang Garbage Collection Details and Why It Matters
+https://hamidreza-s.github.io/erlang%20garbage%20collection%20memory%20layout%20soft%20realtime/2015/08/24/erlang-garbage-collection-details-and-why-it-matters.html
+
+Erlang Scheduler Details and Why It Matters
+https://hamidreza-s.github.io/erlang/scheduling/real-time/preemptive/migration/2016/02/09/erlang-scheduler-details.html
+
+young (allocation) heap, old heap (dswe)
+old heap, new heap  (sgb)
+
+# dse
+Messages are copied from the stack of the sending process to the heap of the receiving one.
+
+# dse
+Using hibernate will discard the call stack and run a full-sweep garbage collection, placing
+everything in one continuous heap. The allocated memory is then shrunk to the size of the
+data on the heap. The server will remain in this state until it receives a new message.
+
+The Erlang runtime system uses a generational garbage collection scheme, using an &quot;old heap&quot; for
+data that has survived at least one garbage collection. When there is no more room on the old heap,
+a fullsweep garbage collection is done.
+
+Fullsweep GC: it allocates absolutely new chunk of memory and copies there all alive heap objects and
+stack from collected process. So, during GC amount of used memory may double.
+
+# Generational (Minor) GC collects young heap
+# Fullsweep (Major) GC collect yound and old heaps
+
+Constructing and Matching Binaries
+http://erlang.org/doc/efficiency_guide/binaryhandling.html
+
+# Refc (reference-counted) Binary are binary term larger than 64 bytes (off-heap binary), it's stored in Shared Heap
+  ## ProcBin is a pointer to Refc Binary, it's stored in process private heap
+# Heap Binary are binary term up to 64 bytes
+# Sub Binary
+# Match Context
+
+process_info(Pid, binary).
+ProcBin looks like this {390074408 = BinaryId, 1048576 = BinarySize, 2 = RefCount}
+
+Virtual binary heap - Each process has a virtual binary heap associated with it that has the size of all the current off-heap binaries
+that the process has references to (sum of all BinProc)
+
+Data is copied from ETS tables when processes read it
+
+process_info(Pid, garbage_collection).
+{garbage_collection,[{max_heap_size,#{error_logger =&gt; true,kill =&gt; true,size =&gt; 0}},
+                     {min_bin_vheap_size,46422},
+                     {min_heap_size,233},
+                     {fullsweep_after,65535},
+                     {minor_gcs,0}]}
+
+minor_gcs - number of minor GC
+fullsweep_after - number of GC before major GC, the maximum number of generational collections before forcing a fullsweep,
+even if there is room on the old heap. Setting the number to zero disables the general collection algorithm, that is,
+all live data is copied at every garbage collection. See http://erlang.org/doc/man/erlang.html#spawn_opt-4
+
+http://erlang.org/faq/academic.html#idp33095056
+The GC strategy for a newly started Erlang process is full-sweep. Once the process' live data grows above a certain size,
+the GC switches to a generational strategy. If the generational strategy reclaims less than a certain amount,
+the GC reverts to a full sweep. If the full sweep also fails to recover enough space, then the heap size is increased.
+
+! Checkout export ERL_COMPILER_OPTIONS=bin_opt_info
+http://erlang.org/doc/efficiency_guide/binaryhandling.html
+
+recon_lib:proc_attrs(binary_memory, Pid).
+There's a function in recon (`recon_lib:proc_attrs(binary_memory, Pid)`) that will tell you exactly how much memory is being
+referenced by a given process in bytes, and may allow for far finer-grained management here.
+The function basically sums up the memory tuples from `process_info(Pid, binary)` to give an accurate count for refc bins.
+</pre>
+</div>
+<div created="20200428103506590" modified="20200428103515253" tags="Erlang" title="Erlang libs">
+<pre>XMPP video
+===
+https://www.youtube.com/playlist?list=PLXeQZzENE-sJsivVxEvfPP-4nBfDhDqH-
+
+exmpp
+=====
+sudo apt-get install autoconf automake libtool libexpat1-dev libxml2-dev
+git clone https://github.com/processone/exmpp.git
+cd exmpp
+autoreconf -vif
+./configure # --enable-examples
+make
+sudo make install
+
+Native Erlang Unix serial interface
+===================================
+https://github.com/msantos/srly
+
+Erlang monitoring
+=================
+http://www.erlang.org/doc/man/os_mon_app.html
+https://github.com/boundary/folsom
+
+Tsung is an open-source multi-protocol distributed load testing tool
+====================================================================
+http://tsung.erlang-projects.org/
+
+Erlang UNIX daemon wrapper
+==========================
+https://github.com/ShoreTel-Inc/erld
+
+Unescape HTML text
+==================
+Convert a decimal charref, hex charref, or html entity to a unicode codepoint
+https://github.com/mochi/mochiweb/blob/master/src/mochiweb_charref.erl
+
+URI utility module
+=================
+use `http_uri' module
+https://github.com/erlware/uri
+
+Erlang SMPP gateway imlementation
+=================================
+https://github.com/essiene/mmyn
+
+Erlang config file
+==================
+https://github.com/essiene/erlcfg
+
+Lightweight UNIT and HTTP test framework
+========================================
+https://github.com/wooga/etest
+usage: http://vimeo.com/43672318
+https://github.com/wooga/etest_http
+usage: http://vimeo.com/45212367
+How to set up a basic HTTP API with Erlang in 10 Minutes
+http://smyck.net/2013/02/17/how-to-set-up-a-basic-http-api-with-erlang-in-10-minutes/
+
+A mocking library for Erlang
+============================
+https://github.com/esl/meck
+http://www.erlang-factory.com/conference/London2011/speakers/adamlindberg
+
+Run Erlang beam files in your browser
+=====================================
+https://github.com/svahne/browserl
+
+Web framework based on Erlang's inets httpd framework
+=====================================================
+https://github.com/gar1t/modlib
+
+XML - Erlsom (xml parser)
+=========================
+https://github.com/willemdj/erlsom
+http://muharem.wordpress.com/2007/08/21/processing-xml-in-erlang/
+http://joeandmotorboat.com/2008/07/17/simple-example-of-xml-parsing-with-erlang-and-erlsom/
+http://erlsom.sourceforge.net/erlsom.htm
+
+CSV
+===
+https://github.com/fogfish/csv
+
+Erlang date time formating
+==========================
+https://github.com/selectel/tempo
+https://github.com/seansawyer/erlang_iso8601
+
+Erlang binary pretty print
+==========================
+https://github.com/jtendo/binpp
+
+GNU MP Bignum (multiple precision arithmetic library)
+=====================================================
+https://github.com/skarab/gmperl
+
+Erlang &amp; Graphite or Librato Metrics
+====================================
+http://blog.adku.com/2011/10/scalable-realtime-stats-with-graphite.html
+https://github.com/johannesh/estatsd
+
+Getopt
+======
+https://github.com/jcomellas/getopt
+
+iBrowse (Erlang HTTP Client)
+============================
+https://github.com/cmullaparthi/ibrowse
+
+Erlang performance and debugging tools (redbug included)
+========================================================
+https://github.com/massemanet/eper
+
+Generic Non-blocking TCP server
+===============================
+https://github.com/kevsmith/gen_nb_server
+
+Erlang tidier
+=============
+http://tidier.softlab.ntua.gr/
+
+Erlang torrent
+==============
+https://github.com/jlouis/etorrent
+
+Erlware Commons (Erlang components)
+===================================
+https://github.com/erlware/erlware_commons
+</pre>
+</div>
+<div created="20200428103529540" modified="20200428103539779" tags="Erlang" title="Erlang links">
+<pre>Best articles, videos, etc about Erlang
+===
+https://spawnedshelter.com/
+
+EJabberD docs
+===
+https://docs.ejabberd.im/tutorials/
+http://www.process-one.net/docs/ejabberd/guide_en.html
+
+SKEL: A STREAMING PARALLEL SKELETON LIBRARY FOR ERLANG
+===
+https://skel.weebly.com/about-skel.html
+
+The Core Erlang homepage
+===
+https://www.it.uu.se/research/group/hipe/cerl/
+c(my_module, to_core).
+c(my_module, from_core).
+c(my_module, to_kernel).
+
+Erlang TDD
+===
+https://erlcode.wordpress.com/
+
+Try erlang (Y-combinator, Nif from HEX)
+===
+http://tryerl.seriyps.ru/
+
+parse_transform
+===
+http://stackoverflow.com/questions/2416192/is-there-a-good-complete-tutorial-on-erlang-parse-transforms-available
+http://seancribbs.com/tech/2009/06/21/building-a-parser-generator-in-erlang-part-4/
+http://www.ricston.com/blog/erlang-erlsyntax/
+file://yrashk_parse_transformations_sf12.pdf
+
+Low level networking with Erlang
+===
+http://blog.listincomprehension.com/
+
+Foundation test
+===
+https://www.erlang-solutions.com/services/foundation
+
+Erlang express course
+===
+http://elearning.erlang-solutions.com/my/
+
+SNMP Quick start
+===
+http://www.trapexit.org/SNMP_Quick_Start
+
+Erlang jobs &amp; resources
+===
+http://totally-erlang.com/
+http://www.spilgames.com
+
+Erlang, Testing and TDD (very GOOD)
+===
+http://erlcode.wordpress.com
+
+The true story of why we invented Erlang and a few things you don't want to tell your manager
+===
+http://www.erlang-factory.com/conference/London2011/speakers/MikeWilliams
+
+Lazy evaluation in Erlang
+===
+http://www.serenethinking.com/2011/10/lazy-evaluation-and-streams-in-erlang/
+http://jamesaimonetti.com/2009/12/16/erlang-primes-and-the-sieve-of-eratosthenes/
+http://jamesaimonetti.com/2009/12/17/erlang-and-primes-again/
+
+Writing Parallel Programs with Erlang
+===
+
+Pooling and Automated Code Distribution with Erlang
+http://pentaphase.de/index.php?/archives/30-Pooling-and-Automated-Code-Distribution-with-Erlang.html
+
+Introduction to Parallel Computing (not Erlang)
+http://www-users.cs.umn.edu/~karypis/parbook/
+https://computing.llnl.gov/tutorials/parallel_comp/
+
+1.4 Parallel Algorithm Examples
+http://www.mcs.anl.gov/~itf/dbpp/text/node10.html
+
+Plists
+http://plists.wordpress.com/2007/09/20/introducing-plists-an-erlang-module-for-doing-list-operations-in-parallel/
+http://code.google.com/p/plists/
+http://freeyourmind.googlepages.com/plists.html
+
+Concurrent lists in Erlang
+https://github.com/dustin/erl-conc
+http://dustin.github.com/2010/03/04/erlang-conc.html
+http://vimeo.com/6624203
+http://research.sun.com/projects/plrg/Publications/ICFPAugust2009Steele.pdf
+
+
+http://www.devx.com/opensource/Article/42799/1954
+http://en.wikipedia.org/wiki/Parallel_computing
+http://code.google.com/edu/parallel/mapreduce-tutorial.html
+
+http://21ccw.blogspot.com/2008/04/parallel-quicksort-in-erlang.html
+http://21ccw.blogspot.com/2008/05/parallel-quicksort-in-erlang-part-ii.html
+
+http://nealabq.com/blog/2009/02/16/tic-tac-toe-in-erlang-parallel-processing/
+
+http://plists.wordpress.com/2007/09/20/introducing-plists-an-erlang-module-for-doing-list-operations-in-parallel/
+
+http://www.cse.chalmers.se/edu/course/pfp/lectures/lecture9/Lecture9.pdf
+
+
+http://chrismoos.com/2009/09/28/building-an-erlang-chat-server-with-comet-part-1/
+http://chrismoos.com/2009/09/29/building-an-erlang-chat-server-with-comet-part-2/
+http://chrismoos.com/2009/10/16/building-an-erlang-chat-server-with-comet-part-3/
+
+Introduction to the Open Telecom Platform (ErlyBank)
+===
+http://spawnlink.com/articles/introduction-to-the-open-telecom-platform/index.html
+
+A practical introduction to MochiWeb
+===
+http://alexmarandon.com/articles/mochiweb_tutorial/
+
+Эрланг (Юрий Жлоба)
+===
+Обзор языка
+http://www.youtube.com/playlist?list=PLC1CA3DD981A8EC07&amp;feature=viewall
+Erlang. Live Coding сессия.
+http://www.youtube.com/playlist?list=PL553E473BF6FCB996&amp;feature=plpp
+Erlang. OTP фреймворк
+http://www.youtube.com/playlist?list=PL1BCAFE11B53D354F&amp;feature=viewall
+
+Riak info
+===
+http://marianoguerra.github.io/little-riak-core-book/
+https://github.com/basho/riak
+http://wiki.basho.com/
+http://wiki.basho.com/LevelDB.html
+http://leveldb.googlecode.com/svn/trunk/doc/benchmark.html
+http://basho.com/blog/technical/2011/07/01/Leveling-the-Field/
+http://blog.creapptives.com/post/8330476086/leveldb-vs-kyoto-cabinet-my-findings
+
+Tutorial: Start Developing Web Applications on Erlang
+===
+http://www.youtube.com/watch?v=aWpSgAAiZaE
+http://www.youtube.com/watch?v=iEzqR02M2PE
+http://www.youtube.com/watch?v=fJkvJ2ogQM0
+
+Полезные ссылки
+===
+http://erlanger.ru/wiki/index.php/%D0%9F%D0%BE%D0%BB%D0%B5%D0%B7%D0%BD%D1%8B%D0%B5_%D1%81%D1%81%D1%8B%D0%BB%D0%BA%D0%B8
+
+Erlang interoperaability
+===
+http://www.erlang.org/doc/tutorial/introduction.html
+
+Webmachine, ErlyDTL and Riak
+===
+http://buffered.io/posts/webmachine-erlydtl-and-riak-part-1/
+http://buffered.io/posts/webmachine-erlydtl-and-riak-part-2/
+http://buffered.io/posts/webmachine-erlydtl-and-riak-part-3/
+http://buffered.io/posts/webmachine-erlydtl-and-riak-part-4/
+
+Building Web Applications with Erlang Working with REST and Web Sockets on Yaws (BOOK)
+===
+http://shop.oreilly.com/product/0636920021452.do
+
+Riak handbook (BOOK)
+===
+http://riakhandbook.com/
+
+Rebar
+===
+http://erlcode.wordpress.com/2010/12/17/erlang-tdd-hands-on-project-workernet-part-1/
+http://webjazz.blogspot.com/2007/03/erlang-and-neural-networks-part-i.html
+
+https://github.com/basho/rebar/wiki
+http://wiki.erlang-web.org/Rebar
+http://skeptomai.com/?p=56
+http://alancastro.org/2010/05/01/erlang-application-management-with-rebar.html
+
+Gproc tutorial
+===
+https://github.com/Zert/gproc-tutorial
+
+Escape sequences
+===
+http://www.erlang.org/doc/reference_manual/data_types.html#id73538
+
+A lot of Tutorials
+===
+http://www.protest-project.eu/tutorials.html
+
+e2 Talk at Erlang Factory
+===
+http://gar1t.com/blog/2012/05/22/e2-talk-at-erlang-factory/
+
+Erlang movies collection
+===
+http://mlook.ru/search/erlang#axzz1iDe5KdKM
+
+Erlang Solutions’s Videos
+===
+http://vimeo.com/erlang/videos/page:17/sort:newest
+
+Erlang factories talks videos
+===
+http://www.erlang-factory.com/conference/SFBayAreaErlangFactory2009/talks
+
+Mike Williams - The true story of why we invented Erlang and a few things you don't want to tell your manager
+http://vimeo.com/33972975
+
+New Screencast: Sinan – Building Enterprise Erlang Applications
+===
+http://blog.erlware.org/2012/01/04/new-screencast-sinan-building-enterprise-erlang-applications/
+
+Video Tutorial To Start Developing Web Applications on Erlang
+===
+http://beebole.com/blog/erlang/tutorial-web-application-erlang/
+
+Justin Sheehy on Riak
+===
+http://www.infoq.com/interviews/sheehy-riak
+
+Basho Technologies How Eventual is Eventual Consistency? Introducing Probabilistically Bounded Staleness
+===
+http://vimeo.com/37758648
+
+Riak Operations
+===
+http://vimeo.com/22448110
+
+Riak Search Explained
+===
+http://vimeo.com/23197839
+
+MapReducing Big Data With Riak and Luwak
+===
+http://vimeo.com/20074937
+
+Riak at Formspring
+===
+http://basho.com/blog/technical/2011/08/08/Riak-at-Formspring-Video-from-SF-Riak-Meetup/
+
+The Release Riak 0.8 and JavaScript Map/Reduce
+===
+http://basho.com/blog/technical/2010/02/03/the-release-riak-0.8-and-javascript-mapreduce/
+
+Translate SQL to MongoDB MapReduce
+===
+http://nosql.mypopescu.com/post/392418792/translate-sql-to-mongodb-mapreduce
+
+Playing around with MongoDB and MapReduce functions
+===
+http://rickosborne.org/blog/2010/02/playing-around-with-mongodb-and-mapreduce-functions/
+
+Trees in Erlang
+===
+http://mark.aufflick.com/blog/2007/11/30/trees-in-erlang
+</pre>
+</div>
 <div created="20200425123925856" modified="20200425124216352" tags="Linux Bash Python" title="Error code description">
 <pre>```
 alias perror='python -c &quot;import os, sys; print os.strerror(int(sys.argv[1]))&quot;'
@@ -12279,6 +12929,16 @@ https://www.tldp.org/HOWTO/Printing-HOWTO/
 kismet
 </pre>
 </div>
+<div created="20200428103417622" modified="20200428103436020" tags="Dev" title="Jobs">
+<pre>* https://erlang-companies.org/
+* http://erlangjobs.ru/
+
+* https://elixir-companies.com/
+* https://codestool.coding-gnome.com/courses/elixir-for-programmers
+* https://elixirschool.com/en/
+* https://exercism.io/
+</pre>
+</div>
 <div created="20200428102008576" modified="20200428102026957" tags="Algorithm" title="Kademlia">
 <pre>https://en.wikipedia.org/wiki/Kademlia
 
@@ -12334,59 +12994,6 @@ remaining life expectancy.
 LIBRARY_PATH is used by gcc before compilation to search directories containing static and shared libraries that need to be linked to your program.
 
 [[Shared library path]]
-</pre>
-</div>
-<div created="20200428101106124" modified="20200428101151223" tags="Dev" title="Links">
-<pre>API design
-===
-http://apistylebook.com/
-https://www.restapitutorial.com/
-
-Graph/charts tools
-===
-https://github.com/stathissideris/ditaa
-http://plantuml.com/
-http://www.mcternan.me.uk/mscgen/
-https://github.com/bramp/js-sequence-diagrams
-https://github.com/adrai/flowchart.js
-https://github.com/morrisjs/morris.js
-https://mermaidjs.github.io/
-
-Syntax (railroad) diagram
-===
-https://en.wikipedia.org/wiki/Syntax_diagram
-http://bottlecaps.de/rr/ui
-http://www.json.org/
-http://www2.informatik.uni-freiburg.de/~thiemann/haskell/ebnf2ps/
-
-How Google Backs Up The Internet
-===
-https://www.youtube.com/watch?v=eNliOm9NtCM
-http://highscalability.com/blog/2014/2/3/how-google-backs-up-the-internet-along-with-exabytes-of-othe.html
-
-Don't Call Yourself A Programmer, And Other Career Advice
-developing software isn’t about programming, it’s about improving a business
-===
-http://www.kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/
-
-Code Reading
-===
-http://www.spinellis.gr/codereading/
-http://c2.com/cgi/wiki?TipsForReadingCode
-
-Scaling Experts
-===
-http://scalingexperts.com/
-
-Architecture of open source applications
-===
-http://www.aosabook.org/en/index.html
-
-On Motivation:
-- &quot;Carrot and stick&quot; doesn't work for anything that requires cognitive skill
-- Autonomy, mastery, purpose
-- ROWE: results-only work environment
-http://www.ted.com/talks/dan_pink_on_motivation
 </pre>
 </div>
 <div created="20200426101240911" modified="20200426101250279" tags="TableOfContents" title="Linux">
@@ -12903,6 +13510,14 @@ Client:
 ```
 $ nc localhost 1234
 ```</pre>
+</div>
+<div created="20200428103311836" modified="20200428103321330" tags="Erlang" title="Netsplit">
+<pre>pg2 is one you have ignored, which replicates process groups among the collected nodes, storing them in ETS.  I chose an approach based on pg2, but without ETS in CloudI (http://cloudi.org), here: https://github.com/okeuday/CloudI/blob/master/src/lib/cloudi/src/list_pg.erl. This makes more sense with CloudI focusing on the AP part of the CAP theorem, whereas gproc is more focused on CA (later: Sorry I meant CP.).  I find the approach in CloudI better, since it avoids global state and that is the main point of using Erlang (with its Actor model).  However, I am very biased, since I wrote it.
+
+There is no resynch after netsplit in gproc, since gen_leader didn't use to have a way to handle netsplits. Still, there is no hook to inform the callback (gproc_dist) about what's happened.
+
+One way to deal with this, is to set -kernel dist_auto_connect false, and add a &quot;backdoor ping&quot; (e.g. over UDP). If you get a ping from a known node that's not in the nodes() list, you have a netsplit situation. You can then select which node(s) to restart. After restart, normal synch will ensue, and since the nodes never auto-connected, you will have concistency (but quite possibly data loss, of course).
+</pre>
 </div>
 <div created="20200424090146466" modified="20200424090209380" tags="Linux" title="Network emulation (netem)">
 <pre>```
