@@ -493,6 +493,8 @@ Error message and password prompt
 
 <li>Erlang core dump</li>
 
+<li>Erlang FAQ</li>
+
 <li>Erlang GC</li>
 
 <li>Erlang libs</li>
@@ -500,6 +502,8 @@ Error message and password prompt
 <li>Erlang links</li>
 
 <li>Erlang setup</li>
+
+<li>Erlang upgrades</li>
 
 <li>Error code description</li>
 
@@ -705,6 +709,8 @@ Error message and password prompt
 
 <li>Prune unused images</li>
 
+<li>Pure Cowboy Stream Handler</li>
+
 <li>Push tag</li>
 
 <li>Python</li>
@@ -877,6 +883,8 @@ Error message and password prompt
 
 <li>Trace system calls and signals</li>
 
+<li>Tracing and profiling</li>
+
 <li>TRIZ System operator</li>
 
 <li>Troubleshoot ssh-agent forwarding</li>
@@ -909,9 +917,13 @@ Error message and password prompt
 
 <li>Who uses network traffic</li>
 
+<li>YACC</li>
+
 <li>Стратегия Штанги</li>
 
 <li>Теория Двигания Кроватей</li>
+
+<li>Учебный план</li>
 
 </ul>
 </p>
@@ -10327,10 +10339,15 @@ Error message and password prompt
 <div created="20200422190452018" modified="20200422190452463" title="$:/GitHub/Username">
 <pre>ten0s</pre>
 </div>
-<div status="complete" title="$:/Import">
-<pre>The following tiddlers were imported:
-
-# [[DraggableTaskTemplate]]</pre>
+<div plugin-type="import" status="pending" title="$:/Import" type="application/json">
+<pre>{
+    &quot;tiddlers&quot;: {
+        &quot;Untitled 1&quot;: {
+            &quot;title&quot;: &quot;Untitled 1&quot;,
+            &quot;text&quot;: &quot;New Tiddler&quot;
+        }
+    }
+}</pre>
 </div>
 <div created="20200427171345454" modified="20200427171345454" title="$:/Import!!popup-Untitled">
 <pre>yes</pre>
@@ -10458,7 +10475,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200428091224083" list="" modified="20200428102752373" title="$:/StoryList">
+<div created="20200428091224083" list="" modified="20200428104353773" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200426081006916" title="$:/temp/advancedsearch">
@@ -12066,6 +12083,1325 @@ $ gdb /usr/local/lib/erlang/erts-8.3.5/bin/beam.smp ~/core.23344 -d otp/erts/emu
 (gdb) bt
 </pre>
 </div>
+<div created="20200428104307076" modified="20200428104318820" tags="Erlang" title="Erlang FAQ">
+<pre>How to post-mortem debug (gdb) Segmentation fault?
+====
+$ ulimit -c unlimited
+...
+$ gdb /home/ten0s/dsiload/dsiload/rel/dsiload/erts-5.9.3.1/bin/beam.smp core.13051
+(gdb) bt
+
+How to debug (gdb) errors in linked-in drivers or nif loaded as shared library?
+====
+I've edited the erl script which comes with the standard Erlang release to allow easy use of GDB for just such situations:
+
+if [ ! -z &quot;$USE_GDB&quot; ]; then
+gdb $BINDIR/erlexec --args $BINDIR/erlexec ${1+&quot;$@&quot;}
+else
+exec $BINDIR/erlexec ${1+&quot;$@&quot;}
+fi
+
+Define the env var &quot;USE_GDB&quot; before launching Erlang and you'll get a debugger prompt when your NIF/driver crashes. GDB's backtrace command is especially helpful
+
+Can't attach to node
+===
+If attaching to to_erl fails with ^L
+* ensure that node is not started with &quot;-noshell -noinput&quot;
+* ensure 'export TERM=&quot;xterm&quot;' is set
+
+Not sure what it is
+===
+https://stash.wargaming.net/projects/WTP/repos/wgnc_server/browse
+host by0-vz-131-64.iv -&gt; a.b.c.d
+
+add to /etc/hosts
+a.b.c.d by0-vz-131-64
+
+erl -sname $$@`hostname` -setcookie SECRET -remsh wgnc-server@by0-vz-131-64
+entop  wgnc-server@by0-vz-131-64 SECRET
+redbug -sname $$@`hostname` -setcookie SECRET wgnc-server@by0-vz-131-64 &quot;os:getenv&quot;
+
+[erlang-questions] Can't connect to Erlang node in docker
+...
+So if the remote node is running with node name foo@mycontainer, you should be able to connect to it with erl -sname whatever -remsh foo@mycontainer. You can check the node name of the remote node by looking at the prompt in the Erlang shell. Note that epmd only displays the &quot;local&quot; part of the node name, not the host name, so you may be able to open a connection to the remote node and still have it rejected and closed if the host name part doesn't match.
+
+If mycontainer doesn't resolve to the correct IP address, you can use an inet configuration file: http://erlang.org/doc/apps/erts/inet_cfg.html
+For example, to hard-code an IP address for a host name and force the Erlang node to use this file instead of native name resolution:
+
+{host, {10,1,2,3}, [&quot;mycontainer&quot;]}.
+{lookup, [file]}.
+
+Then pass the name of this file like this:
+
+erl -sname whatever -remsh foo@mycontainer -kernel inetrc '&quot;./myinetrc&quot;'
+
+
+Simple/Naive leader selection
+===
+1. i = day % len(nodes), leader = nodes[i]
+2. So if both nodes are up, select the one with the higher IP address.
+3. consul|etc|mongodb|dynamodb
+What if etcd tells you you're primary but whoops you don't have connection
+to etcd because somebody was playing with a firewall and cut you off for
+a few hours? Absent further details it is unclear whether involving an
+external arbiter even helps at all.
+4. Right now I am looking into a concept, where each application calculates a
+&quot;health score&quot; (based on various parameters like connection to downstream
+nodes, IP gateways etc).
+Then they should then exchange health scores, and the one with highest
+score is taking the role as active (if health score is identical, one of
+them is configured to be preferred active).
+Net split will still be an issue...
+
+Running distributed Erlang &amp; Elixir applications on Docker
+===
+https://www.erlang-solutions.com/blog/running-distributed-erlang-elixir-applications-on-docker.html
+
+docker network create erl-net
+docker exec a2b6178c04cb /home/user/projects/dmu/_build/default/rel/dmu/bin/run.sh import_lnp /home/user/projects/data/LNP_BINARY_9751fb749398c1b87236372cdf23a2ba12a16bd5
+
+docker exec -ti dmu erl -sname adm@dmu -setcookie secret -remsh dmu@dmu
+docker exec -ti tracer erl -sname adm@dmu -setcookie secret -remsh dyn_tracer@tracer
+
+How to connect nodes running in diff docker containers?
+https://stackoverflow.com/questions/45057343/connect-erlang-nodes-on-docker
+===
+$ docker network create test-net
+c20cd167b4b895f80f7fbadf5dc63ca7f7e8a6e95008c513a1d4e699ae0fb00e
+
+$ docker run -ti --rm --name n1 --hostname n1 --net test-net centos7.x86_64-r19.3.6 /bin/bash
+$ erl -sname a -setcookie 123
+
+$ docker run -ti --rm --name n2 --hostname n2 --net test-net centos7.x86_64-r19.3.6 /bin/bash
+$ erl -sname b -setcookie 123
+&gt; net_adm:ping('a@n1').
+pong
+
+How to detect dead code?
+===
+http://tech.adroll.com/blog/dev/2018/10/09/remove-erlang-dead-code-xref.html
+
+in rebar.config
+{xref_checks, [
+  ...
+  exports_not_used
+]}.
+
+in code
+-ignore_xref([{?MODULE, some_other_function, 1}]).
+
+in rebar.config
+{xref_ignores, [
+    {my_gpb_generated_module, some_function, 1},
+    {my_gpb_generated_module, some_other_function, 0},
+    {my_gpb_generated_module, a_function_with_various_arities},
+    ...
+]}.
+
+How to get full call stack while on breakpoint?
+How to debug all project's modules?
+===
+WgPrefixes = [&quot;jd_&quot;, &quot;wg_&quot;, &quot;mod_jd_&quot;, &quot;mod_wg_&quot;].
+Modules = [Mod || {Mod, _} &lt;- code:all_loaded(), begin ModStr = atom_to_list(Mod), lists:any(fun (P) -&gt; lists:prefix(P, ModStr) end, WgPrefixes) end].
+int:i(Modules).
+debugger:start().
+int:break(mod_wg_xmpp_base_spa_id_router, 112).
+
+nodelay TCP option
+===
+If Boolean == true, option TCP_NODELAY is turned on for the socket, which means that also small amounts of data are sent immediately.
+https://en.wikipedia.org/wiki/Nagle%27s_algorithm
+
+Boyer-Moore vs Aho-Corasick
+===
+binary:match and friends
+https://github.com/erlang/otp/blob/a0abdb8631d7bd7a154023950ccdcbf09c85b92d/erts/emulator/beam/erl_bif_binary.c#L952-L999
+
+How to share big data
+===
+See &quot;In-process memory sharing doesn’t seem to work&quot; in Erlang Questions
+
+How to zip
+===
+%% on disk
+{ok, FileName} = zip:create(&quot;foo.zip&quot;, [&quot;foo.txt&quot;]).
+%% in memory
+Files = [{&quot;foo.txt&quot;, &lt;&lt;&quot;Contents of foo&quot;&gt;&gt;},
+         {&quot;bar.txt&quot;, &lt;&lt;&quot;Contents of bar&quot;&gt;&gt;}].
+{ok, {&quot;mem&quot;, ZipBin}} = zip:create(&quot;mem&quot;, Files, [memory]).
+
+Pretty printing records
+===
+io_lib_pretty:print(Term, RecDefFun)
+where RecDefFun is a fun/2:
+fun(Tag, NoOfFields) -&gt; [FieldTag] | no
+
+io:format(io_lib_pretty:print({user, 1, 2}, fun (user, 2) -&gt; [name, date] end)).
+see record_info/2
+
+    pretty_print(Record) -&gt;
+          io_lib_pretty:print(Record, fun pretty_print/2).
+
+     pretty_print(foo, N) -&gt;
+          N = record_info(size, foo) - 1,
+          record_info(fields, foo);
+     pretty_print(bar, N) -&gt;
+          N = record_info(size, bar) - 1,
+          record_info(fields, bar);
+     pretty_print(_, _) -&gt;
+          no.
+
+see also locks library locks_ttb:record_print_fun and Module:record_fields/1 in some modules
+
+Redbug multiple calls
+===
+https://stackoverflow.com/questions/25669356/trace-multiple-functions-using-redbug-from-command-line
+redbug:start([&quot;foo:bar -&gt; return&quot;, &quot;bar:baz -&gt; return&quot;], []).
+./priv/bin/redbug -setcookie s3cret mynode@localhost '&quot;foo:bar-&gt;return&quot;,&quot;foo:baz-&gt;return&quot;'
+./priv/bin/redbug -setcookie s3cret mynode@localhost '[&quot;foo:bar-&gt;return&quot;,&quot;foo:baz-&gt;return&quot;]'
+
+Choose randomly
+===
+Choose = fun (L) -&gt; lists:nth(rand:uniform(length(L)), L) end.
+
+Choose by hash
+===
+chose_node(muc_room, RoomJID) -&gt;
+    ActiveNodes = [node() | nodes()],
+    Idx = erlang:phash2(RoomJID, length(ActiveNodes)),
+    lists:nth(Idx + 1, ActiveNodes);
+
+[erlang-questions] Sender punishment removed
+https://github.com/fishcakez/sbroker
+===
+call(Msg) -&gt;
+     gen_server:call({Msg, erlang:monotonic_time()}).
+
+receive
+     {Msg, In} -&gt;
+       Out = erlang:monotonic_time(),
+       Sojourn = erlang:convert_time_unit(Out - In, native, milli_seconds),
+       case Sojourn &gt; 5000 of
+           true -&gt; {reply, argh, State}
+           false -&gt; ...
+        end
+end
+
+How to start a slave node on a remote machine?
+NB: The slave node must be able to access the master.
+===
+$ erl -rsh ssh -name master@10.10.0.90 -setcookie cookie
+&gt; slave:start_link(&quot;10.10.0.155&quot;, slave1, &quot;-setcookie cookie&quot;).
+{ok,'slave1@10.10.0.155'}
+&gt; nodes().
+['slave1@10.10.0.155']
+
+How to run a slave when it can't access the master
+===
+The idea is to run epmd on master only and use ssh remote port forwarding
+for epmd and master ports to connect slave to master. Slave thinks that both
+epmd and master are local.
+1. Run master with a long name and intentional 127.0.0.1 address
+$ erl -name m@127.0.0.1 -setcookie hi
+2. Determine master's port
+$ epmd -names
+epmd: up and running on port 4369 with data:
+name m at port 59094
+3. Ensure 'GatewayPorts yes' in /etc/ssh/sshd_config
+to allow 4369 port access on all interfaces.
+4. Forward remote epmd's port to master's host
+ssh -N -R 0.0.0.0:4369:localhost:4369 10.252.149.199
+5. Forward remote master's port to master's host
+ssh -N -R 127.0.0.1:59094:localhost:59094 10.252.149.199
+6. Start slave without epmd starting. Slave lookups `m@127.0.0.1' locally by
+connecting to forwarded epmd port and then connects locally again to
+forwarded master's port.
+(m@127.0.0.1)1&gt; slave:start(&quot;10.252.149.199&quot;, s, &quot;-setcookie hi -start_epmd false&quot;).
+{ok,'s@10.252.149.199'}
+(m@127.0.0.1)2&gt; rpc:call('s@10.252.149.199', net_adm, localhost, []).
+&quot;ip-10-252-149-199&quot;
+
+How to bind/search to LDAP
+https://thecarlhall.wordpress.com/2011/01/04/ldap-authentication-authorization-dissected-and-digested/
+http://webcache.googleusercontent.com/search?q=cache:mXMFKoq4IUgJ:www2.erlangcentral.org/wiki/index.php%3Ftitle%3DHow_to_talk_LDAP_from_Erlang+&amp;cd=1&amp;hl=en&amp;ct=clnk&amp;gl=us
+===
+1&gt; f(H), {ok, H} = eldap:open([&quot;belitgroup.lan&quot;], []).
+{ok,&lt;0.61.0&gt;}
+2&gt; f(DN), DN = &quot;BELITGROUP\\klionsky_d&quot;.
+&quot;BELITGROUP\\klionsky_d&quot;
+3&gt; f(PWD), PWD = &quot;secret&quot;.
+&quot;secret&quot;
+4&gt; eldap:simple_bind(H, DN, PWD).
+ok
+5&gt; eldap:search(H, [{base, &quot;dc=belitgroup,dc=lan&quot;}, {filter, eldap:equalityMatch(&quot;mail&quot;, &quot;d.klionsky@belitsoft.com&quot;)}, {attributes, [&quot;name&quot;, &quot;memberOf&quot;]}, {timeout, 5000}]).
+{ok,...}
+
+1&gt; f(H), {ok, H} = eldap:open([&quot;SERVER&quot;], []).
+{ok,&lt;0.61.0&gt;}
+2&gt; f(DN), DN = &quot;USERNAME&quot;.
+&quot;USERNAME&quot;
+3&gt; f(PWD), PWD = &quot;secret&quot;.
+&quot;secret&quot;
+4&gt; eldap:simple_bind(H, DN, PWD).
+ok
+
+How to use typer
+===
+typer --plt _build/default/rebar3_19.3_plt $(for d in _build/default/lib/*; do echo -I $d/include -pa $d/ebin; done) --annotate apps/swagger/src/art_api_util.erl
+typer --plt .dmu.plt $(for d in deps/*; do echo -I $d/include -pa $d/ebin; done) deps/rdo_inventory/src/s3_inventory.erl
+
+Mochiglobal idea
+===
+https://github.com/mochi/mochiweb/blob/master/src/mochiglobal.erl
+http://erlang.org/pipermail/erlang-questions/2009-March/042503.html
+
+for h in `hosts.sh QA v2.4 dmu`; do echo $h; rerl dmu@$h call &quot;dmu_debug, last_rds, []&quot;; done
+for h in `hosts.sh Dev v2.4 dmu`; do echo $h; rerl dmu@$h call &quot;dmu_debug, last_rds, []&quot;; done
+
+How to check a process is alive?
+===
+is_process_alive(Pid).
+
+Cpu stat from cpu_sup
+===
+f(), CpuF = fun () -&gt; {_, Busy, NonBusy, _} = cpu_sup:util([detailed]), Busy ++ NonBusy end.
+lists:foreach(fun (_) -&gt; io:format(&quot;~p~n&quot;, [CpuF()]), timer:sleep(1000) end, lists:seq(1, 10)).
+
+How to start dist?
+===
+-define(NAME, &quot;comtrc&quot;).
+-define(TYPE, shortnames).
+
+start_dist(NamePref, NameType = shortnames) -&gt;
+    Name = list_to_atom(NamePref ++ os:getpid()),
+    {ok, _} = net_kernel:start([Name, NameType]);
+start_dist(NamePref, NameType = longnames) -&gt;
+    Name = list_to_atom(NamePref ++ os:getpid() ++ &quot;@127.0.0.1&quot;),
+    {ok, _} = net_kernel:start([Name, NameType]).
+
+start_dist() -&gt;
+    start_dist(?NAME, ?TYPE).
+
+Heart doesn't restart VM in case of OOM
+===
+The problem is that the OOM killer identifies a process to kill, and then kills all its
+child processes before killing the chosen process itself.  Since heart is a child process
+of the beam process, it doesn't have a chance to restart the Erlang VM.
+https://github.com/legoscia/otp/commit/bc19687664697dcff9d5472e14da231cf830abe5
+
+You can tell OOM to not kill some process. For heart, somewhere in your start script do:
+pgrep -f &quot;heart -pid&quot; | while read PID; do echo -17 &gt; /proc/$PID/oom_adj; done
+-17 is the value to let OOM ignore the process.
+
+Heart messages
+===
+%% Erlang was killed or exiter abruptly
+... Maybe some crash reason ...
+eheap_alloc: Cannot allocate 4723591984 bytes of memory (of type &quot;heap&quot;).
+...
+heart: Fri May 19 08:05:23 2017: Erlang has closed.
+...
+heart: Fri May 19 08:05:28 2017: Unable to kill old process, kill failed (tried multiple times).
+
+%% Erlang VM hangs or otherwise doesn't send heartbeats
+...
+heart: Thu May 18 08:27:02 2017: heart-beat time-out, no activity for 50 seconds
+...
+
+%% Erlang VM is crashing and preparing crash dump
+...
+Erlang is crashing .. (waiting for crash dump file)&quot;
+...
+
+Erlang crash dump
+===
+http://erlang.org/doc/man/erl.html#environment_variables
+http://erlang.org/doc/man/heart.html
+http://erlang.org/doc/apps/erts/crash_dump.html
+http://ferd.github.io/recon/
+
+env ERL_CRASH_DUMP_SECONDS N when
+N &lt; 0 wait dump generation indefinitely
+N = 0 no dump (same as not setting)
+N &gt; 0 wait dump generation N secs
+
+                 | env is set
+heart is running |  yes | no or 0
+------------------------------
+yes              | dump | no, restart immediately
+no               | dump | dump
+
+env ERL_CRASH_DUMP=/path/to/dump, erl_crash.dump by default
+env ERL_CRASH_DUMP_NICE=N, when N=1-39
+env ERL_CRASH_DUMP_BYTES, from 19.2
+
+%% How to generate erlang crash dump
+1. $ kill -SIGUSR1 &lt;PID&gt; # http://erlang.org/doc/man/erl.html#signals
+2. &gt; erlang:halt(&quot;crashdump&quot;).
+3. &gt; os:putenv(&quot;ERL_CRASH_DUMP&quot;, &quot;erl_crash.dump.&quot; ++ os:getpid()).
+   &gt; (fun Me(N) -&gt; list_to_atom(integer_to_list(N) ++ &quot;-atom&quot;), Me(N+1) end)(1). % too many atoms
+   &gt; lists:seq(1, 1000000000). % out of memory. doesn't generate crash dump on 18.3
+
+%% How to generate vm core dump
+http://erlang.org/doc/man/erl.html#signals
+$ kill -SIGABRT &lt;PID&gt;
+
+erlang:system_info(dist),   (distribution information)
+erlang:system_info(info),   (misc system info)
+erlang:system_info(loaded), (loaded module information)
+erlang:system_info(procs),  (process heaps and stacktraces) http://erlang.org/pipermail/erlang-questions/2012-November/070609.html
+
+file:write_file(&quot;/tmp/procs.txt&quot;,erlang:system_info(procs)).
+
+dump the state of a cluster of Erlang nodes
+https://github.com/basho/cluster_info
+
+
+How to disassemble beam
+===
+erts_debug:df(some_module_name).
+see some_module_name.dis file
+
+How to decompile beam
+http://erlang.org/pipermail/erlang-questions/2006-January/018812.html
+~/dotfiles/roles/erl/files/decompile_beam.es
+beam MUST be compiled with debug_info
+===
+Module = net_kernel.
+ModuleFile = code:which(Module).
+{ok, {_,[{abstract_code,{raw_abstract_v1, Forms}}]}} = beam_lib:chunks(ModuleFile, [abstract_code]).
+ModuleSrc = erl_prettypr:format(erl_syntax:form_list(Forms)).
+{ok, Fd} = file:open(&quot;file.erl&quot;, [write]).
+io:fwrite(Fd, &quot;~s~n&quot;, [ModuleSrc]).
+file:close(Fd).
+
+How to patch beam
+===
+https://github.com/uwiger/locks/blob/master/test/locks_leader_SUITE.erl:patch_net_kernel/0
+~/refs/erl/examples/patch_net_kernel.erl
+
+List, tuple, improper list sizes
+===
+&gt; erts_debug:flat_size([a,b]).
+4
+&gt; erts_debug:flat_size({a,b}).
+3
+&gt; erts_debug:flat_size([a|b]).
+2
+
+Quickcheck
+===
+http://roberto-aloi.com/erlang/notes-on-erlang-quickcheck
+http://roberto-aloi.com/erlang/notes-on-erlang-quickcheck-part-2
+
+Property-based Testing
+===
+[Quickcheck](http://www.quviq.com/
+http://quviq.com/documentation/eqc/index.html
+Testing the Hard Stuff and Staying Sane - (VERY GOOD) - https://www.youtube.com/watch?v=F6LzB6SdFKA
+Certifying your car with Erlang - QCing stdio.h fread/fwrite/fseek - https://vimeo.com/68331689
+John Hughes - QuickCheck Evolution https://vimeo.com/100126729
+[PropEr](http://proper.softlab.ntua.gr/)
+http://proper.softlab.ntua.gr/doc/
+http://www.erlang-factory.com/upload/presentations/397/proper_talk.pdf
+https://vimeo.com/26575963
+http://proper.softlab.ntua.gr/talks/proper_creation@EUC-11.pdf
+https://vimeo.com/33776857
+[Triq](https://github.com/krestenkrab/triq)
+https://github.com/triqng/triq
+
+Concurrency Testing
+===
+[Concuerror](http://concuerror.com/)
+https://github.com/parapluu/Concuerror
+
+Concolic (CONCrete and symbOLIC) Testing
+===
+[CurEr](https://github.com/aggelgian/cuter)
+http://www.erlang-factory.com/euc2016/kostis-sagonas
+http://www.erlang-factory.com/sfbay2016/kostis-sagonas
+http://user.it.uu.se/~kostis/Papers/cuter.pdf
+
+How to generate random string
+===
+f(RandChar), RandChar = fun (_) -&gt; rand:uniform($z-$0)+$0 end.
+lists:map(RandChar, lists:seq(1, 10)).
+
+f(IdsFd), IdsFd = fun () -&gt; element(5, sys:get_state(logger_es_accumulator)) end.
+f(Ids), Ids = Fold(IdsFd(), start, []), {length(Ids), sets:size(sets:from_list(Ids))}.
+disk_log:info(IdsFd()).
+
+
+%% Map function F over list L in parallel.
+parmap(F, L) -&gt;
+  Parent = self(),
+  [receive {Pid, Result} -&gt; Result end
+    || Pid &lt;- [spawn(fun() -&gt; Parent ! {self(), F(X)} end) || X &lt;- L]].
+
+
+Fail if field is not defined
+===
+-record(foo, {field_a = error(field_a_is_required_in_foo) :: a()}).
+
+How to determine erlang version from the shell
+===
+$ erl -noshell -eval 'io:fwrite(&quot;~s~n&quot;, [erlang:system_info(otp_release)]), halt().'
+R16B03-1
+
+Mnesia backup and restore
+===
+http://www.programering.com/a/MzNyYTMwATE.html
+
+ERROR REPORT  &lt;6775.82.0&gt;                                   2014-12-18 10:41:59
+===============================================================================
+
+Mnesia('funnel@127.0.0.1'): ** ERROR ** (core dumped to file: &quot;/opt/funnel-2.26.0/MnesiaCore.funnel@127.0.0.1_1418_888519_224268&quot;)
+ ** FATAL ** Cannot open log file &quot;/opt/funnel-2.26.0/data/mnesia/DECISION_TAB.TMP&quot;: {file_error,
+                                                                                      &quot;/opt/funnel-2.26.0/data/mnesia/DECISION_TAB.TMP&quot;,
+                                                                                      enospc}
+Mnesia can't recover from fallback with the error:
+===
+=ERROR REPORT==== 18-Dec-2014::11:37:07 ===
+Mnesia('funnel@127.0.0.1'): ** ERROR ** (core dumped to file: &quot;/opt/funnel-2.26.0/MnesiaCore.funnel@127.0.0.1_1418_891827_922598&quot;)
+ ** FATAL ** mnesia_tm crashed: {&quot;Cannot start from fallback&quot;,
+                                 {&quot;Cannot open file&quot;,schema,
+                                  [{file,
+                                       &quot;/opt/funnel-2.26.0/data/mnesia/schema.TMP&quot;},
+                                   {keypos,2},
+                                   {type,set}],
+                                  {file_error,
+                                      &quot;/opt/funnel-2.26.0/data/mnesia/schema.TMP&quot;,
+                                      enospc}}} state: [&lt;0.83.0&gt;]
+
+Solution:
+See `enospc'. There were not space available.
+
+
+relx
+===
+https://erlangcentral.org/topic/erlang-mk-and-relx/
+
+Service doesn't start `bin/service start` under user account and no log files generated
+===
+Probably the service has beed started under root before. Check out pipes permissions at /tmp/...
+
+How to attach to locally running RabbitMQ
+===
+$ erl -sname adm -hidden -remsh rabbit@`hostname`
+
+Can't attach to running release (ping works)
+===
+Have you made sure that the run_erl program is still running?
+&gt; ps aux | grep run_erl
+This sort of problem would happen if run_erl for some reason exited without taking the erlang vm with it and not cleaning up the fifos. There should be a file called run_erl.log in the same directlory where the erlang log files are, maybe it contains some information about what has happened?
+
+How to catch exception while working in shell?
+===
+&gt; Bad = &quot;yo, I cause pain&quot;.
+&gt; T = ets:new(test, []).
+&gt; ets:insert(T, {1, one}).
+&gt; catch ets:insert(Bad, {2, two}).
+&gt; ets:lookup(T, 1).
+
+Or use the big hammer:
+&gt; catch_exception(true).
+false
+...
+
+Binary pattern matching
+===
+&gt; &lt;&lt;IpAddr:28/binary, &quot;:*:*&quot;&gt;&gt; = &lt;&lt;&quot;2a01:e34:ee8b:c080:a542:ffaf:*:*&quot;&gt;&gt;.
+&lt;&lt;&quot;2a01:e34:ee8b:c080:a542:ffaf:*:*&quot;&gt;&gt;
+&gt; IpAddr.
+&lt;&lt;&quot;2a01:e34:ee8b:c080:a542:ffaf&quot;&gt;&gt;
+
+How to change endianess of binary
+!!! this is not right UUID convertation
+UUID must be C1A27B06-7177-4978-AB03-5C3FBF6C9425
+===
+&gt; L = [6,123,162,193,119,113,120,73,171,3,92,63,191,108,63,37].
+&gt; B = list_to_binary(L).
+&gt; uuid:unparse(&lt;&lt; &lt;&lt;I:32/big&gt;&gt; || &lt;&lt;I:32&gt;&gt; &lt;= B&gt;&gt;).
+&lt;&lt;&quot;067ba2c1-7771-7849-ab03-5c3fbf6c3f25&quot;&gt;&gt;
+&gt; uuid:unparse(&lt;&lt; &lt;&lt;I:32/little&gt;&gt; || &lt;&lt;I:32&gt;&gt; &lt;= B&gt;&gt;).
+&lt;&lt;&quot;c1a27b06-4978-7177-3f5c-03ab253f6cbf&quot;&gt;&gt;
+
+How to debug (NIF) crashes
+===
+https://github.com/erlang/otp/blob/master/HOWTO/INSTALL.md#how-to-build-a-debug-enabled-erlang-runtime-system
+erl -emu_type debug
+http://erlang.org/pipermail/erlang-questions/2018-May/095529.html
+
+How to debug escripts
+===
+# this will start the GUI debugger and set a breakpoint in main/1 function.
+$ escript -d syntaxerl
+Works with: rebar 2.0.0 R16B03-1 20140513_124715 git 1c98f6c
+If you use an older `rebar' version, you might get the error below:
+** Invalid beam file or no abstract code: csv2json
+escript: Cannot load the code for csv2json into the debugger
+
+
+How to list all items from ets and dets
+===
+ets:all/0 % list all ets tables
+ets:info/1
+ets:tab2list/1
+dets:all/0 % list all dets tables
+dets:info/1
+dets:foldl(fun(I, Acc) -&gt; [I | Acc] end, [], Table).
+
+How to start Crash Dump Viewer (in observer app)
+===
+/opt/otp-r16b03-1/lib/erlang/lib/observer-1.3.1.2/priv/bin/cdv erl_crash-2014-05-03.dump
+Then go to Processes
+
+Using Padding in Encryption
+===
+http://www.di-mgt.com.au/cryptopad.html
+PCKS7
+crypto:des_cbc_encrypt(K, V, &lt;&lt;T2/binary, &lt;&lt;2,2&gt;&gt;/binary&gt;&gt;).
+crypto:des_cbc_encrypt(K, V, &lt;&lt;T3/binary, &lt;&lt;8,8,8,8,8,8,8,8&gt;&gt;/binary&gt;&gt;).
+
+cowboy response from file
+===
+handle(Req, State = #state{}) -&gt;
+    {ok, FileBin} = file:read_file(filename:join(
+         code:priv_dir(mm_srv), &quot;Response.html&quot;)),
+    Size = binary:referenced_byte_size(FileBin),
+
+    {ok, Req2} = cowboy_req:reply(200, [
+        {&lt;&lt;&quot;content-type&quot;&gt;&gt;, &lt;&lt;&quot;text/html; charset=utf-8&quot;&gt;&gt;},
+        {&lt;&lt;&quot;content-length&quot;&gt;&gt;, list_to_binary(integer_to_list(Size))}
+    ], FileBin, Req),
+
+    {ok, Req2, State}.
+
+node crashes on startup after a new module has been hot loaded
+(kelly@127.0.0.1)1&gt; 17:24:17.905 [error] CRASH REPORT Process &lt;0.1469.0&gt; with 0 neighbours exited with reason: call to undefined function k_http_api_handler_mt_msg:init() in application_master:init/4 line 133
+===
+add the module name to appropriate `script' file, like kelly.script
+rebuild `boot' file
+restart the node
+$ cd releases/1/
+$ erl
+&gt; systools:script2boot(&quot;kelly&quot;).
+
+
+rabbitmq-server fails to start
+===
+$ rabbitmq-server
+ERROR: epmd error for host &quot;mint-ws&quot;: **address** (cannot connect to host/port)
+
+server is started by rabbitmqctl fails to connect
+===
+$ rabbitmqctl status
+...
+unable to connect to epmd on mint-ws: **address** (cannot connect to host/port)
+
+net_adm:names() and erl_epmd:names() return {error, **address**}
+===
+But cookie is correct and epmd process is running and erlang distribution works.
+SOLUTION:
+Make sure /etc/hosts contains:
+127.0.0.1 mint-ws
+Recently I switched from Wired Network to Wireless Network and this seems to
+messed up /etc/hosts.
+
+How to decode base64 encoded ASN1?
+===
+&gt; asn1ct:compile(&quot;FunnelAsn.asn1&quot;, [ber]).
+ok
+&gt; Bin = base64:decode(&quot;MIGBgCQ5NzdmNGYxYS01Mjc1LTQ3ZjItODJkZi1iYTk5N2NmYTRiOGaBAjQ2ggN0dHSDDDE0MDMwNDE1Mzc1MYQBF4UBAqYoMBKAAgD/gQwxNDAzMDQxMjM5MDMwEoACAP+BDDE0MDMwNDEyNDAwM4cBA4gMMTQwMzA0MTI0MDAziQEA&quot;).
+&lt;&lt;48,129,129,128,36,57,55,55,102,52,102,49,97,45,53,50,55,
+  53,45,52,55,102,50,45,56,50,100,102,45,...&gt;&gt;
+&gt; 'FunnelAsn':decode('ConnectionDownEvent', Bin).
+{ok,{'ConnectionDownEvent',&quot;977f4f1a-5275-47f2-82df-ba997cfa4b8f&quot;,
+                           &quot;46&quot;,&quot;ttt&quot;,&quot;140304153751&quot;,23,2,
+                           [{'Error',255,&quot;140304123903&quot;},{'Error',255,&quot;140304124003&quot;}],
+                           other,&quot;140304124003&quot;,0}}
+
+Big Funnel crashes on start
+===
+INFO REPORT==== 8-Sep-2014::18:05:47 ===
+Negotiated maximums: (Channel = 0, Frame = 131072, Heartbeat = 0)
+2014-09-08 18:05:47.684 [info] tracker: initializing
+*** glibc detected *** /opt/funnel/erts-5.8.5/bin/beam.smp: double free or corruption (out): 0x00007fe9b00096d0 ***
+
+Possible solution:
+$ mv tracker.tch tracker.tch.bak
+Start Funnel again
+
+hash(pid()) -&gt; integer() -- very controversial
+===
+[_, B, C] = [list_to_integer(L) || L &lt;- string:tokens(pid_to_list(self()), &quot;&lt;.&gt;&quot;)],
+BaseId = tunnel_app:get_env(base_usr_ogdlg_id),
+NumIds = tunnel_app:get_env(nog_dialogues),
+DlgId = BaseId + (C bsl 16 + B) rem NumIds,
+better use
+BaseId = erlang:phash2(self(), NumIds).
+
+How to debug erlang boot?
+===
+-init_debug and -loader_debug (almost useless)
+better use
+bin/&lt;app&gt; start_clean
+
+How to debug (dbg) startup
+===
+$ cd /opt/just
+$ bash -x bin/just
+...
+from the output above determine ROOTDIR and BINDIR
+
+$ export ROOTDIR=/opt/just
+$ export BINDIR=/opt/just/erts-5.8.5/bin
+$ /opt/just/erts-5.8.5/bin/erlexec -boot /opt/just/releases/1/start_clean -embedded -config /opt/just/etc/app.config -args_file /opt/just/etc/vm.args -- console
+
+!!! Notice to boot `start_clean' instead of `just' script
+
+$ application:start(just).
+...
+Resolve any dependency issues until you are able to start Just.
+Then you can call `dbg' to determine what's wrong.
+
+in just.script
+{apply,{application,start_boot,[just,permanent]}} &lt;- change `permanent' to `temporary' to prevent VM crash
+
+-eval flag is not evaluated until after the boot sequence is completed. Applications run via “-s” flags are similarly delayed until after the boot sequence has finished.
+
+{normal, {gen_server, call, [...]}}
+===================================
+It seems like you made a call to a gen_server that exited with reason normal before it sent a response to the caller.
+In general, if a gen_server exits with reason ServerExitReason during a call, gen_server:call will exit with the exit reason {ServerExitReason, {gen_server, call, [...]}}, even if ServerExitReason is normal. (See the source)
+That is, the exit reason is not normal but {normal, ...}, and that's why you get a log message.
+
+to vm.args
+## Mnesia settings
+-mnesia dir '&quot;data/mnesia&quot;'
+## To eliminate: ** WARNING ** Mnesia is overloaded: {dump_log, write_threshold}
+## For more detail see:
+## http://streamhacker.wordpress.com/2008/12/10/how-to-eliminate-mnesia-overload-events/
+-mnesia dc_dump_limit 40
+-mnesia dump_log_write_threshold 50000
+
+
+How to determine memory consumsion
+====
+http://www.erlang.org/faq/how_do_i.html#id54940
+&gt; erlang:system_info(allocated_areas).
+[{sys_misc,62387},
+ {static,1228800},
+ {atom_space,262176,255121},
+ {atom_table,129317},
+ {module_table,7368},
+ {export_table,52104},
+ {export_list,361872},
+ {register_table,252},
+ {fun_table,6450},
+ {module_refs,4096},
+ {loaded_code,7269006},
+ {dist_table,287},
+ {node_table,107},
+ {bits_bufs_size,0},
+ {bif_timer,40484},
+ {link_lh,0},
+ {process_table,131072},
+ {ets_misc,105536}]
+&gt; erlang:memory().
+[{total,4459336},
+ {processes,543958},
+ {processes_used,543958},
+ {system,3915378},
+ {atom,146321},
+ {atom_used,123031},
+ {binary,179720},
+ {code,2014424},
+ {ets,133020}]
+
+How to see binary refs used by the process
+====
+https://blog.heroku.com/archives/2013/11/7/logplex-down-the-rabbit-hole
+http://dieswaytoofast.blogspot.ca/2012/12/erlang-binaries-and-garbage-collection.html
+process_info(Pid, binary).
+[{Pid, Bin} || Pid &lt;- processes(), begin {binary, Bin} = process_info(Pid, binary), Bin =/= [] end].
+recon:proc_count(binary_memory, 3).
+
+How to sort processes by message queue len/reductions
+====
+lists:reverse(lists:sort([{process_info(P, message_queue_len), P} || P &lt;- processes()])).
+lists:reverse(lists:sort([{process_info(P, reductions), P} || P &lt;- processes()])).
+
+proplists:get_value('$initial_call', element(2, process_info(pid(0,152,0), dictionary))).
+
+How to show memory usage in GB
+====
+[{K,V / math:pow(1024,3)} || {K,V} &lt;- erlang:memory()].
+
+How to collect garbage in all processes
+====
+[erlang:garbage_collect(Pid) || Pid &lt;- processes()].
+
+How to get node's pid
+====
+&gt; os:getpid().
+&quot;21231&quot;
+
+
+f(X) -&gt;
+	 X1 = foo(X),
+	 X2 = fab(X1),
+	 X3 = bar(X2),
+	 baz(X3).
+
+vs
+
+f(X) -&gt;
+    lists:foldl(fun(F, Last) -&gt; F(Last) end,
+        X, [fun foo/1, fun fab/1, fun bar/1, fun baz/1]).
+
+How to reanimate epmd, when epmd -names is empty?
+====
+http://habrahabr.ru/post/49535/
+http://sidentdv.livejournal.com/769.html
+
+# terminal 1
+$ epmd -names
+epmd: up and running on port 4369 with data:
+$ ps -ef | grep beam | grep kelly # determine kelly's PID
+$ netstat -tulnp | grep PID       # determine kelly's distibuted node PORT
+$ erl
+&gt; erl_epmd:start().
+{ok, &lt;0.35.0&gt;}
+&gt; erl_epmd:register_node(kelly, PORT).
+{ok, 2}
+
+# terminal 2
+$ epmd -names
+epmd: up and running on port 4369 with data:
+name kelly at port 34542
+$ erl -name adm@127.0.0.1 -setcookie kelly
+&gt; net_adm:ping('kelly@127.0.0.1').
+pong
+
+# terminal 1
+&gt; q().
+$ epmd -names
+epmd: up and running on port 4369 with data:
+
+# terminal 2
+&gt; rpc:call('kelly@127.0.0.1', erl_epmd, register_node, [kelly, 34542]).
+{ok, 3}
+&gt; q().
+$ epmd -names
+epmd: up and running on port 4369 with data:
+name kelly at port 34542
+
+What ports epmd and distribution use?
+====
+ + 4369: Erlang Port Mapper Daemon's (EPMD) port
+
++ 5001-6024 (this range isn't relevant any more): Port range for the listener socket of a distributed
+Erlang node.
+This range can be modified by specifying values for kernel application:
+inet_dist_listen_min
+inet_dist_listen_max
+inet_dist_use_interface
+
+How to restrict node random selected ports range?
+====
+
+in *.config
+[
+  {kernel, [
+    {inet_dist_listen_min, [some number]},
+    {inet_dist_listen_max, [another number]}
+  ]}
+]
+
+$ erl -sname foo -kernel inet_dist_listen_min 30000 inet_dist_listen_max 30010 -detached
+
+How to determine which ports are used by an erlang node?
+====
+$ ps -ef | grep beam | grep kelly # determine PID
+$ netstat -tulnp | grep PID
+
+XREF
+====
+*.erl
+-ignore_xref([{start_link, 0}, {conf, get_app_env, 3}]).
+
+rebar.config
+{xref_checks, [
+	exports_not_used,
+	undefined_function_calls,
+	locals_not_used,
+	deprecated_function_calls
+]}.
+
+xref server examples
+https://github.com/AntonSizov/my_app_xref/blob/master/my_app_xref.erl
+
+How to enable node distrubution programmically?
+===
+net_kernel:start([Name, longnames])
+erlang:set_cookie(Name, list_to_atom(Cookie))
+net_adm:ping(Target)
+
+How to check if node is running in distributed mode?
+===
+pong =:= net_adm:ping(node()).
+
+How to connect to erlang shell over ssh?
+http://erlang.org/doc/apps/ssh/using_ssh.html
+https://www.erlang-solutions.com/blog/secure-shell-for-your-erlang-node.html
+===
+# If you start erl w/o sudo the client will get 'no hostkey alg', because
+# erl doesn't have permissions to read 'system_dir', which is /etc/ssh by default.
+# New keys and host keys should be generated instead.
+# server
+$ sudo erl
+&gt; ssh:start(), ssh:daemon(1234, []).
+{ok,&lt;0.53.0&gt;}
+
+# client
+$ ssh localhost -p 1234
+Eshell V7.3  (abort with ^G)
+1&gt;
+
+How to reverse the order of bytes/bits in binary?
+===
+Bin = &lt;&lt;1,2,3&gt;&gt;.
+% reverse bytes v1
+list_to_binary(lists:reverse(binary_to_list(Bin))).
+% reverse bytes v2
+&lt;&lt; &lt;&lt;X&gt;&gt; || X &lt;- lists:reverse([Y || &lt;&lt;Y&gt;&gt; &lt;= Bin])&gt;&gt;.
+% reverse bites
+&lt;&lt; &lt;&lt;X:1&gt;&gt; || X &lt;- lists:reverse([Y || &lt;&lt;Y:1&gt;&gt; &lt;= Bin])&gt;&gt;.
+
+How to parse binary?
+===
+X = &lt;&lt;2, 256:16&gt;&gt;.
+&lt;&lt;Length, Value:Length/unit:8&gt;&gt; = X.
+
+Partial bitstring matching?
+===
+&lt;&lt;A:6, _/bitstring&gt;&gt; = &lt;&lt;10&gt;&gt;.
+&lt;&lt;&quot;\n&quot;&gt;&gt;
+
+How to convert &lt;&lt;33:6&gt;&gt; back to numeric value
+===
+&gt; D = &lt;&lt;33:6&gt;&gt;.
+&lt;&lt;33:6&gt;&gt;
+% version 1
+&gt; E = &lt;&lt;0:2, D/bits&gt;&gt;.
+&lt;&lt;&quot;!&quot;&gt;&gt;
+&gt; &lt;&lt;F&gt;&gt; = E.
+&gt; F.
+33
+% version 2
+&gt; &lt;&lt;E:6/integer&gt;&gt; = D.
+&gt; E.
+33
+% version 3
+
+
+Q: How to enable SMP?
+A: If you compile erlang on a single-core system, make sure you enable smp in the configure script using --enable-smp-support. By default one scheduler is started per available core. To change the number of schedulers, start with erl +S 4
+  Put `-smp enable' into vm.args
+  erlang:system_info(smp_support). % smp enabled?
+  erlang:system_info(logical_processors_available). % how many cores on my machine?
+  erlang:system_info(logical_processors_online).
+  erlang:system_info(logical_processors).
+
+Q: How to directly connect to the remote shell?
+A: erl -name adm@127.0.0.1 -setcookie kelly -remsh 'kelly@127.0.0.1'
+NB: Use C-G g or C-C a to exit
+
+Q: How to find out what processes are referencing what binaries?
+A: [erlang:process_info(P,binary) || P &lt;- processes()].
+
+Q: What's .erlang.hosts is used for
+A: www.erlang.org/doc/man/net_adm.html
+A: www.erlang.org/doc/man/pool.html
+A: www.erlang.org/doc/man/slave.html
+
+Q: how to read all records used in a project into the shell
+A: rr(&quot;*/*&quot;).
+A: rr(&quot;../../*/*&quot;). % for projets that use releases
+
+Q: My ./bin/appname stop doesn't work, how to debug it.
+A: $ bash -x bin/appname stop
+Then repeat in erlang shell.
+
+Q: How to setup and find out the maximum number of processes?
+A: +P flag
+A: erlang:system_info(process_limit)
+
+Q: How to determine the total memory usage?
+A: erlang:memory/0,1
+
+Erlang in production: &quot;I wish I'd known that when I started&quot; - Bernard Duggan
+http://www.youtube.com/watch?v=G0eBDWigORY&amp;feature=related
+
+% Non Tail-Recursive Loop
+foo(X) -&gt;
+	try
+		case f(X) of
+			 continue -&gt; foo(X+1);
+			 done -&gt; ok
+		end
+	catch % try-catch must maintain the stack
+		  _ -&gt; doom()
+	end.
+
+% Tail-Recursive Loop
+foo(X) -&gt;
+	try f(X) of
+		A -&gt; foo(A);
+		_ -&gt; ok
+    catch
+		_ -&gt; doom()
+	end.
+
+You're trying to create a mnesia table
+==========
+-record(user, {id, name}).
+mnesia:create_table(user, [{type, ordered_set}, {disc_copies, [node()]}, {attributes, record_info(fields, user)}]).
+This gives me this error:
+{aborted,{bad_type,user,disc_copies,nonode@nohost}}
+If i change the table type to be ram_copies, everything works fine.
+A: Did you forget to install disc_copies schema first? I don't think you can
+have disc_copies tables with ram_copies schema.
+1&gt; mnesia:create_schema([node()]).
+2&gt; mnesia:start().
+3&gt; mnesia:create_table(user, [{type, ordered_set},
+     {disc_copies, [node()]},
+	   {attributes, [id, name]}]).
+
+Funnel crashes on startup with something like {aborted,{bad_type,user,disc_copies,'funnel@127.0.0.1'}}
+!!! for funnel 1.0.0 copy existing scheme FALLBACK.BUP from somewhere to fix the above !!!
+
+Just hangs after this sequence...
+16:06:51.702 [info] Application lager started on node 'just@127.0.0.1'
+16:06:52.040 [info] Application mnesia started on node 'just@127.0.0.1'
+16:06:52.675 [info] Application snmp started on node 'just@127.0.0.1'
+16:06:52.735 [info] Application os_mon started on node 'just@127.0.0.1'
+16:06:52.807 [info] Application common_lib started on node 'just@127.0.0.1'
+16:06:52.850 [info] Application amqp_client started on node 'just@127.0.0.1'
+16:06:52.898 [info] Application gproc started on node 'just@127.0.0.1'
+!!! for just 1.0.0 copy existing scheme FALLBACK.BUP from somewhere to fix the above !!!
+
+You're trying to create a mnesia table `stats' using the structure
+========
+-record(stats{time :: integer()}).
+The call
+mnesia:create_table(stats, [{disc_copies, [node()]}, {attributes, record_info(fields, stats)}])
+returns
+{aborted,{bad_type,stats,{attributes,[time]}}}
+A: According to http://www.erlang.org/doc/man/mnesia.html#create_table-2:
+{attributes, AtomList} a list of the attribute names for the records that are supposed to populate the table. The default value is [key, val]. The table must have at least one extra attribute in addition to the key.
+I.e. the structure MUST contain the KEY field.
+
+Why `this expression will fail with a 'badarith' exception'
+========
+a(0, y) -&gt; 2*y.
+A: You can't add atoms. Variables start with Capital Letters in erlang. Words starting with lower case letters are atoms.
+
+{node(), now()} =~= make_ref()
+=============================
+
+How to list all modules used by application?
+===
+$ find . -name *.[e,h]rl | xargs cat | sed -r -n &quot;s/^\s*([a-z]\w*):.*/\1/p&quot; | sort | uniq
+
+How to setup the user_default module?
+===
+1. create directory like ~/.ebin/
+2. add the following code  to ~/.erlang
+
+io:format(&quot;Executing user profile in HOME/.erlang\n&quot;, []).
+
+true = code:add_pathz(&quot;/home/ten0s/.ebin&quot;).
+{module, user_default} = code:load_abs(&quot;/home/ten0s/.ebin/user_default&quot;).
+
+io:format(&quot;DONE\n&quot;, []).
+
+3. create `user_default.erl' in ~/.ebin
+4. compile it there
+
+
+How to find out how much RAM is needed for a particular data structure?
+===
+1&gt; L = [fun(_) -&gt; 107 end || _ &lt;- lists:seq(1,10000000)], ok.
+ok
+2&gt; erts_debug:flat_size(L) * 8. % 8 - heap word size
+20000000
+
+* How to get full `readline' support and history in erlang shell?
+rlwrap -a erl
+http://blog.tty.nl/2011/10/20/quest-for-the-perfect-erlang-development-environment/
+
+Erlang development tips
+===
+http://blog.tty.nl/category/erlang/
+https://github.com/eproxus/erlang_user_utilities
+http://www.snookles.com/erlang/user_default.erl
+
+Sync release support
+====
+1. make the sync somehow available:
+   either put it the erlang libs repository or
+   insert it as a rebar dependency
+2. include it to reltool.config or
+   make it as a dependency for an application (optional)
+3. build the project with debug_info.
+4. remove {debug_info, strip} from reltool.config
+5. add {excl_archive_filters, [&quot;.*&quot;]} to reltool.config
+6. make sure that you don't compile with `warnings_as_errors' flag (dbg(compile, file, r))
+7. add to vm.args
+## Sync settings
+## disable notifications
+-sync growl false
+
+How to format integers?
+====
+
+[Erlang Format specification](http://erlang.org/doc/man/io.html#fwrite-1):
+
+~F.P.PadModC
+
+&quot;~4..0B~n&quot; translates to:
+
+ ~F. = ~4.  (Field width of 4)
+  P. =   .  (no Precision specified)
+Pad  =  0   (Pad with zeroes)
+Mod  =      (no control sequence Modifier specified)
+  C  =  B   (Control sequence B = integer in default base 10)
+
+io:format(&quot;~4..0B&quot;, [15]).         ==&gt; 0015
+io:format(&quot;~4.16.0B&quot;, [15]).       ==&gt; 000F
+io:format(&quot;~.36.0B&quot;, [892869676]). ==&gt; ERLANG
+
+~.2B == ~.2. B
+io:format(&quot;~.2B&quot;, [100]).          ==&gt; 1100100
+io:format(&quot;~.2. B&quot;, [100]).        ==&gt; 1100100
+io:format(&quot;~8.2.0B&quot;, [100]).       ==&gt; 01100100
+
+How to convert binary to hex string
+====
+&lt;&lt;81,15,205,141,34,18,69,87,138,9,142,17&gt;&gt; =&gt; &quot;510fcd8d221245578a098e11&quot;
+ID = &lt;&lt;81,15,205,141,34,18,69,87,138,9,142,17&gt;&gt;,
+lists:flatten([io_lib:format(&quot;~2.16.0b&quot;, [X]) || X &lt;- binary_to_list(ID)]).
+
+hex_dump_to_list(HexStr) -&gt;
+    hex_dump_to_list(HexStr, []).
+
+hex_dump_to_list([], Acc) -&gt;
+    lists:reverse(Acc);
+hex_dump_to_list([F, S | Rest], Acc) -&gt;
+    {ok, [V], []} = io_lib:fread(&quot;~16u&quot;, [F, S]),
+hex_dump_to_list(Rest, [V | Acc]).
+
+list_to_hex_dump(List) -&gt;
+    list_to_hex_dump(List, []).
+
+list_to_hex_dump([], Acc) -&gt;
+    lists:flatten(lists:reverse(Acc));
+list_to_hex_dump([X | Xs], Acc) -&gt;
+    Hex = io_lib:format(&quot;~2.16.0B&quot;, [X]),
+    list_to_hex_dump(Xs, [Hex | Acc]).
+
+Plain port buffering problem
+====
+http://www.vladalexandruionescu.com/2012/03/erlangs-openport-and-buffering.html
+
+Port = open_port({spawn, &quot;stdbuf -i0 -o0 -e0 my-long-running-command&quot;},
+                   [exit_status, {line, 1024}])
+
+Mnesia cursor
+===
+Table = your_table,
+Cursor = mnesia:activity(sync_dirty, fun() -&gt;
+qlc:cursor(qlc:q([element(2, R) || R &lt;- mnesia:table(Table)])) end).
+
+And then repeatedly:
+- Call qlc:next_answers(Cursor) to get a list with the next keys.
+- Call mnesia:activity(sync_transaction, fun mnesia:delete/1, [{Table,
+Key}]) for each returned key
+
+Platform specific defines using rebar
+====
+https://github.com/nox/cowboy/commit/5943c8eccff8130246efc377e1330b6b2f98f731
+
+rebar.config:
+ {erl_opts, [{platform_define, &quot;^R14&quot;, &quot;no_callbacks&quot;}]}.
+
+somewhere in code:
+
+-ifndef(no_callbacks).
+
+-callback start_link(pid(), inet:socket(), module(), any()) -&gt;
+{ok, pid()}.
+
+-else.
+
+-export([behaviour_info/1]).
+
+behaviour_info(callbacks) -&gt;
+[{start_link, 4}];
+behaviour_info(_Other) -&gt;
+undefined.
+
+-endif.
+
+How to get pid by registered name?
+====
+whereis(k_cassandra_storage)
+
+How to see state of a process?
+===
+sys:get_status(pid).
+
+While building a project with subprojects with rebar,
+you sure that your dependency in subapps are right,
+your rebar.config `sub_dirs' setting like:
+===
+
+{sub_dirs, [
+    &quot;rel&quot;,
+    &quot;subapps/oa_proto&quot;,
+    &quot;subapps/k1api&quot;,
+    &quot;subapps/eoneapi&quot;
+]}.
+
+and you get the error like:
+
+==&gt; k1api (compile)
+Dependency not available: eoneapi-.* (undefined)
+make: *** [compile] Error 1
+
+One solution is to reorder the `sub_dirs' list such that all applications that are dependencies themselves go prior the applications that use them.
+
+
+While building a project with rebar, or any other tool that uses reltool under the hood and you get:
+===
+
+{&quot;init terminating in do_boot&quot;,{{badmatch,false},[{reltool_target,init_rel_app,2},{reltool_target,do_merge_apps,5},{reltool_target,merge_apps,2},{reltool_target,do_spec_rel_files,2},{reltool_target,'-spec_rel_files/1-lc$^0/1-0-',2},{reltool_target,spec_rel_files,1},{reltool_target,do_gen_spec,1},{reltool_target,gen_spec,1}]}}
+
+This means that one of your dependencies is spelled wrong. For example `epgsql_pooler' instead of `epgsql_pool'. The above error doesn't tell you what is wrong exactly. So you should patch reltool_target.erl to get more meaningfull error message like:
+
+ERROR: Unable to generate spec: Application epgsql_pooler is used, but not included
+
+init_rel_app(Name, Apps) -&gt;
+    case lists:keysearch(Name, #app.name, Apps) of
+        false -&gt;
+            reltool_utils:throw_error(
+                &quot;Application ~p is used, but not included&quot;,
+                [Name]);
+        {value, App} -&gt;
+            Info = App#app.info,
+            #rel_app{name = Name,
+                 app_type = undefined,
+                 incl_apps = Info#app_info.incl_apps}
+    end.
+
+This error is applied to ..., R14B04, R15B.
+
+
+
+How to get parent of an erlang process?
+=====
+http://azunyanmoe.wordpress.com/2011/04/02/how-to-get-parent-of-an-erlang-process/
+
+11&gt;  process_info(whereis(timer_server),dictionary).
+{dictionary,[{'$ancestors',[kernel_safe_sup,kernel_sup,
+                            &lt;0.9.0&gt;]},
+             {'$initial_call',{timer,init,1}}]}
+
+get_parent() -&gt;
+    case get('$ancestors') of
+    [Parent | _] when is_pid(Parent)-&gt;
+            Parent;
+        [Parent | _] when is_atom(Parent)-&gt;
+            name_to_pid(Parent);
+    _ -&gt;
+        exit(process_was_not_started_by_proc_lib)
+    end.
+
+How to get os independent user's home dir?
+====
+&gt; {ok, [[Home]]} = init:get_argument(home).
+
+How to get script name that started erlang?
+===
+&gt; {ok, [[&quot;billy&quot;]]} = init:get_argument(progname).
+&gt; init:get_arguments(). =&gt;
+{root,[&quot;/home/ten0s/projects/billy/rel/billy&quot;]},
+ {progname,[&quot;billy&quot;]},
+ {home,[&quot;/home/ten0s&quot;]},
+ {boot,[&quot;/home/ten0s/projects/billy/rel/billy/releases/1/billy&quot;]},
+ {mode,[&quot;embedded&quot;]},
+ {config,[&quot;/home/ten0s/projects/billy/rel/billy/etc/app.config&quot;]},
+ {name,[&quot;billy@127.0.0.1&quot;]},
+ {setcookie,[&quot;billy&quot;]},
+ {mnesia,[&quot;dir&quot;,&quot;\&quot;data/mnesia\&quot;&quot;]},
+ {mnesia,[&quot;dc_dump_limit&quot;,&quot;40&quot;]},
+ {mnesia,[&quot;dump_log_write_threshold&quot;,&quot;50000&quot;]},
+ {sync,[&quot;growl&quot;,&quot;false&quot;]}]
+
+What libs will be included into the release?
+===
+
+-module(rel).
+-compile([export_all, debug_info]).
+
+libs() -&gt;
+    {ok, Conf} = file:consult(&quot;reltool.config&quot;),
+    {ok, Spec} = reltool:get_target_spec(Conf),
+    LibDirs = lists:flatten([LibDir || {create_dir, &quot;lib&quot;, LibDir} &lt;- Spec]),
+    Libs = [Lib || {create_dir, Lib, _, _} &lt;- LibDirs],
+    Libs.
+
+{&quot;init terminating in do_boot&quot;,{'cannot load',hipe,get_file}}
+====
+Add {app, hipe, [{incl_cond, exclude}]} into reltool.config
+
+{&quot;init terminating in do_boot&quot;,{'cannot load',emysql,get_file}}
+=====
+The application is added to an application's dependency by isn't called anywhere.
+
+Cassandra through Thrift
+===
+
+%http://wiki.apache.org/cassandra/API
+&gt; rr(cassandra_types).
+&gt; f(C), {ok, C} = thrift_client_util:new(&quot;localhost&quot;, 9160, cassandra_thrift, [{framed, true}]).
+&gt; f(Opts), Opts = dict:from_list([{&quot;replication_factor&quot;, &quot;1&quot;}]).
+&gt; f(KsDef), KsDef = #ksDef{name=&quot;kelly&quot;, strategy_class=&quot;SimpleStrategy&quot;, strategy_options=Opts}.
+&gt; thrift_client:call(C, 'system_add_keyspace', [KsDef]).
+&gt; thrift_client:call(C, 'set_keyspace', [&quot;kelly&quot;]).
+&gt; f(CfDef), CfDef = #cfDef{keyspace = &quot;kelly&quot;, name=&quot;table&quot;}.
+&gt; thrift_client:call(C, 'system_add_column_family', [CfDef]).
+2 here is cassandra_ConsistencyLevel_QUORUM
+&gt; timestamps are important, remember delete-write-read failure.
+&gt; thrift_client:call(C, 'insert', [&quot;3&quot;, #columnParent{column_family=&quot;table&quot;}, #column{name=&quot;v&quot;, value=&quot;three&quot;, timestamp=0}, 2]).
+&gt; thrift_client:call(C, 'get', [&quot;3&quot;, #columnPath{column_family=&quot;table&quot;, column=&quot;v&quot;}, 2]).
+&gt; thrift_client:call(C, 'remove', [&quot;3&quot;, #columnPath{column_family=&quot;table&quot;, column=&quot;v&quot;}, 0, 2]).
+
+Building problem on 64bit system:
+=================================
+gen/wxe_funcs.cpp -o x86_64-unknown-linux-gnu/wxe_funcs.o
+g++: internal compiler error: Killed (program cc1plus)
+
+Solution:
+http://erlang.2086793.n4.nabble.com/Error-compiling-R13B04-td2119005.html
+before the &quot;configure&quot; step.
+$ touch lib/wx/SKIP
+$ ./configure ...
+$ make
+</pre>
+</div>
 <div created="20200428103034928" modified="20200428103045649" tags="Erlang" title="Erlang GC">
 <pre>dse - Designing for Scalability with Erlang/OTP
 sgb - Stuff goes bad
@@ -12682,6 +14018,12 @@ function set-r15b03-1() {
 set-r15b03-1
 
 ########### DO NOT MODIFY PATH AFTER HERE ##########
+</pre>
+</div>
+<div created="20200428103755320" modified="20200428103810791" tags="Erlang" title="Erlang upgrades">
+<pre>[erlang-questions] A nice code upgrade trick from Andy Tanenbaum http://erlang.org/pipermail/erlang-questions/2015-June/084952.html
+
+http://www.metabrew.com/article/erlang-rebar-tutorial-generating-releases-upgrades
 </pre>
 </div>
 <div created="20200425123925856" modified="20200425124216352" tags="Linux Bash Python" title="Error code description">
@@ -13950,6 +15292,75 @@ $ docker image prune
 ```
 
 </pre>
+</div>
+<div created="20200428104028123" modified="20200428104043498" tags="Erlang" title="Pure Cowboy Stream Handler">
+<pre>```
+%%% -*- mode: erlang;erlang-indent-level: 4;indent-tabs-mode: nil -*-
+%%% ex: ts=4 sw=4 ft=erlang et indentexpr=
+%%%--------------------------------------------------------------------------
+%%% File:    tracer_http_api_auth_h.erl
+%%%
+%%% @doc     Tracer HTTP API Auth Cowboy Stream Handler
+%%% @author  Dmitry Klionsky &lt;dm.klionsky@gmail.com&gt;
+%%% @since   25 Sep 2018
+%%% @end
+%%%-------------------------------------------------------------------------
+-module(pure_cowboy_stream_h).
+-author('dm.klionsky@gmail.com').
+
+-behavior(cowboy_stream).
+
+%% cowboy_stream export
+-export([
+    init/3,
+    data/4,
+    info/3,
+    terminate/3,
+    early_error/5
+]).
+
+-record(state, {
+	next :: any()
+}).
+
+%%%--------------------------------------------------------------------------
+%%% API
+%%%--------------------------------------------------------------------------
+
+-spec init(cowboy_stream:streamid(), cowboy_req:req(), cowboy:opts())
+	-&gt; {cowboy_stream:commands(), #state{}}.
+init(StreamID, Req, Opts) -&gt;
+	State0 = #state{},
+	{Commands0, Next} = cowboy_stream:init(StreamID, Req, Opts),
+    {Commands0, State0#state{next=Next}}.
+
+-spec data(cowboy_stream:streamid(), cowboy_stream:fin(), cowboy_req:resp_body(), State)
+	-&gt; {cowboy_stream:commands(), State} when State::#state{}.
+data(StreamID, IsFin, Data, State0=#state{next=Next0}) -&gt;
+	{Commands0, Next} = cowboy_stream:data(StreamID, IsFin, Data, Next0),
+    {Commands0, State0#state{next=Next}}.
+
+-spec info(cowboy_stream:streamid(), any(), State)
+	-&gt; {cowboy_stream:commands(), State} when State::#state{}.
+info(StreamID, Info, State0=#state{next=Next0}) -&gt;
+	{Commands0, Next} = cowboy_stream:info(StreamID, Info, Next0),
+    {Commands0, State0#state{next=Next}}.
+
+-spec terminate(cowboy_stream:streamid(), cowboy_stream:reason(), #state{}) -&gt; any().
+terminate(StreamID, Reason, #state{next=Next}) -&gt;
+	cowboy_stream:terminate(StreamID, Reason, Next).
+
+-spec early_error(cowboy_stream:streamid(), cowboy_stream:reason(),
+	cowboy_stream:partial_req(), Resp, cowboy:opts()) -&gt; Resp
+	when Resp::cowboy_stream:resp_command().
+early_error(StreamID, Reason, PartialReq, Resp, Opts) -&gt;
+	cowboy_stream:early_error(StreamID, Reason, PartialReq, Resp, Opts).
+
+%%%--------------------------------------------------------------------------
+%%% Internal
+%%%--------------------------------------------------------------------------
+
+```</pre>
 </div>
 <div created="20200423173457326" modified="20200423173518058" tags="Git" title="Push tag">
 <pre>```
@@ -15612,6 +17023,279 @@ $ strace COMMAND [ARGS]
 
 [[Trace dynamic libs calls]]</pre>
 </div>
+<div created="20200428103938043" modified="20200428103952865" tags="Erlang" title="Tracing and profiling">
+<pre>How do I modify the code search path for a remote Erlang node
+===
+[code:add_pathz(P) || P &lt;- filelib:wildcard(&quot;/usr/lib/erlang/lib/*/ebin&quot;)].
+
+How to debug just startup
+===
+$ cd /opt/just
+$ bash -x bin/just
+...
+from the output above determine ROOTDIR and BINDIR
+
+$ export ROOTDIR=/opt/just
+$ export BINDIR=/opt/just/erts-5.8.5/bin
+$ /opt/just/erts-5.8.5/bin/erlexec -boot /opt/just/releases/1/start_clean -embedded -config /opt/just/etc/app.config -args_file /opt/just/etc/vm.args -- console
+
+!!! Notice to boot start_clean intead of just script
+
+$ application:start(just).
+...
+resolve dependencies
+...
+dbg:tracer().
+dbg:p(all, call).
+dbg:tpl(j_odbc, get_server_uuid, '_', []).
+dbg:tp(odbc, sql_query, '_', dbg:fun2ms(fun(_) -&gt; exception_trace() end)).
+dbg:tpl(j_odbc, normalize_result_set, '_', dbg:fun2ms(fun(_) -&gt; exception_trace() end)).
+
+How to trace remote node, but see output on local
+===
+$ erl -name adm@127.0.0.1 -setcookie kelly
+&gt; net_adm:ping('kelly@127.0.0.1').
+pong
+&gt; dbg(). %% dbg:tracer().
+{ok, &lt;0.44.0&gt;}
+&gt; dbg:n('kelly@127.0.0.1').
+{ok, 'kelly@127.0.0.1'}
+&gt; dbg(Mod, Fun, ...).  %% dbg:p(all, call), dbg:tpl({Mod, Fun, ...}, ...).
+{ok, [{matched, 'adm@127.0.0.1'}, {matched, 'kelly@127.0.0.1'}, {saved, 1}]}
+
+How to trace files in Wireshark
+https://www.erlang-solutions.com/blog/erlang-trace-files-in-wireshark.html
+===
+dbg:tracer(port, dbg:trace_port(file, &quot;jd_c2s_xmpp_stream.trace&quot;)).
+dbg:p(all, [call, timestamp]).
+dbg:tp(jd_c2s_xmpp_stream, '_', '_', []).
+
+How redirect trace to a port:
+===
+source:
+dbg:tracer(port, dbg:trace_port(ip, 1234)).
+dbg:p(all, call).
+dbg:tp(lists, sum, '_', []).
+
+client:
+dbg:trace_client(ip, 1234).
+
+How to redirect trace to a file: (file is binary dump)
+===
+source:
+dbg:tracer(port, dbg:trace_port(file, &quot;trace.dump&quot;)).
+dbg:p(all, call).
+dbg:tp(lists, sum, '_', []).
+...
+lists:sum(...).
+...
+dbg:flush_trace_port().
+...
+dbg:stop_clean().
+
+client:
+P = dbg:trace_client(follow_file, &quot;trace.dump&quot;).
+...
+dbg:stop_trace_client(P).
+
+How to redirect trace to a process:
+===
+setup:
+DisplayFun = fun(Trace, _Data) -&gt; erlang:display(Trace), Trace end.
+dbg:tracer(process, {DisplayFun, []}).
+
+FileFun = fun(Trace, _Data) -&gt; file:write_file(&quot;trace.log&quot;, io_lib:format(&quot;~p~n&quot;, [Trace]), [append]), Trace end.
+dbg:tracer(process, {FileFun, []}).
+
+AccFun = fun(Trace, Acc) -&gt; erlang:display(Acc), Acc+1 end.
+dbg(c), dbg:tracer(process, {AccFun, 1}), dbg:p(all, call), dbg(gen_mc_session, reply).
+
+% autostop
+AutostopFun = fun(Max) -&gt; fun (_, Max) -&gt; dbg:stop_clear(); (Msg, N) -&gt; erlang:display(Msg), N+1 end end.
+dbg:tracer(process, {AutostopFun(100), 0}).
+
+dbg:p(all, call).
+dbg:tpl(lists, sum, '_', []).
+...
+lists:sum(...).
+...
+
+output:
+{trace, &lt;0.31.0&gt;, call, {lists, sum, [[1,2,3]]}}
+
+How to save trace to a file?
+===
+dbg(c).
+Fun = fun(Trace, _Data) -&gt; file:write_file(&quot;test.log&quot;, io_lib:format(&quot;~p~n&quot;, [Trace]), [append]), Trace end.
+dbg:tracer(process, {Fun, []}).
+
+dbg(mongo_query, write, fun([_,{update,mt_messages,_,_,_,_},_]) -&gt; exception_trace() end).
+dbg(mongo_query, write, fun([_,{update,mt_messages,_,_,_,_},_]) -&gt; message(caller()), return_trace() end).
+dbg(mongodb_storage, command, fun([k_curr_dynamic_storage, _]) -&gt; message(caller()), return_trace() end).
+dbg(mongodb_storage, upsert, fun([k_curr_dynamic_storage, mt_messages, _, _]) -&gt; message(caller()), return_trace() end).
+
+How to see the caller of a call
+===
+&gt; dbg(k_statistic_status_reports, doc_to_message, fun([mo_messages, _]) -&gt; message(caller()) end).
+
+Q: How to determine a local lambda's  name?
+===
+A: '-FunctionName/Arity-fun-Index-'
+where
+FunctionName :: atom() - parent function's name
+Arity :: non_neg_integer() - parent function's arity
+Index :: non_neg_integer() - lambda's index in a file
+Examples:
+
+test(N, M) -&gt;
+	lists:map(
+		fun(X) -&gt; X * X end,
+		lists:seq(1, N)
+	),
+	lists:map(
+		fun(X) -&gt; X * X * X end,
+		lists:seq(1, M)
+	).
+
+'-tt/2-fun-0-'
+'-tt/2-fun-1-'
+dbg:tpl(kyte_db_request_srv, '-perform_execute/4-fun-4-', '_', cx).
+
+How to use cprof
+===
+&gt; cprof:start().
+&gt; ...
+&gt; cprof:pause().
+&gt; cprof:analyse() | cprof:analyse(...).
+&gt; cprof:stop().
+
+How to use eprof
+===
+&gt; eprof:start().
+{ok,&lt;0.64.0&gt;}
+&gt; eprof:profile(fun puzzle:time_bfs/0).
+&gt; eprof:analyze().
+&gt; eprof:stop().
+
+Start eprof for all existing processes and spawn from them
+===
+&gt; {ok, P} = eprof:start().
+{ok,&lt;0.146.0&gt;}
+&gt; eprof:start_profiling(processes() -- [P]).
+profiling
+...
+&gt; eprof:stop_profiling().
+profiling_stopped
+&gt; eprof:log(&quot;eprof.txt&quot;).
+ok
+&gt; eprof:analyze(total).
+ok
+&gt; eprof:stop().
+stopped
+
+{ok, P} = eprof:start(), eprof:start_profiling(processes() -- [P]).
+...
+eprof:stop_profiling(), eprof:log(&quot;eprof.txt&quot;), eprof:analyze(total), eprof:stop().
+
+How to use fprof + erlgrind + kcachegrind
+===
+Insert before code
+fprof:trace(start),
+...
+Insert after code
+fprof:trace(stop),
+
+&gt; fprof:profile().
+&gt; fprof:analyse([{dest, &quot;routes.fprof&quot;}]).
+
+$ erlgrind routes.fprof
+$ kcachegrind routes.cgrind
+
+Check out
+===
+https://github.com/proger/eflame
+https://github.com/Appliscale/xprof
+
+How to use percept
+===
+1&gt; percept:profile(&quot;test.dat&quot;, {sorter, go, [5, 2000, 15]}, [procs]).
+Starting profiling.
+2&gt; percent:analyze(&quot;test.dat&quot;).
+Parsing: &quot;test.dat&quot;
+Consolidating...
+Parsed 463 entries in 0.024268 s.
+    17 created processes.
+    0 opened ports.
+ok
+3&gt; percent:start_webserver(8888).
+{started,&quot;mint-ws&quot;,8888}
+4&gt; percept:stop_webserver().
+ok
+
+Erlang trace
+===
+http://www.erlang.org/doc/man/erlang.html#trace-3
+http://www.erlang.org/doc/man/erlang.html#trace_pattern-3
+
+Dbg
+===
+http://www.erlang.org/doc/man/dbg.html
+http://www.erlang.org/doc/man/ms_transform.html
+
+Match spec
+===
+http://www.erlang.org/doc/apps/erts/match_spec.html
+
+Event tracer
+===
+http://erlang.org/doc/apps/et/et_intro.html
+
+-module(jd_tracing).
+-export([trace_me/5]).
+
+trace_me(_, _, _, _, _) -&gt;
+    ok.
+
+et_viewer:start([{trace_global,true}, {trace_pattern,{jd_tracing,max}}, {width, 2000}, {height, 1200}, {max_actors, infinity}]).
+
+Trace tool builder
+===
+http://www.erlang.org/doc/man/ttb.html
+http://www.erlang.org/doc/apps/observer/ttb_ug.html
+papers/DBG_TTB_tutorial_Nov_2010.pdf
+
+Sequencial tracing
+===
+http://www.erlang.org/doc/man/seq_trace.html
+
+Projects using trace
+===
+https://github.com/krestenkrab/erlubi
+http://www.youtube.com/watch?v=2MO6Uv7KZ7g
+http://www.youtube.com/watch?v=lHoWfeNuAN8
+https://github.com/psyeugenic/fgraph
+
+Percept &amp; Percept2
+===
+http://www.erlang.org/doc/apps/percept/percept_ug.html
+http://erlang.org/doc/apps/percept/
+https://github.com/huiqing/percept2
+http://huiqing.github.io/percept2/overview-summary.html
+https://erlangcentral.org/profiling-erlang-programs-using-percept2-2/
+http://kar.kent.ac.uk/34875/1/percept2.pdf
+
+Others
+===
+http://stackoverflow.com/questions/1954894/using-trace-and-dbg-in-erlang
+http://stackoverflow.com/questions/2432936/tracing-erlang-functions-short-forms
+http://stackoverflow.com/questions/9793586/is-there-a-way-to-add-messages-when-using-return-trace
+http://www.snookles.com/erlang/ef2015/slf-presentation.html
+
+https://www.youtube.com/watch?v=4u6c2FNauYE
+papers/Profiling and debugging Erlang Systems.pdf
+
+http://homeonrails.com/2016/05/profiling-in-erlang/</pre>
+</div>
 <div created="20200428092547228" modified="20200428092737278" tags="MentalModel" title="TRIZ System operator">
 <pre>* http://www.temm.ru/ru/section.php?docId=3602
 * http://www.trizminsk.org/e/248023.htm
@@ -15763,6 +17447,16 @@ $ sudo iftop -nNB (press `d' for aggregated view)
 $ sudo iftop -i eth0 -f 'dst port 5001'
 ```</pre>
 </div>
+<div created="20200428103826329" modified="20200428103833795" tags="Dev" title="YACC">
+<pre>~/refs/linux/lexyacc
+
+https://github.com/gustehn/GELO # JS on ErlVM
+https://github.com/erlcloud/eini
+bc
+EFL
+MLFL
+</pre>
+</div>
 <div created="20200428094212396" modified="20200428094310548" tags="MentalModel" title="Стратегия Штанги">
 <pre>&gt; При выборе стратегии ... важнее знать самый плохой вариант, а не общий прогноз
 Черный лебедь, 2изд, стр 272
@@ -15777,6 +17471,36 @@ $ sudo iftop -i eth0 -f 'dst port 5001'
 <div created="20200428092753858" modified="20200428095506645" tags="MentalModel" title="Теория Двигания Кроватей">
 <pre>Когда в публичном доме дела идут плохо, нужно менять девочек, а не двигать кровати.
 Входит в более широкую [[Теорию Дохлых Лошадей|The Dead Horse Theory]]
+</pre>
+</div>
+<div created="20200428103854009" modified="20200428103908103" tags="Erlang" title="Учебный план">
+<pre>0. Устанавливаем Erlang
+   https://www.erlang-solutions.com/resources/download.html
+   версия R16B03 или ту на котором Just&amp;Funnel work
+
+1. Читаем главы 3-5.2, 6-10
+   Programming Erlang - Software for Concurent World (2013)
+
+2.1 Осваиваем рекурсию
+    https://wiki.haskell.org/H-99:_Ninety-Nine_Haskell_Problems
+    Решаем 1-28 (минимум), 54-69 (желательно)
+
+2.2 Осваиваем функциональный подход
+    http://projecteuler.net
+    Решаем 20+ заданий
+
+
+
+3. Читаем главы 11-14 &amp; 22-23
+   Programming Erlang - Software for Concurent World (2013)
+
+4. Читаем Erlang and OTP in Action (очень хорошая книга если усвоено все предыдущее)
+
+А дальше самостоятельно :) Есть что почитать!
+
+Другие ресурсы:
+http://learnyousomeerlang.com/ - неплохая и полная книга для начинающих, но мне не нравится стиль
+http://www.erlang.org/course/course.html - небольшой курс
 </pre>
 </div>
 
