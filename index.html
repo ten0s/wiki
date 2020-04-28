@@ -199,6 +199,8 @@ Error message and password prompt
 
 <li>$:/state/toc/TableOfContents-Bash--118161433</li>
 
+<li>$:/state/toc/TableOfContents-Dev--118161433</li>
+
 <li>$:/state/toc/TableOfContents-Docker--118161433</li>
 
 <li>$:/state/toc/TableOfContents-Git--118161433</li>
@@ -218,6 +220,8 @@ Error message and password prompt
 <li>$:/state/toc/TableOfContents-TiddlyWiki--118161433</li>
 
 <li>$:/state/toc/TableOfContents-Ubuntu--118161433</li>
+
+<li>$:/state/toc/TableOfContents/Dev-Algorithm--118161433</li>
 
 <li>$:/state/tree/$:/config/</li>
 
@@ -259,11 +263,15 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla/options/stickytitles</li>
 
+<li>Absdir</li>
+
 <li>Add line numbers to output</li>
 
 <li>Add TLS encryption to existing clients and servers</li>
 
 <li>Add user to group</li>
+
+<li>Algorithm</li>
 
 <li>Alias with args</li>
 
@@ -479,6 +487,8 @@ Error message and password prompt
 
 <li>Extract audio from video files</li>
 
+<li>Fibonacci and Factorial using math</li>
+
 <li>Files process uses</li>
 
 <li>Fix 'locate' error</li>
@@ -500,6 +510,8 @@ Error message and password prompt
 <li>Force SSH password authentication</li>
 
 <li>Fstab example</li>
+
+<li>Functional design patterns</li>
 
 <li>Generate password</li>
 
@@ -555,6 +567,8 @@ Error message and password prompt
 
 <li>Investigate WLAN network</li>
 
+<li>Kademlia</li>
+
 <li>Keep SSH On</li>
 
 <li>Kernel profiler</li>
@@ -562,6 +576,8 @@ Error message and password prompt
 <li>Last argument</li>
 
 <li>Last command</li>
+
+<li>Least compression difference</li>
 
 <li>Lindy effect</li>
 
@@ -649,9 +665,13 @@ Error message and password prompt
 
 <li>Pass dir over network (tar pipe)</li>
 
+<li>Plist opts to record</li>
+
 <li>Postfix via gmail.com</li>
 
 <li>Pretty print XML</li>
+
+<li>Principles</li>
 
 <li>Print X event coming to window</li>
 
@@ -664,6 +684,8 @@ Error message and password prompt
 <li>Query system configuration vars</li>
 
 <li>Quotes</li>
+
+<li>Re-schedule timer</li>
 
 <li>Read &quot;Customise TW&quot;</li>
 
@@ -684,6 +706,8 @@ Error message and password prompt
 <li>Recover Ubuntu after unsuccessful upgrade</li>
 
 <li>Regex</li>
+
+<li>Remove duplicates from list</li>
 
 <li>Remove last commit pushed to server</li>
 
@@ -746,6 +770,8 @@ Error message and password prompt
 <li>Simulate `make' without actual execution</li>
 
 <li>Skip two lines</li>
+
+<li>Sorting by multiple fields</li>
 
 <li>Speedtest in terminal</li>
 
@@ -10332,6 +10358,9 @@ Error message and password prompt
 <div created="20200426101916708" modified="20200426101922995" title="$:/state/toc/TableOfContents-Bash--118161433">
 <pre>close</pre>
 </div>
+<div created="20200428101450941" modified="20200428101450941" title="$:/state/toc/TableOfContents-Dev--118161433">
+<pre>open</pre>
+</div>
 <div created="20200426101718323" modified="20200426101735679" title="$:/state/toc/TableOfContents-Docker--118161433">
 <pre>close</pre>
 </div>
@@ -10361,6 +10390,9 @@ Error message and password prompt
 </div>
 <div created="20200426101657879" modified="20200426101738390" title="$:/state/toc/TableOfContents-Ubuntu--118161433">
 <pre>close</pre>
+</div>
+<div created="20200428101546086" modified="20200428101546086" title="$:/state/toc/TableOfContents/Dev-Algorithm--118161433">
+<pre>open</pre>
 </div>
 <div created="20200423185641804" modified="20200423185641804" title="$:/state/tree/$:/config/">
 <pre>show</pre>
@@ -10395,7 +10427,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200428091224083" list="" modified="20200428101112855" title="$:/StoryList">
+<div created="20200428091224083" list="" modified="20200428101231421" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200426081006916" title="$:/temp/advancedsearch">
@@ -10459,7 +10491,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200423165127488" modified="20200428101121195" title="$:/temp/NewTagName">
+<div created="20200423165127488" modified="20200428101730317" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
 <div created="20200422190456346" modified="20200428100202766" title="$:/temp/search">
@@ -10580,6 +10612,27 @@ Error message and password prompt
 <div created="20200423190007675" modified="20200423190009699" title="$:/themes/tiddlywiki/vanilla/options/stickytitles">
 <pre>no</pre>
 </div>
+<div created="20200428101800273" modified="20200428101832313" tags="Algorithm Erlang" title="Absdir">
+<pre>```
+-spec absdir(file:name()) -&gt; file:name().
+absdir(Dir) -&gt;
+    ending_slash(
+        case filename:pathtype(Dir) of
+        absolute -&gt;
+            Dir;
+        relative -&gt;
+            {ok, CWD} = file:get_cwd(),
+            filename:absname_join(CWD, Dir)
+        end
+    ).
+
+ending_slash(Dir) -&gt;
+    case lists:last(Dir) of
+    $/ -&gt; Dir;
+    _  -&gt; Dir ++ &quot;/&quot;
+    end.
+```</pre>
+</div>
 <div created="20200424090229068" modified="20200424090248094" tags="Linux Bash" title="Add line numbers to output">
 <pre>```
 cat -n
@@ -10596,6 +10649,9 @@ $ sudo usermod -a -G GROUP USER
 ```
 
 </pre>
+</div>
+<div caption="Algorithms" created="20200428101452426" modified="20200428101538393" tags="Dev" title="Algorithm">
+<pre></pre>
 </div>
 <div created="20200425122732985" modified="20200425122759904" tags="Bash" title="Alias with args">
 <pre>```
@@ -11774,6 +11830,21 @@ for f in *.mp4; do
 done
 ```</pre>
 </div>
+<div created="20200428101614852" modified="20200428101629767" tags="Algorithm" title="Fibonacci and Factorial using math">
+<pre>https://www.evanmiller.org/mathematical-hacker.html
+
+```
+long int fib(unsigned long int n) {
+   return lround((pow(0.5 + 0.5 * sqrt(5.0), n) -
+                  pow(0.5 - 0.5 * sqrt(5.0), n)) /
+                 sqrt(5.0));
+}
+
+long int fac(unsigned long int n) {
+    return lround(exp(lgamma(n+1)));
+}
+```</pre>
+</div>
 <div created="20200425162047058" modified="20200425162109798" tags="Linux" title="Files process uses">
 <pre>```
 $ lsof -P -T -p PID
@@ -11867,6 +11938,12 @@ $ ssh -F /dev/null -o PubkeyAuthentication=no pi@printerpi
 //serverpi/Transcend /media/Transcend cifs guest,uid=1000,iocharset=utf8 0 0
 # to apply changes: sudo mount -a
 ```</pre>
+</div>
+<div created="20200428101553201" modified="20200428101608122" tags="Algorithm" title="Functional design patterns">
+<pre>If you have a list, db table, etc and you need to change it by applying
+different modifications, consider to store deltas (change commands) and
+then apply those. Looks like Event sourcing!
+</pre>
 </div>
 <div created="20200425145656395" modified="20200425145823581" tags="Linux" title="Generate password">
 <pre>```
@@ -12098,6 +12175,11 @@ https://www.tldp.org/HOWTO/Printing-HOWTO/
 kismet
 </pre>
 </div>
+<div created="20200428102008576" modified="20200428102026957" tags="Algorithm" title="Kademlia">
+<pre>https://en.wikipedia.org/wiki/Kademlia
+
+One of Distributed Hash table implementations.</pre>
+</div>
 <div created="20200424093049547" modified="20200424093107679" tags="Ssh" title="Keep SSH On">
 <pre>https://www.everythingcli.org/ssh-tunnelling-for-fun-and-profit-autossh/
 
@@ -12129,6 +12211,10 @@ $ !!
 ```
 
 [[Last argument]]</pre>
+</div>
+<div created="20200428101947346" modified="20200428101958069" tags="Algorithm" title="Least compression difference">
+<pre>A ~= B if size(compress(A)) ~= size(compress(A++B))
+</pre>
 </div>
 <div created="20200428093543129" modified="20200428093555469" tags="MentalModel" title="Lindy effect">
 <pre>https://en.wikipedia.org/wiki/Lindy_effect (see other models in See Also there)
@@ -12786,6 +12872,54 @@ Receiver:
 $ nc -l PORT | tar x
 ```</pre>
 </div>
+<div created="20200428102040791" modified="20200428102059562" tags="Algorithm Erlang" title="Plist opts to record">
+<pre>```
+-spec config([
+    {timeout, timeout()} |
+    {retry, default | none | backoff} |
+    {ddb_scheme, string()} |
+    {ddb_host, string()} |
+    {ddb_port, pos_integer()} |
+    {s3_scheme, string()} |
+    {s3_host, string()} |
+    {s3_port, pos_integer()} |
+    {s3_bucket_after_host, boolean()}
+]) -&gt; aws_config().
+config(Options) -&gt;
+    C = erlcloud_aws:default_config(),
+    lists:foldl(fun option/2, C, Options).
+
+option({timeout, Timeout}, C) -&gt;
+    C#aws_config{timeout = Timeout};
+option({retry, Retry}, C) -&gt;
+    C#aws_config{retry = retry(Retry)};
+option({ddb_scheme, Scheme}, C) -&gt;
+    C#aws_config{ddb_scheme = Scheme};
+option({ddb_host, Host}, C) -&gt;
+    C#aws_config{ddb_host = Host};
+option({ddb_port, Port}, C) -&gt;
+    C#aws_config{ddb_port = Port};
+option({s3_scheme, Scheme}, C) -&gt;
+    C#aws_config{s3_scheme = Scheme};
+option({s3_host, Host}, C) -&gt;
+    C#aws_config{s3_host = Host};
+option({s3_port, Port}, C) -&gt;
+    C#aws_config{s3_port = Port};
+option({s3_bucket_after_host, After}, C) -&gt;
+    C#aws_config{s3_bucket_after_host = After};
+option(Option, _C) -&gt;
+    throw({bad_option, Option}).
+
+retry(default) -&gt;
+    fun erlcloud_retry:default_retry/1;
+retry(none) -&gt;
+    fun erlcloud_retry:no_retry/1;
+retry(backoff) -&gt;
+    fun erlcloud_retry:backoff/1;
+retry(Retry) -&gt;
+    throw({bad_retry, Retry}).
+```</pre>
+</div>
 <div created="20200425170253897" modified="20200425170817472" tags="Linux" title="Postfix via gmail.com">
 <pre>https://opensource.com/article/18/8/postfix-open-source-mail-transfer-agent
 
@@ -12847,6 +12981,16 @@ $ echo &quot;This is a test mail 2&quot; | mail -s &quot;Test mail 2&quot; user@
 <pre>```
 $ cat data.xml | xmllint --format -
 ```
+</pre>
+</div>
+<div created="20200428101236702" modified="20200428101341948" tags="Dev" title="Principles">
+<pre>* Parse raw data from file, db, etc into intermediate internal representation (AST)
+
+* Every periodic task should be disableable at startup and/or runtime.
+
+* Every const should go into config.
+&gt; You cannot hard code any constants in your code. It all has to be in flash, accessible and changeable by the most rudimentary means from a remote system control that might have the equivalent of a 300 baud connection
+https://www.johndcook.com/blog/2008/06/17/software-in-space/
 </pre>
 </div>
 <div created="20200425151647650" modified="20200425151721199" tags="Linux" title="Print X event coming to window">
@@ -13641,6 +13785,28 @@ Can't see the forest through the trees
 -- Albert Einstein
 </pre>
 </div>
+<div created="20200428101700633" modified="20200428101733958" tags="Algorithm Erlang" title="Re-schedule timer">
+<pre>```
+do_init(_Args) -&gt;
+    {ok, schedule_gc(#state{})}.
+
+schedule_gc(State = #state{gc_tref = TRef}) -&gt;
+    catch erlang:cancel_timer(TRef),
+    Ms = 1000 * application:get_env(?APP, cache_gc_interval_sec, 60 * 60),
+    TRef2 = erlang:start_timer(Ms, self(), gc),
+    State#state{gc_tref = TRef2}.
+
+handle_info({timeout, TRef, gc}, State = #state{gc_tref = TRef}) -&gt;
+    State2 = gc_infos(art_api_util:now_utc(), State),
+    State3 = schedule_gc(State2),
+    {noreply, State3};
+
+handle_cast({gc, Time}, State) -&gt;
+    State2 = gc_infos(Time, State),
+    State3 = schedule_gc(State2),
+    {noreply, State3};
+```</pre>
+</div>
 <div created="20200427170828372" modified="20200427170918009" tags="task" title="Read &quot;Customise TW&quot;">
 <pre></pre>
 </div>
@@ -13704,6 +13870,15 @@ nameserver 8.8.8.8 to /etc/resolv.conf
 </div>
 <div created="20200426101356212" modified="20200426101403354" tags="TableOfContents" title="Regex">
 <pre></pre>
+</div>
+<div created="20200428101851503" modified="20200428101910097" tags="Algorithm Erlang" title="Remove duplicates from list">
+<pre>```
+%% like sets:to_list(sets:from_list(L)), but preserves sorting order
+nodup([]) -&gt;
+    [];
+nodup([H | T]) -&gt;
+    [H | [X || X &lt;- nodup(T), X =/= H]].
+```</pre>
 </div>
 <div created="20200423165627536" modified="20200423171557639" tags="Git" title="Remove last commit pushed to server">
 <pre>```
@@ -14002,6 +14177,11 @@ $ make -n
 </div>
 <div created="20200425130649463" modified="20200425130717604" tags="Linux" title="Skip two lines">
 <pre>tail -n+2
+</pre>
+</div>
+<div created="20200428101507586" modified="20200428101527167" tags="Algorithm" title="Sorting by multiple fields">
+<pre>The basic idea of sorting by multiple fields is if two head fields are not equal you're done,
+and if they are equal you go compare the rest fields.
 </pre>
 </div>
 <div created="20200424082051179" modified="20200424082159424" tags="Linux" title="Speedtest in terminal">
