@@ -661,6 +661,8 @@ Error message and password prompt
 
 <li>Linux</li>
 
+<li>Linux links</li>
+
 <li>Linux special files</li>
 
 <li>Linux Standard Base</li>
@@ -838,6 +840,8 @@ Error message and password prompt
 <li>Set default USB connection type</li>
 
 <li>Set DNS</li>
+
+<li>Setup printer</li>
 
 <li>Setup SSH keys</li>
 
@@ -10481,8 +10485,8 @@ Error message and password prompt
 <div created="20200426101647620" modified="20200426101736642" title="$:/state/toc/TableOfContents-Imagemagick--118161433">
 <pre>close</pre>
 </div>
-<div created="20200426101649048" modified="20200428114202987" title="$:/state/toc/TableOfContents-Linux--118161433">
-<pre>close</pre>
+<div created="20200426101649048" modified="20200428114232865" title="$:/state/toc/TableOfContents-Linux--118161433">
+<pre>open</pre>
 </div>
 <div created="20200428092436636" modified="20200428100200669" title="$:/state/toc/TableOfContents-MentalModel--118161433">
 <pre>close</pre>
@@ -14948,6 +14952,63 @@ LIBRARY_PATH is used by gcc before compilation to search directories containing 
 <div created="20200426101240911" modified="20200426101250279" tags="TableOfContents" title="Linux">
 <pre></pre>
 </div>
+<div created="20200428114242517" modified="20200428114252657" tags="Linux" title="Linux links">
+<pre>Linux online command line
+=========================
+http://linuxcommand.org/
+
+Цикл статей о разработки драйверов в Линух
+=====
+http://www.opensourceforu.com/tag/linux-device-drivers-series/
+
+Udev
+====
+http://bobcares.com/blog/udev-introduction-to-device-management-in-modern-linux-system/
+http://www.reactivated.net/writing_udev_rules.html
+
+Какой драйвер использовать для конкретного девайса
+=====
+Determining the Correct Module From Scratch (from Linux Kernel in a Nutshell)
+http://www.linuxtopia.org/online_books/linux_kernel/kernel_configuration/ch08s02.html
+
+Interactive map of Linux kernel
+===============================
+http://makelinux.net/kernel_map/
+
+Understanding Disk I/O - when should you be worried?
+====================================================
+http://blog.scoutapp.com/articles/2011/02/10/understanding-disk-i-o-when-should-you-be-worried
+
+Solving Linux system lock up when intensive disk I/O are performed
+==================================================================
+http://blog.vacs.fr/index.php?post/2010/08/28/Solving-Linux-system-lockup-when-intensive-disk-I/O-are-performed
+
+How to test the performance of your network and hard drive in Linux
+===================================================================
+http://www.spencerstirling.com/computergeek/performance.html
+http://www.linuxatemyram.com/play.html
+
+Основные команды
+================
+http://itshaman.ru/articles/7/komandy-linux
+
+crontab
+=======
+http://itshaman.ru/articles/467/planirovshchik-v-linux-ili-kak-pravilno-ispolzovat-crontab
+
+Структура директорий ОС Линукс
+==============================
+http://itshaman.ru/articles/10/directory-linux
+
+Cool unix tools. Check'em out!
+==============================
+http://kkovacs.eu/cool-but-obscure-unix-tools
+
+commandlinefu
+=============
+http://www.commandlinefu.com/commands/browse
+</pre>
+</div>
 <div created="20200424090639849" modified="20200424090717856" tags="Linux" title="Linux special files">
 <pre>* /dev/null
 * /dev/zero
@@ -16922,6 +16983,40 @@ nameserver 8.8.8.8
 nameserver 8.8.4.4
 search example.com
 ```
+</pre>
+</div>
+<div created="20200428114339943" modified="20200428114352234" tags="Linux" title="Setup printer">
+<pre>HP official linux printer drivers
+==================================
+http://hplipopensource.com/hplip-web/index.html
+$ sudo hp-setup
+
+Linux HP Printer Installer (local printer)
+===
+http://hplipopensource.com/hplip-web/index.html
+
+Setup networked LaserJet P1005
+===
+1. Applications -&gt; System -&gt; Printers
+2. Add -&gt; Network Printer -&gt; Windows Printer via SAMBA -&gt; Browse
+3. Find Printer -&gt; LasetJet P1005 -&gt; Forward
+4. Select printer from database -&gt; HP -&gt; LasetJet p1005 -&gt; HP LasetJet P1005 Foomatic/foo2xqx -&gt; Forward
+
+How to install Kyocera Mita ECOSYS M2535dn printer?
+===
+1. Download 'Linux driver' from https://www.kyoceradocumentsolutions.eu/index/service/dlc.html and extract
+2. Application -&gt; System -&gt; Printers
+3. Add -&gt; Network Printer -&gt; Find Network Printer
+4. Choose Printer -&gt; LPD network printer via DNS-SD -&gt; Forward
+5. Provide PPD file and choose Linux/Global/English/Kyocera ECOSYS M2535dn.PPD -&gt; Forward
+
+Setup windows shared/network printer
+====================================
+http://www.geeksite.in/how-tos/linux/linux-mint-how-tos/how-to-add-printer-in-linux-mint-12.html
+
+$ sudo aptitude install smbclient
+$ sudo system-config-printer
+http://localhost:631
 </pre>
 </div>
 <div created="20200425115702390" modified="20200425115749446" tags="Ssh" title="Setup SSH keys">
