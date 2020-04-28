@@ -625,7 +625,13 @@ Error message and password prompt
 
 <li>Install EPEL</li>
 
+<li>Install Jupyter IBash kernel</li>
+
 <li>Install kernel headers</li>
+
+<li>Install matplotlib for python3</li>
+
+<li>Install setup.py into virtualenv</li>
 
 <li>Interact with X Window Manager</li>
 
@@ -682,6 +688,8 @@ Error message and password prompt
 <li>List open ports and their programs</li>
 
 <li>List symbols and other info of an object file</li>
+
+<li>Local SMTP debugging server</li>
 
 <li>Localstack</li>
 
@@ -765,7 +773,25 @@ Error message and password prompt
 
 <li>Push tag</li>
 
+<li>Pytest disable output capturing</li>
+
 <li>Python</li>
+
+<li>Python 2.7 hot reloading</li>
+
+<li>Python Datetime</li>
+
+<li>Python Get IMAP messages</li>
+
+<li>Python Get POP messages</li>
+
+<li>Python Hypothesis</li>
+
+<li>Python library paths</li>
+
+<li>Python online debugger</li>
+
+<li>Python read json from file</li>
 
 <li>Query system configuration vars</li>
 
@@ -842,6 +868,8 @@ Error message and password prompt
 <li>Set DNS</li>
 
 <li>Setup printer</li>
+
+<li>Setup Python3 virtual env</li>
 
 <li>Setup SSH keys</li>
 
@@ -10408,7 +10436,7 @@ Error message and password prompt
     &quot;tiddlers&quot;: {
         &quot;Untitled 1&quot;: {
             &quot;title&quot;: &quot;Untitled 1&quot;,
-            &quot;text&quot;: &quot;New Tiddler&quot;
+            &quot;text&quot;: &quot;Python3 virtual env&quot;
         }
     }
 }</pre>
@@ -10485,8 +10513,8 @@ Error message and password prompt
 <div created="20200426101647620" modified="20200426101736642" title="$:/state/toc/TableOfContents-Imagemagick--118161433">
 <pre>close</pre>
 </div>
-<div created="20200426101649048" modified="20200428114232865" title="$:/state/toc/TableOfContents-Linux--118161433">
-<pre>open</pre>
+<div created="20200426101649048" modified="20200428120240150" title="$:/state/toc/TableOfContents-Linux--118161433">
+<pre>close</pre>
 </div>
 <div created="20200428092436636" modified="20200428100200669" title="$:/state/toc/TableOfContents-MentalModel--118161433">
 <pre>close</pre>
@@ -10545,7 +10573,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200428091224083" list="" modified="20200428111610087" title="$:/StoryList">
+<div created="20200428091224083" list="" modified="20200428114810807" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200426081006916" title="$:/temp/advancedsearch">
@@ -10612,7 +10640,7 @@ Error message and password prompt
 <div created="20200423165127488" modified="20200428111236995" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200428113742552" title="$:/temp/search">
+<div created="20200422190456346" modified="20200428115317551" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
@@ -11672,12 +11700,18 @@ $ dpkg -s tzdata |&amp; awk '/Version/ {print $2} /not installed/ {exit 1}'
 $ rpm -q tzdata
 ```</pre>
 </div>
-<div created="20200425163019020" modified="20200425163047260" tags="Linux" title="Determine IP address">
+<div created="20200425163019020" modified="20200428114910249" tags="Linux Python" title="Determine IP address">
 <pre>```
 $ ifconfig eth0 | sed -rn 's/\s*inet addr:([0-9.]*).*/\1/p'
 $ hostname -I
 ```
-</pre>
+
+```
+&gt;&gt;&gt; import commands
+&gt;&gt;&gt; ips = commands.getoutput(&quot;hostname -I&quot;) # would return '10.10.0.87 10.10.0.210'
+&gt;&gt;&gt; ips[:ips.find(' ')] # get first
+'10.10.0.87'
+```</pre>
 </div>
 <div created="20200428113605103" modified="20200428113721637" tags="Linux Ubuntu" title="Determine package's version">
 <pre>```
@@ -12074,11 +12108,16 @@ $ ulimit -c unlimited
 ```
 </pre>
 </div>
-<div created="20200423194939882" modified="20200423195013841" tags="Python" title="Enable debugger by request">
-<pre>```
+<div created="20200423194939882" modified="20200428114753937" tags="Python" title="Enable debugger by request">
+<pre>https://pythonconquerstheuniverse.wordpress.com/2009/09/10/debugging-in-python/
+
+```
 import pdb; pdb.set_trace()
 ```
 
+```
+pdb.help()
+```
 </pre>
 </div>
 <div created="20200423192318647" modified="20200423192345163" tags="Android" title="Enable Developer Options">
@@ -14720,10 +14759,75 @@ $ sudo debuginfo-install kernel --enablerepo=&quot;*debuginfo*&quot;
 <div created="20200425121252389" modified="20200425121314002" tags="Linux" title="Install EPEL">
 <pre>http://www.tecmint.com/how-to-enable-epel-repository-for-rhel-centos-6-5/</pre>
 </div>
+<div created="20200428120042021" modified="20200428120115286" tags="Linux Bash" title="Install Jupyter IBash kernel">
+<pre>```
+$ virtualenv env --no-site-packages
+$ . env/bin/activate
+$ pip install jupyter
+$ pip install bash_kernel
+$ python -m bash_kernel.install
+$ jupyter notebook
+```</pre>
+</div>
 <div created="20200425130000916" modified="20200425130024518" tags="Linux Ubuntu" title="Install kernel headers">
 <pre>```
 $ sudo apt-get install linux-headers-generic
 ```</pre>
+</div>
+<div created="20200428115933166" modified="20200428120027513" tags="Python" title="Install matplotlib for python3">
+<pre>```
+$ sudo aptitude install python3-dev python3-setuptools python3-tk tk-dev libpng12-dev libfreetype6-dev
+$ sudo easy_install3 pip
+$ sudo pip-3.2 install numpy
+$ sudo pip-3.2 install matplotlib
+$ sudo pip-3.2 install pypng
+```
+
+```
+import matplotlib
+matplotlib.use(&quot;TkAgg&quot;)
+import matplotlib.pyplot as p
+p.plot([1,2,3])
+p.show()
+```
+
+~/.matplotlib/matplotlibrc
+
+!!! All backends
+
+```
+import matplotlib.rcsetup as rcsetup
+print(rcsetup.all_backends)
+```
+
+!!! Current backend
+
+```
+matplotlib.rcParams['backend']
+```
+
+!!! Customizing matplotlib
+
+http://matplotlib.org/users/customizing.html
+
+!!! Getting started guide
+
+http://www.ast.uct.ac.za/~sarblyth/pythonGuide/PythonPlottingBeginnersGuide.pdf
+
+!!! Official doc
+
+http://matplotlib.org/contents.html
+</pre>
+</div>
+<div created="20200428120135700" modified="20200428120156436" tags="Python" title="Install setup.py into virtualenv">
+<pre>```
+$ which python
+../env/bin/python
+$ python setup.py install
+```
+
+
+</pre>
 </div>
 <div created="20200424081836261" modified="20200424081902945" tags="Linux" title="Interact with X Window Manager">
 <pre>```
@@ -15093,6 +15197,17 @@ $ objdump &lt;obj file
 $ objdump -T /usr/lib/libtokyocabinet.so | grep dfunit
 $ readelf -d /bin/ls # -d dynamic section
 $ strings
+```</pre>
+</div>
+<div created="20200428115525727" modified="20200428115546020" tags="Python" title="Local SMTP debugging server">
+<pre>```
+$ python /usr/lib/python2.7/smtpd.py -n -c DebuggingServer localhost:8025
+```
+
+```
+&gt;&gt;&gt; import smtplib
+&gt;&gt;&gt; s = smtplib.SMTP('localhost', 8025)
+&gt;&gt;&gt; s.sendmail('me', 'you', 'Hi!')
 ```</pre>
 </div>
 <div created="20200428100442383" modified="20200428100845117" tags="AWS Python" title="Localstack">
@@ -15898,8 +16013,144 @@ $ git push origin --tags  # all tags
 
 </pre>
 </div>
+<div created="20200428115741573" modified="20200428115809145" tags="Python" title="Pytest disable output capturing">
+<pre>http://pytest.org/latest/capture.html
+
+```
+$ py.test -s ...
+```
+</pre>
+</div>
 <div created="20200426101338310" modified="20200426101344808" tags="TableOfContents" title="Python">
 <pre></pre>
+</div>
+<div created="20200428120208027" modified="20200428120236089" tags="Python" title="Python 2.7 hot reloading">
+<pre>builtin 'reload'
+
+```
+&gt;&gt;&gt; reload(module)
+```
+</pre>
+</div>
+<div created="20200428115600296" modified="20200428115615716" tags="Python" title="Python Datetime">
+<pre>```
+import datetime
+now = datetime.datetime.now()
+utc = datetime.datetime.utcnow()
+now.strftime(&quot;%Y-%m-%dT%H:%M:%S&quot;)
+delta = datetime.timedelta(minutes=20)
+now - delta
+```</pre>
+</div>
+<div created="20200428115027016" modified="20200428115113424" tags="Python" title="Python Get IMAP messages">
+<pre>* https://pymotw.com/2/imaplib/
+* http://python-3.ru/page/imap-email-python
+
+```
+import email
+import imaplib
+imap = imaplib.IMAP4_SSL(&quot;imap.gmail.com&quot;, 993)
+print(imap.login(__EMAIL__, __PASSWORD___))
+print(imap.list())
+print(imap.select(&quot;inbox&quot;))
+res, data = imap.search(None, &quot;ALL&quot;) # is possible to make substr search?, ALL w/o any filter
+print data
+for id in data[0].split():
+    res, data = imap.fetch(id, &quot;(RFC822)&quot;)
+    message = email.message_from_string(data[0][1])
+    #print(message)
+    subject = message[&quot;subject&quot;]
+    fr = message[&quot;from&quot;]
+    body = message.get_payload()
+    print(&quot;subj: &quot; + str(subject))
+    print(&quot;from: &quot; + fr)
+    print(&quot;body: &quot; + body)
+imap.close()
+```</pre>
+</div>
+<div created="20200428114951936" modified="20200428115059046" tags="Python" title="Python Get POP messages">
+<pre>```
+import poplib
+import email
+import urlparse
+
+args = urlparse.urlparse(
+  &quot;pops://__EMAIL__:__PASSWORD__@imap.gmail.com:995/inbox&quot;
+)
+
+pop = poplib.POP3_SSL(args.hostname, args.port)
+print pop.user(args.username)
+print pop.pass_(args.password)
+print pop.list()
+num = len(pop.list()[1])
+for id in range(num):
+  for raw in pop.retr(id+1)[1]:
+     print raw
+     message = email.message_from_string(raw)
+     print message
+     subject = message[&quot;subject&quot;]
+     fr = message[&quot;from&quot;]
+     body = message.get_payload()
+     print &quot;subj: &quot; + str(subject)
+     print &quot;from: &quot; + fr
+     print &quot;body: &quot; + body
+     #imap.store(id, &quot;+FLAGS&quot;, &quot;\\Deleted&quot;)
+pop.quit()
+```</pre>
+</div>
+<div created="20200428115318462" modified="20200428115417207" tags="Python" title="Python Hypothesis">
+<pre>https://packaging.python.org/tutorials/installing-packages/#ensure-pip-setuptools-and-wheel-are-up-to-date
+
+```
+$ pip install --upgrade pip setuptools # wheel
+$ pip install hypothesis
+```
+
+https://hypothesis.works/articles/anatomy-of-a-test/
+
+
+```
+$ py.test hyp_test.py
+```
+
+hyp_test.py
+
+```
+from hypothesis.strategies import floats
+from hypothesis import given, example
+
+@example(0.0, float('nan'))
+@given(floats(), floats())
+def test_floats_are_commutative(x, y):
+    assert x + y == y + x
+```</pre>
+</div>
+<div created="20200428115703901" modified="20200428115730713" tags="Python" title="Python library paths">
+<pre>```
+import sys
+print sys.path
+```
+
+```
+$ cd oneapi_srv/test
+$ export PYTHONPATH=`pwd`/oneapi-python:$PYTHONPATH
+```
+</pre>
+</div>
+<div created="20200428115139492" modified="20200428115204662" tags="Python" title="Python online debugger">
+<pre>Werkzeug online debugger
+
+* https://github.com/pallets/werkzeug
+* https://palletsprojects.com/p/werkzeug/
+
+</pre>
+</div>
+<div created="20200428115623824" modified="20200428115641457" tags="Python" title="Python read json from file">
+<pre>```
+import json
+data = open(file).read()
+js = json.loads(data)
+```</pre>
 </div>
 <div created="20200425121843768" modified="20200425121914856" tags="Linux" title="Query system configuration vars">
 <pre>```
@@ -17018,6 +17269,14 @@ $ sudo aptitude install smbclient
 $ sudo system-config-printer
 http://localhost:631
 </pre>
+</div>
+<div created="20200428115223435" modified="20200428115253663" tags="Python" title="Setup Python3 virtual env">
+<pre>```
+$ virtualenv -p python3 env --no-site-packages
+$ . env/bin/activate
+$ python --version
+Python 3.4.3
+```</pre>
 </div>
 <div created="20200425115702390" modified="20200425115749446" tags="Ssh" title="Setup SSH keys">
 <pre>```
