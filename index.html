@@ -403,6 +403,8 @@ Error message and password prompt
 
 <li>Create lightweight tag</li>
 
+<li>Create Links</li>
+
 <li>Create Tables</li>
 
 <li>CSV utility</li>
@@ -10496,7 +10498,7 @@ Error message and password prompt
 <div created="20200428100846343" modified="20200428111606582" title="$:/state/toc/TableOfContents-AWS--118161433">
 <pre>close</pre>
 </div>
-<div created="20200426101916708" modified="20200426101922995" title="$:/state/toc/TableOfContents-Bash--118161433">
+<div created="20200426101916708" modified="20200428175652134" title="$:/state/toc/TableOfContents-Bash--118161433">
 <pre>close</pre>
 </div>
 <div created="20200428101450941" modified="20200428111605532" title="$:/state/toc/TableOfContents-Dev--118161433">
@@ -10532,8 +10534,8 @@ Error message and password prompt
 <div created="20200426101725065" modified="20200427170600322" title="$:/state/toc/TableOfContents-Ssh--118161433">
 <pre>close</pre>
 </div>
-<div created="20200427165444695" modified="20200428174019422" title="$:/state/toc/TableOfContents-TiddlyWiki--118161433">
-<pre>close</pre>
+<div created="20200427165444695" modified="20200428175620099" title="$:/state/toc/TableOfContents-TiddlyWiki--118161433">
+<pre>open</pre>
 </div>
 <div created="20200426101657879" modified="20200426101738390" title="$:/state/toc/TableOfContents-Ubuntu--118161433">
 <pre>close</pre>
@@ -10577,7 +10579,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200428172159031" list="" modified="20200428173938395" title="$:/StoryList">
+<div created="20200428172159031" list="[[Associate file types]] [[Create custom URI handler]]" modified="20200428181053596" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200426081006916" title="$:/temp/advancedsearch">
@@ -10644,8 +10646,8 @@ Error message and password prompt
 <div created="20200423165127488" modified="20200428111236995" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200428174017624" title="$:/temp/search">
-<pre></pre>
+<div created="20200422190456346" modified="20200428180959579" title="$:/temp/search">
+<pre>mime</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -10832,16 +10834,18 @@ $ arp -a
 <pre>taskset
 </pre>
 </div>
-<div created="20200424082708184" modified="20200428173904798" tags="Linux" title="Associate file types">
+<div created="20200424082708184" modified="20200428181917617" tags="Linux" title="Associate file types">
 <pre>* https://linux.die.net/man/1/xdg-mime
 * https://linux.die.net/man/1/xdg-open
 * https://linux.die.net/man/1/xdg-desktop-menu
+* https://specifications.freedesktop.org/mime-apps-spec/latest/
 
 Association files: 
 
 *  /usr/share/applications/defaults.list
+* ~/.config/mimeapps.list
 * ~/.local/share/applications/defaults.list
-* ~/.local/share/applications/mimeapps.list
+* ~/.local/share/applications/mimeapps.list (deprecated)
 
 Returns the file type of FILE in the form of a MIME type
 
@@ -11494,11 +11498,12 @@ Control Panel -&gt; Settings -&gt; Default Sidebar Tab -&gt; Contents
 * Tag: Tasks
 * Save</pre>
 </div>
-<div created="20200424082437898" modified="20200428173919629" tags="Linux Bash" title="Create custom URI handler">
+<div created="20200424082437898" modified="20200428181607787" tags="Linux Bash" title="Create custom URI handler">
 <pre>* http://edoceo.com/howto/xfce-custom-uri-handler
 * https://linux.die.net/man/1/xdg-mime
 * https://linux.die.net/man/1/xdg-open
 * https://linux.die.net/man/1/xdg-desktop-menu
+* https://specifications.freedesktop.org/mime-apps-spec/latest/
 * https://github.com/ten0s/dotfiles/blob/master/roles/mimeapps/tasks/main.yml
 
 ~/bin/evincex.sh
@@ -11530,7 +11535,7 @@ Terminal=false
 MimeType=x-scheme-handler/evincex;
 ```
 
-~/.local/share/applications/mimeapps.list
+~/.config/mimeapps.list
 
 ```
 [Added Associations]
@@ -11568,6 +11573,13 @@ $ git tag &quot;1.0.2&quot; &lt;hash&gt;
 ```
 
 </pre>
+</div>
+<div created="20200428175643465" modified="20200428175914348" tags="TiddlyWiki" title="Create Links">
+<pre>https://tiddlywiki.com/static/Linking%2520in%2520WikiText.html
+
+[ext[Open|manx:grep::REGULAR+EXPRESSIONS]]
+
+[ext[Open|pdfx:////home/ten0s/refs/anki2/algs4.pdf::103]]</pre>
 </div>
 <div created="20200428124444319" modified="20200428124518491" tags="TiddlyWiki" title="Create Tables">
 <pre>https://tiddlywiki.com/static/Tables%2520in%2520WikiText.html
@@ -15731,12 +15743,13 @@ xdg-open
 [[Create custom URI handler]]
 </pre>
 </div>
-<div created="20200424090413095" modified="20200428121921431" tags="Bash Linux" title="Open man page on first pattern match">
+<div created="20200424090413095" modified="20200428175930252" tags="Bash Linux" title="Open man page on first pattern match">
 <pre>```
-man grep | less +/&quot;REGULAR EXPRESSIONS&quot;
-man grep | less --pattern &quot;REGULAR EXPRESSIONS&quot;
+$ man grep | less +/&quot;REGULAR EXPRESSIONS&quot;
+$ man grep | less --pattern &quot;REGULAR EXPRESSIONS&quot;
 ```
 
+[ext[Run|manx:grep::REGULAR+EXPRESSIONS]]
 </pre>
 </div>
 <div created="20200424081612003" modified="20200424081639805" tags="Linux" title="Open Printing">
