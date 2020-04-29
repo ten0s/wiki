@@ -489,6 +489,8 @@ Error message and password prompt
 
 <li>Download video from Youtube</li>
 
+<li>Draft of 'Make wiki work offline on Android'</li>
+
 <li>DraggableTaskTemplate</li>
 
 <li>Dump network traffic on specific port</li>
@@ -10592,7 +10594,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200429154645012" list="" modified="20200429160234827" title="$:/StoryList">
+<div created="20200429173645436" list="ToDo [[Draft of 'Make wiki work offline on Android']]" modified="20200429173647481" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200426081006916" title="$:/temp/advancedsearch">
@@ -10643,11 +10645,11 @@ Error message and password prompt
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1920&quot;
+            &quot;text&quot;: &quot;360&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;1080&quot;
+            &quot;text&quot;: &quot;640&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -12052,6 +12054,39 @@ $ curl -JO URL
 <pre>```
 $ youtube-dl -f bestvideo+bestaudio FILE_OR_PLAYLIST_URL
 ```</pre>
+</div>
+<div created="20200427171823897" draft.of="Make wiki work offline on Android" draft.title="Make wiki work offline on Android" modified="20200429180645904" tags="task" title="Draft of 'Make wiki work offline on Android'">
+<pre>* JS doesn't work offline
+* See apps/random gym AppCache manifect
+* First port apps/random gym
+* Implement for TW
+
+AppCache is deprecated and will be removed around Apr 2020 in Chrome.
+
+New app should use https://developer.mozilla.org/en-US/docs/Web/API/Cache and Service Workers
+
+Library to help migrate https://github.com/GoogleChromeLabs/sw-appcache-behavior
+
+Someone recently done for TW https://groups.google.com/forum/#!topic/TiddlyWikiDev/l7dZIcl2jqE
+
+https://github.com/linonetwo/Tiddlywiki-NodeJS-Github-Template
+
+
+https://googlechrome.github.io/samples/service-worker/custom-offline-page/
+
+
+file:///home/ten0s/Downloads/Custom%20HTML%20Header_Register%20ServiceWorker.tid
+
+* https://web.dev/what-are-pwas/
+* https://web.dev/pwa-checklist/
+* https://web.dev/install-criteria/
+* https://web.dev/add-manifest/
+* https://web.dev/customize-install/
+* https://web.dev/promote-install/
+* https://web.dev/using-a-pwa-in-your-android-app/
+* https://web.dev/codelab-make-installable/
+
+</pre>
 </div>
 <div created="20180307153530187" modified="20200427171503827" tags="TiddlyWiki" title="DraggableTaskTemplate" type="text/vnd.tiddlywiki">
 <pre>&lt;$checkbox tag=&quot;done&quot;&gt; &lt;$link to={{!!title}}&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt;&lt;/$checkbox&gt;</pre>
