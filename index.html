@@ -54,6 +54,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE." />
 
 <script type="text/javascript">console.log("Hi!");</script>
 
+<script type="text/javascript">
+alert("hooray!\n\n"
+  + "Your username is '"
+  + window.parent.$tw.wiki.getTiddlerText("$:/status/UserName") + "'\n\n" +
+  + "And this wiki is called '"
+  + window.parent.$tw.wiki.getTiddlerText("$:/SiteTitle")+"'");
+</script>
 
 </head>
 <body class="tc-body">
@@ -10582,7 +10589,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200429153110379" list="[[Run JS in tiddler]]" modified="20200429153110379" title="$:/StoryList">
+<div created="20200429153342406" list="[[Run JS in tiddler]]" modified="20200429153342406" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200426081006916" title="$:/temp/advancedsearch">
@@ -17177,9 +17184,16 @@ wait
 ```
 </pre>
 </div>
-<div created="20200429152711348" modified="20200429153117933" tags="$:/tags/RawMarkup TiddlyWiki" title="Run JS in tiddler" type="text/html">
+<div created="20200429152711348" modified="20200429153349256" tags="$:/tags/RawMarkup TiddlyWiki" title="Run JS in tiddler" type="text/html">
 <pre>&lt;script type=&quot;text/javascript&quot;&gt;console.log(&quot;Hi!&quot;);&lt;/script&gt;
-</pre>
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+alert(&quot;hooray!\n\n&quot;
+  + &quot;Your username is '&quot;
+  + window.parent.$tw.wiki.getTiddlerText(&quot;$:/status/UserName&quot;) + &quot;'\n\n&quot; +
+  + &quot;And this wiki is called '&quot;
+  + window.parent.$tw.wiki.getTiddlerText(&quot;$:/SiteTitle&quot;)+&quot;'&quot;);
+&lt;/script&gt;</pre>
 </div>
 <div created="20200428113413324" modified="20200428113519811" tags="Linux" title="Run script on iface up">
 <pre>```
