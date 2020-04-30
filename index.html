@@ -223,11 +223,15 @@ Error message and password prompt
 
 <li>$:/state/toc/TableOfContents-Python--118161433</li>
 
+<li>$:/state/toc/TableOfContents-Rust--118161433</li>
+
 <li>$:/state/toc/TableOfContents-Ssh--118161433</li>
 
 <li>$:/state/toc/TableOfContents-TiddlyWiki--118161433</li>
 
 <li>$:/state/toc/TableOfContents-Ubuntu--118161433</li>
+
+<li>$:/state/toc/TableOfContents-Web--118161433</li>
 
 <li>$:/state/toc/TableOfContents/Dev-Algorithm--118161433</li>
 
@@ -657,7 +661,7 @@ Error message and password prompt
 
 <li>Javascript 2see</li>
 
-<li>Javascript links</li>
+<li>Javascript Links</li>
 
 <li>Jobs</li>
 
@@ -1028,6 +1032,12 @@ Error message and password prompt
 <li>Verify HTTPS site</li>
 
 <li>Verify SSL connection</li>
+
+<li>Web</li>
+
+<li>Web FAQ</li>
+
+<li>Web Links</li>
 
 <li>Where DNS utils</li>
 
@@ -10544,8 +10554,8 @@ Error message and password prompt
 <div created="20200426101647620" modified="20200426101736642" title="$:/state/toc/TableOfContents-Imagemagick--118161433">
 <pre>close</pre>
 </div>
-<div created="20200429160228164" modified="20200430091657057" title="$:/state/toc/TableOfContents-Javascript--118161433">
-<pre>close</pre>
+<div created="20200429160228164" modified="20200430150012724" title="$:/state/toc/TableOfContents-Javascript--118161433">
+<pre>open</pre>
 </div>
 <div created="20200426101649048" modified="20200428120240150" title="$:/state/toc/TableOfContents-Linux--118161433">
 <pre>close</pre>
@@ -10559,14 +10569,20 @@ Error message and password prompt
 <div created="20200428100850482" modified="20200428111609347" title="$:/state/toc/TableOfContents-Python--118161433">
 <pre>close</pre>
 </div>
+<div created="20200430150121227" modified="20200430150121227" title="$:/state/toc/TableOfContents-Rust--118161433">
+<pre>open</pre>
+</div>
 <div created="20200426101725065" modified="20200427170600322" title="$:/state/toc/TableOfContents-Ssh--118161433">
 <pre>close</pre>
 </div>
-<div created="20200427165444695" modified="20200428175620099" title="$:/state/toc/TableOfContents-TiddlyWiki--118161433">
-<pre>open</pre>
+<div created="20200427165444695" modified="20200430150010187" title="$:/state/toc/TableOfContents-TiddlyWiki--118161433">
+<pre>close</pre>
 </div>
 <div created="20200426101657879" modified="20200426101738390" title="$:/state/toc/TableOfContents-Ubuntu--118161433">
 <pre>close</pre>
+</div>
+<div created="20200430150353516" modified="20200430150353516" title="$:/state/toc/TableOfContents-Web--118161433">
+<pre>open</pre>
 </div>
 <div created="20200428101546086" modified="20200428102659163" title="$:/state/toc/TableOfContents/Dev-Algorithm--118161433">
 <pre>close</pre>
@@ -10607,7 +10623,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200430080844346" list="" modified="20200430111432237" title="$:/StoryList">
+<div created="20200430080844346" list="" modified="20200430150018770" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200430085937346" title="$:/temp/advancedsearch">
@@ -14995,7 +15011,7 @@ $(&quot;#result&quot;).load(&quot;ajax/test.html&quot;);
 ```
 </pre>
 </div>
-<div created="20200428111217678" modified="20200429160419160" tags="Javascript" title="Javascript links">
+<div created="20200428111217678" modified="20200430150131935" tags="Javascript" title="Javascript Links">
 <pre>* https://javascript.info/
 * https://www.html5rocks.com/en/tutorials/webcomponents/imports/
 
@@ -18509,6 +18525,96 @@ $ openssl version
 $ openssl s_client -connect github.com:443
 $ echo GET | openssl s_client -CApath /etc/ssl/certs/ -connect google.com:443 2&gt;&amp;1
 ```
+</pre>
+</div>
+<div created="20200430150107593" modified="20200430150114476" tags="TableOfContents" title="Web">
+<pre></pre>
+</div>
+<div created="20200430150145592" modified="20200430150426915" tags="Web" title="Web FAQ">
+<pre>!!! Change img's src load dynamically
+
+https://stackoverflow.com/questions/12196435/javascript-function-return-src-path
+
+```
+&lt;img src=&quot;/assets/images/digraph.png&quot; onload=&quot;this.onload=null; this.src=this.src=relative_url(this.src);&quot; /&gt;
+```
+
+The &lt;img&gt; tag will first load the placeholder &quot;pixel.gif&quot;, when finished, it will run the onload code, which loads another image. If you do not set onload to null, it will be called again after the second load, after the third load, ..
+
+!!! Run js on link click
+
+```
+&lt;script&gt;
+function doSomething() {
+  alert(&quot;hello&quot;)
+}
+&lt;/script&gt;
+&lt;a href=&quot;javascript:doSomething();&quot;&gt;click me&lt;/a&gt;
+```</pre>
+</div>
+<div created="20200430150158697" modified="20200430150340222" tags="Web" title="Web Links">
+<pre>!!! Dive Into HTML5
+
+http://diveintohtml5.info/
+
+!!! Google Ajax's crawling specification
+
+https://developers.google.com/webmasters/ajax-crawling/docs/specification
+
+!!! Robots.txt
+
+http://moz.com/learn/seo/robotstxt
+
+!!! Sitemap
+
+http://www.sitemaps.org/ru/
+
+!!! Web APIs
+
+* http://restfulwebapis.org/
+* https://www.amazon.com/Building-Hypermedia-APIs-HTML5-Node/dp/1449306578
+* http://www.designinghypermediaapis.com/
+* http://blog.steveklabnik.com/posts/2012-02-27-hypermedia-api-reading-list
+
+!!! JWT, SAML
+
+* https://stackoverflow.com/questions/27314076/difference-between-jwt-and-saml
+* https://auth0.com/docs/jwt
+* https://security.stackexchange.com/questions/82587/what-are-the-differences-between-json-web-tokens-saml-and-oauth-2
+* https://medium.com/@robert.broeckelmann/saml2-vs-jwt-a-comparison-254bafd98e6
+* https://stackoverflow.com/questions/33723033/single-sign-on-flow-using-jwt-for-cross-domain-authentication
+* https://codeburst.io/building-a-simple-single-sign-on-sso-server-and-solution-from-scratch-in-node-js-ea6ee5fdf340
+* https://medium.com/@robert.broeckelmann/saml-v2-0-vs-jwt-series-550551f4eb0d
+* https://dzone.com/articles/my-security-notes
+* https://hackernoon.com/demystifying-oauth-2-0-and-openid-connect-and-saml-12aa4cf9fdba
+* https://www.marcelbelmont.com/post/concepts-in-single-sign-on-using-jwt-and-saml/
+* https://jwt.io/introduction/
+* https://auth0.com/resources/ebooks/jwt-handbook
+* https://auth0.com/blog/how-saml-authentication-works/
+
+!!! CORS
+
+!!!! GET,POST
+https://cors-anywhere.herokuapp.com/
+
+!!!! GET
+* https://cors.io/
+* https://crossorigin.me/
+
+!!! Icons
+
+http://findicons.com/
+
+!!! Browser Leaks
+
+https://www.browserleaks.com/
+
+!!! Web Assembly
+
+* https://github.com/mdaines/viz.js
+* http://kripken.github.io/emscripten-site/index.html
+* https://github.com/kripken/emscripten
+* http://devosoft.org/an-introduction-to-web-development-with-emscripten/
 </pre>
 </div>
 <div created="20200424084217094" modified="20200424084239198" tags="Linux" title="Where DNS utils">
