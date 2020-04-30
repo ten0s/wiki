@@ -577,6 +577,8 @@ Error message and password prompt
 
 <li>Fix: cannot load shared object file</li>
 
+<li>Fix: error while loading shared libraries</li>
+
 <li>Flush file system buffers</li>
 
 <li>Force specific SSH algorithm</li>
@@ -10515,8 +10517,8 @@ Error message and password prompt
 <div created="20200426101916708" modified="20200428175652134" title="$:/state/toc/TableOfContents-Bash--118161433">
 <pre>close</pre>
 </div>
-<div created="20200430080859301" modified="20200430080859301" title="$:/state/toc/TableOfContents-CentOS--118161433">
-<pre>open</pre>
+<div created="20200430080859301" modified="20200430091655071" title="$:/state/toc/TableOfContents-CentOS--118161433">
+<pre>close</pre>
 </div>
 <div created="20200428101450941" modified="20200428111605532" title="$:/state/toc/TableOfContents-Dev--118161433">
 <pre>close</pre>
@@ -10536,14 +10538,14 @@ Error message and password prompt
 <div created="20200426101647620" modified="20200426101736642" title="$:/state/toc/TableOfContents-Imagemagick--118161433">
 <pre>close</pre>
 </div>
-<div created="20200429160228164" modified="20200429160228165" title="$:/state/toc/TableOfContents-Javascript--118161433">
-<pre>open</pre>
+<div created="20200429160228164" modified="20200430091657057" title="$:/state/toc/TableOfContents-Javascript--118161433">
+<pre>close</pre>
 </div>
 <div created="20200426101649048" modified="20200428120240150" title="$:/state/toc/TableOfContents-Linux--118161433">
 <pre>close</pre>
 </div>
-<div created="20200428092436636" modified="20200430083928229" title="$:/state/toc/TableOfContents-MentalModel--118161433">
-<pre>open</pre>
+<div created="20200428092436636" modified="20200430091659257" title="$:/state/toc/TableOfContents-MentalModel--118161433">
+<pre>close</pre>
 </div>
 <div created="20200428092034253" modified="20200428092034253" title="$:/state/toc/TableOfContents-MentalModels--118161433">
 <pre>open</pre>
@@ -10599,7 +10601,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200430080844346" list="" modified="20200430085937349" title="$:/StoryList">
+<div created="20200430080844346" list="" modified="20200430111432237" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200430085937346" title="$:/temp/advancedsearch">
@@ -10666,7 +10668,7 @@ Error message and password prompt
 <div created="20200423165127488" modified="20200429152813740" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200430085937347" title="$:/temp/search">
+<div created="20200422190456346" modified="20200430111600325" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
@@ -14572,6 +14574,14 @@ $ reset
 <pre># $ sudo ldconfig
 # check LD_LIBRARY_PATH
 # check and update /etc/ld.so.conf and then run `sudo ldconfig'
+</pre>
+</div>
+<div created="20200430111447244" modified="20200430111535192" tags="Linux" title="Fix: error while loading shared libraries">
+<pre>error while loading shared libraries: libsqlplus.so: cannot open shared object file: No such file or directory
+
+```
+$ LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib sqlplus64
+```
 </pre>
 </div>
 <div created="20200424083201282" modified="20200424083220453" tags="Linux" title="Flush file system buffers">
