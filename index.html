@@ -411,7 +411,9 @@ Error message and password prompt
 
 <li>Create file system on file</li>
 
-<li>Create lightweight tag</li>
+<li>Create lightweight tag from HASH</li>
+
+<li>Create lightweight tag from HEAD</li>
 
 <li>Create Links</li>
 
@@ -437,7 +439,9 @@ Error message and password prompt
 
 <li>Delete huge number of files</li>
 
-<li>Delete tag</li>
+<li>Delete tag from server</li>
+
+<li>Delete tag locally</li>
 
 <li>Desktop Sharing</li>
 
@@ -789,7 +793,9 @@ Error message and password prompt
 
 <li>Pure Cowboy Stream Handler</li>
 
-<li>Push tag</li>
+<li>Push all tags to server</li>
+
+<li>Push tag to server</li>
 
 <li>Pytest disable output capturing</li>
 
@@ -856,6 +862,8 @@ Error message and password prompt
 <li>Restore all current dir</li>
 
 <li>Reverse DNS lookup</li>
+
+<li>Roll version</li>
 
 <li>Run commands in parallel</li>
 
@@ -10548,7 +10556,7 @@ Error message and password prompt
 <div created="20200428110840790" modified="20200428110843356" title="$:/state/toc/TableOfContents-Erlang--118161433">
 <pre>close</pre>
 </div>
-<div created="20200426101712304" modified="20200428101155976" title="$:/state/toc/TableOfContents-Git--118161433">
+<div created="20200426101712304" modified="20200503171330390" title="$:/state/toc/TableOfContents-Git--118161433">
 <pre>close</pre>
 </div>
 <div created="20200426101647620" modified="20200426101736642" title="$:/state/toc/TableOfContents-Imagemagick--118161433">
@@ -10623,7 +10631,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200430080844346" list="" modified="20200430150018770" title="$:/StoryList">
+<div created="20200503165501951" list="" modified="20200503171208167" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200430085937346" title="$:/temp/advancedsearch">
@@ -10690,7 +10698,7 @@ Error message and password prompt
 <div created="20200423165127488" modified="20200430145606632" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200430111600325" title="$:/temp/search">
+<div created="20200422190456346" modified="20200503171329223" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
@@ -11489,15 +11497,15 @@ USER  ALL=NOPASSWD: ALL
 http://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html
 </pre>
 </div>
-<div created="20200423173246385" modified="20200423190857269" tags="Git" title="Create annotated tag">
+<div created="20200423173246385" modified="20200503170859930" tags="Git" title="Create annotated tag">
 <pre>Annotated tag stores dates, author, comment
 
 ```
-$ git tag -a &quot;2.0.0&quot; -m &quot;Roll 2.0.0&quot; # HEAD
+$ git tag -a &quot;1.0.0&quot; -m &quot;Roll 1.0.0&quot; # HEAD
 ```
 
 ```
-$ git tag -a &quot;2.0.2&quot; -m &quot;Roll 2.0.2&quot; HASH
+$ git tag -a &quot;1.0.2&quot; -m &quot;Roll 1.0.2&quot; HASH
 ```
 </pre>
 </div>
@@ -11618,10 +11626,15 @@ $ losetup -d /dev/loop0
 ```
 </pre>
 </div>
-<div created="20200423173407537" modified="20200423173437610" tags="Git" title="Create lightweight tag">
+<div created="20200503171220418" modified="20200503171305012" tags="Git" title="Create lightweight tag from HASH">
 <pre>```
-$ git tag &quot;1.0.0&quot; # HEAD
-$ git tag &quot;1.0.2&quot; &lt;hash&gt;
+$ git tag &quot;1.0.0&quot; HASH
+```
+</pre>
+</div>
+<div created="20200423173407537" modified="20200503171234823" tags="Git" title="Create lightweight tag from HEAD">
+<pre>```
+$ git tag &quot;1.0.0&quot;
 ```
 
 </pre>
@@ -11746,10 +11759,15 @@ $ ionice -c3 rm -rf directory/
 ```
 </pre>
 </div>
-<div created="20200423173532440" modified="20200423173558121" tags="Git" title="Delete tag">
+<div created="20200503170950943" modified="20200503171008698" tags="Git" title="Delete tag from server">
 <pre>```
-$ git tag -d &quot;2.0.0&quot;
-$ git push origin :&quot;2.0.0&quot;
+$ git push origin :&quot;1.0.0&quot;
+```
+</pre>
+</div>
+<div created="20200423173532440" modified="20200503171016409" tags="Git" title="Delete tag locally">
+<pre>```
+$ git tag -d &quot;1.0.0&quot;
 ```
 </pre>
 </div>
@@ -15621,9 +15639,9 @@ alias sudo='sudo ' 2&gt;/dev/null
 
 </pre>
 </div>
-<div created="20200423171141917" modified="20200423190811730" tags="Git" title="Make empty commit">
+<div created="20200423171141917" modified="20200503170610970" tags="Git" title="Make empty commit">
 <pre>```
-$ git commit --allow-empty -m MESAGE
+$ git commit --allow-empty -m &quot;Roll 1.0.0&quot;
 ```
 </pre>
 </div>
@@ -16156,10 +16174,15 @@ early_error(StreamID, Reason, PartialReq, Resp, Opts) -&gt;
 
 ```</pre>
 </div>
-<div created="20200423173457326" modified="20200423173518058" tags="Git" title="Push tag">
+<div created="20200503171050164" modified="20200503171132691" tags="Git" title="Push all tags to server">
 <pre>```
-$ git push origin &quot;1.0.0&quot; # specific tag
-$ git push origin --tags  # all tags
+$ git push origin --tags
+```
+</pre>
+</div>
+<div created="20200423173457326" modified="20200503171128125" tags="Git" title="Push tag to server">
+<pre>```
+$ git push origin &quot;1.0.0&quot;
 ```
 
 </pre>
@@ -17224,6 +17247,12 @@ $ nslookup IP
 
 [[DNS lookup]]
 
+</pre>
+</div>
+<div created="20200503170442536" modified="20200503171321211" tags="Git" title="Roll version">
+<pre>{{Make empty commit}}
+{{Create lightweight tag from HEAD}}
+{{Push tag to server}}
 </pre>
 </div>
 <div created="20200424083808418" modified="20200424083910477" tags="Linux Bash" title="Run commands in parallel">
