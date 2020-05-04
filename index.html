@@ -331,6 +331,8 @@ Error message and password prompt
 
 <li>Blame in terminal</li>
 
+<li>Bloom filters</li>
+
 <li>Boot into single user mode using GRUB</li>
 
 <li>Breakaway/Escape velocity</li>
@@ -10544,8 +10546,8 @@ Error message and password prompt
 <div created="20200430080859301" modified="20200430091655071" title="$:/state/toc/TableOfContents-CentOS--118161433">
 <pre>close</pre>
 </div>
-<div created="20200428101450941" modified="20200428111605532" title="$:/state/toc/TableOfContents-Dev--118161433">
-<pre>close</pre>
+<div created="20200428101450941" modified="20200504111348075" title="$:/state/toc/TableOfContents-Dev--118161433">
+<pre>open</pre>
 </div>
 <div created="20200426101718323" modified="20200426101735679" title="$:/state/toc/TableOfContents-Docker--118161433">
 <pre>close</pre>
@@ -11101,6 +11103,9 @@ $ head -c 10000000 | nc -v &lt;host&gt; &lt;port&gt;
 $ git blame -L FROM,TO FILE
 ```
 </pre>
+</div>
+<div created="20200504111356642" modified="20200504111412343" tags="Dev" title="Bloom filters">
+<pre>https://lobster1234.github.io/2019/05/20/bloom-filters/</pre>
 </div>
 <div created="20200424091730965" modified="20200424091947567" tags="Linux" title="Boot into single user mode using GRUB">
 <pre># [[Enter GRUB menu]].
@@ -15365,7 +15370,7 @@ $ python /usr/lib/python2.7/smtpd.py -n -c DebuggingServer localhost:8025
 &gt;&gt;&gt; s.sendmail('me', 'you', 'Hi!')
 ```</pre>
 </div>
-<div created="20200428100442383" modified="20200504104942247" tags="AWS Python" title="Localstack">
+<div created="20200428100442383" modified="20200504105619185" tags="AWS Python" title="Localstack">
 <pre>```
 $ sudo apt-ge install python3-dev python3-pip
 ```
@@ -15439,9 +15444,7 @@ $ awslocal s3 mb s3://my-bucket
 make_bucket: my-bucket
 $ awslocal s3 ls s3://
 2006-02-03 19:45:09 my-bucket
-$ cat &gt; hello.txt &lt;&lt;EOF
-Hello
-EOF
+$ echo Hello &gt; hello.txt
 $ awslocal s3 cp hello.txt s3://my-bucket/
 upload: ./hello.txt to s3://my-bucket/hello.txt
 $ awslocal s3 ls s3://my-bucket/
