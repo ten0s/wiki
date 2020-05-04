@@ -10631,7 +10631,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200504072243187" list="ToDo [[Add tar info]]" modified="20200504083320865" title="$:/StoryList">
+<div created="20200504072243187" list="Localstack ToDo [[Add tar info]]" modified="20200504105012085" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200430085937346" title="$:/temp/advancedsearch">
@@ -10698,7 +10698,7 @@ Error message and password prompt
 <div created="20200423165127488" modified="20200430145606632" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200430111600325" title="$:/temp/search">
+<div created="20200422190456346" modified="20200504105009752" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
@@ -14900,9 +14900,9 @@ $ sudo debuginfo-install kernel --enablerepo=&quot;*debuginfo*&quot;
 <div created="20200425121252389" modified="20200425121314002" tags="Linux" title="Install EPEL">
 <pre>http://www.tecmint.com/how-to-enable-epel-repository-for-rhel-centos-6-5/</pre>
 </div>
-<div created="20200428120042021" modified="20200428120115286" tags="Linux Bash" title="Install Jupyter IBash kernel">
+<div created="20200428120042021" modified="20200504105003465" tags="Linux Bash" title="Install Jupyter IBash kernel">
 <pre>```
-$ virtualenv env --no-site-packages
+$ virtualenv env
 $ . env/bin/activate
 $ pip install jupyter
 $ pip install bash_kernel
@@ -15365,7 +15365,7 @@ $ python /usr/lib/python2.7/smtpd.py -n -c DebuggingServer localhost:8025
 &gt;&gt;&gt; s.sendmail('me', 'you', 'Hi!')
 ```</pre>
 </div>
-<div created="20200428100442383" modified="20200428100845117" tags="AWS Python" title="Localstack">
+<div created="20200428100442383" modified="20200504104942247" tags="AWS Python" title="Localstack">
 <pre>```
 $ sudo apt-ge install python3-dev python3-pip
 ```
@@ -15375,7 +15375,7 @@ $ sudo apt-ge install python3-dev python3-pip
 ```
 $ mkdir localstack
 $ cd localstack
-$ virtualenv -p python3 env --no-site-packages
+$ virtualenv -p python3 env
 $ . env/bin/activate
 $ pip install localstack
 ```
@@ -15421,7 +15421,7 @@ open http://localhost:8080/console (for PIN look at terminal)
 !!! Install AWS CLI
 
 ```
-$ virtualenv -p python3 aws-env --no-site-packages
+$ virtualenv -p python3 aws-env
 $ . aws-env/bin/activate
 $ pip install awscli awscli-local
 ```
@@ -17519,9 +17519,9 @@ $ sudo system-config-printer
 http://localhost:631
 </pre>
 </div>
-<div created="20200428115223435" modified="20200428115253663" tags="Python" title="Setup Python3 virtual env">
+<div created="20200428115223435" modified="20200504104955528" tags="Python" title="Setup Python3 virtual env">
 <pre>```
-$ virtualenv -p python3 env --no-site-packages
+$ virtualenv -p python3 env
 $ . env/bin/activate
 $ python --version
 Python 3.4.3
