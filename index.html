@@ -597,6 +597,14 @@ Error message and password prompt
 
 <li>Generate random string of length 50</li>
 
+<li>Get EC2 instance id</li>
+
+<li>Get EC2 instance meta data categories</li>
+
+<li>Get EC2 instance region</li>
+
+<li>Get EC2 instance user data</li>
+
 <li>Get GLIBC version binary is linked against</li>
 
 <li>Get SSH key fingerprint</li>
@@ -10527,8 +10535,8 @@ Error message and password prompt
 <div created="20200426101141551" modified="20200426101935914" title="$:/state/toc/TableOfContents-Android--118161433">
 <pre>close</pre>
 </div>
-<div created="20200428100846343" modified="20200428111606582" title="$:/state/toc/TableOfContents-AWS--118161433">
-<pre>close</pre>
+<div created="20200428100846343" modified="20200504100951221" title="$:/state/toc/TableOfContents-AWS--118161433">
+<pre>open</pre>
 </div>
 <div created="20200426101916708" modified="20200428175652134" title="$:/state/toc/TableOfContents-Bash--118161433">
 <pre>close</pre>
@@ -10623,7 +10631,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200504072243187" list="Quotes ToDo [[Add tar info]]" modified="20200504083320865" title="$:/StoryList">
+<div created="20200504072243187" list="ToDo [[Add tar info]]" modified="20200504083320865" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200430085937346" title="$:/temp/advancedsearch">
@@ -14657,6 +14665,32 @@ $ openssl passwd -1 PASSWD
 <div created="20200424081758913" modified="20200424081829913" tags="Linux Bash" title="Generate random string of length 50">
 <pre>```
 base64 /dev/urandom | head -1 | cut -c1-50
+```
+</pre>
+</div>
+<div created="20200504101436053" modified="20200504101701662" tags="AWS" title="Get EC2 instance id">
+<pre>```
+$ curl -s http://169.254.169.254/latest/meta-data/instance-id
+```
+</pre>
+</div>
+<div created="20200504100953620" modified="20200504101900158" tags="AWS" title="Get EC2 instance meta data categories">
+<pre>```
+$ curl -s http://169.254.169.254/latest/meta-data/
+```
+
+[ext[Instance metadata categories | https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instancedata-data-categories.html]]</pre>
+</div>
+<div created="20200504101702464" modified="20200504101805481" tags="AWS" title="Get EC2 instance region">
+<pre>```
+curl -s http://169.254.169.254/latest/dynamic/instance-identity/document' | jq -r .region
+```
+
+[ext[Instance Identity Documents | https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-identity-documents.html]]</pre>
+</div>
+<div created="20200504101235492" modified="20200504101313775" tags="AWS" title="Get EC2 instance user data">
+<pre>```
+$ curl -s http://169.254.169.254/latest/user-data/
 ```
 </pre>
 </div>
