@@ -745,6 +745,8 @@ Error message and password prompt
 
 <li>Make gif from pngs</li>
 
+<li>Make man link work</li>
+
 <li>Make Mobile Web App fullscreen</li>
 
 <li>Make wiki work offline on Android</li>
@@ -996,6 +998,8 @@ Error message and password prompt
 <li>System limits</li>
 
 <li>System uptime</li>
+
+<li>Systemd disable unit</li>
 
 <li>Systemd stop unit</li>
 
@@ -10659,7 +10663,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200506065801334" list="" modified="20200506091115838" title="$:/StoryList">
+<div created="20200506065801334" list="" modified="20200506094204476" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200430085937346" title="$:/temp/advancedsearch">
@@ -10726,8 +10730,8 @@ Error message and password prompt
 <div created="20200423165127488" modified="20200430145606632" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200506070841086" title="$:/temp/search">
-<pre></pre>
+<div created="20200422190456346" modified="20200506093334660" title="$:/temp/search">
+<pre>systemd</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -11870,11 +11874,10 @@ $ dpkg-deb --info &lt;PACKAGE&gt;.deb
 ```
 </pre>
 </div>
-<div created="20200425125134295" modified="20200425125233047" tags="Linux" title="Determine process that uses port">
+<div created="20200425125134295" modified="20200506092709699" tags="Linux" title="Determine process that uses port">
 <pre>* add 'l' for listening only
 * add 'a' for both listening and non-listening
 
-```
 ```
 $ sudo netstat -tuanp | grep PORT
 $ sudo lsof -i :PORT
@@ -15718,6 +15721,9 @@ $ convert -delay 120 -loop 0 -gravity center -background white -extent 300x450 *
 
 </pre>
 </div>
+<div created="20200506094206509" modified="20200506094227299" tags="task" title="Make man link work">
+<pre>[[Systemd units status]]</pre>
+</div>
 <div created="20200423193556357" modified="20200423193619127" tags="Android" title="Make Mobile Web App fullscreen">
 <pre>https://developers.google.com/web/fundamentals/native-hardware/fullscreen/
 </pre>
@@ -18061,17 +18067,26 @@ $ cat /proc/uptime # total uptime(secs) idle time(secs)
 ```
 </pre>
 </div>
-<div created="20200506091241116" modified="20200506091347994" tags="Linux" title="Systemd stop unit">
+<div created="20200506093355461" modified="20200506093507647" tags="Linux" title="Systemd disable unit">
+<pre>```
+$ sudo systemctl disable UNIT
+```
+
+[ext[man|manx:systemctl::disable NAME]]</pre>
+</div>
+<div created="20200506091241116" modified="20200506093519713" tags="Linux" title="Systemd stop unit">
 <pre>```
 $ sudo systemctl stop UNIT
 ```
-</pre>
+
+[ext[man|manx:systemctl::stop NAME]]</pre>
 </div>
-<div created="20200506091119657" modified="20200506091214281" tags="Linux" title="Systemd units status">
+<div created="20200506091119657" modified="20200506094150277" tags="Linux" title="Systemd units status">
 <pre>```
 $ systemctl status
 ```
-</pre>
+
+[ext[man|manx:systemctl::status %5BPATTERN]]</pre>
 </div>
 <div caption="{{$:/language/SideBar/Contents/Caption}}" created="20200426093757556" list-before="$:/core/ui/SideBar/Open" modified="20200426101105954" tags="$:/tags/SideBar" title="TableOfContents">
 <pre>&lt;div class=&quot;tc-table-of-contents&quot;&gt;
