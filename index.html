@@ -351,6 +351,8 @@ Error message and password prompt
 
 <li>Change GRUB boot order</li>
 
+<li>Change img src dynamically</li>
+
 <li>Change remote repo</li>
 
 <li>Change timezone</li>
@@ -871,6 +873,8 @@ Error message and password prompt
 
 <li>Run commands in parallel</li>
 
+<li>Run Javascript on link click</li>
+
 <li>Run JS in tiddler</li>
 
 <li>Run script on iface up</li>
@@ -1054,8 +1058,6 @@ Error message and password prompt
 <li>Verify SSL connection</li>
 
 <li>Web</li>
-
-<li>Web FAQ</li>
 
 <li>Web Links</li>
 
@@ -10574,8 +10576,8 @@ Error message and password prompt
 <div created="20200426101647620" modified="20200426101736642" title="$:/state/toc/TableOfContents-Imagemagick--118161433">
 <pre>close</pre>
 </div>
-<div created="20200429160228164" modified="20200505083925820" title="$:/state/toc/TableOfContents-Javascript--118161433">
-<pre>close</pre>
+<div created="20200429160228164" modified="20200506083220793" title="$:/state/toc/TableOfContents-Javascript--118161433">
+<pre>open</pre>
 </div>
 <div created="20200426101649048" modified="20200506074356863" title="$:/state/toc/TableOfContents-Linux--118161433">
 <pre>close</pre>
@@ -10601,8 +10603,8 @@ Error message and password prompt
 <div created="20200426101657879" modified="20200426101738390" title="$:/state/toc/TableOfContents-Ubuntu--118161433">
 <pre>close</pre>
 </div>
-<div created="20200430150353516" modified="20200505083921925" title="$:/state/toc/TableOfContents-Web--118161433">
-<pre>close</pre>
+<div created="20200430150353516" modified="20200506082443692" title="$:/state/toc/TableOfContents-Web--118161433">
+<pre>open</pre>
 </div>
 <div created="20200428101546086" modified="20200428102659163" title="$:/state/toc/TableOfContents/Dev-Algorithm--118161433">
 <pre>close</pre>
@@ -10643,7 +10645,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200506065801334" list="ToDo" modified="20200506074638558" title="$:/StoryList">
+<div created="20200506065801334" list="[[Change img src dynamically]] [[Run Javascript on link click]] ToDo" modified="20200506082445599" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200430085937346" title="$:/temp/advancedsearch">
@@ -11199,6 +11201,22 @@ saved - see man grub-set-default (default until changed), grub-reboot (next boot
 ```
 sudo update-grub
 ```
+</pre>
+</div>
+<div created="20200506082715613" modified="20200506083036457" tags="Web Javascript" title="Change img src dynamically">
+<pre>https://stackoverflow.com/questions/12196435/javascript-function-return-src-path
+
+```
+function getImagePath() {
+     return &quot;images/image1.png&quot;;
+}
+```
+
+```
+&lt;img src=&quot;pixel.gif&quot; onload=&quot;this.onload=null; this.src=getImagePath();&quot; /&gt;
+```
+
+The &lt;img&gt; tag will first load the placeholder &quot;pixel.gif&quot;, when finished, it will run the onload code, which loads another image. If you do not set onload to null, it will be called again after the second load, after the third load, ..
 </pre>
 </div>
 <div created="20200423171716490" modified="20200423171752415" tags="Git" title="Change remote repo">
@@ -17314,6 +17332,17 @@ wait
 ```
 </pre>
 </div>
+<div created="20200430150145592" modified="20200506083203369" tags="Web Javascript" title="Run Javascript on link click">
+<pre>```
+function doSomething() {
+  alert(&quot;hello&quot;);
+}
+```
+
+```
+&lt;a href=&quot;javascript:doSomething();&quot;&gt;click me&lt;/a&gt;
+```</pre>
+</div>
 <div created="20200429152711348" modified="20200429155320787" tags="TiddlyWiki" title="Run JS in tiddler">
 <pre>http://tobibeer.github.io/tw/enable-js/#script
 
@@ -18646,28 +18675,6 @@ $ echo GET | openssl s_client -CApath /etc/ssl/certs/ -connect google.com:443 2&
 </div>
 <div created="20200430150107593" modified="20200430150114476" tags="TableOfContents" title="Web">
 <pre></pre>
-</div>
-<div created="20200430150145592" modified="20200430150426915" tags="Web" title="Web FAQ">
-<pre>!!! Change img's src load dynamically
-
-https://stackoverflow.com/questions/12196435/javascript-function-return-src-path
-
-```
-&lt;img src=&quot;/assets/images/digraph.png&quot; onload=&quot;this.onload=null; this.src=this.src=relative_url(this.src);&quot; /&gt;
-```
-
-The &lt;img&gt; tag will first load the placeholder &quot;pixel.gif&quot;, when finished, it will run the onload code, which loads another image. If you do not set onload to null, it will be called again after the second load, after the third load, ..
-
-!!! Run js on link click
-
-```
-&lt;script&gt;
-function doSomething() {
-  alert(&quot;hello&quot;)
-}
-&lt;/script&gt;
-&lt;a href=&quot;javascript:doSomething();&quot;&gt;click me&lt;/a&gt;
-```</pre>
 </div>
 <div created="20200430150158697" modified="20200430150340222" tags="Web" title="Web Links">
 <pre>!!! Dive Into HTML5
