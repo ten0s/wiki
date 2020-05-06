@@ -673,11 +673,11 @@ Error message and password prompt
 
 <li>Javascript</li>
 
-<li>Javascript 2see</li>
-
 <li>Javascript Links</li>
 
 <li>Jobs</li>
+
+<li>JSON inside HTML</li>
 
 <li>Kademlia</li>
 
@@ -720,6 +720,12 @@ Error message and password prompt
 <li>List open ports and their programs</li>
 
 <li>List symbols and other info of an object file</li>
+
+<li>Load and add all templates to body</li>
+
+<li>Load HTML fragment</li>
+
+<li>Load HTML fragment using jQuery</li>
 
 <li>Local SMTP debugging server</li>
 
@@ -871,9 +877,9 @@ Error message and password prompt
 
 <li>Reverse DNS lookup</li>
 
-<li>Run commands in parallel</li>
+<li>Run code on link click</li>
 
-<li>Run Javascript on link click</li>
+<li>Run commands in parallel</li>
 
 <li>Run JS in tiddler</li>
 
@@ -1060,6 +1066,8 @@ Error message and password prompt
 <li>Web</li>
 
 <li>Web Links</li>
+
+<li>WebComponents Imports</li>
 
 <li>Where DNS utils</li>
 
@@ -10645,7 +10653,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200506065801334" list="[[Change img src dynamically]] [[Run Javascript on link click]] ToDo" modified="20200506082445599" title="$:/StoryList">
+<div created="20200506065801334" list="" modified="20200506083245800" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200430085937346" title="$:/temp/advancedsearch">
@@ -15037,61 +15045,6 @@ kismet
 <div created="20200428111204806" modified="20200428111214296" tags="TableOfContents" title="Javascript">
 <pre></pre>
 </div>
-<div created="20200428111439233" modified="20200429160516762" tags="Javascript" title="Javascript 2see">
-<pre>* https://javascript.info/
-* https://www.html5rocks.com/en/tutorials/webcomponents/imports/
-
-```
-&lt;template id=&quot;dot-code-modal-template&quot;&gt;
-  &lt;div id=&quot;dot-code-modal&quot; class=&quot;modal fade&quot; role=&quot;dialog&quot; tabindex=&quot;-1&quot; data-backdrop=&quot;false&quot;&gt;
-    &lt;div class=&quot;modal-dialog&quot;&gt;
-      &lt;div class=&quot;modal-content&quot;&gt;
-        &lt;div class=&quot;modal-header&quot;&gt;
-          &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;modal&quot;&gt;&amp;times;&lt;/button&gt;
-          &lt;h4 class=&quot;modal-title&quot;&gt;DOT code&lt;/h4&gt;
-        &lt;/div&gt;
-        &lt;div id=&quot;dot-code-body&quot; class=&quot;modal-body&quot; style=&quot;max-height:420px;overflow:auto;&quot;&gt;
-          &lt;pre&gt;&lt;div id=&quot;dot-code-src&quot; style=&quot;overflow:auto;&quot;&gt;&lt;/div&gt;&lt;/pre&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;modal-footer&quot;&gt;
-          &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot; data-dismiss=&quot;modal&quot;&gt;Close&lt;/button&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
-```
-
-```
- &lt;link rel=&quot;import&quot; href=&quot;dot-code-modal.html&quot; id=&quot;templates&quot;&gt;
-```
-
-```
-                var templates = document.getElementById(&quot;templates&quot;).import;
-                var content = templates.getElementById(&quot;dot-code-modal-template&quot;).content;
-                var clone = document.importNode(content, true);
-                document.body.appendChild(clone);
-                $(&quot;#dot-code-modal&quot;).modal(&quot;show&quot;);
-                $(&quot;#dot-code-src&quot;).text(obj.dot);
-                //
-                some later
-                $(&quot;#dot-code-modal&quot;).remove();
-```
-
-!!! Load and add all templates to body
-
-```
-var links = document.querySelectorAll(&quot;link[rel='import']&quot;);
-links.forEach(function (link) { var template = link.import.querySelector('template'); var clone = document.importNode(template.content, true); document.body.appendChild(clone); });
-```
-
-!!! Why not just use jQuery.load?
-
-```
-$(&quot;#result&quot;).load(&quot;ajax/test.html&quot;);
-```
-</pre>
-</div>
 <div created="20200428111217678" modified="20200430150131935" tags="Javascript" title="Javascript Links">
 <pre>* https://javascript.info/
 * https://www.html5rocks.com/en/tutorials/webcomponents/imports/
@@ -15190,6 +15143,20 @@ function qs_vals(qs) {
 * https://elixirschool.com/en/
 * https://exercism.io/
 </pre>
+</div>
+<div created="20200506083923779" modified="20200506084143426" tags="Web Javascript" title="JSON inside HTML">
+<pre>```
+&lt;script data-state type=&quot;application/json&quot;&gt;
+{&quot;name&quot;: &quot;value&quot;}
+&lt;/script&gt;
+```
+
+```
+(function () {
+const stateContainer = fragment.querySelector(&quot;[data-state]&quot;);
+const STATE = JSON.parse(stateContainer.innerHTML);
+})();
+```</pre>
 </div>
 <div created="20200428102008576" modified="20200428102026957" tags="Algorithm" title="Kademlia">
 <pre>https://en.wikipedia.org/wiki/Kademlia
@@ -15400,6 +15367,34 @@ $ objdump -T /usr/lib/libtokyocabinet.so | grep dfunit
 $ readelf -d /bin/ls # -d dynamic section
 $ strings
 ```</pre>
+</div>
+<div created="20200506083421252" modified="20200506083815687" tags="Web Javascript" title="Load and add all templates to body">
+<pre>```
+var links = document.querySelectorAll(&quot;link[rel='import']&quot;);
+links.forEach(function (link) { var template = link.import.querySelector('template'); var clone = document.importNode(template.content, true); document.body.appendChild(clone); });
+```
+
+[[WebComponents Imports]]</pre>
+</div>
+<div created="20200506084245583" modified="20200506084442318" tags="Javascript" title="Load HTML fragment">
+<pre>```
+const element = document.querySelector(&quot;.decide_recos&quot;);
+const url = element.getAttribute(&quot;data-fragment&quot;);
+window
+  .fetch(url)
+  .then(res =&gt; res.text())
+  .then(html =&gt; {
+  element.innerHTML = html;
+});
+```
+
+Micro Frontends in Action p.42</pre>
+</div>
+<div created="20200506083306063" modified="20200506083352643" tags="Web Javascript" title="Load HTML fragment using jQuery">
+<pre>```
+$(&quot;#result&quot;).load(&quot;ajax/test.html&quot;);
+```
+</pre>
 </div>
 <div created="20200428115525727" modified="20200428115546020" tags="Python" title="Local SMTP debugging server">
 <pre>```
@@ -17309,6 +17304,17 @@ $ nslookup IP
 
 </pre>
 </div>
+<div created="20200430150145592" modified="20200506083512388" tags="Web Javascript" title="Run code on link click">
+<pre>```
+function doSomething() {
+  alert(&quot;hello&quot;);
+}
+```
+
+```
+&lt;a href=&quot;javascript:doSomething();&quot;&gt;click me&lt;/a&gt;
+```</pre>
+</div>
 <div created="20200424083808418" modified="20200424083910477" tags="Linux Bash" title="Run commands in parallel">
 <pre>```
 xargs
@@ -17331,17 +17337,6 @@ cmd3 &amp;
 wait
 ```
 </pre>
-</div>
-<div created="20200430150145592" modified="20200506083203369" tags="Web Javascript" title="Run Javascript on link click">
-<pre>```
-function doSomething() {
-  alert(&quot;hello&quot;);
-}
-```
-
-```
-&lt;a href=&quot;javascript:doSomething();&quot;&gt;click me&lt;/a&gt;
-```</pre>
 </div>
 <div created="20200429152711348" modified="20200429155320787" tags="TiddlyWiki" title="Run JS in tiddler">
 <pre>http://tobibeer.github.io/tw/enable-js/#script
@@ -18739,6 +18734,49 @@ https://www.browserleaks.com/
 * http://kripken.github.io/emscripten-site/index.html
 * https://github.com/kripken/emscripten
 * http://devosoft.org/an-introduction-to-web-development-with-emscripten/
+</pre>
+</div>
+<div created="20200428111439233" modified="20200506083733835" tags="Javascript" title="WebComponents Imports">
+<pre>* https://javascript.info/
+* https://www.html5rocks.com/en/tutorials/webcomponents/imports/
+
+```
+&lt;template id=&quot;dot-code-modal-template&quot;&gt;
+  &lt;div id=&quot;dot-code-modal&quot; class=&quot;modal fade&quot; role=&quot;dialog&quot; tabindex=&quot;-1&quot; data-backdrop=&quot;false&quot;&gt;
+    &lt;div class=&quot;modal-dialog&quot;&gt;
+      &lt;div class=&quot;modal-content&quot;&gt;
+        &lt;div class=&quot;modal-header&quot;&gt;
+          &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;modal&quot;&gt;&amp;times;&lt;/button&gt;
+          &lt;h4 class=&quot;modal-title&quot;&gt;DOT code&lt;/h4&gt;
+        &lt;/div&gt;
+        &lt;div id=&quot;dot-code-body&quot; class=&quot;modal-body&quot; style=&quot;max-height:420px;overflow:auto;&quot;&gt;
+          &lt;pre&gt;&lt;div id=&quot;dot-code-src&quot; style=&quot;overflow:auto;&quot;&gt;&lt;/div&gt;&lt;/pre&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;modal-footer&quot;&gt;
+          &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot; data-dismiss=&quot;modal&quot;&gt;Close&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+```
+
+```
+ &lt;link rel=&quot;import&quot; href=&quot;dot-code-modal.html&quot; id=&quot;templates&quot;&gt;
+```
+
+```
+var templates = document.getElementById(&quot;templates&quot;).import;
+var content = templates.getElementById(&quot;dot-code-modal-template&quot;).content;
+var clone = document.importNode(content, true);
+document.body.appendChild(clone);
+$(&quot;#dot-code-modal&quot;).modal(&quot;show&quot;);
+$(&quot;#dot-code-src&quot;).text(obj.dot);
+```
+
+```
+$(&quot;#dot-code-modal&quot;).remove();
+```
 </pre>
 </div>
 <div created="20200424084217094" modified="20200424084239198" tags="Linux" title="Where DNS utils">
