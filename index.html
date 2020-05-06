@@ -599,6 +599,8 @@ Error message and password prompt
 
 <li>Generate random string of length 50</li>
 
+<li>Get default gateway</li>
+
 <li>Get EC2 instance id</li>
 
 <li>Get EC2 instance meta data categories</li>
@@ -905,6 +907,8 @@ Error message and password prompt
 
 <li>Set DNS</li>
 
+<li>Set static WiFi IP address</li>
+
 <li>Setup printer</li>
 
 <li>Setup Python3 virtual env</li>
@@ -922,6 +926,10 @@ Error message and password prompt
 <li>Short hash</li>
 
 <li>Show HTML in terminal</li>
+
+<li>Show network interfaces</li>
+
+<li>Show routing table</li>
 
 <li>Show/kill/signal process that use file or socket</li>
 
@@ -10536,8 +10544,8 @@ Error message and password prompt
 <div created="20200422191529492" modified="20200429180756276" title="$:/state/tab/sidebar--595412856">
 <pre>TableOfContents</pre>
 </div>
-<div created="20200426101141551" modified="20200426101935914" title="$:/state/toc/TableOfContents-Android--118161433">
-<pre>close</pre>
+<div created="20200426101141551" modified="20200506072232368" title="$:/state/toc/TableOfContents-Android--118161433">
+<pre>open</pre>
 </div>
 <div created="20200428100846343" modified="20200505083916917" title="$:/state/toc/TableOfContents-AWS--118161433">
 <pre>close</pre>
@@ -10569,8 +10577,8 @@ Error message and password prompt
 <div created="20200429160228164" modified="20200505083925820" title="$:/state/toc/TableOfContents-Javascript--118161433">
 <pre>close</pre>
 </div>
-<div created="20200426101649048" modified="20200428120240150" title="$:/state/toc/TableOfContents-Linux--118161433">
-<pre>close</pre>
+<div created="20200426101649048" modified="20200506071635607" title="$:/state/toc/TableOfContents-Linux--118161433">
+<pre>open</pre>
 </div>
 <div created="20200428092436636" modified="20200430091659257" title="$:/state/toc/TableOfContents-MentalModel--118161433">
 <pre>close</pre>
@@ -10635,7 +10643,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200505130912152" list="[[TW Links]]" modified="20200505131026700" title="$:/StoryList">
+<div created="20200506065801334" list="[[Show network interfaces]] [[Set static WiFi IP address]] [[Show routing table]] [[Get default gateway]] [[Share local directory via external server]] ToDo" modified="20200506070835931" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200430085937346" title="$:/temp/advancedsearch">
@@ -10694,7 +10702,7 @@ Error message and password prompt
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
-            &quot;text&quot;: &quot;en-GB&quot;
+            &quot;text&quot;: &quot;en-US&quot;
         }
     }
 }</pre>
@@ -10702,8 +10710,8 @@ Error message and password prompt
 <div created="20200423165127488" modified="20200430145606632" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200505130909794" title="$:/temp/search">
-<pre>tw li</pre>
+<div created="20200422190456346" modified="20200506070841086" title="$:/temp/search">
+<pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -14675,6 +14683,20 @@ base64 /dev/urandom | head -1 | cut -c1-50
 ```
 </pre>
 </div>
+<div created="20200506071642845" modified="20200506072226828" tags="Linux" title="Get default gateway">
+<pre>```
+$ ip route | grep default
+```
+
+```
+$ route | grep default
+```
+
+```
+$ netstat -r | grep default
+```
+</pre>
+</div>
 <div created="20200504101436053" modified="20200504101701662" tags="AWS" title="Get EC2 instance id">
 <pre>```
 $ curl -s http://169.254.169.254/latest/meta-data/instance-id
@@ -17492,6 +17514,17 @@ search example.com
 ```
 </pre>
 </div>
+<div created="20200506072235996" modified="20200506073109629" tags="Android" title="Set static WiFi IP address">
+<pre>Settings -&gt; ~WiFi -&gt; Access Point -&gt; Modify Network -&gt; Advanced options
+
+* IP settings: Static
+* IP address: 192.168.100.127 [[Show network interfaces]]
+* Gateway: 192.168.100.1 [[Get default gateway]]
+* Network prefix length: 24 [[Show network interfaces]]
+* DNS 1: 8.8.8.8 
+* DNS 2: 8.8.4.4
+</pre>
+</div>
 <div created="20200428114339943" modified="20200428114352234" tags="Linux" title="Setup printer">
 <pre>HP official linux printer drivers
 ==================================
@@ -17581,7 +17614,7 @@ $ sudo service smbd restart
 ```
 </pre>
 </div>
-<div created="20200424094044960" modified="20200424094145017" tags="Linux Ssh" title="Share local directory via external server">
+<div created="20200424094044960" modified="20200506070829525" tags="Linux Ssh" title="Share local directory via external server">
 <pre>Locally:
 
 ```
@@ -17597,7 +17630,7 @@ http://remote_server:8090
 
 NB:
 
-'GatewayPorts yes' must be enabled in /etc/ssh/sshd_config
+'~GatewayPorts yes' must be enabled in /etc/ssh/sshd_config
 </pre>
 </div>
 <div created="20200425154330474" modified="20200425154520417" tags="Linux" title="Shared library path">
@@ -17622,6 +17655,29 @@ f75ba70
 $ echo $HTML | lynx -stdin -dump
 ```
 </pre>
+</div>
+<div created="20200506072940580" modified="20200506073028720" tags="Linux" title="Show network interfaces">
+<pre>```
+$ ip addr
+```
+
+```
+$ ifconfig
+```
+</pre>
+</div>
+<div created="20200506071758931" modified="20200506072058605" tags="Linux" title="Show routing table">
+<pre>```
+$ ip route
+```
+
+```
+$ route
+```
+
+```
+$ netstat -r
+```</pre>
 </div>
 <div created="20200425150202311" modified="20200425154835304" tags="Linux" title="Show/kill/signal process that use file or socket">
 <pre>```
