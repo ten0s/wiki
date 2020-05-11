@@ -487,6 +487,8 @@ Error message and password prompt
 
 <li>Dev Links</li>
 
+<li>DHCP/DNS server</li>
+
 <li>Diff binary files</li>
 
 <li>Diff dirs</li>
@@ -538,6 +540,8 @@ Error message and password prompt
 <li>Enable debugger by request</li>
 
 <li>Enable Developer Options</li>
+
+<li>Enable serial console</li>
 
 <li>Encode/decode base64</li>
 
@@ -604,6 +608,8 @@ Error message and password prompt
 <li>Fix 'locate' error</li>
 
 <li>Fix blocked git:// protocol</li>
+
+<li>Fix rainbow screen on boot</li>
 
 <li>Fix signature verification error</li>
 
@@ -819,6 +825,8 @@ Error message and password prompt
 
 <li>Netsplit</li>
 
+<li>Network boot</li>
+
 <li>Network emulation (netem)</li>
 
 <li>Network Manager tool</li>
@@ -897,6 +905,8 @@ Error message and password prompt
 
 <li>Random magick</li>
 
+<li>Raspberry Pi</li>
+
 <li>Re-schedule timer</li>
 
 <li>Read &quot;Customise TW&quot;</li>
@@ -924,6 +934,8 @@ Error message and password prompt
 <li>Remove duplicates from list</li>
 
 <li>Remove last commit pushed to server</li>
+
+<li>Reset OS password</li>
 
 <li>Reset working dir prior to last commit</li>
 
@@ -1083,7 +1095,11 @@ Error message and password prompt
 
 <li>TCP client (w/o netcat)</li>
 
+<li>Termux</li>
+
 <li>Test WebSocket using curl</li>
+
+<li>Tethering</li>
 
 <li>The Availability Heuristic</li>
 
@@ -1144,6 +1160,8 @@ Error message and password prompt
 <li>Untitled</li>
 
 <li>Untrack tracked files</li>
+
+<li>Upgrade from stretch to buster</li>
 
 <li>Use curl to post data from stdin</li>
 
@@ -10659,7 +10677,7 @@ Error message and password prompt
 <div created="20200422191529492" modified="20200511102204047" title="$:/state/tab/sidebar--595412856">
 <pre>TableOfContents</pre>
 </div>
-<div created="20200426101141551" modified="20200506074401251" title="$:/state/toc/TableOfContents-Android--118161433">
+<div created="20200426101141551" modified="20200511135117849" title="$:/state/toc/TableOfContents-Android--118161433">
 <pre>close</pre>
 </div>
 <div created="20200428100846343" modified="20200505083916917" title="$:/state/toc/TableOfContents-AWS--118161433">
@@ -10671,8 +10689,8 @@ Error message and password prompt
 <div created="20200430080859301" modified="20200430091655071" title="$:/state/toc/TableOfContents-CentOS--118161433">
 <pre>close</pre>
 </div>
-<div created="20200428101450941" modified="20200511124222322" title="$:/state/toc/TableOfContents-Dev--118161433">
-<pre>open</pre>
+<div created="20200428101450941" modified="20200511134555304" title="$:/state/toc/TableOfContents-Dev--118161433">
+<pre>close</pre>
 </div>
 <div created="20200426101718323" modified="20200510154408171" title="$:/state/toc/TableOfContents-Docker--118161433">
 <pre>close</pre>
@@ -10767,7 +10785,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200511114348439" list="[[Micro Frontends in Action]] ToDo" modified="20200511131610873" title="$:/StoryList">
+<div created="20200511114348439" list="[[Micro Frontends in Action]] ToDo" modified="20200511135034967" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200511101855364" title="$:/temp/advancedsearch">
@@ -12085,6 +12103,11 @@ On Motivation:
 http://www.ted.com/talks/dan_pink_on_motivation
 </pre>
 </div>
+<div created="20200511134743026" modified="20200511134758553" tags="[[Raspberry Pi]]" title="DHCP/DNS server">
+<pre>* https://www.itsfullofstars.de/2019/02/dhcp-server-on-linux-with-raspberry-pi/
+* https://blog.michael.franzl.name/2017/02/28/raspberry-pi-gateway-mobile-internet/
+</pre>
+</div>
 <div created="20200425120614329" modified="20200425120713884" tags="Bash" title="Diff binary files">
 <pre>```
 $ meld &lt;(xxd R1.xlsx) &lt;(xxd R2.xlsx)
@@ -12397,6 +12420,16 @@ pdb.help()
 </div>
 <div created="20200423192318647" modified="20200423192345163" tags="Android" title="Enable Developer Options">
 <pre>Settings -&gt; About phone -&gt; Tap on Build number 4-5 times.
+</pre>
+</div>
+<div created="20200511135005753" modified="20200511135032832" tags="[[Raspberry Pi]]" title="Enable serial console">
+<pre>* https://learn.adafruit.com/adafruits-raspberry-pi-lesson-5-using-a-console-cable/overview
+* https://play.google.com/store/apps/details?id=de.kai_morich.serial_usb_terminal (How to make it work?)
+
+Try use [[Tmux]] instead of screen
+
+http://ponnuki.net/2012/09/kindleberry-pi/
+
 </pre>
 </div>
 <div created="20200425124321270" modified="20200425124405795" tags="Bash" title="Encode/decode base64">
@@ -14773,6 +14806,15 @@ $ git config --global url.https://.insteadOf git://
 
 </pre>
 </div>
+<div created="20200511134848272" modified="20200511134910216" tags="[[Raspberry Pi]]" title="Fix rainbow screen on boot">
+<pre>https://www.raspberrypi.org/forums/viewtopic.php?t=58151
+
+```
+$ sudo update
+$ sudo upgrade
+```
+</pre>
+</div>
 <div created="20200425151250298" modified="20200425151315560" tags="Linux Ubuntu" title="Fix signature verification error">
 <pre>A error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: http://deb.opera.com unstable Release: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY A2019EA84E7532C8
 
@@ -16082,6 +16124,9 @@ There is no resynch after netsplit in gproc, since gen_leader didn't use to have
 One way to deal with this, is to set -kernel dist_auto_connect false, and add a &quot;backdoor ping&quot; (e.g. over UDP). If you get a ping from a known node that's not in the nodes() list, you have a netsplit situation. You can then select which node(s) to restart. After restart, normal synch will ensue, and since the nodes never auto-connected, you will have concistency (but quite possibly data loss, of course).
 </pre>
 </div>
+<div created="20200511134816975" modified="20200511134829021" tags="[[Raspberry Pi]]" title="Network boot">
+<pre>https://www.raspberrypi.org/documentation/hardware/raspberrypi/bootmodes/net_tutorial.md</pre>
+</div>
 <div created="20200424090146466" modified="20200424090209380" tags="Linux" title="Network emulation (netem)">
 <pre>```
 $ man tc
@@ -17382,6 +17427,9 @@ Can't see the forest through the trees
 <div created="20200429155326651" modified="20200510154249273" tags="[[TW Links]]" title="Random magick">
 <pre>http://tw5magick.tiddlyspot.com/</pre>
 </div>
+<div created="20200511134358651" modified="20200511134629952" tags="TableOfContents" title="Raspberry Pi">
+<pre></pre>
+</div>
 <div created="20200428101700633" modified="20200428101733958" tags="Algorithm Erlang" title="Re-schedule timer">
 <pre>```
 do_init(_Args) -&gt;
@@ -17491,6 +17539,74 @@ nodup([H | T]) -&gt;
 $ git reset --hard HEAD^
 $ git push origin master --force
 ```
+</pre>
+</div>
+<div created="20200511134612401" modified="20200511134708994" tags="[[Raspberry Pi]]" title="Reset OS password">
+<pre>!!! Reset OS password
+
+* http://mapledyne.com/ideas/2015/8/4/reset-lost-admin-password-for-raspberry-pi
+* https://www.raspberrypi.org/forums/viewtopic.php?t=20397
+* https://www.redhat.com/archives/rhl-list/2005-March/msg04089.html
+
+!!!! Steps
+
+* Put SD card into card reader or your phone
+* Add to the end of cmdline.txt
+
+```
+rw init=/bin/sh
+```
+
+* Put SD card into RPi and boot
+*
+
+```
+# passwd pi
+New password:
+Retype new password:
+passwd. password updated successfully
+```
+
+* Turn off the pi, put SD card into card reader and remove
+
+```
+rw init=/bin/sh
+```
+
+* Put SD card into RPi
+
+Instead of moving sd card around
+
+we need to edit /boot/cmdline.txt back
+/boot is not mounted by default
+
+```
+# blkid
+/dev/mmcblk0p1 ... LABEL=&quot;boot&quot; TYPE=&quot;vfat&quot;
+/dev/mmcblk0p2 ... LABEL=&quot;rootfs&quot; TYPE=&quot;ext4&quot;
+
+# mount /dev/mmcblk0p1 /boot
+# nano /boot/cmdline.txt
+```
+
+remove
+
+```
+rw init=/bin/sh
+```
+
+```
+$ sync /boot
+$ umount /boot
+```
+
+Ctrl-Alt-Del
+
+!!!  Reset OS password
+
+https://www.raspberrypi.org/forums/viewtopic.php?t=20397
+
+Copy the password hash from /etc/shadow
 </pre>
 </div>
 <div created="20200423165728758" modified="20200423191201390" tags="Git" title="Reset working dir prior to last commit">
@@ -18354,6 +18470,12 @@ $ exec 3&lt;&gt;/dev/tcp/localhost/1234 || (echo &quot;Can't connect&quot; ; exi
 $ echo &quot;Hello&quot; &gt;&amp;3
 ```</pre>
 </div>
+<div created="20200511134302365" modified="20200511134314519" tags="Android" title="Termux">
+<pre>* https://wiki.termux.com/wiki/Main_Page
+* https://wiki.termux.com/wiki/Termux:API
+* https://wiki.termux.com/wiki/Termux-usb
+</pre>
+</div>
 <div created="20200428113049717" modified="20200428113128121" tags="Linux" title="Test WebSocket using curl">
 <pre>Sec-WebSocket-Key header containing base64-encoded random bytes to prevent a caching proxy from re-sending a previous WebSocket conversation
 
@@ -18364,6 +18486,19 @@ $ curl --include --no-buffer --header &quot;Connection: Upgrade&quot; --header &
 ```
 $ curl -s --no-buffer --header &quot;Connection: Upgrade&quot; --header &quot;Upgrade: websocket&quot; --header &quot;Sec-WebSocket-Key: SGVsbG8sIHdvcmxkIQ==&quot; --header &quot;Sec-WebSocket-Version: 13&quot; http://localhost:8082/api/notify | xxd
 ```
+</pre>
+</div>
+<div created="20200511134148180" modified="20200511134220320" tags="Android" title="Tethering">
+<pre>* https://stackoverflow.com/questions/17302220/android-get-ip-address-of-a-hotspot-providing-device#
+* https://github.com/nikitagaba/Android/blob/master/services/core/java/com/android/server/connectivity/tethering/TetherInterfaceStateMachine.java
+
+USB : 192.168.42.129/24 USB_NEAR_IFACE_ADDR/USB_PREFIX_LENGTH
+
+WIFI: 192.168.43.1/24 WIFI_HOST_IFACE_ADDR/WIFI_HOST_IFACE_PREFIX_LENGTH
+
+https://www.quora.com/How-do-I-set-up-IP-address-as-static-IP-address-on-Android-mobile-while-using-USB-tethering
+
+The IP address assigned to the android mobile phone in case of USB tethering is static only, but hard-coded as 192.168.42.129 with 255.255.255.0 being the netmask. In case you want to change this IP, you can try rooting the device and then find and use some USB tethering application which allows you to specify the IP address.
 </pre>
 </div>
 <div created="20200428092209542" modified="20200428092411734" tags="MentalModel" title="The Availability Heuristic">
@@ -18940,6 +19075,12 @@ https://tritarget.org/
 <pre>```
 $ git rm --cached &lt;file&gt;
 ```
+</pre>
+</div>
+<div created="20200511134924609" modified="20200511134939920" tags="[[Raspberry Pi]]" title="Upgrade from stretch to buster">
+<pre>* https://www.raspberrypi.org/forums/viewtopic.php?t=243438
+* https://pimylifeup.com/upgrade-raspbian-stretch-to-raspbian-buster/
+* http://baddotrobot.com/blog/2019/08/29/upgrade-raspian-stretch-to-buster/
 </pre>
 </div>
 <div created="20200425150651505" modified="20200425150722777" tags="" title="Use curl to post data from stdin">
