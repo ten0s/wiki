@@ -579,6 +579,8 @@ Error message and password prompt
 
 <li>Extract audio from video files</li>
 
+<li>Fake XMLHttpRequest</li>
+
 <li>Fault, Error and Failure</li>
 
 <li>Fibonacci and Factorial using math</li>
@@ -10669,8 +10671,8 @@ Error message and password prompt
 <div created="20200426101647620" modified="20200426101736642" title="$:/state/toc/TableOfContents-Imagemagick--118161433">
 <pre>close</pre>
 </div>
-<div created="20200429160228164" modified="20200508164129233" title="$:/state/toc/TableOfContents-Javascript--118161433">
-<pre>close</pre>
+<div created="20200429160228164" modified="20200511114345430" title="$:/state/toc/TableOfContents-Javascript--118161433">
+<pre>open</pre>
 </div>
 <div created="20200426101649048" modified="20200506074356863" title="$:/state/toc/TableOfContents-Linux--118161433">
 <pre>close</pre>
@@ -10744,7 +10746,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200511110805712" list="" modified="20200511110816332" title="$:/StoryList">
+<div created="20200511114348439" list="ToDo" modified="20200511114348440" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200511101855364" title="$:/temp/advancedsearch">
@@ -10795,11 +10797,11 @@ Error message and password prompt
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;360&quot;
+            &quot;text&quot;: &quot;1920&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;640&quot;
+            &quot;text&quot;: &quot;1080&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -14588,6 +14590,31 @@ for f in *.mp4; do
         avconv -i $f ${f%.mp4}.mp3;
     fi
 done
+```</pre>
+</div>
+<div created="20200511114350914" modified="20200511114457572" tags="Javascript Web" title="Fake XMLHttpRequest">
+<pre>```
+   &lt;script&gt;
+      class FakeXMLHttpRequest {
+        abort() {
+          // Do nothing.
+        }
+        open(method, url) {
+          // Do nothing.
+        }
+        setRequestHeader(name, value) {
+          // Do nothing.
+        }
+        send() {
+          this.status = 200
+          this.responseText = `
+...
+          `
+          setTimeout(this.onload.bind(this), 0);
+        }
+      }
+      window.XMLHttpRequest = FakeXMLHttpRequest
+    &lt;/script&gt;
 ```</pre>
 </div>
 <div created="20200428105003694" modified="20200428105026110" tags="Erlang" title="Fault, Error and Failure">
