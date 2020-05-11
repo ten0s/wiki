@@ -855,7 +855,9 @@ Error message and password prompt
 
 <li>Pure Cowboy Stream Handler</li>
 
-<li>Push tag</li>
+<li>Push all tags</li>
+
+<li>Push specific tag</li>
 
 <li>Pytest disable output capturing</li>
 
@@ -926,6 +928,8 @@ Error message and password prompt
 <li>Reverse DNS lookup</li>
 
 <li>Robots.txt</li>
+
+<li>Roll a new release</li>
 
 <li>Run code on link click</li>
 
@@ -1143,9 +1147,11 @@ Error message and password prompt
 
 <li>Web</li>
 
-<li>Web Links</li>
+<li>Web Components</li>
 
-<li>WebComponents Imports</li>
+<li>Web Components Imports</li>
+
+<li>Web Links</li>
 
 <li>Where DNS utils</li>
 
@@ -1189,8 +1195,8 @@ Error message and password prompt
 <div created="20200423165836284" modified="20200509085703930" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/refresh">
 <pre>hide</pre>
 </div>
-<div created="20200511102407697" modified="20200511102408769" title="$:/config/RelinkOnRename">
-<pre>no</pre>
+<div created="20200511102407697" modified="20200511123759848" title="$:/config/RelinkOnRename">
+<pre>yes</pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" name="Core" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.22">
 <pre>{
@@ -10653,8 +10659,8 @@ Error message and password prompt
 <div created="20200430080859301" modified="20200430091655071" title="$:/state/toc/TableOfContents-CentOS--118161433">
 <pre>close</pre>
 </div>
-<div created="20200428101450941" modified="20200505083915476" title="$:/state/toc/TableOfContents-Dev--118161433">
-<pre>close</pre>
+<div created="20200428101450941" modified="20200511124222322" title="$:/state/toc/TableOfContents-Dev--118161433">
+<pre>open</pre>
 </div>
 <div created="20200426101718323" modified="20200510154408171" title="$:/state/toc/TableOfContents-Docker--118161433">
 <pre>close</pre>
@@ -10665,8 +10671,8 @@ Error message and password prompt
 <div created="20200428110840790" modified="20200510154406292" title="$:/state/toc/TableOfContents-Erlang--118161433">
 <pre>close</pre>
 </div>
-<div created="20200426101712304" modified="20200428101155976" title="$:/state/toc/TableOfContents-Git--118161433">
-<pre>close</pre>
+<div created="20200426101712304" modified="20200511124059619" title="$:/state/toc/TableOfContents-Git--118161433">
+<pre>open</pre>
 </div>
 <div created="20200426101647620" modified="20200426101736642" title="$:/state/toc/TableOfContents-Imagemagick--118161433">
 <pre>close</pre>
@@ -10701,7 +10707,7 @@ Error message and password prompt
 <div created="20200430150353516" modified="20200510073737439" title="$:/state/toc/TableOfContents-Web--118161433">
 <pre>open</pre>
 </div>
-<div created="20200428101546086" modified="20200428102659163" title="$:/state/toc/TableOfContents/Dev-Algorithm--118161433">
+<div created="20200428101546086" modified="20200511124230794" title="$:/state/toc/TableOfContents/Dev-Algorithm--118161433">
 <pre>close</pre>
 </div>
 <div created="20200428102954871" modified="20200428105054432" title="$:/state/toc/TableOfContents/Dev-Erlang--118161433">
@@ -10746,7 +10752,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200511114348439" list="ToDo" modified="20200511114348440" title="$:/StoryList">
+<div created="20200511114348439" list="ToDo" modified="20200511124118331" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200511101855364" title="$:/temp/advancedsearch">
@@ -10810,10 +10816,10 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200423165127488" modified="20200511102428700" title="$:/temp/NewTagName">
+<div created="20200423165127488" modified="20200511123806770" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200511093944878" title="$:/temp/search">
+<div created="20200422190456346" modified="20200511125112475" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
@@ -11768,10 +11774,9 @@ $ losetup -d /dev/loop0
 ```
 </pre>
 </div>
-<div created="20200423173407537" modified="20200423173437610" tags="Git" title="Create lightweight tag">
+<div created="20200423173407537" modified="20200511124825894" tags="Git" title="Create lightweight tag">
 <pre>```
-$ git tag &quot;1.0.0&quot; # HEAD
-$ git tag &quot;1.0.2&quot; &lt;hash&gt;
+$ git tag &quot;1.0.0&quot;
 ```
 
 </pre>
@@ -15858,9 +15863,9 @@ alias sudo='sudo ' 2&gt;/dev/null
 
 </pre>
 </div>
-<div created="20200423171141917" modified="20200423190811730" tags="Git" title="Make empty commit">
+<div created="20200423171141917" modified="20200511124855263" tags="Git" title="Make empty commit">
 <pre>```
-$ git commit --allow-empty -m MESAGE
+$ git commit --allow-empty -m &quot;Roll 1.0.0&quot;
 ```
 </pre>
 </div>
@@ -16413,10 +16418,14 @@ early_error(StreamID, Reason, PartialReq, Resp, Opts) -&gt;
 
 ```</pre>
 </div>
-<div created="20200423173457326" modified="20200423173518058" tags="Git" title="Push tag">
+<div created="20200511124921287" modified="20200511124940879" tags="Git" title="Push all tags">
 <pre>```
-$ git push origin &quot;1.0.0&quot; # specific tag
-$ git push origin --tags  # all tags
+$ git push origin --tags 
+```</pre>
+</div>
+<div created="20200423173457326" modified="20200511124916919" tags="Git" title="Push specific tag">
+<pre>```
+$ git push origin &quot;1.0.0&quot; 
 ```
 
 </pre>
@@ -17499,6 +17508,12 @@ $ nslookup IP
 </div>
 <div created="20200509093803434" modified="20200509093813059" tags="task" title="Robots.txt">
 <pre></pre>
+</div>
+<div created="20200511124945549" modified="20200511125038040" tags="Git" title="Roll a new release">
+<pre>{{Make empty commit}}
+{{Create lightweight tag}}
+{{Push specific tag}}
+</pre>
 </div>
 <div created="20200430150145592" modified="20200506083512388" tags="Web Javascript" title="Run code on link click">
 <pre>```
@@ -18943,6 +18958,56 @@ $ echo GET | openssl s_client -CApath /etc/ssl/certs/ -connect google.com:443 2&
 <div created="20200430150107593" modified="20200430150114476" tags="TableOfContents" title="Web">
 <pre></pre>
 </div>
+<div created="20200511123724499" modified="20200511123739382" tags="Web" title="Web Components">
+<pre></pre>
+</div>
+<div created="20200428111439233" modified="20200511123931678" tags="[[Web Components]]" title="Web Components Imports">
+<pre>HTML Imports are ''deprecated'' and was removed from Chrome in February 2020.
+
+* https://javascript.info/
+* https://www.html5rocks.com/en/tutorials/webcomponents/imports/
+
+
+
+```
+&lt;template id=&quot;dot-code-modal-template&quot;&gt;
+  &lt;div id=&quot;dot-code-modal&quot; class=&quot;modal fade&quot; role=&quot;dialog&quot; tabindex=&quot;-1&quot; data-backdrop=&quot;false&quot;&gt;
+    &lt;div class=&quot;modal-dialog&quot;&gt;
+      &lt;div class=&quot;modal-content&quot;&gt;
+        &lt;div class=&quot;modal-header&quot;&gt;
+          &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;modal&quot;&gt;&amp;times;&lt;/button&gt;
+          &lt;h4 class=&quot;modal-title&quot;&gt;DOT code&lt;/h4&gt;
+        &lt;/div&gt;
+        &lt;div id=&quot;dot-code-body&quot; class=&quot;modal-body&quot; style=&quot;max-height:420px;overflow:auto;&quot;&gt;
+          &lt;pre&gt;&lt;div id=&quot;dot-code-src&quot; style=&quot;overflow:auto;&quot;&gt;&lt;/div&gt;&lt;/pre&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;modal-footer&quot;&gt;
+          &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot; data-dismiss=&quot;modal&quot;&gt;Close&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+```
+
+```
+ &lt;link rel=&quot;import&quot; href=&quot;dot-code-modal.html&quot; id=&quot;templates&quot;&gt;
+```
+
+```
+var templates = document.getElementById(&quot;templates&quot;).import;
+var content = templates.getElementById(&quot;dot-code-modal-template&quot;).content;
+var clone = document.importNode(content, true);
+document.body.appendChild(clone);
+$(&quot;#dot-code-modal&quot;).modal(&quot;show&quot;);
+$(&quot;#dot-code-src&quot;).text(obj.dot);
+```
+
+```
+$(&quot;#dot-code-modal&quot;).remove();
+```
+</pre>
+</div>
 <div created="20200430150158697" modified="20200430150340222" tags="Web" title="Web Links">
 <pre>!!! Dive Into HTML5
 
@@ -19006,49 +19071,6 @@ https://www.browserleaks.com/
 * http://kripken.github.io/emscripten-site/index.html
 * https://github.com/kripken/emscripten
 * http://devosoft.org/an-introduction-to-web-development-with-emscripten/
-</pre>
-</div>
-<div created="20200428111439233" modified="20200506083733835" tags="Javascript" title="WebComponents Imports">
-<pre>* https://javascript.info/
-* https://www.html5rocks.com/en/tutorials/webcomponents/imports/
-
-```
-&lt;template id=&quot;dot-code-modal-template&quot;&gt;
-  &lt;div id=&quot;dot-code-modal&quot; class=&quot;modal fade&quot; role=&quot;dialog&quot; tabindex=&quot;-1&quot; data-backdrop=&quot;false&quot;&gt;
-    &lt;div class=&quot;modal-dialog&quot;&gt;
-      &lt;div class=&quot;modal-content&quot;&gt;
-        &lt;div class=&quot;modal-header&quot;&gt;
-          &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;modal&quot;&gt;&amp;times;&lt;/button&gt;
-          &lt;h4 class=&quot;modal-title&quot;&gt;DOT code&lt;/h4&gt;
-        &lt;/div&gt;
-        &lt;div id=&quot;dot-code-body&quot; class=&quot;modal-body&quot; style=&quot;max-height:420px;overflow:auto;&quot;&gt;
-          &lt;pre&gt;&lt;div id=&quot;dot-code-src&quot; style=&quot;overflow:auto;&quot;&gt;&lt;/div&gt;&lt;/pre&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;modal-footer&quot;&gt;
-          &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot; data-dismiss=&quot;modal&quot;&gt;Close&lt;/button&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
-```
-
-```
- &lt;link rel=&quot;import&quot; href=&quot;dot-code-modal.html&quot; id=&quot;templates&quot;&gt;
-```
-
-```
-var templates = document.getElementById(&quot;templates&quot;).import;
-var content = templates.getElementById(&quot;dot-code-modal-template&quot;).content;
-var clone = document.importNode(content, true);
-document.body.appendChild(clone);
-$(&quot;#dot-code-modal&quot;).modal(&quot;show&quot;);
-$(&quot;#dot-code-src&quot;).text(obj.dot);
-```
-
-```
-$(&quot;#dot-code-modal&quot;).remove();
-```
 </pre>
 </div>
 <div created="20200424084217094" modified="20200424084239198" tags="Linux" title="Where DNS utils">
