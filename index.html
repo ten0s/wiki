@@ -10854,7 +10854,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200512155640717" list="ToDo [[Introduction to Rust]] [[Rust in Action]] [[Micro Frontends in Action]]" modified="20200512163732731" title="$:/StoryList">
+<div created="20200512155640717" list="ToDo [[Introduction to Rust]] [[Rust in Action]] [[Micro Frontends in Action]]" modified="20200512164018389" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200511101855364" title="$:/temp/advancedsearch">
@@ -10921,7 +10921,7 @@ Error message and password prompt
 <div created="20200423165127488" modified="20200511123806770" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200512163500729" title="$:/temp/search">
+<div created="20200422190456346" modified="20200512164055381" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
@@ -17798,7 +17798,7 @@ $ git push origin master --force
 ```
 </pre>
 </div>
-<div created="20200511134612401" modified="20200511134708994" tags="[[Raspberry Pi]]" title="Reset OS password">
+<div created="20200511134612401" modified="20200512164220011" tags="[[Raspberry Pi]]" title="Reset OS password">
 <pre>!!! Reset OS password
 
 * http://mapledyne.com/ideas/2015/8/4/reset-lost-admin-password-for-raspberry-pi
@@ -17815,7 +17815,6 @@ rw init=/bin/sh
 ```
 
 * Put SD card into RPi and boot
-*
 
 ```
 # passwd pi
@@ -17832,10 +17831,9 @@ rw init=/bin/sh
 
 * Put SD card into RPi
 
-Instead of moving sd card around
+Instead of moving SD card around
 
-we need to edit /boot/cmdline.txt back
-/boot is not mounted by default
+we need to edit /boot/cmdline.txt back, but /boot is not mounted by default
 
 ```
 # blkid
