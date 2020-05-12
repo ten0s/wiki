@@ -10745,8 +10745,8 @@ Error message and password prompt
 <div created="20200428100850482" modified="20200428111609347" title="$:/state/toc/TableOfContents-Python--118161433">
 <pre>close</pre>
 </div>
-<div created="20200512075010685" modified="20200512075010685" title="$:/state/toc/TableOfContents-Raspberry Pi--118161433">
-<pre>open</pre>
+<div created="20200512075010685" modified="20200512084427243" title="$:/state/toc/TableOfContents-Raspberry Pi--118161433">
+<pre>close</pre>
 </div>
 <div created="20200430150121227" modified="20200511110802775" title="$:/state/toc/TableOfContents-Rust--118161433">
 <pre>close</pre>
@@ -10754,14 +10754,14 @@ Error message and password prompt
 <div created="20200426101725065" modified="20200427170600322" title="$:/state/toc/TableOfContents-Ssh--118161433">
 <pre>close</pre>
 </div>
-<div created="20200427165444695" modified="20200512075541660" title="$:/state/toc/TableOfContents-TiddlyWiki--118161433">
-<pre>open</pre>
+<div created="20200427165444695" modified="20200512084736552" title="$:/state/toc/TableOfContents-TiddlyWiki--118161433">
+<pre>close</pre>
 </div>
 <div created="20200426101657879" modified="20200426101738390" title="$:/state/toc/TableOfContents-Ubuntu--118161433">
 <pre>close</pre>
 </div>
-<div created="20200430150353516" modified="20200510073737439" title="$:/state/toc/TableOfContents-Web--118161433">
-<pre>open</pre>
+<div created="20200430150353516" modified="20200512084738128" title="$:/state/toc/TableOfContents-Web--118161433">
+<pre>close</pre>
 </div>
 <div created="20200428101546086" modified="20200511124230794" title="$:/state/toc/TableOfContents/Dev-Algorithm--118161433">
 <pre>close</pre>
@@ -10811,7 +10811,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200512071122667" list="[[Custom Events API]] ToDo [[Micro Frontends in Action]]" modified="20200512084323049" title="$:/StoryList">
+<div created="20200512071122667" list="[[Broadcast Channel API]] [[Custom Events API]] ToDo [[Micro Frontends in Action]]" modified="20200512084740562" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200511101855364" title="$:/temp/advancedsearch">
@@ -11325,26 +11325,10 @@ achieved, then everything goes much more easily.
 Добывание огня трением.
 </pre>
 </div>
-<div created="20200512084039543" modified="20200512084420920" tags="Javascript" title="Broadcast Channel API">
-<pre>Produce
-
-```
-const event = new CustomEvent(&quot;prefix:name&quot;, {
-    bubbles: true,
-    detail: { field1, field2, ... }
-});
-this.dispatchEvent(event);
-```
-
-Consume
-
-```
-window.addEventListener(&quot;prefix:name&quot;, e =&gt; {
-   ... e.detail ...
-});
-```
-
-[[Custom Events API]]</pre>
+<div created="20200512084039543" modified="20200512084800909" tags="Javascript" title="Broadcast Channel API">
+<pre>* https://developers.google.com/web/updates/2016/09/broadcastchannel
+* [[Custom Events API]]
+</pre>
 </div>
 <div created="20200425170039539" modified="20200425170107629" tags="Bash" title="Build multiple options">
 <pre>```
@@ -11898,8 +11882,10 @@ $ git tag &quot;1.0.0&quot;
 <pre>[ext[Micro Frontends in Action| pdfx://~/anki2/mfia.pdf::95]]
 </pre>
 </div>
-<div created="20200512083612559" modified="20200512084406842" tags="Javascript" title="Custom Events API">
+<div created="20200512083612559" modified="20200512085156697" tags="Javascript" title="Custom Events API">
 <pre>Props down, events up
+
+!! Don't bubble
 
 Produce
 
@@ -11915,6 +11901,39 @@ element.addEventListener(&quot;prefix:name&quot;, e =&gt; {
    ...
 });
 ```
+
+!! Bubble up to window, with data
+
+Produce
+
+```
+const event = new CustomEvent(&quot;prefix:name&quot;, {
+    bubbles: true,
+    detail: { field1, field2, ... }
+});
+this.dispatchEvent(event);
+```
+
+Consume
+
+```
+window.addEventListener(&quot;prefix:name&quot;, e =&gt; {
+   ... e.detail ...
+});
+```
+
+!! Dispatch directly to window
+
+Produce
+
+```
+const event = new CustomEvent(&quot;prefix:name&quot;);
+window.dispatchEvent(event);
+```
+
+cons:
+* The origin of the event: event.target is NOT maintained
+* It's not possible for parent to intercept event.stopPropagation
 
 [[Broadcast Channel API]]</pre>
 </div>
