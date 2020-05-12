@@ -1035,6 +1035,8 @@ Error message and password prompt
 
 <li>Setup Kodi</li>
 
+<li>Setup lxde desktop</li>
+
 <li>Setup Mathematica</li>
 
 <li>Setup printer</li>
@@ -10850,7 +10852,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200512155640717" list="[[Raspberry Pi]] [[Setup Kodi]] ToDo [[Micro Frontends in Action]]" modified="20200512162857330" title="$:/StoryList">
+<div created="20200512155640717" list="[[Raspberry Pi]] ToDo [[Micro Frontends in Action]]" modified="20200512162857330" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200511101855364" title="$:/temp/advancedsearch">
@@ -18335,6 +18337,47 @@ C on keyboard
 15:59:22.959 T:1911349248   DEBUG: OnKey: c (0xf043) pressed, action is ContextMenu
 15:59:22.981 T:1911349248   DEBUG: CFavourites::Load - no system favourites found, skipping
 15:59:22.983 T:1911349248   DEBUG: ------ Window Init (DialogContextMenu.xml) ------
+</pre>
+</div>
+<div created="20200512162948632" modified="20200512163041989" tags="[[Raspberry Pi]]" title="Setup lxde desktop">
+<pre>* https://www.raspberrypi.org/forums/viewtopic.php?t=37564
+
+```
+sudo apt-get install lxde lxde-common xinit xserver-xorg xserver-xorg-video-fbdev
+```
+
+https://www.therryvanneerven.nl/how-to-install-raspbian-jessie-on-an-old-raspberry-pi.html
+
+```
+sudo apt-get install lightdm
+```
+
+tvservice
+
+http://www.cpmspectrepi.uk/raspberry_pi/MoinMoinExport/OptimisedDisplaySettings.html#T.V._with_Composite_Video_Input_only
+
+```
+rasp-config
+enable vnc
+```
+
+VNC
+
+https://www.raspberrypi.org/documentation/remote-access/vnc/README.md
+
+How to change screen resolution of VNC session
+
+* https://www.youtube.com/watch?v=LlXx9yVfQ0k
+* http://pi4iot.com/doku.php?id=youtube:videos
+* https://www.raspberrypi.org/documentation/configuration/config-txt/video.md
+
+Add to /boot/config.txt and reboot
+
+```
+#hdmi_ignore_edid=0xa5000080
+#hdmi_group=2
+#hdmi_mode=85
+```
 </pre>
 </div>
 <div created="20200512162236722" modified="20200512162316608" tags="[[Raspberry Pi]]" title="Setup Mathematica">
