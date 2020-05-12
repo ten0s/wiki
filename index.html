@@ -175,6 +175,8 @@ Error message and password prompt
 
 <li>$:/state/plugin-info-334910430-$:/core---1812962263</li>
 
+<li>$:/state/showeditpreview</li>
+
 <li>$:/state/sidebar</li>
 
 <li>$:/state/tab--1498284803</li>
@@ -357,6 +359,8 @@ Error message and password prompt
 
 <li>Breakaway/Escape velocity</li>
 
+<li>Broadcast Channel API</li>
+
 <li>Build multiple options</li>
 
 <li>ByFly Speedtest</li>
@@ -446,6 +450,8 @@ Error message and password prompt
 <li>CSV utility</li>
 
 <li>Custom Elements</li>
+
+<li>Custom Events API</li>
 
 <li>Cut tailing 20s of mp3 files</li>
 
@@ -10655,6 +10661,9 @@ Error message and password prompt
 <div created="20200423185634443" modified="20200423185634443" title="$:/state/plugin-info-334910430-$:/core---1812962263">
 <pre>contents</pre>
 </div>
+<div created="20200512083903594" modified="20200512083903594" title="$:/state/showeditpreview">
+<pre>yes</pre>
+</div>
 <div created="20200423185759928" modified="20200510171915567" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
@@ -10802,7 +10811,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200512071122667" list="[[TW Links]] ToDo [[Micro Frontends in Action]]" modified="20200512075547904" title="$:/StoryList">
+<div created="20200512071122667" list="ToDo [[Micro Frontends in Action]]" modified="20200512075547904" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200511101855364" title="$:/temp/advancedsearch">
@@ -11315,6 +11324,25 @@ achieved, then everything goes much more easily.
 
 Добывание огня трением.
 </pre>
+</div>
+<div created="20200512084039543" modified="20200512084224025" tags="Javascript" title="Broadcast Channel API">
+<pre>Produce
+
+```
+const event = new CustomEvent(&quot;prefix:name&quot;, {
+    bubbles: true,
+    detail: { field1, field2, ... }
+});
+this.dispatchEvent(event);
+```
+
+Consume
+
+```
+window.addEventListener(&quot;prefix:name&quot;, e =&gt; {
+   ...
+});
+```</pre>
 </div>
 <div created="20200425170039539" modified="20200425170107629" tags="Bash" title="Build multiple options">
 <pre>```
@@ -11867,6 +11895,24 @@ $ git tag &quot;1.0.0&quot;
 <div created="20200511125449003" modified="20200511131252917" tags="[[Web Components]]" title="Custom Elements">
 <pre>[ext[Micro Frontends in Action| pdfx://~/anki2/mfia.pdf::95]]
 </pre>
+</div>
+<div created="20200512083612559" modified="20200512084219093" tags="Javascript" title="Custom Events API">
+<pre>Props down, events up
+
+Produce
+
+```
+const event = new CustomEvent(&quot;prefix:name&quot;);
+this.dispatchEvent(event);
+```
+
+Consume
+
+```
+element.addEventListener(&quot;prefix:name&quot;, e =&gt; {
+   ...
+});
+```</pre>
 </div>
 <div created="20200425152956237" modified="20200425153031054" tags="Bash" title="Cut tailing 20s of mp3 files">
 <pre>```
