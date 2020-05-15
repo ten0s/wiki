@@ -311,6 +311,8 @@ Error message and password prompt
 
 <li>Add user to group</li>
 
+<li>Adding MIME types</li>
+
 <li>Algorithm</li>
 
 <li>Alias with args</li>
@@ -10788,8 +10790,8 @@ Error message and password prompt
 <div created="20200426101647620" modified="20200426101736642" title="$:/state/toc/TableOfContents-Imagemagick--118161433">
 <pre>close</pre>
 </div>
-<div created="20200429160228164" modified="20200514081246599" title="$:/state/toc/TableOfContents-Javascript--118161433">
-<pre>open</pre>
+<div created="20200429160228164" modified="20200515102856126" title="$:/state/toc/TableOfContents-Javascript--118161433">
+<pre>close</pre>
 </div>
 <div created="20200426101649048" modified="20200506074356863" title="$:/state/toc/TableOfContents-Linux--118161433">
 <pre>close</pre>
@@ -10803,8 +10805,8 @@ Error message and password prompt
 <div created="20200428100850482" modified="20200428111609347" title="$:/state/toc/TableOfContents-Python--118161433">
 <pre>close</pre>
 </div>
-<div created="20200512075010685" modified="20200512161408293" title="$:/state/toc/TableOfContents-Raspberry Pi--118161433">
-<pre>open</pre>
+<div created="20200512075010685" modified="20200515102854736" title="$:/state/toc/TableOfContents-Raspberry Pi--118161433">
+<pre>close</pre>
 </div>
 <div created="20200430150121227" modified="20200513100132243" title="$:/state/toc/TableOfContents-Rust--118161433">
 <pre>close</pre>
@@ -10830,8 +10832,8 @@ Error message and password prompt
 <div created="20200512161629220" modified="20200513072302810" title="$:/state/toc/TableOfContents/Raspberry Pi-Raspberry Pi Links--118161433">
 <pre>close</pre>
 </div>
-<div created="20200510140017432" modified="20200512075544553" title="$:/state/toc/TableOfContents/TiddlyWiki-TW Links--118161433">
-<pre>open</pre>
+<div created="20200510140017432" modified="20200515102321519" title="$:/state/toc/TableOfContents/TiddlyWiki-TW Links--118161433">
+<pre>close</pre>
 </div>
 <div created="20200511131225456" modified="20200511131225456" title="$:/state/toc/TableOfContents/Web-Web Components--118161433">
 <pre>open</pre>
@@ -10872,7 +10874,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200514073850595" list="Javascript ToDo [[Micro Frontends in Action]]" modified="20200514081248978" title="$:/StoryList">
+<div created="20200515091954475" list="ToDo [[Micro Frontends in Action]]" modified="20200515102909408" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200511101855364" title="$:/temp/advancedsearch">
@@ -10939,7 +10941,7 @@ Error message and password prompt
 <div created="20200423165127488" modified="20200512164310545" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200513080141271" title="$:/temp/search">
+<div created="20200422190456346" modified="20200515102858437" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
@@ -11123,6 +11125,20 @@ $ sudo usermod -a -G GROUP USER
 
 </pre>
 </div>
+<div created="20200515101719169" modified="20200515102812898" tags="Linux" title="Adding MIME types">
+<pre>* https://developer.gnome.org/integration-guide/stable/mime.html
+* https://help.ubuntu.com/community/AddingMimeTypes
+* https://www.freedesktop.org/wiki/Specifications/AddingMIMETutor/
+
+```
+$ update-mime-database /usr/share/mime
+```
+
+* [ext[/usr/share/mime/ | openx:///usr/share/mime/]]
+* [ext[/usr/share/mime/packages/ | openx:///usr/share/mime/packages/]]
+
+[[Associate file types]]</pre>
+</div>
 <div caption="Algorithms" created="20200428101452426" modified="20200428101538393" tags="Dev" title="Algorithm">
 <pre></pre>
 </div>
@@ -11174,7 +11190,7 @@ $ arp -a
 <pre>taskset
 </pre>
 </div>
-<div created="20200424082708184" modified="20200511093939723" tags="Linux" title="Associate file types">
+<div created="20200424082708184" modified="20200515102841487" tags="Linux" title="Associate file types">
 <pre>* https://linux.die.net/man/1/xdg-mime
 * https://linux.die.net/man/1/xdg-open
 * https://linux.die.net/man/1/xdg-desktop-menu
@@ -11183,10 +11199,8 @@ $ arp -a
 
 Association files: 
 
-*  /usr/share/applications/defaults.list
-* ~/.config/mimeapps.list
-* ~/.local/share/applications/defaults.list
-* ~/.local/share/applications/mimeapps.list (deprecated)
+* [ext[/usr/share/applications/defaults.list | openx:///usr/share/applications/defaults.list]]
+* [ext[~/.config/mimeapps.list | openx://~/.config/mimeapps.list]]
 
 Returns the file type of FILE in the form of a MIME type
 
@@ -11210,7 +11224,9 @@ Ask the desktop environment to make application the default application for open
 $ xdg-mime default MY_PDF.desktop
 ```
 
-[[Create custom URI handler]]</pre>
+[[Create custom URI handler]]
+
+[[Adding MIME types]]</pre>
 </div>
 <div created="20200428100434103" modified="20200428100439632" tags="TableOfContents" title="AWS">
 <pre></pre>
@@ -14802,23 +14818,23 @@ Operation not permitted
 
 [[Error codes]]</pre>
 </div>
-<div created="20200425123640882" modified="20200425124210829" tags="Linux" title="Error codes">
-<pre>http://tldp.org/LDP/abs/html/exitcodes.html
-
-```
+<div created="20200425123640882" modified="20200515100534165" tags="Linux" title="Error codes">
+<pre>```
 $ errno 1
 EPERM 1 Operation not permitted
 $ errno EINVAL
 EINVAL 22 Invalid argument
 ```
 
-/usr/include/asm-generic/errno-base.h
+[ext[/usr/include/asm-generic/errno-base.h | openx:///usr/include/asm-generic/errno-base.h]]
 
 ```
 $ grep -R ENOMEM /usr/include/*
 ```
 
-[[Error code description]]</pre>
+[[Error code description]]
+
+http://tldp.org/LDP/abs/html/exitcodes.html</pre>
 </div>
 <div created="20200428121308479" modified="20200508144334045" tags="task" title="ES6 in Motion">
 <pre>https://www.manning.com/livevideo/es6-in-motion
@@ -18167,7 +18183,7 @@ $ notify-send -i /etc/alternatives/start-here-32.png &quot;Hello&quot; &quot;Thi
 ```
 </pre>
 </div>
-<div created="20200424082813846" modified="20200424082837360" tags="Linux" title="Set default browser">
+<div created="20200424082813846" modified="20200515094456111" tags="Linux" title="Set default browser">
 <pre>```
 $ xdg-settings --list
 Known properties:
@@ -18178,7 +18194,9 @@ $ update-alternatives --display x-www-browser
 $ less /usr/share/applications/defaults.list # mime list
 $ xdg-settings set default-web-browser firefox.desktop
 $ xdg-settings get default-web-browser
-```</pre>
+```
+
+[[Associate file types]]</pre>
 </div>
 <div created="20200423192402727" modified="20200423192435212" tags="Android" title="Set default USB connection type">
 <pre>[[Enable Developer Options]]
