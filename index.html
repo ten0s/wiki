@@ -985,7 +985,9 @@ Error message and password prompt
 
 <li>Remove last commit pushed to server</li>
 
-<li>Reset OS password</li>
+<li>Reset password</li>
+
+<li>Reset Password on Raspberry Pi</li>
 
 <li>Reset working dir prior to last commit</li>
 
@@ -10874,7 +10876,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200515091954475" list="ToDo [[Micro Frontends in Action]]" modified="20200515103136798" title="$:/StoryList">
+<div created="20200516105028324" list="[[Reset Password on Raspberry Pi]]" modified="20200516124834231" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200511101855364" title="$:/temp/advancedsearch">
@@ -10941,7 +10943,7 @@ Error message and password prompt
 <div created="20200423165127488" modified="20200512164310545" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200515103212165" title="$:/temp/search">
+<div created="20200422190456346" modified="20200516125204344" title="$:/temp/search">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
@@ -17873,7 +17875,7 @@ $ git push origin master --force
 ```
 </pre>
 </div>
-<div created="20200511134612401" modified="20200512164313369" tags="[[Raspberry Pi]] Linux task" title="Reset OS password">
+<div created="20200511134612401" modified="20200516125347744" tags="[[Raspberry Pi]] Linux task" title="Reset password">
 <pre>!!! Reset OS password
 
 * http://mapledyne.com/ideas/2015/8/4/reset-lost-admin-password-for-raspberry-pi
@@ -17882,7 +17884,73 @@ $ git push origin master --force
 
 !!!! Steps
 
-* Put SD card into card reader or your phone
+* Put SD card into card reader
+* Add to the end of cmdline.txt
+
+```
+rw init=/bin/sh
+```
+
+* Put SD card into RPi and boot
+
+```
+# passwd pi
+New password:
+Retype new password:
+passwd. password updated successfully
+```
+
+* Turn off the pi, put SD card into card reader and remove
+
+```
+rw init=/bin/sh
+```
+
+* Put SD card into RPi
+
+Instead of moving SD card around
+
+we need to edit /boot/cmdline.txt back, but /boot is not mounted by default
+
+```
+# blkid
+/dev/mmcblk0p1 ... LABEL=&quot;boot&quot; TYPE=&quot;vfat&quot;
+/dev/mmcblk0p2 ... LABEL=&quot;rootfs&quot; TYPE=&quot;ext4&quot;
+
+# mount /dev/mmcblk0p1 /boot
+# nano /boot/cmdline.txt
+```
+
+remove
+
+```
+rw init=/bin/sh
+```
+
+```
+$ sync /boot
+$ umount /boot
+```
+
+Ctrl-Alt-Del
+
+!!!  Reset password
+
+https://www.raspberrypi.org/forums/viewtopic.php?t=20397
+
+Copy the password hash from /etc/shadow
+</pre>
+</div>
+<div created="20200516125222072" modified="20200516125414907" tags="[[Raspberry Pi]]" title="Reset Password on Raspberry Pi">
+<pre>!!! Reset OS password
+
+* http://mapledyne.com/ideas/2015/8/4/reset-lost-admin-password-for-raspberry-pi
+* https://www.raspberrypi.org/forums/viewtopic.php?t=20397
+* https://www.redhat.com/archives/rhl-list/2005-March/msg04089.html
+
+!!!! Steps
+
+* Put SD card into card reader
 * Add to the end of cmdline.txt
 
 ```
@@ -17936,8 +18004,7 @@ Ctrl-Alt-Del
 
 https://www.raspberrypi.org/forums/viewtopic.php?t=20397
 
-Copy the password hash from /etc/shadow
-</pre>
+Copy the password hash from /etc/shadow</pre>
 </div>
 <div created="20200423165728758" modified="20200423191201390" tags="Git" title="Reset working dir prior to last commit">
 <pre>```
