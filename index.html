@@ -10723,8 +10723,8 @@ Error message and password prompt
 <div created="20200423185634443" modified="20200423185634443" title="$:/state/plugin-info-334910430-$:/core---1812962263">
 <pre>contents</pre>
 </div>
-<div created="20200512083903594" modified="20200516151950251" title="$:/state/showeditpreview">
-<pre>yes</pre>
+<div created="20200512083903594" modified="20200516175310019" title="$:/state/showeditpreview">
+<pre>no</pre>
 </div>
 <div created="20200423185759928" modified="20200510171915567" title="$:/state/sidebar">
 <pre>yes</pre>
@@ -10876,7 +10876,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200516105028324" list="ToDo [[Reset Password on Raspbian 10 (Buster)]]" modified="20200516175019687" title="$:/StoryList">
+<div created="20200516175130531" list="[[Reset Password on Raspbian 10 (Buster)]]" modified="20200516175135455" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200511101855364" title="$:/temp/advancedsearch">
@@ -10927,11 +10927,11 @@ Error message and password prompt
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1920&quot;
+            &quot;text&quot;: &quot;360&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;1080&quot;
+            &quot;text&quot;: &quot;640&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -17941,12 +17941,12 @@ https://www.raspberrypi.org/forums/viewtopic.php?t=20397
 Copy the password hash from /etc/shadow
 </pre>
 </div>
-<div created="20200516125222072" modified="20200516175015882" tags="[[Raspberry Pi]] task" title="Reset Password on Raspbian 10 (Buster)">
-<pre>As it happens, I replaced my laptop, can't find ssh key to use and forgot the password, so I can't ssh to Raspberry Pi any more.
+<div created="20200516125222072" modified="20200516175736598" tags="[[Raspberry Pi]] task" title="Reset Password on Raspbian 10 (Buster)">
+<pre>I recently replaced my laptop, changed ssh key and, as it happens, forgot the password, so I can't ssh to Raspberry Pi any more.
 
 !! TL;DR
 
-Here are quick simple steps to reset the password. Later I will describe what they mean and some more advanced commands.
+Here are quick steps to reset the password. Later I will describe what they mean and add some more advanced commands.
 
 * Turn off Raspberry Pi
 * Put the SD card into the card reader
@@ -17967,7 +17967,7 @@ Retype new password:
 passwd: password updated successfully
 ```
 
-* Flush file system cache 
+* Flush the file system cache 
 
 ```
 # sync
@@ -18006,12 +18006,12 @@ To remount it as ''r''ead-''w''rite run:
 
 ```
 # mount -o remount, rw /
-EXT4-fs (mmcblk0p2): re-mounted. Opts: (null)
+EXT4-fs (mmcblk0p2): re-mounted.
 ```
 
 !! init=/bin/sh
 
-The ''init'' flag specifies the program to run as the [ext[Init | https://en.wikipedia.org/wiki/Init]] process, i.e. the first process to be run. Here we replace the default ''/sbin/init'', which it's responsible for running all the init scripts with ''/bin/sh'', which runs a simple shell.
+The ''init'' flag specifies the program to run as the [ext[Init | https://en.wikipedia.org/wiki/Init]] process, i.e. the first process to be run. Here we replace the default ''/sbin/init'', which is responsible for running all the init scripts with ''/bin/sh'', which runs a simple shell.
 
 !! /boot/cmdline.txt
 
@@ -18043,7 +18043,7 @@ The file ''cmdline.txt'' needs to be edited back, but it's on the ''/boot'' part
  rw init=/bin/sh
 ```
 
-* Flush file system cache:
+* Flush thefthe system cache:
 
 ```
 # sync /boot
