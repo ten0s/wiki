@@ -17941,7 +17941,7 @@ https://www.raspberrypi.org/forums/viewtopic.php?t=20397
 Copy the password hash from /etc/shadow
 </pre>
 </div>
-<div created="20200516125222072" modified="20200516163227868" tags="[[Raspberry Pi]]" title="Reset Password on Raspberry Pi">
+<div created="20200516125222072" modified="20200516172014939" tags="[[Raspberry Pi]]" title="Reset Password on Raspberry Pi">
 <pre>As it happens, I replaced my laptop, can't find ssh key to use and forgot the password, so I can't ssh to Raspberry Pi any more.
 
 !! TL;DR
@@ -17950,27 +17950,34 @@ Here are quick simple steps to reset the password. Later I will describe what th
 
 * Turn off Raspberry Pi
 * Put the SD card into the card reader
-* Add to the end of ''cmdline.txt''
+* Add to the end of ''cmdline.txt'':
 
 ```
-rw init=/bin/sh
+ rw init=/bin/sh
 ```
 
 * Put the SD card into Raspberry Pi 
 * Reboot
+* Change the user ''pi'' password:
 
 ```
 # passwd pi
-New password:
-Retype new password:
-passwd. password updated successfully
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully
+```
+
+* Flush file system cache 
+
+```
+# sync
 ```
 
 * Turn off Raspberry Pi
 * Put the SD card into the card reader and return ''cmdline.txt'' into the initial state by removing:
 
 ```
-rw init=/bin/sh
+ rw init=/bin/sh
 ```
 
 * Put the SD card into Raspberry Pi
@@ -17981,11 +17988,21 @@ If it's everything you needed you can stop reading.
 !! rw
 
 ```
-rw init=/bin/sh
+ rw init=/bin/sh
 ```
 
 The ''rw'' flag mounts the root partition ''/'' as ''r''ead-''w''rite. If you omit it,
-the root partition ''/'' will be read-only. To remount it as ''r''ead-''w''rite run:
+the root partition ''/'' will be read-only and changing password will fail:
+
+```
+# passwd pi
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: Authentication token manipulation error
+passwd: password unchanged
+```
+
+To remount it as ''r''ead-''w''rite run:
 
 ```
 # mount -o remount, rw /
@@ -17995,15 +18012,11 @@ the root partition ''/'' will be read-only. To remount it as ''r''ead-''w''rite 
 
 The ''init'' flag specifies the program to run as the [ext[Init | https://en.wikipedia.org/wiki/Init]] process, i.e. the first process to be run. Here we replace the default ''/sbin/init'', which it's responsible for running all the init scripts with ''/bin/sh'', which runs a simple shell.
 
-!! passwd pi
-
-This changes the user ''pi'' password.
-
 !! /boot/cmdline.txt
 
 The file ''cmdline.txt'' needs to be edited back, but it's on the ''/boot'' partition, which is not mounted by default. Still, it's possible to do it without moving the SD card around. 
 
-Determine attached block devices:
+Determine the ''/boot'' partition device:
 
 ```
 # blkid
@@ -18026,10 +18039,10 @@ Open the file for editing:
 Remove the below fragment, save and exit the editor:
 
 ```
-rw init=/bin/sh
+ rw init=/bin/sh
 ```
 
-Flush file cache to disk:
+Flush file system cache:
 
 ```
 # sync /boot
