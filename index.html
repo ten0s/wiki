@@ -17941,7 +17941,7 @@ https://www.raspberrypi.org/forums/viewtopic.php?t=20397
 Copy the password hash from /etc/shadow
 </pre>
 </div>
-<div created="20200516125222072" modified="20200516160425356" tags="[[Raspberry Pi]]" title="Reset Password on Raspberry Pi">
+<div created="20200516125222072" modified="20200516162322819" tags="[[Raspberry Pi]]" title="Reset Password on Raspberry Pi">
 <pre>As it happens, I replaced my laptop, can't find ssh key to use and forgot the password, so I can't ssh to Raspberry Pi any more.
 
 !! TL;DR
@@ -17949,14 +17949,14 @@ Copy the password hash from /etc/shadow
 Here are quick simple steps to reset the password. Later I will describe what they mean and some more advanced commands.
 
 * Turn off Raspberry Pi
-* Put SD card into card reader
+* Put the SD card into the card reader
 * Add to the end of ''cmdline.txt''
 
 ```
 rw init=/bin/sh
 ```
 
-* Put SD card into Raspberry Pi 
+* Put the SD card into Raspberry Pi 
 * Reboot
 
 ```
@@ -17967,13 +17967,13 @@ passwd. password updated successfully
 ```
 
 * Turn off Raspberry Pi
-* Put SD card into card reader and return ''cmdline.txt'' into initial state by removing
+* Put the SD card into the card reader and return ''cmdline.txt'' into the initial state by removing:
 
 ```
 rw init=/bin/sh
 ```
 
-* Put SD card into Raspberry Pi
+* Put the SD card into Raspberry Pi
 * Reboot
 
 The above are working steps and if it's everything you needed you can stop reading.
@@ -17984,8 +17984,8 @@ The above are working steps and if it's everything you needed you can stop readi
 rw init=/bin/sh
 ```
 
-The ''rw'' command mounts the root partition ''/'' as ''r''ead-''w''rite. If you omit the command,
-the root partition ''/'' will be read-only. It's still possible to remount it as ''r''ead-''w''rite by running:
+The ''rw'' flag mounts the root partition ''/'' as ''r''ead-''w''rite. If you omit it,
+the root partition ''/'' will be read-only. To remount it as ''r''ead-''w''rite run:
 
 ```
 # mount -o remount, rw /
@@ -17993,43 +17993,56 @@ the root partition ''/'' will be read-only. It's still possible to remount it as
 
 !! init=/bin/sh
 
-The ''init'' command specifies the program to run as the [ext[Init | https://en.wikipedia.org/wiki/Init]] process, i.e. the first process to be run. Here we replace the default ''/sbin/init'', which it's responsible for running all the init scripts with ''/bin/sh'', which runs a simple shell.
+The ''init'' flag specifies the program to run as the [ext[Init | https://en.wikipedia.org/wiki/Init]] process, i.e. the first process to be run. Here we replace the default ''/sbin/init'', which it's responsible for running all the init scripts with ''/bin/sh'', which runs a simple shell.
 
 !! passwd pi
 
 This changes the user ''pi'' password.
 
-!! Advanced steps
+!! /boot/cmdline.txt
 
-Instead of moving SD card around the second time 
+The file ''cmdline.txt'' needs to be edited back, but it's on the ''/boot'' partition, which is not mounted by default. Still, it's possible to do it without moving the SD card around. 
 
-we need to edit /boot/cmdline.txt back, but /boot is not mounted by default
+Determine attached block devices:
 
 ```
 # blkid
 /dev/mmcblk0p1 ... LABEL=&quot;boot&quot; TYPE=&quot;vfat&quot;
 /dev/mmcblk0p2 ... LABEL=&quot;rootfs&quot; TYPE=&quot;ext4&quot;
+```
 
+Mount the ''/boot'' partition:
+
+```
 # mount /dev/mmcblk0p1 /boot
+```
+
+Open the file for editing:
+
+```
 # nano /boot/cmdline.txt
 ```
 
-remove
+Remove the below fragment, save and exit the editor:
 
 ```
 rw init=/bin/sh
 ```
 
+Flush file cache to disk:
+
 ```
-$ sync /boot
-$ umount /boot
+# sync /boot
 ```
 
-What is 'rw', init=/bin/sh
+Unmount the ''/boot'' partition:
+
+```
+# umount /boot
+```
 
 
 
-single user mode
 
 ```
 # /sbin/init
@@ -18037,6 +18050,8 @@ single user mode
 
 
 Ctrl-Alt-Del
+
+!! References:
 
 * http://mapledyne.com/ideas/2015/8/4/reset-lost-admin-password-for-raspberry-pi
 * https://www.raspberrypi.org/forums/viewtopic.php?t=20397
