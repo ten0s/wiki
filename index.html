@@ -17941,7 +17941,7 @@ https://www.raspberrypi.org/forums/viewtopic.php?t=20397
 Copy the password hash from /etc/shadow
 </pre>
 </div>
-<div created="20200516125222072" modified="20200516154723312" tags="[[Raspberry Pi]]" title="Reset Password on Raspberry Pi">
+<div created="20200516125222072" modified="20200516160425356" tags="[[Raspberry Pi]]" title="Reset Password on Raspberry Pi">
 <pre>As it happens, I replaced my laptop, can't find ssh key to use and forgot the password, so I can't ssh to Raspberry Pi any more.
 
 !! TL;DR
@@ -17993,7 +17993,13 @@ the root partition ''/'' will be read-only. It's still possible to remount it as
 
 !! init=/bin/sh
 
+The ''init'' command specifies the program to run as the [ext[Init | https://en.wikipedia.org/wiki/Init]] process, i.e. the first process to be run. Here we replace the default ''/sbin/init'', which it's responsible for running all the init scripts with ''/bin/sh'', which runs a simple shell.
 
+!! passwd pi
+
+This changes the user ''pi'' password.
+
+!! Advanced steps
 
 Instead of moving SD card around the second time 
 
