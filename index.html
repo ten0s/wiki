@@ -10723,8 +10723,8 @@ Error message and password prompt
 <div created="20200423185634443" modified="20200423185634443" title="$:/state/plugin-info-334910430-$:/core---1812962263">
 <pre>contents</pre>
 </div>
-<div created="20200512083903594" modified="20200512165051176" title="$:/state/showeditpreview">
-<pre>no</pre>
+<div created="20200512083903594" modified="20200516151950251" title="$:/state/showeditpreview">
+<pre>yes</pre>
 </div>
 <div created="20200423185759928" modified="20200510171915567" title="$:/state/sidebar">
 <pre>yes</pre>
@@ -17941,23 +17941,23 @@ https://www.raspberrypi.org/forums/viewtopic.php?t=20397
 Copy the password hash from /etc/shadow
 </pre>
 </div>
-<div created="20200516125222072" modified="20200516125902250" tags="[[Raspberry Pi]]" title="Reset Password on Raspberry Pi">
-<pre>!!! Reset OS password
+<div created="20200516125222072" modified="20200516154723312" tags="[[Raspberry Pi]]" title="Reset Password on Raspberry Pi">
+<pre>As it happens, I replaced my laptop, can't find ssh key to use and forgot the password, so I can't ssh to Raspberry Pi any more.
 
-* http://mapledyne.com/ideas/2015/8/4/reset-lost-admin-password-for-raspberry-pi
-* https://www.raspberrypi.org/forums/viewtopic.php?t=20397
-* https://www.redhat.com/archives/rhl-list/2005-March/msg04089.html
+!! TL;DR
 
-!!!! Steps
+Here are quick simple steps to reset the password. Later I will describe what they mean and some more advanced commands.
 
+* Turn off Raspberry Pi
 * Put SD card into card reader
-* Add to the end of cmdline.txt
+* Add to the end of ''cmdline.txt''
 
 ```
 rw init=/bin/sh
 ```
 
-* Put SD card into RPi and boot
+* Put SD card into Raspberry Pi 
+* Reboot
 
 ```
 # passwd pi
@@ -17966,15 +17966,36 @@ Retype new password:
 passwd. password updated successfully
 ```
 
-* Turn off the pi, put SD card into card reader and remove
+* Turn off Raspberry Pi
+* Put SD card into card reader and return ''cmdline.txt'' into initial state by removing
 
 ```
 rw init=/bin/sh
 ```
 
-* Put SD card into RPi
+* Put SD card into Raspberry Pi
+* Reboot
 
-Instead of moving SD card around
+The above are working steps and if it's everything you needed you can stop reading.
+
+!! rw
+
+```
+rw init=/bin/sh
+```
+
+The ''rw'' command mounts the root partition ''/'' as ''r''ead-''w''rite. If you omit the command,
+the root partition ''/'' will be read-only. It's still possible to remount it as ''r''ead-''w''rite by running:
+
+```
+# mount -o remount, rw /
+```
+
+!! init=/bin/sh
+
+
+
+Instead of moving SD card around the second time 
 
 we need to edit /boot/cmdline.txt back, but /boot is not mounted by default
 
@@ -18000,17 +18021,21 @@ $ umount /boot
 
 What is 'rw', init=/bin/sh
 
+
+
 single user mode
 
+```
+# /sbin/init
+```
 
 
 Ctrl-Alt-Del
 
-!!!  Reset OS password
-
-https://www.raspberrypi.org/forums/viewtopic.php?t=20397
-
-Copy the password hash from /etc/shadow</pre>
+* http://mapledyne.com/ideas/2015/8/4/reset-lost-admin-password-for-raspberry-pi
+* https://www.raspberrypi.org/forums/viewtopic.php?t=20397
+* https://www.redhat.com/archives/rhl-list/2005-March/msg04089.html
+</pre>
 </div>
 <div created="20200423165728758" modified="20200423191201390" tags="Git" title="Reset working dir prior to last commit">
 <pre>```
