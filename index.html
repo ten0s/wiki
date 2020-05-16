@@ -987,7 +987,7 @@ Error message and password prompt
 
 <li>Reset password</li>
 
-<li>Reset Password on Raspberry Pi</li>
+<li>Reset Password on Raspbian 10 (Buster)</li>
 
 <li>Reset working dir prior to last commit</li>
 
@@ -10876,7 +10876,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200516105028324" list="[[Reset Password on Raspberry Pi]]" modified="20200516124834231" title="$:/StoryList">
+<div created="20200516105028324" list="[[Reset Password on Raspbian 10 (Buster)]]" modified="20200516124834231" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200511101855364" title="$:/temp/advancedsearch">
@@ -17941,7 +17941,7 @@ https://www.raspberrypi.org/forums/viewtopic.php?t=20397
 Copy the password hash from /etc/shadow
 </pre>
 </div>
-<div created="20200516125222072" modified="20200516172014939" tags="[[Raspberry Pi]]" title="Reset Password on Raspberry Pi">
+<div created="20200516125222072" modified="20200516174856294" tags="[[Raspberry Pi]]" title="Reset Password on Raspbian 10 (Buster)">
 <pre>As it happens, I replaced my laptop, can't find ssh key to use and forgot the password, so I can't ssh to Raspberry Pi any more.
 
 !! TL;DR
@@ -17962,8 +17962,8 @@ Here are quick simple steps to reset the password. Later I will describe what th
 
 ```
 # passwd pi
-Enter new UNIX password:
-Retype new UNIX password:
+New password:
+Retype new password:
 passwd: password updated successfully
 ```
 
@@ -17996,8 +17996,8 @@ the root partition ''/'' will be read-only and changing password will fail:
 
 ```
 # passwd pi
-Enter new UNIX password:
-Retype new UNIX password:
+Enter new password:
+Retype new password:
 passwd: Authentication token manipulation error
 passwd: password unchanged
 ```
@@ -18006,6 +18006,7 @@ To remount it as ''r''ead-''w''rite run:
 
 ```
 # mount -o remount, rw /
+EXT4-fs (mmcblk0p2): re-mounted. Opts: (null)
 ```
 
 !! init=/bin/sh
@@ -18016,7 +18017,7 @@ The ''init'' flag specifies the program to run as the [ext[Init | https://en.wik
 
 The file ''cmdline.txt'' needs to be edited back, but it's on the ''/boot'' partition, which is not mounted by default. Still, it's possible to do it without moving the SD card around. 
 
-Determine the ''/boot'' partition device:
+* Determine the ''/boot'' partition device:
 
 ```
 # blkid
@@ -18024,41 +18025,38 @@ Determine the ''/boot'' partition device:
 /dev/mmcblk0p2 ... LABEL=&quot;rootfs&quot; TYPE=&quot;ext4&quot;
 ```
 
-Mount the ''/boot'' partition:
+* Mount the ''/boot'' partition:
 
 ```
 # mount /dev/mmcblk0p1 /boot
 ```
 
-Open the file for editing:
+* Open the file for editing:
 
 ```
 # nano /boot/cmdline.txt
 ```
 
-Remove the below fragment, save and exit the editor:
+* Remove the below fragment, save and exit the editor:
 
 ```
  rw init=/bin/sh
 ```
 
-Flush file system cache:
+* Flush file system cache:
 
 ```
 # sync /boot
 ```
 
-Unmount the ''/boot'' partition:
+* Unmount the ''/boot'' partition:
 
 ```
 # umount /boot
 ```
 
-Reboot with Ctrl-Alt-Del or run:
+* Reboot
 
-```
-# /sbin/init
-```
 !! References:
 
 * http://mapledyne.com/ideas/2015/8/4/reset-lost-admin-password-for-raspberry-pi
