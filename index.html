@@ -1175,6 +1175,8 @@ Error message and password prompt
 
 <li>Record and play sound in terminal</li>
 
+<li>Recover delete files</li>
+
 <li>Recover Ubuntu after unsuccessful upgrade</li>
 
 <li>Regex</li>
@@ -1184,6 +1186,8 @@ Error message and password prompt
 <li>Remove duplicates from list</li>
 
 <li>Remove last commit pushed to server</li>
+
+<li>Repair disk partition</li>
 
 <li>Reset password</li>
 
@@ -11129,7 +11133,7 @@ Error message and password prompt
 <div created="20200423185634443" modified="20200423185634443" title="$:/state/plugin-info-334910430-$:/core---1812962263">
 <pre>contents</pre>
 </div>
-<div created="20200512083903594" modified="20200517103957770" title="$:/state/showeditpreview">
+<div created="20200512083903594" modified="20200517114128286" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
 <div created="20200423185759928" modified="20200510171915567" title="$:/state/sidebar">
@@ -11282,7 +11286,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200517103604570" list="ToDo" modified="20200517104115045" title="$:/StoryList">
+<div created="20200517103604570" list="ToDo" modified="20200517121835859" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200511101855364" title="$:/temp/advancedsearch">
@@ -12296,7 +12300,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200517104449738" title="$:/temp/search">
+<div created="20200422190456346" modified="20200517122345947" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -19164,6 +19168,27 @@ $ sox
 ```
 </pre>
 </div>
+<div created="20200517113720663" modified="20200517122600120" tags="Linux" title="Recover delete files">
+<pre>!! NB: Do NOT recover to the same disk
+
+```
+$ sudo apt install testdisk
+$ photorec
+```
+
+* [ext[man photorec | manx:photorec]]
+* https://www.cgsecurity.org/wiki/PhotoRec
+* https://www.cgsecurity.org/wiki/PhotoRec_Step_By_Step
+
+```
+$ sudo apt install foremost
+$ foremost -t jpg,pdf -i /dev/sda1 -o /tmp/rescued
+```
+
+* https://linuxconfig.org/how-to-recover-deleted-files-with-foremost-on-linux
+* https://kifarunix.com/recover-deleted-files-with-foremost-on-ubuntu-18-04/
+</pre>
+</div>
 <div created="20200424091234316" modified="20200424091644239" tags="Linux" title="Recover Ubuntu after unsuccessful upgrade">
 <pre>#  Boot from the live CD
 # Determine partition
@@ -19219,6 +19244,19 @@ $ git reset --hard HEAD^
 $ git push origin master --force
 ```
 </pre>
+</div>
+<div created="20200517121227178" modified="20200517121440353" tags="Linux" title="Repair disk partition">
+<pre>```
+$ sudo apt install testdisk
+```
+
+```
+$ testdisk
+```
+
+* [ext[man testdisk | manx:testdisk]]
+* https://www.cgsecurity.org/wiki/TestDisk
+* https://www.cgsecurity.org/wiki/TestDisk_Step_By_Step</pre>
 </div>
 <div created="20200424091111624" modified="20200517104441511" tags="Linux" title="Reset password">
 <pre>* Boot from the live CD
