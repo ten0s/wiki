@@ -1369,6 +1369,8 @@ Error message and password prompt
 
 <li>TableOfContents</li>
 
+<li>Take a screenshot</li>
+
 <li>task</li>
 
 <li>TCP client (w/o netcat)</li>
@@ -11133,8 +11135,8 @@ Error message and password prompt
 <div created="20200423185634443" modified="20200423185634443" title="$:/state/plugin-info-334910430-$:/core---1812962263">
 <pre>contents</pre>
 </div>
-<div created="20200512083903594" modified="20200517171650686" title="$:/state/showeditpreview">
-<pre>no</pre>
+<div created="20200512083903594" modified="20200517174405541" title="$:/state/showeditpreview">
+<pre>yes</pre>
 </div>
 <div created="20200423185759928" modified="20200510171915567" title="$:/state/sidebar">
 <pre>yes</pre>
@@ -12300,7 +12302,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200517173734956" title="$:/temp/search">
+<div created="20200422190456346" modified="20200517174450612" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -20879,6 +20881,21 @@ $ systemctl status
     &lt;&lt;toc-selective-expandable &quot;TableOfContents&quot; sort[title]&gt;&gt;
 &lt;/div&gt;
 </pre>
+</div>
+<div created="20200517174044704" modified="20200517174446954" tags="Android" title="Take a screenshot">
+<pre>!! Hardware buttons
+Press and host Power + Volume down buttons
+
+!! Adb
+
+```
+$ adb shell screencap /sdcard/screen.png
+$ adb pull /sdcard/screen.png
+```
+
+!! termux
+
+TODO</pre>
 </div>
 <div created="20200427173158521" list="[[Read &quot;Working with TW&quot;]] [[Read &quot;Customise TW&quot;]] [[Read &quot;Features&quot;]] [[Read &quot;Editions&quot;]] [[Read &quot;Platforms&quot;]] [[Android Debug Bridge]] [[Micro Frontends in Action]] [[ES6 Javascript Improved]] [[Add tar info]] [[Read &quot;Reference&quot;]] [[Read &quot;TW dev&quot;]] [[Make wiki work offline on Android]] [[Add github comments]] [[Blog as man pages. Use webasembly and termjs]] [[ES6 in Motion]] [[Node.js in Motion]] [[Node.js book]] [[Mastering REST APIs in Node.js]] [[Graphql in motion]] [[Promet. Up and running]] Robots.txt [[Android phone as Raspberry Pi display]] [[Building the Web of Things]] [[Grokking Simplicity]] [[Introduction to Rust]] [[Property Based Testing with PropEr]] [[Rust in Action]] [[Setup Bluetooh pairing]] [[Setup Tor]] [[Stoken on Android with USB static IP]] [[Understanding ECMAScript 6]] [[Web Components in Action]]" modified="20200517132647296" title="task">
 <pre></pre>
