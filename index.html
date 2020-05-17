@@ -587,8 +587,6 @@ Error message and password prompt
 
 <li>Change core dump file name format</li>
 
-<li>Change forgotten password</li>
-
 <li>Change GRUB boot order</li>
 
 <li>Change img src dynamically</li>
@@ -1187,7 +1185,9 @@ Error message and password prompt
 
 <li>Remove last commit pushed to server</li>
 
-<li>Reset Password on Raspbian Buster</li>
+<li>Reset password</li>
+
+<li>Reset password on Raspbian Buster</li>
 
 <li>Reset working dir prior to last commit</li>
 
@@ -11129,8 +11129,8 @@ Error message and password prompt
 <div created="20200423185634443" modified="20200423185634443" title="$:/state/plugin-info-334910430-$:/core---1812962263">
 <pre>contents</pre>
 </div>
-<div created="20200512083903594" modified="20200516175310019" title="$:/state/showeditpreview">
-<pre>no</pre>
+<div created="20200512083903594" modified="20200517103957770" title="$:/state/showeditpreview">
+<pre>yes</pre>
 </div>
 <div created="20200423185759928" modified="20200510171915567" title="$:/state/sidebar">
 <pre>yes</pre>
@@ -11282,7 +11282,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200517103604570" list="ToDo" modified="20200517103706188" title="$:/StoryList">
+<div created="20200517103604570" list="ToDo" modified="20200517104115045" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200511101855364" title="$:/temp/advancedsearch">
@@ -12296,7 +12296,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200516125204344" title="$:/temp/search">
+<div created="20200422190456346" modified="20200517104449738" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -12834,17 +12834,6 @@ $ cpp -dM /dev/null
 ```
 
 for persistence store to /etc/sysctl.conf
-</pre>
-</div>
-<div created="20200424091111624" modified="20200424091156647" tags="Linux" title="Change forgotten password">
-<pre># Boot from the live CD
-# Determine partition # fdisk -l =&gt; /dev/sda5
-# # mkdir /media/sd5
-# # mount /dev/sda1 /media/sd5
-# # chroot /media/sd5
-# # passwd [USER]
-# # reboot
-
 </pre>
 </div>
 <div created="20200424092006216" modified="20200424092057535" tags="Linux" title="Change GRUB boot order">
@@ -19231,12 +19220,44 @@ $ git push origin master --force
 ```
 </pre>
 </div>
-<div created="20200516125222072" modified="20200517103627470" tags="[[Raspberry Pi]]" title="Reset Password on Raspbian Buster" type="text/x-markdown">
-<pre>I recently replaced my laptop, changed ssh key and, as it happens, forgot the password, so I can't ssh to Raspberry Pi any more.
+<div created="20200424091111624" modified="20200517104441511" tags="Linux" title="Reset password">
+<pre>* Boot from the live CD
+* Determine partition 
 
-## TL;DR
+```
+# fdisk -l
+...
+/dev/sda5 ...
+...
+```
 
-Here are quick steps how to reset the password. Later I will describe what they mean and add some more advanced commands.
+* Mount partition
+
+```
+# mkdir -p /media/sd5
+# mount /dev/sda1 /media/sd5
+```
+
+* Change root
+
+```
+# chroot /media/sd5
+```
+
+* Change password
+
+```
+# passwd [USER]
+```
+
+* Reboot
+
+```
+# reboot
+```</pre>
+</div>
+<div created="20200516125222072" modified="20200517104130906" tags="[[Raspberry Pi]]" title="Reset password on Raspbian Buster" type="text/x-markdown">
+<pre># TL;DR
 
 * Turn off Raspberry Pi
 * Put the SD card into the card reader
@@ -19273,9 +19294,7 @@ passwd: password updated successfully
 * Put the SD card into Raspberry Pi
 * Reboot
 
-If it's everything you needed you can stop reading.
-
-## rw
+# rw
 
 ```
  rw init=/bin/sh
@@ -19299,11 +19318,11 @@ To remount it as **r**ead-**w**rite run:
 EXT4-fs (mmcblk0p2): re-mounted.
 ```
 
-## init=/bin/sh
+# init=/bin/sh
 
 The **init** flag specifies the program to run as the [Init](https://en.wikipedia.org/wiki/Init) process, i.e. the first process to be run. Here we replace the default **/sbin/init**, which is responsible for running all the init scripts with **/bin/sh**, which runs a simple shell.
 
-## /boot/cmdline.txt
+# /boot/cmdline.txt
 
 The file **cmdline.txt** needs to be edited back, but it's on the **/boot** partition, which is not mounted by default. Still, it's possible to do it without moving the SD card around. 
 
@@ -19346,12 +19365,6 @@ The file **cmdline.txt** needs to be edited back, but it's on the **/boot** part
 ```
 
 * Reboot
-
-## References
-
-* [http://mapledyne.com/ideas/2015/8/4/reset-lost-admin-password-for-raspberry-pi](http://mapledyne.com/ideas/2015/8/4/reset-lost-admin-password-for-raspberry-pi)
-* [https://www.raspberrypi.org/forums/viewtopic.php?t=20397](https://www.raspberrypi.org/forums/viewtopic.php?t=20397)
-* [https://www.redhat.com/archives/rhl-list/2005-March/msg04089.html](https://www.redhat.com/archives/rhl-list/2005-March/msg04089.html)
 </pre>
 </div>
 <div created="20200423165728758" modified="20200423191201390" tags="Git" title="Reset working dir prior to last commit">
