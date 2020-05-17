@@ -12518,7 +12518,7 @@ alias aws=&quot;aws $@ --endpoint-url http://localhost:8000&quot;
 <div created="20200426101115160" modified="20200426101140488" tags="TableOfContents" title="Android">
 <pre></pre>
 </div>
-<div created="20200512073714953" modified="20200517173730361" tags="Android task" title="Android Debug Bridge">
+<div created="20200512073714953" modified="20200517183515377" tags="Android task" title="Android Debug Bridge">
 <pre>* [[Enable USB debugging]]
 
 * Setup
@@ -12556,6 +12556,23 @@ Accept &quot;Allow USB debugging?&quot;
 https://github.com/matlink/gplaycli
 Google Play Downloader via Command line
 
+App Inspector
+https://play.google.com/store/apps/details?id=com.ubqsoft.sec01
+
+```
+$ gplaycli -s 'App Inspector'
+Title                                           Creator            Size      Downloads                 Last Update  AppID                        Version   Rating  
+App Inspector                                   Projectoria        895.04KB  100,000+ downloads        14 Jul 2019  bg.projectoria.appinspector  8         4.53    
+...
+```
+
+```
+$ gplaycli -d bg.projectoria.appinspector
+ $ ./adb install ../bg.projectoria.appinspector.apk 
+Performing Streamed Install
+Success
+```
+
 ```
 $ adb install path_to_apk
 ```
@@ -12592,8 +12609,11 @@ https://developer.android.com/studio/run/device
 
 https://www.xda-developers.com/what-is-adb/
 
+How to connect using telnet?
 https://www.vogella.com/tutorials/AndroidCommandLine/article.html
+https://stackoverflow.com/questions/5605678/android-how-to-telnet-a-phone
 
+How to enter boot screen?
 https://www.online-tech-tips.com/smartphones/can-you-bypass-the-android-lock-screen/
 
 https://www.online-tech-tips.com/smartphones/how-to-install-apps-on-your-android-device-from-your-computer/amp/
