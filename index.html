@@ -11284,7 +11284,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200517132457275" list="Termux [[Android Debug Bridge]] ToDo" modified="20200517132813595" title="$:/StoryList">
+<div created="20200517132457275" list="[[Android Debug Bridge]] ToDo" modified="20200517133750736" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200511101855364" title="$:/temp/advancedsearch">
@@ -12514,8 +12514,31 @@ alias aws=&quot;aws $@ --endpoint-url http://localhost:8000&quot;
 <div created="20200426101115160" modified="20200426101140488" tags="TableOfContents" title="Android">
 <pre></pre>
 </div>
-<div created="20200512073714953" modified="20200517132901201" tags="Android task" title="Android Debug Bridge">
-<pre>* Setup
+<div created="20200512073714953" modified="20200517134038606" tags="Android task" title="Android Debug Bridge">
+<pre>* [[Enable Developer Options]]
+
+* Setup
+
+https://dl.google.com/android/repository/platform-tools-latest-linux.zip
+
+Now, you’ll see an option labeled “Developer options.” Tap here.
+Tap “USB debugging” to turn it on.
+
+```
+$ platform-tools/adb devices
+List of devices attached
+0123456789ABCDEF	unauthorized
+```
+
+```
+$ platform-tools/adb shell 0123456789ABCDEF
+adb: device unauthorized.
+This adb server's $ADB_VENDOR_KEYS is not set
+Try 'adb kill-server' if that seems wrong.
+Otherwise check for a confirmation dialog on your device.
+```
+
+
 
 * Run shell
 
@@ -12534,8 +12557,7 @@ https://www.vogella.com/tutorials/AndroidCommandLine/article.html
 https://www.online-tech-tips.com/smartphones/can-you-bypass-the-android-lock-screen/
 
 https://www.online-tech-tips.com/smartphones/how-to-install-apps-on-your-android-device-from-your-computer/amp/
-
-https://pchservices.com/how-to-use-your-computer-to-install-apps-on-your-android-device</pre>
+</pre>
 </div>
 <div created="20200512164516029" modified="20200512164609010" tags="Android [[Raspberry Pi]] task" title="Android phone as Raspberry Pi display">
 <pre>Use tmux or screen via termux-usb wrapped script
