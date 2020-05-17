@@ -11133,8 +11133,8 @@ Error message and password prompt
 <div created="20200423185634443" modified="20200423185634443" title="$:/state/plugin-info-334910430-$:/core---1812962263">
 <pre>contents</pre>
 </div>
-<div created="20200512083903594" modified="20200517114128286" title="$:/state/showeditpreview">
-<pre>yes</pre>
+<div created="20200512083903594" modified="20200517171650686" title="$:/state/showeditpreview">
+<pre>no</pre>
 </div>
 <div created="20200423185759928" modified="20200510171915567" title="$:/state/sidebar">
 <pre>yes</pre>
@@ -11286,7 +11286,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200517132457275" list="[[Android Debug Bridge]] ToDo" modified="20200517134804954" title="$:/StoryList">
+<div created="20200517132457275" list="[[Android Debug Bridge]] ToDo" modified="20200517165529257" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200511101855364" title="$:/temp/advancedsearch">
@@ -12300,7 +12300,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200517122345947" title="$:/temp/search">
+<div created="20200422190456346" modified="20200517173734956" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -12516,7 +12516,7 @@ alias aws=&quot;aws $@ --endpoint-url http://localhost:8000&quot;
 <div created="20200426101115160" modified="20200426101140488" tags="TableOfContents" title="Android">
 <pre></pre>
 </div>
-<div created="20200512073714953" modified="20200517134841180" tags="Android task" title="Android Debug Bridge">
+<div created="20200512073714953" modified="20200517173730361" tags="Android task" title="Android Debug Bridge">
 <pre>* [[Enable USB debugging]]
 
 * Setup
@@ -12540,18 +12540,47 @@ Try 'adb kill-server' if that seems wrong.
 Otherwise check for a confirmation dialog on your device.
 ```
 
-Accept Allow USB debugging?
+* Run shell
 
 ```
 $ platform-tools/adb shell
 K10000_Pro:/ $ 
 ```
 
+Accept &quot;Allow USB debugging?&quot;
 
+* Install an app https://developer.android.com/studio/command-line/adb#move
 
-* Run shell
+https://github.com/matlink/gplaycli
+Google Play Downloader via Command line
 
-* Install/uninstall app
+```
+$ adb install path_to_apk
+```
+
+* Install/uninstall app https://developer.android.com/studio/command-line/adb#pm
+
+```
+$ pm list packages
+$ pm uninstall ru.meefik.busybox
+```
+
+* Copy files to/from a device https://developer.android.com/studio/command-line/adb#copyfiles
+
+* Take a screenshot https://developer.android.com/studio/command-line/adb#screencap
+
+```
+adb shell screencap /sdcard/image.png
+adb pull /sdcard/image.png
+```
+
+* Record a video https://developer.android.com/studio/command-line/adb#screenrecord
+
+```
+adb shell screenrecord --verbose /sdcard/demo.mp4
+adb pull /sdcard/demo.mp4
+```
+
 
 * Automate install/uninstall using ansible
 
@@ -14027,8 +14056,8 @@ pdb.help()
 ```
 </pre>
 </div>
-<div created="20200423192318647" modified="20200517134815093" tags="Android" title="Enable Developer options">
-<pre>Settings -&gt; About phone -&gt; Tap on Build number 4-5 times.
+<div created="20200423192318647" modified="20200517165538460" tags="Android" title="Enable Developer options">
+<pre>Settings -&gt; About phone -&gt; Tap on Build number 7 times.
 </pre>
 </div>
 <div created="20200511135005753" modified="20200511135032832" tags="[[Raspberry Pi]]" title="Enable serial console">
