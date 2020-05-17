@@ -523,7 +523,7 @@ Error message and password prompt
 
 <li>Android</li>
 
-<li>Android Links</li>
+<li>Android Debug Bridge</li>
 
 <li>Android phone as Raspberry Pi display</li>
 
@@ -10905,7 +10905,7 @@ Error message and password prompt
     &quot;tiddlers&quot;: {
         &quot;Untitled 1&quot;: {
             &quot;title&quot;: &quot;Untitled 1&quot;,
-            &quot;text&quot;: &quot;I recently replaced my laptop, changed ssh key and, as it happens, forgot the password, so I can't ssh to Raspberry Pi any more.\n\n## TL;DR\n\nHere are quick steps how to reset the password. Later I will describe what they mean and add some more advanced commands.\n\n* Turn off Raspberry Pi\n* Put the SD card into the card reader\n* Add to the end of **cmdline.txt**:\n\n```\n rw init=/bin/sh\n```\n\n* Put the SD card into Raspberry Pi \n* Reboot\n* Change the user **pi** password:\n\n```\n# passwd pi\nNew password:\nRetype new password:\npasswd: password updated successfully\n```\n\n* Flush the file system cache \n\n```\n# sync\n```\n\n* Turn off Raspberry Pi\n* Put the SD card into the card reader and return **cmdline.txt** into the initial state by removing:\n\n```\n rw init=/bin/sh\n```\n\n* Put the SD card into Raspberry Pi\n* Reboot\n\nIf it's everything you needed you can stop reading.\n\n## rw\n\n```\n rw init=/bin/sh\n```\n\nThe **rw** flag mounts the root partition **/** as **r**ead-**w**rite. If you omit it,\nthe root partition **/** will be read-only and changing password will fail:\n\n```\n# passwd pi\nEnter new password:\nRetype new password:\npasswd: Authentication token manipulation error\npasswd: password unchanged\n```\n\nTo remount it as **r**ead-**w**rite run:\n\n```\n# mount -o remount, rw /\nEXT4-fs (mmcblk0p2): re-mounted.\n```\n\n## init=/bin/sh\n\nThe **init** flag specifies the program to run as the [Init](https://en.wikipedia.org/wiki/Init) process, i.e. the first process to be run. Here we replace the default **/sbin/init**, which is responsible for running all the init scripts with **/bin/sh**, which runs a simple shell.\n\n## /boot/cmdline.txt\n\nThe file **cmdline.txt** needs to be edited back, but it's on the **/boot** partition, which is not mounted by default. Still, it's possible to do it without moving the SD card around. \n\n* Determine the **/boot** partition device:\n\n```\n# blkid\n/dev/mmcblk0p1 ... LABEL=\&quot;boot\&quot; TYPE=\&quot;vfat\&quot;\n/dev/mmcblk0p2 ... LABEL=\&quot;rootfs\&quot; TYPE=\&quot;ext4\&quot;\n```\n\n* Mount the **/boot** partition:\n\n```\n# mount /dev/mmcblk0p1 /boot\n```\n\n* Open the file for editing:\n\n```\n# nano /boot/cmdline.txt\n```\n\n* Remove the below fragment, save and exit the editor:\n\n```\n rw init=/bin/sh\n```\n\n* Flush the file system cache:\n\n```\n# sync /boot\n```\n\n* Unmount the **/boot** partition:\n\n```\n# umount /boot\n```\n\n* Reboot\n\n## References\n\n* [http://mapledyne.com/ideas/2015/8/4/reset-lost-admin-password-for-raspberry-pi](http://mapledyne.com/ideas/2015/8/4/reset-lost-admin-password-for-raspberry-pi)\n* [https://www.raspberrypi.org/forums/viewtopic.php?t=20397](https://www.raspberrypi.org/forums/viewtopic.php?t=20397)\n* [https://www.redhat.com/archives/rhl-list/2005-March/msg04089.html](https://www.redhat.com/archives/rhl-list/2005-March/msg04089.html)\n&quot;,
+            &quot;text&quot;: &quot;Android Links&quot;,
             &quot;type&quot;: &quot;text/plain&quot;
         }
     }
@@ -11170,8 +11170,8 @@ Error message and password prompt
 <div created="20200422191529492" modified="20200514073847161" title="$:/state/tab/sidebar--595412856">
 <pre>TableOfContents</pre>
 </div>
-<div created="20200426101141551" modified="20200512075051409" title="$:/state/toc/TableOfContents-Android--118161433">
-<pre>close</pre>
+<div created="20200426101141551" modified="20200517132521250" title="$:/state/toc/TableOfContents-Android--118161433">
+<pre>open</pre>
 </div>
 <div created="20200428100846343" modified="20200505083916917" title="$:/state/toc/TableOfContents-AWS--118161433">
 <pre>close</pre>
@@ -11215,8 +11215,8 @@ Error message and password prompt
 <div created="20200428100850482" modified="20200428111609347" title="$:/state/toc/TableOfContents-Python--118161433">
 <pre>close</pre>
 </div>
-<div created="20200512075010685" modified="20200517103640106" title="$:/state/toc/TableOfContents-Raspberry Pi--118161433">
-<pre>open</pre>
+<div created="20200512075010685" modified="20200517132454673" title="$:/state/toc/TableOfContents-Raspberry Pi--118161433">
+<pre>close</pre>
 </div>
 <div created="20200430150121227" modified="20200513100132243" title="$:/state/toc/TableOfContents-Rust--118161433">
 <pre>close</pre>
@@ -11284,7 +11284,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200517130402393" list="ToDo [[Systemd units status]]" modified="20200517130421713" title="$:/StoryList">
+<div created="20200517132457275" list="Termux [[Android Debug Bridge]] ToDo" modified="20200517132813595" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200511101855364" title="$:/temp/advancedsearch">
@@ -12514,8 +12514,16 @@ alias aws=&quot;aws $@ --endpoint-url http://localhost:8000&quot;
 <div created="20200426101115160" modified="20200426101140488" tags="TableOfContents" title="Android">
 <pre></pre>
 </div>
-<div created="20200512073714953" modified="20200512074026054" tags="Android" title="Android Links">
-<pre>https://developer.android.com/studio/command-line/adb.html
+<div created="20200512073714953" modified="20200517132901201" tags="Android task" title="Android Debug Bridge">
+<pre>* Setup
+
+* Run shell
+
+* Install/uninstall app
+
+* Automate install/uninstall using ansible
+
+https://developer.android.com/studio/command-line/adb.html
 
 https://developer.android.com/studio/run/device
 
@@ -20808,7 +20816,7 @@ $ systemctl status
 &lt;/div&gt;
 </pre>
 </div>
-<div created="20200427173158521" list="[[Read &quot;Working with TW&quot;]] [[Read &quot;Customise TW&quot;]] [[Read &quot;Features&quot;]] [[Read &quot;Editions&quot;]] [[Read &quot;Platforms&quot;]] [[Make man link work]] [[Micro Frontends in Action]] [[ES6 Javascript Improved]] [[Add tar info]] [[Read &quot;Reference&quot;]] [[Read &quot;TW dev&quot;]] [[Make wiki work offline on Android]] [[Add github comments]] [[Blog as man pages. Use webasembly and termjs]] [[ES6 in Motion]] [[Node.js in Motion]] [[Node.js book]] [[Mastering REST APIs in Node.js]] [[Graphql in motion]] [[Promet. Up and running]] Robots.txt [[Android phone as Raspberry Pi display]] [[Building the Web of Things]] [[Grokking Simplicity]] [[Introduction to Rust]] [[Property Based Testing with PropEr]] [[Rust in Action]] [[Setup Bluetooh pairing]] [[Setup Tor]] [[Stoken on Android with USB static IP]] [[Understanding ECMAScript 6]] [[Web Components in Action]]" modified="20200517103723250" title="task">
+<div created="20200427173158521" list="[[Read &quot;Working with TW&quot;]] [[Read &quot;Customise TW&quot;]] [[Read &quot;Features&quot;]] [[Read &quot;Editions&quot;]] [[Read &quot;Platforms&quot;]] [[Android Debug Bridge]] [[Micro Frontends in Action]] [[ES6 Javascript Improved]] [[Add tar info]] [[Read &quot;Reference&quot;]] [[Read &quot;TW dev&quot;]] [[Make wiki work offline on Android]] [[Add github comments]] [[Blog as man pages. Use webasembly and termjs]] [[ES6 in Motion]] [[Node.js in Motion]] [[Node.js book]] [[Mastering REST APIs in Node.js]] [[Graphql in motion]] [[Promet. Up and running]] Robots.txt [[Android phone as Raspberry Pi display]] [[Building the Web of Things]] [[Grokking Simplicity]] [[Introduction to Rust]] [[Property Based Testing with PropEr]] [[Rust in Action]] [[Setup Bluetooh pairing]] [[Setup Tor]] [[Stoken on Android with USB static IP]] [[Understanding ECMAScript 6]] [[Web Components in Action]]" modified="20200517132647296" title="task">
 <pre></pre>
 </div>
 <div created="20200425161848192" modified="20200425161940628" tags="Bash Linux" title="TCP client (w/o netcat)">
