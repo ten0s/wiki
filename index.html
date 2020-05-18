@@ -525,6 +525,8 @@ Error message and password prompt
 
 <li>Android Debug Bridge</li>
 
+<li>Android Links</li>
+
 <li>Android phone as Raspberry Pi display</li>
 
 <li>Apply a patch</li>
@@ -949,6 +951,8 @@ Error message and password prompt
 
 <li>Investigate WLAN network</li>
 
+<li>IP address</li>
+
 <li>Javascript</li>
 
 <li>Javascript Links</li>
@@ -1251,7 +1255,7 @@ Error message and password prompt
 
 <li>Set DNS</li>
 
-<li>Set WiFi static IP address</li>
+<li>Set Wi-Fi static IP address</li>
 
 <li>Setup Bluetooh pairing</li>
 
@@ -1377,6 +1381,16 @@ Error message and password prompt
 
 <li>Termux</li>
 
+<li>Termux API</li>
+
+<li>Termux HowTo</li>
+
+<li>Termux SSH</li>
+
+<li>Termux Tor</li>
+
+<li>Termux USB</li>
+
 <li>Test WebSocket using curl</li>
 
 <li>Tethering</li>
@@ -1472,6 +1486,8 @@ Error message and password prompt
 <li>Where DNS utils</li>
 
 <li>Who uses network traffic</li>
+
+<li>Wi-Fi MAC address</li>
 
 <li>Write a macro</li>
 
@@ -11288,7 +11304,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200517132457275" list="[[Android Debug Bridge]] ToDo" modified="20200517165529257" title="$:/StoryList">
+<div created="20200518080811261" list="[[Termux HowTo]]" modified="20200518084448313" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200511101855364" title="$:/temp/advancedsearch">
@@ -12618,6 +12634,13 @@ https://www.online-tech-tips.com/smartphones/can-you-bypass-the-android-lock-scr
 
 https://www.online-tech-tips.com/smartphones/how-to-install-apps-on-your-android-device-from-your-computer/amp/
 </pre>
+</div>
+<div created="20200518083027074" modified="20200518083821111" tags="Android" title="Android Links">
+<pre>https://www.makeuseof.com/tag/android-phone-mastery/
+
+https://www.makeuseof.com/tag/advanced-android-hacks-dont-need-root/
+
+https://stackoverflow.com/questions/25477424/adb-shell-su-works-but-adb-root-does-not</pre>
 </div>
 <div created="20200512164516029" modified="20200512164609010" tags="Android [[Raspberry Pi]] task" title="Android phone as Raspberry Pi display">
 <pre>Use tmux or screen via termux-usb wrapped script
@@ -16973,6 +16996,9 @@ https://www.tldp.org/HOWTO/Printing-HOWTO/
 kismet
 </pre>
 </div>
+<div created="20200518083824720" modified="20200518084257279" tags="Android" title="IP address">
+<pre>Settings -&gt; About phone -&gt; Status -&gt; IP address</pre>
+</div>
 <div created="20200428111204806" modified="20200428111214296" tags="TableOfContents" title="Javascript">
 <pre></pre>
 </div>
@@ -19769,8 +19795,8 @@ search example.com
 ```
 </pre>
 </div>
-<div created="20200506072235996" modified="20200506074323692" tags="Android" title="Set WiFi static IP address">
-<pre>Settings -&gt; ~WiFi -&gt; Access Point -&gt; Modify Network -&gt; Advanced options
+<div created="20200506072235996" modified="20200518084247822" tags="Android" title="Set Wi-Fi static IP address">
+<pre>Settings -&gt; ~Wi-Fi -&gt; Access Point -&gt; Modify Network -&gt; Advanced options
 
 * IP settings: Static
 * IP address: 192.168.100.127 [[Show network interfaces]]
@@ -20154,8 +20180,9 @@ Check permissions if is not possible to login using the ssh keys:
 ```
 </pre>
 </div>
-<div created="20200512164436885" modified="20200512164452731" tags="[[Raspberry Pi]] Android task" title="Setup Tor">
-<pre></pre>
+<div created="20200512164436885" modified="20200518083404081" tags="[[Raspberry Pi]] Android task" title="Setup Tor">
+<pre>https://0ut3r.space/2020/05/16/tor-router/
+</pre>
 </div>
 <div created="20200512162327872" modified="20200512162411119" tags="[[Raspberry Pi]]" title="Setup Transmission">
 <pre>* https://www.htpcguides.com/remote-access-transmission-torrent-behind-vpn-linux/
@@ -20934,11 +20961,63 @@ $ exec 3&lt;&gt;/dev/tcp/localhost/1234 || (echo &quot;Can't connect&quot; ; exi
 $ echo &quot;Hello&quot; &gt;&amp;3
 ```</pre>
 </div>
-<div created="20200511134302365" modified="20200511134314519" tags="Android" title="Termux">
+<div created="20200511134302365" modified="20200518082145804" tags="Android" title="Termux">
 <pre>* https://wiki.termux.com/wiki/Main_Page
+* https://play.google.com/store/apps/details?id=com.onetaplearning.termuxtutorial
+* https://wiki.termux.com/wiki/FAQ
+
+https://play.google.com/store/apps/details?id=com.termux</pre>
+</div>
+<div created="20200518081921221" modified="20200518082143926" tags="Android" title="Termux API">
+<pre>Install [[Termux]]
+
+Install Termux:API package
+
+* https://play.google.com/store/apps/details?id=com.termux.api
+
 * https://wiki.termux.com/wiki/Termux:API
-* https://wiki.termux.com/wiki/Termux-usb
+
+```
+$ pkg install termux-api
+```
+
+```
+$ termux-torch on
+$ termux-torch off
+```
+
 </pre>
+</div>
+<div created="20200518081401641" modified="20200518085222473" tags="Android" title="Termux HowTo">
+<pre>* run termux-torch via ssh or adb
+
+* access from adb shell https://github.com/termux/termux-app/issues/77
+
+* downloading of youtube videos straight from the youtube app https://www.reddit.com/r/linux/comments/66fh4f/what_do_you_use_termux_on_android_for
+
+* mount android fs over ssh (sshfs) https://askubuntu.com/questions/893090/how-do-i-mount-my-androids-filesystem-over-the-network-with-sshfs/893091#893091
+
+* control android from pc https://0ut3r.space/2020/03/30/control-smartphone/</pre>
+</div>
+<div created="20200518081445601" modified="20200518081906552" tags="Android" title="Termux SSH">
+<pre>https://wiki.termux.com/wiki/Remote_Access
+
+https://medium.com/@baradhiren07/access-termux-from-your-laptop-using-usb-2ceb00c83469
+
+https://medium.com/@baradhiren07/accessing-termux-from-putty-c10512ca76f1
+
+https://ibnuhx.com/remote-ssh-to-android-termux
+
+https://glow.li/technology/2015/11/06/run-an-ssh-server-on-your-android-with-termux/</pre>
+</div>
+<div created="20200518081804941" modified="20200518081847284" tags="Android" title="Termux Tor">
+<pre>https://wiki.termux.com/wiki/Bypassing_NAT
+
+https://hackingarise.com/how-to-make-a-tor-ssl-hidden-service-on-termux/
+</pre>
+</div>
+<div created="20200518080849970" modified="20200518080857251" tags="Android" title="Termux USB">
+<pre>* https://wiki.termux.com/wiki/Termux-usb</pre>
 </div>
 <div created="20200428113049717" modified="20200428113128121" tags="Linux" title="Test WebSocket using curl">
 <pre>Sec-WebSocket-Key header containing base64-encoded random bytes to prevent a caching proxy from re-sending a previous WebSocket conversation
@@ -21729,6 +21808,9 @@ https://www.browserleaks.com/
 $ sudo iftop -nNB (press `d' for aggregated view)
 $ sudo iftop -i eth0 -f 'dst port 5001'
 ```</pre>
+</div>
+<div created="20200518084040490" modified="20200518084307678" tags="Android" title="Wi-Fi MAC address">
+<pre>Settings -&gt; About phone -&gt; Status -&gt; Wi-Fi MAC address</pre>
 </div>
 <div created="20200429155727025" modified="20200429155829459" tags="TiddlyWiki" title="Write a macro">
 <pre>* https://tiddlywiki.com/#Macros%20in%20WikiText
