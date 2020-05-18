@@ -729,8 +729,6 @@ Error message and password prompt
 
 <li>Disable Developer options</li>
 
-<li>Disable SSH root login</li>
-
 <li>Disable systemd-resolved</li>
 
 <li>Disable/enable/list services</li>
@@ -1332,6 +1330,10 @@ Error message and password prompt
 <li>Ssh</li>
 
 <li>SSH connection is too slow</li>
+
+<li>SSH disable password authentication</li>
+
+<li>SSH disable root login</li>
 
 <li>SSH file system</li>
 
@@ -11157,8 +11159,8 @@ Error message and password prompt
 <div created="20200423185634443" modified="20200423185634443" title="$:/state/plugin-info-334910430-$:/core---1812962263">
 <pre>contents</pre>
 </div>
-<div created="20200512083903594" modified="20200518093847610" title="$:/state/showeditpreview">
-<pre>no</pre>
+<div created="20200512083903594" modified="20200518102351494" title="$:/state/showeditpreview">
+<pre>yes</pre>
 </div>
 <div created="20200423185759928" modified="20200510171915567" title="$:/state/sidebar">
 <pre>yes</pre>
@@ -11229,8 +11231,8 @@ Error message and password prompt
 <div created="20200429160228164" modified="20200515102856126" title="$:/state/toc/TableOfContents-Javascript--118161433">
 <pre>close</pre>
 </div>
-<div created="20200426101649048" modified="20200518095611994" title="$:/state/toc/TableOfContents-Linux--118161433">
-<pre>close</pre>
+<div created="20200426101649048" modified="20200518104229083" title="$:/state/toc/TableOfContents-Linux--118161433">
+<pre>open</pre>
 </div>
 <div created="20200428092436636" modified="20200430091659257" title="$:/state/toc/TableOfContents-MentalModel--118161433">
 <pre>close</pre>
@@ -11310,7 +11312,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200518080811261" list="ToDo" modified="20200518095654027" title="$:/StoryList">
+<div created="20200518080811261" list="[[Open man page on first pattern match]] ToDo" modified="20200518104628383" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200511101855364" title="$:/temp/advancedsearch">
@@ -12324,7 +12326,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200518095711593" title="$:/temp/search">
+<div created="20200422190456346" modified="20200518110132461" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -13444,12 +13446,12 @@ $ git tag &quot;1.0.0&quot;
 
 </pre>
 </div>
-<div created="20200428175643465" modified="20200428175914348" tags="TiddlyWiki" title="Create Links">
+<div created="20200428175643465" modified="20200518104329433" tags="TiddlyWiki" title="Create Links">
 <pre>https://tiddlywiki.com/static/Linking%2520in%2520WikiText.html
 
-[ext[Open|manx:grep::REGULAR+EXPRESSIONS]]
+[ext[Open man | manx:grep::REGULAR+EXPRESSIONS]]
 
-[ext[Open|pdfx:////home/ten0s/refs/anki2/algs4.pdf::103]]</pre>
+[ext[Open pdf | pdfx:////home/ten0s/refs/anki2/algs4.pdf::103]]</pre>
 </div>
 <div created="20200428124444319" modified="20200428124518491" tags="TiddlyWiki" title="Create Tables">
 <pre>https://tiddlywiki.com/static/Tables%2520in%2520WikiText.html
@@ -13552,7 +13554,7 @@ $ date +'%d/%m/%Y' -d '2013-04-08 +2 days' # reformat and calculate
 $ TZ=America/New_York date # what time in NYC now
 ```</pre>
 </div>
-<div created="20200423172701086" modified="20200423172823336" tags="Git Ssh" title="Debug &quot;Error: repository not found&quot;">
+<div created="20200423172701086" modified="20200518103719601" tags="Git" title="Debug &quot;Error: repository not found&quot;">
 <pre>https://help.github.com/articles/error-repository-not-found/
 https://developer.github.com/v3/guides/managing-deploy-keys/
 
@@ -13560,9 +13562,9 @@ https://developer.github.com/v3/guides/managing-deploy-keys/
 # Check repository name
 # Check permissions
 # Check ssh access
-```
-$ ssh -T git@github.com
-```
+
+{{Check SSH key}}
+
 # Check deploy keys
 # Check ~/.ssh/config
 
@@ -13861,18 +13863,6 @@ $ diff --color=auto &lt;(unzip -v R1.xlsx) &lt;(unzip -v R2.xlsx)
 </div>
 <div created="20200423193246200" modified="20200517134802139" tags="Android" title="Disable Developer options">
 <pre>Settings -&gt; Storage -&gt; Apps -&gt; Settings -&gt; Clear Data
-</pre>
-</div>
-<div created="20200425115805035" modified="20200425120202366" tags="Ssh" title="Disable SSH root login">
-<pre>/etc/ssh/sshd_config
-
-```
-PermitRootLogin no
-```
-
-```
-# service sshd restart
-```
 </pre>
 </div>
 <div created="20200424081408719" modified="20200424081501508" tags="Linux" title="Disable systemd-resolved">
@@ -20174,9 +20164,9 @@ sudo dd if=retropie-4.3-rpi2_rpi3.img of=/dev/mmcblk0 bs=4M conv=fsync status=pr
 ```
 </pre>
 </div>
-<div created="20200425115702390" modified="20200425115749446" tags="Ssh" title="Setup SSH keys">
+<div created="20200425115702390" modified="20200518102703263" tags="Ssh" title="Setup SSH keys">
 <pre>```
-$ ssh-keygen -t rsa # use empty passphrase
+$ ssh-keygen -t rsa -b 4096 # use empty passphrase
 $ ssh-copy-id user@123.45.67.89
 ```
 or if ssh-copy-id isn't available
@@ -20467,7 +20457,7 @@ $ sudo service smbd restart
 ```
 </pre>
 </div>
-<div created="20200424094044960" modified="20200506070829525" tags="Linux Ssh" title="Share local directory via external server">
+<div created="20200424094044960" modified="20200518102516657" tags="Linux Ssh" title="Share local directory via external server">
 <pre>Locally:
 
 ```
@@ -20483,8 +20473,13 @@ http://remote_server:8090
 
 NB:
 
-'~GatewayPorts yes' must be enabled in /etc/ssh/sshd_config
-</pre>
+/etc/ssh/sshd_config:
+
+```
+GatewayPorts yes
+```
+
+[[SSH remote port forwarding]]</pre>
 </div>
 <div created="20200425154330474" modified="20200425154520417" tags="Linux" title="Shared library path">
 <pre>```
@@ -20654,6 +20649,42 @@ UseDNS no
 # service sshd restart
 ```</pre>
 </div>
+<div created="20200518103502395" modified="20200518110125897" tags="Ssh" title="SSH disable password authentication">
+<pre>/etc/ssh/sshd_config:
+
+```
+PasswordAuthentication no
+PermitRootLogin without-password
+```
+
+[ext[man | manx:sshd_config]]
+
+```
+# service sshd restart
+```
+
+```
+$ sudo systemctl reload sshd.service
+```</pre>
+</div>
+<div created="20200425115805035" modified="20200518110122278" tags="Ssh" title="SSH disable root login">
+<pre>/etc/ssh/sshd_config:
+
+```
+PermitRootLogin no
+```
+
+[ext[man | manx:sshd_config]]
+
+```
+# service sshd restart
+```
+
+```
+$ sudo systemctl reload sshd.service
+```
+</pre>
+</div>
 <div created="20200518095501473" modified="20200518095706087" tags="Ssh" title="SSH file system">
 <pre>https://github.com/libfuse/sshfs
 
@@ -20746,10 +20777,9 @@ ssh -X demo
 
 </pre>
 </div>
-<div created="20200424092922789" modified="20200424092943167" tags="Ssh" title="SSH tricks">
+<div created="20200424092922789" modified="20200518110418464" tags="Ssh" title="SSH tricks">
 <pre>* https://help.ubuntu.com/community/SSH
 * http://sibilia.github.io/blog/2013/05/28/ssh-trick/
-* http://nerderati.com/2011/03/17/simplify-your-life-with-an-ssh-config-file/
 * https://heipei.github.io/2015/02/26/SSH-Agent-Forwarding-considered-harmful/
 
 </pre>
