@@ -1271,7 +1271,7 @@ Error message and password prompt
 
 <li>Setup Retropie</li>
 
-<li>Setup SSH keys</li>
+<li>Setup SSH key</li>
 
 <li>Setup Tor</li>
 
@@ -1341,9 +1341,9 @@ Error message and password prompt
 
 <li>SSH remote port forwarding</li>
 
-<li>SSH remote X forwarding</li>
-
 <li>SSH tricks</li>
+
+<li>SSH X forwarding</li>
 
 <li>Ssl</li>
 
@@ -11312,7 +11312,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200518080811261" list="ToDo" modified="20200518155608314" title="$:/StoryList">
+<div created="20200518080811261" list="ToDo" modified="20200518155705857" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200511101855364" title="$:/temp/advancedsearch">
@@ -20167,7 +20167,7 @@ sudo dd if=retropie-4.3-rpi2_rpi3.img of=/dev/mmcblk0 bs=4M conv=fsync status=pr
 ```
 </pre>
 </div>
-<div created="20200425115702390" modified="20200518102703263" tags="Ssh" title="Setup SSH keys">
+<div created="20200425115702390" modified="20200518155658082" tags="Ssh" title="Setup SSH key">
 <pre>```
 $ ssh-keygen -t rsa -b 4096 # use empty passphrase
 $ ssh-copy-id user@123.45.67.89
@@ -20775,17 +20775,17 @@ ssh -N -R 0.0.0.0:4369:localhost:4369 ten0s@xos.mooo.com
 ```
 </pre>
 </div>
-<div created="20200424093620809" modified="20200424093704564" tags="Ssh" title="SSH remote X forwarding">
-<pre>```
-ssh -X demo
-```
-
-</pre>
-</div>
 <div created="20200424092922789" modified="20200518110418464" tags="Ssh" title="SSH tricks">
 <pre>* https://help.ubuntu.com/community/SSH
 * http://sibilia.github.io/blog/2013/05/28/ssh-trick/
 * https://heipei.github.io/2015/02/26/SSH-Agent-Forwarding-considered-harmful/
+
+</pre>
+</div>
+<div created="20200424093620809" modified="20200518155756058" tags="Ssh" title="SSH X forwarding">
+<pre>```
+ssh -X demo
+```
 
 </pre>
 </div>
