@@ -1335,6 +1335,8 @@ Error message and password prompt
 
 <li>SSH disable root login</li>
 
+<li>SSH dynamic port forwarding</li>
+
 <li>SSH file system</li>
 
 <li>SSH local port forwarding</li>
@@ -11312,7 +11314,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200519135657638" list="Ssh" modified="20200519144008705" title="$:/StoryList">
+<div created="20200519135657638" list="" modified="20200519150028004" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200511101855364" title="$:/temp/advancedsearch">
@@ -20691,6 +20693,32 @@ $ sudo systemctl reload sshd.service
 ```
 </pre>
 </div>
+<div created="20200519145058657" modified="20200519150240970" tags="Ssh" title="SSH dynamic port forwarding">
+<pre>Many different client programs can connect to many different services.
+It creates a SOCKS proxy on the SSH client, and tunnels inbound requests to the SSH server.
+A SOCKS proxy is a generic gateway that can carry any TCP/IP traffic.
+
+[ext[SSH Mastery: Dynamic Port Forwarding | pdfx://~/refs/linux/SSH_Mastery.pdf::138]]
+
+[ext[man: DynamicForward | manx:ssh_config::DynamicForward]]
+
+```
+$ ssh -f -N -D [localIP:]localPort [User@]Host
+```
+
+* -f run in background
+* -N don't run anything, including terminal, remotely
+
+~/.ssh/config:
+
+```
+Host ...
+   ...
+   DynamicForward [localIP:]localPort
+   ...
+```
+</pre>
+</div>
 <div created="20200518095501473" modified="20200518095706087" tags="Ssh" title="SSH file system">
 <pre>https://github.com/libfuse/sshfs
 
@@ -20701,7 +20729,7 @@ $ fusermount -u mountpoint
 ```
 </pre>
 </div>
-<div created="20200424093326631" modified="20200519145012026" tags="Ssh" title="SSH local port forwarding">
+<div created="20200424093326631" modified="20200519150237291" tags="Ssh" title="SSH local port forwarding">
 <pre>!!! Access a remote port LOCALLY
 
 Redirects one port on the client to one port on the server.
@@ -20710,8 +20738,8 @@ Redirects one port on the client to one port on the server.
 
 [ext[man: LocalForward | manx:ssh_config::LocalForward]]
 
-* -f put ssh in background
-* -N don't exec any command remotely
+* -f run in background
+* -N don't run anything, including terminal, remotely
 
 ```
 $ ssh -f -N -L [localIP:]localPort:remoteIP:remotePort [User@]Host
@@ -20759,7 +20787,7 @@ $ mongo localhost:57017
 ```
 </pre>
 </div>
-<div created="20200424093456058" modified="20200519145009186" tags="Ssh" title="SSH remote port forwarding">
+<div created="20200424093456058" modified="20200519150244322" tags="Ssh" title="SSH remote port forwarding">
 <pre>!!! Access a local port REMOTELY
 
 Redirects one port on the server to one port on the client.
@@ -20768,8 +20796,8 @@ Redirects one port on the server to one port on the client.
 
 [ext[man: RemoteForward | manx:ssh_config::RemoteForward]]
 
-* -f put ssh in background
-* -N don't exec any command remotely
+* -f run in background
+* -N don't run anything, including terminal, remotely
 
 ```
 $ ssh -f -N -R  [remoteIP:]remotePort:localIP:localPort [User@]Host
