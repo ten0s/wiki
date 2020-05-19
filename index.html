@@ -16792,7 +16792,7 @@ $ groups
 <div created="20200510154631268" modified="20200510154644164" tags="Rust" title="How to build for android and more">
 <pre>http://brson.github.io/blog.rust-lang.org/2016/05/12/rustup.html</pre>
 </div>
-<div created="20200425170920294" modified="20200519153819475" tags="Linux" title="How to SOCKsify?">
+<div created="20200425170920294" modified="20200519184849345" tags="Linux" title="How to SOCKsify?">
 <pre>* https://plenz.com/tunnel-everything.php
 * http://etherealmind.com/fast-introduction-to-socks-proxy/
 * https://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html
@@ -16804,7 +16804,19 @@ $ sudo apt install dante-client
 ```
 $ LD_PRELOAD=/PATH/TO/lib/libdsocks.so
 $ SOCKS_SERVER=localhost:5050 /PROG/TO/RUN
-```</pre>
+```
+
+```
+$ ssh -ND 8181 10.252.150.72
+```
+
+```
+$ curl ipinfo.io/ip
+A.B.C.D
+$ curl --socks5-hostname localhost:8181 ipinfo.io/ip
+E.F.G.H
+```
+</pre>
 </div>
 <div created="20200510171034342" modified="20200511110159109" tags="TiddlyWiki" title="How to ViewTemplate">
 <pre>!!! Putting common stuff into tiddlers
