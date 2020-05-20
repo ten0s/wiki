@@ -931,6 +931,8 @@ Error message and password prompt
 
 <li>Initial setup</li>
 
+<li>Install APK from Google Play</li>
+
 <li>Install debuginfo for kernel</li>
 
 <li>Install EPEL</li>
@@ -11169,8 +11171,8 @@ Error message and password prompt
 <div created="20200423185634443" modified="20200423185634443" title="$:/state/plugin-info-334910430-$:/core---1812962263">
 <pre>contents</pre>
 </div>
-<div created="20200512083903594" modified="20200519142737928" title="$:/state/showeditpreview">
-<pre>yes</pre>
+<div created="20200512083903594" modified="20200520164447424" title="$:/state/showeditpreview">
+<pre>no</pre>
 </div>
 <div created="20200423185759928" modified="20200510171915567" title="$:/state/sidebar">
 <pre>yes</pre>
@@ -11208,8 +11210,8 @@ Error message and password prompt
 <div created="20200422191529492" modified="20200520090121742" title="$:/state/tab/sidebar--595412856">
 <pre>TableOfContents</pre>
 </div>
-<div created="20200426101141551" modified="20200520134005234" title="$:/state/toc/TableOfContents-Android--118161433">
-<pre>close</pre>
+<div created="20200426101141551" modified="20200520164303840" title="$:/state/toc/TableOfContents-Android--118161433">
+<pre>open</pre>
 </div>
 <div created="20200428100846343" modified="20200505083916917" title="$:/state/toc/TableOfContents-AWS--118161433">
 <pre>close</pre>
@@ -11325,7 +11327,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200520072710181" list="ToDo" modified="20200520134046876" title="$:/StoryList">
+<div created="20200520072710181" list="" modified="20200520164255057" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200511101855364" title="$:/temp/advancedsearch">
@@ -12558,7 +12560,7 @@ alias aws=&quot;aws $@ --endpoint-url http://localhost:8000&quot;
 <div created="20200426101115160" modified="20200426101140488" tags="TableOfContents" title="Android">
 <pre></pre>
 </div>
-<div created="20200512073714953" modified="20200520103752689" tags="Android task" title="Android Debug Bridge">
+<div created="20200512073714953" modified="20200520164813899" tags="Android task" title="Android Debug Bridge">
 <pre>* [[Enable USB debugging]]
 
 * Setup
@@ -12592,26 +12594,6 @@ K10000_Pro:/ $
 Accept &quot;Allow USB debugging?&quot;
 
 * Install an app https://developer.android.com/studio/command-line/adb#move
-
-https://github.com/matlink/gplaycli
-Google Play Downloader via Command line
-
-App Inspector
-https://play.google.com/store/apps/details?id=com.ubqsoft.sec01
-
-```
-$ gplaycli -s 'App Inspector'
-Title                                           Creator            Size      Downloads                 Last Update  AppID                        Version   Rating  
-App Inspector                                   Projectoria        895.04KB  100,000+ downloads        14 Jul 2019  bg.projectoria.appinspector  8         4.53    
-...
-```
-
-```
-$ gplaycli -d bg.projectoria.appinspector
- $ ./adb install ../bg.projectoria.appinspector.apk 
-Performing Streamed Install
-Success
-```
 
 ```
 $ adb install path_to_apk
@@ -16886,6 +16868,37 @@ sudo update-locale LC_ALL=en_US.UTF-8
 sudo ln -fs /usr/share/zoneinfo/Europe/Minsk /etc/localtime
 ```
 </pre>
+</div>
+<div created="20200520164313557" modified="20200520164757418" tags="Android" title="Install APK from Google Play">
+<pre>Google Play Downloader via Command line https://github.com/matlink/gplaycli
+
+App Inspector
+https://play.google.com/store/apps/details?id=com.ubqsoft.sec01
+
+!! Search
+
+```
+$ gplaycli -s 'App Inspector'
+Title                        Creator            Size   Downloads   Last Update                                    AppID   Version   Rating  
+App Inspector   Projectoria   895.04KB      100,000+    14 Jul 2019   bg.projectoria.appinspector            8       4.53    
+...
+```
+
+!! Download
+
+```
+$ gplaycli -d bg.projectoria.appinspector
+```
+
+!! Install
+
+```
+$ adb install ../bg.projectoria.appinspector.apk 
+Performing Streamed Install
+Success
+```
+
+[[Android Debug Bridge]]</pre>
 </div>
 <div created="20200425121332906" modified="20200426101841111" tags="Linux CentOS" title="Install debuginfo for kernel">
 <pre>```
