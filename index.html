@@ -1477,7 +1477,7 @@ Error message and password prompt
 
 <li>Use pstree</li>
 
-<li>Use ssh-agent in Docker container</li>
+<li>Use ssh-agent in Docker</li>
 
 <li>Verify HTTPS site</li>
 
@@ -11314,7 +11314,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200519135657638" list="[[Determine your external IP]] [[How to SOCKsify?]] [[SSH dynamic port forwarding]] [[SSH file system]]" modified="20200519152205771" title="$:/StoryList">
+<div created="20200520072710181" list="[[How to SOCKsify?]]" modified="20200520072717341" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200511101855364" title="$:/temp/advancedsearch">
@@ -12328,8 +12328,8 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200519152203854" title="$:/temp/search">
-<pre>exter</pre>
+<div created="20200422190456346" modified="20200520072736663" title="$:/temp/search">
+<pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
 <pre>loaded</pre>
@@ -21816,7 +21816,7 @@ $ curl -H '...' # add http header
 $ pstree -hapc | less -R
 ```</pre>
 </div>
-<div created="20200423191811323" modified="20200423195718405" tags="Git Ssh Docker" title="Use ssh-agent in Docker container">
+<div created="20200423191811323" modified="20200520072729693" tags="Git Ssh Docker" title="Use ssh-agent in Docker">
 <pre>HOST:
 
 ```
@@ -21827,8 +21827,8 @@ $ docker run -ti --rm -v $SSH_AUTH_SOCK:/ssh-agent -e SSH_AUTH_SOCK=/ssh-agent u
 GUEST:
 
 ```
-$ apt update &amp;&amp; apt -y install openssh-client
-$ ssh -T git@github.com
+# apt update &amp;&amp; apt -y install openssh-client
+# ssh -T git@github.com
 Hi ten0s! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 </pre>
