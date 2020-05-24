@@ -237,6 +237,8 @@ Error message and password prompt
 
 <li>$:/state/toc/TableOfContents-Raspberry Pi--118161433</li>
 
+<li>$:/state/toc/TableOfContents-Regex--118161433</li>
+
 <li>$:/state/toc/TableOfContents-Rust--118161433</li>
 
 <li>$:/state/toc/TableOfContents-Ssh--118161433</li>
@@ -1117,8 +1119,6 @@ Error message and password prompt
 
 <li>Print X event coming to window</li>
 
-<li>Projects</li>
-
 <li>Promet. Up and running</li>
 
 <li>Property Based Testing with PropEr</li>
@@ -1162,6 +1162,8 @@ Error message and password prompt
 <li>Raspberry Pi</li>
 
 <li>Raspberry Pi Links</li>
+
+<li>Raspberry Pi projects</li>
 
 <li>Raspberry Pi Zero Ethernet</li>
 
@@ -1248,6 +1250,8 @@ Error message and password prompt
 <li>Scan network for open ports</li>
 
 <li>Script dir, name</li>
+
+<li>Security</li>
 
 <li>See man as pdf</li>
 
@@ -11225,8 +11229,8 @@ Error message and password prompt
 <div created="20200426101916708" modified="20200428175652134" title="$:/state/toc/TableOfContents-Bash--118161433">
 <pre>close</pre>
 </div>
-<div created="20200521080801404" modified="20200521082057369" title="$:/state/toc/TableOfContents-Books--118161433">
-<pre>open</pre>
+<div created="20200521080801404" modified="20200524112739247" title="$:/state/toc/TableOfContents-Books--118161433">
+<pre>close</pre>
 </div>
 <div created="20200430080859301" modified="20200430091655071" title="$:/state/toc/TableOfContents-CentOS--118161433">
 <pre>close</pre>
@@ -11264,8 +11268,11 @@ Error message and password prompt
 <div created="20200428100850482" modified="20200428111609347" title="$:/state/toc/TableOfContents-Python--118161433">
 <pre>close</pre>
 </div>
-<div created="20200512075010685" modified="20200517132454673" title="$:/state/toc/TableOfContents-Raspberry Pi--118161433">
+<div created="20200512075010685" modified="20200524123718853" title="$:/state/toc/TableOfContents-Raspberry Pi--118161433">
 <pre>close</pre>
+</div>
+<div created="20200524113104720" modified="20200524113104720" title="$:/state/toc/TableOfContents-Regex--118161433">
+<pre>open</pre>
 </div>
 <div created="20200430150121227" modified="20200513100132243" title="$:/state/toc/TableOfContents-Rust--118161433">
 <pre>close</pre>
@@ -11276,7 +11283,7 @@ Error message and password prompt
 <div created="20200520090129345" modified="20200520090133416" title="$:/state/toc/TableOfContents-Ssl--118161433">
 <pre>close</pre>
 </div>
-<div created="20200427165444695" modified="20200521075647646" title="$:/state/toc/TableOfContents-TiddlyWiki--118161433">
+<div created="20200427165444695" modified="20200524123721008" title="$:/state/toc/TableOfContents-TiddlyWiki--118161433">
 <pre>close</pre>
 </div>
 <div created="20200426101657879" modified="20200426101738390" title="$:/state/toc/TableOfContents-Ubuntu--118161433">
@@ -11336,7 +11343,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200521072004076" list="ToDo [[Grokking Simplicity]]" modified="20200521090459248" title="$:/StoryList">
+<div created="20200524112741219" list="ToDo [[Android phone as Raspberry Pi display]] [[Setup Bluetooh pairing]] [[Setup Tor]]" modified="20200524113851238" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200511101855364" title="$:/temp/advancedsearch">
@@ -12657,9 +12664,10 @@ https://www.makeuseof.com/tag/advanced-android-hacks-dont-need-root/
 
 https://stackoverflow.com/questions/25477424/adb-shell-su-works-but-adb-root-does-not</pre>
 </div>
-<div created="20200512164516029" modified="20200512164609010" tags="Android [[Raspberry Pi]] task" title="Android phone as Raspberry Pi display">
+<div created="20200512164516029" modified="20200524112910445" tags="Android [[Raspberry Pi]] task" title="Android phone as Raspberry Pi display">
 <pre>Use tmux or screen via termux-usb wrapped script
-</pre>
+
+[[Enable serial console]]</pre>
 </div>
 <div created="20200520090243977" modified="20200520090329672" tags="Android task" title="Android Wakelocks">
 <pre>https://www.phonearena.com/news/What-are-wakelocks-how-they-affect-the-battery-life-of-your-Android-device-and-how-to-Greenify-them_id58739</pre>
@@ -16858,8 +16866,10 @@ $ git remote add origin PATH_TO/NEW_REPO/
 
 </pre>
 </div>
-<div created="20200512161413674" modified="20200512161442918" tags="[[Raspberry Pi]]" title="Initial setup">
-<pre>Ensure in /etc/locale.gen
+<div created="20200512161413674" modified="20200524113930533" tags="[[Raspberry Pi]]" title="Initial setup">
+<pre>https://ten0s.github.io/blog/2020/01/26/setup-raspbian-buster-on-sd-card
+
+Ensure in /etc/locale.gen
 
 ```
 # en_GB.UTF-8 UTF-8
@@ -16879,7 +16889,8 @@ sudo update-locale LC_ALL=en_US.UTF-8
 ```
 sudo ln -fs /usr/share/zoneinfo/Europe/Minsk /etc/localtime
 ```
-</pre>
+
+[ext[Securing your Raspberry Pi | https://www.raspberrypi.org/documentation/configuration/security.md]]</pre>
 </div>
 <div created="20200520164313557" modified="20200520164757418" tags="Android" title="Install APK from Google Play">
 <pre>Google Play Downloader via Command line https://github.com/matlink/gplaycli
@@ -18192,9 +18203,6 @@ https://www.johndcook.com/blog/2008/06/17/software-in-space/
 $ xev
 ```</pre>
 </div>
-<div created="20200512075015126" modified="20200512075020216" tags="[[Raspberry Pi]]" title="Projects">
-<pre>https://pimylifeup.com/</pre>
-</div>
 <div created="20200509093507783" modified="20200509093522413" tags="task" title="Promet. Up and running">
 <pre></pre>
 </div>
@@ -19223,6 +19231,9 @@ Can't see the forest through the trees
 <div created="20200512161540850" modified="20200512161550399" tags="[[Raspberry Pi]]" title="Raspberry Pi Links">
 <pre></pre>
 </div>
+<div created="20200512075015126" modified="20200524113015125" tags="[[Raspberry Pi]] task" title="Raspberry Pi projects">
+<pre>https://pimylifeup.com/</pre>
+</div>
 <div created="20200512161738835" modified="20200512161754310" tags="[[Raspberry Pi Links]]" title="Raspberry Pi Zero Ethernet">
 <pre>https://www.circuitbasics.com/raspberry-pi-zero-ethernet-gadget/</pre>
 </div>
@@ -19772,6 +19783,13 @@ $SCRIPT_DIR/script.sh
 ```
 </pre>
 </div>
+<div created="20200524123723828" modified="20200524123753701" tags="TableOfContents" title="Security">
+<pre>https://tails.boum.org/
+
+https://browserleaks.com/
+
+</pre>
+</div>
 <div created="20200424085451036" modified="20200424090109325" tags="Linux Bash" title="See man as pdf">
 <pre>```
 $ tmp=$(mktemp --suffix &quot;.ps&quot;); man -t bash &gt;$tmp; open $tmp
@@ -20156,7 +20174,7 @@ $ python --version
 Python 3.4.3
 ```</pre>
 </div>
-<div created="20200512162121473" modified="20200512162217052" tags="[[Raspberry Pi]]" title="Setup Retropie">
+<div created="20200512162121473" modified="20200524112831716" tags="[[Raspberry Pi]] task" title="Setup Retropie">
 <pre>https://retropie.org.uk
 
 https://retropie.org.uk/docs/Manual-Installation/
@@ -20221,12 +20239,18 @@ Check permissions if is not possible to login using the ssh keys:
 ```
 </pre>
 </div>
-<div created="20200512164436885" modified="20200518090932892" tags="[[Raspberry Pi]] Android task" title="Setup Tor">
+<div created="20200512164436885" modified="20200524123712688" tags="[[Raspberry Pi]] Android task" title="Setup Tor">
 <pre>https://0ut3r.space/2020/05/16/tor-router/
+
+https://www.torbox.ch/
+
+https://www.torbox.ch/?page_id=205
 
 https://0ut3r.space/2019/11/14/onionlinks/
 
-https://0ut3r.space/2019/01/21/onion-address/</pre>
+https://0ut3r.space/2019/01/21/onion-address/
+
+https://tails.boum.org/</pre>
 </div>
 <div created="20200512162327872" modified="20200512162411119" tags="[[Raspberry Pi]]" title="Setup Transmission">
 <pre>* https://www.htpcguides.com/remote-access-transmission-torrent-behind-vpn-linux/
