@@ -21961,7 +21961,7 @@ $ git rm --cached &lt;file&gt;
 ```
 </pre>
 </div>
-<div created="20200511134924609" modified="20200524164349749" tags="[[Raspberry Pi]]" title="Upgrade Raspbian Stretch to Buster">
+<div created="20200511134924609" modified="20200524164700312" tags="[[Raspberry Pi]]" title="Upgrade Raspbian Stretch to Buster">
 <pre>!!! Update Stretch
 
 ```
@@ -21974,6 +21974,7 @@ $ sudo apt dist-upgrade
 ```
 $ sudo sed -i 's/stretch/buster/g' /etc/apt/sources.list    
 $ sudo sed -i 's/stretch/buster/g' /etc/apt/sources.list.d/raspi.list
+$ grep -lnr stretch /etc/apt
 ```
 
 !!! Cleanup, see References for detail
