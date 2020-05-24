@@ -1269,8 +1269,6 @@ Error message and password prompt
 
 <li>Set Wi-Fi static IP address</li>
 
-<li>Setup Bluetooh pairing</li>
-
 <li>Setup Kodi</li>
 
 <li>Setup lxde desktop</li>
@@ -1287,13 +1285,15 @@ Error message and password prompt
 
 <li>Setup SSH key</li>
 
-<li>Setup Tor</li>
+<li>Setup Tor Router</li>
 
 <li>Setup Transmission</li>
 
 <li>Setup USB HDD</li>
 
 <li>Setup USB Webcam</li>
+
+<li>Setup Wi-Fi access point</li>
 
 <li>Shadow DOM</li>
 
@@ -11181,8 +11181,8 @@ Error message and password prompt
 <div created="20200423185634443" modified="20200423185634443" title="$:/state/plugin-info-334910430-$:/core---1812962263">
 <pre>contents</pre>
 </div>
-<div created="20200512083903594" modified="20200520164447424" title="$:/state/showeditpreview">
-<pre>no</pre>
+<div created="20200512083903594" modified="20200524134542592" title="$:/state/showeditpreview">
+<pre>yes</pre>
 </div>
 <div created="20200423185759928" modified="20200510171915567" title="$:/state/sidebar">
 <pre>yes</pre>
@@ -11268,7 +11268,7 @@ Error message and password prompt
 <div created="20200428100850482" modified="20200428111609347" title="$:/state/toc/TableOfContents-Python--118161433">
 <pre>close</pre>
 </div>
-<div created="20200512075010685" modified="20200524123718853" title="$:/state/toc/TableOfContents-Raspberry Pi--118161433">
+<div created="20200512075010685" modified="20200524143350086" title="$:/state/toc/TableOfContents-Raspberry Pi--118161433">
 <pre>close</pre>
 </div>
 <div created="20200524113104720" modified="20200524131124166" title="$:/state/toc/TableOfContents-Regex--118161433">
@@ -11283,7 +11283,7 @@ Error message and password prompt
 <div created="20200520090129345" modified="20200520090133416" title="$:/state/toc/TableOfContents-Ssl--118161433">
 <pre>close</pre>
 </div>
-<div created="20200427165444695" modified="20200524123721008" title="$:/state/toc/TableOfContents-TiddlyWiki--118161433">
+<div created="20200427165444695" modified="20200524143351686" title="$:/state/toc/TableOfContents-TiddlyWiki--118161433">
 <pre>close</pre>
 </div>
 <div created="20200426101657879" modified="20200426101738390" title="$:/state/toc/TableOfContents-Ubuntu--118161433">
@@ -11343,7 +11343,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200524131125188" list="Security" modified="20200524131125188" title="$:/StoryList">
+<div created="20200524131125188" list="ToDo" modified="20200524134421543" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200511101855364" title="$:/temp/advancedsearch">
@@ -19860,9 +19860,6 @@ search example.com
 * DNS 2: 8.8.4.4
 </pre>
 </div>
-<div created="20200512164400145" modified="20200512164418304" tags="[[Raspberry Pi]] task" title="Setup Bluetooh pairing">
-<pre></pre>
-</div>
 <div created="20200512162917024" modified="20200512162930372" tags="[[Raspberry Pi]]" title="Setup Kodi">
 <pre>https://kodi.wiki/view/HOW-TO:Install_Kodi_on_Raspberry_Pi#Raspbian
 https://www.makeuseof.com/tag/kodi-raspberry-pi-media-center/
@@ -20241,7 +20238,7 @@ Check permissions if is not possible to login using the ssh keys:
 ```
 </pre>
 </div>
-<div created="20200512164436885" modified="20200524123712688" tags="[[Raspberry Pi]] Android task" title="Setup Tor">
+<div created="20200512164436885" modified="20200524142704416" tags="[[Raspberry Pi]] Android task" title="Setup Tor Router">
 <pre>https://0ut3r.space/2020/05/16/tor-router/
 
 https://www.torbox.ch/
@@ -20487,6 +20484,27 @@ Import[&quot;image.jpg&quot;]
 Import[&quot;!fswebcam --no-banner -&quot;, &quot;JPG&quot;]
 ```
 </pre>
+</div>
+<div created="20200524134424225" modified="20200524143211175" tags="[[Raspberry Pi]]" title="Setup Wi-Fi access point">
+<pre>!! Routed AP
+
+* https://www.raspberrypi.org/documentation/configuration/wireless/access-point-routed.md
+* https://howtoraspberrypi.com/create-a-wi-fi-hotspot-in-less-than-10-minutes-with-pi-raspberry/
+* https://learn.sparkfun.com/tutorials/setting-up-a-raspberry-pi-3-as-an-access-point/all
+
+!!! Usage
+
+* [[Setup Tor Router]]
+
+
+!! Bridged AP
+
+* https://www.raspberrypi.org/documentation/configuration/wireless/access-point-bridged.md
+
+
+!! Additions
+
+https://raspap.com/ https://github.com/billz/raspap-webgui</pre>
 </div>
 <div created="20200511125507619" modified="20200512091654136" tags="[[Web Components]]" title="Shadow DOM">
 <pre>[ext[Micro Frontends in Action | pdfx://~/anki2/mfia.pdf::100]]
@@ -21224,7 +21242,7 @@ $ adb pull /sdcard/screen.png
 
 https://github.com/termux/termux-packages/issues/2556</pre>
 </div>
-<div created="20200427173158521" list="[[Read &quot;Working with TW&quot;]] [[Read &quot;Customise TW&quot;]] [[Read &quot;Features&quot;]] [[Read &quot;Editions&quot;]] [[Read &quot;Platforms&quot;]] [[Grokking Simplicity]] [[Android Debug Bridge]] [[Android Wakelocks]] [[Setup Tor]] [[Setup Bluetooh pairing]] [[ES6 Javascript Improved]] [[Add tar info]] [[Read &quot;Reference&quot;]] [[Read &quot;TW dev&quot;]] [[Make wiki work offline on Android]] [[Blog as man pages. Use webasembly and termjs]] [[ES6 in Motion]] [[Node.js in Motion]] [[Node.js book]] [[Mastering REST APIs in Node.js]] [[Graphql in motion]] [[Promet. Up and running]] Robots.txt [[Android phone as Raspberry Pi display]] [[Building the Web of Things]] [[Introduction to Rust]] [[Property Based Testing with PropEr]] [[Rust in Action]] [[Stoken on Android with USB static IP]] [[Understanding ECMAScript 6]] [[Web Components in Action]]" modified="20200521080913490" title="task">
+<div created="20200427173158521" list="[[Read &quot;Working with TW&quot;]] [[Read &quot;Customise TW&quot;]] [[Read &quot;Features&quot;]] [[Read &quot;Editions&quot;]] [[Read &quot;Platforms&quot;]] [[Grokking Simplicity]] [[Android Debug Bridge]] [[Android Wakelocks]] [[Setup Tor Router]] [[Setup Bluetooh pairing]] [[ES6 Javascript Improved]] [[Add tar info]] [[Read &quot;Reference&quot;]] [[Read &quot;TW dev&quot;]] [[Make wiki work offline on Android]] [[Blog as man pages. Use webasembly and termjs]] [[ES6 in Motion]] [[Node.js in Motion]] [[Node.js book]] [[Mastering REST APIs in Node.js]] [[Graphql in motion]] [[Promet. Up and running]] Robots.txt [[Android phone as Raspberry Pi display]] [[Building the Web of Things]] [[Introduction to Rust]] [[Property Based Testing with PropEr]] [[Rust in Action]] [[Stoken on Android with USB static IP]] [[Understanding ECMAScript 6]] [[Web Components in Action]]" modified="20200524142704430" title="task">
 <pre></pre>
 </div>
 <div created="20200425161848192" modified="20200425161940628" tags="Bash Linux" title="TCP client (w/o netcat)">
