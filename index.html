@@ -11364,7 +11364,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200525081759335" list="[[Android phone as Raspberry Pi display]] [[Enable serial console]]" modified="20200525090856601" title="$:/StoryList">
+<div created="20200525081759335" list="[[Termux API]] Termux [[Termux USB]] [[Android phone as Raspberry Pi display]] [[Enable serial console]]" modified="20200525114442070" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200511101855364" title="$:/temp/advancedsearch">
@@ -21373,21 +21373,25 @@ $ exec 3&lt;&gt;/dev/tcp/localhost/1234 || (echo &quot;Can't connect&quot; ; exi
 $ echo &quot;Hello&quot; &gt;&amp;3
 ```</pre>
 </div>
-<div created="20200511134302365" modified="20200518082145804" tags="Android" title="Termux">
-<pre>* https://wiki.termux.com/wiki/Main_Page
-* https://play.google.com/store/apps/details?id=com.onetaplearning.termuxtutorial
+<div created="20200511134302365" modified="20200525114712884" tags="Android" title="Termux">
+<pre>!! Install
+
+https://play.google.com/store/apps/details?id=com.termux
+
+!! Referenes
+
+* https://wiki.termux.com/wiki/Main_Page
 * https://wiki.termux.com/wiki/FAQ
 
-https://play.google.com/store/apps/details?id=com.termux</pre>
+!! See also
+
+* https://play.google.com/store/apps/details?id=com.onetaplearning.termuxtutorial
+</pre>
 </div>
-<div created="20200518081921221" modified="20200518082143926" tags="Android" title="Termux API">
-<pre>Install [[Termux]]
-
-Install Termux:API package
-
-* https://play.google.com/store/apps/details?id=com.termux.api
-
-* https://wiki.termux.com/wiki/Termux:API
+<div created="20200518081921221" modified="20200525115906336" tags="Android" title="Termux API">
+<pre>* Install [[Termux]]
+* Install https://play.google.com/store/apps/details?id=com.termux.api
+* Install termux-api 
 
 ```
 $ pkg install termux-api
@@ -21398,7 +21402,9 @@ $ termux-torch on
 $ termux-torch off
 ```
 
-</pre>
+!! References
+
+* https://wiki.termux.com/wiki/Termux:API</pre>
 </div>
 <div created="20200518081401641" modified="20200518095646741" tags="Android" title="Termux HowTo">
 <pre>* run termux-torch via ssh or adb
@@ -21428,8 +21434,31 @@ https://glow.li/technology/2015/11/06/run-an-ssh-server-on-your-android-with-ter
 https://hackingarise.com/how-to-make-a-tor-ssl-hidden-service-on-termux/
 </pre>
 </div>
-<div created="20200518080849970" modified="20200518080857251" tags="Android" title="Termux USB">
-<pre>* https://wiki.termux.com/wiki/Termux-usb</pre>
+<div created="20200518080849970" modified="20200525120302076" tags="Android" title="Termux USB">
+<pre>* Install [[Termux API]]
+* Install https://wiki.termux.com/wiki/Termux-usb
+
+```
+$ pkg install termux-usb
+```
+
+* Enable OTG (host) mode and insert a USB device:
+
+```
+$ termux-usb -l
+[
+  &quot;/dev/bus/usb/001/002&quot;
+]
+```
+
+* Request access permission:
+
+```
+termux-usb -r /dev/bus/usb/001/002
+Access granted
+```
+
+</pre>
 </div>
 <div created="20200428113049717" modified="20200428113128121" tags="Linux" title="Test WebSocket using curl">
 <pre>Sec-WebSocket-Key header containing base64-encoded random bytes to prevent a caching proxy from re-sending a previous WebSocket conversation
