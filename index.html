@@ -11364,7 +11364,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200525081759335" list="[[Android phone as Raspberry Pi display]] [[Enable serial console]]" modified="20200525081811469" title="$:/StoryList">
+<div created="20200525081759335" list="[[Android phone as Raspberry Pi display]] [[Enable serial console]]" modified="20200525090856601" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200511101855364" title="$:/temp/advancedsearch">
@@ -14148,11 +14148,51 @@ pdb.help()
 <pre>Settings -&gt; About phone -&gt; Tap on Build number 7 times.
 </pre>
 </div>
-<div created="20200511135005753" modified="20200524182843989" tags="[[Raspberry Pi]]" title="Enable serial console">
-<pre>* https://learn.adafruit.com/adafruits-raspberry-pi-lesson-5-using-a-console-cable/overview
-* https://play.google.com/store/apps/details?id=de.kai_morich.serial_usb_terminal (How to make it work?)
+<div created="20200511135005753" modified="20200525094431956" tags="[[Raspberry Pi]]" title="Enable serial console">
+<pre>!! Configuration
+
+/boot/cmdline.txt
+
+```
+console=serial0,115200
+```
+
+/boo/config.txt
+
+```
+# Enable Serial Debug
+enable_uart=1
+```
+
+!! Setup
+
+# The ''Red'' lead to 5V (Pin #2) @@color:red;If power via the cable@@
+# The ''Black'' lead to GND (Pin #6)
+# The ''White'' lead to TXD0/GPIO14  (Pin #8)
+# The ''Green'' lead to RXD0/GPIO15  (Pin #10)
+
+* [ext[GPIO Layout | openx://~/refs/rpi/rpi3-gpio.png]]
+
+!! Discovery
+
+```
+$ sudo dmesg -w
+...
+[ 8231.882805] usb 1-2.2: pl2303 converter now attached to ttyUSB0
+...
+```
+
+!! Connection
+```
+sudo screen /dev/ttyUSB0 115200
+```
 
 Try use [[Tmux]] instead of screen
+
+!! References
+
+* https://learn.adafruit.com/adafruits-raspberry-pi-lesson-5-using-a-console-cable/overview
+* https://play.google.com/store/apps/details?id=de.kai_morich.serial_usb_terminal (How to make it work?)
 
 </pre>
 </div>
