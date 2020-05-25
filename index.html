@@ -11366,7 +11366,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200525081759335" list="[[Termux SSH]] [[Termux API]] Termux [[Termux USB]] [[Draft of 'Android phone as Raspberry Pi display']]" modified="20200525121333337" title="$:/StoryList">
+<div created="20200525081759335" list="[[Force SSH password authentication]] [[Termux SSH]] [[Termux API]] Termux [[Termux USB]] [[Draft of 'Android phone as Raspberry Pi display']]" modified="20200525124901364" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200511101855364" title="$:/temp/advancedsearch">
@@ -12380,8 +12380,8 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200524182849902" title="$:/temp/search">
-<pre></pre>
+<div created="20200422190456346" modified="20200525124855548" title="$:/temp/search">
+<pre>ssh</pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
 <pre>loaded</pre>
@@ -21459,16 +21459,45 @@ $ termux-torch off
 
 * control android from pc https://0ut3r.space/2020/03/30/control-smartphone/</pre>
 </div>
-<div created="20200518081445601" modified="20200518081906552" tags="Android" title="Termux SSH">
-<pre>https://wiki.termux.com/wiki/Remote_Access
+<div created="20200518081445601" modified="20200525125535069" tags="Android" title="Termux SSH">
+<pre>!! [[Termux]]
 
-https://medium.com/@baradhiren07/access-termux-from-your-laptop-using-usb-2ceb00c83469
+* Install SSH server
 
-https://medium.com/@baradhiren07/accessing-termux-from-putty-c10512ca76f1
+```
+$ pkg install openssh
+```
 
-https://ibnuhx.com/remote-ssh-to-android-termux
+* Password authentication
 
-https://glow.li/technology/2015/11/06/run-an-ssh-server-on-your-android-with-termux/</pre>
+```
+$ passwd
+New password:
+Retype new password:
+New password was successfully set.
+```
+
+* Start SSH server
+```
+$ sshd -Dd
+...
+Server listening on 0.0.0.0 port 8022
+```
+
+!! Desktop
+
+```
+$ ssh -F /dev/null -o PubkeyAuthentication=no -p 8022 192.168.100.127
+```
+
+
+!! References
+
+* https://wiki.termux.com/wiki/Remote_Access
+* https://medium.com/@baradhiren07/access-termux-from-your-laptop-using-usb-2ceb00c83469
+* https://medium.com/@baradhiren07/accessing-termux-from-putty-c10512ca76f1
+* https://ibnuhx.com/remote-ssh-to-android-termux
+* https://glow.li/technology/2015/11/06/run-an-ssh-server-on-your-android-with-termux/</pre>
 </div>
 <div created="20200518081804941" modified="20200518081847284" tags="Android" title="Termux Tor">
 <pre>https://wiki.termux.com/wiki/Bypassing_NAT
