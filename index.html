@@ -11366,7 +11366,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200525081759335" list="[[Force SSH password authentication]] [[Termux SSH]] [[Termux API]] Termux [[Termux USB]] [[Draft of 'Android phone as Raspberry Pi display']]" modified="20200525124901364" title="$:/StoryList">
+<div created="20200525081759335" list="[[Termux SSH]] [[Termux API]] Termux [[Termux USB]] [[Draft of 'Android phone as Raspberry Pi display']]" modified="20200525132848961" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200511101855364" title="$:/temp/advancedsearch">
@@ -12380,8 +12380,8 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200525124855548" title="$:/temp/search">
-<pre>ssh</pre>
+<div created="20200422190456346" modified="20200525134920114" title="$:/temp/search">
+<pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
 <pre>loaded</pre>
@@ -16717,11 +16717,11 @@ $ ssh -v -oKexAlgorithms=diffie-hellman-group-exchange-sha256 git@github.com
 ```
 </pre>
 </div>
-<div created="20200424092610041" modified="20200424092702181" tags="Ssh" title="Force SSH password authentication">
+<div created="20200424092610041" modified="20200525134817660" tags="Ssh" title="Force SSH password authentication">
 <pre>https://unix.stackexchange.com/questions/15138/how-to-force-ssh-client-to-use-only-password-auth
 
 ```
-$ ssh -F /dev/null -o PubkeyAuthentication=no pi@printerpi
+$ ssh -F /dev/null -o PubkeyAuthentication=no USER@HOST
 ```
 
 </pre>
@@ -20357,15 +20357,15 @@ sudo dd if=retropie-4.3-rpi2_rpi3.img of=/dev/mmcblk0 bs=4M conv=fsync status=pr
 ```
 </pre>
 </div>
-<div created="20200425115702390" modified="20200518155658082" tags="Ssh" title="Setup SSH key">
+<div created="20200425115702390" modified="20200525134845216" tags="Ssh" title="Setup SSH key">
 <pre>```
 $ ssh-keygen -t rsa -b 4096 # use empty passphrase
-$ ssh-copy-id user@123.45.67.89
+$ ssh-copy-id USER@HOST
 ```
 or if ssh-copy-id isn't available
 
 ```
-$ cat ~/.ssh/id_rsa.pub | ssh user@123.45.56.78 &quot;cat &gt;&gt; ~/.ssh/authorized_keys&quot;
+$ cat ~/.ssh/id_rsa.pub | ssh USER@HOST &quot;cat &gt;&gt; ~/.ssh/authorized_keys&quot;
 ```
 
 Check permissions if is not possible to login using the ssh keys:
@@ -21459,13 +21459,22 @@ $ termux-torch off
 
 * control android from pc https://0ut3r.space/2020/03/30/control-smartphone/</pre>
 </div>
-<div created="20200518081445601" modified="20200525125535069" tags="Android" title="Termux SSH">
+<div created="20200518081445601" modified="20200525134945070" tags="Android" title="Termux SSH">
 <pre>!! [[Termux]]
 
 * Install SSH server
 
 ```
 $ pkg install openssh
+```
+
+* See SSH server config
+
+```
+$ cat $PREFIX/etc/ssh/sshd_config
+PrintMotd yes
+PasswordAuthentication yes
+Subsystem sftp /data/data/com.termux/files/usr/libexec/sftp-server
 ```
 
 * Password authentication
@@ -21477,26 +21486,43 @@ Retype new password:
 New password was successfully set.
 ```
 
-* Start SSH server
+* Start SSH server in debug mode (one connection only)
 ```
-$ sshd -Dd
+$ sshd -d
 ...
 Server listening on 0.0.0.0 port 8022
 ```
 
+* Start SSH server in foreground mode
+```
+$ sshd -D
+```
 !! Desktop
 
+* Connect using Password
+
 ```
-$ ssh -F /dev/null -o PubkeyAuthentication=no -p 8022 192.168.100.127
+$ ssh -F /dev/null -o PubkeyAuthentication=no -p 8022 HOST
 ```
 
+* Copy Public key using Password
+
+```
+$ cat ~/.ssh/id_rsa.pub | ssh -F /dev/null -o PubkeyAuthentication=no -p 8022 HOST &quot;cat &gt;&gt; ~/.ssh/authorized_keys&quot;
+```
+
+* Connect using Public key
+
+```
+$ ssh -p 8022 HOST
+```
+
+* Disable Password authentication
 
 !! References
 
 * https://wiki.termux.com/wiki/Remote_Access
 * https://medium.com/@baradhiren07/access-termux-from-your-laptop-using-usb-2ceb00c83469
-* https://medium.com/@baradhiren07/accessing-termux-from-putty-c10512ca76f1
-* https://ibnuhx.com/remote-ssh-to-android-termux
 * https://glow.li/technology/2015/11/06/run-an-ssh-server-on-your-android-with-termux/</pre>
 </div>
 <div created="20200518081804941" modified="20200518081847284" tags="Android" title="Termux Tor">
