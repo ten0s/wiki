@@ -641,8 +641,6 @@ Error message and password prompt
 
 <li>Connect to gmail using SSL</li>
 
-<li>Connect to serial console</li>
-
 <li>Convert bases in terminal</li>
 
 <li>Convert binary to hexdump</li>
@@ -782,6 +780,8 @@ Error message and password prompt
 <li>Enable debugger by request</li>
 
 <li>Enable Developer options</li>
+
+<li>Enable serial console</li>
 
 <li>Enable USB debugging</li>
 
@@ -11364,7 +11364,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200525081759335" list="[[Android phone as Raspberry Pi display]] [[Connect to serial console]]" modified="20200525090856601" title="$:/StoryList">
+<div created="20200525081759335" list="[[Android phone as Raspberry Pi display]] [[Enable serial console]]" modified="20200525090856601" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200511101855364" title="$:/temp/advancedsearch">
@@ -12688,8 +12688,35 @@ https://www.makeuseof.com/tag/advanced-android-hacks-dont-need-root/
 
 https://stackoverflow.com/questions/25477424/adb-shell-su-works-but-adb-root-does-not</pre>
 </div>
-<div created="20200512164516029" modified="20200524112910445" tags="Android [[Raspberry Pi]] task" title="Android phone as Raspberry Pi display">
-<pre>Use tmux or screen via termux-usb wrapped script
+<div created="20200512164516029" modified="20200525104102806" tags="Android [[Raspberry Pi]] task" title="Android phone as Raspberry Pi display">
+<pre>!! Serial USB Terminal
+
+* Install https://play.google.com/store/apps/details?id=de.kai_morich.serial_usb_terminal
+* Run
+* Settings -&gt; Serial -&gt; Baud rate: 115200, Data bits: 8, Parity: None, Stop bits: 1
+* Settings -&gt; Terminal -&gt; Display mode: Terminal
+* Settings -&gt; Send -&gt; Clear input in send: On
+* USB Devices 
+
+```
+Serial device - PL2303
+Vendor   ID: 067B Name: Prolific
+Product: ID: 2303 Name: PL2303
+```
+
+* Select
+
+```
+Connected to PL2303 device
+```
+
+* Press Enter
+
+```
+pi@raspberrypi:~$
+```
+
+Use tmux or screen via termux-usb wrapped script
 
 [[Enable serial console]]</pre>
 </div>
@@ -13229,54 +13256,6 @@ Helo
 .
 quit
 ```
-</pre>
-</div>
-<div created="20200511135005753" modified="20200525094643292" tags="[[Raspberry Pi]]" title="Connect to serial console">
-<pre>!! Configuration
-
-/boot/cmdline.txt
-
-```
-console=serial0,115200
-```
-
-/boo/config.txt
-
-```
-# Enable Serial Debug
-enable_uart=1
-```
-
-!! Setup
-
-# The ''Red'' lead to 5V (Pin #2) @@color:red;If power via the cable@@
-# The ''Black'' lead to GND (Pin #6)
-# The ''White'' lead to TXD0/GPIO14  (Pin #8)
-# The ''Green'' lead to RXD0/GPIO15  (Pin #10)
-
-* [ext[GPIO Layout | openx://~/refs/rpi/rpi3-gpio.png]]
-
-!! Discovery
-
-```
-$ sudo dmesg -w
-...
-[ 8231.882805] usb 1-2.2: pl2303 converter now attached to ttyUSB0
-...
-```
-
-!! Connection
-```
-sudo screen /dev/ttyUSB0 115200
-```
-
-Try use [[Tmux]] instead of screen
-
-!! References
-
-* https://learn.adafruit.com/adafruits-raspberry-pi-lesson-5-using-a-console-cable/overview
-* https://play.google.com/store/apps/details?id=de.kai_morich.serial_usb_terminal (How to make it work?)
-
 </pre>
 </div>
 <div created="20200425124418046" modified="20200425124502054" tags="Bash" title="Convert bases in terminal">
@@ -14194,6 +14173,51 @@ pdb.help()
 </div>
 <div created="20200423192318647" modified="20200517165538460" tags="Android" title="Enable Developer options">
 <pre>Settings -&gt; About phone -&gt; Tap on Build number 7 times.
+</pre>
+</div>
+<div created="20200511135005753" modified="20200525102902939" tags="[[Raspberry Pi]]" title="Enable serial console">
+<pre>!! Configuration
+
+/boot/cmdline.txt
+
+```
+console=serial0,115200
+```
+
+/boo/config.txt
+
+```
+# Enable Serial Debug
+enable_uart=1
+```
+
+!! Setup
+
+# The ''Red'' lead to 5V (Pin #2) @@color:red;If power via the cable@@
+# The ''Black'' lead to GND (Pin #6)
+# The ''White'' lead to TXD0/GPIO14  (Pin #8)
+# The ''Green'' lead to RXD0/GPIO15  (Pin #10)
+
+* [ext[GPIO Layout | openx://~/refs/rpi/rpi3-gpio.png]]
+
+!! Discovery
+
+```
+$ sudo dmesg -w
+...
+[ 8231.882805] usb 1-2.2: pl2303 converter now attached to ttyUSB0
+...
+```
+
+!! Connection
+```
+sudo screen /dev/ttyUSB0 115200
+```
+
+!! References
+
+* https://learn.adafruit.com/adafruits-raspberry-pi-lesson-5-using-a-console-cable/overview
+
 </pre>
 </div>
 <div created="20200517134536247" modified="20200517134747742" tags="Android" title="Enable USB debugging">
