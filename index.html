@@ -763,8 +763,6 @@ Error message and password prompt
 
 <li>Download video from Youtube</li>
 
-<li>Draft of 'Android phone as Raspberry Pi display'</li>
-
 <li>DraggableTaskTemplate</li>
 
 <li>Dump network traffic on specific port</li>
@@ -11366,7 +11364,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200525081759335" list="[[Termux SSH]] [[Termux API]] Termux [[Termux USB]] [[Draft of 'Android phone as Raspberry Pi display']]" modified="20200525132848961" title="$:/StoryList">
+<div created="20200525081759335" list="[[Termux USB]] [[Android phone as Raspberry Pi display]]" modified="20200525132848961" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200511101855364" title="$:/temp/advancedsearch">
@@ -12690,8 +12688,12 @@ https://www.makeuseof.com/tag/advanced-android-hacks-dont-need-root/
 
 https://stackoverflow.com/questions/25477424/adb-shell-su-works-but-adb-root-does-not</pre>
 </div>
-<div created="20200512164516029" modified="20200525104102806" tags="Android [[Raspberry Pi]] task" title="Android phone as Raspberry Pi display">
-<pre>!! Serial USB Terminal
+<div created="20200512164516029" modified="20200525160032394" tags="Android [[Raspberry Pi]] task" title="Android phone as Raspberry Pi display">
+<pre>!! Setup
+
+[[Enable serial console]]
+
+!! Serial USB Terminal
 
 * Install https://play.google.com/store/apps/details?id=de.kai_morich.serial_usb_terminal
 * Run
@@ -12718,9 +12720,13 @@ Connected to PL2303 device
 pi@raspberrypi:~$
 ```
 
+!! Termux USB
+
+* Install [[Termux USB]]
+
 Use tmux or screen via termux-usb wrapped script
 
-[[Enable serial console]]</pre>
+</pre>
 </div>
 <div created="20200520090243977" modified="20200520090329672" tags="Android task" title="Android Wakelocks">
 <pre>https://www.phonearena.com/news/What-are-wakelocks-how-they-affect-the-battery-life-of-your-Android-device-and-how-to-Greenify-them_id58739</pre>
@@ -14041,46 +14047,6 @@ $ curl -JO URL
 <pre>```
 $ youtube-dl -f bestvideo+bestaudio FILE_OR_PLAYLIST_URL
 ```</pre>
-</div>
-<div created="20200512164516029" draft.of="Android phone as Raspberry Pi display" draft.title="Android phone as Raspberry Pi display" modified="20200525120843630" tags="Android [[Raspberry Pi]] task" title="Draft of 'Android phone as Raspberry Pi display'">
-<pre>!! Setup
-
-[[Enable serial console]]
-
-!! Serial USB Terminal
-
-* Install https://play.google.com/store/apps/details?id=de.kai_morich.serial_usb_terminal
-* Run
-* Settings -&gt; Serial -&gt; Baud rate: 115200, Data bits: 8, Parity: None, Stop bits: 1
-* Settings -&gt; Terminal -&gt; Display mode: Terminal
-* Settings -&gt; Send -&gt; Clear input in send: On
-* USB Devices 
-
-```
-Serial device - PL2303
-Vendor   ID: 067B Name: Prolific
-Product: ID: 2303 Name: PL2303
-```
-
-* Select
-
-```
-Connected to PL2303 device
-```
-
-* Press Enter
-
-```
-pi@raspberrypi:~$
-```
-
-!! Termux USB
-
-* Install [[Termux USB]]
-
-Use tmux or screen via termux-usb wrapped script
-
-</pre>
 </div>
 <div created="20180307153530187" modified="20200427171503827" tags="TiddlyWiki" title="DraggableTaskTemplate" type="text/vnd.tiddlywiki">
 <pre>&lt;$checkbox tag=&quot;done&quot;&gt; &lt;$link to={{!!title}}&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt;&lt;/$checkbox&gt;</pre>
@@ -21531,7 +21497,7 @@ $ ssh -p 8022 HOST
 https://hackingarise.com/how-to-make-a-tor-ssl-hidden-service-on-termux/
 </pre>
 </div>
-<div created="20200518080849970" modified="20200525120726449" tags="Android" title="Termux USB">
+<div created="20200518080849970" modified="20200525160015749" tags="Android" title="Termux USB">
 <pre>!! Install 
 
 * [[Termux API]]
@@ -21543,7 +21509,7 @@ $ pkg install termux-usb
 
 !! List devices
 
-* Enable OTG (host) mode and insert a USB device:
+* Enable OTG (host) mode and insert a USB device
 
 ```
 $ termux-usb -l
@@ -21552,7 +21518,7 @@ $ termux-usb -l
 ]
 ```
 
-* Request access permission:
+* Request access permission
 
 ```
 $ termux-usb -r /dev/bus/usb/001/002
