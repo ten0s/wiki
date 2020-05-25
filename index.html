@@ -763,6 +763,8 @@ Error message and password prompt
 
 <li>Download video from Youtube</li>
 
+<li>Draft of 'Android phone as Raspberry Pi display'</li>
+
 <li>DraggableTaskTemplate</li>
 
 <li>Dump network traffic on specific port</li>
@@ -11364,7 +11366,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200525081759335" list="[[Termux API]] Termux [[Termux USB]] [[Android phone as Raspberry Pi display]] [[Enable serial console]]" modified="20200525114442070" title="$:/StoryList">
+<div created="20200525081759335" list="[[Termux SSH]] [[Termux API]] Termux [[Termux USB]] [[Draft of 'Android phone as Raspberry Pi display']]" modified="20200525121333337" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200511101855364" title="$:/temp/advancedsearch">
@@ -14039,6 +14041,46 @@ $ curl -JO URL
 <pre>```
 $ youtube-dl -f bestvideo+bestaudio FILE_OR_PLAYLIST_URL
 ```</pre>
+</div>
+<div created="20200512164516029" draft.of="Android phone as Raspberry Pi display" draft.title="Android phone as Raspberry Pi display" modified="20200525120843630" tags="Android [[Raspberry Pi]] task" title="Draft of 'Android phone as Raspberry Pi display'">
+<pre>!! Setup
+
+[[Enable serial console]]
+
+!! Serial USB Terminal
+
+* Install https://play.google.com/store/apps/details?id=de.kai_morich.serial_usb_terminal
+* Run
+* Settings -&gt; Serial -&gt; Baud rate: 115200, Data bits: 8, Parity: None, Stop bits: 1
+* Settings -&gt; Terminal -&gt; Display mode: Terminal
+* Settings -&gt; Send -&gt; Clear input in send: On
+* USB Devices 
+
+```
+Serial device - PL2303
+Vendor   ID: 067B Name: Prolific
+Product: ID: 2303 Name: PL2303
+```
+
+* Select
+
+```
+Connected to PL2303 device
+```
+
+* Press Enter
+
+```
+pi@raspberrypi:~$
+```
+
+!! Termux USB
+
+* Install [[Termux USB]]
+
+Use tmux or screen via termux-usb wrapped script
+
+</pre>
 </div>
 <div created="20180307153530187" modified="20200427171503827" tags="TiddlyWiki" title="DraggableTaskTemplate" type="text/vnd.tiddlywiki">
 <pre>&lt;$checkbox tag=&quot;done&quot;&gt; &lt;$link to={{!!title}}&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt;&lt;/$checkbox&gt;</pre>
@@ -21434,13 +21476,17 @@ https://glow.li/technology/2015/11/06/run-an-ssh-server-on-your-android-with-ter
 https://hackingarise.com/how-to-make-a-tor-ssl-hidden-service-on-termux/
 </pre>
 </div>
-<div created="20200518080849970" modified="20200525120302076" tags="Android" title="Termux USB">
-<pre>* Install [[Termux API]]
-* Install https://wiki.termux.com/wiki/Termux-usb
+<div created="20200518080849970" modified="20200525120726449" tags="Android" title="Termux USB">
+<pre>!! Install 
+
+* [[Termux API]]
+* termux-usb
 
 ```
 $ pkg install termux-usb
 ```
+
+!! List devices
 
 * Enable OTG (host) mode and insert a USB device:
 
@@ -21454,11 +21500,13 @@ $ termux-usb -l
 * Request access permission:
 
 ```
-termux-usb -r /dev/bus/usb/001/002
+$ termux-usb -r /dev/bus/usb/001/002
 Access granted
 ```
 
-</pre>
+!! References
+
+* https://wiki.termux.com/wiki/Termux-usb</pre>
 </div>
 <div created="20200428113049717" modified="20200428113128121" tags="Linux" title="Test WebSocket using curl">
 <pre>Sec-WebSocket-Key header containing base64-encoded random bytes to prevent a caching proxy from re-sending a previous WebSocket conversation
