@@ -11371,7 +11371,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200525081759335" list="[[Termux USB]] [[Android phone as Raspberry Pi display]]" modified="20200525161810622" title="$:/StoryList">
+<div created="20200525081759335" list="[[Termux USB]]" modified="20200525161810622" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200511101855364" title="$:/temp/advancedsearch">
@@ -21515,7 +21515,7 @@ https://glow.li/technology/2016/9/20/access-termux-via-usb/</pre>
 https://hackingarise.com/how-to-make-a-tor-ssl-hidden-service-on-termux/
 </pre>
 </div>
-<div created="20200518080849970" modified="20200525160015749" tags="Android" title="Termux USB">
+<div created="20200518080849970" modified="20200525173546087" tags="Android" title="Termux USB">
 <pre>!! Install 
 
 * [[Termux API]]
@@ -21545,7 +21545,66 @@ Access granted
 
 !! References
 
-* https://wiki.termux.com/wiki/Termux-usb</pre>
+* https://wiki.termux.com/wiki/Termux-usb
+
+https://github.com/termux/termux-packages/issues/1145
+
+screen-wrap.sh
+
+```
+#!/bin/bash
+
+ls -l /dev/fd/
+
+# screen /dev/fd/$1 115200
+cat /dev/fd/$1
+# minicom --device /dev/fd/$1
+
+ls -l /dev/fd/
+```
+
+```
+$ termux-usb -e ./screen-wrap.sh /dev/bus/usb/001/005
+total 0
+lrwx------ 1 u0_a129 u0_a129 64 May 25 20:35 0 -&gt; /dev/pts/13
+lrwx------ 1 u0_a129 u0_a129 64 May 25 20:35 1 -&gt; /dev/pts/13
+lrwx------ 1 u0_a129 u0_a129 64 May 25 20:35 2 -&gt; /dev/pts/13
+lr-x------ 1 u0_a129 u0_a129 64 May 25 20:35 3 -&gt; /proc/395/fd
+lrwx------ 1 u0_a129 u0_a129 64 May 25 20:35 7 -&gt; /dev/bus/usb/001/005
+cat: /dev/fd/7: Permission denied
+total 0
+lrwx------ 1 u0_a129 u0_a129 64 May 25 20:35 0 -&gt; /dev/pts/13
+lrwx------ 1 u0_a129 u0_a129 64 May 25 20:35 1 -&gt; /dev/pts/13
+lrwx------ 1 u0_a129 u0_a129 64 May 25 20:35 2 -&gt; /dev/pts/13
+lr-x------ 1 u0_a129 u0_a129 64 May 25 20:35 3 -&gt; /proc/397/fd
+lrwx------ 1 u0_a129 u0_a129 64 May 25 20:35 7 -&gt; /dev/bus/usb/001/005
+```
+
+!! Another Term
+
+* https://play.google.com/store/apps/details?id=green_green_avk.anotherterm
+* https://github.com/green-green-avk/AnotherTerm
+* https://github.com/felHR85/UsbSerial
+
+!! Serial USB Terminal
+
+* https://play.google.com/store/apps/details?id=de.kai_morich.serial_usb_terminal
+* https://github.com/kai-morich/SimpleUsbTerminal
+* https://github.com/mik3y/usb-serial-for-android
+
+
+https://www.allaboutcircuits.com/projects/communicate-with-your-arduino-through-android/
+
+https://www.instructables.com/id/Arduin-Adroid-USB-Serial-Communication/
+
+https://github.com/hutorny/usbuart
+
+https://mattias.niklewski.com/2014/03/binder.html
+
+https://github.com/mcr/Android-HelloWorldService
+
+https://github.com/hunterli/remserial
+</pre>
 </div>
 <div created="20200525161401777" modified="20200525161420406" tags="Android" title="Termux Widget">
 <pre>https://play.google.com/store/apps/details?id=com.termux.widget&amp;hl=en</pre>
