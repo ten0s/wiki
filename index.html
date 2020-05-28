@@ -657,6 +657,8 @@ Error message and password prompt
 
 <li>Copy only first bytes from file</li>
 
+<li>Copy-on-write</li>
+
 <li>Cover</li>
 
 <li>CPU Steal time</li>
@@ -13348,6 +13350,21 @@ $ echo 303132333435 | xxd -r -p
 <div created="20200425130546232" modified="20200425130605887" tags="Linux" title="Copy only first bytes from file">
 <pre>```
 dd if=calls.bin of=calls3.bin bs=7744 count=1
+```
+
+</pre>
+</div>
+<div created="20200528092105538" modified="20200528092355232" tags="Definition Javascript" title="Copy-on-write">
+<pre># Make a copy
+# Modify the copy
+# Return the copy
+
+```
+const new_array = Array.copy(old_array);
+```
+
+```
+const new_obj = Object.assign({}, old_obj);
 ```
 
 </pre>
