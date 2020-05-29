@@ -625,6 +625,8 @@ Error message and password prompt
 
 <li>Check SSH key</li>
 
+<li>Chrome version</li>
+
 <li>Clear Chrome internal DNS</li>
 
 <li>Clears the screen</li>
@@ -982,6 +984,10 @@ Error message and password prompt
 <li>IP address</li>
 
 <li>Javascript</li>
+
+<li>Javascript compatibility table</li>
+
+<li>Javascript courses</li>
 
 <li>Javascript Links</li>
 
@@ -11403,7 +11409,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200528193754050" list="ToDo" modified="20200528193758497" title="$:/StoryList">
+<div created="20200529073910240" list="ToDo [[ES6 in Motion]]" modified="20200529084336364" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200528082144209" title="$:/temp/advancedsearch">
@@ -11422,7 +11428,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;https://ten0s.github.io/wiki/&quot;
+            &quot;text&quot;: &quot;https://ten0s.github.io/wiki/index.html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -11442,7 +11448,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/wiki/&quot;
+            &quot;text&quot;: &quot;/wiki/index.html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -11454,11 +11460,11 @@ Error message and password prompt
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;360&quot;
+            &quot;text&quot;: &quot;1920&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;640&quot;
+            &quot;text&quot;: &quot;1080&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -12417,7 +12423,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200528083319640" title="$:/temp/search">
+<div created="20200422190456346" modified="20200529084412533" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -13180,8 +13186,15 @@ $ ssh -T git@github.com
 ```
 </pre>
 </div>
-<div created="20200423195502424" modified="20200423195516478" tags="" title="Clear Chrome internal DNS">
-<pre>chrome://net-internals/#dns
+<div created="20200529080919653" modified="20200529081004085" tags="" title="Chrome version">
+<pre>```
+chrome://version
+```</pre>
+</div>
+<div created="20200423195502424" modified="20200529081011435" tags="" title="Clear Chrome internal DNS">
+<pre>```
+chrome://net-internals/#dns
+```
 </pre>
 </div>
 <div created="20200425131402210" modified="20200425131422887" tags="Linux" title="Clears the screen">
@@ -16491,15 +16504,8 @@ http://tldp.org/LDP/abs/html/exitcodes.html</pre>
 # https://hacks.mozilla.org/2015/08/es6-in-depth-the-future/
 </pre>
 </div>
-<div created="20200428121308479" modified="20200528083248459" tags="task Javascript Book Video" title="ES6 in Motion">
-<pre>Bought
-
-https://livevideo.manning.com/module/3_1_1/es6-in-motion/welcome/welcome
-
-* https://www.manning.com/livevideo/es6-in-motion
-* https://es6.io/
-* https://kangax.github.io/compat-table/es6/
-* https://developer.mozilla.org/en-US/docs/Web/JavaScript</pre>
+<div created="20200428121308479" modified="20200529084332866" tags="task Javascript Book Video" title="ES6 in Motion">
+<pre>https://livevideo.manning.com/module/3_1_1/es6-in-motion/welcome/welcome</pre>
 </div>
 <div created="20200506103127989" modified="20200528075714189" tags="task Javascript" title="ES6 Javascript Improved (udacity)">
 <pre>https://www.udacity.com/course/es6-javascript-improved--ud356</pre>
@@ -16975,8 +16981,8 @@ $ grep --color -E &quot;pattern|$&quot; file
 ```
 </pre>
 </div>
-<div created="20200513084818013" modified="20200528193810792" tags="Javascript task Book" title="Grokking Simplicity">
-<pre>[ext[Open Pdf | pdfx://~/refs/js/Grokking_Simplicity.pdf::164]]</pre>
+<div created="20200513084818013" modified="20200529074007507" tags="Javascript task Book done" title="Grokking Simplicity">
+<pre>[ext[Open Pdf | pdfx://~/refs/js/Grokking_Simplicity.pdf]]</pre>
 </div>
 <div created="20200425145303870" modified="20200425145319418" tags="Linux" title="Groups user belogs to">
 <pre>```
@@ -17258,14 +17264,14 @@ kismet
 <div created="20200518083824720" modified="20200518084257279" tags="Android" title="IP address">
 <pre>Settings -&gt; About phone -&gt; Status -&gt; IP address</pre>
 </div>
-<div created="20200428111204806" modified="20200527101849044" tags="TableOfContents" title="Javascript">
-<pre>[[Exploring ES6 | https://exploringjs.com/es6/index.html]]
+<div created="20200428111204806" modified="20200529084405820" tags="TableOfContents" title="Javascript">
+<pre>https://developer.mozilla.org/en-US/docs/Web/JavaScript
+
+[[Exploring ES6 | https://exploringjs.com/es6/index.html]]
 
 [[The Modern JavaScript Tutorial | https://javascript.info]]
 
 [[Eloquent JavaScript | https://eloquentjavascript.net/index.html]]
-
-[[ES6 in Depth Articles | https://hacks.mozilla.org/category/es6-in-depth/]]
 
 [[Learning JavaScript Design Patterns | https://addyosmani.com/resources/essentialjsdesignpatterns/book]]
 
@@ -17274,6 +17280,12 @@ kismet
 * https://github.com/getify/Functional-Light-JS
 
 https://immutable-js.github.io/immutable-js/</pre>
+</div>
+<div created="20200529083648023" modified="20200529083727489" tags="Javascript" title="Javascript compatibility table">
+<pre>https://kangax.github.io/compat-table/es6/</pre>
+</div>
+<div created="20200529083918263" modified="20200529083931409" tags="Javascript" title="Javascript courses">
+<pre>* https://es6.io/</pre>
 </div>
 <div created="20200428111217678" modified="20200521080440964" tags="Javascript" title="Javascript Links">
 <pre>!!! Promises
