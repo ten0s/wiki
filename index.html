@@ -1255,6 +1255,8 @@ Error message and password prompt
 
 <li>Run code on link click</li>
 
+<li>Run command with modified buffering</li>
+
 <li>Run commands in parallel</li>
 
 <li>Run JS in tiddler</li>
@@ -1453,7 +1455,21 @@ Error message and password prompt
 
 <li>Termux Boot</li>
 
+<li>Termux Dropbox</li>
+
+<li>Termux Exec</li>
+
 <li>Termux HowTo</li>
+
+<li>Termux Intents and Hooks</li>
+
+<li>Termux Open</li>
+
+<li>Termux Proot</li>
+
+<li>Termux QEMU</li>
+
+<li>Termux send sensor info</li>
 
 <li>Termux SSH</li>
 
@@ -11325,7 +11341,7 @@ Error message and password prompt
 <div created="20200429160228164" modified="20200528082702816" title="$:/state/toc/TableOfContents-Javascript--118161433">
 <pre>close</pre>
 </div>
-<div created="20200426101649048" modified="20200518115338295" title="$:/state/toc/TableOfContents-Linux--118161433">
+<div created="20200426101649048" modified="20200530161508761" title="$:/state/toc/TableOfContents-Linux--118161433">
 <pre>close</pre>
 </div>
 <div created="20200428092436636" modified="20200529122325864" title="$:/state/toc/TableOfContents-MentalModel--118161433">
@@ -11415,7 +11431,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200530061530801" list="" modified="20200530061539292" title="$:/StoryList">
+<div created="20200530061530801" list="[[Termux QEMU]] [[Termux Proot]]" modified="20200530162323816" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200528082144209" title="$:/temp/advancedsearch">
@@ -11479,7 +11495,7 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20200423165127488" modified="20200528083052384" title="$:/temp/NewTagName">
+<div created="20200423165127488" modified="20200530162419543" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
 <div author="Paco Rivière" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Catalan (Spain)" icon="data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22810%22%20height%3D%22540%22%3E%0A%3Crect%20width%3D%22810%22%20height%3D%22540%22%20fill%3D%22%23FCDD09%22%2F%3E%0A%3Cpath%20stroke%3D%22%23DA121A%22%20stroke-width%3D%2260%22%20d%3D%22M0%2C90H810m0%2C120H0m0%2C120H810m0%2C120H0%22%2F%3E%0A%3C%2Fsvg%3E" modified="20200517103310535" name="ca-ES" original-plugin-type="language" original-tags="" original-title="$:/languages/ca-ES" original-type="application/json" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/languages/ca-ES" type="text/vnd.tiddlywiki" version="5.1.22">
@@ -17124,11 +17140,14 @@ sudo ln -fs /usr/share/zoneinfo/Europe/Minsk /etc/localtime
 
 [ext[Securing your Raspberry Pi | https://www.raspberrypi.org/documentation/configuration/security.md]]</pre>
 </div>
-<div created="20200520164313557" modified="20200520164757418" tags="Android" title="Install APK from Google Play">
+<div created="20200520164313557" modified="20200530152131923" tags="Android" title="Install APK from Google Play">
 <pre>Google Play Downloader via Command line https://github.com/matlink/gplaycli
 
 App Inspector
 https://play.google.com/store/apps/details?id=com.ubqsoft.sec01
+
+Apk Analyzer
+https://play.google.com/store/apps/details?id=sk.styk.martin.apkanalyzer
 
 !! Search
 
@@ -19917,6 +19936,9 @@ function doSomething() {
 &lt;a href=&quot;javascript:doSomething();&quot;&gt;click me&lt;/a&gt;
 ```</pre>
 </div>
+<div created="20200530160835652" modified="20200530160935788" tags="Linux" title="Run command with modified buffering">
+<pre>[ext[man stdbuf | manx:stdbuf]]</pre>
+</div>
 <div created="20200424083808418" modified="20200424083910477" tags="Linux Bash" title="Run commands in parallel">
 <pre>```
 xargs
@@ -21637,6 +21659,16 @@ $ termux-torch off
 <div created="20200525161427382" modified="20200525161435847" tags="Android" title="Termux Boot">
 <pre>https://play.google.com/store/apps/details?id=com.termux.boot</pre>
 </div>
+<div created="20200530154045167" modified="20200530154116194" tags="Android" title="Termux Dropbox">
+<pre>https://github.com/rclone/rclone/wiki/rclone-on-Android-with-Termux
+
+```
+pkg install rclone
+```</pre>
+</div>
+<div created="20200530162034438" modified="20200530162255150" tags="Android" title="Termux Exec">
+<pre>https://wiki.termux.com/wiki/Termux-exec</pre>
+</div>
 <div created="20200518081401641" modified="20200518095646741" tags="Android" title="Termux HowTo">
 <pre>* run termux-torch via ssh or adb
 
@@ -21647,6 +21679,60 @@ $ termux-torch off
 * mount android fs over ssh (sshfs) https://askubuntu.com/questions/893090/how-do-i-mount-my-androids-filesystem-over-the-network-with-sshfs/893091#893091
 
 * control android from pc https://0ut3r.space/2020/03/30/control-smartphone/</pre>
+</div>
+<div created="20200530152737827" modified="20200530152818473" tags="Android" title="Termux Intents and Hooks">
+<pre>https://wiki.termux.com/wiki/Intents_and_Hooks
+
+termux-file-editor
+
+termux-url-opener
+</pre>
+</div>
+<div created="20200530152139860" modified="20200530152330545" tags="Android" title="Termux Open">
+<pre>https://www.reddit.com/r/termux/comments/gsafc0/how_to_open_a_file_with_a_specific_app/
+
+```
+termux-open --chooser
+```
+
+```
+am start -n {package.name}/.{ActivityName} -d /path/to/file
+```
+
+Where:
+
+{package.name} : application package name, in format x.y.z. Termux package name is com.termux.
+
+{ActivityName} : viewer activity name.
+
+Both can be obtained through https://play.google.com/store/apps/details?id=sk.styk.martin.apkanalyzer.</pre>
+</div>
+<div created="20200530154357626" modified="20200530162421143" tags="Android task" title="Termux Proot">
+<pre>https://wiki.termux.com/wiki/PRoot
+
+</pre>
+</div>
+<div created="20200530162352117" modified="20200530162422702" tags="Android task" title="Termux QEMU">
+<pre></pre>
+</div>
+<div created="20200530161510969" modified="20200530161851978" tags="Android" title="Termux send sensor info">
+<pre>```
+$ termux-sensor -l
+{
+  &quot;sensors&quot;: [
+    &quot;ACCELEROMETER&quot;,
+    &quot;LIGHT&quot;,
+    &quot;PROXIMITY&quot;
+  ]
+}
+```
+
+```
+$ termux-sensor -c; termux-sensor -s LIGHT | nc HOST PORT
+```
+
+https://www.reddit.com/r/termux/comments/fsdige/streaming_realtime_sensor_data_via_tcp/
+</pre>
 </div>
 <div created="20200518081445601" modified="20200525134945070" tags="Android" title="Termux SSH">
 <pre>!! [[Termux]]
