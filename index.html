@@ -11437,7 +11437,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200530061530801" list="" modified="20200530163021571" title="$:/StoryList">
+<div created="20200530061530801" list="" modified="20200530173234478" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200528082144209" title="$:/temp/advancedsearch">
@@ -21753,7 +21753,7 @@ $ termux-sensor -c; termux-sensor -s LIGHT | nc HOST PORT
 https://www.reddit.com/r/termux/comments/fsdige/streaming_realtime_sensor_data_via_tcp/
 </pre>
 </div>
-<div created="20200518081445601" modified="20200525134945070" tags="Android" title="Termux SSH">
+<div created="20200518081445601" modified="20200530173230424" tags="Android" title="Termux SSH">
 <pre>!! [[Termux]]
 
 * Install SSH server
@@ -21810,6 +21810,20 @@ $ cat ~/.ssh/id_rsa.pub | ssh -F /dev/null -o PubkeyAuthentication=no -p 8022 HO
 ```
 $ ssh -p 8022 HOST
 ```
+
+* X Forwarding
+
+Add to $PREFIX/etc/ssh/sshd_config
+
+```
+X11Forwarding yes
+```
+
+```
+$ ssh -Y -p 8022 HOST
+$ xclock
+```
+
 
 * Disable Password authentication
 
@@ -21929,12 +21943,59 @@ https://github.com/hunterli/remserial
 <div created="20200525161401777" modified="20200525161420406" tags="Android" title="Termux Widget">
 <pre>https://play.google.com/store/apps/details?id=com.termux.widget&amp;hl=en</pre>
 </div>
-<div created="20200530163354627" modified="20200530163848654" tags="Android" title="Termux X11">
+<div created="20200530163354627" modified="20200530173317749" tags="Android" title="Termux X11">
 <pre>https://wiki.termux.com/wiki/Graphical_Environment
+
+```
+$ pkg install x11-repo
+```
+
+Server
+
+```
+$ pkg install tigervnc
+```
+
+```
+$ vncserver -list
+$ vncserver -kill ...
+$ vncpasswd
+```
+
+```
+$ vncserver -localhost
+```
+
+or
+
+```
+$ vncserver :1
+```
+
+```
+$ export DISPLAY=:1
+```
+
+Client Android
+
+Install https://play.google.com/store/apps/details?id=com.realvnc.viewer.android
+
+Determine port number on which VNC server listens. 
+It can be calculated like this: 5900 + {display number}.
+So for display 'localhost:1' the port will be 5901.
+
+Client desktop
+
+```
+$ sudo apt install gvncviewer
+$ gvncviewer 192.168.100.127:1
+```
 
 https://yadominjinta.github.io/2018/08/18/GUI-on-termux-EN.html
 
 https://hindux.github.io/setup-termux-X11-app/
+
+[[Termux SSH]] X Forwarding
 </pre>
 </div>
 <div created="20200428113049717" modified="20200428113128121" tags="Linux" title="Test WebSocket using curl">
