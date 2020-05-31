@@ -1269,6 +1269,8 @@ Error message and password prompt
 
 <li>Run script when file has changed</li>
 
+<li>Run stoken on Alpine Linux</li>
+
 <li>Run to interactive program through SSH</li>
 
 <li>Rust</li>
@@ -1413,7 +1415,7 @@ Error message and password prompt
 
 <li>Start HTTP server</li>
 
-<li>Stoken on Android with USB static IP</li>
+<li>Stoken Termux package on Android</li>
 
 <li>Stress test CPU, IO, memory</li>
 
@@ -1453,9 +1455,13 @@ Error message and password prompt
 
 <li>Termux</li>
 
+<li>Termux Alpine Linux</li>
+
 <li>Termux API</li>
 
 <li>Termux Boot</li>
+
+<li>Termux Debian Linux</li>
 
 <li>Termux Dropbox</li>
 
@@ -11303,8 +11309,8 @@ Error message and password prompt
 <div created="20200422191529492" modified="20200528082700316" title="$:/state/tab/sidebar--595412856">
 <pre>TableOfContents</pre>
 </div>
-<div created="20200426101141551" modified="20200531152906646" title="$:/state/toc/TableOfContents-Android--118161433">
-<pre>close</pre>
+<div created="20200426101141551" modified="20200531181130043" title="$:/state/toc/TableOfContents-Android--118161433">
+<pre>open</pre>
 </div>
 <div created="20200428100846343" modified="20200505083916917" title="$:/state/toc/TableOfContents-AWS--118161433">
 <pre>close</pre>
@@ -11441,7 +11447,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200531152908631" list="ToDo" modified="20200531160419640" title="$:/StoryList">
+<div created="20200531152908631" list="[[Termux Proot]]" modified="20200531183212064" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200528082144209" title="$:/temp/advancedsearch">
@@ -12455,7 +12461,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200530163030314" title="$:/temp/search">
+<div created="20200422190456346" modified="20200531181140991" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -20021,6 +20027,40 @@ $ python -m pdb script.py
 <pre>incron (inotify cron daemon)
 </pre>
 </div>
+<div created="20200531182059525" modified="20200531183207087" tags="Android" title="Run stoken on Alpine Linux">
+<pre>!!! Install [[Termux]]
+!!! Install [[Termux SSH]]
+!!! Install [[Termux Alpine Linux]]
+!!! Setup stoken
+
+Desktop:
+
+```
+$ scp -P 8022 file.sdtid HOST:
+$ ssh -p 8022 HOST
+```
+
+Termux:
+
+```
+$ cp file.sdtid $PREFIX/share/TermuxAlpine/home/
+$ runalpine stoken import --file=/home/file.sdtid 
+Enter new password: 
+Confirm new password: 
+$ runalpine stoken setpin
+Enter new PIN: 
+Confirm new PIN: 
+$ runalpine stoken 
+12345678
+```
+
+Desktop:
+
+```
+$ ssh -p 8022 HOST 'runalpine stoken'
+12345678
+```</pre>
+</div>
 <div created="20200424092315703" modified="20200424092448865" tags="Ssh" title="Run to interactive program through SSH">
 <pre>Problem: 
 
@@ -21357,7 +21397,7 @@ $ python -m SimpleHTTPServer &amp;
 ```
 </pre>
 </div>
-<div created="20200512164622533" modified="20200525085003745" tags="Android task" title="Stoken on Android with USB static IP">
+<div created="20200512164622533" modified="20200531182051120" tags="Android" title="Stoken Termux package on Android">
 <pre>1. Build for/on phone
 https://github.com/cernekee/stoken
 
@@ -21615,7 +21655,7 @@ $ adb pull /sdcard/screen.png
 
 https://github.com/termux/termux-packages/issues/2556</pre>
 </div>
-<div created="20200427173158521" list="[[Read &quot;Working with TW&quot;]] [[Read &quot;Customise TW&quot;]] [[Read &quot;Features&quot;]] [[Read &quot;Editions&quot;]] [[Read &quot;Platforms&quot;]] [[Grokking Simplicity]] [[Termux Proot]] [[Termux QEMU]] [[ES6 in Motion]] [[ES6 in Depth]] [[Building the Web of Things]] [[Functional Programming in Javascript]] [[Node.js in Motion]] [[Mastering REST APIs in Node.js]] [[ES6 Javascript Improved (udacity)]] [[Understanding ECMAScript 6]] [[Android Debug Bridge]] [[Android Wakelocks]] [[Web Components in Action]] [[WebAssembly in Action]] [[Setup Retropie]] [[Raspberry Pi Zero Ethernet]] [[Setup Tor Router]] [[Add tar info]] [[Read &quot;Reference&quot;]] [[Read &quot;TW dev&quot;]] [[Make wiki work offline on Android]] [[Graphql in motion]] Robots.txt [[Android phone as Raspberry Pi display]] [[Introduction to Rust]] [[Rust in Action]] [[Property Based Testing with PropEr]] [[Stoken on Android with USB static IP]] [[Raspberry Pi projects]] [[Super Tiny Compiler]] [[Promet. Up and running]]" modified="20200530173945601" title="task">
+<div created="20200427173158521" list="[[Read &quot;Working with TW&quot;]] [[Read &quot;Customise TW&quot;]] [[Read &quot;Features&quot;]] [[Read &quot;Editions&quot;]] [[Read &quot;Platforms&quot;]] [[Grokking Simplicity]] [[Termux Proot]] [[Termux QEMU]] [[ES6 in Motion]] [[ES6 in Depth]] [[Building the Web of Things]] [[Functional Programming in Javascript]] [[Node.js in Motion]] [[Mastering REST APIs in Node.js]] [[ES6 Javascript Improved (udacity)]] [[Understanding ECMAScript 6]] [[Android Debug Bridge]] [[Android Wakelocks]] [[Web Components in Action]] [[WebAssembly in Action]] [[Setup Retropie]] [[Raspberry Pi Zero Ethernet]] [[Setup Tor Router]] [[Add tar info]] [[Read &quot;Reference&quot;]] [[Read &quot;TW dev&quot;]] [[Make wiki work offline on Android]] [[Graphql in motion]] Robots.txt [[Android phone as Raspberry Pi display]] [[Introduction to Rust]] [[Rust in Action]] [[Property Based Testing with PropEr]] [[Stoken Termux package on Android]] [[Raspberry Pi projects]] [[Super Tiny Compiler]] [[Promet. Up and running]]" modified="20200531182051130" title="task">
 <pre></pre>
 </div>
 <div created="20200425161848192" modified="20200425161940628" tags="Bash Linux" title="TCP client (w/o netcat)">
@@ -21655,6 +21695,43 @@ $ termux-setup-storage
 * https://play.google.com/store/apps/details?id=com.onetaplearning.termuxtutorial
 </pre>
 </div>
+<div created="20200531181141648" modified="20200531182859586" tags="Android" title="Termux Alpine Linux">
+<pre>* https://github.com/Hax4us/TermuxAlpine
+* [[Termux Proot]]
+
+```
+$ cd $HOME
+$ curl -LO https://raw.githubusercontent.com/Hax4us/TermuxAlpine/master/TermuxAlpine.sh
+$ bash TermuxAlpine.sh
+$ startalpine
+...
+$ exit
+```
+
+/usr/bin/runalpine
+
+```
+#!/data/data/com.termux/files/usr/bin/bash -e
+unset LD_PRELOAD
+# thnx to @j16180339887 for DNS picker
+addresolvconf ()
+{
+  android=$(getprop ro.build.version.release)
+  if [ ${android%%.*} -lt 8 ]; then
+  [ $(command -v getprop) ] &amp;&amp; getprop | sed -n -e 's/^\[net\.dns.\]: \[\(.*\)\]/\1/p' | sed '/^\s*$/d' | sed 's/^/nameserver /' &gt; ${PREFIX}/share/TermuxAlpine/etc/resolv.conf
+  fi
+}
+addresolvconf
+exec proot --link2symlink -0 -r ${PREFIX}/share/TermuxAlpine/ -b /dev/ -b /sys/ -b /proc/ -b /sdcard -b /storage -b $HOME -w /home /usr/bin/env HOME=/root PREFIX=/usr SHELL=/bin/sh TERM=&quot;$TERM&quot; LANG=$LANG PATH=/bin:/usr/bin:/sbin:/usr/sbin &quot;$@&quot;
+```
+
+```
+$ runalpine cat /etc/issue
+Welcome to Alpine Linux 3.12
+Kernel \r on an \m (\l)
+```
+</pre>
+</div>
 <div created="20200518081921221" modified="20200525115906336" tags="Android" title="Termux API">
 <pre>* Install [[Termux]]
 * Install https://play.google.com/store/apps/details?id=com.termux.api
@@ -21675,6 +21752,14 @@ $ termux-torch off
 </div>
 <div created="20200525161427382" modified="20200525161435847" tags="Android" title="Termux Boot">
 <pre>https://play.google.com/store/apps/details?id=com.termux.boot</pre>
+</div>
+<div created="20200531181834910" modified="20200531181902378" tags="Android" title="Termux Debian Linux">
+<pre>* https://wiki.termux.com/wiki/Debian
+* [[Termux Proot]]
+* https://github.com/termux/termux-packages/issues/1645
+* https://github.com/sp4rkie/debian-on-termux
+* https://play.google.com/store/apps/details?id=com.cuntubuntu
+</pre>
 </div>
 <div created="20200530154045167" modified="20200530154116194" tags="Android" title="Termux Dropbox">
 <pre>https://github.com/rclone/rclone/wiki/rclone-on-Android-with-Termux
@@ -21736,17 +21821,9 @@ Where:
 
 Both can be obtained through https://play.google.com/store/apps/details?id=sk.styk.martin.apkanalyzer.</pre>
 </div>
-<div created="20200530154357626" modified="20200530163851146" tags="Android task" title="Termux Proot">
-<pre>https://wiki.termux.com/wiki/PRoot
-
-https://www.reddit.com/r/termux/comments/gau4v2/how_to_install_desktop_environment_after/
-
-https://wiki.termux.com/wiki/Debian
-
-https://github.com/termux/termux-packages/issues/1645
-
-https://github.com/sp4rkie/debian-on-termux
-</pre>
+<div created="20200530154357626" modified="20200531183220226" tags="Android" title="Termux Proot">
+<pre>* https://wiki.termux.com/wiki/PRoot
+* https://proot-me.github.io</pre>
 </div>
 <div created="20200530162352117" modified="20200530163423545" tags="Android task" title="Termux QEMU">
 <pre>https://yadominjinta.github.io/2018/08/22/QEMU-on-termux.html
