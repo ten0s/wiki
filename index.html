@@ -541,7 +541,11 @@ Error message and password prompt
 
 <li>Android</li>
 
+<li>Android Boot Mode</li>
+
 <li>Android Debug Bridge</li>
+
+<li>Android Factory Mode</li>
 
 <li>Android handle custom URL</li>
 
@@ -11455,7 +11459,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200603071612656" list="ToDo" modified="20200603080505806" title="$:/StoryList">
+<div created="20200603071612656" list="ToDo [[Android Debug Bridge]]" modified="20200603110112996" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200528082144209" title="$:/temp/advancedsearch">
@@ -12691,7 +12695,27 @@ alias aws=&quot;aws $@ --endpoint-url http://localhost:8000&quot;
 <div created="20200426101115160" modified="20200426101140488" tags="TableOfContents" title="Android">
 <pre></pre>
 </div>
-<div created="20200512073714953" modified="20200520164813899" tags="Android task" title="Android Debug Bridge">
+<div created="20200603111009413" modified="20200603112235163" tags="Android task" title="Android Boot Mode">
+<pre># Power off 
+# Hold the power button and the volume up
+
+```
+Select Boot Mode:
+[VOLUME_UP to select. VOLUME_DOWN is OK.]
+
+[Recover  Mode]
+[Fastboot Mode]
+[Normal    Boot]     &lt;&lt;==
+```
+
+[[Android Factory Mode]]
+
+* https://www.online-tech-tips.com/smartphones/can-you-bypass-the-android-lock-screen/
+* https://android.gadgethacks.com/how-to/know-your-android-tools-what-is-fastboot-do-you-use-it-0155640/
+* https://www.androidcentral.com/android-z-what-fastboot
+* https://www.makeuseof.com/tag/use-adb-fastboot-android/</pre>
+</div>
+<div created="20200512073714953" modified="20200603111037400" tags="Android task" title="Android Debug Bridge">
 <pre>* [[Enable USB debugging]]
 
 * Setup
@@ -12765,12 +12789,26 @@ https://www.xda-developers.com/what-is-adb/
 How to connect using telnet?
 https://www.vogella.com/tutorials/AndroidCommandLine/article.html
 https://stackoverflow.com/questions/5605678/android-how-to-telnet-a-phone
-
-How to enter boot screen?
-https://www.online-tech-tips.com/smartphones/can-you-bypass-the-android-lock-screen/
-
-https://www.online-tech-tips.com/smartphones/how-to-install-apps-on-your-android-device-from-your-computer/amp/
 </pre>
+</div>
+<div created="20200603111402928" modified="20200603111625516" tags="Android" title="Android Factory Mode">
+<pre># Power off 
+# Hold the power button and the volume down
+
+```
+Auto Test
+Manual Test
+Item Test
+Test Report
+Debug Test
+Clear eMMC
+Version
+Reboot
+```
+
+[[Android Boot Mode]]
+
+https://www.online-tech-tips.com/smartphones/can-you-bypass-the-android-lock-screen/</pre>
 </div>
 <div created="20200530163054137" modified="20200530174415509" tags="Android" title="Android handle custom URL">
 <pre>Custom protocol handlers
