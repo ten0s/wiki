@@ -961,6 +961,8 @@ Error message and password prompt
 
 <li>Initial setup</li>
 
+<li>Install Android Studio</li>
+
 <li>Install APK from Google Play</li>
 
 <li>Install debuginfo for kernel</li>
@@ -1299,7 +1301,9 @@ Error message and password prompt
 
 <li>Send notification from terminal</li>
 
-<li>Set default browser</li>
+<li>Set default application using alternatives</li>
+
+<li>Set default application using xdg</li>
 
 <li>Set default USB connection type</li>
 
@@ -11272,10 +11276,10 @@ Error message and password prompt
 <div created="20200423185634443" modified="20200423185634443" title="$:/state/plugin-info-334910430-$:/core---1812962263">
 <pre>contents</pre>
 </div>
-<div created="20200512083903594" modified="20200602090208615" title="$:/state/showeditpreview">
-<pre>no</pre>
+<div created="20200512083903594" modified="20200603080359162" title="$:/state/showeditpreview">
+<pre>yes</pre>
 </div>
-<div created="20200423185759928" modified="20200510171915567" title="$:/state/sidebar">
+<div created="20200423185759928" modified="20200603082042832" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
 <div created="20200426080944128" modified="20200511101923192" title="$:/state/tab--1498284803">
@@ -11449,7 +11453,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200602070410950" list="Читать ToDo [[ES6 in Motion]]" modified="20200602131317226" title="$:/StoryList">
+<div created="20200603071612656" list="ToDo [[ES6 in Motion]]" modified="20200603080505806" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200528082144209" title="$:/temp/advancedsearch">
@@ -12463,7 +12467,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200601111640174" title="$:/temp/search">
+<div created="20200422190456346" modified="20200603082044642" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -16552,12 +16556,14 @@ http://tldp.org/LDP/abs/html/exitcodes.html</pre>
 # https://hacks.mozilla.org/2015/08/es6-in-depth-the-future/
 </pre>
 </div>
-<div created="20200428121308479" modified="20200602090216743" tags="task Javascript Book Video" title="ES6 in Motion">
+<div created="20200428121308479" modified="20200603082038876" tags="task Javascript Book Video" title="ES6 in Motion">
 <pre># ~~https://livevideo.manning.com/module/3_1_1/es6-in-motion/welcome/welcome~~
 # ~~https://livevideo.manning.com/module/3_2_1/es6-in-motion/arrow-functions/introducing-arrow-functions~~
 # ~~https://livevideo.manning.com/module/3_3_1/es6-in-motion/this/the-magic-of-this~~
 # ~~https://livevideo.manning.com/module/3_4_1/es6-in-motion/block-scoping/where-do-you-prefer-to-declare-variables~~
-# https://livevideo.manning.com/module/3_5_1/es6-in-motion/strings/string-enhancements</pre>
+# https://livevideo.manning.com/module/3_5_1/es6-in-motion/strings/string-enhancements
+
+https://github.com/g0t4/es6-in-motion</pre>
 </div>
 <div created="20200423172455192" modified="20200423172600898" tags="Git" title="Export a branch">
 <pre>```
@@ -17168,6 +17174,12 @@ sudo ln -fs /usr/share/zoneinfo/Europe/Minsk /etc/localtime
 ```
 
 [ext[Securing your Raspberry Pi | https://www.raspberrypi.org/documentation/configuration/security.md]]</pre>
+</div>
+<div created="20200603073931379" modified="20200603074836687" tags="Android task" title="Install Android Studio">
+<pre>* Install https://developer.android.com/studio/index.html using ansible
+
+
+</pre>
 </div>
 <div created="20200520164313557" modified="20200530152131923" tags="Android" title="Install APK from Google Play">
 <pre>Google Play Downloader via Command line https://github.com/matlink/gplaycli
@@ -20195,17 +20207,67 @@ $ notify-send -i /etc/alternatives/start-here-32.png &quot;Hello&quot; &quot;Thi
 ```
 </pre>
 </div>
-<div created="20200424082813846" modified="20200515094456111" tags="Linux" title="Set default browser">
-<pre>```
+<div created="20200603075905050" modified="20200603081705938" tags="Linux" title="Set default application using alternatives">
+<pre>!!! List all alternatives
+
+```
+$ update-alternatives --get-selections
+...
+x-www-browser                  auto     /usr/bin/google-chrome-stable
+...
+```
+
+!!! Get default browser (Chrome)
+
+```
+$ update-alternatives --display x-www-browser
+x-www-browser - auto mode
+  link best version is /usr/bin/google-chrome-stable
+  link currently points to /usr/bin/google-chrome-stable
+  link x-www-browser is /usr/bin/x-www-browser
+/usr/bin/google-chrome-stable - priority 200
+```
+
+```
+$ ll $(which x-www-browser)
+lrwxrwxrwx 1 root root 31 Dec  3  2019 /usr/bin/x-www-browser -&gt; /etc/alternatives/x-www-browser*
+ten0s@tuna ~ $ ll $(readlink $(which x-www-browser))
+lrwxrwxrwx 1 root root 29 Dec  3  2019 /etc/alternatives/x-www-browser -&gt; /usr/bin/google-chrome-stable*
+```
+
+!!! Set VSCode as default editor
+
+```
+$ sudo update-alternatives --set editor /usr/bin/code
+```
+
+[[https://wiki.debian.org/DebianAlternatives]]
+</pre>
+</div>
+<div created="20200424082813846" modified="20200603081638891" tags="Linux" title="Set default application using xdg">
+<pre>!!! Get default browser (Chrome)
+
+```
 $ xdg-settings --list
 Known properties:
-  default-web-browser           Default web browser
+  default-url-scheme-handler    Default handler for URL scheme
+  default-web-browser              Default web browser
 $ xdg-settings get default-web-browser
-chromium.desktop
-$ update-alternatives --display x-www-browser
+google-chrome.desktop
+```
+
+!!! Set default browser (Firefox)
+
+```
 $ less /usr/share/applications/defaults.list # mime list
 $ xdg-settings set default-web-browser firefox.desktop
 $ xdg-settings get default-web-browser
+```
+
+!!! Associate VSCode with text/plain
+
+```
+$ xdg-mime default code.desktop text/plain
 ```
 
 [[Associate file types]]</pre>
