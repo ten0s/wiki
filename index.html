@@ -1003,7 +1003,13 @@ Error message and password prompt
 
 <li>Javascript courses</li>
 
+<li>Javascript iterator</li>
+
 <li>Javascript Links</li>
+
+<li>Javascript rest parameters</li>
+
+<li>Javascript spread operator</li>
 
 <li>Jobs</li>
 
@@ -11465,7 +11471,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200606074954210" list="ToDo" modified="20200606083716142" title="$:/StoryList">
+<div created="20200606074954210" list="ToDo" modified="20200606101747606" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200528082144209" title="$:/temp/advancedsearch">
@@ -17467,6 +17473,72 @@ https://immutable-js.github.io/immutable-js/</pre>
 <div created="20200529083918263" modified="20200529083931409" tags="Javascript" title="Javascript courses">
 <pre>* https://es6.io/</pre>
 </div>
+<div created="20200606100313765" modified="20200606101742361" tags="Javascript" title="Javascript iterator">
+<pre>```
+function PersonQuery() {
+  const wes = {first: &quot;Wes&quot;, last: &quot;Higbee&quot;};
+  const pax = {first: &quot;Pax&quot;, last: &quot;Higbee&quot;};
+  const jonathan = {first: &quot;Jonathan&quot;, last: &quot;Higbee&quot;};
+
+  function createIterator() {
+    let curr = wes;
+
+    function next() {
+      switch (curr) {
+        case wes:
+          curr = pax;
+          return {done: false, value: wes};
+        case pax:
+          curr = jonathan;
+          return {done: false, value: pax};
+        case jonathan:
+          curr = undefined;
+          return {done: false, value: jonathan};
+      }
+      return {done: true};
+    }
+
+    return {
+      next
+    }
+  }
+
+  this[Symbol.iterator] = createIterator;
+}
+```
+
+```
+const query = new PersonQuery();
+const it = query[Symbol.iterator]();
+console.log(it.next());
+console.log(it.next());
+console.log(it.next());
+console.log(it.next());
+```
+
+```
+for (const rec of query) {
+  console.log(rec);
+}
+```
+
+```
+const [first, ...rest] = query;
+console.log(first);
+console.log(rest);
+```
+
+```
+const ns1 = [1,2,3];
+const ns2 = [4,5,6,7];
+console.log([...ns1, ...ns2, ...query]);
+```
+
+[[Javascript spread operator]]
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols
+</pre>
+</div>
 <div created="20200428111217678" modified="20200521080440964" tags="Javascript" title="Javascript Links">
 <pre>!!! Promises
 
@@ -17544,6 +17616,31 @@ function qs_vals(qs) {
 &gt; qs_vals(&quot;one=1&amp;two=2&quot;);
 {one: &quot;1&quot;, two: &quot;2&quot;}
 ```</pre>
+</div>
+<div created="20200606100106709" modified="20200606101727396" tags="Javascript" title="Javascript rest parameters">
+<pre>[[Javascript spread operator]]
+</pre>
+</div>
+<div created="20200606095839629" modified="20200606100605451" tags="Javascript" title="Javascript spread operator">
+<pre>```
+const arr = [1,2,3];
+Math.max(1,2,3); =&gt; 3
+Math.max(arr); =&gt; NaN
+Math.max(...arr); =&gt; 3
+```
+
+```
+const ns1 = [1,2,3];
+const ns2 = [4,5,6,7];
+const ns3 = [...ns1, ...ns2]; =&gt; [1,2,3,4,5,6,7]
+
+```
+
+Works with any Iterable objects
+
+[[Javascript iterator]]
+
+[[Javascript rest parameters]]</pre>
 </div>
 <div created="20200428103417622" modified="20200428103436020" tags="Dev" title="Jobs">
 <pre>* https://erlang-companies.org/
