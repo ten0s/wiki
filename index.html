@@ -1001,8 +1001,6 @@ Error message and password prompt
 
 <li>Javascript apply vs call</li>
 
-<li>Javascript Callback Hell</li>
-
 <li>Javascript compatibility table</li>
 
 <li>Javascript courses</li>
@@ -11479,7 +11477,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200606074954210" list="[[Javascript Thunk]] ToDo" modified="20200606112149946" title="$:/StoryList">
+<div created="20200606074954210" list="ToDo" modified="20200606114449565" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200528082144209" title="$:/temp/advancedsearch">
@@ -17498,9 +17496,6 @@ theFunction.call(undefined, ...[&quot;Matthew&quot;, &quot;physicist&quot;]);
 * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply
 *  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call</pre>
 </div>
-<div created="20200606105039661" modified="20200606105057164" tags="Javascript task" title="Javascript Callback Hell">
-<pre>http://callbackhell.com/</pre>
-</div>
 <div created="20200529083648023" modified="20200529083727489" tags="Javascript" title="Javascript compatibility table">
 <pre>https://kangax.github.io/compat-table/es6/</pre>
 </div>
@@ -17678,7 +17673,7 @@ Works with any Iterable objects
 
 [[Javascript rest parameters]]</pre>
 </div>
-<div created="20200606110352625" modified="20200606111442367" tags="Javascript" title="Javascript Thunk">
+<div created="20200606110352625" modified="20200606113919312" tags="Javascript" title="Javascript Thunk">
 <pre>```
 function makeThunk(fn) {
     var args = [].slice.call(arguments, 1);
@@ -17695,6 +17690,16 @@ function makeThunk(fn, ...args) {
         fn(...args, cb);
     }
 }
+```
+
+```
+function addAsync(x, y, cb) {
+    setTimeout(() =&gt; cb(x + y), 1000);
+}
+
+const thunk = makeThunk(addAsync, x, y);
+
+thunk((sum) =&gt; console.log(sum));
 ```</pre>
 </div>
 <div created="20200428103417622" modified="20200428103436020" tags="Dev" title="Jobs">
