@@ -1017,6 +1017,8 @@ Error message and password prompt
 
 <li>Javascript Links</li>
 
+<li>Javascript Promise</li>
+
 <li>Javascript rest parameters</li>
 
 <li>Javascript spread operator</li>
@@ -11491,7 +11493,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200608163918247" list="" modified="20200608180547706" title="$:/StoryList">
+<div created="20200609070712669" list="ToDo [[ES6 in Motion]] [[ES6 in Depth]]" modified="20200609072301444" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200528082144209" title="$:/temp/advancedsearch">
@@ -11510,7 +11512,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;https://ten0s.github.io/wiki/&quot;
+            &quot;text&quot;: &quot;https://ten0s.github.io/wiki/index.html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -11530,7 +11532,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/wiki/&quot;
+            &quot;text&quot;: &quot;/wiki/index.html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -11542,11 +11544,11 @@ Error message and password prompt
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;640&quot;
+            &quot;text&quot;: &quot;1920&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;360&quot;
+            &quot;text&quot;: &quot;1080&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -16669,7 +16671,7 @@ http://tldp.org/LDP/abs/html/exitcodes.html</pre>
 # https://hacks.mozilla.org/2015/08/es6-in-depth-the-future/
 </pre>
 </div>
-<div created="20200428121308479" modified="20200608085454850" tags="task Javascript Book Video" title="ES6 in Motion">
+<div created="20200428121308479" modified="20200609090610518" tags="task Javascript Book Video" title="ES6 in Motion">
 <pre># ~~https://livevideo.manning.com/module/3_1_1/es6-in-motion/welcome/welcome~~
 # ~~https://livevideo.manning.com/module/3_2_1/es6-in-motion/arrow-functions/introducing-arrow-functions~~
 # ~~https://livevideo.manning.com/module/3_3_1/es6-in-motion/this/the-magic-of-this~~
@@ -16679,14 +16681,16 @@ http://tldp.org/LDP/abs/html/exitcodes.html</pre>
 # ~~https://livevideo.manning.com/module/3_7_1/es6-in-motion/defaults/patterns-everywhere?~~
 # ~~https://livevideo.manning.com/module/3_8_1/es6-in-motion/iteration/iteration~~
 # ~~https://livevideo.manning.com/module/3_9_1/es6-in-motion/generators/generators~~
-# https://livevideo.manning.com/module/3_10_1/es6-in-motion/promises/promises
+# ~~https://livevideo.manning.com/module/3_10_1/es6-in-motion/promises/promises~~
+# https://livevideo.manning.com/module/3_11_1/es6-in-motion/generator-control-flow/generators-meet-promises
 
 https://github.com/g0t4/es6-in-motion
 
 References
 
 * Secrets of the JavaScript Ninja, 2nd Ed
-* Learn JavaScript Next</pre>
+* Learn JavaScript Next
+* Fetch API (Promise based)</pre>
 </div>
 <div created="20200423172455192" modified="20200423172600898" tags="Git" title="Export a branch">
 <pre>```
@@ -17678,6 +17682,16 @@ function qs_vals(qs) {
 {}
 &gt; qs_vals(&quot;one=1&amp;two=2&quot;);
 {one: &quot;1&quot;, two: &quot;2&quot;}
+```</pre>
+</div>
+<div created="20200609090623599" modified="20200609090647266" tags="Javascript" title="Javascript Promise">
+<pre>```
+function delay(timeout) {
+    function executor(resolve, reject) {
+        setTimeout(resolve, timeout);
+    }
+    return new Promise(executor);
+}
 ```</pre>
 </div>
 <div created="20200606100106709" modified="20200606101727396" tags="Javascript" title="Javascript rest parameters">
