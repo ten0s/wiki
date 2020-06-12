@@ -1031,7 +1031,9 @@ Error message and password prompt
 
 <li>Javascript modules</li>
 
-<li>Javascript negate</li>
+<li>Javascript negate function</li>
+
+<li>Javascript once function</li>
 
 <li>Javascript Promise</li>
 
@@ -1166,8 +1168,6 @@ Error message and password prompt
 <li>Not greedy (reluctant) regex</li>
 
 <li>OCR</li>
-
-<li>Once function</li>
 
 <li>Online Markdown Editor</li>
 
@@ -11377,11 +11377,11 @@ Error message and password prompt
 <div created="20200428100846343" modified="20200505083916917" title="$:/state/toc/TableOfContents-AWS--118161433">
 <pre>close</pre>
 </div>
-<div created="20200426101916708" modified="20200612131957962" title="$:/state/toc/TableOfContents-Bash--118161433">
-<pre>open</pre>
+<div created="20200426101916708" modified="20200612132844581" title="$:/state/toc/TableOfContents-Bash--118161433">
+<pre>close</pre>
 </div>
-<div created="20200528081657908" modified="20200612124330095" title="$:/state/toc/TableOfContents-Book--118161433">
-<pre>open</pre>
+<div created="20200528081657908" modified="20200612132941902" title="$:/state/toc/TableOfContents-Book--118161433">
+<pre>close</pre>
 </div>
 <div created="20200528082212561" modified="20200528082212561" title="$:/state/toc/TableOfContents-Book--1815128621">
 <pre>open</pre>
@@ -11416,8 +11416,8 @@ Error message and password prompt
 <div created="20200426101647620" modified="20200426101736642" title="$:/state/toc/TableOfContents-Imagemagick--118161433">
 <pre>close</pre>
 </div>
-<div created="20200429160228164" modified="20200610090418684" title="$:/state/toc/TableOfContents-Javascript--118161433">
-<pre>close</pre>
+<div created="20200429160228164" modified="20200612132847889" title="$:/state/toc/TableOfContents-Javascript--118161433">
+<pre>open</pre>
 </div>
 <div created="20200426101649048" modified="20200530161508761" title="$:/state/toc/TableOfContents-Linux--118161433">
 <pre>close</pre>
@@ -11509,7 +11509,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200612114740759" list="[[Javascript negate]] ToDo [[Functional Programming in Javascript]]" modified="20200612132000509" title="$:/StoryList">
+<div created="20200612114740759" list="ToDo [[Functional Programming in Javascript]]" modified="20200612132556649" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200528082144209" title="$:/temp/advancedsearch">
@@ -12523,7 +12523,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200612132215539" title="$:/temp/search">
+<div created="20200422190456346" modified="20200612132842383" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -17872,16 +17872,52 @@ function qs_vals(qs) {
 
 https://www.sitepoint.com/understanding-es6-modules/</pre>
 </div>
-<div created="20200612131928774" modified="20200612132157960" tags="Javascript task" title="Javascript negate">
+<div created="20200612131928774" modified="20200612132932226" tags="Javascript" title="Javascript negate function">
 <pre>```
 function negate(fn) {
-    (...args) =&gt; !fn(...args)
+    return (...args) =&gt; !fn(...args)
 }
 ```
 
 ```
 function isNull(val) {
-return val === null;
+    return val === null;
+}
+```
+
+```
+const isNotNull = negate(isNull);
+```
+
+```
+isNotNull(null);
+false
+isNotNull({});
+true
+```</pre>
+</div>
+<div created="20200514081251313" modified="20200612132917396" tags="Javascript" title="Javascript once function">
+<pre>```
+function once(fn) {
+    var called = false;
+    return function () {
+         if (!called) {
+            called = true;
+            fn.apply(this, arguments);
+        }
+    }
+}
+```
+
+```
+function once(fn) {
+    let called = false;
+    return (...args) =&gt; {
+        if (!called) {
+            called = true;
+            fn(...args);
+        }
+    }
 }
 ```</pre>
 </div>
@@ -18769,19 +18805,6 @@ sudo apt install tesseract-ocr
 tesseract input.png output.txt
 ```
 </pre>
-</div>
-<div created="20200514081251313" modified="20200514081309925" tags="Javascript" title="Once function">
-<pre>```
-function once(fn) {
-  var called = false;
-  return function () {
-    if (!called) {
-      called = true;
-      fn.apply(this, arguments);
-    }
-  }
-}
-```</pre>
 </div>
 <div created="20200423170328416" modified="20200423170509049" tags="" title="Online Markdown Editor">
 <pre>http://markdown.pioul.fr/
