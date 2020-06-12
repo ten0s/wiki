@@ -1013,6 +1013,8 @@ Error message and password prompt
 
 <li>Javascript compatibility table</li>
 
+<li>Javascript compose function</li>
+
 <li>Javascript courses</li>
 
 <li>Javascript curry function</li>
@@ -1029,7 +1031,7 @@ Error message and password prompt
 
 <li>Javascript Links</li>
 
-<li>Javascript modules</li>
+<li>Javascript module systems</li>
 
 <li>Javascript negate function</li>
 
@@ -11509,7 +11511,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200612114740759" list="ToDo [[Functional Programming in Javascript]]" modified="20200612132556649" title="$:/StoryList">
+<div created="20200612114740759" list="[[Javascript curry function]] ToDo [[Functional Programming in Javascript]]" modified="20200612143837432" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200528082144209" title="$:/temp/advancedsearch">
@@ -12523,7 +12525,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200612132842383" title="$:/temp/search">
+<div created="20200422190456346" modified="20200612133214619" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -17012,11 +17014,8 @@ then apply those. Looks like Event sourcing!
 how _.partial is implemented? (it uses _, and _ is an object!!!???)
 </pre>
 </div>
-<div created="20200528075037847" modified="20200611175329263" tags="task Javascript Book" title="Functional Programming in Javascript">
-<pre># ~~https://livebook.manning.com/book/functional-programming-in-javascript/chapter-1/~~
-# https://livebook.manning.com/book/functional-programming-in-javascript/chapter-2
-
-[ext[Open Pdf | pdfx://~/refs/js/Functional_Programming_in_JavaScript.pdf::23]]
+<div created="20200528075037847" modified="20200612143558074" tags="task Javascript Book" title="Functional Programming in Javascript">
+<pre>[ext[Open Pdf | pdfx://~/refs/js/Functional_Programming_in_JavaScript.pdf::55]]
 
 * Suppose you want to write to a file instead of an HTML page.
 * you could just as easily write to the console, a database, or a file
@@ -17571,10 +17570,10 @@ https://immutable-js.github.io/immutable-js/</pre>
 <div created="20200606175046957" modified="20200606175106749" tags="Javascript Book task" title="JavaScript Allongé, the &quot;Six&quot; Edition">
 <pre>https://leanpub.com/javascriptallongesix</pre>
 </div>
-<div created="20200606111413576" modified="20200606112623078" tags="Javascript" title="Javascript apply vs call">
+<div created="20200606111413576" modified="20200612133212125" tags="Javascript" title="Javascript apply vs call">
 <pre>```
-func.apply(thisArg, [ argsArray])
-func.call([thisArg[, arg1, arg2, ...argN]])
+Function.prototype.apply(thisArg, [argsArray])
+Function.prototype.call(thisArg[, arg1, arg2, ...])
 ```
 
 ''A'' for array and ''C'' for comma.
@@ -17596,10 +17595,26 @@ theFunction.call(undefined, ...[&quot;Matthew&quot;, &quot;physicist&quot;]);
 <div created="20200529083648023" modified="20200529083727489" tags="Javascript" title="Javascript compatibility table">
 <pre>https://kangax.github.io/compat-table/es6/</pre>
 </div>
+<div created="20200612143411557" modified="20200612143756040" tags="Javascript" title="Javascript compose function">
+<pre>```
+function compose(...fns) {
+    return (x) =&gt; fns.reduceRight((acc, fn) =&gt; fn(acc), x);
+}
+```
+
+```
+const add1 = (x) =&gt; x + 1;
+```
+
+```
+compose(add1, add1, add1)(0);
+3
+```</pre>
+</div>
 <div created="20200529083918263" modified="20200529083931409" tags="Javascript" title="Javascript courses">
 <pre>* https://es6.io/</pre>
 </div>
-<div created="20200612113414856" modified="20200612113436338" tags="Javascript task" title="Javascript curry function">
+<div created="20200612113414856" modified="20200612143912268" tags="Javascript task" title="Javascript curry function">
 <pre></pre>
 </div>
 <div created="20200610084934624" modified="20200610085703221" tags="Javascript" title="Javascript ES5 inheritance">
@@ -17860,7 +17875,7 @@ function qs_vals(qs) {
 {one: &quot;1&quot;, two: &quot;2&quot;}
 ```</pre>
 </div>
-<div created="20200610153615973" modified="20200610160040052" tags="Javascript" title="Javascript modules">
+<div created="20200610153615973" modified="20200612143826124" tags="Javascript" title="Javascript module systems">
 <pre>* Node.js - [ext[CommonJS | https://nodejs.org/docs/latest/api/modules.html]]
 * Browser - [ext[RequireJS | https://requirejs.org/]], Asynchronous Module Definition (AMD), Universal Module Definition (UMD)
 
