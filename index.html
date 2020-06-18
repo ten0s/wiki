@@ -1033,6 +1033,8 @@ Error message and password prompt
 
 <li>Javascript ES6 static method</li>
 
+<li>Javascript fork function</li>
+
 <li>Javascript iterator</li>
 
 <li>Javascript Links</li>
@@ -1314,6 +1316,8 @@ Error message and password prompt
 <li>Restore all current dir</li>
 
 <li>Reverse DNS lookup</li>
+
+<li>Review Functional combinators</li>
 
 <li>Robots.txt</li>
 
@@ -11122,15 +11126,12 @@ Error message and password prompt
 <div created="20200422190452018" modified="20200422190452463" title="$:/GitHub/Username">
 <pre>ten0s</pre>
 </div>
-<div plugin-type="import" status="pending" title="$:/Import" type="application/json">
-<pre>{
-    &quot;tiddlers&quot;: {
-        &quot;Untitled 1&quot;: {
-            &quot;title&quot;: &quot;Untitled 1&quot;,
-            &quot;text&quot;: &quot;New Tiddler&quot;
-        }
-    }
-}</pre>
+<div status="complete" title="$:/Import">
+<pre>The following tiddlers were imported:
+
+# [[Untitled 1]]
+# [[Review Functional combinators]]
+# [[Javascript fork function]]</pre>
 </div>
 <div created="20200427171345454" modified="20200427171345454" title="$:/Import!!popup-Untitled">
 <pre>yes</pre>
@@ -11388,7 +11389,7 @@ Error message and password prompt
 <div created="20200423185505844" modified="20200528081832964" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Drafts</pre>
 </div>
-<div created="20200422191529492" modified="20200610090100086" title="$:/state/tab/sidebar--595412856">
+<div created="20200422191529492" modified="20200618094852481" title="$:/state/tab/sidebar--595412856">
 <pre>TableOfContents</pre>
 </div>
 <div created="20200426101141551" modified="20200605075514069" title="$:/state/toc/TableOfContents-Android--118161433">
@@ -11529,7 +11530,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200617161418580" list="ToDo" modified="20200617164528876" title="$:/StoryList">
+<div created="20200618094057363" list="ToDo" modified="20200618094843999" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200528082144209" title="$:/temp/advancedsearch">
@@ -12543,7 +12544,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200617154445842" title="$:/temp/search">
+<div created="20200422190456346" modified="20200618094855303" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -17635,8 +17636,10 @@ theFunction.call(undefined, ...[&quot;Matthew&quot;, &quot;physicist&quot;]);
 <div created="20200529083648023" modified="20200529083727489" tags="Javascript" title="Javascript compatibility table">
 <pre>https://kangax.github.io/compat-table/es6/</pre>
 </div>
-<div created="20200612143411557" modified="20200612143756040" tags="Javascript" title="Javascript compose function">
-<pre>```
+<div created="20200612143411557" modified="20200618094719277" tags="Javascript" title="Javascript compose function">
+<pre>f * g = f(g) = compose :: ((B -&gt; C), (A -&gt; B)) -&gt; (A -&gt; C)
+
+```
 function compose(...fns) {
     return (x) =&gt; fns.reduceRight((acc, fn) =&gt; fn(acc), x);
 }
@@ -17768,6 +17771,29 @@ class TextSpan {
 ```
 
 [[Javascript ES5 static method]]</pre>
+</div>
+<div created="20200618092839895" modified="20200618093742706" tags="Javascript" title="Javascript fork function" type="application/x-tiddler">
+<pre>```
+const fork = (join, fn1, fn2) =&gt;
+    (val) =&gt; join(fn1(val), fn2(val));
+```
+
+```
+const length = (arr) =&gt; arr.length;
+const sum = (arr) =&gt; arr.reduce((acc, i) =&gt; acc + i, 0);
+const divide = (x, y) =&gt; x / y;
+```
+
+```
+const average = fork(divide, sum, length);
+```
+
+```
+average([1,2,3,4,5,6])
+3
+```
+
+[ext[Functional combinators | pdfx://refs/js/Functional_Programming_in_JavaScript.pdf::112]]</pre>
 </div>
 <div created="20200606100313765" modified="20200606102256450" tags="Javascript" title="Javascript iterator">
 <pre>```
@@ -20538,6 +20564,11 @@ $ nslookup IP
 [[DNS lookup]]
 
 </pre>
+</div>
+<div created="20200618093749619" modified="20200618093836459" tags="Javascript task" title="Review Functional combinators" type="application/x-tiddler">
+<pre>[ext[Functional combinators | pdfx://refs/js/Functional_Programming_in_JavaScript.pdf::112]]
+
+[[combinators.js|https://gist.github.com/Avaq/1f0636ec5c8d6aed2e45]]</pre>
 </div>
 <div created="20200509093803434" modified="20200509093813059" tags="task" title="Robots.txt">
 <pre></pre>
