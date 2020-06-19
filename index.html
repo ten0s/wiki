@@ -597,6 +597,8 @@ Error message and password prompt
 
 <li>Book</li>
 
+<li>Bookmarklet</li>
+
 <li>Boot into single user mode using GRUB</li>
 
 <li>Breakaway/Escape velocity</li>
@@ -1118,6 +1120,8 @@ Error message and password prompt
 <li>Local SMTP debugging server</li>
 
 <li>Localstack</li>
+
+<li>Lodash vs underscore</li>
 
 <li>Loss Aversion</li>
 
@@ -11532,7 +11536,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200619080213924" list="ToDo" modified="20200619154544766" title="$:/StoryList">
+<div created="20200619080213924" list="Bookmarklet ToDo" modified="20200619154544766" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200528082144209" title="$:/temp/advancedsearch">
@@ -13200,6 +13204,26 @@ $ git blame -L FROM,TO FILE
 </div>
 <div caption="Books" created="20200521080602540" modified="20200617163725727" tags="TableOfContents" title="Book">
 <pre>* https://1lib.eu/</pre>
+</div>
+<div created="20200619162238521" modified="20200619170434918" tags="Javascript Web" title="Bookmarklet">
+<pre>Add a bookmark with a URL:
+
+```
+javascript:alert(location.href);
+```
+
+[ext[Show URL (bookmarklet) | javascript:(function(){alert(location.href);})();]]
+
+[ext[Search in Wikipedia (bookmarklet) | javascript:(function (){ function se(d) { return d.selection ? d.selection.createRange().text : d.getSelection()} s = se(document); for (i=0; i&lt;frames.length &amp;&amp; (s==null || s==''); i++) s = se(frames[i].document); if (!s || s=='') s = prompt('Enter search terms for Wikipedia',''); open('https://en.wikipedia.org' + (s ? '/w/index.php?title=Special:Search&amp;search=' + encodeURIComponent(s) : '')).focus();})();]]
+
+* https://en.wikipedia.org/wiki/Bookmarklet
+* http://www.dev-hq.net/posts/1--create-javascript-bookmarklet
+* https://betterexplained.com/articles/how-to-make-a-bookmarklet-for-your-web-application/
+* https://www.squarefree.com/bookmarklets/
+* https://www.howtogeek.com/125846/the-most-useful-bookmarklets-to-enhance-your-browsing-experience/
+* https://en.wikipedia.org/wiki/Greasemonkey
+* http://www.donnelly-house.net/programming/js/bookmarklets/bookmarklets.php
+</pre>
 </div>
 <div created="20200424091730965" modified="20200424091947567" tags="Linux" title="Boot into single user mode using GRUB">
 <pre># [[Enter GRUB menu]].
@@ -18657,6 +18681,10 @@ $ awslocal apigateway put-integration --rest-api-id 0922018983 --resource-id 8A-
 $ curl -H'ContentType:application/json' -XPOST http://localhost:4567/restapis/0922018983/test/_user_request_/ -d '{&quot;a&quot;:1, &quot;b&quot;:2}'
 {&quot;sum&quot;: 3}
 ```</pre>
+</div>
+<div created="20200619155933083" modified="20200619162236056" tags="Javascript" title="Lodash vs underscore">
+<pre>https://stackoverflow.com/questions/13789618/differences-between-lodash-and-underscore
+</pre>
 </div>
 <div created="20200428092145998" modified="20200428092421380" tags="MentalModel" title="Loss Aversion">
 <pre>Loss aversion refers to our tendency to strongly prefer avoiding losses over acquiring gains.
