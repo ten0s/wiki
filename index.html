@@ -1037,6 +1037,8 @@ Error message and password prompt
 
 <li>Javascript Links</li>
 
+<li>Javascript memoization</li>
+
 <li>Javascript mixin</li>
 
 <li>Javascript module systems</li>
@@ -11530,7 +11532,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200619080213924" list="ToDo [[Functional Programming in Javascript]]" modified="20200619125815000" title="$:/StoryList">
+<div created="20200619080213924" list="[[Javascript memoization]] ToDo [[Functional Programming in Javascript]]" modified="20200619125815000" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200528082144209" title="$:/temp/advancedsearch">
@@ -17037,7 +17039,7 @@ then apply those. Looks like Event sourcing!
 how _.partial is implemented? (it uses _, and _ is an object!!!???)
 </pre>
 </div>
-<div created="20200528075037847" modified="20200619141115236" tags="task Javascript Book" title="Functional Programming in Javascript">
+<div created="20200528075037847" modified="20200619153214448" tags="task Javascript Book" title="Functional Programming in Javascript">
 <pre>[ext[Open Pdf | pdfx://~/refs/js/Functional_Programming_in_JavaScript.pdf::180]]
 
 * Suppose you want to write to a file instead of an HTML page.
@@ -17080,6 +17082,8 @@ Fundamentals of Lambda Calculus &amp; Functional Programming in JavaScript
 https://sanctuary.js.org/
 
 https://github.com/fantasyland/fantasy-land/tree/v4.0.1
+
+Memoization
 
 * QUnit
 * JSCheck - Quickcheck
@@ -17946,6 +17950,36 @@ function qs_vals(qs) {
 {}
 &gt; qs_vals(&quot;one=1&amp;two=2&quot;);
 {one: &quot;1&quot;, two: &quot;2&quot;}
+```</pre>
+</div>
+<div created="20200619153252913" modified="20200619153802896" tags="Javascript" title="Javascript memoization">
+<pre>```
+Function.prototype.memoized = function () {
+    let key = JSON.stringify(arguments);
+    this._cache = this._cache || {};
+    this._cache[key] = this._cache[key] ||
+    this.apply(this, arguments);
+    return this._cache[key];
+};
+
+Function.prototype.memoize = function () {
+    let fn = this;
+    // unary functions only
+    if (fn.length !== 1) {
+        return fn;
+    }
+    return function () {
+        return fn.memoized.apply(fn, arguments);
+    };
+};
+```
+
+```
+const factorial = ((n) =&gt; (n === 0) ? 1 : (n * factorial(n - 1))).memoize();
+```
+
+```
+factorial(170);
 ```</pre>
 </div>
 <div created="20200612170011540" modified="20200612170039143" tags="Javascript task" title="Javascript mixin">
