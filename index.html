@@ -519,9 +519,11 @@ Error message and password prompt
 
 <li>adafruit.com</li>
 
+<li>Add audio</li>
+
 <li>Add github comments</li>
 
-<li>Add Images</li>
+<li>Add images</li>
 
 <li>Add line numbers to output</li>
 
@@ -899,6 +901,8 @@ Error message and password prompt
 
 <li>Force SSH password authentication</li>
 
+<li>FPinJSAudioCh1</li>
+
 <li>Freedesktop.org Specifications</li>
 
 <li>Fstab example</li>
@@ -912,6 +916,8 @@ Error message and password prompt
 <li>Functional Programming in Javascript</li>
 
 <li>Functional Programming with Folktale</li>
+
+<li>Fundamentals of Lambda Calculus &amp; Functional Programming in JavaScript</li>
 
 <li>Generate password</li>
 
@@ -11359,8 +11365,8 @@ Error message and password prompt
 <div created="20200423185634443" modified="20200423185634443" title="$:/state/plugin-info-334910430-$:/core---1812962263">
 <pre>contents</pre>
 </div>
-<div created="20200512083903594" modified="20200610155357311" title="$:/state/showeditpreview">
-<pre>yes</pre>
+<div created="20200512083903594" modified="20200620084844043" title="$:/state/showeditpreview">
+<pre>no</pre>
 </div>
 <div created="20200423185759928" modified="20200611175336998" title="$:/state/sidebar">
 <pre>yes</pre>
@@ -11473,8 +11479,8 @@ Error message and password prompt
 <div created="20200520090129345" modified="20200520090133416" title="$:/state/toc/TableOfContents-Ssl--118161433">
 <pre>close</pre>
 </div>
-<div created="20200427165444695" modified="20200615074225656" title="$:/state/toc/TableOfContents-TiddlyWiki--118161433">
-<pre>close</pre>
+<div created="20200427165444695" modified="20200620082543024" title="$:/state/toc/TableOfContents-TiddlyWiki--118161433">
+<pre>open</pre>
 </div>
 <div created="20200426101657879" modified="20200426101738390" title="$:/state/toc/TableOfContents-Ubuntu--118161433">
 <pre>close</pre>
@@ -11536,7 +11542,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200619080213924" list="Bookmarklet ToDo" modified="20200619154544766" title="$:/StoryList">
+<div created="20200620081728028" list="FPinJSAudioCh1 ToDo [[Functional Programming in Javascript]]" modified="20200620082629101" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200528082144209" title="$:/temp/advancedsearch">
@@ -12550,7 +12556,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200619155814500" title="$:/temp/search">
+<div created="20200422190456346" modified="20200620082242467" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -12703,25 +12709,39 @@ https://learn.adafruit.com/
 https://learn.adafruit.com/internet-of-things-infrared-remote
 </pre>
 </div>
+<div created="20200620082849476" modified="20200620084309057" tags="TiddlyWiki" title="Add audio">
+<pre>!!! Embedded audio
+
+!!! External audio via transclusion
+
+# Create new tiddler
+# Choose content type, like audio/mp3, audio/mp4
+# Add a _canonical_uri field with a URI pointing to the actual audio location
+# Transclude the tiddler
+
+https://tiddlywiki.com/#Audio</pre>
+</div>
 <div created="20200509093552525" modified="20200518154956301" tags="TiddlyWiki" title="Add github comments">
 <pre>[[How to ViewTemplate]]
 
 https://utteranc.es/
 </pre>
 </div>
-<div created="20200513100333575" modified="20200513100622106" tags="TiddlyWiki" title="Add Images">
-<pre>!!! Images in WikiText
+<div created="20200513100333575" modified="20200620083107798" tags="TiddlyWiki" title="Add images">
+<pre>!!! Embeded Images
 
-https://tiddlywiki.com/static/Images%2520in%2520WikiText.html
+* https://tiddlywiki.com/static/Images%2520in%2520WikiText.html
+* https://tiddlywiki.com/static/ImageWidget.html
+* Images as Links
 
 !!! External images via transclusion
 
-* Create new tiddler
-* Choose content type, like image/png
-* Add a _canonical_uri field with a URI pointing to the actual image location
-* Transclude the tiddler
+# Create new tiddler
+# Choose content type, like image/png
+# Add a _canonical_uri field with a URI pointing to the actual image location
+# Transclude the tiddler
 
-https://tiddlywiki.com/static/ExternalImages.html</pre>
+* https://tiddlywiki.com/static/ExternalImages.html</pre>
 </div>
 <div created="20200424090229068" modified="20200424090248094" tags="Linux Bash" title="Add line numbers to output">
 <pre>```
@@ -12814,7 +12834,7 @@ Power off
 * https://www.androidcentral.com/android-z-what-fastboot
 * https://www.makeuseof.com/tag/use-adb-fastboot-android/</pre>
 </div>
-<div created="20200512073714953" modified="20200603111037400" tags="Android task" title="Android Debug Bridge">
+<div created="20200512073714953" modified="20200620082330159" tags="Android" title="Android Debug Bridge">
 <pre>* [[Enable USB debugging]]
 
 * Setup
@@ -17032,6 +17052,9 @@ $ ssh -F /dev/null -o PubkeyAuthentication=no USER@HOST
 
 </pre>
 </div>
+<div _canonical_uri="file://refs/js/Functional_Programming_in_JavaScript/ch1.m4a" created="20200620083259665" modified="20200620085452994" tags="" title="FPinJSAudioCh1" type="audio/mp3">
+<pre></pre>
+</div>
 <div created="20200511093826806" modified="20200511093933248" tags="Linux" title="Freedesktop.org Specifications">
 <pre>* https://specifications.freedesktop.org/
 * https://specifications.freedesktop.org/mime-apps-spec/latest/
@@ -17063,8 +17086,18 @@ then apply those. Looks like Event sourcing!
 how _.partial is implemented? (it uses _, and _ is an object!!!???)
 </pre>
 </div>
-<div created="20200528075037847" modified="20200619155805211" tags="task Javascript Book" title="Functional Programming in Javascript">
-<pre>[ext[Open Pdf | pdfx://~/refs/js/Functional_Programming_in_JavaScript.pdf::205]]
+<div created="20200528075037847" modified="20200620084939254" tags="task Javascript Book" title="Functional Programming in Javascript">
+<pre>[ext[Open book | pdfx://~/refs/js/Functional_Programming_in_JavaScript.pdf::205]]
+
+# [ext[Becoming functional | pdfx://~/refs/js/Functional_Programming_in_JavaScript.pdf::3]] {{FPinJSAudioCh1}}
+# [ext[Higher-order JavaScript | pdfx://~/refs/js/Functional_Programming_in_JavaScript.pdf::23]]
+# [ext[Few data structures, many operations | pdfx://~/refs/js/Functional_Programming_in_JavaScript.pdf::57]]
+# [ext[Toward modular, reusable code | pdfx://~/refs/js/Functional_Programming_in_JavaScript.pdf::84]]
+# [ext[Design patterns against complexity | pdfx://~/refs/js/Functional_Programming_in_JavaScript.pdf::117]]
+# [ext[Bulletproofing your code | pdfx://~/refs/js/Functional_Programming_in_JavaScript.pdf::153]]
+# [ext[Functional optimizations | pdfx://~/refs/js/Functional_Programming_in_JavaScript.pdf::180]]
+# [ext[Managing asynchronous events and data | pdfx://~/refs/js/Functional_Programming_in_JavaScript.pdf::205]]
+# [ext[Appending: JavaScript libraries used in this book | pdfx://~/refs/js/Functional_Programming_in_JavaScript.pdf::235]]
 
 * Suppose you want to write to a file instead of an HTML page.
 * you could just as easily write to the console, a database, or a file
@@ -17098,23 +17131,26 @@ At a high level, functional programming is effectively the interplay between dec
  Modularization in FP is closely related to the singularity principle, which states that functions should have a single purpose; 
 &lt;&lt;&lt;
 
-Fundamentals of Lambda Calculus &amp; Functional Programming in JavaScript
-
-* https://www.youtube.com/watch?v=3VQ382QG-y4
-* https://www.youtube.com/watch?v=pAnLQ9jwN-E
-
 https://sanctuary.js.org/
 
 https://github.com/fantasyland/fantasy-land/tree/v4.0.1
 
 Memoization
 
+* Lodash
+* Ramda
 * QUnit
 * JSCheck - Quickcheck
-* Blanket.js - Code coverage</pre>
+* Blanket.js - Code coverage
+* Sinon.js - Mock &amp; stub
+* Log4js - Logging</pre>
 </div>
 <div created="20200617162500451" modified="20200617162523603" tags="Javascript Video task" title="Functional Programming with Folktale">
 <pre>https://www.youtube.com/watch?v=pWlVGieMZps</pre>
+</div>
+<div created="20200620082149257" modified="20200620082224039" tags="Javascript Video task" title="Fundamentals of Lambda Calculus &amp; Functional Programming in JavaScript">
+<pre>* https://www.youtube.com/watch?v=3VQ382QG-y4
+* https://www.youtube.com/watch?v=pAnLQ9jwN-E</pre>
 </div>
 <div created="20200425145656395" modified="20200425145823581" tags="Linux" title="Generate password">
 <pre>```
