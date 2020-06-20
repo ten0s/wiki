@@ -533,6 +533,8 @@ Error message and password prompt
 
 <li>Add user to group</li>
 
+<li>Add video</li>
+
 <li>Adding MIME types</li>
 
 <li>Algorithm</li>
@@ -699,7 +701,7 @@ Error message and password prompt
 
 <li>Create lightweight tag</li>
 
-<li>Create Links</li>
+<li>Create links</li>
 
 <li>Create Tables</li>
 
@@ -900,8 +902,6 @@ Error message and password prompt
 <li>Force specific SSH algorithm</li>
 
 <li>Force SSH password authentication</li>
-
-<li>FPinJSAudioCh1</li>
 
 <li>Freedesktop.org Specifications</li>
 
@@ -1506,6 +1506,8 @@ Error message and password prompt
 <li>Stress test CPU, IO, memory</li>
 
 <li>Stylesheet</li>
+
+<li>Stylesheet Hide Controls</li>
 
 <li>Subtraction</li>
 
@@ -11542,7 +11544,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200620081728028" list="FPinJSAudioCh1 ToDo [[Functional Programming in Javascript]]" modified="20200620082629101" title="$:/StoryList">
+<div created="20200620081728028" list="ToDo" modified="20200620092107490" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200528082144209" title="$:/temp/advancedsearch">
@@ -12556,7 +12558,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200620082242467" title="$:/temp/search">
+<div created="20200422190456346" modified="20200620092150072" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -12709,17 +12711,23 @@ https://learn.adafruit.com/
 https://learn.adafruit.com/internet-of-things-infrared-remote
 </pre>
 </div>
-<div created="20200620082849476" modified="20200620084309057" tags="TiddlyWiki" title="Add audio">
+<div created="20200620082849476" modified="20200620092051748" tags="TiddlyWiki" title="Add audio">
 <pre>!!! Embedded audio
 
-!!! External audio via transclusion
+https://tiddlywiki.com/#Audio
+
+!!! External remote audio via transclusion
 
 # Create new tiddler
 # Choose content type, like audio/mp3, audio/mp4
-# Add a _canonical_uri field with a URI pointing to the actual audio location
+# Add a _canonical_uri field with a URI pointing to the actual audio location (doesn't work with file://)
 # Transclude the tiddler
 
-https://tiddlywiki.com/#Audio</pre>
+!!! External local audio via links
+
+[ext[Open audio|openx://refs/js/Functional_Programming_in_JavaScript/ch1.m4a]]
+
+</pre>
 </div>
 <div created="20200509093552525" modified="20200518154956301" tags="TiddlyWiki" title="Add github comments">
 <pre>[[How to ViewTemplate]]
@@ -12762,6 +12770,13 @@ $ sudo usermod -a -G GROUP USER
 ```
 
 </pre>
+</div>
+<div created="20200620092151488" modified="20200620092414553" tags="TiddlyWiki" title="Add video">
+<pre>[[Add audio]]
+
+https://groups.google.com/u/1/g/tiddlywiki/c/TL8N40F0DVQ
+
+http://kpoplibrary.tiddlyspot.com/#Readme</pre>
 </div>
 <div created="20200515101719169" modified="20200515103204943" tags="Linux" title="Adding MIME types">
 <pre>* https://developer.gnome.org/integration-guide/stable/mime.html
@@ -13005,7 +13020,7 @@ $ arp -a
 <pre>taskset
 </pre>
 </div>
-<div created="20200424082708184" modified="20200515102841487" tags="Linux" title="Associate file types">
+<div created="20200424082708184" modified="20200620091641177" tags="Linux" title="Associate file types">
 <pre>* https://linux.die.net/man/1/xdg-mime
 * https://linux.die.net/man/1/xdg-open
 * https://linux.die.net/man/1/xdg-desktop-menu
@@ -13014,8 +13029,8 @@ $ arp -a
 
 Association files: 
 
-* [ext[/usr/share/applications/defaults.list | openx:///usr/share/applications/defaults.list]]
-* [ext[~/.config/mimeapps.list | openx://~/.config/mimeapps.list]]
+* [ext[/usr/share/applications/defaults.list|openx:///usr/share/applications/defaults.list]]
+* [ext[~/.config/mimeapps.list|openx://~/.config/mimeapps.list]]
 
 Returns the file type of FILE in the form of a MIME type
 
@@ -13759,7 +13774,7 @@ Control Panel -&gt; Settings -&gt; Default Sidebar Tab -&gt; Contents
 * Tag: Tasks
 * Save</pre>
 </div>
-<div created="20200424082437898" modified="20200511093935502" tags="Linux Bash" title="Create custom URI handler">
+<div created="20200424082437898" modified="20200620091623299" tags="Linux Bash" title="Create custom URI handler">
 <pre>* http://edoceo.com/howto/xfce-custom-uri-handler
 * https://linux.die.net/man/1/xdg-mime
 * https://linux.die.net/man/1/xdg-open
@@ -13805,8 +13820,8 @@ x-scheme-handler/evincex=evincex.desktop;
 
 https://github.com/ten0s/dotfiles/blob/master/roles/mimeapps/tasks/main.yml
 
-* [ext[Open Pdf|pdfx://~/refs/anki2/algs4.pdf::514]]
-* [ext[Open Djvu|djvux://~/refs/anki2/pfds.djvu]]
+* [ext[Open Pdf|pdfx://refs/anki2/algs4.pdf::514]]
+* [ext[Open Djvu|djvux://refs/anki2/pfds.djvu]]
 * [ext[Open man|manx:grep::REGULAR+EXPRESSIONS]]
 
 [[Associate file types]]</pre>
@@ -13840,14 +13855,15 @@ $ git tag &quot;1.0.0&quot;
 
 </pre>
 </div>
-<div created="20200428175643465" modified="20200613161453191" tags="TiddlyWiki" title="Create Links">
-<pre>[ext[Linking in WikiText | https://tiddlywiki.com/static/Linking%2520in%2520WikiText.html]]
+<div created="20200428175643465" modified="20200620091818946" tags="TiddlyWiki" title="Create links">
+<pre>[ext[Linking in WikiText|https://tiddlywiki.com/static/Linking%2520in%2520WikiText.html]]
 
-[ext[LinkWidget | https://tiddlywiki.com/static/LinkWidget.html]]
+[ext[LinkWidget|https://tiddlywiki.com/static/LinkWidget.html]]
 
-[ext[Open man | manx:grep::REGULAR+EXPRESSIONS]]
-
-[ext[Open pdf | pdfx:////home/ten0s/refs/anki2/algs4.pdf::103]]</pre>
+* [ext[Open man|manx:grep::REGULAR+EXPRESSIONS]]
+* [ext[Open pdf|pdfx://refs/anki2/algs4.pdf::103]]
+* [ext[Open djvu|djvux://refs/anki2/pfds.djvu::10]]
+* [ext[Open file|openx:///usr/share/applications/defaults.list]]</pre>
 </div>
 <div created="20200428124444319" modified="20200428124518491" tags="TiddlyWiki" title="Create Tables">
 <pre>https://tiddlywiki.com/static/Tables%2520in%2520WikiText.html
@@ -17052,9 +17068,6 @@ $ ssh -F /dev/null -o PubkeyAuthentication=no USER@HOST
 
 </pre>
 </div>
-<div _canonical_uri="file://refs/js/Functional_Programming_in_JavaScript/ch1.m4a" created="20200620083259665" modified="20200620085452994" tags="" title="FPinJSAudioCh1" type="audio/mp3">
-<pre></pre>
-</div>
 <div created="20200511093826806" modified="20200511093933248" tags="Linux" title="Freedesktop.org Specifications">
 <pre>* https://specifications.freedesktop.org/
 * https://specifications.freedesktop.org/mime-apps-spec/latest/
@@ -17086,17 +17099,17 @@ then apply those. Looks like Event sourcing!
 how _.partial is implemented? (it uses _, and _ is an object!!!???)
 </pre>
 </div>
-<div created="20200528075037847" modified="20200620084939254" tags="task Javascript Book" title="Functional Programming in Javascript">
+<div created="20200528075037847" modified="20200620092503056" tags="task Javascript Book" title="Functional Programming in Javascript">
 <pre>[ext[Open book | pdfx://~/refs/js/Functional_Programming_in_JavaScript.pdf::205]]
 
-# [ext[Becoming functional | pdfx://~/refs/js/Functional_Programming_in_JavaScript.pdf::3]] {{FPinJSAudioCh1}}
-# [ext[Higher-order JavaScript | pdfx://~/refs/js/Functional_Programming_in_JavaScript.pdf::23]]
-# [ext[Few data structures, many operations | pdfx://~/refs/js/Functional_Programming_in_JavaScript.pdf::57]]
-# [ext[Toward modular, reusable code | pdfx://~/refs/js/Functional_Programming_in_JavaScript.pdf::84]]
-# [ext[Design patterns against complexity | pdfx://~/refs/js/Functional_Programming_in_JavaScript.pdf::117]]
-# [ext[Bulletproofing your code | pdfx://~/refs/js/Functional_Programming_in_JavaScript.pdf::153]]
-# [ext[Functional optimizations | pdfx://~/refs/js/Functional_Programming_in_JavaScript.pdf::180]]
-# [ext[Managing asynchronous events and data | pdfx://~/refs/js/Functional_Programming_in_JavaScript.pdf::205]]
+# [ext[Becoming functional | pdfx://~/refs/js/Functional_Programming_in_JavaScript.pdf::3]] ([ext[Audio|openx://refs/js/Functional_Programming_in_JavaScript/ch1.m4a]])
+# [ext[Higher-order JavaScript | pdfx://~/refs/js/Functional_Programming_in_JavaScript.pdf::23]] ([ext[Audio|openx://refs/js/Functional_Programming_in_JavaScript/ch2.m4a]])
+# [ext[Few data structures, many operations | pdfx://~/refs/js/Functional_Programming_in_JavaScript.pdf::57]] ([ext[Audio|openx://refs/js/Functional_Programming_in_JavaScript/ch3.m4a]])
+# [ext[Toward modular, reusable code | pdfx://~/refs/js/Functional_Programming_in_JavaScript.pdf::84]] ([ext[Audio|openx://refs/js/Functional_Programming_in_JavaScript/ch4.m4a]])
+# [ext[Design patterns against complexity | pdfx://~/refs/js/Functional_Programming_in_JavaScript.pdf::117]] ([ext[Audio|openx://refs/js/Functional_Programming_in_JavaScript/ch5.m4a]])
+# [ext[Bulletproofing your code | pdfx://~/refs/js/Functional_Programming_in_JavaScript.pdf::153]] ([ext[Audio|openx://refs/js/Functional_Programming_in_JavaScript/ch6.m4a]])
+# [ext[Functional optimizations | pdfx://~/refs/js/Functional_Programming_in_JavaScript.pdf::180]] ([ext[Audio|openx://refs/js/Functional_Programming_in_JavaScript/ch7.m4a]])
+# [ext[Managing asynchronous events and data | pdfx://~/refs/js/Functional_Programming_in_JavaScript.pdf::205]] ([ext[Audio|openx://refs/js/Functional_Programming_in_JavaScript/ch8.m4a]])
 # [ext[Appending: JavaScript libraries used in this book | pdfx://~/refs/js/Functional_Programming_in_JavaScript.pdf::235]]
 
 * Suppose you want to write to a file instead of an HTML page.
@@ -22222,13 +22235,20 @@ CLI to https://github.com/termux/termux-packages
 $ stress --cpu 4
 ```</pre>
 </div>
-<div created="20200511101924836" modified="20200511110846557" tags="$:/tags/Stylesheet TiddlyWiki" title="Stylesheet">
+<div created="20200511101924836" modified="20200620090834142" tags="$:/tags/Stylesheet TiddlyWiki" title="Stylesheet">
 <pre>.tc-tagged-Locked button[title=&quot;Edit this tiddler&quot;]   {display: none;}
-
 .tc-tagged-Locked button[title=&quot;Delete this tiddler&quot;]   {display: none;}
+.tc-tagged-Locked button[title=&quot;More actions&quot;]   {display: none;}</pre>
+</div>
+<div created="20200620090241490" modified="20200620090826975" tags="TiddlyWiki" title="Stylesheet Hide Controls">
+<pre>Add $:/tags/Stylesheet tag to apply
 
-.tc-tagged-Locked button[title=&quot;More actions&quot;]   {display: none;}
-</pre>
+.tc-subtitle { opacity: 0; }
+.tc-subtitle:hover { opacity: 1; }
+.tc-tag-list-item { opacity: 0; }
+.tc-tag-list-item:hover { opacity: 1; }
+.tc-tiddler-controls { opacity: 0; }
+.tc-tiddler-controls:hover { opacity: 1; }</pre>
 </div>
 <div created="20200529154740440" modified="20200529160411169" tags="MentalModel" title="Subtraction">
 <pre>https://jamesclear.com/subtraction
