@@ -531,6 +531,8 @@ Error message and password prompt
 
 <li>Add TLS encryption to existing clients and servers</li>
 
+<li>Add top navigation bar</li>
+
 <li>Add user to group</li>
 
 <li>Add video</li>
@@ -703,7 +705,7 @@ Error message and password prompt
 
 <li>Create links</li>
 
-<li>Create Tables</li>
+<li>Create tables</li>
 
 <li>Create tabs</li>
 
@@ -1437,11 +1439,11 @@ Error message and password prompt
 
 <li>Show routing table</li>
 
-<li>Show/hide Buttons</li>
-
 <li>Show/hide content</li>
 
-<li>Show/hide Sidebar</li>
+<li>Show/hide control buttons</li>
+
+<li>Show/hide sidebar</li>
 
 <li>Show/kill/signal process that use file or socket</li>
 
@@ -11544,7 +11546,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200620081728028" list="ToDo" modified="20200620092107490" title="$:/StoryList">
+<div created="20200620081728028" list="ToDo [[Functional Programming in Javascript]]" modified="20200620093013188" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200528082144209" title="$:/temp/advancedsearch">
@@ -12764,6 +12766,9 @@ nl
 <div created="20200424085339651" modified="20200424085351431" tags="" title="Add TLS encryption to existing clients and servers">
 <pre>https://www.stunnel.org/index.html</pre>
 </div>
+<div created="20200620093208760" modified="20200620093227318" tags="TiddlyWiki" title="Add top navigation bar">
+<pre>https://tiddlywiki.com/</pre>
+</div>
 <div created="20200425145328796" modified="20200425145343846" tags="Linux" title="Add user to group">
 <pre>```
 $ sudo usermod -a -G GROUP USER
@@ -13865,7 +13870,7 @@ $ git tag &quot;1.0.0&quot;
 * [ext[Open djvu|djvux://refs/anki2/pfds.djvu::10]]
 * [ext[Open file|openx:///usr/share/applications/defaults.list]]</pre>
 </div>
-<div created="20200428124444319" modified="20200428124518491" tags="TiddlyWiki" title="Create Tables">
+<div created="20200428124444319" modified="20200620092811587" tags="TiddlyWiki" title="Create tables">
 <pre>https://tiddlywiki.com/static/Tables%2520in%2520WikiText.html
 </pre>
 </div>
@@ -21795,18 +21800,20 @@ $ route
 $ netstat -r
 ```</pre>
 </div>
-<div created="20200511102010295" modified="20200511103704831" tags="Locked TiddlyWiki" title="Show/hide Buttons">
+<div created="20200511104905434" modified="20200511104922525" tags="TiddlyWiki" title="Show/hide content">
+<pre>https://tiddlywiki.com/static/RevealWidget.html</pre>
+</div>
+<div created="20200511102010295" modified="20200620093003828" tags="Locked TiddlyWiki" title="Show/hide control buttons">
 <pre>This tiddler has Edit, Delete and More buttons hidden.
 
 To show button(s), replace 'none' with 'inline' in [[Stylesheet]].
 
+See also [[Stylesheet Hide Controls]]
+
 https://tiddlywiki.com/static/Simple%2520ways%2520to%2520write%2520protect%2520tiddlers.html
 </pre>
 </div>
-<div created="20200511104905434" modified="20200511104922525" tags="TiddlyWiki" title="Show/hide content">
-<pre>https://tiddlywiki.com/static/RevealWidget.html</pre>
-</div>
-<div created="20200510171627825" modified="20200510171901629" tags="TiddlyWiki" title="Show/hide Sidebar">
+<div created="20200510171627825" modified="20200620093017793" tags="TiddlyWiki" title="Show/hide sidebar">
 <pre>&lt;$reveal type=&quot;match&quot; state=&quot;$:/state/sidebar&quot; text=&quot;no&quot;&gt;&lt;/$reveal&gt;
 
 &lt;$button to=&quot;Index&quot;&gt;Index&lt;/$button&gt;
@@ -22235,8 +22242,8 @@ CLI to https://github.com/termux/termux-packages
 $ stress --cpu 4
 ```</pre>
 </div>
-<div created="20200511101924836" modified="20200620090834142" tags="$:/tags/Stylesheet TiddlyWiki" title="Stylesheet">
-<pre>.tc-tagged-Locked button[title=&quot;Edit this tiddler&quot;]   {display: none;}
+<div created="20200511101924836" modified="20200620092911401" tags="$:/tags/Stylesheet TiddlyWiki" title="Stylesheet">
+<pre>.tc-tagged-Locked button[title=&quot;Edit this tiddler&quot;]   {display: inline;}
 .tc-tagged-Locked button[title=&quot;Delete this tiddler&quot;]   {display: none;}
 .tc-tagged-Locked button[title=&quot;More actions&quot;]   {display: none;}</pre>
 </div>
