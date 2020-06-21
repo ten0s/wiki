@@ -1195,6 +1195,8 @@ Error message and password prompt
 
 <li>Network utils</li>
 
+<li>Node.js debug</li>
+
 <li>Node.js in Action</li>
 
 <li>Node.js in Motion</li>
@@ -11463,7 +11465,7 @@ Error message and password prompt
 <div created="20200426101647620" modified="20200426101736642" title="$:/state/toc/TableOfContents-Imagemagick--118161433">
 <pre>close</pre>
 </div>
-<div created="20200429160228164" modified="20200613151415415" title="$:/state/toc/TableOfContents-Javascript--118161433">
+<div created="20200429160228164" modified="20200621101631828" title="$:/state/toc/TableOfContents-Javascript--118161433">
 <pre>close</pre>
 </div>
 <div created="20200426101649048" modified="20200530161508761" title="$:/state/toc/TableOfContents-Linux--118161433">
@@ -11487,8 +11489,8 @@ Error message and password prompt
 <div created="20200430150121227" modified="20200528083202097" title="$:/state/toc/TableOfContents-Rust--118161433">
 <pre>close</pre>
 </div>
-<div created="20200426101725065" modified="20200520090126638" title="$:/state/toc/TableOfContents-Ssh--118161433">
-<pre>close</pre>
+<div created="20200426101725065" modified="20200621101231163" title="$:/state/toc/TableOfContents-Ssh--118161433">
+<pre>open</pre>
 </div>
 <div created="20200520090129345" modified="20200520090133416" title="$:/state/toc/TableOfContents-Ssl--118161433">
 <pre>close</pre>
@@ -11556,7 +11558,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200620130018860" list="[[Node.js in Motion]]" modified="20200620173102830" title="$:/StoryList">
+<div created="20200621094252948" list="ToDo [[Node.js in Motion]]" modified="20200621101234536" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200528082144209" title="$:/temp/advancedsearch">
@@ -19052,36 +19054,47 @@ $ man tc
 * socat
 </pre>
 </div>
+<div created="20200621101431349" modified="20200621101556677" tags="Javascript" title="Node.js debug">
+<pre>!!! Debugging in Chrome ~DevTools
+
+```
+$ node --inspect-brk FILE.js
+Debugger listening on ws://127.0.0.1:9229/43a9d90b-f575-4c32-9e88-49e6f2a1ced1
+For help, see: https://nodejs.org/en/docs/inspector
+```
+
+* --inspect-brk[=127.0.0.1[:9229]] - enable inspector agent and break
+* --inspect[=127.0.0.1[:9229]] - enable inspector agent and continue
+
+Open in Chrome ''about:inspect''.
+
+!!! Debugging in terminal
+
+Start debugger client.  Use ''debugger;'' statement in code to set break point(s).
+
+```
+$ node inspect [--port=...] FILE.js
+```
+
+To see variables and evaluate code use ''repl'' command, exit REPL with Ctrl-C.
+
+* https://nodejs.org/en/docs/guides/debugging-getting-started/#command-line-options
+* https://nodejs.org/api/debugger.html
+* Use [[SSH local port forwarding]] to remote debugging
+
+[[Debug Javascript in Android Chrome]]</pre>
+</div>
 <div created="20200606175452830" modified="20200617165357049" tags="Javascript Book task" title="Node.js in Action">
 <pre>[ext[Open pdf | pdfx://refs/js/Node.js_in_Action.pdf]]
 </pre>
 </div>
-<div created="20200508144404760" modified="20200620173131147" tags="task Javascript Video" title="Node.js in Motion">
+<div created="20200508144404760" modified="20200621101626298" tags="task Javascript Video" title="Node.js in Motion">
 <pre># ~~https://livevideo.manning.com/module/21_1_1/nodejs-in-motion/introduction/welcome~~
 # https://livevideo.manning.com/module/21_2_1/nodejs-in-motion/node-on-the-command-line/input-and-output-with-node
 
 https://npmjs.com
 
-process.exit();
-
-!!! Debugging
-
-```
-$ node --inspect-brk index.js
-Debugger listening on ws://127.0.0.1:9229/43a9d90b-f575-4c32-9e88-49e6f2a1ced1
-For help, see: https://nodejs.org/en/docs/inspector
-```
-
-Open in Chrome 
-
-```
-about:inspect
-```
-```
-chrome://inspect
-```
-
-[[Debug Javascript in Android Chrome]]</pre>
+process.exit();</pre>
 </div>
 <div created="20200425131140852" modified="20200425131204522" tags="Regex" title="Not greedy (reluctant) regex">
 <pre>Instead of: '.*' try: '.+?'
