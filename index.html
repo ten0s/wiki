@@ -1173,6 +1173,8 @@ Error message and password prompt
 
 <li>Mirror whole site</li>
 
+<li>MongoDB in Docker</li>
+
 <li>Mostly adequate guide to FP (in javascript)</li>
 
 <li>Mount ISO image</li>
@@ -11437,8 +11439,8 @@ Error message and password prompt
 <div created="20200426101916708" modified="20200612132844581" title="$:/state/toc/TableOfContents-Bash--118161433">
 <pre>close</pre>
 </div>
-<div created="20200528081657908" modified="20200625092241507" title="$:/state/toc/TableOfContents-Book--118161433">
-<pre>open</pre>
+<div created="20200528081657908" modified="20200626134212833" title="$:/state/toc/TableOfContents-Book--118161433">
+<pre>close</pre>
 </div>
 <div created="20200528082212561" modified="20200528082212561" title="$:/state/toc/TableOfContents-Book--1815128621">
 <pre>open</pre>
@@ -11566,7 +11568,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200625092231770" list="ToDo" modified="20200625114620807" title="$:/StoryList">
+<div created="20200626134214952" list="ToDo" modified="20200626155001939" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200528082144209" title="$:/temp/advancedsearch">
@@ -12580,7 +12582,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200625153234834" title="$:/temp/search">
+<div created="20200422190456346" modified="20200626155008710" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -18935,6 +18937,20 @@ $ git push --mirror git@github.com:ORGANISATION/NEW_REPO.git
 <div created="20200425122021603" modified="20200425122045090" tags="" title="Mirror whole site">
 <pre>```
 $ wget --mirror URL
+```
+</pre>
+</div>
+<div created="20200626155010168" modified="20200626155107359" tags="Dev" title="MongoDB in Docker">
+<pre>```
+$ docker run --rm --detach --publish 27017-27019:27017-27019 --volume $PWD/db:/data/db --name mongodb mongo
+```
+
+```
+$ docker exec -ti mongodb mongo
+```
+
+```
+$ docker stop mongodb
 ```
 </pre>
 </div>
