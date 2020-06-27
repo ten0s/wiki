@@ -11457,8 +11457,8 @@ Error message and password prompt
 <div created="20200524170259522" modified="20200528082850767" title="$:/state/toc/TableOfContents-Definitions--118161433">
 <pre>close</pre>
 </div>
-<div created="20200428101450941" modified="20200513072308105" title="$:/state/toc/TableOfContents-Dev--118161433">
-<pre>close</pre>
+<div created="20200428101450941" modified="20200627155111633" title="$:/state/toc/TableOfContents-Dev--118161433">
+<pre>open</pre>
 </div>
 <div created="20200426101718323" modified="20200626201806373" title="$:/state/toc/TableOfContents-Docker--118161433">
 <pre>close</pre>
@@ -11466,7 +11466,7 @@ Error message and password prompt
 <div created="20200428110814473" modified="20200509094509737" title="$:/state/toc/TableOfContents-English--118161433">
 <pre>close</pre>
 </div>
-<div created="20200428110840790" modified="20200510154406292" title="$:/state/toc/TableOfContents-Erlang--118161433">
+<div created="20200428110840790" modified="20200627160117486" title="$:/state/toc/TableOfContents-Erlang--118161433">
 <pre>close</pre>
 </div>
 <div created="20200426101712304" modified="20200521072019777" title="$:/state/toc/TableOfContents-Git--118161433">
@@ -11517,7 +11517,7 @@ Error message and password prompt
 <div created="20200430150353516" modified="20200527182529247" title="$:/state/toc/TableOfContents-Web--118161433">
 <pre>close</pre>
 </div>
-<div created="20200428101546086" modified="20200511124230794" title="$:/state/toc/TableOfContents/Dev-Algorithm--118161433">
+<div created="20200428101546086" modified="20200627160205706" title="$:/state/toc/TableOfContents/Dev-Algorithm--118161433">
 <pre>close</pre>
 </div>
 <div created="20200428102954871" modified="20200428105054432" title="$:/state/toc/TableOfContents/Dev-Erlang--118161433">
@@ -11568,7 +11568,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200627091027325" list="ToDo [[Node.js in Motion]]" modified="20200627141559133" title="$:/StoryList">
+<div created="20200627091027325" list="Principles ToDo [[Node.js in Motion]]" modified="20200627160136725" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200528082144209" title="$:/temp/advancedsearch">
@@ -13512,7 +13512,7 @@ $ git clone https://github.com/organization/repo.git
 <div created="20200428093525928" modified="20200428093536682" tags="MentalModel" title="Cocktail party situation">
 <pre>Friends vs Strangers</pre>
 </div>
-<div created="20200428102754461" modified="20200428102923486" tags="Dev" title="Coding Style Guidelines">
+<div created="20200428102754461" modified="20200627155406635" tags="Dev" title="Coding Style Guidelines">
 <pre>https://tiddlywiki.com/dev/#TiddlyWiki%20Coding%20Style%20Guidelines
 
 !!! Programming rules
@@ -13521,21 +13521,27 @@ http://www.erlang.se/doc/programming_rules.shtml
 
 !!! Versionning for libraries
 
-in xxx.app.src use
-{vsn, git} -&gt; this way rebar replaces `git' with current tag name
+xxx.app.src:
+
+rebar replaces ''git'' with current tag name
+
+```
+{vsn, git}
+```
 
 Принцип скаутского лагеря - уходя с поляны оставь ее чище, чем она была
 
 !!! Программист ставить свое время:
+
 * 20% - на написание кода
 * 80% - на чтение кода
 
 !!! Средство борьбы с говнокодом:
+
 * Self review
 * Unit tests
-* [Automatic code review] ??? what tools to use?
+* [Automatic code review] elvis, eslint, etc
 * Парное программирование
-
 </pre>
 </div>
 <div created="20200425151427450" modified="20200425151609662" tags="Bash" title="Colors in Bash">
@@ -16748,7 +16754,7 @@ set-r15b03-1
 ########### DO NOT MODIFY PATH AFTER HERE ##########
 </pre>
 </div>
-<div created="20200428103755320" modified="20200428103810791" tags="Erlang" title="Erlang upgrades">
+<div created="20200428103755320" modified="20200627160007051" tags="Erlang" title="Erlang upgrades">
 <pre>[erlang-questions] A nice code upgrade trick from Andy Tanenbaum http://erlang.org/pipermail/erlang-questions/2015-June/084952.html
 
 http://www.metabrew.com/article/erlang-rebar-tutorial-generating-releases-upgrades
@@ -16888,23 +16894,29 @@ done
     &lt;/script&gt;
 ```</pre>
 </div>
-<div created="20200428105003694" modified="20200428105026110" tags="Erlang" title="Fault, Error and Failure">
+<div created="20200428105003694" modified="20200627155955691" tags="Dev" title="Fault, Error and Failure">
 <pre>A_comparative_analysis_of_hardware_and_s.pdf
 
-1.1 Coping with Faults
-* Fault avoidance
-* Fault removal
-* Fault tolerance
-1.2 Fault, Error and Failure
-1.3  Fault Tolerance
-* Detecting Errors
-* Assessing Damage
-* Error Recovery
-* Fault Removal (see 1.1)
+# Coping with Faults
 
-http://www.cse.cuhk.edu.hk/~lyu/book/sft/
-http://www.amazon.com/Fault-Tolerant-Systems-Israel-Koren/dp/0120885255
-http://www.amazon.com/Fault-Tolerant-Design-Elena-Dubrova/dp/1461421128
+  ** Fault avoidance
+  ** Fault removal
+  ** Fault tolerance
+
+# Fault, Error and Failure
+
+# Fault Tolerance
+
+ ** Detecting Errors
+ ** Assessing Damage
+ ** Error Recovery
+ ** Fault Removal (see 1.1)
+
+Links
+
+* http://www.cse.cuhk.edu.hk/~lyu/book/sft/
+* http://www.amazon.com/Fault-Tolerant-Systems-Israel-Koren/dp/0120885255
+* http://www.amazon.com/Fault-Tolerant-Design-Elena-Dubrova/dp/1461421128
 </pre>
 </div>
 <div created="20200428101614852" modified="20200428101629767" tags="Algorithm" title="Fibonacci and Factorial using math">
@@ -17125,7 +17137,7 @@ $ ssh -F /dev/null -o PubkeyAuthentication=no USER@HOST
 <div created="20200617162531410" modified="20200617162551766" tags="Javascript Video task" title="Fun With Folktale">
 <pre>https://www.youtube.com/watch?v=OghJR3BP0Ns</pre>
 </div>
-<div created="20200428101553201" modified="20200428101608122" tags="Algorithm" title="Functional design patterns">
+<div created="20200428101553201" modified="20200627160200286" tags="Algorithm Dev" title="Functional design patterns">
 <pre>If you have a list, db table, etc and you need to change it by applying
 different modifications, consider to store deltas (change commands) and
 then apply those. Looks like Event sourcing!
@@ -19401,7 +19413,7 @@ $ cat data.xml | xmllint --format -
 ```
 </pre>
 </div>
-<div created="20200428101236702" modified="20200428105116627" tags="Dev" title="Principles">
+<div created="20200428101236702" modified="20200627160258107" tags="Dev" title="Principles">
 <pre>* Parse raw data from file, db, etc into intermediate internal representation (AST)
 
 * Every periodic task should be disableable at startup and/or runtime.
@@ -19410,7 +19422,11 @@ $ cat data.xml | xmllint --format -
 &gt; You cannot hard code any constants in your code. It all has to be in flash, accessible and changeable by the most rudimentary means from a remote system control that might have the equivalent of a 300 baud connection
 https://www.johndcook.com/blog/2008/06/17/software-in-space/
 
-* Server in general must not crash due to bad data</pre>
+* Server in general must not crash due to bad data
+
+* {{Functional design patterns}}
+
+* No logic in handlers (gen_server, cowboy, etc), including any data transformation (questional?). Why? Because handler is a Controller in MVC!!! And logic must live in a separate Model module.</pre>
 </div>
 <div created="20200425151647650" modified="20200425151721199" tags="Linux" title="Print X event coming to window">
 <pre>```
