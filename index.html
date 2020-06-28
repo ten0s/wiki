@@ -977,6 +977,8 @@ Error message and password prompt
 
 <li>Groups user belogs to</li>
 
+<li>Hex and flipped digits words</li>
+
 <li>Hotspot</li>
 
 <li>How to build for android and more</li>
@@ -1098,6 +1100,8 @@ Error message and password prompt
 <li>Learn JavaScript Next</li>
 
 <li>Least compression difference</li>
+
+<li>Lex and Yacc</li>
 
 <li>Light DOM</li>
 
@@ -1605,6 +1609,8 @@ Error message and password prompt
 
 <li>Tethering</li>
 
+<li>The Art of Unix Programming</li>
+
 <li>The Availability Heuristic</li>
 
 <li>The Cargo book</li>
@@ -1736,8 +1742,6 @@ Error message and password prompt
 <li>Write a plugin</li>
 
 <li>Write an OS for the Raspberry Pi in Rust</li>
-
-<li>YACC</li>
 
 <li>You don't know JS</li>
 
@@ -11462,8 +11466,8 @@ Error message and password prompt
 <div created="20200524170259522" modified="20200528082850767" title="$:/state/toc/TableOfContents-Definitions--118161433">
 <pre>close</pre>
 </div>
-<div created="20200428101450941" modified="20200627155111633" title="$:/state/toc/TableOfContents-Dev--118161433">
-<pre>open</pre>
+<div created="20200428101450941" modified="20200628135743581" title="$:/state/toc/TableOfContents-Dev--118161433">
+<pre>close</pre>
 </div>
 <div created="20200426101718323" modified="20200626201806373" title="$:/state/toc/TableOfContents-Docker--118161433">
 <pre>close</pre>
@@ -11573,7 +11577,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200627091027325" list="ToDo [[Node.js in Motion]]" modified="20200627165625788" title="$:/StoryList">
+<div created="20200628084457397" list="" modified="20200628132741689" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200528082144209" title="$:/temp/advancedsearch">
@@ -12587,7 +12591,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200627165829201" title="$:/temp/search">
+<div created="20200422190456346" modified="20200628135831002" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -14796,61 +14800,77 @@ $ gdb /usr/local/lib/erlang/erts-8.3.5/bin/beam.smp ~/core.23344 -d otp/erts/emu
 (gdb) bt
 </pre>
 </div>
-<div created="20200428104307076" modified="20200428104318820" tags="Erlang" title="Erlang FAQ">
+<div created="20200428104307076" modified="20200628133627275" tags="Erlang" title="Erlang FAQ">
 <pre>How to post-mortem debug (gdb) Segmentation fault?
-====
+
+```
 $ ulimit -c unlimited
 ...
 $ gdb /home/ten0s/dsiload/dsiload/rel/dsiload/erts-5.9.3.1/bin/beam.smp core.13051
 (gdb) bt
+```
 
 How to debug (gdb) errors in linked-in drivers or nif loaded as shared library?
-====
+
 I've edited the erl script which comes with the standard Erlang release to allow easy use of GDB for just such situations:
 
+```
 if [ ! -z &quot;$USE_GDB&quot; ]; then
 gdb $BINDIR/erlexec --args $BINDIR/erlexec ${1+&quot;$@&quot;}
 else
 exec $BINDIR/erlexec ${1+&quot;$@&quot;}
 fi
+```
 
 Define the env var &quot;USE_GDB&quot; before launching Erlang and you'll get a debugger prompt when your NIF/driver crashes. GDB's backtrace command is especially helpful
 
 Can't attach to node
-===
+
 If attaching to to_erl fails with ^L
 * ensure that node is not started with &quot;-noshell -noinput&quot;
 * ensure 'export TERM=&quot;xterm&quot;' is set
 
 Not sure what it is
-===
+
+
 https://stash.wargaming.net/projects/WTP/repos/wgnc_server/browse
+
 host by0-vz-131-64.iv -&gt; a.b.c.d
 
-add to /etc/hosts
+/etc/hosts:
+```
 a.b.c.d by0-vz-131-64
+```
 
+```
 erl -sname $$@`hostname` -setcookie SECRET -remsh wgnc-server@by0-vz-131-64
 entop  wgnc-server@by0-vz-131-64 SECRET
 redbug -sname $$@`hostname` -setcookie SECRET wgnc-server@by0-vz-131-64 &quot;os:getenv&quot;
+```
 
 [erlang-questions] Can't connect to Erlang node in docker
+
 ...
 So if the remote node is running with node name foo@mycontainer, you should be able to connect to it with erl -sname whatever -remsh foo@mycontainer. You can check the node name of the remote node by looking at the prompt in the Erlang shell. Note that epmd only displays the &quot;local&quot; part of the node name, not the host name, so you may be able to open a connection to the remote node and still have it rejected and closed if the host name part doesn't match.
 
 If mycontainer doesn't resolve to the correct IP address, you can use an inet configuration file: http://erlang.org/doc/apps/erts/inet_cfg.html
 For example, to hard-code an IP address for a host name and force the Erlang node to use this file instead of native name resolution:
 
+```
 {host, {10,1,2,3}, [&quot;mycontainer&quot;]}.
 {lookup, [file]}.
+```
 
 Then pass the name of this file like this:
 
+```
 erl -sname whatever -remsh foo@mycontainer -kernel inetrc '&quot;./myinetrc&quot;'
+```
 
 
 Simple/Naive leader selection
-===
+
+```
 1. i = day % len(nodes), leader = nodes[i]
 2. So if both nodes are up, select the one with the higher IP address.
 3. consul|etc|mongodb|dynamodb
@@ -14865,20 +14885,25 @@ Then they should then exchange health scores, and the one with highest
 score is taking the role as active (if health score is identical, one of
 them is configured to be preferred active).
 Net split will still be an issue...
+```
 
 Running distributed Erlang &amp; Elixir applications on Docker
-===
+
 https://www.erlang-solutions.com/blog/running-distributed-erlang-elixir-applications-on-docker.html
 
+```
 docker network create erl-net
 docker exec a2b6178c04cb /home/user/projects/dmu/_build/default/rel/dmu/bin/run.sh import_lnp /home/user/projects/data/LNP_BINARY_9751fb749398c1b87236372cdf23a2ba12a16bd5
 
 docker exec -ti dmu erl -sname adm@dmu -setcookie secret -remsh dmu@dmu
 docker exec -ti tracer erl -sname adm@dmu -setcookie secret -remsh dyn_tracer@tracer
+```
 
 How to connect nodes running in diff docker containers?
+
 https://stackoverflow.com/questions/45057343/connect-erlang-nodes-on-docker
-===
+
+```
 $ docker network create test-net
 c20cd167b4b895f80f7fbadf5dc63ca7f7e8a6e95008c513a1d4e699ae0fb00e
 
@@ -14889,69 +14914,89 @@ $ docker run -ti --rm --name n2 --hostname n2 --net test-net centos7.x86_64-r19.
 $ erl -sname b -setcookie 123
 &gt; net_adm:ping('a@n1').
 pong
+```
 
 How to detect dead code?
-===
+
 http://tech.adroll.com/blog/dev/2018/10/09/remove-erlang-dead-code-xref.html
 
-in rebar.config
+rebar.config:
+
+```
 {xref_checks, [
   ...
   exports_not_used
 ]}.
+```
 
-in code
+code:
+
+```
 -ignore_xref([{?MODULE, some_other_function, 1}]).
+```
 
-in rebar.config
+rebar.config:
+
+```
 {xref_ignores, [
     {my_gpb_generated_module, some_function, 1},
     {my_gpb_generated_module, some_other_function, 0},
     {my_gpb_generated_module, a_function_with_various_arities},
     ...
 ]}.
+```
 
 How to get full call stack while on breakpoint?
 How to debug all project's modules?
-===
+
+```
 WgPrefixes = [&quot;jd_&quot;, &quot;wg_&quot;, &quot;mod_jd_&quot;, &quot;mod_wg_&quot;].
 Modules = [Mod || {Mod, _} &lt;- code:all_loaded(), begin ModStr = atom_to_list(Mod), lists:any(fun (P) -&gt; lists:prefix(P, ModStr) end, WgPrefixes) end].
 int:i(Modules).
 debugger:start().
 int:break(mod_wg_xmpp_base_spa_id_router, 112).
+```
 
 nodelay TCP option
-===
+
 If Boolean == true, option TCP_NODELAY is turned on for the socket, which means that also small amounts of data are sent immediately.
 https://en.wikipedia.org/wiki/Nagle%27s_algorithm
 
 Boyer-Moore vs Aho-Corasick
-===
+
 binary:match and friends
+
 https://github.com/erlang/otp/blob/a0abdb8631d7bd7a154023950ccdcbf09c85b92d/erts/emulator/beam/erl_bif_binary.c#L952-L999
 
 How to share big data
-===
+
+
 See &quot;In-process memory sharing doesn’t seem to work&quot; in Erlang Questions
 
 How to zip
-===
+
+```
 %% on disk
 {ok, FileName} = zip:create(&quot;foo.zip&quot;, [&quot;foo.txt&quot;]).
 %% in memory
 Files = [{&quot;foo.txt&quot;, &lt;&lt;&quot;Contents of foo&quot;&gt;&gt;},
          {&quot;bar.txt&quot;, &lt;&lt;&quot;Contents of bar&quot;&gt;&gt;}].
 {ok, {&quot;mem&quot;, ZipBin}} = zip:create(&quot;mem&quot;, Files, [memory]).
+```
 
 Pretty printing records
-===
+
+```
 io_lib_pretty:print(Term, RecDefFun)
 where RecDefFun is a fun/2:
 fun(Tag, NoOfFields) -&gt; [FieldTag] | no
 
 io:format(io_lib_pretty:print({user, 1, 2}, fun (user, 2) -&gt; [name, date] end)).
+```
+
 see record_info/2
 
+```
     pretty_print(Record) -&gt;
           io_lib_pretty:print(Record, fun pretty_print/2).
 
@@ -14963,30 +15008,40 @@ see record_info/2
           record_info(fields, bar);
      pretty_print(_, _) -&gt;
           no.
+```
 
 see also locks library locks_ttb:record_print_fun and Module:record_fields/1 in some modules
 
 Redbug multiple calls
-===
+
 https://stackoverflow.com/questions/25669356/trace-multiple-functions-using-redbug-from-command-line
+
+```
 redbug:start([&quot;foo:bar -&gt; return&quot;, &quot;bar:baz -&gt; return&quot;], []).
 ./priv/bin/redbug -setcookie s3cret mynode@localhost '&quot;foo:bar-&gt;return&quot;,&quot;foo:baz-&gt;return&quot;'
 ./priv/bin/redbug -setcookie s3cret mynode@localhost '[&quot;foo:bar-&gt;return&quot;,&quot;foo:baz-&gt;return&quot;]'
+```
 
 Choose randomly
-===
+
+```
 Choose = fun (L) -&gt; lists:nth(rand:uniform(length(L)), L) end.
+```
 
 Choose by hash
-===
+
+```
 chose_node(muc_room, RoomJID) -&gt;
     ActiveNodes = [node() | nodes()],
     Idx = erlang:phash2(RoomJID, length(ActiveNodes)),
     lists:nth(Idx + 1, ActiveNodes);
+```
 
 [erlang-questions] Sender punishment removed
+
 https://github.com/fishcakez/sbroker
-===
+
+```
 call(Msg) -&gt;
      gen_server:call({Msg, erlang:monotonic_time()}).
 
@@ -14999,18 +15054,23 @@ receive
            false -&gt; ...
         end
 end
+```
 
 How to start a slave node on a remote machine?
+
 NB: The slave node must be able to access the master.
-===
+
+```
 $ erl -rsh ssh -name master@10.10.0.90 -setcookie cookie
 &gt; slave:start_link(&quot;10.10.0.155&quot;, slave1, &quot;-setcookie cookie&quot;).
 {ok,'slave1@10.10.0.155'}
 &gt; nodes().
 ['slave1@10.10.0.155']
+```
 
 How to run a slave when it can't access the master
-===
+
+```
 The idea is to run epmd on master only and use ssh remote port forwarding
 for epmd and master ports to connect slave to master. Slave thinks that both
 epmd and master are local.
@@ -15033,11 +15093,15 @@ forwarded master's port.
 {ok,'s@10.252.149.199'}
 (m@127.0.0.1)2&gt; rpc:call('s@10.252.149.199', net_adm, localhost, []).
 &quot;ip-10-252-149-199&quot;
+```
 
 How to bind/search to LDAP
+
 https://thecarlhall.wordpress.com/2011/01/04/ldap-authentication-authorization-dissected-and-digested/
+
 http://webcache.googleusercontent.com/search?q=cache:mXMFKoq4IUgJ:www2.erlangcentral.org/wiki/index.php%3Ftitle%3DHow_to_talk_LDAP_from_Erlang+&amp;cd=1&amp;hl=en&amp;ct=clnk&amp;gl=us
-===
+
+```
 1&gt; f(H), {ok, H} = eldap:open([&quot;belitgroup.lan&quot;], []).
 {ok,&lt;0.61.0&gt;}
 2&gt; f(DN), DN = &quot;BELITGROUP\\klionsky_d&quot;.
@@ -15048,7 +15112,9 @@ http://webcache.googleusercontent.com/search?q=cache:mXMFKoq4IUgJ:www2.erlangcen
 ok
 5&gt; eldap:search(H, [{base, &quot;dc=belitgroup,dc=lan&quot;}, {filter, eldap:equalityMatch(&quot;mail&quot;, &quot;d.klionsky@belitsoft.com&quot;)}, {attributes, [&quot;name&quot;, &quot;memberOf&quot;]}, {timeout, 5000}]).
 {ok,...}
+```
 
+```
 1&gt; f(H), {ok, H} = eldap:open([&quot;SERVER&quot;], []).
 {ok,&lt;0.61.0&gt;}
 2&gt; f(DN), DN = &quot;USERNAME&quot;.
@@ -15057,31 +15123,36 @@ ok
 &quot;secret&quot;
 4&gt; eldap:simple_bind(H, DN, PWD).
 ok
+```
 
 How to use typer
-===
+
+```
 typer --plt _build/default/rebar3_19.3_plt $(for d in _build/default/lib/*; do echo -I $d/include -pa $d/ebin; done) --annotate apps/swagger/src/art_api_util.erl
 typer --plt .dmu.plt $(for d in deps/*; do echo -I $d/include -pa $d/ebin; done) deps/rdo_inventory/src/s3_inventory.erl
+```
 
 Mochiglobal idea
-===
-https://github.com/mochi/mochiweb/blob/master/src/mochiglobal.erl
-http://erlang.org/pipermail/erlang-questions/2009-March/042503.html
 
-for h in `hosts.sh QA v2.4 dmu`; do echo $h; rerl dmu@$h call &quot;dmu_debug, last_rds, []&quot;; done
-for h in `hosts.sh Dev v2.4 dmu`; do echo $h; rerl dmu@$h call &quot;dmu_debug, last_rds, []&quot;; done
+* https://github.com/mochi/mochiweb/blob/master/src/mochiglobal.erl
+* http://erlang.org/pipermail/erlang-questions/2009-March/042503.html
 
 How to check a process is alive?
-===
+
+```
 is_process_alive(Pid).
+```
 
 Cpu stat from cpu_sup
-===
+
+```
 f(), CpuF = fun () -&gt; {_, Busy, NonBusy, _} = cpu_sup:util([detailed]), Busy ++ NonBusy end.
 lists:foreach(fun (_) -&gt; io:format(&quot;~p~n&quot;, [CpuF()]), timer:sleep(1000) end, lists:seq(1, 10)).
+```
 
 How to start dist?
-===
+
+```
 -define(NAME, &quot;comtrc&quot;).
 -define(TYPE, shortnames).
 
@@ -15094,9 +15165,10 @@ start_dist(NamePref, NameType = longnames) -&gt;
 
 start_dist() -&gt;
     start_dist(?NAME, ?TYPE).
+```
 
 Heart doesn't restart VM in case of OOM
-===
+
 The problem is that the OOM killer identifies a process to kill, and then kills all its
 child processes before killing the chosen process itself.  Since heart is a child process
 of the beam process, it doesn't have a chance to restart the Erlang VM.
@@ -15107,32 +15179,43 @@ pgrep -f &quot;heart -pid&quot; | while read PID; do echo -17 &gt; /proc/$PID/oo
 -17 is the value to let OOM ignore the process.
 
 Heart messages
-===
+
 %% Erlang was killed or exiter abruptly
+
 ... Maybe some crash reason ...
+
+```
 eheap_alloc: Cannot allocate 4723591984 bytes of memory (of type &quot;heap&quot;).
 ...
 heart: Fri May 19 08:05:23 2017: Erlang has closed.
 ...
 heart: Fri May 19 08:05:28 2017: Unable to kill old process, kill failed (tried multiple times).
+```
 
 %% Erlang VM hangs or otherwise doesn't send heartbeats
+
+``
 ...
 heart: Thu May 18 08:27:02 2017: heart-beat time-out, no activity for 50 seconds
 ...
+```
 
 %% Erlang VM is crashing and preparing crash dump
+
+```
 ...
 Erlang is crashing .. (waiting for crash dump file)&quot;
 ...
+```
 
 Erlang crash dump
-===
-http://erlang.org/doc/man/erl.html#environment_variables
-http://erlang.org/doc/man/heart.html
-http://erlang.org/doc/apps/erts/crash_dump.html
-http://ferd.github.io/recon/
 
+* http://erlang.org/doc/man/erl.html#environment_variables
+* http://erlang.org/doc/man/heart.html
+* http://erlang.org/doc/apps/erts/crash_dump.html
+* http://ferd.github.io/recon/
+
+```
 env ERL_CRASH_DUMP_SECONDS N when
 N &lt; 0 wait dump generation indefinitely
 N = 0 no dump (same as not setting)
@@ -15147,31 +15230,44 @@ no               | dump | dump
 env ERL_CRASH_DUMP=/path/to/dump, erl_crash.dump by default
 env ERL_CRASH_DUMP_NICE=N, when N=1-39
 env ERL_CRASH_DUMP_BYTES, from 19.2
+```
 
 %% How to generate erlang crash dump
+
+```
 1. $ kill -SIGUSR1 &lt;PID&gt; # http://erlang.org/doc/man/erl.html#signals
 2. &gt; erlang:halt(&quot;crashdump&quot;).
 3. &gt; os:putenv(&quot;ERL_CRASH_DUMP&quot;, &quot;erl_crash.dump.&quot; ++ os:getpid()).
    &gt; (fun Me(N) -&gt; list_to_atom(integer_to_list(N) ++ &quot;-atom&quot;), Me(N+1) end)(1). % too many atoms
    &gt; lists:seq(1, 1000000000). % out of memory. doesn't generate crash dump on 18.3
+```
 
 %% How to generate vm core dump
-http://erlang.org/doc/man/erl.html#signals
-$ kill -SIGABRT &lt;PID&gt;
 
+http://erlang.org/doc/man/erl.html#signals
+
+```
+$ kill -SIGABRT &lt;PID&gt;
+```
+
+```
 erlang:system_info(dist),   (distribution information)
 erlang:system_info(info),   (misc system info)
 erlang:system_info(loaded), (loaded module information)
 erlang:system_info(procs),  (process heaps and stacktraces) http://erlang.org/pipermail/erlang-questions/2012-November/070609.html
+```
 
+```
 file:write_file(&quot;/tmp/procs.txt&quot;,erlang:system_info(procs)).
+```
 
 dump the state of a cluster of Erlang nodes
 https://github.com/basho/cluster_info
 
 
 How to disassemble beam
-===
+
+```
 erts_debug:df(some_module_name).
 see some_module_name.dis file
 
@@ -15187,28 +15283,33 @@ ModuleSrc = erl_prettypr:format(erl_syntax:form_list(Forms)).
 {ok, Fd} = file:open(&quot;file.erl&quot;, [write]).
 io:fwrite(Fd, &quot;~s~n&quot;, [ModuleSrc]).
 file:close(Fd).
+```
 
 How to patch beam
-===
+
 https://github.com/uwiger/locks/blob/master/test/locks_leader_SUITE.erl:patch_net_kernel/0
+
 ~/refs/erl/examples/patch_net_kernel.erl
 
 List, tuple, improper list sizes
-===
+
+```
 &gt; erts_debug:flat_size([a,b]).
 4
 &gt; erts_debug:flat_size({a,b}).
 3
 &gt; erts_debug:flat_size([a|b]).
 2
+```
 
 Quickcheck
-===
-http://roberto-aloi.com/erlang/notes-on-erlang-quickcheck
-http://roberto-aloi.com/erlang/notes-on-erlang-quickcheck-part-2
+
+* http://roberto-aloi.com/erlang/notes-on-erlang-quickcheck
+* http://roberto-aloi.com/erlang/notes-on-erlang-quickcheck-part-2
 
 Property-based Testing
-===
+
+
 [Quickcheck](http://www.quviq.com/
 http://quviq.com/documentation/eqc/index.html
 Testing the Hard Stuff and Staying Sane - (VERY GOOD) - https://www.youtube.com/watch?v=F6LzB6SdFKA
@@ -15224,47 +15325,58 @@ https://vimeo.com/33776857
 https://github.com/triqng/triq
 
 Concurrency Testing
-===
+
+
 [Concuerror](http://concuerror.com/)
 https://github.com/parapluu/Concuerror
 
 Concolic (CONCrete and symbOLIC) Testing
-===
+
+
 [CurEr](https://github.com/aggelgian/cuter)
 http://www.erlang-factory.com/euc2016/kostis-sagonas
 http://www.erlang-factory.com/sfbay2016/kostis-sagonas
 http://user.it.uu.se/~kostis/Papers/cuter.pdf
 
 How to generate random string
-===
+
+```
 f(RandChar), RandChar = fun (_) -&gt; rand:uniform($z-$0)+$0 end.
 lists:map(RandChar, lists:seq(1, 10)).
 
 f(IdsFd), IdsFd = fun () -&gt; element(5, sys:get_state(logger_es_accumulator)) end.
 f(Ids), Ids = Fold(IdsFd(), start, []), {length(Ids), sets:size(sets:from_list(Ids))}.
 disk_log:info(IdsFd()).
+```
 
+Map function F over list L in parallel.
 
-%% Map function F over list L in parallel.
+```
 parmap(F, L) -&gt;
   Parent = self(),
   [receive {Pid, Result} -&gt; Result end
     || Pid &lt;- [spawn(fun() -&gt; Parent ! {self(), F(X)} end) || X &lt;- L]].
+```
 
 
 Fail if field is not defined
-===
+
+```
 -record(foo, {field_a = error(field_a_is_required_in_foo) :: a()}).
+```
 
 How to determine erlang version from the shell
-===
+
+```
 $ erl -noshell -eval 'io:fwrite(&quot;~s~n&quot;, [erlang:system_info(otp_release)]), halt().'
 R16B03-1
+```
 
 Mnesia backup and restore
-===
+
 http://www.programering.com/a/MzNyYTMwATE.html
 
+```
 ERROR REPORT  &lt;6775.82.0&gt;                                   2014-12-18 10:41:59
 ===============================================================================
 
@@ -15286,7 +15398,9 @@ Mnesia('funnel@127.0.0.1'): ** ERROR ** (core dumped to file: &quot;/opt/funnel-
                                       &quot;/opt/funnel-2.26.0/data/mnesia/schema.TMP&quot;,
                                       enospc}}} state: [&lt;0.83.0&gt;]
 
+```
 Solution:
+
 See `enospc'. There were not space available.
 
 
@@ -17442,6 +17556,35 @@ $ groups
 ```
 </pre>
 </div>
+<div created="20200628133655395" modified="20200628134442764" tags="Linux" title="Hex and flipped digits words">
+<pre>&lt;&lt;&lt;
+What words I can make on my calculator when I hold it upside down?
+&lt;&lt;&lt; UNIX: A History and a Memoir p.72
+
+
+
+```
+0 - o
+1 - i
+2 -
+3 - e
+4 - h
+5 - s
+6 - g
+7 - l
+8 - b
+9 - g
+```
+
+```
+$ grep '^[abcdefghilos]*$' /usr/share/dict/words | tr bghilos 8641705
+```
+
+```
+$ grep '^[abcdefghilos]*$' /usr/share/dict/words | awk 'function tr(s) { gsub(&quot;b&quot;, &quot;8&quot;, s); gsub(&quot;g&quot;, &quot;6&quot;, s); gsub(&quot;h&quot;, &quot;4&quot;, s); gsub(&quot;i&quot;, &quot;1&quot;, s); gsub(&quot;l&quot;, &quot;7&quot;, s); gsub(&quot;o&quot;, &quot;0&quot;, s); gsub(&quot;s&quot;, &quot;5&quot;, s); return s} { print $0, tr($0) }' | column -t
+```
+</pre>
+</div>
 <div created="20200524145007274" modified="20200528082905838" tags="Definition" title="Hotspot">
 <pre>A hotspot is a physical location where people may obtain Internet access, typically using [[Wi-Fi]] technology.
 
@@ -18357,6 +18500,23 @@ $ ldapsearch -x -h SERVERNAME.net -D &quot;DOMAIN\USERNAME&quot; -W -b &quot;dc=
 </div>
 <div created="20200428101947346" modified="20200428101958069" tags="Algorithm" title="Least compression difference">
 <pre>A ~= B if size(compress(A)) ~= size(compress(A++B))
+</pre>
+</div>
+<div created="20200428103826329" modified="20200628125437527" tags="Dev task" title="Lex and Yacc">
+<pre>[ext[refs/linux/examples/lexyacc|openx://refs/linux/examples/lexyacc]]
+
+https://www.epaperpress.com/lexandyacc/intro.html
+
+https://github.com/gustehn/GELO # JS on ErlVM
+
+https://github.com/erlcloud/eini
+
+bc
+
+EFL
+
+MLFL
+
 </pre>
 </div>
 <div created="20200511132839659" modified="20200511132848286" tags="[[Web Components]]" title="Light DOM">
@@ -23123,6 +23283,9 @@ https://www.quora.com/How-do-I-set-up-IP-address-as-static-IP-address-on-Android
 The IP address assigned to the android mobile phone in case of USB tethering is static only, but hard-coded as 192.168.42.129 with 255.255.255.0 being the netmask. In case you want to change this IP, you can try rooting the device and then find and use some USB tethering application which allows you to specify the IP address.
 </pre>
 </div>
+<div created="20200628135744436" modified="20200628135823257" tags="Linux Book task" title="The Art of Unix Programming">
+<pre>[ext[Open book|pdfx://refs/linux/The_Art_of_UNIX_Programming.pdf]]</pre>
+</div>
 <div created="20200428092209542" modified="20200428092411734" tags="MentalModel" title="The Availability Heuristic">
 <pre>The Availability Heuristic refers to a common mistake that our brains make by
 assuming that the examples which come to mind easily are also the most important
@@ -23993,16 +24156,6 @@ $ sudo iftop -i eth0 -f 'dst port 5001'
 </div>
 <div created="20200512160715472" modified="20200512160848771" tags="[[Rust Links]]" title="Write an OS for the Raspberry Pi in Rust">
 <pre>https://tc.gts3.org/cs3210/2020/spring/lab.html</pre>
-</div>
-<div created="20200428103826329" modified="20200428103833795" tags="Dev" title="YACC">
-<pre>~/refs/linux/lexyacc
-
-https://github.com/gustehn/GELO # JS on ErlVM
-https://github.com/erlcloud/eini
-bc
-EFL
-MLFL
-</pre>
 </div>
 <div created="20200606083523147" modified="20200606175327847" tags="Javascript task Book" title="You don't know JS">
 <pre>https://github.com/getify/You-Dont-Know-JS</pre>
