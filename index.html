@@ -1505,6 +1505,8 @@ Error message and password prompt
 
 <li>SSH file system</li>
 
+<li>SSH file system to Android</li>
+
 <li>SSH local port forwarding</li>
 
 <li>SSH remote port forwarding</li>
@@ -1566,6 +1568,8 @@ Error message and password prompt
 <li>TCP client (w/o netcat)</li>
 
 <li>Termux</li>
+
+<li>Termux access SD card</li>
 
 <li>Termux Alpine Linux</li>
 
@@ -11439,7 +11443,7 @@ Error message and password prompt
 <div created="20200422191529492" modified="20200618094925522" title="$:/state/tab/sidebar--595412856">
 <pre>TableOfContents</pre>
 </div>
-<div created="20200426101141551" modified="20200605075514069" title="$:/state/toc/TableOfContents-Android--118161433">
+<div created="20200426101141551" modified="20200629075638919" title="$:/state/toc/TableOfContents-Android--118161433">
 <pre>close</pre>
 </div>
 <div created="20200428100846343" modified="20200505083916917" title="$:/state/toc/TableOfContents-AWS--118161433">
@@ -11577,7 +11581,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200628084457397" list="" modified="20200628132741689" title="$:/StoryList">
+<div created="20200629073534936" list="" modified="20200629075254750" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200528082144209" title="$:/temp/advancedsearch">
@@ -12591,7 +12595,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200628135831002" title="$:/temp/search">
+<div created="20200422190456346" modified="20200629075639935" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -22373,6 +22377,28 @@ $ fusermount -u mountpoint
 ```
 </pre>
 </div>
+<div created="20200629074046061" modified="20200629075153623" tags="Android" title="SSH file system to Android">
+<pre>Termux:
+
+```
+$ sshd
+```
+
+Desktop:
+
+```
+$ mkdir android
+$ sshfs 192.168.100.127:/storage/emulated/0/Download android -p 8022
+...
+$ fusermount -u android
+```
+
+* [[Termux SSH]]
+* [[Termux access SD card]]
+* [[Set Wi-Fi static IP address]]
+* [[SSH file system]]
+</pre>
+</div>
 <div created="20200424093326631" modified="20200519150237291" tags="Ssh" title="SSH local port forwarding">
 <pre>!!! Access a remote port LOCALLY
 
@@ -22830,18 +22856,14 @@ $ exec 3&lt;&gt;/dev/tcp/localhost/1234 || (echo &quot;Can't connect&quot; ; exi
 $ echo &quot;Hello&quot; &gt;&amp;3
 ```</pre>
 </div>
-<div created="20200511134302365" modified="20200530061928901" tags="Android" title="Termux">
+<div created="20200511134302365" modified="20200629075132536" tags="Android" title="Termux">
 <pre>!! Install
 
 https://play.google.com/store/apps/details?id=com.termux
 
 !! Access SD card
 
-https://wiki.termux.com/wiki/Termux-setup-storage
-
-```
-$ termux-setup-storage
-```
+{{Termux access SD card}}
 
 !! Referenes
 
@@ -22852,6 +22874,13 @@ $ termux-setup-storage
 
 * https://play.google.com/store/apps/details?id=com.onetaplearning.termuxtutorial
 </pre>
+</div>
+<div created="20200629075055346" modified="20200629075122860" tags="Android" title="Termux access SD card">
+<pre>https://wiki.termux.com/wiki/Termux-setup-storage
+
+```
+$ termux-setup-storage
+```</pre>
 </div>
 <div created="20200531181141648" modified="20200531182859586" tags="Android" title="Termux Alpine Linux">
 <pre>* https://github.com/Hax4us/TermuxAlpine
@@ -22929,14 +22958,12 @@ pkg install rclone
 <div created="20200530162034438" modified="20200530162255150" tags="Android" title="Termux Exec">
 <pre>https://wiki.termux.com/wiki/Termux-exec</pre>
 </div>
-<div created="20200518081401641" modified="20200518095646741" tags="Android" title="Termux HowTo">
+<div created="20200518081401641" modified="20200629074916777" tags="Android" title="Termux HowTo">
 <pre>* run termux-torch via ssh or adb
 
 * access from adb shell https://github.com/termux/termux-app/issues/77
 
 * downloading of youtube videos straight from the youtube app https://www.reddit.com/r/linux/comments/66fh4f/what_do_you_use_termux_on_android_for
-
-* mount android fs over ssh (sshfs) https://askubuntu.com/questions/893090/how-do-i-mount-my-androids-filesystem-over-the-network-with-sshfs/893091#893091
 
 * control android from pc https://0ut3r.space/2020/03/30/control-smartphone/</pre>
 </div>
