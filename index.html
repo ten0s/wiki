@@ -671,6 +671,8 @@ Error message and password prompt
 
 <li>Confirmation Bias</li>
 
+<li>Connect Erlang nodes running in diff docker containers</li>
+
 <li>Connect to gmail using SSL</li>
 
 <li>Convert bases in terminal</li>
@@ -837,7 +839,17 @@ Error message and password prompt
 
 <li>Erlang</li>
 
+<li>Erlang can't attach to node</li>
+
+<li>Erlang can't connect to node</li>
+
+<li>Erlang can't connect to node in Docker</li>
+
 <li>Erlang core dump</li>
+
+<li>Erlang debug (gdb) errors in linked-in drivers or nif loaded as shared library</li>
+
+<li>Erlang detect dead code</li>
 
 <li>Erlang ensure all callbacks implemented</li>
 
@@ -848,6 +860,8 @@ Error message and password prompt
 <li>Erlang libs</li>
 
 <li>Erlang Links</li>
+
+<li>Erlang post-mortem debug (gdb) gegmentation fault</li>
 
 <li>Erlang setup</li>
 
@@ -1379,6 +1393,8 @@ Error message and password prompt
 
 <li>Run to interactive program through SSH</li>
 
+<li>Running distributed Erlang &amp; Elixir apps on Docker</li>
+
 <li>Rust</li>
 
 <li>Rust FAQ</li>
@@ -1474,6 +1490,8 @@ Error message and password prompt
 <li>Show/kill/signal processes by names</li>
 
 <li>Side effects</li>
+
+<li>Simple/Naive leader selections</li>
 
 <li>Simulate `make' without actual execution</li>
 
@@ -11489,7 +11507,7 @@ Error message and password prompt
 <div created="20200428110814473" modified="20200509094509737" title="$:/state/toc/TableOfContents-English--118161433">
 <pre>close</pre>
 </div>
-<div created="20200428110840790" modified="20200627160117486" title="$:/state/toc/TableOfContents-Erlang--118161433">
+<div created="20200428110840790" modified="20200629165112418" title="$:/state/toc/TableOfContents-Erlang--118161433">
 <pre>close</pre>
 </div>
 <div created="20200426101712304" modified="20200521072019777" title="$:/state/toc/TableOfContents-Git--118161433">
@@ -11591,7 +11609,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200629073534936" list="ToDo [[Functional Programming in Javascript]] [[The Art of Unix Programming]]" modified="20200629101814941" title="$:/StoryList">
+<div created="20200629073534936" list="ToDo [[Functional Programming in Javascript]] [[The Art of Unix Programming]]" modified="20200629164545224" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200528082144209" title="$:/temp/advancedsearch">
@@ -13625,6 +13643,22 @@ that contradicts our beliefs. Most people don’t want new information, they wan
 validating information.
 </pre>
 </div>
+<div created="20200629164948103" modified="20200629165018586" tags="Erlang Docker" title="Connect Erlang nodes running in diff docker containers">
+<pre>https://stackoverflow.com/questions/45057343/connect-erlang-nodes-on-docker
+
+```
+$ docker network create test-net
+c20cd167b4b895f80f7fbadf5dc63ca7f7e8a6e95008c513a1d4e699ae0fb00e
+
+$ docker run -ti --rm --name n1 --hostname n1 --net test-net centos7.x86_64-r19.3.6 /bin/bash
+$ erl -sname a -setcookie 123
+
+$ docker run -ti --rm --name n2 --hostname n2 --net test-net centos7.x86_64-r19.3.6 /bin/bash
+$ erl -sname b -setcookie 123
+&gt; net_adm:ping('a@n1').
+pong
+```</pre>
+</div>
 <div created="20200425150454702" modified="20200425150550430" tags="Linux Ssl" title="Connect to gmail using SSL">
 <pre>```
 $ openssl s_client -starttls smtp -connect smtp.gmail.com:587 -crlf -ign_eof
@@ -14768,6 +14802,53 @@ entropy of a closed system will never decrease.
 <div created="20200428102945495" modified="20200428110904019" tags="TableOfContents" title="Erlang">
 <pre></pre>
 </div>
+<div created="20200629163726674" modified="20200629164422498" tags="Erlang" title="Erlang can't attach to node">
+<pre>If attaching to to_erl fails with ^L
+
+* Ensure that node is not started with &quot;-noshell -noinput&quot;
+* Ensure 'export TERM=&quot;xterm&quot;' is set</pre>
+</div>
+<div created="20200629164425032" modified="20200629164551545" tags="Erlang" title="Erlang can't connect to node">
+<pre>```
+$ host some-host.com
+a.b.c.d
+```
+
+/etc/hosts:
+
+```
+a.b.c.d some-host.com
+```
+
+```
+erl -sname $$@`hostname` -setcookie SECRET -remsh name@some-host.com
+entop  name@some-server.com SECRET
+redbug -sname $$@`hostname` -setcookie SECRET name@some-server.com &quot;os:getenv&quot;
+```
+
+See [[Erlang can't connect to node in Docker]] for avoiding /etc/hosts</pre>
+</div>
+<div created="20200629164122884" modified="20200629164542484" tags="Erlang" title="Erlang can't connect to node in Docker">
+<pre>[erlang-questions] Can't connect to Erlang node in docker
+
+So if the remote node is running with node name foo@mycontainer, you should be able to connect to it with erl -sname whatever -remsh foo@mycontainer. You can check the node name of the remote node by looking at the prompt in the Erlang shell. Note that epmd only displays the &quot;local&quot; part of the node name, not the host name, so you may be able to open a connection to the remote node and still have it rejected and closed if the host name part doesn't match.
+
+If mycontainer doesn't resolve to the correct IP address, you can use an inet configuration file: http://erlang.org/doc/apps/erts/inet_cfg.html
+For example, to hard-code an IP address for a host name and force the Erlang node to use this file instead of native name resolution:
+
+```
+{host, {10,1,2,3}, [&quot;mycontainer&quot;]}.
+{lookup, [file]}.
+```
+
+Then pass the name of this file like this:
+
+```
+erl -sname whatever -remsh foo@mycontainer -kernel inetrc '&quot;./myinetrc&quot;'
+```
+
+See [[Erlang can't connect to node]] for using /etc/hosts</pre>
+</div>
 <div created="20200428103115323" modified="20200428103127578" tags="Erlang" title="Erlang core dump">
 <pre>https://www.erlang-solutions.com/blog/how-to-analyse-a-beam-core-dump.html
 https://rkallos.com/blog/2018/04/22/erlang-debug-vms-what-why-and-how/
@@ -14814,6 +14895,50 @@ $ gdb /usr/local/lib/erlang/erts-8.3.5/bin/beam.smp ~/core.23344 -d otp/erts/emu
 (gdb) bt
 </pre>
 </div>
+<div created="20200629163613437" modified="20200629163651739" tags="Erlang" title="Erlang debug (gdb) errors in linked-in drivers or nif loaded as shared library">
+<pre>I've edited the erl script which comes with the standard Erlang release to allow easy use of GDB for just such situations:
+
+```
+if [ ! -z &quot;$USE_GDB&quot; ]; then
+gdb $BINDIR/erlexec --args $BINDIR/erlexec ${1+&quot;$@&quot;}
+else
+exec $BINDIR/erlexec ${1+&quot;$@&quot;}
+fi
+```
+
+Define the env var &quot;USE_GDB&quot; before launching Erlang and you'll get a debugger prompt when your NIF/driver crashes. GDB's backtrace command is especially helpful
+</pre>
+</div>
+<div created="20200629165032757" modified="20200629165052831" tags="Erlang" title="Erlang detect dead code">
+<pre>http://tech.adroll.com/blog/dev/2018/10/09/remove-erlang-dead-code-xref.html
+
+rebar.config:
+
+```
+{xref_checks, [
+  ...
+  exports_not_used
+]}.
+```
+
+code:
+
+```
+-ignore_xref([{?MODULE, some_other_function, 1}]).
+```
+
+rebar.config:
+
+```
+{xref_ignores, [
+    {my_gpb_generated_module, some_function, 1},
+    {my_gpb_generated_module, some_other_function, 0},
+    {my_gpb_generated_module, a_function_with_various_arities},
+    ...
+]}.
+```
+</pre>
+</div>
 <div created="20200629145057704" modified="20200629145139817" tags="Erlang" title="Erlang ensure all callbacks implemented">
 <pre>```
 -module(gen_module).
@@ -14858,153 +14983,8 @@ with_impl(Fun1) -&gt;
 ...
 ```</pre>
 </div>
-<div created="20200428104307076" modified="20200628133627275" tags="Erlang" title="Erlang FAQ">
-<pre>How to post-mortem debug (gdb) Segmentation fault?
-
-```
-$ ulimit -c unlimited
-...
-$ gdb /home/ten0s/dsiload/dsiload/rel/dsiload/erts-5.9.3.1/bin/beam.smp core.13051
-(gdb) bt
-```
-
-How to debug (gdb) errors in linked-in drivers or nif loaded as shared library?
-
-I've edited the erl script which comes with the standard Erlang release to allow easy use of GDB for just such situations:
-
-```
-if [ ! -z &quot;$USE_GDB&quot; ]; then
-gdb $BINDIR/erlexec --args $BINDIR/erlexec ${1+&quot;$@&quot;}
-else
-exec $BINDIR/erlexec ${1+&quot;$@&quot;}
-fi
-```
-
-Define the env var &quot;USE_GDB&quot; before launching Erlang and you'll get a debugger prompt when your NIF/driver crashes. GDB's backtrace command is especially helpful
-
-Can't attach to node
-
-If attaching to to_erl fails with ^L
-* ensure that node is not started with &quot;-noshell -noinput&quot;
-* ensure 'export TERM=&quot;xterm&quot;' is set
-
-Not sure what it is
-
-
-https://stash.wargaming.net/projects/WTP/repos/wgnc_server/browse
-
-host by0-vz-131-64.iv -&gt; a.b.c.d
-
-/etc/hosts:
-```
-a.b.c.d by0-vz-131-64
-```
-
-```
-erl -sname $$@`hostname` -setcookie SECRET -remsh wgnc-server@by0-vz-131-64
-entop  wgnc-server@by0-vz-131-64 SECRET
-redbug -sname $$@`hostname` -setcookie SECRET wgnc-server@by0-vz-131-64 &quot;os:getenv&quot;
-```
-
-[erlang-questions] Can't connect to Erlang node in docker
-
-...
-So if the remote node is running with node name foo@mycontainer, you should be able to connect to it with erl -sname whatever -remsh foo@mycontainer. You can check the node name of the remote node by looking at the prompt in the Erlang shell. Note that epmd only displays the &quot;local&quot; part of the node name, not the host name, so you may be able to open a connection to the remote node and still have it rejected and closed if the host name part doesn't match.
-
-If mycontainer doesn't resolve to the correct IP address, you can use an inet configuration file: http://erlang.org/doc/apps/erts/inet_cfg.html
-For example, to hard-code an IP address for a host name and force the Erlang node to use this file instead of native name resolution:
-
-```
-{host, {10,1,2,3}, [&quot;mycontainer&quot;]}.
-{lookup, [file]}.
-```
-
-Then pass the name of this file like this:
-
-```
-erl -sname whatever -remsh foo@mycontainer -kernel inetrc '&quot;./myinetrc&quot;'
-```
-
-
-Simple/Naive leader selection
-
-```
-1. i = day % len(nodes), leader = nodes[i]
-2. So if both nodes are up, select the one with the higher IP address.
-3. consul|etc|mongodb|dynamodb
-What if etcd tells you you're primary but whoops you don't have connection
-to etcd because somebody was playing with a firewall and cut you off for
-a few hours? Absent further details it is unclear whether involving an
-external arbiter even helps at all.
-4. Right now I am looking into a concept, where each application calculates a
-&quot;health score&quot; (based on various parameters like connection to downstream
-nodes, IP gateways etc).
-Then they should then exchange health scores, and the one with highest
-score is taking the role as active (if health score is identical, one of
-them is configured to be preferred active).
-Net split will still be an issue...
-```
-
-Running distributed Erlang &amp; Elixir applications on Docker
-
-https://www.erlang-solutions.com/blog/running-distributed-erlang-elixir-applications-on-docker.html
-
-```
-docker network create erl-net
-docker exec a2b6178c04cb /home/user/projects/dmu/_build/default/rel/dmu/bin/run.sh import_lnp /home/user/projects/data/LNP_BINARY_9751fb749398c1b87236372cdf23a2ba12a16bd5
-
-docker exec -ti dmu erl -sname adm@dmu -setcookie secret -remsh dmu@dmu
-docker exec -ti tracer erl -sname adm@dmu -setcookie secret -remsh dyn_tracer@tracer
-```
-
-How to connect nodes running in diff docker containers?
-
-https://stackoverflow.com/questions/45057343/connect-erlang-nodes-on-docker
-
-```
-$ docker network create test-net
-c20cd167b4b895f80f7fbadf5dc63ca7f7e8a6e95008c513a1d4e699ae0fb00e
-
-$ docker run -ti --rm --name n1 --hostname n1 --net test-net centos7.x86_64-r19.3.6 /bin/bash
-$ erl -sname a -setcookie 123
-
-$ docker run -ti --rm --name n2 --hostname n2 --net test-net centos7.x86_64-r19.3.6 /bin/bash
-$ erl -sname b -setcookie 123
-&gt; net_adm:ping('a@n1').
-pong
-```
-
-How to detect dead code?
-
-http://tech.adroll.com/blog/dev/2018/10/09/remove-erlang-dead-code-xref.html
-
-rebar.config:
-
-```
-{xref_checks, [
-  ...
-  exports_not_used
-]}.
-```
-
-code:
-
-```
--ignore_xref([{?MODULE, some_other_function, 1}]).
-```
-
-rebar.config:
-
-```
-{xref_ignores, [
-    {my_gpb_generated_module, some_function, 1},
-    {my_gpb_generated_module, some_other_function, 0},
-    {my_gpb_generated_module, a_function_with_various_arities},
-    ...
-]}.
-```
-
-How to get full call stack while on breakpoint?
+<div created="20200428104307076" modified="20200629165106118" tags="Erlang" title="Erlang FAQ">
+<pre>How to get full call stack while on breakpoint?
 How to debug all project's modules?
 
 ```
@@ -16779,6 +16759,14 @@ Trees in Erlang
 ===
 http://mark.aufflick.com/blog/2007/11/30/trees-in-erlang
 </pre>
+</div>
+<div created="20200629163512669" modified="20200629163547679" tags="Erlang" title="Erlang post-mortem debug (gdb) gegmentation fault">
+<pre>```
+$ ulimit -c unlimited
+...
+$ gdb /home/ten0s/dsiload/dsiload/rel/dsiload/erts-5.9.3.1/bin/beam.smp core.13051
+(gdb) bt
+```</pre>
 </div>
 <div created="20200428103642253" modified="20200428103653367" tags="Erlang" title="Erlang setup">
 <pre>export OTP_LIB_DIR=/opt/r16b03-1/lib
@@ -21231,6 +21219,19 @@ $ ssh -t HOST htop
 ```
 </pre>
 </div>
+<div created="20200629164900855" modified="20200629164925127" tags="Erlang Docker" title="Running distributed Erlang &amp; Elixir apps on Docker">
+<pre>https://www.erlang-solutions.com/blog/running-distributed-erlang-elixir-applications-on-docker.html
+
+```
+docker network create erl-net
+docker exec a2b6178c04cb /home/user/projects/dmu/_build/default/rel/dmu/bin/run.sh import_lnp /home/user/projects/data/LNP_BINARY_9751fb749398c1b87236372cdf23a2ba12a16bd5
+
+docker exec -ti dmu erl -sname adm@dmu -setcookie secret -remsh dmu@dmu
+docker exec -ti tracer erl -sname adm@dmu -setcookie secret -remsh dyn_tracer@tracer
+```
+
+</pre>
+</div>
 <div created="20200430145519390" modified="20200430145526189" tags="TableOfContents" title="Rust">
 <pre></pre>
 </div>
@@ -22232,6 +22233,21 @@ Functional programmers call these implicit inputs and outputs side-effects.
 They are not the main effect of the function (which is to calculate a return value).
 
 [ext[Grokking Simplicity p.73 | pdfx://~/refs/js/Grokking_Simplicity.pdf::73]]
+</pre>
+</div>
+<div created="20200629164619216" modified="20200629164840621" tags="Dev Algorithm" title="Simple/Naive leader selections">
+<pre>* i = day % len(nodes), leader = nodes[i]
+
+* So if both nodes are up, select the one with the higher IP address.
+
+* consul | etc | mongodb | dynamodb
+
+What if etcd tells you you're primary but whoops you don't have connection
+to etcd because somebody was playing with a firewall and cut you off for
+a few hours? Absent further details it is unclear whether involving an
+external arbiter even helps at all.
+
+* Right now I am looking into a concept, where each application calculates a &quot;health score&quot; (based on various parameters like connection to downstream nodes, IP gateways etc). Then they should then exchange health scores, and the one with highest score is taking the role as active (if health score is identical, one of them is configured to be preferred active). Net split will still be an issue...
 </pre>
 </div>
 <div created="20200424085359454" modified="20200424085425359" tags="Linux" title="Simulate `make' without actual execution">
