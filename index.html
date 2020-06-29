@@ -839,6 +839,8 @@ Error message and password prompt
 
 <li>Erlang core dump</li>
 
+<li>Erlang ensure all callbacks implemented</li>
+
 <li>Erlang FAQ</li>
 
 <li>Erlang GC</li>
@@ -11589,7 +11591,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200629073534936" list="ToDo [[The Art of Unix Programming]]" modified="20200629080107921" title="$:/StoryList">
+<div created="20200629073534936" list="ToDo [[Functional Programming in Javascript]] [[The Art of Unix Programming]]" modified="20200629101814941" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200528082144209" title="$:/temp/advancedsearch">
@@ -14811,6 +14813,50 @@ $ gdb /usr/local/lib/erlang/erts-8.3.5/bin/beam.smp ~/core.23344 -d otp/erts/emu
 (gdb) source otp/erts/etc/unix/etp-commands.in
 (gdb) bt
 </pre>
+</div>
+<div created="20200629145057704" modified="20200629145139817" tags="Erlang" title="Erlang ensure all callbacks implemented">
+<pre>```
+-module(gen_module).
+
+-callback fun1() -&gt; {ok, any() | {error, any()}.
+...
+-callback funN() -&gt; {ok, any() |{error, any()}.
+
+do_something() -&gt;
+    with_impl(fun (Module) -&gt;
+        case Module:fun1() of
+        {ok, Value1} -&gt;
+            Module:funN();
+        {error, Error} -&gt;
+            {error, Error}
+        end
+    end).
+
+with_impl(Fun1) -&gt;
+    Module = application:get_env(?APP, gen_module_impl, some_impl_module),
+    %% See the callbacks above
+    Expected = ?MODULE:behaviour_info(callbacks),
+    %% Impl module must implement ALL the callbacks
+    Actual = Module:module_info(exports),
+    case Expected -- Actual of
+    [] -&gt;
+        Fun1(Module);
+    Missing -&gt;
+        error({missing_exports, Missing})
+    end.
+```
+
+```
+-module(impl_module).
+
+-export([
+    fun1/0,
+    ...
+    funN/0
+]).
+
+...
+```</pre>
 </div>
 <div created="20200428104307076" modified="20200628133627275" tags="Erlang" title="Erlang FAQ">
 <pre>How to post-mortem debug (gdb) Segmentation fault?
