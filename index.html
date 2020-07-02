@@ -719,6 +719,8 @@ Error message and password prompt
 
 <li>Custom Events API</li>
 
+<li>Custom URI handlers</li>
+
 <li>Cut tailing 20s of mp3 files</li>
 
 <li>Date tricks</li>
@@ -11625,7 +11627,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200702085038911" list="ToDo [[Create custom URI handler]]" modified="20200702135756030" title="$:/StoryList">
+<div created="20200702085038911" list="[[Custom URI handlers]] [[Create custom URI handler]]" modified="20200702135756030" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13887,7 +13889,7 @@ Control Panel -&gt; Settings -&gt; Default Sidebar Tab -&gt; Contents
 * Tag: Tasks
 * Save</pre>
 </div>
-<div created="20200424082437898" modified="20200702134217622" tags="Linux Bash" title="Create custom URI handler">
+<div created="20200424082437898" modified="20200702144857214" tags="Linux Bash" title="Create custom URI handler">
 <pre>* https://linux.die.net/man/1/xdg-mime
 * https://linux.die.net/man/1/xdg-open
 * https://linux.die.net/man/1/xdg-desktop-menu
@@ -13932,20 +13934,14 @@ MimeType=x-scheme-handler/evincex;
 x-scheme-handler/evincex=evincex.desktop;
 ```
 
-https://github.com/ten0s/dotfiles/blob/master/roles/mimeapps/tasks/main.yml
+```
+$ xdg-mime query default x-scheme-handler/evincex
+evincex.desktop
+```
 
-* [ext[Open pdf|pdfx://refs/anki2/algs4.pdf::514]]
-* [ext[Open djvu|djvux://refs/anki2/pfds.djvu]]
-* [ext[Open man|manx:grep::REGULAR+EXPRESSIONS]]
-* [ext[Open dir|openx:///usr/share/mime/]]
-* [ext[Open file|openx:///etc/mime.types]]
-* [ext[Open remsh|remsh://dmu@10.252.134.161]]
-* [ext[Open ssh|ssh://10.252.134.161]]
+Examples: 
 
-[[Associate file types]]
-
-[[Adding MIME types]]
-</pre>
+{{Custom URI handlers}}</pre>
 </div>
 <div created="20200425130301982" modified="20200425130408889" tags="Linux" title="Create file system on file">
 <pre>```
@@ -14068,6 +14064,21 @@ In that case the call to ''elem.dispatchEvent(event)'' returns false. And the co
 The event must have the flag cancelable: true, otherwise the call ''event.preventDefault()'' is ignored.
 
 [[Broadcast Channel API]]</pre>
+</div>
+<div created="20200702144745062" modified="20200702144835808" tags="Bash Linux" title="Custom URI handlers">
+<pre>[ext[Open pdf|pdfx://refs/anki2/algs4.pdf::514]]
+[ext[Open djvu|djvux://refs/anki2/pfds.djvu]]
+[ext[Open man|manx:grep::REGULAR+EXPRESSIONS]]
+[ext[Open dir|openx:///usr/share/mime/]]
+[ext[Open file|openx:///etc/mime.types]]
+[ext[Open remsh|remsh://dmu@10.252.134.161]]
+[ext[Open ssh|ssh://10.252.134.161]]
+
+https://github.com/ten0s/dotfiles/blob/master/roles/mimeapps/tasks/main.yml
+
+[[Associate file types]]
+
+[[Adding MIME types]]</pre>
 </div>
 <div created="20200425152956237" modified="20200425153031054" tags="Bash" title="Cut tailing 20s of mp3 files">
 <pre>```
