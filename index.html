@@ -845,6 +845,10 @@ Error message and password prompt
 
 <li>Erlang can't connect to node in Docker</li>
 
+<li>Erlang choose element by hash</li>
+
+<li>Erlang choose element randomly</li>
+
 <li>Erlang core dump</li>
 
 <li>Erlang debug (gdb) errors in linked-in drivers or nif loaded as shared library</li>
@@ -857,13 +861,21 @@ Error message and password prompt
 
 <li>Erlang GC</li>
 
+<li>Erlang how to zip</li>
+
 <li>Erlang libs</li>
 
 <li>Erlang Links</li>
 
 <li>Erlang post-mortem debug (gdb) gegmentation fault</li>
 
+<li>Erlang pretty printing records</li>
+
+<li>Erlang run a slave when it can't access the master</li>
+
 <li>Erlang setup</li>
+
+<li>Erlang start a slave node on a remote machine</li>
 
 <li>Erlang upgrades</li>
 
@@ -1338,6 +1350,8 @@ Error message and password prompt
 <li>Recover delete files</li>
 
 <li>Recover Ubuntu after unsuccessful upgrade</li>
+
+<li>Redbug multiple calls</li>
 
 <li>Regex</li>
 
@@ -11209,7 +11223,7 @@ Error message and password prompt
     &quot;tiddlers&quot;: {
         &quot;Untitled 1&quot;: {
             &quot;title&quot;: &quot;Untitled 1&quot;,
-            &quot;text&quot;: &quot;New Tiddler&quot;
+            &quot;text&quot;: &quot;How to run a slave when it can't access the master&quot;
         }
     }
 }</pre>
@@ -11434,8 +11448,8 @@ Error message and password prompt
 <div created="20200423185634443" modified="20200423185634443" title="$:/state/plugin-info-334910430-$:/core---1812962263">
 <pre>contents</pre>
 </div>
-<div created="20200512083903594" modified="20200620084844043" title="$:/state/showeditpreview">
-<pre>no</pre>
+<div created="20200512083903594" modified="20200702105552749" title="$:/state/showeditpreview">
+<pre>yes</pre>
 </div>
 <div created="20200423185759928" modified="20200611175336998" title="$:/state/sidebar">
 <pre>yes</pre>
@@ -11611,11 +11625,11 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200702085038911" list="ToDo" modified="20200702085426426" title="$:/StoryList">
+<div created="20200702085038911" list="ToDo" modified="20200702105901171" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20200426080944127" modified="20200528082144209" title="$:/temp/advancedsearch">
-<pre>Contents</pre>
+<div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
+<pre>chose</pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
 <pre>{
@@ -12625,7 +12639,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200702085403932" title="$:/temp/search">
+<div created="20200422190456346" modified="20200702105901171" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -14860,6 +14874,21 @@ erl -sname whatever -remsh foo@mycontainer -kernel inetrc '&quot;./myinetrc&quot
 
 See [[Erlang can't connect to node]] for using /etc/hosts</pre>
 </div>
+<div created="20200702104959990" modified="20200702105139840" tags="Erlang" title="Erlang choose element by hash">
+<pre>```
+choose_node_by_hash(SomeID) -&gt;
+    Nodes = [node() | nodes()],
+    Idx = erlang:phash2(SomeID, length(Nodes)),
+    lists:nth(Idx + 1, Nodes);
+```
+</pre>
+</div>
+<div created="20200702104921779" modified="20200702105747742" tags="Erlang" title="Erlang choose element randomly">
+<pre>```
+Choose = fun (L) -&gt; lists:nth(rand:uniform(length(L)), L) end.
+```
+</pre>
+</div>
 <div created="20200428103115323" modified="20200428103127578" tags="Erlang" title="Erlang core dump">
 <pre>https://www.erlang-solutions.com/blog/how-to-analyse-a-beam-core-dump.html
 https://rkallos.com/blog/2018/04/22/erlang-debug-vms-what-why-and-how/
@@ -14994,7 +15023,7 @@ with_impl(Fun1) -&gt;
 ...
 ```</pre>
 </div>
-<div created="20200428104307076" modified="20200629165106118" tags="Erlang" title="Erlang FAQ">
+<div created="20200428104307076" modified="20200702105422181" tags="Erlang" title="Erlang FAQ">
 <pre>How to get full call stack while on breakpoint?
 How to debug all project's modules?
 
@@ -15019,130 +15048,8 @@ https://github.com/erlang/otp/blob/a0abdb8631d7bd7a154023950ccdcbf09c85b92d/erts
 
 How to share big data
 
-
 See &quot;In-process memory sharing doesn’t seem to work&quot; in Erlang Questions
 
-How to zip
-
-```
-%% on disk
-{ok, FileName} = zip:create(&quot;foo.zip&quot;, [&quot;foo.txt&quot;]).
-%% in memory
-Files = [{&quot;foo.txt&quot;, &lt;&lt;&quot;Contents of foo&quot;&gt;&gt;},
-         {&quot;bar.txt&quot;, &lt;&lt;&quot;Contents of bar&quot;&gt;&gt;}].
-{ok, {&quot;mem&quot;, ZipBin}} = zip:create(&quot;mem&quot;, Files, [memory]).
-```
-
-Pretty printing records
-
-```
-io_lib_pretty:print(Term, RecDefFun)
-where RecDefFun is a fun/2:
-fun(Tag, NoOfFields) -&gt; [FieldTag] | no
-
-io:format(io_lib_pretty:print({user, 1, 2}, fun (user, 2) -&gt; [name, date] end)).
-```
-
-see record_info/2
-
-```
-    pretty_print(Record) -&gt;
-          io_lib_pretty:print(Record, fun pretty_print/2).
-
-     pretty_print(foo, N) -&gt;
-          N = record_info(size, foo) - 1,
-          record_info(fields, foo);
-     pretty_print(bar, N) -&gt;
-          N = record_info(size, bar) - 1,
-          record_info(fields, bar);
-     pretty_print(_, _) -&gt;
-          no.
-```
-
-see also locks library locks_ttb:record_print_fun and Module:record_fields/1 in some modules
-
-Redbug multiple calls
-
-https://stackoverflow.com/questions/25669356/trace-multiple-functions-using-redbug-from-command-line
-
-```
-redbug:start([&quot;foo:bar -&gt; return&quot;, &quot;bar:baz -&gt; return&quot;], []).
-./priv/bin/redbug -setcookie s3cret mynode@localhost '&quot;foo:bar-&gt;return&quot;,&quot;foo:baz-&gt;return&quot;'
-./priv/bin/redbug -setcookie s3cret mynode@localhost '[&quot;foo:bar-&gt;return&quot;,&quot;foo:baz-&gt;return&quot;]'
-```
-
-Choose randomly
-
-```
-Choose = fun (L) -&gt; lists:nth(rand:uniform(length(L)), L) end.
-```
-
-Choose by hash
-
-```
-chose_node(muc_room, RoomJID) -&gt;
-    ActiveNodes = [node() | nodes()],
-    Idx = erlang:phash2(RoomJID, length(ActiveNodes)),
-    lists:nth(Idx + 1, ActiveNodes);
-```
-
-[erlang-questions] Sender punishment removed
-
-https://github.com/fishcakez/sbroker
-
-```
-call(Msg) -&gt;
-     gen_server:call({Msg, erlang:monotonic_time()}).
-
-receive
-     {Msg, In} -&gt;
-       Out = erlang:monotonic_time(),
-       Sojourn = erlang:convert_time_unit(Out - In, native, milli_seconds),
-       case Sojourn &gt; 5000 of
-           true -&gt; {reply, argh, State}
-           false -&gt; ...
-        end
-end
-```
-
-How to start a slave node on a remote machine?
-
-NB: The slave node must be able to access the master.
-
-```
-$ erl -rsh ssh -name master@10.10.0.90 -setcookie cookie
-&gt; slave:start_link(&quot;10.10.0.155&quot;, slave1, &quot;-setcookie cookie&quot;).
-{ok,'slave1@10.10.0.155'}
-&gt; nodes().
-['slave1@10.10.0.155']
-```
-
-How to run a slave when it can't access the master
-
-```
-The idea is to run epmd on master only and use ssh remote port forwarding
-for epmd and master ports to connect slave to master. Slave thinks that both
-epmd and master are local.
-1. Run master with a long name and intentional 127.0.0.1 address
-$ erl -name m@127.0.0.1 -setcookie hi
-2. Determine master's port
-$ epmd -names
-epmd: up and running on port 4369 with data:
-name m at port 59094
-3. Ensure 'GatewayPorts yes' in /etc/ssh/sshd_config
-to allow 4369 port access on all interfaces.
-4. Forward remote epmd's port to master's host
-ssh -N -R 0.0.0.0:4369:localhost:4369 10.252.149.199
-5. Forward remote master's port to master's host
-ssh -N -R 127.0.0.1:59094:localhost:59094 10.252.149.199
-6. Start slave without epmd starting. Slave lookups `m@127.0.0.1' locally by
-connecting to forwarded epmd port and then connects locally again to
-forwarded master's port.
-(m@127.0.0.1)1&gt; slave:start(&quot;10.252.149.199&quot;, s, &quot;-setcookie hi -start_epmd false&quot;).
-{ok,'s@10.252.149.199'}
-(m@127.0.0.1)2&gt; rpc:call('s@10.252.149.199', net_adm, localhost, []).
-&quot;ip-10-252-149-199&quot;
-```
 
 How to bind/search to LDAP
 
@@ -16355,6 +16262,22 @@ referenced by a given process in bytes, and may allow for far finer-grained mana
 The function basically sums up the memory tuples from `process_info(Pid, binary)` to give an accurate count for refc bins.
 </pre>
 </div>
+<div created="20200702104624052" modified="20200702104704598" tags="Erlang" title="Erlang how to zip">
+<pre>On disk
+
+```
+{ok, FileName} = zip:create(&quot;foo.zip&quot;, [&quot;foo.txt&quot;]).
+```
+
+In memory
+
+```
+Files = [{&quot;foo.txt&quot;, &lt;&lt;&quot;Contents of foo&quot;&gt;&gt;},
+         {&quot;bar.txt&quot;, &lt;&lt;&quot;Contents of bar&quot;&gt;&gt;}].
+{ok, {&quot;mem&quot;, ZipBin}} = zip:create(&quot;mem&quot;, Files, [memory]).
+```
+</pre>
+</div>
 <div created="20200428103506590" modified="20200428103515253" tags="Erlang" title="Erlang libs">
 <pre>XMPP video
 ===
@@ -16779,6 +16702,75 @@ $ gdb /home/ten0s/dsiload/dsiload/rel/dsiload/erts-5.9.3.1/bin/beam.smp core.130
 (gdb) bt
 ```</pre>
 </div>
+<div created="20200702104727946" modified="20200702104758493" tags="Erlang" title="Erlang pretty printing records">
+<pre>```
+io_lib_pretty:print(Term, RecDefFun)
+where RecDefFun is a fun/2:
+fun(Tag, NoOfFields) -&gt; [FieldTag] | no
+
+io:format(io_lib_pretty:print({user, 1, 2}, fun (user, 2) -&gt; [name, date] end)).
+```
+
+see record_info/2
+
+```
+    pretty_print(Record) -&gt;
+          io_lib_pretty:print(Record, fun pretty_print/2).
+
+     pretty_print(foo, N) -&gt;
+          N = record_info(size, foo) - 1,
+          record_info(fields, foo);
+     pretty_print(bar, N) -&gt;
+          N = record_info(size, bar) - 1,
+          record_info(fields, bar);
+     pretty_print(_, _) -&gt;
+          no.
+```
+
+See also locks library locks_ttb:record_print_fun and Module:record_fields/1 in some modules
+</pre>
+</div>
+<div created="20200702105319896" modified="20200702105717734" tags="Erlang" title="Erlang run a slave when it can't access the master">
+<pre>The idea is to run epmd on master only and use ssh remote port forwarding
+for epmd and master ports to connect slave to master. Slave thinks that both
+epmd and master are local.
+
+1. Run master with a long name and intentional 127.0.0.1 address
+
+```
+$ erl -name m@127.0.0.1 -setcookie hi
+```
+
+2. Determine master's port
+
+```
+$ epmd -names
+epmd: up and running on port 4369 with data:
+name m at port 59094
+```
+
+3. Ensure ''~GatewayPorts yes'' in /etc/ssh/sshd_config to allow 4369 port access on all interfaces.
+4. Forward remote epmd's port to master's host
+
+```
+ssh -N -R 0.0.0.0:4369:localhost:4369 10.252.149.199
+```
+
+5. Forward remote master's port to master's host
+
+```
+ssh -N -R 127.0.0.1:59094:localhost:59094 10.252.149.199
+```
+
+6. Start slave without epmd starting. Slave lookups ''m@127.0.0.1'' locally by connecting to forwarded epmd port and then connects locally again to forwarded master's port.
+
+```
+(m@127.0.0.1)1&gt; slave:start(&quot;10.252.149.199&quot;, s, &quot;-setcookie hi -start_epmd false&quot;).
+{ok,'s@10.252.149.199'}
+(m@127.0.0.1)2&gt; rpc:call('s@10.252.149.199', net_adm, localhost, []).
+&quot;ip-10-252-149-199&quot;
+```</pre>
+</div>
 <div created="20200428103642253" modified="20200428103653367" tags="Erlang" title="Erlang setup">
 <pre>export OTP_LIB_DIR=/opt/r16b03-1/lib
 dialyzer --build_plt --apps `ls -d $OTP_LIB_DIR/*/ebin | sed -E &quot;s:$OTP_LIB_DIR/(.*)-.*:\1:&quot; | xargs`
@@ -16928,6 +16920,18 @@ function set-r15b03-1() {
 set-r15b03-1
 
 ########### DO NOT MODIFY PATH AFTER HERE ##########
+</pre>
+</div>
+<div created="20200702105232632" modified="20200702105339480" tags="Erlang" title="Erlang start a slave node on a remote machine">
+<pre>NB: The slave node must be able to access the master.
+
+```
+$ erl -rsh ssh -name master@10.10.0.90 -setcookie cookie
+&gt; slave:start_link(&quot;10.10.0.155&quot;, slave1, &quot;-setcookie cookie&quot;).
+{ok,'slave1@10.10.0.155'}
+&gt; nodes().
+['slave1@10.10.0.155']
+```
 </pre>
 </div>
 <div created="20200428103755320" modified="20200627160007051" tags="Erlang" title="Erlang upgrades">
@@ -20832,6 +20836,17 @@ nameserver 8.8.8.8 to /etc/resolv.conf
 # maybe grub-install /dev/sda
 # reboot
 ```</pre>
+</div>
+<div created="20200702104847705" modified="20200702104903320" tags="Erlang" title="Redbug multiple calls">
+<pre>https://stackoverflow.com/questions/25669356/trace-multiple-functions-using-redbug-from-command-line
+
+```
+redbug:start([&quot;foo:bar -&gt; return&quot;, &quot;bar:baz -&gt; return&quot;], []).
+./priv/bin/redbug -setcookie s3cret mynode@localhost '&quot;foo:bar-&gt;return&quot;,&quot;foo:baz-&gt;return&quot;'
+./priv/bin/redbug -setcookie s3cret mynode@localhost '[&quot;foo:bar-&gt;return&quot;,&quot;foo:baz-&gt;return&quot;]'
+```
+
+</pre>
 </div>
 <div created="20200426101356212" modified="20200519140051063" tags="TableOfContents" title="Regex">
 <pre>[ext[Cheat sheet | pdfx://~/refs/linux/regexp.pdf]]
