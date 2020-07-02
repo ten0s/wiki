@@ -13887,12 +13887,13 @@ Control Panel -&gt; Settings -&gt; Default Sidebar Tab -&gt; Contents
 * Tag: Tasks
 * Save</pre>
 </div>
-<div created="20200424082437898" modified="20200702132634692" tags="Linux Bash" title="Create custom URI handler">
+<div created="20200424082437898" modified="20200702134217622" tags="Linux Bash" title="Create custom URI handler">
 <pre>* https://linux.die.net/man/1/xdg-mime
 * https://linux.die.net/man/1/xdg-open
 * https://linux.die.net/man/1/xdg-desktop-menu
 * https://specifications.freedesktop.org/mime-apps-spec/latest/
 * https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
+* https://specifications.freedesktop.org/desktop-entry-spec/latest/ar01s06.html
 * http://edoceo.com/howto/xfce-custom-uri-handler (https://en.wikipedia.org/wiki/GVfs)
 
 ~/bin/evincex.sh
@@ -13912,7 +13913,7 @@ PAGE=$(echo $URI | sed -E 's;(.*)#(.*);\2;')
 evince &quot;$FILE&quot; --page-label=&quot;$PAGE&quot;
 ```
 
-~/.local/share/applications/evincex.desktop
+[ext[~/.local/share/applications/evincex.desktop|openx://~/.local/share/applications/]]
 
 ```
 [Desktop Entry]
@@ -13924,7 +13925,7 @@ Terminal=false
 MimeType=x-scheme-handler/evincex;
 ```
 
-~/.config/mimeapps.list
+[ext[~/.config/mimeapps.list|openx://~/.config/mimeapps.list]]
 
 ```
 [Added Associations]
