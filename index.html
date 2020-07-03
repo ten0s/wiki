@@ -571,6 +571,10 @@ Error message and password prompt
 
 <li>Associate file types</li>
 
+<li>AWK add line numbes</li>
+
+<li>AWK first and last lines</li>
+
 <li>AWK max</li>
 
 <li>AWK sum and avg</li>
@@ -11631,7 +11635,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200703170424279" list="ToDo [[The AWK Programming Language]]" modified="20200703171214385" title="$:/StoryList">
+<div created="20200703170424279" list="ToDo [[The AWK Programming Language]]" modified="20200703174327415" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -12645,7 +12649,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200703171257450" title="$:/temp/search">
+<div created="20200422190456346" modified="20200703174401066" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -13150,6 +13154,20 @@ $ xdg-mime default MY_PDF.desktop
 [[Create custom URI handler]]
 
 [[Adding MIME types]]</pre>
+</div>
+<div created="20200703174331780" modified="20200703174349080" tags="Linux" title="AWK add line numbes">
+<pre>```
+$ awk '{ print NR, $0 }'
+```</pre>
+</div>
+<div created="20200703174137775" modified="20200703174257108" tags="Linux" title="AWK first and last lines">
+<pre>```
+$ awk 'NR == 1 { first = $0 } END { print first }' 
+```
+
+```
+$ awk '{ last = $0 } END { print last }'
+```</pre>
 </div>
 <div created="20200703173331766" modified="20200703173410984" tags="Linux" title="AWK max">
 <pre>```
