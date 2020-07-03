@@ -571,6 +571,8 @@ Error message and password prompt
 
 <li>Associate file types</li>
 
+<li>AWK sum and avg</li>
+
 <li>AWS</li>
 
 <li>Bash</li>
@@ -11450,8 +11452,8 @@ Error message and password prompt
 <div created="20200423185634443" modified="20200423185634443" title="$:/state/plugin-info-334910430-$:/core---1812962263">
 <pre>contents</pre>
 </div>
-<div created="20200512083903594" modified="20200702113035680" title="$:/state/showeditpreview">
-<pre>yes</pre>
+<div created="20200512083903594" modified="20200703173125007" title="$:/state/showeditpreview">
+<pre>no</pre>
 </div>
 <div created="20200423185759928" modified="20200611175336998" title="$:/state/sidebar">
 <pre>yes</pre>
@@ -11627,7 +11629,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200703170424279" list="[[Delete empty lines (newlines only)]] [[Delete almost empty lines (spaces, tabs)]] [[Add line numbers to output]] ToDo [[The AWK Programming Language]]" modified="20200703171214385" title="$:/StoryList">
+<div created="20200703170424279" list="ToDo [[The AWK Programming Language]]" modified="20200703171214385" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13146,6 +13148,25 @@ $ xdg-mime default MY_PDF.desktop
 [[Create custom URI handler]]
 
 [[Adding MIME types]]</pre>
+</div>
+<div created="20200703173031566" modified="20200703173127526" tags="Bash Linux" title="AWK sum and avg">
+<pre>```
+$ cat emp.data 
+Beth   4.00  0
+Dan    3.75  0
+Kathy  4.00  10
+Mark   5.00  20
+Mary   5.50  22
+Susie  4.25  18
+```
+
+```
+$ awk '{ sum += $2 } END { print &quot;count =&quot;, NR; print &quot;sum =&quot;, sum; print &quot;avg = &quot;, sum/NR }' emp.data 
+count = 6
+sum = 26.5
+avg =  4.41667
+```
+</pre>
 </div>
 <div created="20200428100434103" modified="20200428100439632" tags="TableOfContents" title="AWS">
 <pre></pre>
