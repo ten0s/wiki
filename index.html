@@ -571,6 +571,8 @@ Error message and password prompt
 
 <li>Associate file types</li>
 
+<li>AWK max</li>
+
 <li>AWK sum and avg</li>
 
 <li>AWS</li>
@@ -13149,6 +13151,23 @@ $ xdg-mime default MY_PDF.desktop
 
 [[Adding MIME types]]</pre>
 </div>
+<div created="20200703173331766" modified="20200703173410984" tags="Linux" title="AWK max">
+<pre>```
+$ cat emp.data 
+Beth   4.00  0
+Dan    3.75  0
+Kathy  4.00  10
+Mark   5.00  20
+Mary   5.50  22
+Susie  4.25  18
+```
+
+```
+$ awk '$2 &gt; maxrate { maxrate = $2; maxemp = $1 } END { print &quot;highest rate: &quot;, maxrate, &quot;for&quot;, maxemp }' emp.data 
+highest rate:  5.50 for Mary
+```
+</pre>
+</div>
 <div created="20200703173031566" modified="20200703173127526" tags="Bash Linux" title="AWK sum and avg">
 <pre>```
 $ cat emp.data 
@@ -23469,8 +23488,8 @@ can remember and we undervalue and underestimate the prevalence of the events
 we hear nothing about.
 </pre>
 </div>
-<div created="20200629080033258" modified="20200629080121435" tags="Book Linux task" title="The AWK Programming Language">
-<pre>[ext[Open book|pdfx://refs/linux/The_AWK_Programming_Language.pdf]]</pre>
+<div created="20200629080033258" modified="20200703173643302" tags="Book Linux task" title="The AWK Programming Language">
+<pre>[ext[Open book|pdfx://refs/linux/The_AWK_Programming_Language.pdf::14]]</pre>
 </div>
 <div created="20200510154610196" modified="20200528083153175" tags="Rust Book" title="The Cargo book">
 <pre>https://doc.rust-lang.org/cargo/
