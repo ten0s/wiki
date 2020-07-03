@@ -11627,7 +11627,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200703084041269" list="Quotes ToDo [[The AWK Programming Language]]" modified="20200703090058422" title="$:/StoryList">
+<div created="20200703170424279" list="[[Delete empty lines (newlines only)]] [[Delete almost empty lines (spaces, tabs)]] [[Add line numbers to output]] ToDo [[The AWK Programming Language]]" modified="20200703171214385" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -12641,7 +12641,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200702141737379" title="$:/temp/search">
+<div created="20200422190456346" modified="20200703171257450" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -12834,10 +12834,11 @@ https://utteranc.es/
 
 * https://tiddlywiki.com/static/ExternalImages.html</pre>
 </div>
-<div created="20200424090229068" modified="20200424090248094" tags="Linux Bash" title="Add line numbers to output">
+<div created="20200424090229068" modified="20200703171122888" tags="Linux Bash" title="Add line numbers to output">
 <pre>```
-cat -n
-nl
+$ cat -n
+$ nl
+$ awk '{ print NR, $0 }'
 ```
 </pre>
 </div>
@@ -14167,7 +14168,7 @@ $ echo -e '1\n \t \n2\n3\n   \n4\n\n5' | awk 'NF &gt; 0'
 $ awk -F: '!/^$/ { print $2 }' /etc/nodes.cfg
 ```</pre>
 </div>
-<div created="20200425130813376" modified="20200425130940618" tags="Linux" title="Delete empty lines (newlines only)">
+<div created="20200425130813376" modified="20200703171239744" tags="Linux" title="Delete empty lines (newlines only)">
 <pre>```
 $ echo -e '1\n2\n3\n4\n\n5' | awk '!/^$/'
 1
@@ -14175,7 +14176,9 @@ $ echo -e '1\n2\n3\n4\n\n5' | awk '!/^$/'
 3
 4
 5
-ten0s@tuna ~ $ echo -e '1\n2\n3\n4\n\n5' | sed '/^$/d'
+```
+```
+$ echo -e '1\n2\n3\n4\n\n5' | sed '/^$/d'
 1
 2
 3
@@ -22963,7 +22966,7 @@ $ adb pull /sdcard/screen.png
 
 https://github.com/termux/termux-packages/issues/2556</pre>
 </div>
-<div created="20200427173158521" list="[[Read &quot;Working with TW&quot;]] [[Read &quot;Customise TW&quot;]] [[Read &quot;Features&quot;]] [[Read &quot;Editions&quot;]] [[Read &quot;Platforms&quot;]] [[Functional Programming in Javascript]] [[Node.js in Motion]] [[SSH &amp; RemSH]] [[Grokking Simplicity]] [[Functional Javascript (with Underscore.js)]] [[Fundamentals of Lambda Calculus &amp; Functional Programming in JavaScript]] [[ES6 in Depth]] [[Node.js in Action]] [[Mastering REST APIs in Node.js]] [[Building the Web of Things]] [[Web Components in Action]] [[Mostly adequate guide to FP (in javascript)]] [[JavaScript Allongé, the &quot;Six&quot; Edition]] [[Programming JavaScript Applications]] [[Secrets of the JavaScript Ninja]] [[Learn JavaScript Next]] [[Javascript curry function]] [[Composing Software]] [[Understanding ECMAScript 6]] [[RxJS in Action]] [[Exploring ES6]] [[You don't know JS]] [[Android Wakelocks]] [[Property Based Testing with PropEr]] [[Fun With Folktale]] [[Review Functional combinators]] [[TypeScript Quickly]] [[Functional Programming with Folktale]] [[JavaScript: The Good Parts]] [[Setup Retropie]] [[WebAssembly in Action]] [[Raspberry Pi Zero Ethernet]] [[Setup Tor Router]] [[Add tar info]] [[Read &quot;Reference&quot;]] [[Read &quot;TW dev&quot;]] [[Make wiki work offline on Android]] Robots.txt [[Android phone as Raspberry Pi display]] [[Introduction to Rust]] [[Rust in Action]] [[Graphql in motion]] [[Raspberry Pi projects]] [[Install Android Studio]] Читать [[ES6 in Motion]] [[IF HEMINGWAY WROTE JAVASCRIPT]] [[Javascript mixin]] [[The Clean Coder]] [[The Pragmatic Programmer]] [[Functional Javascript]] [[Functional Programming in Javascript (Youtube)]] [[Review FP in JS resources]] [[Irresistible APIs]] [[Checkout Node.js Cluster API]] [[Express in Action/Motion]] [[Javascript dependency injection]] [[Lex and Yacc]] [[The Art of Unix Programming]] [[The AWK Programming Language]] [[The Design of Web APIs]] [[The Unix Programming Environment]] [[Understanding the Digital World]] [[Хакеры, герои компьютерной революции]]" modified="20200702113303682" title="task">
+<div created="20200427173158521" list="[[Read &quot;Working with TW&quot;]] [[Read &quot;Customise TW&quot;]] [[Read &quot;Features&quot;]] [[Read &quot;Editions&quot;]] [[Read &quot;Platforms&quot;]] [[Functional Programming in Javascript]] [[Node.js in Motion]] [[The AWK Programming Language]] [[Grokking Simplicity]] [[Functional Javascript (with Underscore.js)]] [[Fundamentals of Lambda Calculus &amp; Functional Programming in JavaScript]] [[ES6 in Depth]] [[Node.js in Action]] [[Mastering REST APIs in Node.js]] [[Building the Web of Things]] [[Web Components in Action]] [[Mostly adequate guide to FP (in javascript)]] [[JavaScript Allongé, the &quot;Six&quot; Edition]] [[Programming JavaScript Applications]] [[Secrets of the JavaScript Ninja]] [[Learn JavaScript Next]] [[Javascript curry function]] [[Composing Software]] [[Understanding ECMAScript 6]] [[RxJS in Action]] [[Exploring ES6]] [[You don't know JS]] [[Android Wakelocks]] [[Property Based Testing with PropEr]] [[Fun With Folktale]] [[Review Functional combinators]] [[TypeScript Quickly]] [[Functional Programming with Folktale]] [[JavaScript: The Good Parts]] [[Setup Retropie]] [[WebAssembly in Action]] [[Raspberry Pi Zero Ethernet]] [[Setup Tor Router]] [[Add tar info]] [[Read &quot;Reference&quot;]] [[Read &quot;TW dev&quot;]] [[Make wiki work offline on Android]] Robots.txt [[Android phone as Raspberry Pi display]] [[Introduction to Rust]] [[Rust in Action]] [[Graphql in motion]] [[Raspberry Pi projects]] [[Install Android Studio]] Читать [[ES6 in Motion]] [[IF HEMINGWAY WROTE JAVASCRIPT]] [[Javascript mixin]] [[The Clean Coder]] [[The Pragmatic Programmer]] [[Functional Javascript]] [[Functional Programming in Javascript (Youtube)]] [[Review FP in JS resources]] [[Irresistible APIs]] [[Checkout Node.js Cluster API]] [[Express in Action/Motion]] [[Javascript dependency injection]] [[Lex and Yacc]] [[The Art of Unix Programming]] [[The Design of Web APIs]] [[The Unix Programming Environment]] [[Understanding the Digital World]] [[Хакеры, герои компьютерной революции]]" modified="20200703170441947" title="task">
 <pre></pre>
 </div>
 <div created="20200425161848192" modified="20200425161940628" tags="Bash Linux" title="TCP client (w/o netcat)">
