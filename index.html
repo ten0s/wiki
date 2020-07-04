@@ -1217,6 +1217,8 @@ Error message and password prompt
 
 <li>MentalModel</li>
 
+<li>Merge sorted files</li>
+
 <li>Micro Frontends in Action</li>
 
 <li>Mirror a repo to Github</li>
@@ -1521,6 +1523,8 @@ Error message and password prompt
 
 <li>Show/kill/signal processes by names</li>
 
+<li>Shuffle files</li>
+
 <li>Side effects</li>
 
 <li>Simple/Naive leader selections</li>
@@ -1533,7 +1537,7 @@ Error message and password prompt
 
 <li>SOFTWARE AS SHE'S DEVELOPED</li>
 
-<li>Sort file by second field?</li>
+<li>Sort file by second field</li>
 
 <li>Sorting by multiple fields</li>
 
@@ -11641,7 +11645,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200704083739903" list="ToDo [[The AWK Programming Language]]" modified="20200704141908123" title="$:/StoryList">
+<div created="20200704083739903" list="[[The AWK Programming Language]]" modified="20200704155714751" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -12655,7 +12659,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200704141835498" title="$:/temp/search">
+<div created="20200422190456346" modified="20200704163000024" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -19289,6 +19293,18 @@ $ cat /proc/sys/kernel/pid_max
 <pre>* https://fs.blog/mental-models/
 * https://jamesclear.com/mental-models</pre>
 </div>
+<div created="20200704155018138" modified="20200704155226188" tags="Linux Bash" title="Merge sorted files">
+<pre>```
+$ sort --merge &lt;(echo -e &quot;1\n3\n5&quot;) &lt;(echo -e &quot;2\n3\n6\n7&quot;)
+1
+2
+3
+3
+5
+6
+7
+```</pre>
+</div>
 <div created="20200511130816657" modified="20200625092337850" tags="Book Web" title="Micro Frontends in Action">
 <pre>[ext[Open book|pdfx://refs/web/Micro_Frontends_in_Action.pdf::158]]
 </pre>
@@ -22382,6 +22398,16 @@ $ fuser FILE
 
 </pre>
 </div>
+<div created="20200704155117366" modified="20200704155215198" tags="Bash Linux" title="Shuffle files">
+<pre>```
+$ echo -e &quot;1\n2\n3\n4\n5&quot; | shuf
+3
+1
+4
+2
+5
+```</pre>
+</div>
 <div created="20200528080727273" modified="20200528082849186" tags="Definition" title="Side effects">
 <pre>''Side effects'' are any behavior of a function besides the return value.
 
@@ -22458,13 +22484,13 @@ $ ftp ftp.example.org
 <div created="20200512075558764" modified="20200512075612207" tags="[[TW Links]]" title="SOFTWARE AS SHE'S DEVELOPED">
 <pre>http://softwareas.com/tag/tiddlywiki/</pre>
 </div>
-<div created="20200428111734706" modified="20200428111755000" tags="Linux" title="Sort file by second field?">
+<div created="20200428111734706" modified="20200704155757974" tags="Linux" title="Sort file by second field">
 <pre>```
 $ cat log.txt
 54a49135a89e10cb09d9beb3;96171392329;4e7cc972-a640-4e06-9d6e-89fef653a110;9a221bfc-fd38-42b8-a9d1-6201c85f7851;5
 54a49154a89e10cb09d9beb5;9613474391;4e7cc972-a640-4e06-9d6e-89fef653a110;9a221bfc-fd38-42b8-a9d1-6201c85f7851;5
 54a49899a89e10cb09d9bebd;9613676356;4e7cc972-a640-4e06-9d6e-89fef653a110;9a221bfc-fd38-42b8-a9d1-6201c85f7851;5
-$ sort log.txt -n -t';' -k 2 &gt; log-sorted.txt
+$ sort log.txt -n -t';' -k 2
 ```
 </pre>
 </div>
@@ -23549,8 +23575,8 @@ can remember and we undervalue and underestimate the prevalence of the events
 we hear nothing about.
 </pre>
 </div>
-<div created="20200629080033258" modified="20200704151757075" tags="Book Linux task" title="The AWK Programming Language">
-<pre>[ext[Open book|pdfx://refs/linux/The_AWK_Programming_Language.pdf::47]]
+<div created="20200629080033258" modified="20200704162953910" tags="Book Linux task" title="The AWK Programming Language">
+<pre>[ext[Open book|pdfx://refs/linux/The_AWK_Programming_Language.pdf::67]]
 
 * Built-in variables [ext[Open book|pdfx://refs/linux/The_AWK_Programming_Language.pdf::36]] [ext[Open man|manx:awk::Built-in+Variables]]</pre>
 </div>
