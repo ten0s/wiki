@@ -883,6 +883,8 @@ Error message and password prompt
 
 <li>Erlang Links</li>
 
+<li>Erlang poor man's do notation</li>
+
 <li>Erlang post-mortem debug (gdb) gegmentation fault</li>
 
 <li>Erlang pretty printing records</li>
@@ -11645,7 +11647,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200705133801216" list="[[The AWK Programming Language]]" modified="20200705145925331" title="$:/StoryList">
+<div list="" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -16822,6 +16824,41 @@ Trees in Erlang
 ===
 http://mark.aufflick.com/blog/2007/11/30/trees-in-erlang
 </pre>
+</div>
+<div created="20200706092221340" modified="20200706092317862" tags="Erlang" title="Erlang poor man's do notation">
+<pre>https://github.com/ferd/rebar3_proper/blob/e7eb96498a9d31f41c919474ec6800df62e237e1/src/rebar3_proper_prv.erl#L298-L308
+
+```
+    %% Keep directories with properties in them
+    Dirs = [{App, TestDir}
+            || {App, TestDir} &lt;- TestDirs,
+               {ok, Files} &lt;- [file:list_dir(TestDir)],
+               lists:any(fun(File) -&gt; prop_suite(Mods, File) end, Files)],
+    compile_dirs(State, Dir, Dirs),
+    [Prop || {_, TestDir} &lt;- Dirs,
+             {ok, Files} &lt;- [file:list_dir(TestDir)],
+             File &lt;- Files,
+             prop_suite(Mods, File),
+             Prop &lt;- properties(Props, module(File))].
+```
+
+https://github.com/erlang/otp/blob/869537a9bf799c8d12fc46c2b413e532d6e3b10c/lib/diameter/test/diameter_examples_SUITE.erl#L254-L266
+
+```
+    Tmp = filename:join([PrivDir, &quot;diameter&quot;]),
+    TmpInc = filename:join([PrivDir, &quot;diameter&quot;, &quot;include&quot;]),
+    TmpEbin = filename:join([PrivDir, &quot;diameter&quot;, &quot;ebin&quot;]),
+    [] = [{T,E} || T &lt;- [Tmp, TmpInc, TmpEbin],
+                   {error, E} &lt;- [file:make_dir(T)]],
+
+    Inc = filename:join([Top, &quot;include&quot;]),
+    Gen = filename:join([Top, &quot;src&quot;, &quot;gen&quot;]),
+    Files = find_files([Inc, Gen], &quot;.*\\.hrl$&quot;),
+    [] = [{F,E} || {_,F} &lt;- Files,
+                   B &lt;- [filename:basename(F)],
+                   D &lt;- [filename:join([TmpInc, B])],
+                   {error, E} &lt;- [file:copy(F,D)]],
+```</pre>
 </div>
 <div created="20200629163512669" modified="20200629163547679" tags="Erlang" title="Erlang post-mortem debug (gdb) gegmentation fault">
 <pre>```
