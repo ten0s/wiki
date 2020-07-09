@@ -893,6 +893,8 @@ Error message and password prompt
 
 <li>Erlang Links</li>
 
+<li>Erlang parse term from string</li>
+
 <li>Erlang path existing beam</li>
 
 <li>Erlang poor man's do notation</li>
@@ -16825,8 +16827,36 @@ Trees in Erlang
 http://mark.aufflick.com/blog/2007/11/30/trees-in-erlang
 </pre>
 </div>
-<div created="20200709135341903" modified="20200709135508931" tags="Erlang" title="Erlang path existing beam">
-<pre>https://github.com/uwiger/locks/blob/master/test/locks_leader_SUITE.erl:patch_net_kernel/0
+<div created="20200709143345308" modified="20200709143542346" tags="Erlang" title="Erlang parse term from string">
+<pre>```
+-spec parse_term(string()) -&gt; {ok, term()} | {error, any()}.
+parse_term(Str) -&gt;
+    case erl_scan:string(ensure_ends_with($., Str)) of
+    {ok, Tokens, _} -&gt;
+        case erl_parse:parse_term(Tokens) of
+        {ok, Term} -&gt;
+            {ok, Term};
+        {error, Error} -&gt;
+            {error, {parse, Error}}
+        end;
+    {error, ErrorInfo, ErrorLocation} -&gt;
+        {error, {scan, {ErrorInfo, ErrorLocation}}}
+    end.
+
+ensure_ends_with(Char, Str) -&gt;
+    case ends_with(Char, Str) of
+    true -&gt;
+        Str;
+    false -&gt;
+        Str ++ [Char]
+    end.
+
+ends_with(Char, Str) -&gt;
+    lists:last(string:strip(Str)) =:= Char.
+```</pre>
+</div>
+<div created="20200709135341903" modified="20200709141307668" tags="Erlang" title="Erlang path existing beam">
+<pre>https://github.com/uwiger/locks/blob/master/test/locks_leader_SUITE.erl patch_net_kernel/0
 
 [ext[refs/erl/examples/patch_net_kernel.erl|openx://refs/erl/examples/patch_net_kernel.erl]]
 </pre>
