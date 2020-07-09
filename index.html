@@ -897,7 +897,7 @@ Error message and password prompt
 
 <li>Erlang parse term from string</li>
 
-<li>Erlang path existing beam</li>
+<li>Erlang patch existing beam</li>
 
 <li>Erlang poor man's do notation</li>
 
@@ -11671,7 +11671,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200709091637773" list="" modified="20200709173757303" title="$:/StoryList">
+<div created="20200709091637773" list="" modified="20200709180056075" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -12685,7 +12685,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200709175256357" title="$:/temp/search">
+<div created="20200422190456346" modified="20200709180125280" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -15111,10 +15111,10 @@ fi
 Define the env var &quot;USE_GDB&quot; before launching Erlang and you'll get a debugger prompt when your NIF/driver crashes. GDB's backtrace command is especially helpful
 </pre>
 </div>
-<div created="20200709135239328" modified="20200709135611108" tags="Erlang" title="Erlang decompile beam">
-<pre>http://erlang.org/pipermail/erlang-questions/2006-January/018812.html
-
-[ext[dotfiles/roles/erl/files/decompile_beam.es|openx://dotfiles/roles/erl/files/decompile_beam.es]]
+<div created="20200709135239328" modified="20200709180026329" tags="Erlang" title="Erlang decompile beam">
+<pre>* http://erlang.org/pipermail/erlang-questions/2006-January/018812.html
+* [[Erlang patch existing beam]]
+* [ext[dotfiles/roles/erl/files/decompile_beam.es|openx://dotfiles/roles/erl/files/decompile_beam.es]]
 
 Beam must be compiled with ''debug_info''
 
@@ -16881,11 +16881,80 @@ ends_with(Char, Str) -&gt;
     lists:last(string:strip(Str)) =:= Char.
 ```</pre>
 </div>
-<div created="20200709135341903" modified="20200709141307668" tags="Erlang" title="Erlang path existing beam">
-<pre>https://github.com/uwiger/locks/blob/master/test/locks_leader_SUITE.erl patch_net_kernel/0
+<div created="20200709135341903" modified="20200709180041375" tags="Erlang" title="Erlang patch existing beam">
+<pre>* Source https://github.com/uwiger/locks/blob/master/test/locks_leader_SUITE.erl#L465-L502
+* [[Erlang decompile beam]]
+* [ext[refs/erl/examples/patch_net_kernel.erl|openx://refs/erl/examples/patch_net_kernel.erl]]
 
-[ext[refs/erl/examples/patch_net_kernel.erl|openx://refs/erl/examples/patch_net_kernel.erl]]
-</pre>
+```
+-module(patch_net_kernel).
+
+%% &gt; c(patch_net_kernel).
+%% &gt; patch_net_kernel:decompile_module(net_kernel, &quot;v0.erl&quot;).
+%% &gt; patch_net_kernel:patch(&quot;v1.erl&quot;).
+%% &gt; io:format(os:cmd(&quot;diff v0.erl v1.erl&quot;)).
+%% 276a275,277
+%% &gt; handle_call(unbar_all, From, State) -&gt;
+%% &gt;     ets:match_delete(sys_dist, #barred_connection{_ = '_'}),
+%% &gt;     async_reply({reply, true, State}, From);
+
+-export([
+    decompile_forms/2,
+    decompile_module/2,
+    patch/1
+]).
+
+decompile_forms(Forms, ToFile) -&gt;
+    Src = erl_prettypr:format(erl_syntax:form_list(Forms)),
+    {ok, Fd} = file:open(ToFile, [write]),
+    io:fwrite(Fd, &quot;~s~n&quot;, [Src]),
+    file:close(Fd).
+
+decompile_module(Module, ToFile) -&gt;
+    ModuleFile = code:which(Module),
+    {ok, {_, [{abstract_code, {raw_abstract_v1, Forms}}]}} =
+        beam_lib:chunks(ModuleFile, [abstract_code]),
+    decompile_forms(Forms, ToFile).
+
+patch(ToFile) -&gt;
+    NetKernel = code:which(net_kernel),
+    {ok, {_,[{abstract_code,
+              {raw_abstract_v1,
+               [{attribute,1,file,_}|Forms]}}]}} =
+        beam_lib:chunks(NetKernel, [abstract_code]),
+    NewForms = xform_net_kernel(Forms),
+    decompile_forms(NewForms, ToFile),
+    try
+        {ok,net_kernel,Bin} = compile:forms(NewForms, [binary]),
+        code:unstick_dir(filename:dirname(NetKernel)),
+        {module, _Module} = Res = code:load_binary(net_kernel, NetKernel, Bin),
+        Res
+    catch
+        error:What -&gt;
+            io:fwrite(user, &quot;~p: ERROR:~p~n&quot;, [?LINE, What]),
+            error({What, erlang:get_stacktrace()})
+    end.
+
+xform_net_kernel({function,L,handle_call,3,Clauses}) -&gt;
+    {function,L,handle_call,3,
+     [{clause,L,[{atom,L,unbar_all},{var,L,'From'},{var,L,'State'}], [],
+       [{call,L,{remote,L,{atom,L,ets},{atom,L,match_delete}},
+         [
+          {atom,L,sys_dist},
+          {record,L,barred_connection,
+           [{record_field,L,{var,L,'_'},{atom,L,'_'}}]}
+         ]},
+        {call,L,{atom,L,async_reply},
+         [{tuple,L,[{atom,L,reply},{atom,L,true},{var,L,'State'}]},
+          {var,L,'From'}]}
+       ]} | Clauses]};
+xform_net_kernel(T) when is_tuple(T) -&gt;
+    list_to_tuple(xform_net_kernel(tuple_to_list(T)));
+xform_net_kernel([H|T]) -&gt;
+    [xform_net_kernel(H) | xform_net_kernel(T)];
+xform_net_kernel(Other) -&gt;
+    Other.
+```</pre>
 </div>
 <div created="20200706092221340" modified="20200706092317862" tags="Erlang" title="Erlang poor man's do notation">
 <pre>https://github.com/ferd/rebar3_proper/blob/e7eb96498a9d31f41c919474ec6800df62e237e1/src/rebar3_proper_prv.erl#L298-L308
