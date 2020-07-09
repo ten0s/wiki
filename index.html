@@ -871,7 +871,11 @@ Error message and password prompt
 
 <li>Erlang debug (gdb) errors in linked-in drivers or nif loaded as shared library</li>
 
+<li>Erlang decompile beam</li>
+
 <li>Erlang detect dead code</li>
+
+<li>Erlang disassemble beam</li>
 
 <li>Erlang ensure all callbacks implemented</li>
 
@@ -879,11 +883,17 @@ Error message and password prompt
 
 <li>Erlang GC</li>
 
+<li>Erlang generate erlang crash dump</li>
+
+<li>Erlang generate VM core dump</li>
+
 <li>Erlang how to zip</li>
 
 <li>Erlang libs</li>
 
 <li>Erlang Links</li>
+
+<li>Erlang path existing beam</li>
 
 <li>Erlang poor man's do notation</li>
 
@@ -896,6 +906,10 @@ Error message and password prompt
 <li>Erlang setup</li>
 
 <li>Erlang start a slave node on a remote machine</li>
+
+<li>Erlang start dist</li>
+
+<li>Erlang typer</li>
 
 <li>Erlang upgrades</li>
 
@@ -11476,8 +11490,8 @@ Error message and password prompt
 <div created="20200423185634443" modified="20200423185634443" title="$:/state/plugin-info-334910430-$:/core---1812962263">
 <pre>contents</pre>
 </div>
-<div created="20200512083903594" modified="20200704134839652" title="$:/state/showeditpreview">
-<pre>yes</pre>
+<div created="20200512083903594" modified="20200709134915251" title="$:/state/showeditpreview">
+<pre>no</pre>
 </div>
 <div created="20200423185759928" modified="20200611175336998" title="$:/state/sidebar">
 <pre>yes</pre>
@@ -11653,7 +11667,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200706092600708" list="ToDo" modified="20200706093155337" title="$:/StoryList">
+<div created="20200709091637773" list="[[Erlang path existing beam]] [[Erlang decompile beam]]" modified="20200709134430653" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -12667,7 +12681,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200706093153100" title="$:/temp/search">
+<div created="20200422190456346" modified="20200709135434239" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -15093,6 +15107,23 @@ fi
 Define the env var &quot;USE_GDB&quot; before launching Erlang and you'll get a debugger prompt when your NIF/driver crashes. GDB's backtrace command is especially helpful
 </pre>
 </div>
+<div created="20200709135239328" modified="20200709135611108" tags="Erlang" title="Erlang decompile beam">
+<pre>http://erlang.org/pipermail/erlang-questions/2006-January/018812.html
+
+[ext[dotfiles/roles/erl/files/decompile_beam.es|openx://dotfiles/roles/erl/files/decompile_beam.es]]
+
+Beam must be compiled with ''debug_info''
+
+```
+&gt; Module = net_kernel.
+&gt; ModuleFile = code:which(Module).
+&gt; {ok, {_,[{abstract_code,{raw_abstract_v1, Forms}}]}} = beam_lib:chunks(ModuleFile, [abstract_code]).
+&gt; ModuleSrc = erl_prettypr:format(erl_syntax:form_list(Forms)).
+&gt; {ok, Fd} = file:open(&quot;file.erl&quot;, [write]).
+&gt; io:fwrite(Fd, &quot;~s~n&quot;, [ModuleSrc]).
+&gt; file:close(Fd).
+```</pre>
+</div>
 <div created="20200629165032757" modified="20200629165052831" tags="Erlang" title="Erlang detect dead code">
 <pre>http://tech.adroll.com/blog/dev/2018/10/09/remove-erlang-dead-code-xref.html
 
@@ -15120,6 +15151,14 @@ rebar.config:
     {my_gpb_generated_module, a_function_with_various_arities},
     ...
 ]}.
+```
+</pre>
+</div>
+<div created="20200709135151147" modified="20200709135237529" tags="Erlang" title="Erlang disassemble beam">
+<pre>See some_module_name.dis file
+
+```
+&gt; erts_debug:df(some_module_name).
 ```
 </pre>
 </div>
@@ -15167,7 +15206,7 @@ with_impl(Fun1) -&gt;
 ...
 ```</pre>
 </div>
-<div created="20200428104307076" modified="20200702105422181" tags="Erlang" title="Erlang FAQ">
+<div created="20200428104307076" modified="20200709135643210" tags="Erlang" title="Erlang FAQ">
 <pre>How to get full call stack while on breakpoint?
 How to debug all project's modules?
 
@@ -15225,13 +15264,6 @@ ok
 ok
 ```
 
-How to use typer
-
-```
-typer --plt _build/default/rebar3_19.3_plt $(for d in _build/default/lib/*; do echo -I $d/include -pa $d/ebin; done) --annotate apps/swagger/src/art_api_util.erl
-typer --plt .dmu.plt $(for d in deps/*; do echo -I $d/include -pa $d/ebin; done) deps/rdo_inventory/src/s3_inventory.erl
-```
-
 Mochiglobal idea
 
 * https://github.com/mochi/mochiweb/blob/master/src/mochiglobal.erl
@@ -15248,23 +15280,6 @@ Cpu stat from cpu_sup
 ```
 f(), CpuF = fun () -&gt; {_, Busy, NonBusy, _} = cpu_sup:util([detailed]), Busy ++ NonBusy end.
 lists:foreach(fun (_) -&gt; io:format(&quot;~p~n&quot;, [CpuF()]), timer:sleep(1000) end, lists:seq(1, 10)).
-```
-
-How to start dist?
-
-```
--define(NAME, &quot;comtrc&quot;).
--define(TYPE, shortnames).
-
-start_dist(NamePref, NameType = shortnames) -&gt;
-    Name = list_to_atom(NamePref ++ os:getpid()),
-    {ok, _} = net_kernel:start([Name, NameType]);
-start_dist(NamePref, NameType = longnames) -&gt;
-    Name = list_to_atom(NamePref ++ os:getpid() ++ &quot;@127.0.0.1&quot;),
-    {ok, _} = net_kernel:start([Name, NameType]).
-
-start_dist() -&gt;
-    start_dist(?NAME, ?TYPE).
 ```
 
 Heart doesn't restart VM in case of OOM
@@ -15332,24 +15347,6 @@ env ERL_CRASH_DUMP_NICE=N, when N=1-39
 env ERL_CRASH_DUMP_BYTES, from 19.2
 ```
 
-%% How to generate erlang crash dump
-
-```
-1. $ kill -SIGUSR1 &lt;PID&gt; # http://erlang.org/doc/man/erl.html#signals
-2. &gt; erlang:halt(&quot;crashdump&quot;).
-3. &gt; os:putenv(&quot;ERL_CRASH_DUMP&quot;, &quot;erl_crash.dump.&quot; ++ os:getpid()).
-   &gt; (fun Me(N) -&gt; list_to_atom(integer_to_list(N) ++ &quot;-atom&quot;), Me(N+1) end)(1). % too many atoms
-   &gt; lists:seq(1, 1000000000). % out of memory. doesn't generate crash dump on 18.3
-```
-
-%% How to generate vm core dump
-
-http://erlang.org/doc/man/erl.html#signals
-
-```
-$ kill -SIGABRT &lt;PID&gt;
-```
-
 ```
 erlang:system_info(dist),   (distribution information)
 erlang:system_info(info),   (misc system info)
@@ -15363,33 +15360,6 @@ file:write_file(&quot;/tmp/procs.txt&quot;,erlang:system_info(procs)).
 
 dump the state of a cluster of Erlang nodes
 https://github.com/basho/cluster_info
-
-
-How to disassemble beam
-
-```
-erts_debug:df(some_module_name).
-see some_module_name.dis file
-
-How to decompile beam
-http://erlang.org/pipermail/erlang-questions/2006-January/018812.html
-~/dotfiles/roles/erl/files/decompile_beam.es
-beam MUST be compiled with debug_info
-===
-Module = net_kernel.
-ModuleFile = code:which(Module).
-{ok, {_,[{abstract_code,{raw_abstract_v1, Forms}}]}} = beam_lib:chunks(ModuleFile, [abstract_code]).
-ModuleSrc = erl_prettypr:format(erl_syntax:form_list(Forms)).
-{ok, Fd} = file:open(&quot;file.erl&quot;, [write]).
-io:fwrite(Fd, &quot;~s~n&quot;, [ModuleSrc]).
-file:close(Fd).
-```
-
-How to patch beam
-
-https://github.com/uwiger/locks/blob/master/test/locks_leader_SUITE.erl:patch_net_kernel/0
-
-~/refs/erl/examples/patch_net_kernel.erl
 
 List, tuple, improper list sizes
 
@@ -16406,6 +16376,23 @@ referenced by a given process in bytes, and may allow for far finer-grained mana
 The function basically sums up the memory tuples from `process_info(Pid, binary)` to give an accurate count for refc bins.
 </pre>
 </div>
+<div created="20200709135032548" modified="20200709135049341" tags="Erlang" title="Erlang generate erlang crash dump">
+<pre>```
+1. $ kill -SIGUSR1 &lt;PID&gt; # http://erlang.org/doc/man/erl.html#signals
+2. &gt; erlang:halt(&quot;crashdump&quot;).
+3. &gt; os:putenv(&quot;ERL_CRASH_DUMP&quot;, &quot;erl_crash.dump.&quot; ++ os:getpid()).
+   &gt; (fun Me(N) -&gt; list_to_atom(integer_to_list(N) ++ &quot;-atom&quot;), Me(N+1) end)(1). % too many atoms
+   &gt; lists:seq(1, 1000000000). % out of memory. doesn't generate crash dump on 18.3
+```</pre>
+</div>
+<div created="20200709135112913" modified="20200709135129852" tags="" title="Erlang generate VM core dump">
+<pre>http://erlang.org/doc/man/erl.html#signals
+
+```
+$ kill -SIGABRT &lt;PID&gt;
+```
+</pre>
+</div>
 <div created="20200702104624052" modified="20200702104704598" tags="Erlang" title="Erlang how to zip">
 <pre>On disk
 
@@ -16838,6 +16825,12 @@ Trees in Erlang
 http://mark.aufflick.com/blog/2007/11/30/trees-in-erlang
 </pre>
 </div>
+<div created="20200709135341903" modified="20200709135508931" tags="Erlang" title="Erlang path existing beam">
+<pre>https://github.com/uwiger/locks/blob/master/test/locks_leader_SUITE.erl:patch_net_kernel/0
+
+[ext[refs/erl/examples/patch_net_kernel.erl|openx://refs/erl/examples/patch_net_kernel.erl]]
+</pre>
+</div>
 <div created="20200706092221340" modified="20200706092317862" tags="Erlang" title="Erlang poor man's do notation">
 <pre>https://github.com/ferd/rebar3_proper/blob/e7eb96498a9d31f41c919474ec6800df62e237e1/src/rebar3_proper_prv.erl#L298-L308
 
@@ -17112,6 +17105,29 @@ $ erl -rsh ssh -name master@10.10.0.90 -setcookie cookie
 ['slave1@10.10.0.155']
 ```
 </pre>
+</div>
+<div created="20200709135001810" modified="20200709135015588" tags="Erlang" title="Erlang start dist">
+<pre>```
+-define(NAME, &quot;comtrc&quot;).
+-define(TYPE, shortnames).
+
+start_dist(NamePref, NameType = shortnames) -&gt;
+    Name = list_to_atom(NamePref ++ os:getpid()),
+    {ok, _} = net_kernel:start([Name, NameType]);
+start_dist(NamePref, NameType = longnames) -&gt;
+    Name = list_to_atom(NamePref ++ os:getpid() ++ &quot;@127.0.0.1&quot;),
+    {ok, _} = net_kernel:start([Name, NameType]).
+
+start_dist() -&gt;
+    start_dist(?NAME, ?TYPE).
+```
+</pre>
+</div>
+<div created="20200709134924724" modified="20200709134941433" tags="Erlang" title="Erlang typer">
+<pre>```
+$ typer --plt _build/default/rebar3_19.3_plt $(for d in _build/default/lib/*; do echo -I $d/include -pa $d/ebin; done) --annotate apps/swagger/src/art_api_util.erl
+$ typer --plt .dmu.plt $(for d in deps/*; do echo -I $d/include -pa $d/ebin; done) deps/rdo_inventory/src/s3_inventory.erl
+```</pre>
 </div>
 <div created="20200428103755320" modified="20200627160007051" tags="Erlang" title="Erlang upgrades">
 <pre>[erlang-questions] A nice code upgrade trick from Andy Tanenbaum http://erlang.org/pipermail/erlang-questions/2015-June/084952.html
