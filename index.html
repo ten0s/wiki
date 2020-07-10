@@ -707,6 +707,8 @@ Error message and password prompt
 
 <li>CPU temperature</li>
 
+<li>Crafting interpreters</li>
+
 <li>Create a new user</li>
 
 <li>Create and use a shared library</li>
@@ -863,6 +865,8 @@ Error message and password prompt
 
 <li>Erlang can't connect to node in Docker</li>
 
+<li>Erlang catch exception in shell</li>
+
 <li>Erlang choose element by hash</li>
 
 <li>Erlang choose element randomly</li>
@@ -886,6 +890,8 @@ Error message and password prompt
 <li>Erlang GC</li>
 
 <li>Erlang generate erlang crash dump</li>
+
+<li>Erlang generate random string</li>
 
 <li>Erlang generate VM core dump</li>
 
@@ -1324,6 +1330,8 @@ Error message and password prompt
 <li>Programming JavaScript Applications</li>
 
 <li>Property Based Testing with PropEr</li>
+
+<li>Property-based Testing</li>
 
 <li>Prune unused images</li>
 
@@ -11671,7 +11679,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200709091637773" list="" modified="20200709180056075" title="$:/StoryList">
+<div created="20200710111148447" list="[[Property-based Testing]] [[Shuffle files]] [[Crafting interpreters]]" modified="20200710115453700" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -12685,7 +12693,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200709180125280" title="$:/temp/search">
+<div created="20200422190456346" modified="20200710120345509" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -13944,6 +13952,10 @@ $ sensors
 ```
 </pre>
 </div>
+<div created="20200710084752857" modified="20200710084828796" tags="Book task" title="Crafting interpreters">
+<pre>http://craftinginterpreters.com/
+</pre>
+</div>
 <div created="20200425145843386" modified="20200425145941868" tags="Linux" title="Create a new user">
 <pre>```
 # adduser -c &quot;User Name&quot; -d /home/USER-s /bin/bash USER
@@ -15036,6 +15048,12 @@ erl -sname whatever -remsh foo@mycontainer -kernel inetrc '&quot;./myinetrc&quot
 
 See [[Erlang can't connect to node]] for using /etc/hosts</pre>
 </div>
+<div created="20200710115950891" modified="20200710120031685" tags="Erlang" title="Erlang catch exception in shell">
+<pre>```
+&gt; catch_exception(true).
+false
+```</pre>
+</div>
 <div created="20200702104959990" modified="20200702105139840" tags="Erlang" title="Erlang choose element by hash">
 <pre>```
 choose_node_by_hash(SomeID) -&gt;
@@ -15234,7 +15252,7 @@ pong
 ```
 </pre>
 </div>
-<div created="20200428104307076" modified="20200709135643210" tags="Erlang" title="Erlang FAQ">
+<div created="20200428104307076" modified="20200710120118844" tags="Erlang" title="Erlang FAQ">
 <pre>How to get full call stack while on breakpoint?
 How to debug all project's modules?
 
@@ -15400,30 +15418,7 @@ List, tuple, improper list sizes
 2
 ```
 
-Quickcheck
-
-* http://roberto-aloi.com/erlang/notes-on-erlang-quickcheck
-* http://roberto-aloi.com/erlang/notes-on-erlang-quickcheck-part-2
-
-Property-based Testing
-
-
-[Quickcheck](http://www.quviq.com/
-http://quviq.com/documentation/eqc/index.html
-Testing the Hard Stuff and Staying Sane - (VERY GOOD) - https://www.youtube.com/watch?v=F6LzB6SdFKA
-Certifying your car with Erlang - QCing stdio.h fread/fwrite/fseek - https://vimeo.com/68331689
-John Hughes - QuickCheck Evolution https://vimeo.com/100126729
-[PropEr](http://proper.softlab.ntua.gr/)
-http://proper.softlab.ntua.gr/doc/
-http://www.erlang-factory.com/upload/presentations/397/proper_talk.pdf
-https://vimeo.com/26575963
-http://proper.softlab.ntua.gr/talks/proper_creation@EUC-11.pdf
-https://vimeo.com/33776857
-[Triq](https://github.com/krestenkrab/triq)
-https://github.com/triqng/triq
-
 Concurrency Testing
-
 
 [Concuerror](http://concuerror.com/)
 https://github.com/parapluu/Concuerror
@@ -15436,16 +15431,6 @@ http://www.erlang-factory.com/euc2016/kostis-sagonas
 http://www.erlang-factory.com/sfbay2016/kostis-sagonas
 http://user.it.uu.se/~kostis/Papers/cuter.pdf
 
-How to generate random string
-
-```
-f(RandChar), RandChar = fun (_) -&gt; rand:uniform($z-$0)+$0 end.
-lists:map(RandChar, lists:seq(1, 10)).
-
-f(IdsFd), IdsFd = fun () -&gt; element(5, sys:get_state(logger_es_accumulator)) end.
-f(Ids), Ids = Fold(IdsFd(), start, []), {length(Ids), sets:size(sets:from_list(Ids))}.
-disk_log:info(IdsFd()).
-```
 
 Map function F over list L in parallel.
 
@@ -15502,10 +15487,6 @@ Solution:
 See `enospc'. There were not space available.
 
 
-relx
-===
-https://erlangcentral.org/topic/erlang-mk-and-relx/
-
 Service doesn't start `bin/service start` under user account and no log files generated
 ===
 Probably the service has beed started under root before. Check out pipes permissions at /tmp/...
@@ -15519,19 +15500,6 @@ Can't attach to running release (ping works)
 Have you made sure that the run_erl program is still running?
 &gt; ps aux | grep run_erl
 This sort of problem would happen if run_erl for some reason exited without taking the erlang vm with it and not cleaning up the fifos. There should be a file called run_erl.log in the same directlory where the erlang log files are, maybe it contains some information about what has happened?
-
-How to catch exception while working in shell?
-===
-&gt; Bad = &quot;yo, I cause pain&quot;.
-&gt; T = ets:new(test, []).
-&gt; ets:insert(T, {1, one}).
-&gt; catch ets:insert(Bad, {2, two}).
-&gt; ets:lookup(T, 1).
-
-Or use the big hammer:
-&gt; catch_exception(true).
-false
-...
 
 Binary pattern matching
 ===
@@ -16411,6 +16379,15 @@ The function basically sums up the memory tuples from `process_info(Pid, binary)
 3. &gt; os:putenv(&quot;ERL_CRASH_DUMP&quot;, &quot;erl_crash.dump.&quot; ++ os:getpid()).
    &gt; (fun Me(N) -&gt; list_to_atom(integer_to_list(N) ++ &quot;-atom&quot;), Me(N+1) end)(1). % too many atoms
    &gt; lists:seq(1, 1000000000). % out of memory. doesn't generate crash dump on 18.3
+```</pre>
+</div>
+<div created="20200710115736356" modified="20200710115914234" tags="Erlang" title="Erlang generate random string">
+<pre>```
+rand_char() -&gt;
+    rand:uniform($z-$0)+$0.
+
+rand_string(Len) -&gt;
+    [rand_char() || _ &lt;- lists:seq(1, Len)].
 ```</pre>
 </div>
 <div created="20200709135112913" modified="20200709135129852" tags="" title="Erlang generate VM core dump">
@@ -20045,6 +20022,33 @@ $ xev
 <pre>[ext[Open Pdf | pdfx://~/refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf]]
 
 JsCheck</pre>
+</div>
+<div created="20200710115514591" modified="20200710120338517" tags="Algorithm Erlang" title="Property-based Testing">
+<pre>* [ext[Open dir|openx://refs/erl/Quickcheck]]
+* [ext[Open dir|openx://refs/erl/examples/proper]]
+
+Quickcheck
+
+* http://roberto-aloi.com/erlang/notes-on-erlang-quickcheck
+* http://roberto-aloi.com/erlang/notes-on-erlang-quickcheck-part-2
+
+Property-based Testing
+
+* [Quickcheck](http://www.quviq.com/)
+* http://quviq.com/documentation/eqc/index.html
+
+* Testing the Hard Stuff and Staying Sane - (VERY GOOD) - https://www.youtube.com/watch?v=F6LzB6SdFKA
+* Certifying your car with Erlang - QCing stdio.h fread/fwrite/fseek - https://vimeo.com/68331689
+* John Hughes - QuickCheck Evolution https://vimeo.com/100126729
+* [PropEr](http://proper.softlab.ntua.gr/)
+* http://proper.softlab.ntua.gr/doc/
+* http://www.erlang-factory.com/upload/presentations/397/proper_talk.pdf
+* https://vimeo.com/26575963
+* http://proper.softlab.ntua.gr/talks/proper_creation@EUC-11.pdf
+* https://vimeo.com/33776857
+* [Triq](https://github.com/krestenkrab/triq)
+* https://github.com/triqng/triq
+</pre>
 </div>
 <div created="20200423193924839" modified="20200423194007244" tags="Docker" title="Prune unused images">
 <pre>Will prune dangling images (the ones that are tagged and not referenced by any container)
