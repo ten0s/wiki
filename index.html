@@ -859,6 +859,10 @@ Error message and password prompt
 
 <li>Erlang</li>
 
+<li>Erlang binary refs used by process</li>
+
+<li>Erlang bind/search</li>
+
 <li>Erlang can't attach to node</li>
 
 <li>Erlang can't connect to node</li>
@@ -872,6 +876,8 @@ Error message and password prompt
 <li>Erlang choose element randomly</li>
 
 <li>Erlang core dump</li>
+
+<li>Erlang crash dump</li>
 
 <li>Erlang debug (gdb) errors in linked-in drivers or nif loaded as shared library</li>
 
@@ -887,6 +893,8 @@ Error message and password prompt
 
 <li>Erlang FAQ</li>
 
+<li>Erlang flat size</li>
+
 <li>Erlang GC</li>
 
 <li>Erlang generate erlang crash dump</li>
@@ -900,6 +908,12 @@ Error message and password prompt
 <li>Erlang libs</li>
 
 <li>Erlang Links</li>
+
+<li>Erlang list all items in ets and dets</li>
+
+<li>Erlang mochiglobal</li>
+
+<li>Erlang nodelay TCP option</li>
 
 <li>Erlang parse term from string</li>
 
@@ -11679,7 +11693,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200714082006106" list="ToDo Читать" modified="20200714092609574" title="$:/StoryList">
+<div created="20200714082006106" list="[[Erlang FAQ]] ToDo Читать" modified="20200714113937226" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -12693,7 +12707,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200710155102013" title="$:/temp/search">
+<div created="20200422190456346" modified="20200714114618687" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -15001,6 +15015,44 @@ entropy of a closed system will never decrease.
 <div created="20200428102945495" modified="20200428110904019" tags="TableOfContents" title="Erlang">
 <pre></pre>
 </div>
+<div created="20200714114539092" modified="20200714114614422" tags="" title="Erlang binary refs used by process">
+<pre>* https://blog.heroku.com/archives/2013/11/7/logplex-down-the-rabbit-hole
+* http://dieswaytoofast.blogspot.ca/2012/12/erlang-binaries-and-garbage-collection.html
+
+```
+&gt; process_info(Pid, binary).
+&gt; [{Pid, Bin} || Pid &lt;- processes(), begin {binary, Bin} = process_info(Pid, binary), Bin =/= [] end].
+&gt; recon:proc_count(binary_memory, 3).
+```</pre>
+</div>
+<div created="20200714114107280" modified="20200714114132665" tags="Erlang" title="Erlang bind/search">
+<pre>* https://thecarlhall.wordpress.com/2011/01/04/ldap-authentication-authorization-dissected-and-digested/
+* http://webcache.googleusercontent.com/search?q=cache:mXMFKoq4IUgJ:www2.erlangcentral.org/wiki/index.php%3Ftitle%3DHow_to_talk_LDAP_from_Erlang+&amp;cd=1&amp;hl=en&amp;ct=clnk&amp;gl=us
+
+```
+1&gt; f(H), {ok, H} = eldap:open([&quot;belitgroup.lan&quot;], []).
+{ok,&lt;0.61.0&gt;}
+2&gt; f(DN), DN = &quot;BELITGROUP\\klionsky_d&quot;.
+&quot;BELITGROUP\\klionsky_d&quot;
+3&gt; f(PWD), PWD = &quot;secret&quot;.
+&quot;secret&quot;
+4&gt; eldap:simple_bind(H, DN, PWD).
+ok
+5&gt; eldap:search(H, [{base, &quot;dc=belitgroup,dc=lan&quot;}, {filter, eldap:equalityMatch(&quot;mail&quot;, &quot;d.klionsky@belitsoft.com&quot;)}, {attributes, [&quot;name&quot;, &quot;memberOf&quot;]}, {timeout, 5000}]).
+{ok,...}
+```
+
+```
+1&gt; f(H), {ok, H} = eldap:open([&quot;SERVER&quot;], []).
+{ok,&lt;0.61.0&gt;}
+2&gt; f(DN), DN = &quot;USERNAME&quot;.
+&quot;USERNAME&quot;
+3&gt; f(PWD), PWD = &quot;secret&quot;.
+&quot;secret&quot;
+4&gt; eldap:simple_bind(H, DN, PWD).
+ok
+```</pre>
+</div>
 <div created="20200629163726674" modified="20200629164422498" tags="Erlang" title="Erlang can't attach to node">
 <pre>If attaching to to_erl fails with ^L
 
@@ -15113,6 +15165,32 @@ $ yum install gdb
 $ gdb /usr/local/lib/erlang/erts-8.3.5/bin/beam.smp ~/core.23344 -d otp/erts/emulator/beam/
 (gdb) source otp/erts/etc/unix/etp-commands.in
 (gdb) bt
+</pre>
+</div>
+<div created="20200714114253915" modified="20200714114302583" tags="Erlang" title="Erlang crash dump">
+<pre>Erlang crash dump
+
+* http://erlang.org/doc/man/erl.html#environment_variables
+* http://erlang.org/doc/man/heart.html
+* http://erlang.org/doc/apps/erts/crash_dump.html
+* http://ferd.github.io/recon/
+
+```
+env ERL_CRASH_DUMP_SECONDS N when
+N &lt; 0 wait dump generation indefinitely
+N = 0 no dump (same as not setting)
+N &gt; 0 wait dump generation N secs
+
+                 | env is set
+heart is running |  yes | no or 0
+------------------------------
+yes              | dump | no, restart immediately
+no               | dump | dump
+
+env ERL_CRASH_DUMP=/path/to/dump, erl_crash.dump by default
+env ERL_CRASH_DUMP_NICE=N, when N=1-39
+env ERL_CRASH_DUMP_BYTES, from 19.2
+```
 </pre>
 </div>
 <div created="20200629163613437" modified="20200629163651739" tags="Erlang" title="Erlang debug (gdb) errors in linked-in drivers or nif loaded as shared library">
@@ -15252,7 +15330,7 @@ pong
 ```
 </pre>
 </div>
-<div created="20200428104307076" modified="20200710120118844" tags="Erlang" title="Erlang FAQ">
+<div created="20200428104307076" modified="20200714114617158" tags="Erlang" title="Erlang FAQ">
 <pre>How to get full call stack while on breakpoint?
 How to debug all project's modules?
 
@@ -15264,11 +15342,6 @@ debugger:start().
 int:break(mod_wg_xmpp_base_spa_id_router, 112).
 ```
 
-nodelay TCP option
-
-If Boolean == true, option TCP_NODELAY is turned on for the socket, which means that also small amounts of data are sent immediately.
-https://en.wikipedia.org/wiki/Nagle%27s_algorithm
-
 Boyer-Moore vs Aho-Corasick
 
 binary:match and friends
@@ -15278,42 +15351,6 @@ https://github.com/erlang/otp/blob/a0abdb8631d7bd7a154023950ccdcbf09c85b92d/erts
 How to share big data
 
 See &quot;In-process memory sharing doesn’t seem to work&quot; in Erlang Questions
-
-
-How to bind/search to LDAP
-
-https://thecarlhall.wordpress.com/2011/01/04/ldap-authentication-authorization-dissected-and-digested/
-
-http://webcache.googleusercontent.com/search?q=cache:mXMFKoq4IUgJ:www2.erlangcentral.org/wiki/index.php%3Ftitle%3DHow_to_talk_LDAP_from_Erlang+&amp;cd=1&amp;hl=en&amp;ct=clnk&amp;gl=us
-
-```
-1&gt; f(H), {ok, H} = eldap:open([&quot;belitgroup.lan&quot;], []).
-{ok,&lt;0.61.0&gt;}
-2&gt; f(DN), DN = &quot;BELITGROUP\\klionsky_d&quot;.
-&quot;BELITGROUP\\klionsky_d&quot;
-3&gt; f(PWD), PWD = &quot;secret&quot;.
-&quot;secret&quot;
-4&gt; eldap:simple_bind(H, DN, PWD).
-ok
-5&gt; eldap:search(H, [{base, &quot;dc=belitgroup,dc=lan&quot;}, {filter, eldap:equalityMatch(&quot;mail&quot;, &quot;d.klionsky@belitsoft.com&quot;)}, {attributes, [&quot;name&quot;, &quot;memberOf&quot;]}, {timeout, 5000}]).
-{ok,...}
-```
-
-```
-1&gt; f(H), {ok, H} = eldap:open([&quot;SERVER&quot;], []).
-{ok,&lt;0.61.0&gt;}
-2&gt; f(DN), DN = &quot;USERNAME&quot;.
-&quot;USERNAME&quot;
-3&gt; f(PWD), PWD = &quot;secret&quot;.
-&quot;secret&quot;
-4&gt; eldap:simple_bind(H, DN, PWD).
-ok
-```
-
-Mochiglobal idea
-
-* https://github.com/mochi/mochiweb/blob/master/src/mochiglobal.erl
-* http://erlang.org/pipermail/erlang-questions/2009-March/042503.html
 
 How to check a process is alive?
 
@@ -15369,29 +15406,6 @@ Erlang is crashing .. (waiting for crash dump file)&quot;
 ...
 ```
 
-Erlang crash dump
-
-* http://erlang.org/doc/man/erl.html#environment_variables
-* http://erlang.org/doc/man/heart.html
-* http://erlang.org/doc/apps/erts/crash_dump.html
-* http://ferd.github.io/recon/
-
-```
-env ERL_CRASH_DUMP_SECONDS N when
-N &lt; 0 wait dump generation indefinitely
-N = 0 no dump (same as not setting)
-N &gt; 0 wait dump generation N secs
-
-                 | env is set
-heart is running |  yes | no or 0
-------------------------------
-yes              | dump | no, restart immediately
-no               | dump | dump
-
-env ERL_CRASH_DUMP=/path/to/dump, erl_crash.dump by default
-env ERL_CRASH_DUMP_NICE=N, when N=1-39
-env ERL_CRASH_DUMP_BYTES, from 19.2
-```
 
 ```
 erlang:system_info(dist),   (distribution information)
@@ -15407,16 +15421,7 @@ file:write_file(&quot;/tmp/procs.txt&quot;,erlang:system_info(procs)).
 dump the state of a cluster of Erlang nodes
 https://github.com/basho/cluster_info
 
-List, tuple, improper list sizes
 
-```
-&gt; erts_debug:flat_size([a,b]).
-4
-&gt; erts_debug:flat_size({a,b}).
-3
-&gt; erts_debug:flat_size([a|b]).
-2
-```
 
 Concurrency Testing
 
@@ -15486,7 +15491,6 @@ Solution:
 
 See `enospc'. There were not space available.
 
-
 Service doesn't start `bin/service start` under user account and no log files generated
 ===
 Probably the service has beed started under root before. Check out pipes permissions at /tmp/...
@@ -15535,15 +15539,6 @@ If you use an older `rebar' version, you might get the error below:
 escript: Cannot load the code for csv2json into the debugger
 
 
-How to list all items from ets and dets
-===
-ets:all/0 % list all ets tables
-ets:info/1
-ets:tab2list/1
-dets:all/0 % list all dets tables
-dets:info/1
-dets:foldl(fun(I, Acc) -&gt; [I | Acc] end, [], Table).
-
 How to start Crash Dump Viewer (in observer app)
 ===
 /opt/otp-r16b03-1/lib/erlang/lib/observer-1.3.1.2/priv/bin/cdv erl_crash-2014-05-03.dump
@@ -15579,7 +15574,6 @@ restart the node
 $ cd releases/1/
 $ erl
 &gt; systools:script2boot(&quot;kelly&quot;).
-
 
 rabbitmq-server fails to start
 ===
@@ -15712,13 +15706,7 @@ http://www.erlang.org/faq/how_do_i.html#id54940
  {code,2014424},
  {ets,133020}]
 
-How to see binary refs used by the process
-====
-https://blog.heroku.com/archives/2013/11/7/logplex-down-the-rabbit-hole
-http://dieswaytoofast.blogspot.ca/2012/12/erlang-binaries-and-garbage-collection.html
-process_info(Pid, binary).
-[{Pid, Bin} || Pid &lt;- processes(), begin {binary, Bin} = process_info(Pid, binary), Bin =/= [] end].
-recon:proc_count(binary_memory, 3).
+
 
 How to sort processes by message queue len/reductions
 ====
@@ -16295,6 +16283,18 @@ $ ./configure ...
 $ make
 </pre>
 </div>
+<div created="20200714114318899" modified="20200714114344049" tags="Erlang" title="Erlang flat size">
+<pre>List, tuple, improper list sizes
+
+```
+&gt; erts_debug:flat_size([a,b]).
+4
+&gt; erts_debug:flat_size({a,b}).
+3
+&gt; erts_debug:flat_size([a|b]).
+2
+```</pre>
+</div>
 <div created="20200428103034928" modified="20200428103045649" tags="Erlang" title="Erlang GC">
 <pre>dse - Designing for Scalability with Erlang/OTP
 sgb - Stuff goes bad
@@ -16829,6 +16829,28 @@ Trees in Erlang
 ===
 http://mark.aufflick.com/blog/2007/11/30/trees-in-erlang
 </pre>
+</div>
+<div created="20200714114412535" modified="20200714114439501" tags="Erlang" title="Erlang list all items in ets and dets">
+<pre>```
+ets:all/0 % list all ets tables
+ets:info/1
+ets:tab2list/1
+dets:all/0 % list all dets tables
+dets:info/1
+dets:foldl(fun(I, Acc) -&gt; [I | Acc] end, [], Table).
+```
+</pre>
+</div>
+<div created="20200714114149709" modified="20200714114209032" tags="Erlang" title="Erlang mochiglobal">
+<pre>Mochiglobal idea
+
+* https://github.com/mochi/mochiweb/blob/master/src/mochiglobal.erl
+* http://erlang.org/pipermail/erlang-questions/2009-March/042503.html</pre>
+</div>
+<div created="20200714114013335" modified="20200714114035132" tags="Erlang" title="Erlang nodelay TCP option">
+<pre>If Boolean == true, option TCP_NODELAY is turned on for the socket, which means that also small amounts of data are sent immediately.
+
+https://en.wikipedia.org/wiki/Nagle%27s_algorithm</pre>
 </div>
 <div created="20200709143345308" modified="20200709143542346" tags="Erlang" title="Erlang parse term from string">
 <pre>```
