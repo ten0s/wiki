@@ -11520,8 +11520,8 @@ Error message and password prompt
 <div created="20200423185634443" modified="20200423185634443" title="$:/state/plugin-info-334910430-$:/core---1812962263">
 <pre>contents</pre>
 </div>
-<div created="20200512083903594" modified="20200709134915251" title="$:/state/showeditpreview">
-<pre>no</pre>
+<div created="20200512083903594" modified="20200717170502378" title="$:/state/showeditpreview">
+<pre>yes</pre>
 </div>
 <div created="20200423185759928" modified="20200611175336998" title="$:/state/sidebar">
 <pre>yes</pre>
@@ -11697,7 +11697,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200717104008607" list="ToDo [[Property-Based Testing with PropEr]]" modified="20200717165354772" title="$:/StoryList">
+<div created="20200717104008607" list="ToDo [[Property-Based Testing with PropEr]]" modified="20200717172116211" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -20054,7 +20054,7 @@ $ xev
 <div created="20200606175020464" modified="20200617162203410" tags="Javascript Book task" title="Programming JavaScript Applications">
 <pre>[ext[Open pdf | pdfx://refs/js/Programming_JavaScript_Applications.pdf]]</pre>
 </div>
-<div created="20200710115514591" modified="20200717165142262" tags="Erlang Algorithm" title="Property-Based Testing">
+<div created="20200710115514591" modified="20200717172136440" tags="Erlang Algorithm" title="Property-Based Testing">
 <pre>* [ext[Open dir|openx://refs/erl/Quickcheck]]
 * [ext[Open dir|openx://refs/erl/examples/proper]]
 
@@ -20088,11 +20088,17 @@ $ xev
 * http://proper.softlab.ntua.gr/talks/proper_creation@EUC-11.pdf
 * https://vimeo.com/33776857
 
+!!! F#
+
+* https://fsharpforfunandprofit.com/posts/property-based-testing/
+* https://fsharpforfunandprofit.com/posts/property-based-testing-2/
+
 !!! Javascript 
 
-[[JsCheck|https://www.crockford.com/jscheck.html]]</pre>
+* [[JSVerify|https://github.com/jsverify/jsverify]]
+* [[JsCheck|https://www.crockford.com/jscheck.html]]</pre>
 </div>
-<div created="20200512164838102" modified="20200717165404749" tags="Erlang task Book" title="Property-Based Testing with PropEr">
+<div created="20200512164838102" modified="20200717172500870" tags="Erlang task Book" title="Property-Based Testing with PropEr">
 <pre>[ext[Open Pdf | pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::33]]
 
 rebar.config
@@ -20118,6 +20124,57 @@ $ rebar3 proper -n 1000
 * [[PropEr API|https://proper-testing.github.io/apidocs/]]
 * [[PropEr Publications|https://proper-testing.github.io/publications.html]]
 * [[PropEr Tutorials|https://proper-testing.github.io/tutorials.html]]
+
+---
+
+* Modeling
+* Generalizing examples
+* Invariants
+* Symmetric
+
+---
+
+Good examples
+
+https://dev.to/jdsteinhauser/intro-to-property-based-testing-2cj8
+
+* Connections, numbers properties
+* Reflexive: p is connected to p
+* Symmetric: if p is connected to q, then q is connected to p
+* Transitive: if p is connected to q and q is connected to r, then p is connected to r.
+
+Patterns of properties:
+
+* [[Property-Based Testing for Better Code - Jessica Kerr|https://www.youtube.com/watch?v=shngiiBfD80]]
+* https://jessitron.com/2013/04/25/property-based-testing-what-is-it/
+
+* Should not crash, Fuzzing 
+  ** for any given input some results should be true
+  ** the code should not crash
+
+* Reversible opts 
+  ** encoding/decoding, set/get, write/read, undo ops, round trip, symmetry 
+  ** encode(decode(xs)) == xs
+
+* Different Paths,/ Same Destination
+  ** x + y = y + x
+  ** x + x = x * 2
+
+* Some Things Never Change 
+  ** size and elements of collection after a sort
+
+* Hard to Prove, Easy to Verify
+  ** String tokenizer - verify by concatenating the tokens
+  ** Sorting - ensure sorted by reference implementation (see below)
+
+* Test Oracle 
+  ** Relations (new implementation is faster but behaves the same),
+  ** Reference implementation (bubble sort vs quick sort)
+
+* Statefull Testing
+
+* Idempotent 
+  ** run some upsert DB ops, should read one single result back
 </pre>
 </div>
 <div created="20200423193924839" modified="20200423194007244" tags="Docker" title="Prune unused images">
