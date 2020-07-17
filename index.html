@@ -701,8 +701,6 @@ Error message and password prompt
 
 <li>Copy-on-write</li>
 
-<li>Cover</li>
-
 <li>CPU Steal time</li>
 
 <li>CPU temperature</li>
@@ -878,6 +876,8 @@ Error message and password prompt
 <li>Erlang choose element randomly</li>
 
 <li>Erlang core dump</li>
+
+<li>Erlang Cover</li>
 
 <li>Erlang crash dump</li>
 
@@ -1349,7 +1349,7 @@ Error message and password prompt
 
 <li>Property Based Testing with PropEr</li>
 
-<li>Property-based Testing</li>
+<li>Property-Based Testing</li>
 
 <li>Prune unused images</li>
 
@@ -11697,7 +11697,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200717104008607" list="[[Property Based Testing with PropEr]] [[Property-based Testing]]" modified="20200717125454506" title="$:/StoryList">
+<div created="20200717104008607" list="" modified="20200717164702524" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -12711,7 +12711,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200715175318138" title="$:/temp/search">
+<div created="20200422190456346" modified="20200717165349018" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -13916,38 +13916,6 @@ const new_array = Array.copy(old_array);
 const new_obj = Object.assign({}, old_obj);
 ```
 
-</pre>
-</div>
-<div created="20200428103002758" modified="20200428103009314" tags="Erlang" title="Cover">
-<pre>http://www.erlang.org/documentation/doc-5.10.4/lib/tools-2.6.13/doc/html/cover.html
-
-cover:start().
-cover:compile_directory(&quot;../../src&quot;).
-
-START TESTS
-
-Modules = [module1, module2].
-
-[cover:analyse(M, coverage, module) || M &lt;- Modules].
-[{ok,{module1,{79,14}}},
- {ok,{module2,{72,9}}}]
-
-[cover:analyse_to_file(M, [html]) || M &lt;- Modules].
-
-cover:stop().
-
-
-See define cover_report.erl in erlang.mk
-
-
-
-
-cover:compile_directory(&quot;../../../test/lib/swagger/src&quot;).
-art_api_backend_stub:enable().
-sso_api_stub:enable().
-TEST
-cover:export(&quot;../../../test/cover/art_api.coverdata&quot;).
-cover:export(&quot;../../../test/cover/sso_api.coverdata&quot;).
 </pre>
 </div>
 <div created="20200424085043246" modified="20200424085141455" tags="Linux" title="CPU Steal time">
@@ -15174,6 +15142,40 @@ $ yum install gdb
 $ gdb /usr/local/lib/erlang/erts-8.3.5/bin/beam.smp ~/core.23344 -d otp/erts/emulator/beam/
 (gdb) source otp/erts/etc/unix/etp-commands.in
 (gdb) bt
+</pre>
+</div>
+<div created="20200428103002758" modified="20200717164647021" tags="Erlang" title="Erlang Cover">
+<pre>http://www.erlang.org/documentation/doc-5.10.4/lib/tools-2.6.13/doc/html/cover.html
+
+```
+&gt; cover:start().
+&gt; cover:compile_directory(&quot;../../src&quot;).
+```
+
+START TESTS
+
+```
+&gt; Modules = [module1, module2].
+&gt; [cover:analyse(M, coverage, module) || M &lt;- Modules].
+&gt; [{ok,{module1,{79,14}}}, {ok,{module2,{72,9}}}]
+&gt; [cover:analyse_to_file(M, [html]) || M &lt;- Modules].
+&gt; cover:stop().
+```
+
+See define cover_report.erl in erlang.mk
+
+```
+&gt; cover:compile_directory(&quot;../../../test/lib/swagger/src&quot;).
+&gt; art_api_backend_stub:enable().
+&gt; sso_api_stub:enable().
+```
+
+TEST
+
+```
+&gt; cover:export(&quot;../../../test/cover/art_api.coverdata&quot;).
+&gt; cover:export(&quot;../../../test/cover/sso_api.coverdata&quot;).
+```
 </pre>
 </div>
 <div created="20200714114253915" modified="20200714114302583" tags="Erlang" title="Erlang crash dump">
@@ -17660,7 +17662,7 @@ then apply those. Looks like Event sourcing!
 <div created="20200601091424459" modified="20200621134216919" tags="Javascript task Book" title="Functional Javascript (with Underscore.js)">
 <pre>[ext[Open Pdf | pdfx://refs/js/Functional_JavaScript_with_Underscore.pdf::1]]</pre>
 </div>
-<div created="20200528075037847" modified="20200620160511357" tags="task Javascript Book done" title="Functional Programming in Javascript">
+<div created="20200528075037847" modified="20200717165205223" tags="task Javascript Book done" title="Functional Programming in Javascript">
 <pre>[ext[Open book|pdfx://refs/js/Functional_Programming_in_JavaScript.pdf]]
 
 # [ext[Becoming functional|pdfx://refs/js/Functional_Programming_in_JavaScript.pdf::3]] ([ext[Audio|openx://refs/js/Functional_Programming_in_JavaScript/ch1.m4a]])
@@ -17745,7 +17747,7 @@ https://github.com/fantasyland/fantasy-land/tree/v4.0.1
 * Ramda
 * QUnit
 * JSCheck - Quickcheck
-* Blanket.js - Code coverage
+* [[Blanket.js|https://github.com/alex-seville/blanket]] - Code coverage
 * Sinon.js - Mock &amp; stub
 * Log4js - Logging
 * RxJS - Reactive programming</pre>
@@ -20052,7 +20054,7 @@ $ xev
 <div created="20200606175020464" modified="20200617162203410" tags="Javascript Book task" title="Programming JavaScript Applications">
 <pre>[ext[Open pdf | pdfx://refs/js/Programming_JavaScript_Applications.pdf]]</pre>
 </div>
-<div created="20200512164838102" modified="20200717125515808" tags="Erlang task Book" title="Property Based Testing with PropEr">
+<div created="20200512164838102" modified="20200717165147576" tags="Erlang task Book" title="Property Based Testing with PropEr">
 <pre>[ext[Open Pdf | pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::33]]
 
 rebar.config
@@ -20072,18 +20074,15 @@ rebar.config
 $ rebar3 help proper
 $ rebar3 proper -n 1000
 ```
-[[Property-based Testing]]
+[[Property-Based Testing]]
 
 * [[PropEr|https://proper-testing.github.io/]]
 * [[PropEr API|https://proper-testing.github.io/apidocs/]]
 * [[PropEr Publications|https://proper-testing.github.io/publications.html]]
 * [[PropEr Tutorials|https://proper-testing.github.io/tutorials.html]]
-
-[[Quickcheck|http://quviq.com/documentation/eqc/index.html]]
-
-[[JsCheck|https://www.crockford.com/jscheck.html]]</pre>
+</pre>
 </div>
-<div created="20200710115514591" modified="20200717130108508" tags="Algorithm Erlang" title="Property-based Testing">
+<div created="20200710115514591" modified="20200717165142262" tags="Erlang Algorithm" title="Property-Based Testing">
 <pre>* [ext[Open dir|openx://refs/erl/Quickcheck]]
 * [ext[Open dir|openx://refs/erl/examples/proper]]
 
@@ -20117,7 +20116,9 @@ $ rebar3 proper -n 1000
 * http://proper.softlab.ntua.gr/talks/proper_creation@EUC-11.pdf
 * https://vimeo.com/33776857
 
-</pre>
+!!! Javascript 
+
+[[JsCheck|https://www.crockford.com/jscheck.html]]</pre>
 </div>
 <div created="20200423193924839" modified="20200423194007244" tags="Docker" title="Prune unused images">
 <pre>Will prune dangling images (the ones that are tagged and not referenced by any container)
