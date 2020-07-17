@@ -927,6 +927,8 @@ Error message and password prompt
 
 <li>Erlang pretty printing records</li>
 
+<li>Erlang PropEr</li>
+
 <li>Erlang PropEr Generators</li>
 
 <li>Erlang run a slave when it can't access the master</li>
@@ -11520,8 +11522,8 @@ Error message and password prompt
 <div created="20200423185634443" modified="20200423185634443" title="$:/state/plugin-info-334910430-$:/core---1812962263">
 <pre>contents</pre>
 </div>
-<div created="20200512083903594" modified="20200717170502378" title="$:/state/showeditpreview">
-<pre>yes</pre>
+<div created="20200512083903594" modified="20200717175025384" title="$:/state/showeditpreview">
+<pre>no</pre>
 </div>
 <div created="20200423185759928" modified="20200611175336998" title="$:/state/sidebar">
 <pre>yes</pre>
@@ -11697,7 +11699,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200717104008607" list="ToDo [[Property-Based Testing with PropEr]] [[Property-Based Testing]]" modified="20200717173240299" title="$:/StoryList">
+<div created="20200717104008607" list="[[Property-Based Testing with PropEr]]" modified="20200717173240299" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -17037,6 +17039,32 @@ see record_info/2
 See also locks library locks_ttb:record_print_fun and Module:record_fields/1 in some modules
 </pre>
 </div>
+<div created="20200717175915720" modified="20200717180001357" tags="Erlang" title="Erlang PropEr">
+<pre>rebar.config
+
+```
+{project_plugins, [rebar3_proper]}.
+
+{profiles, [
+    {test, [
+        {erl_opts, [nowarn_export_all]},
+        {deps, [proper]}
+    ]}
+]}.    
+```
+
+```
+$ rebar3 help proper
+$ rebar3 proper -n 1000
+```
+
+* [[PropEr|https://proper-testing.github.io/]]
+* [[PropEr API|https://proper-testing.github.io/apidocs/]]
+* [[PropEr Publications|https://proper-testing.github.io/publications.html]]
+* [[PropEr Tutorials|https://proper-testing.github.io/tutorials.html]]
+
+[[Property-Based Testing]]</pre>
+</div>
 <div created="20200717121931080" modified="20200717122115409" tags="Erlang" title="Erlang PropEr Generators">
 <pre>[ext[Generators Reference|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::345]]</pre>
 </div>
@@ -20054,7 +20082,7 @@ $ xev
 <div created="20200606175020464" modified="20200617162203410" tags="Javascript Book task" title="Programming JavaScript Applications">
 <pre>[ext[Open pdf | pdfx://refs/js/Programming_JavaScript_Applications.pdf]]</pre>
 </div>
-<div created="20200710115514591" modified="20200717173159740" tags="Erlang Algorithm" title="Property-Based Testing">
+<div created="20200710115514591" modified="20200717175133351" tags="Erlang Algorithm" title="Property-Based Testing">
 <pre>* [ext[Open dir|openx://refs/erl/Quickcheck]]
 * [ext[Open dir|openx://refs/erl/examples/proper]]
 
@@ -20103,40 +20131,22 @@ $ xev
 
 * https://www.youtube.com/watch?v=jvwfDdgg93E - http testing AND patterns</pre>
 </div>
-<div created="20200512164838102" modified="20200717174444129" tags="Erlang task Book" title="Property-Based Testing with PropEr">
+<div created="20200512164838102" modified="20200717180014875" tags="Erlang task Book" title="Property-Based Testing with PropEr">
 <pre>[ext[Open Pdf | pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::33]]
 
-rebar.config
-
-```
-{project_plugins, [rebar3_proper]}.
-
-{profiles, [
-    {test, [
-        {erl_opts, [nowarn_export_all]},
-        {deps, [proper]}
-    ]}
-]}.    
-```
-
-```
-$ rebar3 help proper
-$ rebar3 proper -n 1000
-```
 [[Property-Based Testing]]
-
-* [[PropEr|https://proper-testing.github.io/]]
-* [[PropEr API|https://proper-testing.github.io/apidocs/]]
-* [[PropEr Publications|https://proper-testing.github.io/publications.html]]
-* [[PropEr Tutorials|https://proper-testing.github.io/tutorials.html]]
 
 ---
 
-*  [ext[Modeling|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::34]] - indirect and very simple implementation, oracle testing
+*  [ext[Modeling|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::34]] 
+  ** indirect and very simple implementation
+  ** Oracle testing
 
+* [ext[Generalizing Example Tests|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::34]]
 
-* Generalizing examples
-* Invariants
+* [ext[Invariants|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::39]]
+  ** Some Things Never Change
+
 * Symmetric
 
 ---
@@ -20165,18 +20175,18 @@ Patterns of properties:
   ** encoding/decoding, set/get, write/read, undo ops, round trip, symmetry 
   ** encode(decode(xs)) == xs
 
-* Different Paths,/ Same Destination
+* Different Paths, Same Destination
   ** x + y = y + x
   ** x + x = x * 2
 
-* Some Things Never Change 
+* Some Things Never Change | Invariants
   ** size and elements of collection after a sort
 
 * Hard to Prove, Easy to Verify
   ** String tokenizer - verify by concatenating the tokens
   ** Sorting - ensure sorted by reference implementation (see below)
 
-* Test Oracle 
+* Test Oracle | Modeling
   ** Relations (new implementation is faster but behaves the same),
   ** Reference implementation (bubble sort vs quick sort)
 
