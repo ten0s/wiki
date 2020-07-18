@@ -20134,8 +20134,8 @@ $ xev
 
 * https://www.youtube.com/watch?v=jvwfDdgg93E - http testing AND patterns</pre>
 </div>
-<div created="20200512164838102" modified="20200718123845701" tags="Erlang task Book" title="Property-Based Testing with PropEr">
-<pre>[ext[Open Pdf | pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::61]]
+<div created="20200512164838102" modified="20200718133459585" tags="Erlang task Book" title="Property-Based Testing with PropEr">
+<pre>[ext[Open Pdf|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::61]]
 
 * [[Erlang PropEr]]
 * [[Property-Based Testing]]
@@ -20152,6 +20152,71 @@ $ xev
   ** Some Things Never Change
 
 * [ext[Symmetric Properties|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::42]]
+
+---
+
+* collect(Value, ~PropertyResult) [ext[Open|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::54]]
+
+* aggregate  [ext[Open|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::58]]
+
+* resize(Size, Generator) [ext[Open|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::62]]
+
+* ?SIZED(~VarName, Expression)  [ext[Open|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::63]]
+
+* ?LET(~InstanceOfType, ~TypeGenerator, Transform) [ext[Open|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::66]]
+
+```
+prop_queue() -&gt;
+    ?FORALL(Q, queue(), queue:is_queue(Q)).
+
+queue() -&gt;
+    ?LET(List, list({term(), term()}),
+        queue:from_list(List)).
+```
+
+```
+even() -&gt;
+    ?LET(N, integer(), N*2).
+uneven() -&gt;
+    ?LET(N, integer(), N*2 + 1).
+```
+
+```
+utf8_string() -&gt;
+    ?LET(Bin, utf8(), unicode:characters_to_list(Bin)).
+```
+
+* ?SUCHTHAT(~InstanceOfType, ~TypeGenerator, ~BooleanExp) [ext[Open|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::66]]
+
+```
+non_empty(ListOrBinGen) -&gt;
+    ?SUCHTHAT(L, ListOrBinGen, L =/= [] andalso L =/= &lt;&lt;&gt;&gt;).
+
+non_empty_map(Gen) -&gt;
+    ?SUCHTHAT(G, Gen, G =/= #{}).
+```
+
+```
+latin1_string() -&gt;
+    ?SUCHTHAT(S, string(), io_lib:printable_latin1_list(S)).
+
+%% see also utf8_string() above
+unicode_string() -&gt;
+    ?SUCHTHAT(S, string(), io_lib:printable_unicode_list(S)).
+```
+
+* frequency [ext[Open|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::70]]
+
+```
+text_like() -&gt;
+    list(frequency([
+        {80, range($a, $z)},               % letters
+        {10, $\s},                                % whitespace
+        {1, $\n},                                  % linebreak
+        {1, oneof([$., $-, $!, $?, $,])}, % punctuation
+        {1, range($0, $9)}                  % numbers
+   ])).
+```
 
 ---
 
