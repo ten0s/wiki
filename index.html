@@ -11699,7 +11699,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200718113914621" list="[[Property-Based Testing with PropEr]]" modified="20200718123634371" title="$:/StoryList">
+<div created="20200719130338976" list="ToDo [[Property-Based Testing with PropEr]]" modified="20200719130401954" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -20134,7 +20134,7 @@ $ xev
 
 * https://www.youtube.com/watch?v=jvwfDdgg93E - http testing AND patterns</pre>
 </div>
-<div created="20200512164838102" modified="20200718134239847" tags="Erlang task Book" title="Property-Based Testing with PropEr">
+<div created="20200512164838102" modified="20200719135157478" tags="Erlang task Book" title="Property-Based Testing with PropEr">
 <pre>[ext[Open Pdf|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::72]]
 
 * [[Erlang PropEr]]
@@ -20157,7 +20157,7 @@ $ xev
 
 * collect(Value, ~PropertyResult) [ext[Open|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::54]]
 
-* aggregate  [ext[Open|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::58]]
+* aggregate([Value], ~PropertyResult) [ext[Open|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::58]]
 
 * resize(Size, Generator) [ext[Open|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::62]]
 
@@ -20206,7 +20206,7 @@ unicode_string() -&gt;
     ?SUCHTHAT(S, string(), io_lib:printable_unicode_list(S)).
 ```
 
-* frequency [ext[Open|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::70]]
+* frequency([{frequency(), type()}, ...]) -&gt; gen()  [ext[Open|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::70]]
 
 ```
 text_like() -&gt;
@@ -20231,6 +20231,11 @@ mostly_sorted() -&gt;
 sorted_list() -&gt;
     ?LET(L, list(), lists:sort(L)).
 ```
+
+* Recursive Generators [ext[Open|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::72]]
+
+* Symbolic Calls [ext[Open|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::80]]
+
 
 ---
 
