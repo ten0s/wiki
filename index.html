@@ -20134,8 +20134,8 @@ $ xev
 
 * https://www.youtube.com/watch?v=jvwfDdgg93E - http testing AND patterns</pre>
 </div>
-<div created="20200512164838102" modified="20200719135157478" tags="Erlang task Book" title="Property-Based Testing with PropEr">
-<pre>[ext[Open Pdf|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::72]]
+<div created="20200512164838102" modified="20200719141749239" tags="Erlang task Book" title="Property-Based Testing with PropEr">
+<pre>[ext[Open Pdf|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::91]]
 
 * [[Erlang PropEr]]
 * [[Property-Based Testing]]
@@ -20155,9 +20155,9 @@ $ xev
 
 ---
 
-* collect(Value, ~PropertyResult) [ext[Open|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::54]]
+* collect(Term, ~BoolExpression) [ext[Open|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::54]]
 
-* aggregate([Value], ~PropertyResult) [ext[Open|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::58]]
+* aggregate([Term], ~BoolExpression) [ext[Open|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::58]]
 
 * resize(Size, Generator) [ext[Open|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::62]]
 
@@ -20234,8 +20234,61 @@ sorted_list() -&gt;
 
 * Recursive Generators [ext[Open|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::72]]
 
+```
+-type tree() :: tree(term()).
+-type tree(T) :: {node, 
+                  Value :: T, 
+                  Left :: tree(T) | undefined,
+                  Right :: tree(T) | undefined}.
+
+tree() -&gt;
+    ?SIZED(Size, sized_tree(Size, term())).
+
+sized_tree(Size, Type) when Size =&lt; 1 -&gt;
+    {node, Type, undefined, undefined};
+sized_tree(Size, Type) -&gt;
+    frequency([
+        {1, {node, Type, ?LAZY(sized_tree(Size-1, Type)), undefined}},
+        {1, {node, Type, undefined, ?LAZY(sized_tree(Size-1, Type))}},
+        {5, {node, Type, 
+            %% Divide and avoid exponential growth
+            ?LAZY(sized_tree(Size div 2, Type)),
+            ?LAZY(sized_tree(Size div 2, Type))}}
+    ]).
+```
+
 * Symbolic Calls [ext[Open|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::80]]
 
+```
+dict_gen() -&gt;
+    ?LET(List, list({integer(), integer()}), dict:from_list(List)).
+
+dict_symb() -&gt;
+    ?SIZED(Size, dict_symb(Size, {call, dict, new, []})).
+
+dict_symb(0, Dict) -&gt;
+    Dict;
+dict_symb(N, Dict) -&gt;
+    dict_symb(N-1, {call, dict, store, [integer(), integer(), Dict]}).
+
+dict_autosymb() -&gt;
+    ?SIZED(Size, dict_autosymb(Size, {'$call', dict, new, []})).
+
+dict_autosymb(0, Dict) -&gt;
+    Dict;
+dict_autosymb(N, Dict) -&gt;
+    dict_autosymb(N-1, {'$call', dict, store, [integer(), integer(), Dict]}).
+
+prop_dict_gen() -&gt;
+    ?FORALL(D, dict_gen(), dict:size(D) &lt; 5).
+
+prop_dict_symb() -&gt;
+    ?FORALL(DSymb, dict_symb(), dict:size(eval(DSymb)) &lt; 5).
+
+prop_dict_autosymb() -&gt;
+    ?FORALL(D, dict_autosymb(), dict:size(D) &lt; 5).
+
+```
 
 ---
 
