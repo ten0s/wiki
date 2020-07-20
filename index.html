@@ -11709,7 +11709,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200720093616223" list="ToDo [[Property-Based Testing with PropEr]] [[Erlang PropEr]]" modified="20200720123703887" title="$:/StoryList">
+<div created="20200720093616223" list="ToDo [[Property-Based Testing with PropEr]]" modified="20200720134426011" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -12723,8 +12723,8 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200720123658872" title="$:/temp/search">
-<pre>prin</pre>
+<div created="20200422190456346" modified="20200720134440704" title="$:/temp/search">
+<pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
 <pre>loaded</pre>
@@ -15295,7 +15295,7 @@ rebar.config:
 ```
 </pre>
 </div>
-<div created="20200629145057704" modified="20200629145139817" tags="Erlang" title="Erlang ensure all callbacks implemented">
+<div created="20200629145057704" modified="20200720135646148" tags="Erlang" title="Erlang ensure all callbacks implemented">
 <pre>```
 -module(gen_module).
 
@@ -15337,7 +15337,9 @@ with_impl(Fun1) -&gt;
 ]).
 
 ...
-```</pre>
+```
+
+See also [['$handle_undefined_function'/2|https://erlang.org/doc/man/error_handler.html]]</pre>
 </div>
 <div created="20200709174525063" modified="20200709175222999" tags="Erlang" title="Erlang evaluate expression on remote node">
 <pre>```
@@ -20081,7 +20083,7 @@ $ cat data.xml | xmllint --format -
 ```
 </pre>
 </div>
-<div created="20200428101236702" modified="20200720134128128" tags="Dev" title="Principles">
+<div created="20200428101236702" modified="20200720134435530" tags="Dev" title="Principles">
 <pre>* Parse raw data from file, db, etc into intermediate internal representation (AST)
 
 * Every periodic task should be disableable at startup and/or runtime.
@@ -20097,6 +20099,8 @@ https://www.johndcook.com/blog/2008/06/17/software-in-space/
 * No logic in handlers (gen_server, cowboy, etc), including any data transformation (questional?). Why? Because handler is a Controller in MVC!!! And logic must live in a separate Model module.
 
 * Separate from third party library, fs, db, external calls with a Facade (defining interface/behaviour) and an Adapter (implementing interface/behaviour) .
+
+[[Erlang ensure all callbacks implemented]]
 
 * Use opaque data types: https://www.youtube.com/watch?v=hxLh0qFX9oI
 </pre>
@@ -20161,8 +20165,8 @@ $ xev
 
 * https://www.youtube.com/watch?v=jvwfDdgg93E - http testing AND patterns</pre>
 </div>
-<div created="20200512164838102" modified="20200720111047280" tags="Erlang task Book" title="Property-Based Testing with PropEr">
-<pre>[ext[Open Pdf|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::107]]
+<div created="20200512164838102" modified="20200720144548634" tags="Erlang task Book" title="Property-Based Testing with PropEr">
+<pre>[ext[Open Pdf|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir_b5_0.pdf::133]]
 
 * [[Erlang PropEr]]
 * [[Property-Based Testing]]
