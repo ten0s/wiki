@@ -11715,7 +11715,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200721083011157" list="ToDo [[Property-Based Testing with PropEr]] [[Erlang PropEr]]" modified="20200721141530855" title="$:/StoryList">
+<div created="20200721083011157" list="[[Property-Based Testing with PropEr]]" modified="20200721141530855" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -20181,8 +20181,8 @@ $ xev
 
 * https://www.youtube.com/watch?v=jvwfDdgg93E - http testing AND patterns</pre>
 </div>
-<div created="20200512164838102" modified="20200721143425790" tags="Erlang task Book" title="Property-Based Testing with PropEr">
-<pre>[ext[Open Pdf|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir.pdf::167]]
+<div created="20200512164838102" modified="20200721160051378" tags="Erlang task Book" title="Property-Based Testing with PropEr">
+<pre>[ext[Open Pdf|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir.pdf::179]]
 
 * [[Erlang PropEr]]
 * [[Property-Based Testing]]
@@ -20335,6 +20335,20 @@ prop_dict_symb() -&gt;
 prop_dict_autosymb() -&gt;
     ?FORALL(D, dict_autosymb(), dict:size(D) &lt; 5).
 
+```
+
+* ?SHRINK(~DefaultGenerator, [~AlternativeGenerators])  [ext[Open|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir.pdf::168]]
+
+```
+year() -&gt;
+   ?SHRINK(range(0, 9999), [range(1970, 2000), range(1900, 2100)]).
+```
+
+* ?LETSHRINK([Pattern, ...], [Generator, ...], Expression) [ext[Open|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir.pdf::172]]
+
+```
+?LETSHRINK([A,B,C], [list(number()), list(number()), list(number())],
+A ++ B ++ C)
 ```
 
 ---
