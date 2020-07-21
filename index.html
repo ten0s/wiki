@@ -1403,6 +1403,8 @@ Error message and password prompt
 
 <li>Raspberry Pi projects</li>
 
+<li>Raspberry Pi Static IP Address for Android USB Tethering</li>
+
 <li>Raspberry Pi Zero Ethernet</li>
 
 <li>Raspbian on x86</li>
@@ -11573,8 +11575,8 @@ Error message and password prompt
 <div created="20200422191529492" modified="20200618094925522" title="$:/state/tab/sidebar--595412856">
 <pre>TableOfContents</pre>
 </div>
-<div created="20200426101141551" modified="20200629075638919" title="$:/state/toc/TableOfContents-Android--118161433">
-<pre>close</pre>
+<div created="20200426101141551" modified="20200721090244431" title="$:/state/toc/TableOfContents-Android--118161433">
+<pre>open</pre>
 </div>
 <div created="20200428100846343" modified="20200505083916917" title="$:/state/toc/TableOfContents-AWS--118161433">
 <pre>close</pre>
@@ -11633,8 +11635,8 @@ Error message and password prompt
 <div created="20200428100850482" modified="20200428111609347" title="$:/state/toc/TableOfContents-Python--118161433">
 <pre>close</pre>
 </div>
-<div created="20200512075010685" modified="20200526073247431" title="$:/state/toc/TableOfContents-Raspberry Pi--118161433">
-<pre>close</pre>
+<div created="20200512075010685" modified="20200721082958887" title="$:/state/toc/TableOfContents-Raspberry Pi--118161433">
+<pre>open</pre>
 </div>
 <div created="20200524113104720" modified="20200719144147540" title="$:/state/toc/TableOfContents-Regex--118161433">
 <pre>close</pre>
@@ -11666,7 +11668,7 @@ Error message and password prompt
 <div created="20200428102954871" modified="20200428105054432" title="$:/state/toc/TableOfContents/Dev-Erlang--118161433">
 <pre>close</pre>
 </div>
-<div created="20200512161629220" modified="20200524182715348" title="$:/state/toc/TableOfContents/Raspberry Pi-Raspberry Pi Links--118161433">
+<div created="20200512161629220" modified="20200721084244909" title="$:/state/toc/TableOfContents/Raspberry Pi-Raspberry Pi Links--118161433">
 <pre>close</pre>
 </div>
 <div created="20200510140017432" modified="20200613151442681" title="$:/state/toc/TableOfContents/TiddlyWiki-TW Links--118161433">
@@ -11711,7 +11713,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200720093616223" list="ToDo [[Property-Based Testing with PropEr]]" modified="20200720172923545" title="$:/StoryList">
+<div created="20200721083011157" list="" modified="20200721090328049" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -12725,7 +12727,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200720172953677" title="$:/temp/search">
+<div created="20200422190456346" modified="20200721085246495" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -21414,6 +21416,9 @@ Can't see the forest through the trees
 
 https://www.w3schools.com/nodejs/nodejs_raspberrypi.asp</pre>
 </div>
+<div created="20200721085224147" modified="20200721085244568" tags="[[Raspberry Pi]] Android" title="Raspberry Pi Static IP Address for Android USB Tethering">
+<pre>https://ten0s.github.io/blog/2020/02/22/raspberrypi-static-ip-address-for-android-usb-tethering</pre>
+</div>
 <div created="20200512161738835" modified="20200524181111960" tags="task [[Raspberry Pi]]" title="Raspberry Pi Zero Ethernet">
 <pre>https://www.circuitbasics.com/raspberry-pi-zero-ethernet-gadget/</pre>
 </div>
@@ -22171,8 +22176,8 @@ search example.com
 ```
 </pre>
 </div>
-<div created="20200506072235996" modified="20200518084247822" tags="Android" title="Set Wi-Fi static IP address">
-<pre>Settings -&gt; ~Wi-Fi -&gt; Access Point -&gt; Modify Network -&gt; Advanced options
+<div created="20200506072235996" modified="20200721090356191" tags="Android" title="Set Wi-Fi static IP address">
+<pre>Settings -&gt; Wi-Fi -&gt; Access Point -&gt; Modify Network -&gt; Advanced options
 
 * IP settings: Static
 * IP address: 192.168.100.127 [[Show network interfaces]]
@@ -23866,8 +23871,10 @@ $ termux-sensor -c; termux-sensor -s LIGHT | nc HOST PORT
 https://www.reddit.com/r/termux/comments/fsdige/streaming_realtime_sensor_data_via_tcp/
 </pre>
 </div>
-<div created="20200518081445601" modified="20200530173230424" tags="Android" title="Termux SSH">
-<pre>!! [[Termux]]
+<div created="20200518081445601" modified="20200721090729547" tags="Android" title="Termux SSH">
+<pre>!! [[Set Wi-Fi static IP address]]
+
+!! [[Termux]]
 
 * Install SSH server
 
@@ -23909,19 +23916,19 @@ $ sshd -D
 * Connect using Password
 
 ```
-$ ssh -F /dev/null -o PubkeyAuthentication=no -p 8022 HOST
+$ ssh -F /dev/null -o PubkeyAuthentication=no -p 8022 192.168.100.127
 ```
 
 * Copy Public key using Password
 
 ```
-$ cat ~/.ssh/id_rsa.pub | ssh -F /dev/null -o PubkeyAuthentication=no -p 8022 HOST &quot;cat &gt;&gt; ~/.ssh/authorized_keys&quot;
+$ cat ~/.ssh/id_rsa.pub | ssh -F /dev/null -o PubkeyAuthentication=no -p 8022 192.168.100.127 &quot;cat &gt;&gt; ~/.ssh/authorized_keys&quot;
 ```
 
 * Connect using Public key
 
 ```
-$ ssh -p 8022 HOST
+$ ssh -p 8022 192.168.100.127
 ```
 
 * X Forwarding
@@ -23933,10 +23940,23 @@ X11Forwarding yes
 ```
 
 ```
-$ ssh -Y -p 8022 HOST
+$ ssh -Y -p 8022 192.168.100.127
 $ xclock
 ```
 
+* Update ~/.ssh/config
+
+```
+Host android, phone
+     HostName 192.168.100.127
+     Port 8022
+```
+
+```
+$ ssh phone
+```
+
+!! [[Termux]]
 
 * Disable Password authentication
 
