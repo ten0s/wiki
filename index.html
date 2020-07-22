@@ -1597,6 +1597,8 @@ Error message and password prompt
 
 <li>Simulate `make' without actual execution</li>
 
+<li>Simulated annealing</li>
+
 <li>Skip two lines</li>
 
 <li>Socksify</li>
@@ -11598,14 +11600,14 @@ Error message and password prompt
 <div created="20200430080859301" modified="20200626201614360" title="$:/state/toc/TableOfContents-CentOS--118161433">
 <pre>open</pre>
 </div>
-<div created="20200528082909481" modified="20200720104329767" title="$:/state/toc/TableOfContents-Definition--118161433">
+<div created="20200528082909481" modified="20200722131332401" title="$:/state/toc/TableOfContents-Definition--118161433">
 <pre>close</pre>
 </div>
 <div created="20200524170259522" modified="20200528082850767" title="$:/state/toc/TableOfContents-Definitions--118161433">
 <pre>close</pre>
 </div>
-<div created="20200428101450941" modified="20200628135743581" title="$:/state/toc/TableOfContents-Dev--118161433">
-<pre>close</pre>
+<div created="20200428101450941" modified="20200722131340782" title="$:/state/toc/TableOfContents-Dev--118161433">
+<pre>open</pre>
 </div>
 <div created="20200426101718323" modified="20200626201806373" title="$:/state/toc/TableOfContents-Docker--118161433">
 <pre>close</pre>
@@ -11664,8 +11666,8 @@ Error message and password prompt
 <div created="20200430150353516" modified="20200527182529247" title="$:/state/toc/TableOfContents-Web--118161433">
 <pre>close</pre>
 </div>
-<div created="20200428101546086" modified="20200627160205706" title="$:/state/toc/TableOfContents/Dev-Algorithm--118161433">
-<pre>close</pre>
+<div created="20200428101546086" modified="20200722131342039" title="$:/state/toc/TableOfContents/Dev-Algorithm--118161433">
+<pre>open</pre>
 </div>
 <div created="20200428102954871" modified="20200428105054432" title="$:/state/toc/TableOfContents/Dev-Erlang--118161433">
 <pre>close</pre>
@@ -11715,7 +11717,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200721083011157" list="[[Property-Based Testing with PropEr]]" modified="20200721141530855" title="$:/StoryList">
+<div created="20200722082830368" list="[[Property-Based Testing with PropEr]]" modified="20200722132002985" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -12729,7 +12731,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200721143447586" title="$:/temp/search">
+<div created="20200422190456346" modified="20200722102732086" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -20099,7 +20101,7 @@ $ cat data.xml | xmllint --format -
 ```
 </pre>
 </div>
-<div created="20200428101236702" modified="20200720134435530" tags="Dev" title="Principles">
+<div created="20200428101236702" modified="20200722102730785" tags="Dev" title="Principles">
 <pre>* Parse raw data from file, db, etc into intermediate internal representation (AST)
 
 * Every periodic task should be disableable at startup and/or runtime.
@@ -20115,6 +20117,8 @@ https://www.johndcook.com/blog/2008/06/17/software-in-space/
 * No logic in handlers (gen_server, cowboy, etc), including any data transformation (questional?). Why? Because handler is a Controller in MVC!!! And logic must live in a separate Model module.
 
 * Separate from third party library, fs, db, external calls with a Facade (defining interface/behaviour) and an Adapter (implementing interface/behaviour) .
+
+* Every changed function must be covered by a unit test
 
 [[Erlang ensure all callbacks implemented]]
 
@@ -20181,8 +20185,8 @@ $ xev
 
 * https://www.youtube.com/watch?v=jvwfDdgg93E - http testing AND patterns</pre>
 </div>
-<div created="20200512164838102" modified="20200721160051378" tags="Erlang task Book" title="Property-Based Testing with PropEr">
-<pre>[ext[Open Pdf|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir.pdf::179]]
+<div created="20200512164838102" modified="20200722141051000" tags="Erlang task Book" title="Property-Based Testing with PropEr">
+<pre>[ext[Open Pdf|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir.pdf::199]]
 
 * [[Erlang PropEr]]
 * [[Property-Based Testing]]
@@ -23041,6 +23045,10 @@ $ make -n
 ```
 </pre>
 </div>
+<div created="20200722131351451" modified="20200722131428530" tags="Algorithm" title="Simulated annealing">
+<pre>[ext[PropEr book|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir.pdf::183]]
+</pre>
+</div>
 <div created="20200425130649463" modified="20200610092438147" tags="Linux Bash" title="Skip two lines">
 <pre>```
 tail -n+2
@@ -23693,7 +23701,7 @@ $ adb pull /sdcard/screen.png
 
 https://github.com/termux/termux-packages/issues/2556</pre>
 </div>
-<div created="20200427173158521" list="[[Read &quot;Working with TW&quot;]] [[Read &quot;Customise TW&quot;]] [[Read &quot;Features&quot;]] [[Read &quot;Editions&quot;]] [[Read &quot;Platforms&quot;]] [[Functional Programming in Javascript]] [[Property-Based Testing with PropEr]] [[Node.js in Motion]] [[The AWK Programming Language]] [[Grokking Simplicity]] [[Functional Javascript (with Underscore.js)]] [[Fundamentals of Lambda Calculus &amp; Functional Programming in JavaScript]] [[ES6 in Depth]] [[Node.js in Action]] [[Mastering REST APIs in Node.js]] [[Building the Web of Things]] [[Web Components in Action]] [[Mostly adequate guide to FP (in javascript)]] [[JavaScript Allongé, the &quot;Six&quot; Edition]] [[Programming JavaScript Applications]] [[Secrets of the JavaScript Ninja]] [[Learn JavaScript Next]] [[Javascript curry function]] [[Composing Software]] [[Understanding ECMAScript 6]] [[RxJS in Action]] [[Exploring ES6]] [[You don't know JS]] [[Android Wakelocks]] [[Fun With Folktale]] [[Review Functional combinators]] [[TypeScript Quickly]] [[Functional Programming with Folktale]] [[JavaScript: The Good Parts]] [[Setup Retropie]] [[WebAssembly in Action]] [[Raspberry Pi Zero Ethernet]] [[Setup Tor Router]] [[Add tar info]] [[Read &quot;Reference&quot;]] [[Read &quot;TW dev&quot;]] [[Make wiki work offline on Android]] Robots.txt [[Android phone as Raspberry Pi display]] [[Introduction to Rust]] [[Rust in Action]] [[Graphql in motion]] [[Raspberry Pi projects]] [[Install Android Studio]] Читать [[ES6 in Motion]] [[IF HEMINGWAY WROTE JAVASCRIPT]] [[Javascript mixin]] [[The Clean Coder]] [[The Pragmatic Programmer]] [[Functional Javascript]] [[Functional Programming in Javascript (Youtube)]] [[Review FP in JS resources]] [[Irresistible APIs]] [[Checkout Node.js Cluster API]] [[Express in Action/Motion]] [[Javascript dependency injection]] [[Lex and Yacc]] [[The Art of Unix Programming]] [[The Design of Web APIs]] [[The Unix Programming Environment]] [[Understanding the Digital World]] [[Хакеры, герои компьютерной революции]] [[Crafting interpreters]] csrf [[Javascript context menu]] [[Javascript setup emacs-eslint]]" modified="20200717165404760" title="task">
+<div created="20200427173158521" list="[[Read &quot;Working with TW&quot;]] [[Read &quot;Customise TW&quot;]] [[Read &quot;Features&quot;]] [[Read &quot;Editions&quot;]] [[Read &quot;Platforms&quot;]] [[Functional Programming in Javascript]] [[Property-Based Testing with PropEr]] Читать [[Node.js in Motion]] [[The AWK Programming Language]] [[Grokking Simplicity]] [[Functional Javascript (with Underscore.js)]] [[Fundamentals of Lambda Calculus &amp; Functional Programming in JavaScript]] [[ES6 in Depth]] [[Node.js in Action]] [[Mastering REST APIs in Node.js]] [[Building the Web of Things]] [[Web Components in Action]] [[Mostly adequate guide to FP (in javascript)]] [[JavaScript Allongé, the &quot;Six&quot; Edition]] [[Programming JavaScript Applications]] [[Secrets of the JavaScript Ninja]] [[Learn JavaScript Next]] [[Javascript curry function]] [[Composing Software]] [[Understanding ECMAScript 6]] [[RxJS in Action]] [[Exploring ES6]] [[You don't know JS]] [[Android Wakelocks]] [[Fun With Folktale]] [[Review Functional combinators]] [[TypeScript Quickly]] [[Functional Programming with Folktale]] [[The Pragmatic Programmer]] [[The Clean Coder]] [[JavaScript: The Good Parts]] [[Setup Retropie]] [[WebAssembly in Action]] [[Raspberry Pi Zero Ethernet]] [[Setup Tor Router]] [[Add tar info]] [[Read &quot;Reference&quot;]] [[Read &quot;TW dev&quot;]] [[Make wiki work offline on Android]] Robots.txt [[Android phone as Raspberry Pi display]] [[Introduction to Rust]] [[Rust in Action]] [[Graphql in motion]] [[Raspberry Pi projects]] [[Install Android Studio]] [[ES6 in Motion]] [[IF HEMINGWAY WROTE JAVASCRIPT]] [[Javascript mixin]] [[Functional Javascript]] [[Functional Programming in Javascript (Youtube)]] [[Review FP in JS resources]] [[Irresistible APIs]] [[Checkout Node.js Cluster API]] [[Express in Action/Motion]] [[Javascript dependency injection]] [[Lex and Yacc]] [[The Art of Unix Programming]] [[The Design of Web APIs]] [[The Unix Programming Environment]] [[Understanding the Digital World]] [[Хакеры, герои компьютерной революции]] [[Crafting interpreters]] csrf [[Javascript context menu]] [[Javascript setup emacs-eslint]] [[Dependency Inversion Principle]] [[Property-Based Testing]] [[Read &quot;Writing Testable Code&quot;]]" modified="20200722084314538" title="task">
 <pre></pre>
 </div>
 <div created="20200425161848192" modified="20200425161940628" tags="Bash Linux" title="TCP client (w/o netcat)">
@@ -25137,8 +25145,14 @@ http://www.erlang.org/course/course.html - небольшой курс
 <div created="20200629081124834" modified="20200629081319776" tags="Book task" title="Хакеры, герои компьютерной революции">
 <pre>[ext[Open book|pdfx://refs/dev/Хакеры_герои_компьютерной_революции.pdf]]</pre>
 </div>
-<div created="20200602131238301" modified="20200714092622616" tags="Book task" title="Читать">
+<div created="20200602131238301" modified="20200722084536214" tags="Book task" title="Читать">
 <pre>Иван Ефремов - Лезвие бритвы
+
+Стругацкие - Возвращение. Полдень, XXII век - https://biography.wikireading.ru/130133
+
+* Александр Гера. Набат. 1 часть https://www.youtube.com/watch?v=zUAS6E7v8v8
+* Александр Гера. Набат. 2 часть https://www.youtube.com/watch?v=HeKCj0GyBx0
+* Александр Гера. Набат. 3 часть https://www.youtube.com/watch?v=7pt_fZEukLQ
 
 Маркеев Олег, Странник
 
@@ -25152,12 +25166,6 @@ http://www.erlang.org/course/course.html - небольшой курс
 # Неучтённый фактор
 # Летальный исход
 * Демон власти
-
-* Александр Гера. Набат. 1 часть https://www.youtube.com/watch?v=zUAS6E7v8v8
-* Александр Гера. Набат. 2 часть https://www.youtube.com/watch?v=HeKCj0GyBx0
-* Александр Гера. Набат. 3 часть https://www.youtube.com/watch?v=7pt_fZEukLQ
-
-Стругацкие - Возвращение. Полдень, XXII век - https://biography.wikireading.ru/130133
 
 Шпанов, Николай - https://fantlab.ru/autor9419 - https://www.youtube.com/watch?v=mITI78ebANg
 
