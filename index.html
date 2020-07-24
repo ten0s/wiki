@@ -823,6 +823,8 @@ Error message and password prompt
 
 <li>Download video from Youtube</li>
 
+<li>Draft of 'New Tiddler'</li>
+
 <li>DraggableTaskTemplate</li>
 
 <li>Dump network traffic on specific port</li>
@@ -11729,7 +11731,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200723093911348" list="[[PostgreSQL in Docker]] ToDo [[Property-Based Testing with PropEr]]" modified="20200723173403332" title="$:/StoryList">
+<div list="[[Draft of 'New Tiddler']]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -14703,6 +14705,52 @@ $ curl -JO URL
 <div created="20200425152750407" modified="20200425152823233" tags="" title="Download video from Youtube">
 <pre>```
 $ youtube-dl -f bestvideo+bestaudio FILE_OR_PLAYLIST_URL
+```</pre>
+</div>
+<div created="20200724045252695" draft.of="New Tiddler" draft.title="Erlang safe foreach" modified="20200724045747226" tags="Erlang Algorithm" title="Draft of 'New Tiddler'">
+<pre>TODO: Compile patterns in the beginning, otherwise they compiled for every item in the list
+
+* https://erlang.org/doc/apps/erts/match_spec.html
+* https://erlang.org/doc/man/ets.html#match_spec_compile-1
+* https://erlang.org/doc/man/ets.html#match_spec_run-2
+
+```
+main(_) -&gt;
+  ok = safe_foreach(fun (X) -&gt; process_item(X) end, [1, &quot;2&quot;, 3], [{integer, '_'}, {list, '_'}], {error, '_'}),
+  {error, {unknown,a}} = safe_foreach(fun (X) -&gt; process_item(X) end, [1, a, &quot;2&quot;, 3, b], [{integer, '_'}, {list, '_'}], {error, '_'}),
+  io:format(&quot;OK~n&quot;).
+    
+safe_foreach(_, [], _, _) -&gt;
+    ok;
+safe_foreach(Fun, [H|T], SuccessPattern, FailurePattern) -&gt;
+    Result = Fun(H),
+    case match_pattern(Result, SuccessPattern) of
+        true -&gt;
+            safe_foreach(Fun, T, SuccessPattern, FailurePattern);
+        false -&gt;
+            case match_pattern(Result, FailurePattern) of
+                true -&gt;
+                    Result;
+                false -&gt;
+                    exit({no_pattern_for, Result})
+            end
+    end.
+    
+match_pattern(Expression, Patterns) when is_list(Patterns) -&gt;
+    lists:any(fun (Value) -&gt; Value =:= true end,
+        [match_pattern(Expression, Pattern) || Pattern &lt;- Patterns]);
+
+match_pattern(Expression, Pattern) -&gt;
+    MatchSpec = [{Pattern, [], [true]}],
+    CompiledMatchSpec = ets:match_spec_compile(MatchSpec),
+    ets:match_spec_run([Expression], CompiledMatchSpec) =:= [true].
+    
+process_item(Item) when is_integer(Item) -&gt;
+    {integer, Item};
+process_item(Item) when is_list(Item) -&gt;
+    {list, Item};
+process_item(Item) -&gt;
+    {error, {unknown, Item}}.
 ```</pre>
 </div>
 <div created="20180307153530187" modified="20200427171503827" tags="TiddlyWiki" title="DraggableTaskTemplate" type="text/vnd.tiddlywiki">
