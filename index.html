@@ -11737,7 +11737,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200724050233727" list="[[PostgreSQL in Docker]] ToDo [[Property-Based Testing with PropEr]]" modified="20200724050334610" title="$:/StoryList">
+<div created="20200724050233727" list="ToDo [[Property-Based Testing with PropEr]]" modified="20200724051549842" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13721,8 +13721,10 @@ $ ssh -T git@github.com
 ```
 </pre>
 </div>
-<div created="20200723182850813" modified="20200723182913168" tags="Erlang task" title="Checkout Hamler">
-<pre>https://github.com/hamler-lang/hamler</pre>
+<div created="20200723182850813" modified="20200724051732834" tags="Erlang task" title="Checkout Hamler">
+<pre>https://github.com/hamler-lang
+
+https://www.emqx.io/careers</pre>
 </div>
 <div created="20200621171307901" modified="20200621171326143" tags="Javascript task" title="Checkout Node.js Cluster API">
 <pre>https://nodejs.org/docs/latest-v10.x/api/cluster.html</pre>
@@ -20181,8 +20183,56 @@ List all tables
 ```
 </pre>
 </div>
-<div created="20200723182314835" modified="20200724050343101" tags="Docker Database task" title="PostgreSQL in Docker">
-<pre>https://hub.docker.com/_/postgres</pre>
+<div created="20200723182314835" modified="20200724052750640" tags="Docker Database" title="PostgreSQL in Docker">
+<pre>https://hub.docker.com/_/postgres
+
+```
+$ ./postgres.sh &lt;up | down&gt;
+```
+
+postgres.sh:
+
+```
+#!/bin/bash
+
+docker-compose -f postgres.yml &quot;$@&quot;
+```
+
+psql.sh:
+
+```
+#!/bin/bash
+
+docker exec -ti $(docker ps --filter name=bookstore_db_1 --quiet) psql --username user --dbname bookstore &quot;$@&quot;
+```
+
+postgres.yml:
+
+```
+version: &quot;3.7&quot;
+services:
+  db:
+    image: postgres:9.6
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: bookstore
+    volumes:
+    - ./pgdata:/var/lib/postgresql/data
+    networks:
+      postgres:
+        ipv4_address: 173.10.0.3
+
+networks:
+  postgres:
+    driver: bridge
+    ipam:
+        driver: default
+        config:
+        - subnet: 173.10.0.0/16
+```
+</pre>
 </div>
 <div created="20200724050903718" modified="20200724050929848" tags="Database" title="PostgreSQL see enum values">
 <pre>```
