@@ -823,8 +823,6 @@ Error message and password prompt
 
 <li>Download video from Youtube</li>
 
-<li>Draft of 'New Tiddler'</li>
-
 <li>DraggableTaskTemplate</li>
 
 <li>Dump network traffic on specific port</li>
@@ -942,6 +940,8 @@ Error message and password prompt
 <li>Erlang PropEr Generators</li>
 
 <li>Erlang run a slave when it can't access the master</li>
+
+<li>Erlang safe foreach</li>
 
 <li>Erlang setup</li>
 
@@ -11629,7 +11629,7 @@ Error message and password prompt
 <div created="20200428110814473" modified="20200509094509737" title="$:/state/toc/TableOfContents-English--118161433">
 <pre>close</pre>
 </div>
-<div created="20200428110840790" modified="20200720104312146" title="$:/state/toc/TableOfContents-Erlang--118161433">
+<div created="20200428110840790" modified="20200724050246238" title="$:/state/toc/TableOfContents-Erlang--118161433">
 <pre>close</pre>
 </div>
 <div created="20200426101712304" modified="20200521072019777" title="$:/state/toc/TableOfContents-Git--118161433">
@@ -11731,7 +11731,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[Draft of 'New Tiddler']]" title="$:/StoryList">
+<div created="20200724050233727" list="ToDo [[Property-Based Testing with PropEr]]" modified="20200724050250020" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -12745,7 +12745,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200723182406925" title="$:/temp/search">
+<div created="20200422190456346" modified="20200724050241514" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -14705,52 +14705,6 @@ $ curl -JO URL
 <div created="20200425152750407" modified="20200425152823233" tags="" title="Download video from Youtube">
 <pre>```
 $ youtube-dl -f bestvideo+bestaudio FILE_OR_PLAYLIST_URL
-```</pre>
-</div>
-<div created="20200724045252695" draft.of="New Tiddler" draft.title="Erlang safe foreach" modified="20200724045747226" tags="Erlang Algorithm" title="Draft of 'New Tiddler'">
-<pre>TODO: Compile patterns in the beginning, otherwise they compiled for every item in the list
-
-* https://erlang.org/doc/apps/erts/match_spec.html
-* https://erlang.org/doc/man/ets.html#match_spec_compile-1
-* https://erlang.org/doc/man/ets.html#match_spec_run-2
-
-```
-main(_) -&gt;
-  ok = safe_foreach(fun (X) -&gt; process_item(X) end, [1, &quot;2&quot;, 3], [{integer, '_'}, {list, '_'}], {error, '_'}),
-  {error, {unknown,a}} = safe_foreach(fun (X) -&gt; process_item(X) end, [1, a, &quot;2&quot;, 3, b], [{integer, '_'}, {list, '_'}], {error, '_'}),
-  io:format(&quot;OK~n&quot;).
-    
-safe_foreach(_, [], _, _) -&gt;
-    ok;
-safe_foreach(Fun, [H|T], SuccessPattern, FailurePattern) -&gt;
-    Result = Fun(H),
-    case match_pattern(Result, SuccessPattern) of
-        true -&gt;
-            safe_foreach(Fun, T, SuccessPattern, FailurePattern);
-        false -&gt;
-            case match_pattern(Result, FailurePattern) of
-                true -&gt;
-                    Result;
-                false -&gt;
-                    exit({no_pattern_for, Result})
-            end
-    end.
-    
-match_pattern(Expression, Patterns) when is_list(Patterns) -&gt;
-    lists:any(fun (Value) -&gt; Value =:= true end,
-        [match_pattern(Expression, Pattern) || Pattern &lt;- Patterns]);
-
-match_pattern(Expression, Pattern) -&gt;
-    MatchSpec = [{Pattern, [], [true]}],
-    CompiledMatchSpec = ets:match_spec_compile(MatchSpec),
-    ets:match_spec_run([Expression], CompiledMatchSpec) =:= [true].
-    
-process_item(Item) when is_integer(Item) -&gt;
-    {integer, Item};
-process_item(Item) when is_list(Item) -&gt;
-    {list, Item};
-process_item(Item) -&gt;
-    {error, {unknown, Item}}.
 ```</pre>
 </div>
 <div created="20180307153530187" modified="20200427171503827" tags="TiddlyWiki" title="DraggableTaskTemplate" type="text/vnd.tiddlywiki">
@@ -17207,6 +17161,53 @@ ssh -N -R 127.0.0.1:59094:localhost:59094 10.252.149.199
 {ok,'s@10.252.149.199'}
 (m@127.0.0.1)2&gt; rpc:call('s@10.252.149.199', net_adm, localhost, []).
 &quot;ip-10-252-149-199&quot;
+```</pre>
+</div>
+<div created="20200724045252695" modified="20200724050240381" tags="Erlang Algorithm task" title="Erlang safe foreach">
+<pre>TODO: Compile patterns in the beginning, otherwise they compiled for every item in the list
+
+* https://erlang.org/doc/man/ms_transform.html
+* https://erlang.org/doc/apps/erts/match_spec.html
+* https://erlang.org/doc/man/ets.html#match_spec_compile-1
+* https://erlang.org/doc/man/ets.html#match_spec_run-2
+
+```
+main(_) -&gt;
+  ok = safe_foreach(fun (X) -&gt; process_item(X) end, [1, &quot;2&quot;, 3], [{integer, '_'}, {list, '_'}], {error, '_'}),
+  {error, {unknown,a}} = safe_foreach(fun (X) -&gt; process_item(X) end, [1, a, &quot;2&quot;, 3, b], [{integer, '_'}, {list, '_'}], {error, '_'}),
+  io:format(&quot;OK~n&quot;).
+    
+safe_foreach(_, [], _, _) -&gt;
+    ok;
+safe_foreach(Fun, [H|T], SuccessPattern, FailurePattern) -&gt;
+    Result = Fun(H),
+    case match_pattern(Result, SuccessPattern) of
+        true -&gt;
+            safe_foreach(Fun, T, SuccessPattern, FailurePattern);
+        false -&gt;
+            case match_pattern(Result, FailurePattern) of
+                true -&gt;
+                    Result;
+                false -&gt;
+                    exit({no_pattern_for, Result})
+            end
+    end.
+    
+match_pattern(Expression, Patterns) when is_list(Patterns) -&gt;
+    lists:any(fun (Value) -&gt; Value =:= true end,
+        [match_pattern(Expression, Pattern) || Pattern &lt;- Patterns]);
+
+match_pattern(Expression, Pattern) -&gt;
+    MatchSpec = [{Pattern, [], [true]}],
+    CompiledMatchSpec = ets:match_spec_compile(MatchSpec),
+    ets:match_spec_run([Expression], CompiledMatchSpec) =:= [true].
+    
+process_item(Item) when is_integer(Item) -&gt;
+    {integer, Item};
+process_item(Item) when is_list(Item) -&gt;
+    {list, Item};
+process_item(Item) -&gt;
+    {error, {unknown, Item}}.
 ```</pre>
 </div>
 <div created="20200428103642253" modified="20200428103653367" tags="Erlang" title="Erlang setup">
