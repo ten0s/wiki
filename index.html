@@ -1353,7 +1353,13 @@ Error message and password prompt
 
 <li>Postfix via gmail.com</li>
 
+<li>PostgreSQL commands</li>
+
 <li>PostgreSQL in Docker</li>
+
+<li>PostgreSQL see enum values</li>
+
+<li>PostgreSQL setup</li>
 
 <li>Pretty print XML</li>
 
@@ -11731,7 +11737,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200724050233727" list="ToDo [[Property-Based Testing with PropEr]]" modified="20200724050250020" title="$:/StoryList">
+<div created="20200724050233727" list="[[PostgreSQL in Docker]] ToDo [[Property-Based Testing with PropEr]]" modified="20200724050334610" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -12745,7 +12751,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200724050241514" title="$:/temp/search">
+<div created="20200422190456346" modified="20200724050936473" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -20161,8 +20167,128 @@ $ echo &quot;This is a test mail 2&quot; | mail -s &quot;Test mail 2&quot; user@
 
 [[Netcat SMTP client]]</pre>
 </div>
-<div created="20200723182314835" modified="20200723182405662" tags="Docker Database" title="PostgreSQL in Docker">
+<div created="20200724050744449" modified="20200724050851270" tags="Database" title="PostgreSQL commands">
+<pre>Table schema
+
+```
+\d+ TABLE;
+```
+
+List all tables
+
+```
+\dt;
+```
+</pre>
+</div>
+<div created="20200723182314835" modified="20200724050343101" tags="Docker Database task" title="PostgreSQL in Docker">
 <pre>https://hub.docker.com/_/postgres</pre>
+</div>
+<div created="20200724050903718" modified="20200724050929848" tags="Database" title="PostgreSQL see enum values">
+<pre>```
+select unnest(enum_range(null::t_role_type));
+   unnest
+-------------
+ moderator
+ participant
+ visitor
+ none
+(4 rows)
+```</pre>
+</div>
+<div created="20200724051055437" modified="20200724051241141" tags="Database" title="PostgreSQL setup">
+<pre>!!! Install &amp; Setup
+
+* http://linuxpoison.blogspot.com/2012/01/how-to-install-configure-postgresql.html
+* http://russbrooks.com/2010/12/4/install-postgresql-9-on-ubuntu-linux
+
+```
+$ sudo aptitude postgresql
+$ sudo aptitude install odbc-postgresql
+```
+
+!!! Start/stop
+
+```
+$ sudo service postgresql start/stop
+```
+
+In case of error like:
+
+```
+FET DETAIL:  Failed system call was shmget(key=5432001, size=39337984, 03600).
+```
+
+decrease ''sharred_buffers'' value in postgresql.conf
+
+!!! Create user
+
+```
+$ sudo -u postgres psql
+postgres=# CREATE USER test WITH PASSWORD 'test';
+postgres=# CREATE DATABASE kelly;
+postgres=# GRANT ALL ON DATABASE kelly TO test;
+```
+
+```
+$ psql -U test -h localhost -d kelly
+```
+
+!!! Store password to file
+
+```
+$ cat .pgpass
+$ chmod 600 .pgpass
+localhost:*:kelly:test:test
+$ psql -U test -h localhost -d kelly &lt; test.sql
+```
+
+!!! Install &amp; Setup via ODBC
+
+```
+$ sudo aptitude install unixodbc # fro isql
+$ sudo aptitude install unixodbc-bin # for ODBCConfig
+$ sudo aptitude install odbc-postgresql
+```
+
+!!! Register postgresql driver in /etc/odbcinst.ini
+
+```
+[PostgreSQL ANSI]
+Description = PostgreSQL ODBC driver (ANSI version)
+Driver = /usr/lib/odbc/psqlodbca.so
+Setup = /usr/lib/odbc/libodbcpsqlS.so
+Debug = 0
+CommLog = 1
+UsageCount = 1
+
+[PostgreSQL Unicode]
+Description = PostgreSQL ODBC driver (Unicode version)
+Driver = /usr/lib/odbc/psqlodbcw.so
+Setup = /usr/lib/odbc/libodbcpsqlS.so
+Debug = 0
+CommLog = 1
+UsageCount = 1
+```
+
+!!! Register DSN in /etc/odbc.ini
+
+```
+[PostgreSQL-Kelly]
+Description = PostgreSQL Data Source
+Driver = PostgreSQL ANSI
+Database = kelly
+Servername = localhost
+Username = test
+Password = test
+```
+
+```
+1&gt; odbc:start().
+ok
+2&gt; odbc:connect(&quot;DSN=MySQL-Kelly;UID=test;PWD=test&quot;, []).
+{ok,&lt;0.41.0&gt;}
+```</pre>
 </div>
 <div created="20200425150030659" modified="20200425150057047" tags="Linux" title="Pretty print XML">
 <pre>```
