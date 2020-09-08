@@ -575,6 +575,8 @@ Error message and password prompt
 
 <li>Associate file types</li>
 
+<li>AutoLISP</li>
+
 <li>AWK add line numbes</li>
 
 <li>AWK cat and tac</li>
@@ -11580,8 +11582,8 @@ Error message and password prompt
 <div created="20200423185634443" modified="20200423185634443" title="$:/state/plugin-info-334910430-$:/core---1812962263">
 <pre>contents</pre>
 </div>
-<div created="20200512083903594" modified="20200717175025384" title="$:/state/showeditpreview">
-<pre>no</pre>
+<div created="20200512083903594" modified="20200908110435949" title="$:/state/showeditpreview">
+<pre>yes</pre>
 </div>
 <div created="20200423185759928" modified="20200814123958402" title="$:/state/sidebar">
 <pre>yes</pre>
@@ -11760,7 +11762,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200907170531254" list="" modified="20200907170531254" title="$:/StoryList">
+<div created="20200908110023433" list="" modified="20200908110207842" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -12774,7 +12776,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200820075204063" title="$:/temp/search">
+<div created="20200422190456346" modified="20200908110505665" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -13224,7 +13226,7 @@ Use tmux or screen via termux-usb wrapped script
 <div created="20200520090243977" modified="20200520090329672" tags="Android task" title="Android Wakelocks">
 <pre>https://www.phonearena.com/news/What-are-wakelocks-how-they-affect-the-battery-life-of-your-Android-device-and-how-to-Greenify-them_id58739</pre>
 </div>
-<div created="20200818163229848" modified="20200907170838350" tags="TableOfContents task" title="ANTLR">
+<div created="20200818163229848" modified="20200902111020879" tags="TableOfContents task" title="ANTLR">
 <pre>[ext[Open book|pdfx://refs/dev/The_Definitive_ANTLR4_Reference.pdf::111]]
 
 https://www.antlr.org/download.html
@@ -13239,8 +13241,6 @@ https://medium.com/dailyjs/compiler-in-javascript-using-antlr-9ec53fd2780f
 
 https://www.smashingmagazine.com/2017/03/interactive-command-line-application-node-js/
 
-!!! REPL
-
 * https://nodejs.org/api/repl.html
 
 * https://www.npmjs.com/package/simple-shell
@@ -13248,18 +13248,7 @@ https://www.smashingmagazine.com/2017/03/interactive-command-line-application-no
 * https://www.npmjs.com/package/prompts
 * https://www.npmjs.com/package/enquirer
 * https://www.npmjs.com/package/prompt-sync
-* https://www.npmjs.com/package/readline-sync
-
-!!! Pack to single executable
-
-* https://github.com/vercel/pkg
-* https://dev.to/jochemstoel/bundle-your-node-app-to-a-single-executable-for-windows-linux-and-osx-2c89
-* https://www.youtube.com/watch?v=50f6y-npKAY&amp;ab_channel=VincentLab
-
-* https://github.com/nexe/nexe
-* https://www.youtube.com/watch?v=ODlYsEITCBM&amp;ab_channel=FriendlyDeveloper
-
-* Some electronjs bundler</pre>
+* https://www.npmjs.com/package/readline-sync</pre>
 </div>
 <div created="20200423170701554" modified="20200423171429459" tags="Git" title="Apply a patch">
 <pre>[[Make a patch]]
@@ -13316,6 +13305,12 @@ $ xdg-mime default MY_PDF.desktop
 [[Create custom URI handler]]
 
 [[Adding MIME types]]</pre>
+</div>
+<div created="20200908082804973" modified="20200908110013807" tags="TableOfContents" title="AutoLISP">
+<pre>* https://www.autolisp-exchange.com/
+* https://www.afralisp.net/archive/index.htm
+* http://www.theswamp.org/index.php?board=2.0
+</pre>
 </div>
 <div created="20200703174331780" modified="20200704093310282" tags="Linux" title="AWK add line numbes">
 <pre>```
@@ -13448,7 +13443,7 @@ cat settings | ./get_alerts 3&lt;&amp;0- 4&gt;&amp;1-
 [n]&lt;&gt;word
 ```</pre>
 </div>
-<div created="20200428112426415" modified="20200428112446620" tags="Bash" title="Bash substitutions">
+<div created="20200428112426415" modified="20200908110502659" tags="Bash" title="Bash substitutions">
 <pre>```
 If parameter not set, USE default.
 ${parameter-default}, ${parameter:-default}
@@ -13471,6 +13466,7 @@ y=HELLO; echo ${y,} ${y,,} # hELLO hello
 path=/path/to/file.txt
 echo ${path##*/} == $(basename $path) # file.txt
 echo ${path%/*} == $(dirname $path)   # /path/to
+echo ${path%%.txt}                    # /path/to/file
 echo ${path##*.}                      # txt
 ```</pre>
 </div>
