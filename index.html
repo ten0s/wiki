@@ -1665,6 +1665,8 @@ Error message and password prompt
 
 <li>SSH local port forwarding</li>
 
+<li>SSH login hangs under VPN</li>
+
 <li>SSH remote port forwarding</li>
 
 <li>SSH socks tunnel</li>
@@ -11588,8 +11590,8 @@ Error message and password prompt
 <div created="20200423185634443" modified="20200423185634443" title="$:/state/plugin-info-334910430-$:/core---1812962263">
 <pre>contents</pre>
 </div>
-<div created="20200512083903594" modified="20200908110435949" title="$:/state/showeditpreview">
-<pre>yes</pre>
+<div created="20200512083903594" modified="20200917085647397" title="$:/state/showeditpreview">
+<pre>no</pre>
 </div>
 <div created="20200423185759928" modified="20200814123958402" title="$:/state/sidebar">
 <pre>yes</pre>
@@ -11768,7 +11770,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20200916141004594" list="[[Emacs Lisp Eval]]" modified="20200916141016112" title="$:/StoryList">
+<div list="" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -12782,7 +12784,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20200916141033947" title="$:/temp/search">
+<div created="20200422190456346" modified="20200917085833419" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -23727,6 +23729,35 @@ Usage:
 ```
 $ mongo localhost:57017
 ```
+</pre>
+</div>
+<div created="20200917085353463" modified="20200917085821045" tags="Ssh" title="SSH login hangs under VPN">
+<pre>```
+$ ssh -v IP
+...
+debug1: expecting SSH2_MSG_KEX_ECDH_REPLY
+```
+
+```
+$ ifconfig tun0
+tun0: flags=4305&lt;UP,POINTOPOINT,RUNNING,NOARP,MULTICAST&gt;  mtu 1412
+...
+```
+
+Fix #1: change MTU
+
+```
+$ sudo ip li set mtu 1200 dev tun0
+```
+
+Fix #2: 
+
+```
+$ ssh -v -o KexAlgorithms=ecdh-sha2-nistp521 IP
+```
+
+* https://serverfault.com/questions/210408/cannot-ssh-debug1-expecting-ssh2-msg-kex-dh-gex-reply
+* https://www.seei.biz/ssh-fails-to-connect-with-debug1-expecting-ssh2_msg_kex_ecdh_reply/
 </pre>
 </div>
 <div created="20200424093456058" modified="20200519150244322" tags="Ssh" title="SSH remote port forwarding">
