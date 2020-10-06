@@ -11784,7 +11784,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201005080606237" list="ToDo [[Electron in Action]]" modified="20201005153539715" title="$:/StoryList">
+<div created="20201006091426002" list="ToDo [[Electron in Action]]" modified="20201006091427451" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -14927,7 +14927,7 @@ http://www1.idc.ac.il/tecs/plan.html
 http://www.quuxlabs.com/blog/2010/09/matrix-factorization-a-simple-tutorial-and-implementation-in-python/
 </pre>
 </div>
-<div created="20201004163227150" modified="20201005170500102" tags="task" title="Electron in Action">
+<div created="20201004163227150" modified="20201006111126749" tags="task" title="Electron in Action">
 <pre>[ext[Open book|pdfx://refs/js/electron_in_action.pdf::47]]
 
 ---
@@ -14943,7 +14943,32 @@ https://www.electronjs.org/docs/api/environment-variables
 ```
 $ ELECTRON_RUN_AS_NODE=1 ~/tmp/electron-in-action/bookmarker $ node_modules/electron/dist/electron 
 ```
-</pre>
+
+---
+
+```
+const {ipcRenderer} = require('electron');
+
+// Right after the line where you changed the document.location
+ipcRenderer.send('resize', 200, 150)
+```
+
+main.js
+
+```
+const {ipcMain} = require('electron')
+ipcMain.on('resize', (event, width, height) =&gt; {
+  mainWindow.setSize(width,height)
+})
+```
+
+https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model/Determining_the_dimensions_of_elements
+
+function css( element, property ) {
+    return window.getComputedStyle( element, null ).getPropertyValue( property );
+}
+
+css( object, 'font-size' ) // returns '16px' for instance</pre>
 </div>
 <div created="20200916141035629" modified="20200916141156208" tags="Emacs" title="Emacs Lisp Eval">
 <pre>* In *scratch* C-j
