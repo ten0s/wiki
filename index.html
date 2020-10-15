@@ -11612,8 +11612,8 @@ Error message and password prompt
 <div created="20200423185634443" modified="20200423185634443" title="$:/state/plugin-info-334910430-$:/core---1812962263">
 <pre>contents</pre>
 </div>
-<div created="20200512083903594" modified="20200917085647397" title="$:/state/showeditpreview">
-<pre>no</pre>
+<div created="20200512083903594" modified="20201015120730061" title="$:/state/showeditpreview">
+<pre>yes</pre>
 </div>
 <div created="20200423185759928" modified="20200814123958402" title="$:/state/sidebar">
 <pre>yes</pre>
@@ -11795,7 +11795,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201015091618764" list="" modified="20201015091618764" title="$:/StoryList">
+<div created="20201015091618764" list="[[Fix: cannot load shared object file]]" modified="20201015120428830" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -12809,7 +12809,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20201014190530819" title="$:/temp/search">
+<div created="20200422190456346" modified="20201015120854732" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -17925,19 +17925,50 @@ $ reset
 ```
 </pre>
 </div>
-<div created="20200425154708085" modified="20200425154749281" tags="Linux" title="Fix: cannot load shared object file">
+<div created="20200425154708085" modified="20201015120852382" tags="Linux" title="Fix: cannot load shared object file">
 <pre># $ sudo ldconfig
 # check LD_LIBRARY_PATH
 # check and update /etc/ld.so.conf and then run `sudo ldconfig'
-</pre>
+
+loadl.cpp:
+
+```
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;dlfcn.h&gt;
+
+int main(int argc, char** argv) {
+    void *handle;
+
+    if (argc != 2) {
+        fprintf(stderr, &quot;Usage: %s LIBRARY.so\n&quot;, argv[0]);
+        return EXIT_FAILURE;
+    }
+
+    handle = dlopen(argv[1], RTLD_LAZY);
+    if (!handle) {
+        fprintf(stderr, &quot;Error: %s\n&quot;, dlerror());
+        return EXIT_FAILURE;
+    }
+    dlclose(handle);
+    return EXIT_SUCCESS;
+}
+```
+
+```
+$ g++ -o loadl loadl.cpp -ldl
+$ ./loadl 
+Usage: ./loadl LIBRARY.so
+```</pre>
 </div>
-<div created="20200430111447244" modified="20200430111535192" tags="Linux" title="Fix: error while loading shared libraries">
+<div created="20200430111447244" modified="20201015120826771" tags="Linux" title="Fix: error while loading shared libraries">
 <pre>error while loading shared libraries: libsqlplus.so: cannot open shared object file: No such file or directory
 
 ```
 $ LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib sqlplus64
 ```
-</pre>
+
+[[Fix: cannot load shared object file]]</pre>
 </div>
 <div created="20200424083201282" modified="20200424083220453" tags="Linux" title="Flush file system buffers">
 <pre>```
