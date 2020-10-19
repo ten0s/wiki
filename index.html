@@ -11799,7 +11799,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201018074013142" list="ToDo [[DCL &amp; AutoLisp]] AutoLISP" modified="20201018080930352" title="$:/StoryList">
+<div created="20201019100117961" list="" modified="20201019182410332" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -12813,7 +12813,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20201017142320882" title="$:/temp/search">
+<div created="20200422190456346" modified="20201019182656990" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -20694,7 +20694,7 @@ $ cat data.xml | xmllint --format -
 ```
 </pre>
 </div>
-<div created="20200428101236702" modified="20200722102730785" tags="Dev" title="Principles">
+<div created="20200428101236702" modified="20201019182655425" tags="Dev" title="Principles">
 <pre>* Parse raw data from file, db, etc into intermediate internal representation (AST)
 
 * Every periodic task should be disableable at startup and/or runtime.
@@ -20712,6 +20712,8 @@ https://www.johndcook.com/blog/2008/06/17/software-in-space/
 * Separate from third party library, fs, db, external calls with a Facade (defining interface/behaviour) and an Adapter (implementing interface/behaviour) .
 
 * Every changed function must be covered by a unit test
+* Don't put failed task back to tasks queue (to retry) w/o implemented fail counter
+* Every server should have UI/API/CLI to change configs
 
 [[Erlang ensure all callbacks implemented]]
 
@@ -23768,8 +23770,9 @@ $ split --bytes=1M image.jpg new
 * https://github.com/harelba/q
 </pre>
 </div>
-<div created="20200422190608993" modified="20200423190825600" tags="Git" title="Squash a branch into one commit">
+<div created="20200422190608993" modified="20201019134331109" tags="Git" title="Squash a branch into one commit">
 <pre>```
+$ git checkout master
 $ git merge --squash BRANCH
 $ git commit -m MESSAGE
 ```
