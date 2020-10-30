@@ -925,6 +925,8 @@ Error message and password prompt
 
 <li>Erlang flat size</li>
 
+<li>Erlang from/to binary list</li>
+
 <li>Erlang GC</li>
 
 <li>Erlang generate erlang crash dump</li>
@@ -11799,7 +11801,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201029163646236" list="ToDo Читать" modified="20201029163648426" title="$:/StoryList">
+<div created="20201030094122044" list="[[Erlang from/to binary list]] ToDo Читать" modified="20201030094124093" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -16571,6 +16573,33 @@ $ make
 &gt; erts_debug:flat_size([a|b]).
 2
 ```</pre>
+</div>
+<div created="20201030150554171" modified="20201030150624904" tags="Erlang" title="Erlang from/to binary list">
+<pre>```
+to_binary_list(rep_filled_list, TermL) -&gt;
+    Len = length(TermL),
+    [&lt;&lt;Len:32&gt;&gt;] ++ lists:foldl(fun (Term, Acc) -&gt;
+        TermBin = term_to_binary(Term),
+        TermSz = size(TermBin),
+        [&lt;&lt;TermSz:32&gt;&gt;, TermBin | Acc]
+    end, [], TermL);
+to_binary_list(_What, Term) -&gt;
+    [term_to_binary(Term)].
+```
+
+```
+to_term(rep_filled_list, Bin) -&gt;
+    &lt;&lt;Len:32, Data/binary&gt;&gt; = Bin,
+    {Terms, _} = lists:foldl(fun (_, {Acc, RestBin}) -&gt;
+        &lt;&lt;TermSz:32, TermBin:TermSz/binary, RestBin2/binary&gt;&gt; = RestBin,
+        Term = binary_to_term(TermBin),
+        {[Term | Acc], RestBin2}
+    end, {[], Data}, lists:seq(1, Len)),
+    Terms;
+to_term(_What, Bin) -&gt;
+    binary_to_term(Bin).
+```
+</pre>
 </div>
 <div created="20200428103034928" modified="20200428103045649" tags="Erlang" title="Erlang GC">
 <pre>dse - Designing for Scalability with Erlang/OTP
