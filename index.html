@@ -851,6 +851,8 @@ Error message and password prompt
 
 <li>Emacs Lisp Eval</li>
 
+<li>Emacs/Vim file headers</li>
+
 <li>Embedded Rust course</li>
 
 <li>Enable 'less' coloring</li>
@@ -11801,7 +11803,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201031172343638" list="[[DCL &amp; AutoLisp]]" modified="20201031172343638" title="$:/StoryList">
+<div created="20201103082637918" list="[[Emacs/Vim file headers]]" modified="20201103082646221" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -12815,7 +12817,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20201031172353543" title="$:/temp/search">
+<div created="20200422190456346" modified="20201103082709112" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -15022,6 +15024,30 @@ css( object, 'font-size' ) // returns '16px' for instance</pre>
 <div created="20200916141035629" modified="20200916141156208" tags="Emacs" title="Emacs Lisp Eval">
 <pre>* In *scratch* C-j
 * M-x ielm for Interactive Lisp Shell</pre>
+</div>
+<div created="20201103082747186" modified="20201103083411407" tags="Emacs" title="Emacs/Vim file headers">
+<pre>```
+%% -*- mode: erlang; erlang-indent-level: 4; indent-tabs-mode: nil -*-
+%% ex: ts=4 sw=4 ft=erlang et indentexpr=
+```
+
+```
+# -*- mode: bash -*-
+```
+
+```
+# -*- mode: sh -*-
+# ex: ts=4 sw=4 et ft=sh
+```
+
+```
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+```
+
+```
+MY PROJECT -*- mode: org -*-
+```</pre>
 </div>
 <div created="20200510154654380" modified="20200510154707422" tags="Rust" title="Embedded Rust course">
 <pre>https://docs.rust-embedded.org/discovery/</pre>
