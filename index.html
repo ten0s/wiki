@@ -14893,7 +14893,7 @@ $ curl -JO URL
 $ youtube-dl -f bestvideo+bestaudio FILE_OR_PLAYLIST_URL
 ```</pre>
 </div>
-<div created="20200428103938043" draft.of="Tracing and profiling" draft.title="Tracing and profiling" modified="20201112110051638" tags="Erlang" title="Draft of 'Tracing and profiling'">
+<div created="20200428103938043" draft.of="Tracing and profiling" draft.title="Tracing and profiling" modified="20201112110136371" tags="Erlang" title="Draft of 'Tracing and profiling'">
 <pre>!!! Trace calls
 ```
 &gt; dbg:tracer().
@@ -14919,13 +14919,12 @@ $ youtube-dl -f bestvideo+bestaudio FILE_OR_PLAYLIST_URL
 &gt; dbg:p(self(), 'receive').
 ```
 
-
 !!! How to trace remote node, but see output on local
 ```
 $ erl -name adm@127.0.0.1 -setcookie kelly
 &gt; net_adm:ping('kelly@127.0.0.1').
 pong
-&gt; dbg(). %% dbg:tracer().
+&gt; dbg:tracer().
 {ok, &lt;0.44.0&gt;}
 &gt; dbg:n('kelly@127.0.0.1').
 {ok, 'kelly@127.0.0.1'}
