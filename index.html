@@ -25218,7 +25218,7 @@ $ strace COMMAND [ARGS]
 
 [[Trace dynamic libs calls]]</pre>
 </div>
-<div created="20200428103938043" modified="20201112115537843" tags="Erlang" title="Tracing and profiling">
+<div created="20200428103938043" modified="20201112120619053" tags="Erlang" title="Tracing and profiling">
 <pre>!!! Trace calls
 ```
 &gt; dbg:tracer().
@@ -25248,7 +25248,7 @@ $ strace COMMAND [ARGS]
 Fun = fun (Trace, _Data) -&gt; file:write_file(&quot;test.log&quot;, io_lib:format(&quot;~p~n&quot;, [Trace]), [append]), Trace end.
 dbg:tracer(process, {Fun, []}).
 dbg:tpe('receive', dbg:fun2ms(fun ([Node, Sender, {Ref, ok}]) when is_reference(Ref)-&gt; message({sender, {Sender, Node}}) end)).
-dbg:p(self(), 'receive').
+dbg:p(self(), ['receive', timestamp]).
 ```
 
 !!! How to trace remote node, but see output on local
