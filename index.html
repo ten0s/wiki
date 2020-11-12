@@ -841,6 +841,8 @@ Error message and password prompt
 
 <li>Download video from Youtube</li>
 
+<li>Draft of 'Tracing and profiling'</li>
+
 <li>DraggableTaskTemplate</li>
 
 <li>Dump network traffic on specific port</li>
@@ -11811,7 +11813,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201112091924002" list="[[Tracing and profiling]]" modified="20201112091924002" title="$:/StoryList">
+<div created="20201112091924002" list="[[Draft of 'Tracing and profiling']]" modified="20201112091924002" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -14890,6 +14892,344 @@ $ curl -JO URL
 <pre>```
 $ youtube-dl -f bestvideo+bestaudio FILE_OR_PLAYLIST_URL
 ```</pre>
+</div>
+<div created="20200428103938043" draft.of="Tracing and profiling" draft.title="Tracing and profiling" modified="20201112110051638" tags="Erlang" title="Draft of 'Tracing and profiling'">
+<pre>!!! Trace calls
+```
+&gt; dbg:tracer().
+&gt; dbg:tp(odbc, sql_query, '_', dbg:fun2ms(fun(_) -&gt; exception_trace() end)).
+&gt; dbg:tpl(j_odbc, get_server_uuid, '_', []).
+&gt; dbg:tpl(j_odbc, normalize_result_set, '_', dbg:fun2ms(fun(_) -&gt; exception_trace() end)).
+&gt; dbg:p(all, call).
+```
+
+!!! Who sends {Ref, ok} messages?
+
+```
+&gt; dbg:tracer().
+&gt; dbg:tpe(send, dbg:fun2ms(fun ([_Receiver, {Ref, ok}]) when is_reference(Ref) -&gt; display({send_sender, self()}) end)).
+&gt; dbg:p(processes, send).
+```
+
+!!! Who sends {Ref, ok} messages to me? 
+
+```
+&gt; dbg:tracer().
+&gt; dbg:tpe('receive', dbg:fun2ms(fun ([Node, Sender, {Ref, ok}]) when is_reference(Ref)-&gt; display({recv_sender, Node, Sender}) end)).
+&gt; dbg:p(self(), 'receive').
+```
+
+
+!!! How to trace remote node, but see output on local
+```
+$ erl -name adm@127.0.0.1 -setcookie kelly
+&gt; net_adm:ping('kelly@127.0.0.1').
+pong
+&gt; dbg(). %% dbg:tracer().
+{ok, &lt;0.44.0&gt;}
+&gt; dbg:n('kelly@127.0.0.1').
+{ok, 'kelly@127.0.0.1'}
+&gt; dbg(Mod, Fun, ...).  %% dbg:p(all, call), dbg:tpl({Mod, Fun, ...}, ...).
+{ok, [{matched, 'adm@127.0.0.1'}, {matched, 'kelly@127.0.0.1'}, {saved, 1}]}
+```
+
+!!! How to trace files in Wireshark
+https://www.erlang-solutions.com/blog/erlang-trace-files-in-wireshark.html
+
+```
+dbg:tracer(port, dbg:trace_port(file, &quot;jd_c2s_xmpp_stream.trace&quot;)).
+dbg:p(all, [call, timestamp]).
+dbg:tp(jd_c2s_xmpp_stream, '_', '_', []).
+```
+
+!!! How redirect trace to a port
+source:
+
+```
+dbg:tracer(port, dbg:trace_port(ip, 1234)).
+dbg:p(all, call).
+dbg:tp(lists, sum, '_', []).
+```
+
+client:
+
+```
+dbg:trace_client(ip, 1234).
+```
+
+!!! How to redirect trace to a file: (file is binary dump)
+source:
+
+```
+dbg:tracer(port, dbg:trace_port(file, &quot;trace.dump&quot;)).
+dbg:p(all, call).
+dbg:tp(lists, sum, '_', []).
+...
+lists:sum(...).
+...
+dbg:flush_trace_port().
+...
+dbg:stop_clean().
+```
+
+client:
+
+```
+P = dbg:trace_client(follow_file, &quot;trace.dump&quot;).
+...
+dbg:stop_trace_client(P).
+```
+
+!!! How to redirect trace to a process
+
+setup:
+
+```
+DisplayFun = fun(Trace, _Data) -&gt; erlang:display(Trace), Trace end.
+dbg:tracer(process, {DisplayFun, []}).
+
+FileFun = fun(Trace, _Data) -&gt; file:write_file(&quot;trace.log&quot;, io_lib:format(&quot;~p~n&quot;, [Trace]), [append]), Trace end.
+dbg:tracer(process, {FileFun, []}).
+
+AccFun = fun(Trace, Acc) -&gt; erlang:display(Acc), Acc+1 end.
+dbg(c), dbg:tracer(process, {AccFun, 1}), dbg:p(all, call), dbg(gen_mc_session, reply).
+
+% autostop
+AutostopFun = fun(Max) -&gt; fun (_, Max) -&gt; dbg:stop_clear(); (Msg, N) -&gt; erlang:display(Msg), N+1 end end.
+dbg:tracer(process, {AutostopFun(100), 0}).
+
+dbg:p(all, call).
+dbg:tpl(lists, sum, '_', []).
+...
+lists:sum(...).
+...
+```
+
+output:
+
+```
+{trace, &lt;0.31.0&gt;, call, {lists, sum, [[1,2,3]]}}
+```
+
+!!! How to save trace to a file?
+
+```
+dbg(c).
+Fun = fun(Trace, _Data) -&gt; file:write_file(&quot;test.log&quot;, io_lib:format(&quot;~p~n&quot;, [Trace]), [append]), Trace end.
+dbg:tracer(process, {Fun, []}).
+
+dbg(mongo_query, write, fun([_,{update,mt_messages,_,_,_,_},_]) -&gt; exception_trace() end).
+dbg(mongo_query, write, fun([_,{update,mt_messages,_,_,_,_},_]) -&gt; message(caller()), return_trace() end).
+dbg(mongodb_storage, command, fun([k_curr_dynamic_storage, _]) -&gt; message(caller()), return_trace() end).
+dbg(mongodb_storage, upsert, fun([k_curr_dynamic_storage, mt_messages, _, _]) -&gt; message(caller()), return_trace() end).
+```
+
+!!! How to see the caller of a call
+```
+&gt; dbg(k_statistic_status_reports, doc_to_message, fun([mo_messages, _]) -&gt; message(caller()) end).
+```
+
+!!! How to determine a local lambda's  name?
+
+```
+'-FunctionName/Arity-fun-Index-'
+where
+FunctionName :: atom() - parent function's name
+Arity :: non_neg_integer() - parent function's arity
+Index :: non_neg_integer() - lambda's index in a file
+Examples:
+
+test(N, M) -&gt;
+	lists:map(
+		fun(X) -&gt; X * X end,
+		lists:seq(1, N)
+	),
+	lists:map(
+		fun(X) -&gt; X * X * X end,
+		lists:seq(1, M)
+	).
+
+'-tt/2-fun-0-'
+'-tt/2-fun-1-'
+dbg:tpl(kyte_db_request_srv, '-perform_execute/4-fun-4-', '_', cx).
+```
+
+!!! How to use cprof
+
+```
+&gt; cprof:start().
+&gt; ...
+&gt; cprof:pause().
+&gt; cprof:analyse() | cprof:analyse(...).
+&gt; cprof:stop().
+```
+
+!!! How to use eprof
+
+```
+&gt; eprof:start().
+{ok,&lt;0.64.0&gt;}
+&gt; eprof:profile(fun puzzle:time_bfs/0).
+&gt; eprof:analyze().
+&gt; eprof:stop().
+```
+
+!!! Start eprof for all existing processes and spawn from them
+
+```
+&gt; {ok, P} = eprof:start().
+{ok,&lt;0.146.0&gt;}
+&gt; eprof:start_profiling(processes() -- [P]).
+profiling
+...
+&gt; eprof:stop_profiling().
+profiling_stopped
+&gt; eprof:log(&quot;eprof.txt&quot;).
+ok
+&gt; eprof:analyze(total).
+ok
+&gt; eprof:stop().
+stopped
+
+{ok, P} = eprof:start(), eprof:start_profiling(processes() -- [P]).
+...
+eprof:stop_profiling(), eprof:log(&quot;eprof.txt&quot;), eprof:analyze(total), eprof:stop().
+```
+
+!!! How to use fprof + erlgrind + kcachegrind
+
+```
+Insert before code
+fprof:trace(start),
+...
+Insert after code
+fprof:trace(stop),
+
+&gt; fprof:profile().
+&gt; fprof:analyse([{dest, &quot;routes.fprof&quot;}]).
+```
+
+```
+$ erlgrind routes.fprof
+$ kcachegrind routes.cgrind
+```
+
+!!! Check out
+
+* https://github.com/proger/eflame
+* https://github.com/Appliscale/xprof
+
+!!! How to use percept
+
+```
+1&gt; percept:profile(&quot;test.dat&quot;, {sorter, go, [5, 2000, 15]}, [procs]).
+Starting profiling.
+2&gt; percent:analyze(&quot;test.dat&quot;).
+Parsing: &quot;test.dat&quot;
+Consolidating...
+Parsed 463 entries in 0.024268 s.
+    17 created processes.
+    0 opened ports.
+ok
+3&gt; percent:start_webserver(8888).
+{started,&quot;mint-ws&quot;,8888}
+4&gt; percept:stop_webserver().
+ok
+```
+
+!!! How do I modify the code search path for a remote Erlang node
+
+```
+[code:add_pathz(P) || P &lt;- filelib:wildcard(&quot;/usr/lib/erlang/lib/*/ebin&quot;)].
+```
+
+!!! How to debug just startup
+
+```
+$ cd /opt/just
+$ bash -x bin/just
+```
+
+from the output above determine ROOTDIR and BINDIR
+
+```
+$ export ROOTDIR=/opt/just
+$ export BINDIR=/opt/just/erts-5.8.5/bin
+$ /opt/just/erts-5.8.5/bin/erlexec -boot /opt/just/releases/1/start_clean -embedded -config /opt/just/etc/app.config -args_file /opt/just/etc/vm.args -- console
+```
+Notice to boot start_clean intead of just script
+
+```
+$ application:start(just).
+```
+resolve dependencies
+
+
+!!! Erlang trace
+
+* http://www.erlang.org/doc/man/erlang.html#trace-3
+* http://www.erlang.org/doc/man/erlang.html#trace_pattern-3
+
+!!! Dbg
+
+* http://www.erlang.org/doc/man/dbg.html
+* http://www.erlang.org/doc/man/ms_transform.html
+
+!!! Match spec
+
+http://www.erlang.org/doc/apps/erts/match_spec.html
+
+!!! Event tracer
+
+http://erlang.org/doc/apps/et/et_intro.html
+
+```
+-module(jd_tracing).
+-export([trace_me/5]).
+
+trace_me(_, _, _, _, _) -&gt;
+    ok.
+
+et_viewer:start([{trace_global,true}, {trace_pattern,{jd_tracing,max}}, {width, 2000}, {height, 1200}, {max_actors, infinity}]).
+```
+
+!!! Trace tool builder
+
+* http://www.erlang.org/doc/man/ttb.html
+* http://www.erlang.org/doc/apps/observer/ttb_ug.html
+* papers/DBG_TTB_tutorial_Nov_2010.pdf
+
+!!! Sequencial tracing
+
+* http://www.erlang.org/doc/man/seq_trace.html
+
+!!! Projects using trace
+
+* https://github.com/krestenkrab/erlubi
+* http://www.youtube.com/watch?v=2MO6Uv7KZ7g
+* http://www.youtube.com/watch?v=lHoWfeNuAN8
+* https://github.com/psyeugenic/fgraph
+
+!!! Percept &amp; Percept2
+
+* http://www.erlang.org/doc/apps/percept/percept_ug.html
+* http://erlang.org/doc/apps/percept/
+* https://github.com/huiqing/percept2
+* http://huiqing.github.io/percept2/overview-summary.html
+* https://erlangcentral.org/profiling-erlang-programs-using-percept2-2/
+* http://kar.kent.ac.uk/34875/1/percept2.pdf
+
+!!! Others
+
+* http://stackoverflow.com/questions/1954894/using-trace-and-dbg-in-erlang
+* http://stackoverflow.com/questions/2432936/tracing-erlang-functions-short-forms
+* http://stackoverflow.com/questions/9793586/is-there-a-way-to-add-messages-when-using-return-trace
+* http://www.snookles.com/erlang/ef2015/slf-presentation.html
+
+* https://www.youtube.com/watch?v=4u6c2FNauYE
+* papers/Profiling and debugging Erlang Systems.pdf
+
+* http://homeonrails.com/2016/05/profiling-in-erlang/</pre>
 </div>
 <div created="20180307153530187" modified="20200427171503827" tags="TiddlyWiki" title="DraggableTaskTemplate" type="text/vnd.tiddlywiki">
 <pre>&lt;$checkbox tag=&quot;done&quot;&gt; &lt;$link to={{!!title}}&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt;&lt;/$checkbox&gt;</pre>
