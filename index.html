@@ -14893,13 +14893,13 @@ $ curl -JO URL
 $ youtube-dl -f bestvideo+bestaudio FILE_OR_PLAYLIST_URL
 ```</pre>
 </div>
-<div created="20200428103938043" draft.of="Tracing and profiling" draft.title="Tracing and profiling" modified="20201112110136371" tags="Erlang" title="Draft of 'Tracing and profiling'">
+<div created="20200428103938043" draft.of="Tracing and profiling" draft.title="Tracing and profiling" modified="20201112115110690" tags="Erlang" title="Draft of 'Tracing and profiling'">
 <pre>!!! Trace calls
 ```
 &gt; dbg:tracer().
-&gt; dbg:tp(odbc, sql_query, '_', dbg:fun2ms(fun(_) -&gt; exception_trace() end)).
+&gt; dbg:tp(odbc, sql_query, '_', dbg:fun2ms(fun (_) -&gt; exception_trace() end)).
 &gt; dbg:tpl(j_odbc, get_server_uuid, '_', []).
-&gt; dbg:tpl(j_odbc, normalize_result_set, '_', dbg:fun2ms(fun(_) -&gt; exception_trace() end)).
+&gt; dbg:tpl(j_odbc, normalize_result_set, '_', dbg:fun2ms(fun (_) -&gt; exception_trace() end)).
 &gt; dbg:p(all, call).
 ```
 
@@ -14917,6 +14917,13 @@ $ youtube-dl -f bestvideo+bestaudio FILE_OR_PLAYLIST_URL
 &gt; dbg:tracer().
 &gt; dbg:tpe('receive', dbg:fun2ms(fun ([Node, Sender, {Ref, ok}]) when is_reference(Ref)-&gt; display({recv_sender, Node, Sender}) end)).
 &gt; dbg:p(self(), 'receive').
+```
+
+```
+Fun = fun (Trace, _Data) -&gt; file:write_file(&quot;test.log&quot;, io_lib:format(&quot;~p~n&quot;, [Trace]), [append]), Trace end.
+dbg:tracer(process, {Fun, []}).
+dbg:tpe('receive', dbg:fun2ms(fun ([Node, Sender, {Ref, ok}]) when is_reference(Ref)-&gt; message({sender, {Sender, Node}}) end)).
+dbg:p(self(), 'receive').
 ```
 
 !!! How to trace remote node, but see output on local
@@ -14984,17 +14991,17 @@ dbg:stop_trace_client(P).
 setup:
 
 ```
-DisplayFun = fun(Trace, _Data) -&gt; erlang:display(Trace), Trace end.
+DisplayFun = fun (Trace, _Data) -&gt; erlang:display(Trace), Trace end.
 dbg:tracer(process, {DisplayFun, []}).
 
-FileFun = fun(Trace, _Data) -&gt; file:write_file(&quot;trace.log&quot;, io_lib:format(&quot;~p~n&quot;, [Trace]), [append]), Trace end.
+FileFun = fun (Trace, _Data) -&gt; file:write_file(&quot;trace.log&quot;, io_lib:format(&quot;~p~n&quot;, [Trace]), [append]), Trace end.
 dbg:tracer(process, {FileFun, []}).
 
-AccFun = fun(Trace, Acc) -&gt; erlang:display(Acc), Acc+1 end.
+AccFun = fun (Trace, Acc) -&gt; erlang:display(Acc), Acc+1 end.
 dbg(c), dbg:tracer(process, {AccFun, 1}), dbg:p(all, call), dbg(gen_mc_session, reply).
 
 % autostop
-AutostopFun = fun(Max) -&gt; fun (_, Max) -&gt; dbg:stop_clear(); (Msg, N) -&gt; erlang:display(Msg), N+1 end end.
+AutostopFun = fun (Max) -&gt; fun (_, Max) -&gt; dbg:stop_clear(); (Msg, N) -&gt; erlang:display(Msg), N+1 end end.
 dbg:tracer(process, {AutostopFun(100), 0}).
 
 dbg:p(all, call).
@@ -15014,13 +15021,13 @@ output:
 
 ```
 dbg(c).
-Fun = fun(Trace, _Data) -&gt; file:write_file(&quot;test.log&quot;, io_lib:format(&quot;~p~n&quot;, [Trace]), [append]), Trace end.
+Fun = fun (Trace, _Data) -&gt; file:write_file(&quot;test.log&quot;, io_lib:format(&quot;~p~n&quot;, [Trace]), [append]), Trace end.
 dbg:tracer(process, {Fun, []}).
 
-dbg(mongo_query, write, fun([_,{update,mt_messages,_,_,_,_},_]) -&gt; exception_trace() end).
-dbg(mongo_query, write, fun([_,{update,mt_messages,_,_,_,_},_]) -&gt; message(caller()), return_trace() end).
-dbg(mongodb_storage, command, fun([k_curr_dynamic_storage, _]) -&gt; message(caller()), return_trace() end).
-dbg(mongodb_storage, upsert, fun([k_curr_dynamic_storage, mt_messages, _, _]) -&gt; message(caller()), return_trace() end).
+dbg(mongo_query, write, fun ([_,{update,mt_messages,_,_,_,_},_]) -&gt; exception_trace() end).
+dbg(mongo_query, write, fun ([_,{update,mt_messages,_,_,_,_},_]) -&gt; message(caller()), return_trace() end).
+dbg(mongodb_storage, command, fun ([k_curr_dynamic_storage, _]) -&gt; message(caller()), return_trace() end).
+dbg(mongodb_storage, upsert, fun ([k_curr_dynamic_storage, mt_messages, _, _]) -&gt; message(caller()), return_trace() end).
 ```
 
 !!! How to see the caller of a call
