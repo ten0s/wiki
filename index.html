@@ -547,6 +547,8 @@ Error message and password prompt
 
 <li>Alias with args</li>
 
+<li>Amdahl's Law</li>
+
 <li>Anchoring</li>
 
 <li>Android</li>
@@ -11688,7 +11690,7 @@ Error message and password prompt
 <div created="20200430080859301" modified="20200626201614360" title="$:/state/toc/TableOfContents-CentOS--118161433">
 <pre>open</pre>
 </div>
-<div created="20200528082909481" modified="20200925081620971" title="$:/state/toc/TableOfContents-Definition--118161433">
+<div created="20200528082909481" modified="20201114112320176" title="$:/state/toc/TableOfContents-Definition--118161433">
 <pre>close</pre>
 </div>
 <div created="20200524170259522" modified="20200528082850767" title="$:/state/toc/TableOfContents-Definitions--118161433">
@@ -11724,8 +11726,8 @@ Error message and password prompt
 <div created="20200426101649048" modified="20200626201827042" title="$:/state/toc/TableOfContents-Linux--118161433">
 <pre>close</pre>
 </div>
-<div created="20200428092436636" modified="20200814135831191" title="$:/state/toc/TableOfContents-MentalModel--118161433">
-<pre>close</pre>
+<div created="20200428092436636" modified="20201114112324026" title="$:/state/toc/TableOfContents-MentalModel--118161433">
+<pre>open</pre>
 </div>
 <div created="20200428092034253" modified="20200428092034253" title="$:/state/toc/TableOfContents-MentalModels--118161433">
 <pre>open</pre>
@@ -11811,7 +11813,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201112091924002" list="[[Tracing and profiling]]" modified="20201112091924002" title="$:/StoryList">
+<div created="20201114112301097" list="MentalModel [[Amdahl's Law]]" modified="20201114112333227" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13073,6 +13075,51 @@ $ update-mime-database /usr/share/mime
 <pre>```
 alias aws=&quot;aws $@ --endpoint-url http://localhost:8000&quot;
 ```</pre>
+</div>
+<div created="20201114112336755" modified="20201114112556593" tags="MentalModel" title="Amdahl's Law">
+<pre>Amdahl's Law states that potential program speedup is defined by the fraction of code (P) that can be parallelized:
+
+```
+                     1
+    speedup   =   -------- 
+                   1  - P
+```
+
+* If none of the code can be parallelized, P = 0 and the speedup = 1 (no speedup).
+* If all of the code is parallelized, P = 1 and the speedup is infinite (in theory).
+* If 50% of the code can be parallelized, maximum speedup = 2, meaning the code will run twice as fast.
+
+Introducing the number of processors performing the parallel fraction of work, the relationship can be modeled by:
+
+```
+                       1  
+    speedup   =   ------------ 
+                    P   +  S
+                   ---
+                    N
+```
+
+where P = parallel fraction, N = number of processors and S = serial fraction.
+
+
+
+It soon becomes obvious that there are limits to the scalability of parallelism. For example:
+
+```
+                       speedup
+          -------------------------------------
+    N     P = .50   P = .90   P = .95   P = .99
+  -----   -------   -------   -------   -------
+     10      1.82      5.26      6.89      9.17
+    100      1.98      9.17     16.80     50.25     
+  1,000      1.99      9.91     19.62     90.99
+ 10,000      1.99      9.91     19.96     99.02
+100,000      1.99      9.99     19.99     99.90
+```
+
+''Famous'' quote: You can spend a lifetime getting 95% of your code to be parallel, and never achieve better than 20x speedup no matter how many processors you throw at it!
+
+https://computing.llnl.gov/tutorials/parallel_comp/</pre>
 </div>
 <div created="20200428092243874" modified="20200428092403606" tags="MentalModel" title="Anchoring">
 <pre></pre>
