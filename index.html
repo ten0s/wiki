@@ -1707,6 +1707,8 @@ Error message and password prompt
 
 <li>SSH login hangs under VPN</li>
 
+<li>SSH Mastery</li>
+
 <li>SSH remote port forwarding</li>
 
 <li>SSH socks tunnel</li>
@@ -11684,7 +11686,7 @@ Error message and password prompt
 <div created="20200426101916708" modified="20200704132312537" title="$:/state/toc/TableOfContents-Bash--118161433">
 <pre>close</pre>
 </div>
-<div created="20200528081657908" modified="20200814144817311" title="$:/state/toc/TableOfContents-Book--118161433">
+<div created="20200528081657908" modified="20201120083540107" title="$:/state/toc/TableOfContents-Book--118161433">
 <pre>close</pre>
 </div>
 <div created="20200528082212561" modified="20200528082212561" title="$:/state/toc/TableOfContents-Book--1815128621">
@@ -11750,8 +11752,8 @@ Error message and password prompt
 <div created="20200430150121227" modified="20200528083202097" title="$:/state/toc/TableOfContents-Rust--118161433">
 <pre>close</pre>
 </div>
-<div created="20200426101725065" modified="20201016143334167" title="$:/state/toc/TableOfContents-Ssh--118161433">
-<pre>close</pre>
+<div created="20200426101725065" modified="20201120083542419" title="$:/state/toc/TableOfContents-Ssh--118161433">
+<pre>open</pre>
 </div>
 <div created="20200520090129345" modified="20200813131525394" title="$:/state/toc/TableOfContents-Ssl--118161433">
 <pre>close</pre>
@@ -11822,7 +11824,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201120081212611" list="" modified="20201120083328981" title="$:/StoryList">
+<div created="20201120081212611" list="" modified="20201120083708032" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -12836,7 +12838,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20201120083142488" title="$:/temp/search">
+<div created="20200422190456346" modified="20201120083443560" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -24017,12 +24019,12 @@ $ sudo systemctl reload sshd.service
 ```
 </pre>
 </div>
-<div created="20200519145058657" modified="20200520082101814" tags="Ssh Socks" title="SSH dynamic port forwarding">
+<div created="20200519145058657" modified="20201120083657420" tags="Ssh Socks" title="SSH dynamic port forwarding">
 <pre>Many different client programs can connect to many different services.
 It creates a SOCKS proxy on the SSH client, and tunnels inbound requests to the SSH server.
 A SOCKS proxy is a generic gateway that can carry any TCP/IP traffic.
 
-[ext[SSH Mastery: Dynamic Port Forwarding | pdfx://~/refs/linux/SSH_Mastery.pdf::138]]
+[ext[SSH Mastery: Dynamic Port Forwarding | pdfx://refs/linux/SSH_Mastery.pdf::138]]
 
 [ext[man: DynamicForward | manx:ssh_config::DynamicForward]]
 
@@ -24076,12 +24078,12 @@ $ fusermount -u android
 * [[SSH file system]]
 </pre>
 </div>
-<div created="20200424093326631" modified="20200519150237291" tags="Ssh" title="SSH local port forwarding">
+<div created="20200424093326631" modified="20201120083645444" tags="Ssh" title="SSH local port forwarding">
 <pre>!!! Access a remote port LOCALLY
 
 Redirects one port on the client to one port on the server.
 
-[ext[SSH Mastery: Local Port Forwarding | pdfx://~/refs/linux/SSH_Mastery.pdf::131]]
+[ext[SSH Mastery: Local Port Forwarding | pdfx://refs/linux/SSH_Mastery.pdf::131]]
 
 [ext[man: LocalForward | manx:ssh_config::LocalForward]]
 
@@ -24163,12 +24165,15 @@ $ ssh -v -o KexAlgorithms=ecdh-sha2-nistp521 IP
 * https://www.seei.biz/ssh-fails-to-connect-with-debug1-expecting-ssh2_msg_kex_ecdh_reply/
 </pre>
 </div>
-<div created="20200424093456058" modified="20200519150244322" tags="Ssh" title="SSH remote port forwarding">
+<div created="20201120083445917" modified="20201120083530079" tags="Book Ssh" title="SSH Mastery">
+<pre>[ext[Open book|pdfx://refs/linux/SSH_Mastery.pdf]]</pre>
+</div>
+<div created="20200424093456058" modified="20201120083607423" tags="Ssh" title="SSH remote port forwarding">
 <pre>!!! Access a local port REMOTELY
 
 Redirects one port on the server to one port on the client.
 
-[ext[SSH Mastery: Remote Port Forwarding | pdfx://~/refs/linux/SSH_Mastery.pdf::135]]
+[ext[SSH Mastery: Remote Port Forwarding | pdfx://refs/linux/SSH_Mastery.pdf::135]]
 
 [ext[man: RemoteForward | manx:ssh_config::RemoteForward]]
 
