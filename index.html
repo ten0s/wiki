@@ -11677,8 +11677,8 @@ Error message and password prompt
 <div created="20200422191529492" modified="20200915121746256" title="$:/state/tab/sidebar--595412856">
 <pre>TableOfContents</pre>
 </div>
-<div created="20200426101141551" modified="20201017085328233" title="$:/state/toc/TableOfContents-Android--118161433">
-<pre>close</pre>
+<div created="20200426101141551" modified="20201124073905856" title="$:/state/toc/TableOfContents-Android--118161433">
+<pre>open</pre>
 </div>
 <div created="20200428100846343" modified="20200505083916917" title="$:/state/toc/TableOfContents-AWS--118161433">
 <pre>close</pre>
@@ -11824,7 +11824,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201120154203991" list="Ssh" modified="20201120154218243" title="$:/StoryList">
+<div created="20201124073912387" list="[[Stoken Termux package on Android]]" modified="20201124083916724" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -12838,7 +12838,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20201120154253904" title="$:/temp/search">
+<div created="20200422190456346" modified="20201124084012050" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -24670,8 +24670,24 @@ $ termux-torch off
 
 * https://wiki.termux.com/wiki/Termux:API</pre>
 </div>
-<div created="20200525161427382" modified="20200525161435847" tags="Android" title="Termux Boot">
-<pre>https://play.google.com/store/apps/details?id=com.termux.boot</pre>
+<div created="20200525161427382" modified="20201124083836560" tags="Android" title="Termux Boot">
+<pre>The Termux:Boot add-on provides functionality to run programs under Termux when the device boots up.
+
+https://play.google.com/store/apps/details?id=com.termux.boot
+
+~/.termux/boot/start-sshd:
+
+```
+#!/bin/bash
+termux-wake-lock
+sshd
+```
+
+
+&lt;&lt;&lt;
+Don't bother with this app-do this instead: &quot;Nano /data/data/com.termux/files/usr/etc/bash.bashrc&quot; Add your command at the bottom and save-it'll run at next boot! May as well add an alias file in ~ and include it in bash.bashrc while you're at it so you can make command shortcuts. Add this to bash.bashrc: &quot;source ~/alias_file&quot; Then create command shortcuts: &quot;nano ~/alias_file&quot; edit like so: &quot;alias command_name='command goes here' &quot; You'll be able to use the shortcut(alias) once you reboot.
+&lt;&lt;&lt;
+</pre>
 </div>
 <div created="20200531181834910" modified="20200531181902378" tags="Android" title="Termux Debian Linux">
 <pre>* https://wiki.termux.com/wiki/Debian
