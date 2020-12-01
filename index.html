@@ -929,6 +929,8 @@ Error message and password prompt
 
 <li>Erlang ensure all callbacks implemented</li>
 
+<li>Erlang ERL_LIBS</li>
+
 <li>Erlang evaluate expression on remote node</li>
 
 <li>Erlang FAQ</li>
@@ -11713,7 +11715,7 @@ Error message and password prompt
 <div created="20200428110814473" modified="20200509094509737" title="$:/state/toc/TableOfContents-English--118161433">
 <pre>close</pre>
 </div>
-<div created="20200428110840790" modified="20200818163433926" title="$:/state/toc/TableOfContents-Erlang--118161433">
+<div created="20200428110840790" modified="20201201101005350" title="$:/state/toc/TableOfContents-Erlang--118161433">
 <pre>close</pre>
 </div>
 <div created="20200426101712304" modified="20200521072019777" title="$:/state/toc/TableOfContents-Git--118161433">
@@ -11824,7 +11826,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201130122332133" list="Quotes" modified="20201130123622157" title="$:/StoryList">
+<div created="20201201100818340" list="" modified="20201201100818340" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -12838,7 +12840,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20201120154253904" title="$:/temp/search">
+<div created="20200422190456346" modified="20201201101007230" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -15682,6 +15684,13 @@ with_impl(Fun1) -&gt;
 ```
 
 See also [['$handle_undefined_function'/2|https://erlang.org/doc/man/error_handler.html]]</pre>
+</div>
+<div created="20201201100821268" modified="20201201101001385" tags="Erlang" title="Erlang ERL_LIBS">
+<pre>```
+$ export ERL_LIBS=/usr/lib/erlang/lib/debugger-4.2.1:/usr/lib/erlang/lib/observer-2.3.1:/usr/lib/erlang/lib/wx-1.8
+```
+
+http://erlang.org/doc/man/code.html#code-path</pre>
 </div>
 <div created="20200709174525063" modified="20200709175222999" tags="Erlang" title="Erlang evaluate expression on remote node">
 <pre>```
