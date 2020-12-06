@@ -26103,7 +26103,7 @@ $ sudo iftop -i eth0 -f 'dst port 5001'
 <div created="20200512160715472" modified="20200512160848771" tags="[[Rust Links]]" title="Write an OS for the Raspberry Pi in Rust">
 <pre>https://tc.gts3.org/cs3210/2020/spring/lab.html</pre>
 </div>
-<div created="20201206133116062" modified="20201206141800160" tags="Linux Imagemagick X11" title="Xvfb">
+<div created="20201206133116062" modified="20201206142419169" tags="Linux Imagemagick X11" title="Xvfb">
 <pre>!! X virtual framebuffer
 
 !!! Install
@@ -26111,6 +26111,7 @@ $ sudo iftop -i eth0 -f 'dst port 5001'
 ```
 $ sudo apt update
 $ sudo apt install xvfb
+$ sudo apt install netpbm # xwdtopnm pnmtopng
 ```
 
 !!! Export image
@@ -26125,6 +26126,7 @@ $ DISPLAY=:7 xclock
 
 ```
 $ import -display :7 -window root image.png
+$ DISPLAY=:7 import -window root image.png
 $ display image.png
 ```
 
@@ -26135,6 +26137,7 @@ $ display image.png
 
 ```
 $ xwd -display :7 -root | xwud
+$ DISPLAY=:7 xwd -root | xwud
 ```
 
 !!! Watching images
