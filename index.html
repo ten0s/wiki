@@ -1961,6 +1961,8 @@ Error message and password prompt
 
 <li>Write an OS for the Raspberry Pi in Rust</li>
 
+<li>Xdotool</li>
+
 <li>Xvfb</li>
 
 <li>You don't know JS</li>
@@ -11830,7 +11832,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201206131149526" list="Xvfb ToDo [[DCL &amp; AutoLisp]]" modified="20201206132335489" title="$:/StoryList">
+<div created="20201206131149526" list="Xdotool Xvfb ToDo [[DCL &amp; AutoLisp]]" modified="20201206132335489" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -26102,6 +26104,54 @@ $ sudo iftop -i eth0 -f 'dst port 5001'
 </div>
 <div created="20200512160715472" modified="20200512160848771" tags="[[Rust Links]]" title="Write an OS for the Raspberry Pi in Rust">
 <pre>https://tc.gts3.org/cs3210/2020/spring/lab.html</pre>
+</div>
+<div created="20201206151342587" modified="20201206153225254" tags="X11 Linux" title="Xdotool">
+<pre>```
+$ sudo apt update
+$ sudo apt install xdotool
+```
+
+```
+$ WID=`xdotool search --name &quot;OK Dialog&quot;`
+$ xdotool windowactivate --sync $WID key &quot;Return&quot;
+$ xdotool windowactivate --sync $WID key &quot;alt+space&quot; &quot;c&quot;
+```
+
+```
+WID=`xdotool search --name &quot;Mozilla Firefox&quot; | head -1`
+xdotool windowactivate $WID
+xdotool key ctrl+l
+xdotool type &quot;http://whatever.com.au&quot;
+xdotool key Return 
+sleep 2
+xdotool key ctrl+s
+sleep 2
+```
+
+```
+xdotool mousemove 31 61 click 1
+```
+
+?? export XAUTHORITY=&quot;/home/username/.Xauthority&quot;
+
+xauh
+
+$ xdpyinfo
+
+$ xwininfo -root -tree
+
+$ wmctrl -l | wmctrl -lx
+
+$ xev
+
+!!! References
+
+* https://www.semicomplete.com/projects/xdotool/
+* https://github.com/jordansissel/xdotool
+* http://manpages.ubuntu.com/manpages/trusty/man1/xdotool.1.html
+* https://linuxhint.com/xdotool_stimulate_mouse_clicks_and_keystrokes/
+* https://www.x.org/archive/X11R6.8.1/doc/X.7.html#sect4
+* http://lxlinux.com/uxlta.html</pre>
 </div>
 <div created="20201206133116062" modified="20201206144225997" tags="Linux Imagemagick X11" title="Xvfb">
 <pre>!! X virtual framebuffer
