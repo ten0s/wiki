@@ -26105,7 +26105,7 @@ $ sudo iftop -i eth0 -f 'dst port 5001'
 <div created="20200512160715472" modified="20200512160848771" tags="[[Rust Links]]" title="Write an OS for the Raspberry Pi in Rust">
 <pre>https://tc.gts3.org/cs3210/2020/spring/lab.html</pre>
 </div>
-<div created="20201206151342587" modified="20201206153225254" tags="X11 Linux" title="Xdotool">
+<div created="20201206151342587" modified="20201206153709367" tags="X11 Linux" title="Xdotool">
 <pre>```
 $ sudo apt update
 $ sudo apt install xdotool
@@ -26129,7 +26129,15 @@ sleep 2
 ```
 
 ```
+xdotool selectwindow
+```
+
+```
 xdotool mousemove 31 61 click 1
+```
+
+```
+xdotool behave 10485762 mouse-leave mousemove --window 10485762 --polar 0 0
 ```
 
 ?? export XAUTHORITY=&quot;/home/username/.Xauthority&quot;
@@ -26151,7 +26159,8 @@ $ xev
 * http://manpages.ubuntu.com/manpages/trusty/man1/xdotool.1.html
 * https://linuxhint.com/xdotool_stimulate_mouse_clicks_and_keystrokes/
 * https://www.x.org/archive/X11R6.8.1/doc/X.7.html#sect4
-* http://lxlinux.com/uxlta.html</pre>
+* http://lxlinux.com/uxlta.html
+* https://www.linux.org/threads/xdotool-examples.10705/</pre>
 </div>
 <div created="20201206133116062" modified="20201206144225997" tags="Linux Imagemagick X11" title="Xvfb">
 <pre>!! X virtual framebuffer
