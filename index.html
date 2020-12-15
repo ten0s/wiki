@@ -1963,6 +1963,10 @@ Error message and password prompt
 
 <li>Write an OS for the Raspberry Pi in Rust</li>
 
+<li>Xdotool</li>
+
+<li>Xvfb</li>
+
 <li>You don't know JS</li>
 
 <li>Внешний контур</li>
@@ -14507,6 +14511,20 @@ $ TZ=America/New_York date # what time in NYC now
 * Linux Gtk Glade Programming Videos https://www.youtube.com/playlist?list=PLmMgHNtOIstZEvqYJncYUx52n8_OV0uWy
 * GTK Glade C Programming Tutorial https://prognotes.net/gtk-glade-c-programming/
 
+---
+
+* https://pygobject.readthedocs.io/en/latest/guide/deploy.html
+* http://mypaint.org/downloads/
+* https://github.com/mypaint/mypaint/blob/master/windows/msys2-build.sh
+
+---
+
+* http://www.lee-mac.com/listboxsync.html
+* http://www.lee-mac.com/listboxfunctions.html
+* https://www.afralisp.net/archive/Tips/code32.htm
+* https://www.afralisp.net/archive/tips.htm
+---
+
 * https://dev.to/donnisnoni/need-contribution-node-gtk-project-19pn</pre>
 </div>
 <div created="20200423172701086" modified="20200518103719601" tags="Git" title="Debug &quot;Error: repository not found&quot;">
@@ -26099,6 +26117,126 @@ $ sudo iftop -i eth0 -f 'dst port 5001'
 </div>
 <div created="20200512160715472" modified="20200512160848771" tags="[[Rust Links]]" title="Write an OS for the Raspberry Pi in Rust">
 <pre>https://tc.gts3.org/cs3210/2020/spring/lab.html</pre>
+</div>
+<div created="20201206151342587" modified="20201206153709367" tags="X11 Linux" title="Xdotool">
+<pre>```
+$ sudo apt update
+$ sudo apt install xdotool
+```
+
+```
+$ WID=`xdotool search --name &quot;OK Dialog&quot;`
+$ xdotool windowactivate --sync $WID key &quot;Return&quot;
+$ xdotool windowactivate --sync $WID key &quot;alt+space&quot; &quot;c&quot;
+```
+
+```
+WID=`xdotool search --name &quot;Mozilla Firefox&quot; | head -1`
+xdotool windowactivate $WID
+xdotool key ctrl+l
+xdotool type &quot;http://whatever.com.au&quot;
+xdotool key Return 
+sleep 2
+xdotool key ctrl+s
+sleep 2
+```
+
+```
+xdotool selectwindow
+```
+
+```
+xdotool mousemove 31 61 click 1
+```
+
+```
+xdotool behave 10485762 mouse-leave mousemove --window 10485762 --polar 0 0
+```
+
+?? export XAUTHORITY=&quot;/home/username/.Xauthority&quot;
+
+xauh
+
+$ xdpyinfo
+
+$ xwininfo -root -tree
+
+$ wmctrl -l | wmctrl -lx
+
+$ xev
+
+!!! References
+
+* https://www.semicomplete.com/projects/xdotool/
+* https://github.com/jordansissel/xdotool
+* http://manpages.ubuntu.com/manpages/trusty/man1/xdotool.1.html
+* https://linuxhint.com/xdotool_stimulate_mouse_clicks_and_keystrokes/
+* https://www.x.org/archive/X11R6.8.1/doc/X.7.html#sect4
+* http://lxlinux.com/uxlta.html
+* https://www.linux.org/threads/xdotool-examples.10705/</pre>
+</div>
+<div created="20201206133116062" modified="20201206144225997" tags="Linux Imagemagick X11" title="Xvfb">
+<pre>!! X virtual framebuffer
+
+!!! Install
+
+```
+$ sudo apt update
+$ sudo apt install x11-app     # xclock xeys
+$ sudo apt install xvfb        # xvfb xwd xwud
+$ sudo apt install netpbm      # xwdtopnm pnmtopng
+$ sudo apt install imagemagick # import display
+```
+
+!!! Export image
+
+```
+$ Xvfb :7 -screen 0 1024x768x16
+```
+
+```
+$ DISPLAY=:7 xclock
+```
+
+```
+$ import -display :7 -window root image.png
+$ DISPLAY=:7 import -window root image.png
+$ display image.png
+```
+
+```
+$ xwd -display :7 -root | xwdtopnm | pnmtopng &gt; image.png
+$ display image.png
+```
+
+```
+$ xwd -display :7 -root | xwud
+$ DISPLAY=:7 xwd -root | xwud
+```
+
+!!! Watching images
+
+```
+$ Xvfb :7 -screen 0 1024x768x16 -fbdir /var/tmp
+```
+
+```
+$ DISPLAY=:7 xclock
+```
+
+```
+$ xwud -in /var/tmp/Xvfb_screen0
+```
+
+!!! References
+
+* https://en.wikipedia.org/wiki/Xvfb
+* https://en.wikipedia.org/wiki/Xwd
+* http://manpages.ubuntu.com/manpages/focal/man1/Xvfb.1.html
+* http://manpages.ubuntu.com/manpages/focal/man1/xwd.1.html
+* http://manpages.ubuntu.com/manpages/focal/man1/xwud.1.html
+* https://www.semicomplete.com/blog/geekery/headless-wrapper-for-ephemeral-xservers/
+* https://www.semicomplete.com/projects/xdotool/</pre>
 </div>
 <div created="20200606083523147" modified="20200915122831665" tags="JavaScript task Book" title="You don't know JS">
 <pre>https://github.com/getify/You-Dont-Know-JS</pre>
