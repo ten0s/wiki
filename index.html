@@ -1061,6 +1061,8 @@ Error message and password prompt
 
 <li>Fun With Folktale</li>
 
+<li>Functional combinators</li>
+
 <li>Functional design patterns</li>
 
 <li>Functional Javascript</li>
@@ -1130,8 +1132,6 @@ Error message and password prompt
 <li>How to ViewTemplate</li>
 
 <li>HTML Templates</li>
-
-<li>IF HEMINGWAY WROTE JAVASCRIPT</li>
 
 <li>Imagemagick</li>
 
@@ -1272,6 +1272,8 @@ Error message and password prompt
 <li>Linux Standard Base</li>
 
 <li>Linux words</li>
+
+<li>Lisp - A Language of Stratified Design</li>
 
 <li>List all established connections</li>
 
@@ -1497,15 +1499,9 @@ Error message and password prompt
 
 <li>Read &quot;Customise TW&quot;</li>
 
-<li>Read &quot;Editions&quot;</li>
-
 <li>Read &quot;Features&quot;</li>
 
-<li>Read &quot;Platforms&quot;</li>
-
 <li>Read &quot;Reference&quot;</li>
-
-<li>Read &quot;TW dev&quot;</li>
 
 <li>Read &quot;Working with TW&quot;</li>
 
@@ -1548,8 +1544,6 @@ Error message and password prompt
 <li>Reverse DNS lookup</li>
 
 <li>Review FP in JS resources</li>
-
-<li>Review Functional combinators</li>
 
 <li>Robots.txt</li>
 
@@ -11666,8 +11660,8 @@ Error message and password prompt
 <div created="20200423185634443" modified="20200423185634443" title="$:/state/plugin-info-334910430-$:/core---1812962263">
 <pre>contents</pre>
 </div>
-<div created="20200512083903594" modified="20201201152950501" title="$:/state/showeditpreview">
-<pre>no</pre>
+<div created="20200512083903594" modified="20201230140558984" title="$:/state/showeditpreview">
+<pre>yes</pre>
 </div>
 <div created="20200423185759928" modified="20200814123958402" title="$:/state/sidebar">
 <pre>yes</pre>
@@ -11699,10 +11693,10 @@ Error message and password prompt
 <div created="20200422190449586" modified="20200510071919541" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/GitHub</pre>
 </div>
-<div created="20200423185505844" modified="20200528081832964" title="$:/state/tab/moresidebar-1850697562">
-<pre>$:/core/ui/MoreSideBar/Drafts</pre>
+<div created="20200423185505844" modified="20201230141416956" title="$:/state/tab/moresidebar-1850697562">
+<pre>$:/core/ui/MoreSideBar/Orphans</pre>
 </div>
-<div created="20200422191529492" modified="20200915121746256" title="$:/state/tab/sidebar--595412856">
+<div created="20200422191529492" modified="20201230141534746" title="$:/state/tab/sidebar--595412856">
 <pre>TableOfContents</pre>
 </div>
 <div created="20200426101141551" modified="20201017085328233" title="$:/state/toc/TableOfContents-Android--118161433">
@@ -11852,7 +11846,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201225103849150" list="ToDo [[Grokking Simplicity]]" modified="20201225103850710" title="$:/StoryList">
+<div created="20201230140350966" list="ToDo [[Functional Javascript (with Underscore.js)]]" modified="20201230144917920" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -12866,7 +12860,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20201224153721345" title="$:/temp/search">
+<div created="20200422190456346" modified="20201230141845228" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -18235,6 +18229,62 @@ $ ssh -F /dev/null -o PubkeyAuthentication=no USER@HOST
 <div created="20200617162531410" modified="20200915122831641" tags="JavaScript Video task" title="Fun With Folktale">
 <pre>https://www.youtube.com/watch?v=OghJR3BP0Ns</pre>
 </div>
+<div created="20201230141631411" modified="20201230144430332" tags="task JavaScript" title="Functional combinators">
+<pre>* Identity (I-combinator)
+
+```
+// :: a -&gt; a
+const id = (x) =&gt; x;
+```
+
+* Tap (K-combinator) - can be used like https://hexdocs.pm/elixir/IO.html#inspect/2
+
+```
+// tap :: (a -&gt; *) -&gt; a -&gt; a
+const tap = (func) =&gt; {
+    return (x) =&gt; {
+        func(x);
+        return x;
+    }
+}
+```
+
+* Alternation (OR-combinator)
+
+```
+const alt = (func1, func2) =&gt; {
+    return (x) =&gt; {
+        return func1(x) || func2(x);
+    };
+};
+```
+
+* Sequence (S-combinator)
+
+```
+// :: (...(a -&gt; *)) -&gt; a -&gt; *
+const seq = (...funcs) =&gt; {
+    return (x) =&gt; {
+        funcs.forEach((func) =&gt; func(x));
+    };
+};
+```
+
+* Fork/Join combinator
+
+```
+// :: ((b, c) -&gt; d) -&gt; (a -&gt; b) -&gt; (a -&gt; c) -&gt; a -&gt; d
+const fork = (join, func1, func2) =&gt; {
+    return (x) =&gt; {
+        return join(func1(x), func2(x));
+    };
+};
+```
+
+[ext[Functional combinators | pdfx://refs/js/Functional_Programming_in_JavaScript.pdf::112]]
+
+[[combinators.js|https://gist.github.com/Avaq/1f0636ec5c8d6aed2e45]]</pre>
+</div>
 <div created="20200428101553201" modified="20200627160200286" tags="Algorithm Dev" title="Functional design patterns">
 <pre>If you have a list, db table, etc and you need to change it by applying
 different modifications, consider to store deltas (change commands) and
@@ -18244,10 +18294,10 @@ then apply those. Looks like Event sourcing!
 <div created="20200620161100970" modified="20200915122831642" tags="JavaScript task Book" title="Functional Javascript">
 <pre>https://jcouyang.gitbooks.io/functional-javascript/content/en/index.html</pre>
 </div>
-<div created="20200601091424459" modified="20200915122831642" tags="JavaScript task Book" title="Functional Javascript (with Underscore.js)">
-<pre>[ext[Open Pdf | pdfx://refs/js/Functional_JavaScript_with_Underscore.pdf::1]]</pre>
+<div created="20200601091424459" modified="20201230144928197" tags="JavaScript task Book" title="Functional Javascript (with Underscore.js)">
+<pre>[ext[Open|pdfx://refs/js/Functional_JavaScript_with_Underscore.pdf::1]]</pre>
 </div>
-<div created="20200528075037847" modified="20200915122831643" tags="task JavaScript Book done" title="Functional Programming in Javascript">
+<div created="20200528075037847" modified="20201230141807014" tags="task JavaScript Book done" title="Functional Programming in Javascript">
 <pre>[ext[Open book|pdfx://refs/js/Functional_Programming_in_JavaScript.pdf]]
 
 # [ext[Becoming functional|pdfx://refs/js/Functional_Programming_in_JavaScript.pdf::3]] ([ext[Audio|openx://refs/js/Functional_Programming_in_JavaScript/ch1.m4a]])
@@ -18317,7 +18367,7 @@ https://github.com/fantasyland/fantasy-land/tree/v4.0.1
 !!! Techniques
 
 * Function composition
-* Functional combinators
+* [[Functional combinators]]
 * Continuation passing style (CPS)
 * Memoization
 * Lazy evaluation
@@ -18526,10 +18576,17 @@ $ grep --color -E &quot;pattern|$&quot; file
 ```
 </pre>
 </div>
-<div created="20200513084818013" modified="20201225103917365" tags="JavaScript task Book" title="Grokking Simplicity">
+<div created="20200513084818013" modified="20201230141118728" tags="JavaScript task Book done" title="Grokking Simplicity">
 <pre>[ext[Open book|pdfx://refs/js/Grokking_Simplicity.pdf::234]]
 
-[ext[Lisp - A Language of Stratified Design|pdfx://refs/lang/lisp/Lisp_A_Language_for_Stratified_Design.pdf]]</pre>
+* Action, Calculations, Data
+* Stratified Design
+* Timeline Diagrams
+* Concurrency Primitives (Queue, ~DroppingQueue, Cut, ~JustOnce)
+* Reactive and Onion Architectures
+
+[[Lisp - A Language of Stratified Design]]
+</pre>
 </div>
 <div created="20200425145303870" modified="20200425145319418" tags="Linux" title="Groups user belogs to">
 <pre>```
@@ -18618,9 +18675,6 @@ $(&quot;#dot-code-src&quot;).text(obj.dot);
 $(&quot;#dot-code-modal&quot;).remove();
 ```
 </pre>
-</div>
-<div created="20200612170058387" modified="20200915122831648" tags="JavaScript Book task" title="IF HEMINGWAY WROTE JAVASCRIPT">
-<pre>https://anguscroll.com/hemingway/</pre>
 </div>
 <div created="20200426101305817" modified="20200719144140521" title="Imagemagick">
 <pre></pre>
@@ -19676,6 +19730,9 @@ $ sudo apt install dictionaries-common
 $ apt-get install  wamerican wbritish wspanish
 ```
 </pre>
+</div>
+<div created="20201230140428438" modified="20201230140522302" tags="Book task" title="Lisp - A Language of Stratified Design">
+<pre>[ext[Open|pdfx://refs/lang/lisp/Lisp_A_Language_for_Stratified_Design.pdf]]</pre>
 </div>
 <div created="20200425131552258" modified="20200425131618120" tags="Linux" title="List all established connections">
 <pre>```
@@ -22414,26 +22471,16 @@ handle_cast({gc, Time}, State) -&gt;
     {noreply, State3};
 ```</pre>
 </div>
-<div created="20200427170828372" modified="20200504072302937" tags="task done" title="Read &quot;Customise TW&quot;">
+<div created="20200427170828372" modified="20201230141237321" tags="TiddlyWiki" title="Read &quot;Customise TW&quot;">
 <pre></pre>
 </div>
-<div created="20200427171635970" modified="20200504072306131" tags="task done" title="Read &quot;Editions&quot;">
-<pre>https://tiddlywiki.com/#Editions</pre>
-</div>
-<div created="20200427171558055" modified="20200504072304221" tags="task done" title="Read &quot;Features&quot;">
+<div created="20200427171558055" modified="20201230141258131" tags="TiddlyWiki" title="Read &quot;Features&quot;">
 <pre>https://tiddlywiki.com/#Features</pre>
 </div>
-<div created="20200427171650608" modified="20200506074636976" tags="task done" title="Read &quot;Platforms&quot;">
-<pre>https://tiddlywiki.com/#Platforms</pre>
-</div>
-<div created="20200427171722709" modified="20200606114632378" tags="task done" title="Read &quot;Reference&quot;">
+<div created="20200427171722709" modified="20201230141333347" tags="TiddlyWiki" title="Read &quot;Reference&quot;">
 <pre>https://tiddlywiki.com/#Reference</pre>
 </div>
-<div created="20200427173129614" modified="20200606114633574" tags="task done" title="Read &quot;TW dev&quot;">
-<pre>https://tiddlywiki.com/dev/
-</pre>
-</div>
-<div created="20200427170634403" modified="20200504072301721" tags="task done" title="Read &quot;Working with TW&quot;">
+<div created="20200427170634403" modified="20201230141214964" title="Read &quot;Working with TW&quot;">
 <pre>https://tiddlywiki.com/#Working%20with%20TiddlyWiki</pre>
 </div>
 <div created="20200720125817267" modified="20200720130020816" tags="task Dev" title="Read &quot;Writing Testable Code&quot;">
@@ -22757,11 +22804,6 @@ $ nslookup IP
 * http://functionaljavascript.blogspot.com/
 * https://github.com/leandrotk/functional-programming-learning-path
 * https://medium.com/the-renaissance-developer/concepts-of-functional-programming-in-javascript-6bc84220d2aa</pre>
-</div>
-<div created="20200618093749619" modified="20200915122831662" tags="JavaScript task" title="Review Functional combinators" type="application/x-tiddler">
-<pre>[ext[Functional combinators | pdfx://refs/js/Functional_Programming_in_JavaScript.pdf::112]]
-
-[[combinators.js|https://gist.github.com/Avaq/1f0636ec5c8d6aed2e45]]</pre>
 </div>
 <div created="20200509093803434" modified="20200509093813059" tags="task" title="Robots.txt">
 <pre></pre>
@@ -24717,7 +24759,7 @@ $ adb pull /sdcard/screen.png
 
 https://github.com/termux/termux-packages/issues/2556</pre>
 </div>
-<div created="20200427173158521" list="[[Read &quot;Working with TW&quot;]] [[Read &quot;Customise TW&quot;]] [[Read &quot;Features&quot;]] [[Read &quot;Editions&quot;]] [[Read &quot;Platforms&quot;]] [[Functional Programming in Javascript]] [[Grokking Simplicity]] [[Foundations of PyGTK Development]] ANTLR [[DCL &amp; AutoLisp]] [[Erlang safe foreach]] Читать [[Property-Based Testing]] [[Read &quot;Writing Testable Code&quot;]] [[Node.js in Motion]] [[Functional Javascript (with Underscore.js)]] [[Fundamentals of Lambda Calculus &amp; Functional Programming in JavaScript]] [[ES6 in Depth]] [[Node.js in Action]] [[Mastering REST APIs in Node.js]] [[Building the Web of Things]] [[Web Components in Action]] [[Mostly adequate guide to FP (in javascript)]] [[JavaScript Allongé, the &quot;Six&quot; Edition]] [[Programming JavaScript Applications]] [[Secrets of the JavaScript Ninja]] [[Learn JavaScript Next]] [[Javascript curry function]] [[Composing Software]] [[Understanding ECMAScript 6]] [[RxJS in Action]] [[Exploring ES6]] [[You don't know JS]] [[Android Wakelocks]] [[Fun With Folktale]] [[Review Functional combinators]] [[TypeScript Quickly]] [[Raspberry Pi Zero Ethernet]] [[Functional Programming with Folktale]] [[The Pragmatic Programmer]] [[The Clean Coder]] [[Build it with Nitrogen]] [[JavaScript: The Good Parts]] [[Setup Retropie]] [[WebAssembly in Action]] [[Setup Tor Router]] [[Parallel programming in Erlang]] [[Add tar info]] [[Read &quot;Reference&quot;]] [[Read &quot;TW dev&quot;]] [[Make wiki work offline on Android]] Robots.txt [[Javascript dependency injection]] [[Dependency Inversion Principle]] [[Android phone as Raspberry Pi display]] [[Introduction to Rust]] [[Rust in Action]] [[Graphql in motion]] [[Raspberry Pi projects]] [[Install Android Studio]] [[ES6 in Motion]] [[IF HEMINGWAY WROTE JAVASCRIPT]] [[Javascript mixin]] [[Functional Javascript]] [[Functional Programming in Javascript (Youtube)]] [[Review FP in JS resources]] [[Irresistible APIs]] [[Checkout Node.js Cluster API]] [[Express in Action/Motion]] [[The Design of Web APIs]] [[Understanding the Digital World]] [[Crafting interpreters]] csrf [[Javascript context menu]] [[JavaScript setup emacs-eslint]] [[Checkout Hamler]] MPS [[OpenCL in Action]] [[Patterns of Software]]" modified="20201221150223110" title="task">
+<div created="20200427173158521" list="[[Functional Programming in Javascript]] [[Grokking Simplicity]] [[Foundations of PyGTK Development]] ANTLR [[DCL &amp; AutoLisp]] Читать [[Read &quot;Writing Testable Code&quot;]] [[Functional Javascript (with Underscore.js)]] [[Fundamentals of Lambda Calculus &amp; Functional Programming in JavaScript]] [[ES6 in Depth]] [[Node.js in Action]] [[Mastering REST APIs in Node.js]] [[Building the Web of Things]] [[Mostly adequate guide to FP (in javascript)]] [[JavaScript Allongé, the &quot;Six&quot; Edition]] [[Lisp - A Language of Stratified Design]] [[Erlang safe foreach]] [[Programming JavaScript Applications]] [[Secrets of the JavaScript Ninja]] [[Learn JavaScript Next]] [[Javascript curry function]] [[Composing Software]] [[Understanding ECMAScript 6]] [[RxJS in Action]] [[Exploring ES6]] [[You don't know JS]] [[Android Wakelocks]] [[Fun With Folktale]] [[TypeScript Quickly]] [[Functional Programming with Folktale]] [[The Pragmatic Programmer]] [[Functional Javascript]] [[The Clean Coder]] [[Property-Based Testing]] [[Build it with Nitrogen]] [[JavaScript: The Good Parts]] [[Functional combinators]] [[Functional Programming in Javascript (Youtube)]] [[Setup Tor Router]] [[Parallel programming in Erlang]] [[Add tar info]] [[Make wiki work offline on Android]] Robots.txt [[Javascript dependency injection]] [[Node.js in Motion]] [[Dependency Inversion Principle]] [[Android phone as Raspberry Pi display]] [[Raspberry Pi Zero Ethernet]] [[Raspberry Pi projects]] [[Install Android Studio]] [[ES6 in Motion]] [[Javascript mixin]] [[Review FP in JS resources]] [[WebAssembly in Action]] [[Setup Retropie]] MPS [[Checkout Node.js Cluster API]] [[Irresistible APIs]] [[Introduction to Rust]] [[Rust in Action]] [[Express in Action/Motion]] [[The Design of Web APIs]] [[Understanding the Digital World]] [[Crafting interpreters]] csrf [[Graphql in motion]] [[Javascript context menu]] [[JavaScript setup emacs-eslint]] [[Checkout Hamler]] [[OpenCL in Action]] [[Patterns of Software]]" modified="20201230144807631" title="task">
 <pre></pre>
 </div>
 <div created="20200425161848192" modified="20200425161940628" tags="Bash Linux" title="TCP client (w/o netcat)">
@@ -26077,8 +26119,8 @@ $(&quot;#dot-code-modal&quot;).remove();
 ```
 </pre>
 </div>
-<div created="20200513085139743" modified="20201119092218167" tags="Web JavaScript task Book done" title="Web Components in Action">
-<pre>[ext[Open Pdf | pdfx://~/refs/web/Web_Components_in_Action.pdf]]</pre>
+<div created="20200513085139743" modified="20201230141200310" tags="Web JavaScript Book" title="Web Components in Action">
+<pre>[ext[Open|pdfx://~/refs/web/Web_Components_in_Action.pdf]]</pre>
 </div>
 <div created="20200430150158697" modified="20200430150340222" tags="Web" title="Web Links">
 <pre>!!! Dive Into HTML5
