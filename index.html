@@ -1613,7 +1613,7 @@ Error message and password prompt
 
 <li>Setup Kodi</li>
 
-<li>Setup lxde desktop</li>
+<li>Setup LXDE desktop</li>
 
 <li>Setup Mathematica</li>
 
@@ -1634,6 +1634,8 @@ Error message and password prompt
 <li>Setup USB HDD</li>
 
 <li>Setup USB Webcam</li>
+
+<li>Setup VNC</li>
 
 <li>Setup Wi-Fi access point</li>
 
@@ -11660,8 +11662,8 @@ Error message and password prompt
 <div created="20200423185634443" modified="20200423185634443" title="$:/state/plugin-info-334910430-$:/core---1812962263">
 <pre>contents</pre>
 </div>
-<div created="20200512083903594" modified="20201230140558984" title="$:/state/showeditpreview">
-<pre>yes</pre>
+<div created="20200512083903594" modified="20201231112903575" title="$:/state/showeditpreview">
+<pre>no</pre>
 </div>
 <div created="20200423185759928" modified="20200814123958402" title="$:/state/sidebar">
 <pre>yes</pre>
@@ -11699,7 +11701,7 @@ Error message and password prompt
 <div created="20200422191529492" modified="20201230141534746" title="$:/state/tab/sidebar--595412856">
 <pre>TableOfContents</pre>
 </div>
-<div created="20200426101141551" modified="20201017085328233" title="$:/state/toc/TableOfContents-Android--118161433">
+<div created="20200426101141551" modified="20201231113126596" title="$:/state/toc/TableOfContents-Android--118161433">
 <pre>close</pre>
 </div>
 <div created="20200428100846343" modified="20200505083916917" title="$:/state/toc/TableOfContents-AWS--118161433">
@@ -11765,8 +11767,8 @@ Error message and password prompt
 <div created="20200428100850482" modified="20201108105519465" title="$:/state/toc/TableOfContents-Python--118161433">
 <pre>close</pre>
 </div>
-<div created="20200512075010685" modified="20200721090901903" title="$:/state/toc/TableOfContents-Raspberry Pi--118161433">
-<pre>close</pre>
+<div created="20200512075010685" modified="20201231103525802" title="$:/state/toc/TableOfContents-Raspberry Pi--118161433">
+<pre>open</pre>
 </div>
 <div created="20200524113104720" modified="20200724130159023" title="$:/state/toc/TableOfContents-Regex--118161433">
 <pre>close</pre>
@@ -11801,7 +11803,7 @@ Error message and password prompt
 <div created="20200428102954871" modified="20200428105054432" title="$:/state/toc/TableOfContents/Dev-Erlang--118161433">
 <pre>close</pre>
 </div>
-<div created="20200512161629220" modified="20200721084244909" title="$:/state/toc/TableOfContents/Raspberry Pi-Raspberry Pi Links--118161433">
+<div created="20200512161629220" modified="20201231104141109" title="$:/state/toc/TableOfContents/Raspberry Pi-Raspberry Pi Links--118161433">
 <pre>close</pre>
 </div>
 <div created="20200510140017432" modified="20200613151442681" title="$:/state/toc/TableOfContents/TiddlyWiki-TW Links--118161433">
@@ -11846,7 +11848,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201230140350966" list="ToDo [[Functional Javascript (with Underscore.js)]]" modified="20201230144917920" title="$:/StoryList">
+<div created="20201231103534635" list="[[Setup Kodi]] [[Enable serial console]]" modified="20201231120519253" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -23172,32 +23174,25 @@ search example.com
 * DNS 2: 8.8.4.4
 </pre>
 </div>
-<div created="20200512162917024" modified="20200512162930372" tags="[[Raspberry Pi]]" title="Setup Kodi">
-<pre>https://kodi.wiki/view/HOW-TO:Install_Kodi_on_Raspberry_Pi#Raspbian
+<div created="20200512162917024" modified="20201231130224759" tags="[[Raspberry Pi]]" title="Setup Kodi">
+<pre>[[Setup LXDE desktop]]
+
+https://kodi.wiki/view/HOW-TO:Install_Kodi_on_Raspberry_Pi#Raspbian
 https://www.makeuseof.com/tag/kodi-raspberry-pi-media-center/
 
 # Install/update
+
+```
 sudo apt-get update
 sudo apt-get install kodi
-
-# Upgrade (questionable will upgrade everything)
-sudo apt-get upgrade
-sudo apt-get dist-upgrade
+```
 
 # Autostart Kodi
 https://mtantawy.com/how-to-autostart-kodi-on-raspberry-pi-using-only-one-command/
+
+```
 echo &quot;@kodi&quot; &gt;&gt; ~/.config/lxsession/LXDE-pi/autostart
-https://www.raspberrypi.org/forums/viewtopic.php?t=131647
-
-Install Chromium
-sudo apt-get install chromium-browser
-
-Add-ons
-Transmission
-
-Install SuperRepo
-http://www.wirelesshack.org/how-to-install-super-repo-repository-kodi-17-1-krypton.html
-
+```
 
 https://kodi.wiki/view/Adding_video_sources
 https://kodi.wiki/view/Official_Add-on_Repository
@@ -23205,55 +23200,6 @@ https://kodi.wiki/view/Official_Add-on_Repository
 Logging
 https://kodi.wiki/view/Debug_log
 tail -f ~/.kodi/temp/kodi.log
-
-http://androidpcreview.com/how-to-setup-kodi-the-right-way/
-
-BEST KEPT SECRET ADD-ON IN KODI (Exodus, Alluc Add-ons)
-https://www.youtube.com/watch?v=4Leg9Z06Vyo
-
-
-Flirc USB
-https://flirc.tv/flirc-usb?tracking=55b253fdb73e9
-https://mediaexperience.com/flirc-remote-control-companion/
-
-CEC/Remotes
-https://kodi.wiki/view/Keyboard.xml#Remotes
-https://kodi.wiki/view/CEC # manufacturer support
-
-libCEC
-https://nyxi.eu/raspbian-libcec.html#raspbian-libcec
-http://www.cec-o-matic.com/
-
-cec-client
-sudo apt-get install cec-utils
-https://www.endpoint.com/blog/2012/11/08/using-cec-client-to-control-hdmi-devices
-https://ownyourbits.com/2017/02/02/control-your-raspberry-pi-with-your-tv-remote/
-https://github.com/Pulse-Eight/libcec/blob/master/src/cec-client/cec-client.cpp
-
-https://www.raspberrypi.org/forums/viewtopic.php?t=53481
-https://blog.gordonturner.com/2016/12/14/using-cec-client-on-a-raspberry-pi/
-echo scan | cec-client -s -d 1
-Trun TV off: echo &quot;standby 0&quot; | cec-client -s
-Turn TV On: echo &quot;on 0&quot; | cec-client -s
-Switch Input: echo &quot;as&quot; | cec-client -s
-This should put the text &quot;A B C&quot; on the screen:
-echo &quot;tx 10 64 00 41 20 42 20 43&quot; | cec-client -s -d 1
-To mute/unmute the TV:
-echo &quot;mute 0&quot; | cec-client -s -d 1
-To mute/unmute the speaker:
-echo &quot;mute 5&quot; | cec-client -s -d 1
-
-Cut corners
-system-&gt;appearence-&gt;skin zoom
-
-https://pimylifeup.com/raspberry-pi-xbmc-media-center/
-
-OSMC
-https://mediaexperience.com/raspberry-pi-xbmc-with-raspbmc/ !!! Setup - check out !!!
-https://osmc.tv/download/
-https://mediaexperience.com/xbmc-guide/
-http://www.kodireviews.com/chrome-launcher-addon/
-http://www.kodireviews.com/
 
 tail -f ~/.kodi/temp/kodi.log | grep OnKey
 https://kodi.wiki/view/Keyboard.xml#Universal_Remotes
@@ -23273,6 +23219,9 @@ put remote.xml to ~/.kodi/userdata/keymaps/
     &lt;/remote&gt;
   &lt;/global&gt;
 &lt;/keymap&gt;
+
+Cut corners
+Setting -&gt; Interface -&gt; Skin zoom
 
 
 Info via Simplink menu
@@ -23368,39 +23317,80 @@ C on keyboard
 15:59:22.959 T:1911349248   DEBUG: OnKey: c (0xf043) pressed, action is ContextMenu
 15:59:22.981 T:1911349248   DEBUG: CFavourites::Load - no system favourites found, skipping
 15:59:22.983 T:1911349248   DEBUG: ------ Window Init (DialogContextMenu.xml) ------
+
+
+
+
+
+https://www.raspberrypi.org/forums/viewtopic.php?t=131647
+
+Install Chromium
+sudo apt-get install chromium-browser
+
+Add-ons
+Transmission
+
+Install SuperRepo
+http://www.wirelesshack.org/how-to-install-super-repo-repository-kodi-17-1-krypton.html
+
+
+http://androidpcreview.com/how-to-setup-kodi-the-right-way/
+
+BEST KEPT SECRET ADD-ON IN KODI (Exodus, Alluc Add-ons)
+https://www.youtube.com/watch?v=4Leg9Z06Vyo
+
+Flirc USB
+https://flirc.tv/flirc-usb?tracking=55b253fdb73e9
+https://mediaexperience.com/flirc-remote-control-companion/
+
+CEC/Remotes
+https://kodi.wiki/view/Keyboard.xml#Remotes
+https://kodi.wiki/view/CEC # manufacturer support
+
+libCEC
+https://nyxi.eu/raspbian-libcec.html#raspbian-libcec
+http://www.cec-o-matic.com/
+
+cec-client
+sudo apt-get install cec-utils
+https://www.endpoint.com/blog/2012/11/08/using-cec-client-to-control-hdmi-devices
+https://ownyourbits.com/2017/02/02/control-your-raspberry-pi-with-your-tv-remote/
+https://github.com/Pulse-Eight/libcec/blob/master/src/cec-client/cec-client.cpp
+
+https://www.raspberrypi.org/forums/viewtopic.php?t=53481
+https://blog.gordonturner.com/2016/12/14/using-cec-client-on-a-raspberry-pi/
+echo scan | cec-client -s -d 1
+Trun TV off: echo &quot;standby 0&quot; | cec-client -s
+Turn TV On: echo &quot;on 0&quot; | cec-client -s
+Switch Input: echo &quot;as&quot; | cec-client -s
+This should put the text &quot;A B C&quot; on the screen:
+echo &quot;tx 10 64 00 41 20 42 20 43&quot; | cec-client -s -d 1
+To mute/unmute the TV:
+echo &quot;mute 0&quot; | cec-client -s -d 1
+To mute/unmute the speaker:
+echo &quot;mute 5&quot; | cec-client -s -d 1
+
+https://pimylifeup.com/raspberry-pi-xbmc-media-center/
+
+OSMC
+https://mediaexperience.com/raspberry-pi-xbmc-with-raspbmc/ !!! Setup - check out !!!
+https://osmc.tv/download/
+https://mediaexperience.com/xbmc-guide/
+http://www.kodireviews.com/chrome-launcher-addon/
+http://www.kodireviews.com/
+
 </pre>
 </div>
-<div created="20200512162948632" modified="20200512163041989" tags="[[Raspberry Pi]]" title="Setup lxde desktop">
+<div created="20200512162948632" modified="20201231120503974" tags="[[Raspberry Pi]]" title="Setup LXDE desktop">
 <pre>* https://www.raspberrypi.org/forums/viewtopic.php?t=37564
 
 ```
-sudo apt-get install lxde lxde-common xinit xserver-xorg xserver-xorg-video-fbdev
+sudo apt install lxde lxde-common xinit xserver-xorg xserver-xorg-video-fbdev
 ```
 
-https://www.therryvanneerven.nl/how-to-install-raspbian-jessie-on-an-old-raspberry-pi.html
-
 ```
-sudo apt-get install lightdm
+sudo apt install lightdm
 ```
-
-tvservice
-
-http://www.cpmspectrepi.uk/raspberry_pi/MoinMoinExport/OptimisedDisplaySettings.html#T.V._with_Composite_Video_Input_only
-
-```
-rasp-config
-enable vnc
-```
-
-VNC
-
-https://www.raspberrypi.org/documentation/remote-access/vnc/README.md
-
-How to change screen resolution of VNC session
-
-* https://www.youtube.com/watch?v=LlXx9yVfQ0k
-* http://pi4iot.com/doku.php?id=youtube:videos
-* https://www.raspberrypi.org/documentation/configuration/config-txt/video.md
 
 Add to /boot/config.txt and reboot
 
@@ -23796,6 +23786,22 @@ Import[&quot;image.jpg&quot;]
 Import[&quot;!fswebcam --no-banner -&quot;, &quot;JPG&quot;]
 ```
 </pre>
+</div>
+<div created="20201231120019421" modified="20201231120526818" tags="[[Raspberry Pi]]" title="Setup VNC">
+<pre>[[Setup LXDE desktop]]
+
+https://www.raspberrypi.org/documentation/remote-access/vnc/README.md
+
+How to change screen resolution of VNC session
+
+* https://www.youtube.com/watch?v=LlXx9yVfQ0k
+* http://pi4iot.com/doku.php?id=youtube:videos
+* https://www.raspberrypi.org/documentation/configuration/config-txt/video.md
+
+```
+$ sudo rasp-config
+enable vnc
+```</pre>
 </div>
 <div created="20200524134424225" modified="20200524143838873" tags="[[Raspberry Pi]]" title="Setup Wi-Fi access point">
 <pre>!! Routed AP
