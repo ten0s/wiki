@@ -1161,6 +1161,8 @@ Error message and password prompt
 
 <li>Install matplotlib for python3</li>
 
+<li>Install npm dependencies</li>
+
 <li>Install setup.py into virtualenv</li>
 
 <li>Interact with X Window Manager</li>
@@ -11662,8 +11664,8 @@ Error message and password prompt
 <div created="20200423185634443" modified="20200423185634443" title="$:/state/plugin-info-334910430-$:/core---1812962263">
 <pre>contents</pre>
 </div>
-<div created="20200512083903594" modified="20201231112903575" title="$:/state/showeditpreview">
-<pre>no</pre>
+<div created="20200512083903594" modified="20210113153546276" title="$:/state/showeditpreview">
+<pre>yes</pre>
 </div>
 <div created="20200423185759928" modified="20200814123958402" title="$:/state/sidebar">
 <pre>yes</pre>
@@ -11848,7 +11850,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210112091139195" list="ToDo [[JavaScript: The Good Parts]]" modified="20210112161657241" title="$:/StoryList">
+<div list="[[Install npm dependencies]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -12862,8 +12864,8 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210112161746059" title="$:/temp/search">
-<pre></pre>
+<div created="20200422190456346" modified="20210113153343626" title="$:/temp/search">
+<pre>package.json</pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
 <pre>loaded</pre>
@@ -18873,6 +18875,21 @@ http://www.ast.uct.ac.za/~sarblyth/pythonGuide/PythonPlottingBeginnersGuide.pdf
 
 http://matplotlib.org/contents.html
 </pre>
+</div>
+<div created="20210113153345948" modified="20210113154217179" tags="JavaScript" title="Install npm dependencies">
+<pre>package.json:
+
+```
+&quot;dependencies&quot;: {
+    &quot;dep1&quot;: &quot;file://../project/path&quot;,
+    &quot;dep2&quot;: &quot;git://github.com/github-user/github-repo.git#hash&quot;,
+    &quot;dep3&quot;: &quot;github-user/github-repo#hash&quot;,
+}
+```
+
+* https://docs.npmjs.com/cli/v6/configuring-npm/package-json#dependencies
+
+* https://stackoverflow.com/questions/23210437/npm-install-private-github-repositories-by-dependency-in-package-json</pre>
 </div>
 <div created="20200428120135700" modified="20200428120156436" tags="Python" title="Install setup.py into virtualenv">
 <pre>```
