@@ -18876,14 +18876,15 @@ http://www.ast.uct.ac.za/~sarblyth/pythonGuide/PythonPlottingBeginnersGuide.pdf
 http://matplotlib.org/contents.html
 </pre>
 </div>
-<div created="20210113153345948" modified="20210113154217179" tags="JavaScript" title="Install npm dependencies">
+<div created="20210113153345948" modified="20210113162528450" tags="JavaScript" title="Install npm dependencies">
 <pre>package.json:
 
 ```
 &quot;dependencies&quot;: {
     &quot;dep1&quot;: &quot;file://../project/path&quot;,
-    &quot;dep2&quot;: &quot;git://github.com/github-user/github-repo.git#hash&quot;,
-    &quot;dep3&quot;: &quot;github-user/github-repo#hash&quot;,
+    &quot;dep2&quot;: &quot;git://github.com/user/repo[.git][#hash]&quot;,
+    &quot;dep3&quot;: &quot;user/repo[#hash]&quot;,
+    &quot;dep4&quot;: &quot;git+ssh://git@github.com:user/repo[.git][#hash]
 }
 ```
 
