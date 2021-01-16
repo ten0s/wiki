@@ -11732,8 +11732,8 @@ Error message and password prompt
 <div created="20200524170259522" modified="20200528082850767" title="$:/state/toc/TableOfContents-Definitions--118161433">
 <pre>close</pre>
 </div>
-<div created="20200428101450941" modified="20201110140810529" title="$:/state/toc/TableOfContents-Dev--118161433">
-<pre>close</pre>
+<div created="20200428101450941" modified="20210116193815558" title="$:/state/toc/TableOfContents-Dev--118161433">
+<pre>open</pre>
 </div>
 <div created="20200426101718323" modified="20200626201806373" title="$:/state/toc/TableOfContents-Docker--118161433">
 <pre>close</pre>
@@ -11852,7 +11852,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210116121623022" list="[[Professor Frisby Introduces Composable Functional JavaScript]] ToDo [[JavaScript Allongé, the &quot;Six&quot; Edition]]" modified="20210116193156579" title="$:/StoryList">
+<div created="20210116121623022" list="ToDo" modified="20210116194247194" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -18291,11 +18291,12 @@ const fork = (join, func1, func2) =&gt; {
 
 [[combinators.js|https://gist.github.com/Avaq/1f0636ec5c8d6aed2e45]]</pre>
 </div>
-<div created="20200428101553201" modified="20200627160200286" tags="Algorithm Dev" title="Functional design patterns">
-<pre>If you have a list, db table, etc and you need to change it by applying
-different modifications, consider to store deltas (change commands) and
-then apply those. Looks like Event sourcing!
-</pre>
+<div created="20200428101553201" modified="20210116194411165" tags="Algorithm Dev" title="Functional design patterns">
+<pre>* If you have a list, db table, etc and you need to change it by applying different modifications, consider to store deltas (change commands) and then apply those. Looks like Event sourcing!
+
+* Place the arguments LESS likely to change first (on the left). https://glebbahmutov.com/blog/put-callback-first-for-elegance/
+
+[[Principles]]</pre>
 </div>
 <div created="20200620161100970" modified="20200915122831642" tags="JavaScript task Book" title="Functional Javascript">
 <pre>https://jcouyang.gitbooks.io/functional-javascript/content/en/index.html</pre>
@@ -21027,7 +21028,7 @@ $ cat data.xml | xmllint --format -
 A PRI is a method used to connect [[PBX]] to [[PSTN]]. It is one phone line, consisting of two pairs of copper wires terminating on the customer PBX. 
 Although it utilizes one line from the phone service carrier, a PRI line can receive/send up to 23 calls simultaneously! </pre>
 </div>
-<div created="20200428101236702" modified="20201019182655425" tags="Dev" title="Principles">
+<div created="20200428101236702" modified="20210116194358595" tags="Dev" title="Principles">
 <pre>* Parse raw data from file, db, etc into intermediate internal representation (AST)
 
 * Every periodic task should be disableable at startup and/or runtime.
@@ -21037,8 +21038,6 @@ Although it utilizes one line from the phone service carrier, a PRI line can rec
 https://www.johndcook.com/blog/2008/06/17/software-in-space/
 
 * Server in general must not crash due to bad data
-
-* {{Functional design patterns}}
 
 * No logic in handlers (gen_server, cowboy, etc), including any data transformation (questional?). Why? Because handler is a Controller in MVC!!! And logic must live in a separate Model module.
 
@@ -21051,6 +21050,8 @@ https://www.johndcook.com/blog/2008/06/17/software-in-space/
 [[Erlang ensure all callbacks implemented]]
 
 * Use opaque data types: https://www.youtube.com/watch?v=hxLh0qFX9oI
+
+[[Functional design patterns]]
 </pre>
 </div>
 <div created="20200425151647650" modified="20200425151721199" tags="Linux" title="Print X event coming to window">
