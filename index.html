@@ -11854,7 +11854,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210119164416331" list="ToDo" modified="20210119164416331" title="$:/StoryList">
+<div created="20210122095315580" list="[[Erlang bind/search]] [[Find LDAP server]] [[LDAP Search]] [[Force SSH password authentication]]" modified="20210122100215594" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -12868,8 +12868,8 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210116163916936" title="$:/temp/search">
-<pre></pre>
+<div created="20200422190456346" modified="20210122100158447" title="$:/temp/search">
+<pre>ldap</pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
 <pre>loaded</pre>
@@ -19620,9 +19620,10 @@ $ !!
 
 [[Last argument]]</pre>
 </div>
-<div created="20200428113914324" modified="20200428114149269" tags="Linux" title="LDAP Search">
+<div created="20200428113914324" modified="20210122102151962" tags="Linux" title="LDAP Search">
 <pre>```
-$ ldapsearch -x -h SERVERNAME.lan -D &quot;DOMAIN\USERNAME&quot; -w secret -b 'dc=SERVERNAME,dc=lan' 'mail=USERNAME@MAIL' name memberOf
+$ sudo apt install ldap-utils
+$ ldapsearch -x -h SERVERNAME.lan -D &quot;DOMAIN\USERNAME&quot; -w PASSWORD -b 'dc=SERVERNAME,dc=lan' 'mail=USERNAME@MAIL' name memberOf
 $ ldapsearch -x -h SERVERNAME.net -D &quot;DOMAIN\USERNAME&quot; -W -b &quot;dc=SERVERNAME,dc=net&quot; &quot;sAMAccountName=NAME&quot; name memberOf
 ```
 </pre>
