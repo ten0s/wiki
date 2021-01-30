@@ -1345,6 +1345,8 @@ Error message and password prompt
 
 <li>MongoDB in Docker</li>
 
+<li>Monoid</li>
+
 <li>Mount ISO image</li>
 
 <li>Mount Windows Shares Permanently</li>
@@ -11860,7 +11862,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210128100314992" list="ToDo [[JavaScript: The Good Parts]]" modified="20210128100745303" title="$:/StoryList">
+<div list="Monoid" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -12874,7 +12876,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210122172121151" title="$:/temp/search">
+<div created="20200422190456346" modified="20210130095752970" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -20324,6 +20326,50 @@ Stop
 $ docker stop mongodb
 ```
 </pre>
+</div>
+<div created="20210130095428081" modified="20210130095751099" title="Monoid">
+<pre>A binary operation with left and right unit that is associative is called a Monoid
+
+!!! A monoid is:
+
+* A set of objects, S
+* An operation of combining them • : S × S → S
+* An element (Unit) of S, e : 1 → S
+
+!!! Satisfying these laws:
+
+# Associativity low: (a • b) • c = a • (b • c), for all a, b and c in S
+# Left unit, Right unit:   e • a = a = a • e, for all a in S
+* But NOT mandatory a • b &lt;&gt; b • a, because f (g x) &lt;&gt; g (f x) like 1 - 2 &lt;&gt; 2 - 1
+
+!!! Well known monoids are:
+
+* Numbers you can add/multiply/subtract/divide
+* Lists you can concatenate
+* Sets you can union
+
+!!! 12 hours clock:
+
+```
+Set      : 0..12
+Operation: (x + y) % 12, (both + and %)
+Unit     : 12
+```
+
+!!! Function composition:
+
+```
+Set      : val fun: (a -&gt; a)
+Operation: let compose f g = fun x -&gt; f (g x)
+Unit     : let id x -&gt; x (identity function)
+```
+
+!!! Monad:
+```
+Set      :
+Operation: let bind =   ; let return x =
+Unit     :
+```</pre>
 </div>
 <div created="20200424093911110" modified="20200424093938629" tags="Linux" title="Mount ISO image">
 <pre>```
