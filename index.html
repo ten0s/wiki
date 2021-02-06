@@ -851,8 +851,6 @@ Error message and password prompt
 
 <li>Download video from Youtube</li>
 
-<li>Draft of 'JavaScript util'</li>
-
 <li>DraggableTaskTemplate</li>
 
 <li>Dump network traffic on specific port</li>
@@ -11876,7 +11874,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[Draft of 'JavaScript util']]" title="$:/StoryList">
+<div list="[[JavaScript util]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -15030,73 +15028,6 @@ $ curl -JO URL
 <pre>```
 $ youtube-dl -f bestvideo+bestaudio FILE_OR_PLAYLIST_URL
 ```</pre>
-</div>
-<div created="20210206170931081" draft.of="JavaScript util" draft.title="JavaScript util" modified="20210206175613755" tags="JavaScript" title="Draft of 'JavaScript util'">
-<pre>```
-// fixed(100.123456789, 4) =&gt; 100.1235
-// see also Number(secs.toFixed(2))
-// :: (Float, Integer) -&gt; Float
-const fixed = (number, places) =&gt; {
-    const mult = 10 ** places
-    return Math.round(number * mult) / mult
-}
-```
-
-```
-// :: String -&gt; [Char]
-const split = str =&gt; str.split('')
-```
-
-```
-// :: [Char] -&gt; String
-const join = arr =&gt; arr.join('')
-```
-
-```
-// :: String -&gt; String
-const toLowerCase = str =&gt; str.toLowerCase()
-```
-
-```
-// :: (a -&gt; b) -&gt; [a] -&gt; [b]
-const map = fn =&gt; arr =&gt; arr.map(fn)
-```
-
-```
-// :: String -&gt; {String: Any} -&gt; Any
-const prop = name =&gt; obj =&gt; obj[name]
-```
-
-```
-// :: (a -&gt; b -&gt; c) -&gt; (b -&gt; a -&gt; c)
-const flip = fn =&gt; a =&gt; b =&gt; fn(b)(a)
-```
-
-```
-// :: (...(a -&gt; b)) -&gt; (x -&gt; b)
-const pipe = (...fns) =&gt;
-      x =&gt; fns.reduce((acc, fn) =&gt; fn(acc), x)
-```
-
-```
-// :: ((b, a) -&gt; b) -&gt; b -&gt; [a] -&gt; b
-const reduce = fn =&gt; init =&gt; arr =&gt;
-      arr.reduce(fn, init)
-```
-
-```
-// :: (a -&gt; *) -&gt; a -&gt; a
-const tap = fn =&gt; x =&gt; {
-    fn(x)
-    return x
-}
-```
-
-```
-// :: a -&gt; a -&gt; Boolean
-const eq = a =&gt; b =&gt; a === b
-```
-</pre>
 </div>
 <div created="20180307153530187" modified="20200427171503827" tags="TiddlyWiki" title="DraggableTaskTemplate" type="text/vnd.tiddlywiki">
 <pre>&lt;$checkbox tag=&quot;done&quot;&gt; &lt;$link to={{!!title}}&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt;&lt;/$checkbox&gt;</pre>
@@ -19652,7 +19583,7 @@ const thunk = makeThunk(addAsync, x, y);
 thunk((sum) =&gt; console.log(sum));
 ```</pre>
 </div>
-<div created="20210206170931081" modified="20210206171317259" tags="JavaScript" title="JavaScript util">
+<div created="20210206170931081" modified="20210206181643808" tags="JavaScript" title="JavaScript util">
 <pre>```
 // fixed(100.123456789, 4) =&gt; 100.1235
 // see also Number(secs.toFixed(2))
@@ -19671,6 +19602,11 @@ const split = str =&gt; str.split('')
 ```
 // :: [Char] -&gt; String
 const join = arr =&gt; arr.join('')
+```
+
+```
+// :: String -&gt; String
+const toLowerCase = str =&gt; str.toLowerCase()
 ```
 
 ```
@@ -19693,7 +19629,41 @@ const flip = fn =&gt; a =&gt; b =&gt; fn(b)(a)
 const pipe = (...fns) =&gt;
       x =&gt; fns.reduce((acc, fn) =&gt; fn(acc), x)
 ```
-</pre>
+
+```
+// :: ((b, a) -&gt; b) -&gt; b -&gt; [a] -&gt; b
+const reduce = fn =&gt; init =&gt; arr =&gt;
+      arr.reduce(fn, init)
+```
+
+```
+// :: (a -&gt; *) -&gt; a -&gt; a
+const tap = fn =&gt; x =&gt; {
+    fn(x)
+    return x
+}
+```
+
+```
+// :: a -&gt; a -&gt; Boolean
+const eq = a =&gt; b =&gt; a === b
+```
+
+```
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
+
+Set.prototype.difference = function (that) {
+    let diff = new Set(this)
+    for (let elem of that) {
+        diff.delete(elem)
+    }
+    return diff
+}
+
+Set.prototype.isEmpty = function () {
+    return this.size === 0
+}
+```</pre>
 </div>
 <div created="20201011161727447" modified="20201011161741673" tags="JavaScript" title="JavaScript V8">
 <pre>https://v8.dev/</pre>
