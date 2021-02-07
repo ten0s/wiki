@@ -1311,6 +1311,8 @@ Error message and password prompt
 
 <li>Lodash vs underscore</li>
 
+<li>Logical rules</li>
+
 <li>Loss Aversion</li>
 
 <li>Make 'locate' work</li>
@@ -11874,7 +11876,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[JavaScript util]]" title="$:/StoryList">
+<div list="[[Logical rules]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -20248,6 +20250,16 @@ $ curl -H'ContentType:application/json' -XPOST http://localhost:4567/restapis/09
 </div>
 <div created="20200619155933083" modified="20200915122831659" tags="JavaScript" title="Lodash vs underscore">
 <pre>https://stackoverflow.com/questions/13789618/differences-between-lodash-and-underscore
+</pre>
+</div>
+<div created="20210207170956725" modified="20210207171020277" tags="" title="Logical rules">
+<pre>```
+!(A || B) == !A &amp;&amp; !B
+```
+
+```
+!(A &amp;&amp; B) == !A || !B
+```
 </pre>
 </div>
 <div created="20200428092145998" modified="20200428092421380" tags="MentalModel" title="Loss Aversion">
