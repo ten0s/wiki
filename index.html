@@ -11876,7 +11876,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210208093242296" list="ToDo [[ES6 in Depth]] [[JavaScript util]]" modified="20210208171656994" title="$:/StoryList">
+<div created="20210208093242296" list="[[Collatz Conjecture]] ToDo [[ES6 in Depth]] [[JavaScript util]]" modified="20210208173336524" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -12890,8 +12890,8 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210208172628874" title="$:/temp/search">
-<pre></pre>
+<div created="20200422190456346" modified="20210208173334480" title="$:/temp/search">
+<pre>coll</pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
 <pre>loaded</pre>
@@ -14046,9 +14046,9 @@ rebar replaces ''git'' with current tag name
 * Парное программирование
 </pre>
 </div>
-<div created="20210208172539523" modified="20210208172625073" tags="JavaScript" title="Collatz Conjecture">
+<div created="20210208172539523" modified="20210208173347788" tags="JavaScript" title="Collatz Conjecture">
 <pre>```
-function *collatz(n) {
+function* collatz(n) {
     if (n &lt;= 0) {
         throw new Error('Only positive numbers are allowed')
     }
