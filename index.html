@@ -19583,7 +19583,7 @@ const thunk = makeThunk(addAsync, x, y);
 thunk((sum) =&gt; console.log(sum));
 ```</pre>
 </div>
-<div created="20210206170931081" modified="20210208093447402" tags="JavaScript" title="JavaScript util">
+<div created="20210206170931081" modified="20210208093846726" tags="JavaScript" title="JavaScript util">
 <pre>```
 // fixed(100.123456789, 4) =&gt; 100.1235
 // see also Number(secs.toFixed(2))
@@ -19615,7 +19615,7 @@ const map = fn =&gt; arr =&gt; arr.map(fn)
 ```
 
 ```
-// :: String -&gt; {String: Any} -&gt; Any
+// :: String | Integer -&gt; {String: Any} | Array -&gt; Any | Undefined
 const prop = name =&gt; obj =&gt; obj[name]
 ```
 
