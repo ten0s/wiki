@@ -693,7 +693,7 @@ Error message and password prompt
 
 <li>Coding Style Guidelines</li>
 
-<li>Collatz Conjecture</li>
+<li>Collatz Conjecture Generator</li>
 
 <li>Colors in Bash</li>
 
@@ -1020,6 +1020,8 @@ Error message and password prompt
 <li>Fault, Error and Failure</li>
 
 <li>Fibonacci and Factorial using math</li>
+
+<li>Fibonacci Generator</li>
 
 <li>Files process uses</li>
 
@@ -1365,6 +1367,8 @@ Error message and password prompt
 
 <li>Multiple projects using github deploy keys</li>
 
+<li>Natural Numbers Generator</li>
+
 <li>Netcat HTTP server and client</li>
 
 <li>Netcat port forwarding</li>
@@ -1437,6 +1441,8 @@ Error message and password prompt
 
 <li>PostgreSQL setup</li>
 
+<li>Power Series Generator</li>
+
 <li>Pretty print XML</li>
 
 <li>PRI</li>
@@ -1500,6 +1506,8 @@ Error message and password prompt
 <li>Railroad plugin</li>
 
 <li>Ramda</li>
+
+<li>Random Choose Generator</li>
 
 <li>Random magick</li>
 
@@ -11876,7 +11884,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210208093242296" list="[[Collatz Conjecture]] ToDo [[ES6 in Depth]] [[JavaScript util]]" modified="20210208173336524" title="$:/StoryList">
+<div created="20210209080457959" list="ToDo [[Random Choose Generator]] [[Power Series Generator]] [[Natural Numbers Generator]] [[Collatz Conjecture Generator]] [[ES6 in Depth]]" modified="20210209094250118" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -12890,8 +12898,8 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210208173334480" title="$:/temp/search">
-<pre>coll</pre>
+<div created="20200422190456346" modified="20210209095329549" title="$:/temp/search">
+<pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
 <pre>loaded</pre>
@@ -14046,7 +14054,7 @@ rebar replaces ''git'' with current tag name
 * Парное программирование
 </pre>
 </div>
-<div created="20210208172539523" modified="20210208173347788" tags="JavaScript" title="Collatz Conjecture">
+<div created="20210208172539523" modified="20210209093449157" tags="JavaScript" title="Collatz Conjecture Generator">
 <pre>```
 function* collatz(n) {
     if (n &lt;= 0) {
@@ -17899,7 +17907,7 @@ $ grep -R ENOMEM /usr/include/*
 
 http://tldp.org/LDP/abs/html/exitcodes.html</pre>
 </div>
-<div created="20200526115454050" modified="20200915122831634" tags="JavaScript task done" title="ES6 in Depth">
+<div created="20200526115454050" modified="20210209093329465" tags="JavaScript task done" title="ES6 in Depth">
 <pre>https://hacks.mozilla.org/category/es6-in-depth/
 
 ---
@@ -17914,7 +17922,7 @@ http://tldp.org/LDP/abs/html/exitcodes.html</pre>
 # ~~https://hacks.mozilla.org/2015/06/es6-in-depth-symbols/~~
 # ~~https://hacks.mozilla.org/2015/06/es6-in-depth-babel-and-broccoli/~~
 # ~~https://hacks.mozilla.org/2015/06/es6-in-depth-collections/~~
-# https://hacks.mozilla.org/2015/07/es6-in-depth-generators-continued/
+# ~~https://hacks.mozilla.org/2015/07/es6-in-depth-generators-continued/~~
 # https://hacks.mozilla.org/2015/07/es6-in-depth-proxies-and-reflect/
 # ~~https://hacks.mozilla.org/2015/07/es6-in-depth-classes/~~
 # ~~https://hacks.mozilla.org/2015/07/es6-in-depth-let-and-const/~~
@@ -18041,6 +18049,19 @@ long int fib(unsigned long int n) {
 
 long int fac(unsigned long int n) {
     return lround(exp(lgamma(n+1)));
+}
+```</pre>
+</div>
+<div created="20210209094311882" modified="20210209095247560" tags="JavaScript" title="Fibonacci Generator">
+<pre>```
+function* fibonacci() {
+    yield 0
+    yield 1
+    let a = 0, b = 1, c = 1
+    while (true) {
+        yield c
+        a = b, b = c, c = a + b
+    }
 }
 ```</pre>
 </div>
@@ -20566,6 +20587,16 @@ $  git clone git@project-one.github.com:vendor/project-one.git
 ```
 </pre>
 </div>
+<div created="20210209093431962" modified="20210209093715591" tags="JavaScript" title="Natural Numbers Generator">
+<pre>```
+function* naturalNumbers() {
+    let nat = 1
+    while (true) {
+        yield nat++
+    }
+}
+```</pre>
+</div>
 <div created="20200425163839931" modified="20200425165023801" tags="Linux" title="Netcat HTTP server and client">
 <pre>Server: 
 
@@ -21209,6 +21240,16 @@ Password = test
 ok
 2&gt; odbc:connect(&quot;DSN=MySQL-Kelly;UID=test;PWD=test&quot;, []).
 {ok,&lt;0.41.0&gt;}
+```</pre>
+</div>
+<div created="20210209093622461" modified="20210209094032000" tags="" title="Power Series Generator">
+<pre>```
+function* powerSeries(number, power) {
+    let base = number
+    while(true) {
+      yield Math.pow(base++, power)
+    }
+}
 ```</pre>
 </div>
 <div created="20200425150030659" modified="20200425150057047" tags="Linux" title="Pretty print XML">
@@ -22651,6 +22692,15 @@ Can't see the forest through the trees
 <pre>https://ramdajs.com/https://ramdajs.com/
 
 https://egghead.io/courses/functional-programming-in-javascript-with-ramda-js</pre>
+</div>
+<div created="20210209094037862" modified="20210209094154309" tags="JavaScript" title="Random Choose Generator">
+<pre>```
+function* choose(...arr) {
+    while (true) {
+        yield arr[Math.floor(Math.random() * arr.length)]
+    }
+}
+```</pre>
 </div>
 <div created="20200429155326651" modified="20200510154249273" tags="[[TW Links]]" title="Random magick">
 <pre>http://tw5magick.tiddlyspot.com/</pre>
