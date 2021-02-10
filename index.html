@@ -11884,7 +11884,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210209080457959" list="ToDo [[Random Choose Generator]] [[Power Series Generator]] [[Natural Numbers Generator]] [[Collatz Conjecture Generator]] [[ES6 in Depth]]" modified="20210209094250118" title="$:/StoryList">
+<div created="20210210105721158" list="[[Functional combinators]] ToDo" modified="20210210134955702" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -12898,7 +12898,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210209095329549" title="$:/temp/search">
+<div created="20200422190456346" modified="20210210135944821" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -18309,7 +18309,7 @@ $ ssh -F /dev/null -o PubkeyAuthentication=no USER@HOST
 <div created="20200617162531410" modified="20200915122831641" tags="JavaScript Video task" title="Fun With Folktale">
 <pre>https://www.youtube.com/watch?v=OghJR3BP0Ns</pre>
 </div>
-<div created="20201230141631411" modified="20210122171533368" tags="task JavaScript" title="Functional combinators">
+<div created="20201230141631411" modified="20210210154850077" tags="task JavaScript" title="Functional combinators">
 <pre>* Identity (I-combinator)
 
 ```
@@ -19623,8 +19623,10 @@ const thunk = makeThunk(addAsync, x, y);
 thunk((sum) =&gt; console.log(sum));
 ```</pre>
 </div>
-<div created="20210206170931081" modified="20210208093846726" tags="JavaScript" title="JavaScript util">
-<pre>```
+<div created="20210206170931081" modified="20210210154922846" tags="JavaScript" title="JavaScript util">
+<pre>[[Functional combinators]]
+
+```
 // fixed(100.123456789, 4) =&gt; 100.1235
 // see also Number(secs.toFixed(2))
 // :: (Float, Integer) -&gt; Float
@@ -19687,6 +19689,29 @@ const tap = fn =&gt; x =&gt; {
 ```
 // :: a -&gt; a -&gt; Boolean
 const eq = a =&gt; b =&gt; a === b
+```
+
+```
+const mapSnd = f =&gt; g =&gt; (x, y) =&gt; g(x, f(y))
+const mapSnd = f =&gt; g =&gt; x =&gt; y =&gt; g(x, f(y))
+
+const mapFst = f =&gt; g =&gt; (x, y) =&gt; g(f(x), y)
+const mapFst = f =&gt; g =&gt; x =&gt; y =&gt; g(f(x), y)
+
+const items = [
+  { name: 'ball', points: 2 },
+  { name: 'coin', points: 3 },
+  { name: 'candy', points: 4 }
+];
+
+const mapSnd = f =&gt; g =&gt; (x, y) =&gt; g(x, f(y))
+
+//const summer = (acc, obj) =&gt; acc + prop('points')(obj)
+const summer = mapSnd(prop('points'))(add)
+
+const result = items.reduce(summer, 0);
+
+
 ```
 
 ```
