@@ -1337,8 +1337,6 @@ Error message and password prompt
 
 <li>Makefile tutorial</li>
 
-<li>Map over Generator</li>
-
 <li>Mastering REST APIs in Node.js</li>
 
 <li>Max PID value</li>
@@ -1514,8 +1512,6 @@ Error message and password prompt
 <li>Random Choose Generator</li>
 
 <li>Random magick</li>
-
-<li>Range Generator</li>
 
 <li>Raspberry Pi</li>
 
@@ -1794,8 +1790,6 @@ Error message and password prompt
 <li>Survivorship Bias</li>
 
 <li>Suspend/Resume running program</li>
-
-<li>Switch true</li>
 
 <li>Sync local dirs</li>
 
@@ -11892,7 +11886,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210212095744873" list="ToDo [[JavaScript util]]" modified="20210212145116637" title="$:/StoryList">
+<div created="20210215103903451" list="[[Erlang PropEr]]" modified="20210215103921271" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -12906,8 +12900,8 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210212145115135" title="$:/temp/search">
-<pre>map generator</pre>
+<div created="20200422190456346" modified="20210215103901028" title="$:/temp/search">
+<pre>proper</pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
 <pre>loaded</pre>
@@ -17560,7 +17554,7 @@ see record_info/2
 See also locks library locks_ttb:record_print_fun and Module:record_fields/1 in some modules
 </pre>
 </div>
-<div created="20200717175915720" modified="20200724142130105" tags="Erlang" title="Erlang PropEr">
+<div created="20200717175915720" modified="20210215104033645" tags="Erlang" title="Erlang PropEr">
 <pre>rebar.config:
 
 ```
@@ -17584,6 +17578,7 @@ $ rebar3 new proper_statem [name=]NAME
 $ rebar3 new proper_fsm [name=]NAME
 $ rebar3 proper -n 1000
 $ rebar3 proper -p prop_example
+$ rebar3 proper -m module -p prop
 $ rebar3 do proper -c, cover -v
 ```
 
@@ -20456,22 +20451,6 @@ two:
 <div created="20201001091052534" modified="20201001091108429" tags="Linux" title="Makefile tutorial">
 <pre>https://makefiletutorial.com/</pre>
 </div>
-<div created="20210212133803516" modified="20210212145123646" tags="JavaScript" title="Map over Generator">
-<pre>```
-function* map(fn, seq) {
-    for (let i of seq) {
-        yield fn(i)
-    }
-}
-```
-
-```
-map(x =&gt; x*x, range(1, n+1))
-```
-
-https://stackoverflow.com/questions/45708712/yield-from-a-list-of-generators-created-from-an-array/45735702#45735702
-</pre>
-</div>
 <div created="20200511091955731" modified="20200527174320248" tags="task" title="Mastering REST APIs in Node.js">
 <pre>Bought
 
@@ -22776,18 +22755,6 @@ function* choose(...arr) {
 <div created="20200429155326651" modified="20200510154249273" tags="[[TW Links]]" title="Random magick">
 <pre>http://tw5magick.tiddlyspot.com/</pre>
 </div>
-<div created="20210212133705606" modified="20210212133800459" tags="JavaScript" title="Range Generator">
-<pre>'''from''' inclusive, '''to''' exclusive
-
-```
-function* range(from, to) {
-    for (let i = from; i &lt; to; i++) {
-        yield i
-    }
-}
-```
-</pre>
-</div>
 <div created="20200511134358651" modified="20200511134629952" tags="TableOfContents" title="Raspberry Pi">
 <pre></pre>
 </div>
@@ -24978,20 +24945,6 @@ kill -STOP PID
 kill -CONT PID
 ```
 </pre>
-</div>
-<div created="20210212162929616" modified="20210212162952282" tags="JavaScript" title="Switch true">
-<pre>```
-const verdict = (n, sum) =&gt; {
-    switch (true) {
-    case n ===   1: return 'deficient' // edge case
-    case n === sum: return 'perfect'
-    case n  &lt;  sum: return 'abundant'
-    default:        return 'deficient'
-    }
-}
-```
-
-https://medium.com/trabe/using-switch-true-in-javascript-986e8ad8ae4f</pre>
 </div>
 <div created="20200424081914812" modified="20200425152116143" tags="Linux" title="Sync local dirs">
 <pre>```
