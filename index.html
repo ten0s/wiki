@@ -1489,8 +1489,6 @@ Error message and password prompt
 
 <li>Python __main__</li>
 
-<li>Python 2.7 hot reloading</li>
-
 <li>Python compare two lists of dict</li>
 
 <li>Python Datetime</li>
@@ -1498,6 +1496,8 @@ Error message and password prompt
 <li>Python Get IMAP messages</li>
 
 <li>Python Get POP messages</li>
+
+<li>Python hot reload</li>
 
 <li>Python Hypothesis</li>
 
@@ -11894,7 +11894,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210221164809532" list="ToDo [[Working With ADTs]]" modified="20210221184743935" title="$:/StoryList">
+<div created="20210223104712868" list="[[Python hot reload]]" modified="20210223104712868" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -12908,7 +12908,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210221185337254" title="$:/temp/search">
+<div created="20200422190456346" modified="20210223104957985" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -21812,14 +21812,6 @@ if __name__ == &quot;__main__&quot;:
     main()
 ```</pre>
 </div>
-<div created="20200428120208027" modified="20200428120236089" tags="Python" title="Python 2.7 hot reloading">
-<pre>builtin 'reload'
-
-```
-&gt;&gt;&gt; reload(module)
-```
-</pre>
-</div>
 <div created="20200723121430428" modified="20200723121510654" tags="Algorithm Python" title="Python compare two lists of dict">
 <pre>```
 assert [i for i in list1 if i not in list2] == []
@@ -21890,6 +21882,21 @@ for id in range(num):
      #imap.store(id, &quot;+FLAGS&quot;, &quot;\\Deleted&quot;)
 pop.quit()
 ```</pre>
+</div>
+<div created="20200428120208027" modified="20210223104851102" tags="Python" title="Python hot reload">
+<pre>Python 2.7 builtin 'reload'
+
+```
+reload(module)
+```
+
+Python 3.4+
+
+```
+import importlib
+importlib.reload(module)
+```
+</pre>
 </div>
 <div created="20200428115318462" modified="20200428115417207" tags="Python" title="Python Hypothesis">
 <pre>https://packaging.python.org/tutorials/installing-packages/#ensure-pip-setuptools-and-wheel-are-up-to-date
