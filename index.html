@@ -11904,7 +11904,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210303112631227" list="[[Statistic Median]]" modified="20210303112830959" title="$:/StoryList">
+<div created="20210304091350772" list="Principles" modified="20210304091439600" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -12918,7 +12918,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210303112709125" title="$:/temp/search">
+<div created="20200422190456346" modified="20210304091559795" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -21396,7 +21396,7 @@ $ cat data.xml | xmllint --format -
 A PRI is a method used to connect [[PBX]] to [[PSTN]]. It is one phone line, consisting of two pairs of copper wires terminating on the customer PBX. 
 Although it utilizes one line from the phone service carrier, a PRI line can receive/send up to 23 calls simultaneously! </pre>
 </div>
-<div created="20200428101236702" modified="20210116194358595" tags="Dev" title="Principles">
+<div created="20200428101236702" modified="20210304091616923" tags="Dev" title="Principles">
 <pre>* Parse raw data from file, db, etc into intermediate internal representation (AST)
 
 * Every periodic task should be disableable at startup and/or runtime.
@@ -21414,6 +21414,7 @@ https://www.johndcook.com/blog/2008/06/17/software-in-space/
 * Every changed function must be covered by a unit test
 * Don't put failed task back to tasks queue (to retry) w/o implemented fail counter
 * Every server should have UI/API/CLI to change configs
+* Notification handlers should run is separate processes (executor's state changed notitication)
 
 [[Erlang ensure all callbacks implemented]]
 
