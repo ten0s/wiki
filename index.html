@@ -1259,6 +1259,8 @@ Error message and password prompt
 
 <li>Javascript fork function</li>
 
+<li>JavaScript Generator</li>
+
 <li>JavaScript Identity Function</li>
 
 <li>Javascript iterator</li>
@@ -1402,6 +1404,8 @@ Error message and password prompt
 <li>Mirror a repo to Github</li>
 
 <li>Mirror whole site</li>
+
+<li>Monad</li>
 
 <li>MongoDB in Docker</li>
 
@@ -11973,7 +11977,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210314112213668" list="" modified="20210314141536125" title="$:/StoryList">
+<div created="20210314112213668" list="ToDo" modified="20210314144444856" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -12987,7 +12991,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210314142116010" title="$:/temp/search">
+<div created="20200422190456346" modified="20210314145418368" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -14165,7 +14169,7 @@ rebar replaces ''git'' with current tag name
 * Парное программирование
 </pre>
 </div>
-<div created="20210208172539523" modified="20210209093449157" tags="JavaScript" title="Collatz Conjecture Generator">
+<div created="20210208172539523" modified="20210314144110647" tags="JavaScript" title="Collatz Conjecture Generator">
 <pre>```
 function* collatz(n) {
     if (n &lt;= 0) {
@@ -14180,7 +14184,9 @@ function* collatz(n) {
         yield n
     }
 }
-```</pre>
+```
+
+* [[JavaScript Generator]]</pre>
 </div>
 <div created="20200425151427450" modified="20200425151609662" tags="Bash" title="Colors in Bash">
 <pre>```
@@ -18237,7 +18243,7 @@ long int fac(unsigned long int n) {
 }
 ```</pre>
 </div>
-<div created="20210209094311882" modified="20210209095247560" tags="JavaScript" title="Fibonacci Generator">
+<div created="20210209094311882" modified="20210314144005775" tags="JavaScript" title="Fibonacci Generator">
 <pre>```
 function* fibonacci() {
     yield 0
@@ -18248,7 +18254,9 @@ function* fibonacci() {
         a = b, b = c, c = a + b
     }
 }
-```</pre>
+```
+
+* [[JavaScript Generator]]</pre>
 </div>
 <div created="20200424082218342" modified="20210314112311842" tags="" title="File sharing">
 <pre>* https://filetransfer.io/ (Web)
@@ -18500,7 +18508,7 @@ $ ssh -F /dev/null -o PubkeyAuthentication=no USER@HOST
 <div created="20200617162531410" modified="20210216163442706" tags="JavaScript Video task done" title="Fun With Folktale">
 <pre>https://www.youtube.com/watch?v=OghJR3BP0Ns</pre>
 </div>
-<div created="20201230141631411" modified="20210314141710608" tags="task JavaScript" title="Functional Combinators">
+<div created="20201230141631411" modified="20210314144537440" tags="task JavaScript" title="Functional Combinators">
 <pre>* [[Identity Function]] (I-combinator)
 
 * Tap (K-combinator) - can be used like https://hexdocs.pm/elixir/IO.html#inspect/2
@@ -18548,7 +18556,7 @@ const fork = (join, func1, func2) =&gt; {
 ```
 
 * [ext[Functional combinators | pdfx://refs/js/Functional_Programming_in_JavaScript.pdf::112]]
-
+* https://codeburst.io/combinators-82799638c90d
 * [[combinators.js|https://gist.github.com/Avaq/1f0636ec5c8d6aed2e45]]
 
 * [[Reginald Braithwaite - Javascript Combinators - Video|https://vimeo.com/97408202]]
@@ -18594,7 +18602,7 @@ It’s this [[duality|Duality]] that makes functional programs modular and so ef
 &lt;&lt;&lt; [ext[Open book|pdfx://refs/js/Functional_Programming_in_JavaScript.pdf::16]]
 </pre>
 </div>
-<div created="20200528075037847" modified="20210314133723840" tags="task JavaScript Book done" title="Functional Programming in Javascript">
+<div created="20200528075037847" modified="20210314143952772" tags="task JavaScript Book done" title="Functional Programming in Javascript">
 <pre>[ext[Open book|pdfx://refs/js/Functional_Programming_in_JavaScript.pdf]]
 
 # [ext[Becoming functional|pdfx://refs/js/Functional_Programming_in_JavaScript.pdf::3]] ([ext[Audio|openx://refs/js/Functional_Programming_in_JavaScript/ch1.m4a]])
@@ -18610,41 +18618,27 @@ It’s this [[duality|Duality]] that makes functional programs modular and so ef
 [[Source code|https://github.com/luijar/functional-programming-js]]
 
 !!! [[Location Transparency]]
-
 !!! [[Functional Decomposition]]
-
 !!! [[Functional Composition]]
-
-https://sanctuary.js.org/
-
-https://github.com/fantasyland/fantasy-land/tree/v4.0.1
-
-!!! Monads
-
-* Maybe
-* Either
-* [ext[Promise|pdfx://refs/js/Functional_Programming_in_JavaScript.pdf::214]] [[Promises/A+ standard|https://promisesaplus.com/]]
-* jQuery chain
-* Array.map (functor)
-* Rx.Observable
-
+!!! [[Monad]]
 !!! Techniques
 
 * [[Functional Decomposition]]
 * [[Functional Composition]]
-* [[Functional combinators]]
+* [[Functional Combinators]]
 * Continuation passing style (CPS)
 * Memoization
 * Lazy evaluation
 * Tail-call optimization (TCO)
 * Iterator
-* Generator
+* [[JavaScript Generator]]
 * Reactive programming
 
 !!! Libraries
 
 * Lodash
 * [[Ramda]]
+* https://sanctuary.js.org/
 * QUnit
 * JSCheck - Quickcheck
 * [[Blanket.js|https://github.com/alex-seville/blanket]] - Code coverage
@@ -18652,8 +18646,15 @@ https://github.com/fantasyland/fantasy-land/tree/v4.0.1
 * Log4js - Logging
 * RxJS - Reactive programming</pre>
 </div>
-<div created="20210314140624433" modified="20210314142057944" tags="" title="Functor">
-<pre>A box that implements a [[Map Function]] and respects the [[Functor Laws]]</pre>
+<div created="20210314140624433" modified="20210314143656504" tags="" title="Functor">
+<pre>A box that implements a [[Map Function]] and respects the [[Functor Laws]]
+
+* [[List]]
+* [[Stream]]
+* [[Array]]
+* [[Function]]
+* [[Monad]]
+</pre>
 </div>
 <div created="20210314140654999" modified="20210314142002249" tags="" title="Functor Laws">
 <pre>```
@@ -19539,6 +19540,11 @@ QUnit.test('Functional Combinator: fork', function (assert) {
 
 * [[https://ramdajs.com/docs/#converge]]
 * [ext[Functional combinators | pdfx://refs/js/Functional_Programming_in_JavaScript.pdf::112]]</pre>
+</div>
+<div created="20210314143924361" modified="20210314144241575" tags="JavaScript" title="JavaScript Generator">
+<pre>* https://hacks.mozilla.org/2015/05/es6-in-depth-generators/
+* https://livevideo.manning.com/module/3_9_1/es6-in-motion/generators/generators
+</pre>
 </div>
 <div created="20210314141334967" modified="20210314141420433" tags="JavaScript" title="JavaScript Identity Function">
 <pre>```
@@ -20745,6 +20751,16 @@ $ wget --mirror URL
 ```
 </pre>
 </div>
+<div created="20210314143624499" modified="20210314143743079" title="Monad">
+<pre>[[Monad Laws]]
+
+* [[Maybe Monad]]
+* [[Either Monad]]
+* [ext[Promise|pdfx://refs/js/Functional_Programming_in_JavaScript.pdf::214]] [[Promises/A+ standard|https://promisesaplus.com/]]
+* jQuery chain
+* Array.map (functor)
+* Rx.Observable</pre>
+</div>
 <div created="20200626155010168" modified="20200723182355636" tags="Docker Database" title="MongoDB in Docker">
 <pre>Start 
 
@@ -20882,7 +20898,7 @@ $  git clone git@project-one.github.com:vendor/project-one.git
 ```
 </pre>
 </div>
-<div created="20210209093431962" modified="20210209093715591" tags="JavaScript" title="Natural Numbers Generator">
+<div created="20210209093431962" modified="20210314144123839" tags="JavaScript" title="Natural Numbers Generator">
 <pre>```
 function* naturalNumbers() {
     let nat = 1
@@ -20890,7 +20906,9 @@ function* naturalNumbers() {
         yield nat++
     }
 }
-```</pre>
+```
+
+* [[JavaScript Generator]]</pre>
 </div>
 <div created="20200425163839931" modified="20200425165023801" tags="Linux" title="Netcat HTTP server and client">
 <pre>Server: 
@@ -21559,7 +21577,7 @@ ok
 {ok,&lt;0.41.0&gt;}
 ```</pre>
 </div>
-<div created="20210209093622461" modified="20210209094032000" tags="" title="Power Series Generator">
+<div created="20210209093622461" modified="20210314144136327" tags="" title="Power Series Generator">
 <pre>```
 function* powerSeries(number, power) {
     let base = number
@@ -21567,7 +21585,9 @@ function* powerSeries(number, power) {
       yield Math.pow(base++, power)
     }
 }
-```</pre>
+```
+
+* [[JavaScript Generator]]</pre>
 </div>
 <div created="20200425150030659" modified="20200425150057047" tags="Linux" title="Pretty print XML">
 <pre>```
@@ -23015,19 +23035,21 @@ Can't see the forest through the trees
 <div created="20200510083512872" modified="20200510083525495" tags="[[TW Links]]" title="Railroad plugin">
 <pre>http://ae-railroad.tiddlyspot.com/</pre>
 </div>
-<div created="20210203171656024" modified="20210203171737762" tags="JavaScript" title="Ramda">
-<pre>https://ramdajs.com/https://ramdajs.com/
+<div created="20210203171656024" modified="20210314143533723" tags="JavaScript" title="Ramda">
+<pre>https://ramdajs.com
 
 https://egghead.io/courses/functional-programming-in-javascript-with-ramda-js</pre>
 </div>
-<div created="20210209094037862" modified="20210209094154309" tags="JavaScript" title="Random Choose Generator">
+<div created="20210209094037862" modified="20210314144146192" tags="JavaScript" title="Random Choose Generator">
 <pre>```
 function* choose(...arr) {
     while (true) {
         yield arr[Math.floor(Math.random() * arr.length)]
     }
 }
-```</pre>
+```
+
+* [[JavaScript Generator]]</pre>
 </div>
 <div created="20200429155326651" modified="20200510154249273" tags="[[TW Links]]" title="Random magick">
 <pre>http://tw5magick.tiddlyspot.com/</pre>
