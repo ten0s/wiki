@@ -219,6 +219,8 @@ Error message and password prompt
 
 <li>$:/state/tab-660255949</li>
 
+<li>$:/state/tab-82458196</li>
+
 <li>$:/state/tab/moresidebar-1850697562</li>
 
 <li>$:/state/tab/sidebar--595412856</li>
@@ -965,8 +967,6 @@ Error message and password prompt
 
 <li>Erlang choose element by hash</li>
 
-<li>Erlang choose element randomly</li>
-
 <li>Erlang compile options</li>
 
 <li>Erlang core dump</li>
@@ -989,6 +989,8 @@ Error message and password prompt
 
 <li>Erlang evaluate expression on remote node</li>
 
+<li>Erlang External Term Format Parser</li>
+
 <li>Erlang FAQ</li>
 
 <li>Erlang flat size</li>
@@ -1002,6 +1004,10 @@ Error message and password prompt
 <li>Erlang generate random string</li>
 
 <li>Erlang generate VM core dump</li>
+
+<li>Erlang Group with</li>
+
+<li>Erlang Hexdump</li>
 
 <li>Erlang how to zip</li>
 
@@ -1033,6 +1039,10 @@ Error message and password prompt
 
 <li>Erlang PropEr Generators</li>
 
+<li>Erlang Queue</li>
+
+<li>Erlang Random Choose</li>
+
 <li>Erlang run a slave when it can't access the master</li>
 
 <li>Erlang safe foreach</li>
@@ -1044,6 +1054,8 @@ Error message and password prompt
 <li>Erlang start a slave node on a remote machine</li>
 
 <li>Erlang start dist</li>
+
+<li>Erlang Term to SHA1</li>
 
 <li>Erlang typer</li>
 
@@ -1304,6 +1316,8 @@ Error message and password prompt
 <li>Javascript once function</li>
 
 <li>Javascript Promise</li>
+
+<li>JavaScript Random Choose Generator</li>
 
 <li>Javascript rest parameters</li>
 
@@ -1591,13 +1605,13 @@ Error message and password prompt
 
 <li>Query system configuration vars</li>
 
+<li>Queue</li>
+
 <li>Quotes</li>
 
 <li>Railroad plugin</li>
 
 <li>Ramda</li>
-
-<li>Random Choose Generator</li>
 
 <li>Random magick</li>
 
@@ -2048,8 +2062,6 @@ Error message and password prompt
 <li>Understanding the Digital World</li>
 
 <li>Unix Philosophy</li>
-
-<li>Untitled</li>
 
 <li>Untrack tracked files</li>
 
@@ -11884,6 +11896,9 @@ Error message and password prompt
 <div created="20210314162000789" modified="20210314162000789" title="$:/state/tab-660255949">
 <pre>$:/core/ui/TiddlerInfo/References</pre>
 </div>
+<div created="20210316100556001" modified="20210316100556001" title="$:/state/tab-82458196">
+<pre>$:/core/ui/TiddlerInfo/References</pre>
+</div>
 <div created="20200423185505844" modified="20210314162331099" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Orphans</pre>
 </div>
@@ -12040,7 +12055,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210316095444210" list="" modified="20210316095929167" title="$:/StoryList">
+<div created="20210316095444210" list="" modified="20210316102035401" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13054,7 +13069,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210316095858947" title="$:/temp/search">
+<div created="20200422190456346" modified="20210316102047504" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -14389,7 +14404,7 @@ $ bc &lt;&lt;&lt; &quot;ibase=2; obase=A; 10&quot; # bin2dec (note A as obase)
 2
 ```</pre>
 </div>
-<div created="20200425161502971" modified="20200425163458671" tags="Linux" title="Convert binary to hexdump">
+<div created="20200425161502971" modified="20210316102004791" tags="Linux" title="Convert binary to hexdump">
 <pre>```
 $ echo -n 012345 | xxd -p 
 303132333435
@@ -14403,7 +14418,9 @@ $ od -x
 ```
 $ hexdump 
 ```
-</pre>
+
+* [[Binary]]
+* [[Hexdump]]</pre>
 </div>
 <div created="20200424083254976" modified="20200424083533227" tags="Graphviz" title="Convert dot file to png">
 <pre>```
@@ -14415,12 +14432,14 @@ $ dot -Tpng -O file.dot -O
 see also -Gsize=3,3\! -Gdpi=100 -Gratio=fill -Nshape=box
 </pre>
 </div>
-<div created="20200425161407976" modified="20200425161500753" tags="Linux" title="Convert hexdump to binary">
+<div created="20200425161407976" modified="20210316102025109" tags="Linux" title="Convert hexdump to binary">
 <pre>```
 $ echo 303132333435 | xxd -r -p 
 01234
 ```
-</pre>
+
+* [[Binary]]
+* [[Hexdump]]</pre>
 </div>
 <div created="20200425130546232" modified="20200425130605887" tags="Linux" title="Copy only first bytes from file">
 <pre>```
@@ -15765,7 +15784,7 @@ ok
 ok
 ```</pre>
 </div>
-<div created="20210316095717811" modified="20210316095853154" tags="Algorithm Erlang" title="Erlang Bucket Queue">
+<div created="20210316095717811" modified="20210316100325368" tags="Algorithm Erlang" title="Erlang Bucket Queue">
 <pre>```
 -module(bucket_queue).
 
@@ -15935,6 +15954,7 @@ cons(X, Xs) -&gt;
 ```
 
 * https://en.wikipedia.org/wiki/Bucket_queue
+* [[Queue]]
 * [[Priority Queue]]</pre>
 </div>
 <div created="20200629163726674" modified="20200629164422498" tags="Erlang" title="Erlang can't attach to node">
@@ -15998,12 +16018,6 @@ choose_node_by_hash(SomeID) -&gt;
     Nodes = [node() | nodes()],
     Idx = erlang:phash2(SomeID, length(Nodes)),
     lists:nth(Idx + 1, Nodes);
-```
-</pre>
-</div>
-<div created="20200702104921779" modified="20200702105747742" tags="Erlang" title="Erlang choose element randomly">
-<pre>```
-Choose = fun (L) -&gt; lists:nth(rand:uniform(length(L)), L) end.
 ```
 </pre>
 </div>
@@ -16261,6 +16275,257 @@ pong
 {value,'n1@127.0.0.1',[]}
 ```
 </pre>
+</div>
+<div created="20210316101400314" modified="20210316101501753" tags="Erlang" title="Erlang External Term Format Parser">
+<pre>```
+-module(etf).
+
+%% external exports
+-export([
+    parse_term/1,
+    parse_step/1,
+    eval_term/1,
+
+    tuple_element/2
+]).
+
+%%
+%% https://github.com/erlang/otp/blob/OTP-19.3/erts/emulator/beam/external.h
+%% http://erlang.org/doc/apps/erts/erl_ext_dist.html
+%%
+
+-define(VERSION_MAGIC, 131).
+
+-define(COMPRESSED         , 80).  % 'P'
+
+%% integer
+-define(SMALL_INTEGER_EXT  , 97).  % 'a'
+-define(INTEGER_EXT        , 98).  % 'b'
+-define(SMALL_BIG_EXT      , 110). % 'n'
+-define(LARGE_BIG_EXT      , 111). % 'o'
+
+%% float
+-define(FLOAT_EXT          , 99).  % 'c'
+-define(NEW_FLOAT_EXT      , 70).  % 'F'
+
+%% port
+-define(PORT_EXT           , 102). % 'f'
+-define(NEW_PORT_EXT       , 89).  % 'Y'
+
+%% pid
+-define(PID_EXT            , 103). % 'g'
+-define(NEW_PID_EXT        , 88).  % 'X'
+
+%% tuple
+-define(SMALL_TUPLE_EXT    , 104). % 'h'
+-define(LARGE_TUPLE_EXT    , 105). % 'i'
+
+%% map
+-define(MAP_EXT            , 116). % 't'
+
+%% list
+-define(NIL_EXT            , 106). % 'j'
+-define(STRING_EXT         , 107). % 'k'
+-define(LIST_EXT           , 108). % 'l'
+
+%% binary
+-define(BINARY_EXT         , 109). % 'm'
+-define(BIT_BINARY_EXT     , 77).  % 'M'
+
+%% reference
+-define(REFERENCE_EXT      , 101). % 'e' deprecated
+-define(NEW_REFERENCE_EXT  , 104). % 'r'
+-define(NEWER_REFERENCE_EXT, 90).  % 'Z'
+
+%% fun
+-define(FUN_EXT            , 117). % 'u'
+-define(NEW_FUN_EXT        , 112). % 'p'
+-define(EXPORT_EXT         , 113). % 'q'
+
+%% atom
+-define(ATOM_UTF8_EXT      , 118). % 'v'
+-define(SMALL_ATOM_UTF8_EXT, 119). % 'w'
+-define(ATOM_EXT           , 100). % 'd' deprecated
+-define(SMALL_ATOM_EXT     , 115). % 's' deprecated
+
+%%%------------------------------------------------------------------------
+%%% API
+%%%------------------------------------------------------------------------
+
+-type etf() :: binary().
+-type rest() :: binary().
+-type tag() :: {integer, etf()}
+             | {float, etf()}
+             | {string, etf()}
+             | {atom, etf()}
+             | {binary, etf()}
+             | {tuple, non_neg_integer(), [etf()]}
+             | {list, non_neg_integer(), [etf()]}
+             | {map, non_neg_integer(), [{etf(), etf()}]}.
+-type error(_E) :: no_return().
+
+-spec parse_step(etf()) -&gt; {tag(), rest()} | error(any()).
+parse_step(&lt;&lt;?VERSION_MAGIC, ?COMPRESSED, _UnzippedSize:32, ZippedData/binary&gt;&gt;) -&gt;
+    parse_step(zlib:uncompress(ZippedData));
+parse_step(&lt;&lt;?VERSION_MAGIC, Data/binary&gt;&gt;) -&gt;
+    parse_step(Data);
+%% integer
+parse_step(&lt;&lt;?SMALL_INTEGER_EXT, UInt8:8, Rest/binary&gt;&gt;) -&gt;
+    {{integer, &lt;&lt;?SMALL_INTEGER_EXT, UInt8:8&gt;&gt;}, Rest};
+parse_step(&lt;&lt;?INTEGER_EXT, Int32:32, Rest/binary&gt;&gt;) -&gt;
+    {{integer, &lt;&lt;?INTEGER_EXT, Int32:32&gt;&gt;}, Rest};
+parse_step(&lt;&lt;?SMALL_BIG_EXT, N:8, Sign:8, Digits:N/binary, Rest/binary&gt;&gt;) -&gt;
+    {{integer, &lt;&lt;?SMALL_BIG_EXT, N:8, Sign:8, Digits:N/binary&gt;&gt;}, Rest};
+parse_step(&lt;&lt;?LARGE_BIG_EXT, N:32, Sign:8, Digits:N/binary, Rest/binary&gt;&gt;) -&gt;
+    {{integer, &lt;&lt;?LARGE_BIG_EXT, N:32, Sign:8, Digits:N/binary&gt;&gt;}, Rest};
+%% float
+parse_step(&lt;&lt;?FLOAT_EXT, FloatStr:31/binary, Rest/binary&gt;&gt;) -&gt;
+    {{float, &lt;&lt;?FLOAT_EXT, FloatStr:31/binary&gt;&gt;}, Rest};
+parse_step(&lt;&lt;?NEW_FLOAT_EXT, IEEEFloat:64, Rest/binary&gt;&gt;) -&gt;
+    {{float, &lt;&lt;?NEW_FLOAT_EXT, IEEEFloat:64&gt;&gt;}, Rest};
+%% string, simple list like &quot;abc&quot; or [1,2,3]
+parse_step(&lt;&lt;?STRING_EXT, Len:16, Chars:Len/binary, Rest/binary&gt;&gt;) -&gt;
+    {{string, &lt;&lt;?STRING_EXT, Len:16, Chars:Len/binary&gt;&gt;}, Rest};
+%% atom
+parse_step(&lt;&lt;?ATOM_UTF8_EXT, Len:16, AtomName:Len/binary, Rest/binary&gt;&gt;) -&gt;
+    {{atom, &lt;&lt;?ATOM_UTF8_EXT, Len:16, AtomName:Len/binary&gt;&gt;}, Rest};
+parse_step(&lt;&lt;?SMALL_ATOM_UTF8_EXT, Len:8, AtomName:Len/binary, Rest/binary&gt;&gt;) -&gt;
+    {{atom, &lt;&lt;?SMALL_ATOM_UTF8_EXT, Len:8, AtomName:Len/binary&gt;&gt;}, Rest};
+parse_step(&lt;&lt;?ATOM_EXT, Len:16, AtomName:Len/binary, Rest/binary&gt;&gt;) -&gt;
+    {{atom, &lt;&lt;?ATOM_EXT, Len:16, AtomName:Len/binary&gt;&gt;}, Rest};
+parse_step(&lt;&lt;?SMALL_ATOM_EXT, Len:8, AtomName:Len/binary, Rest/binary&gt;&gt;) -&gt;
+    {{atom, &lt;&lt;?SMALL_ATOM_EXT, Len:8, AtomName:Len/binary&gt;&gt;}, Rest};
+%% binary
+parse_step(&lt;&lt;?BINARY_EXT, Len:32, Data:Len/binary, Rest/binary&gt;&gt;) -&gt;
+    {{binary, &lt;&lt;?BINARY_EXT, Len:32, Data/binary&gt;&gt;}, Rest};
+parse_step(&lt;&lt;?BIT_BINARY_EXT, Len:32, Bits:8, Data:Len/binary, Rest/binary&gt;&gt;) -&gt;
+    {{binary, &lt;&lt;?BIT_BINARY_EXT, Len:32, Bits:8, Data/binary&gt;&gt;}, Rest};
+%% port
+%% pid
+%% reference
+%% fun
+%% tuple
+parse_step(&lt;&lt;?SMALL_TUPLE_EXT, Arity:8, Rest/binary&gt;&gt;) -&gt;
+    {{tuple, Arity, []}, Rest};
+parse_step(&lt;&lt;?LARGE_TUPLE_EXT, Arity:32, Rest/binary&gt;&gt;) -&gt;
+    {{tuple, Arity, []}, Rest};
+%% list
+parse_step(&lt;&lt;?NIL_EXT, Rest/binary&gt;&gt;) -&gt;
+    {{list, 0, []}, Rest};
+parse_step(&lt;&lt;?LIST_EXT, Len:32, Rest/binary&gt;&gt;) -&gt;
+    {{list, Len, []}, Rest};
+%% map
+parse_step(&lt;&lt;?MAP_EXT, Arity:32, Rest/binary&gt;&gt;) -&gt;
+    {{map, Arity, []}, Rest};
+parse_step(Other) -&gt;
+    error({badarg, Other}).
+
+-spec parse_term(etf()) -&gt; {tag(), rest()} | error(any()).
+parse_term(&lt;&lt;?VERSION_MAGIC, ?COMPRESSED, _UnzippedSize:32, ZippedData/binary&gt;&gt;) -&gt;
+    parse_term(zlib:uncompress(ZippedData));
+parse_term(&lt;&lt;?VERSION_MAGIC, Data/binary&gt;&gt;) -&gt;
+    parse_term(Data);
+parse_term(&lt;&lt;Code:8, _/binary&gt;&gt; = Bin) when
+    %% integer
+    Code =:= ?SMALL_INTEGER_EXT orelse
+    Code =:= ?INTEGER_EXT orelse
+    Code =:= ?SMALL_BIG_EXT orelse
+    Code =:= ?LARGE_BIG_EXT orelse
+    %% float
+    Code =:= ?FLOAT_EXT orelse
+    Code =:= ?NEW_FLOAT_EXT orelse
+    %% string
+    Code =:= ?STRING_EXT orelse
+    %% atom
+    Code =:= ?ATOM_UTF8_EXT orelse
+    Code =:= ?SMALL_ATOM_UTF8_EXT orelse
+    Code =:= ?ATOM_EXT orelse
+    Code =:= ?SMALL_ATOM_EXT orelse
+    %% binary
+    Code =:= ?BINARY_EXT orelse
+    Code =:= ?BIT_BINARY_EXT -&gt;
+    parse_step(Bin);
+%% port
+%% pid
+%% reference
+%% fun
+%% tuple
+parse_term(&lt;&lt;?SMALL_TUPLE_EXT, Arity:8, Rest/binary&gt;&gt;) -&gt;
+    {List, Rest2} = lists:mapfoldl(
+        fun (_Idx, Acc) -&gt; parse_term(Acc) end,
+        Rest,
+        lists:seq(1, Arity)
+    ),
+    {{tuple, Arity, List}, Rest2};
+parse_term(&lt;&lt;?LARGE_TUPLE_EXT, Arity:32, Rest/binary&gt;&gt;) -&gt;
+    {List, Rest2} = lists:mapfoldl(
+        fun (_Idx, Acc) -&gt; parse_term(Acc) end,
+        Rest,
+        lists:seq(1, Arity)
+    ),
+    {{tuple, Arity, List}, Rest2};
+%% list
+parse_term(&lt;&lt;?NIL_EXT, _/binary&gt;&gt; = Bin) -&gt;
+    parse_step(Bin);
+parse_term(&lt;&lt;?LIST_EXT, Len:32, Rest/binary&gt;&gt;) -&gt;
+    {List, Rest2} = lists:mapfoldl(
+        fun (_Idx, Acc) -&gt; parse_term(Acc) end,
+        Rest,
+        lists:seq(1, Len)
+    ),
+    {Tail, Rest3} = parse_term(Rest2),
+    List2 = case Tail of
+    {list, 0, []} -&gt;
+        List;
+    _ -&gt;
+        lists:foldr(fun (T, Acc) -&gt; [T | Acc] end, Tail, List)
+    end,
+    {{list, Len, List2}, Rest3};
+%% map
+parse_term(&lt;&lt;?MAP_EXT, Arity:32, Rest/binary&gt;&gt;) -&gt;
+    {Pairs, Rest2} = lists:mapfoldl(
+        fun (_Idx, Acc0) -&gt;
+            {K, Acc1} = parse_term(Acc0),
+            {V, Acc2} = parse_term(Acc1),
+            {{K, V}, Acc2}
+        end,
+        Rest,
+        lists:seq(1, Arity)
+    ),
+    {{map, Arity, Pairs}, Rest2};
+parse_term(Other) -&gt;
+    error({badarg, Other}).
+
+-spec eval_term(tag()) -&gt; term() | error(any()).
+eval_term({_, Etf}) when is_binary(Etf) -&gt;
+    binary_to_term(&lt;&lt;?VERSION_MAGIC, Etf/binary&gt;&gt;);
+eval_term({tuple, _Arity, List}) -&gt;
+    list_to_tuple([eval_term(Etf) || Etf &lt;- List]);
+eval_term({list, _Arity, List}) -&gt;
+    [eval_term(Etf) || Etf &lt;- List];
+eval_term({map, _Arity, Pairs}) -&gt;
+    maps:from_list(
+        [{eval_term(KeyEtf), eval_term(ValEtf)} || {KeyEtf, ValEtf} &lt;- Pairs]);
+eval_term(Other) -&gt;
+    error({badarg, Other}).
+
+-spec tuple_element(pos_integer(), etf()) -&gt; term() | error(any()).
+tuple_element(N, Etf) when N &gt; 0 -&gt;
+    case parse_step(Etf) of
+    {{tuple, Arity, []}, Rest} when N =&lt; Arity -&gt;
+        %% skip first N-1
+        Rest2 = lists:foldl(fun (_, Acc) -&gt;
+            {_Parsed, Acc2} = parse_term(Acc),
+            Acc2
+        end, Rest, lists:seq(1, N - 1)),
+        {Parsed, _Rest3} = parse_term(Rest2),
+        eval_term(Parsed);
+    Other -&gt;
+        error({badarg, Other})
+    end;
+tuple_element(N, Etf) -&gt;
+    error({badarg, {N, Etf}}).
+```</pre>
 </div>
 <div created="20200428104307076" modified="20200714114617158" tags="Erlang" title="Erlang FAQ">
 <pre>How to get full call stack while on breakpoint?
@@ -17357,6 +17622,102 @@ $ kill -SIGABRT &lt;PID&gt;
 ```
 </pre>
 </div>
+<div created="20210316101020303" modified="20210316101536933" tags="Erlang" title="Erlang Group with">
+<pre>```
+%% group(&quot;Mississippi&quot;) =&gt; [&quot;M&quot;,&quot;i&quot;,&quot;ss&quot;,&quot;i&quot;,&quot;ss&quot;,&quot;i&quot;,&quot;pp&quot;,&quot;i&quot;]
+-spec group([A]) -&gt; [[A]].
+group(List) when is_list(List) -&gt;
+    groupwith(fun erlang:'=:='/2, List);
+group(_) -&gt;
+    exit(badarg).
+
+-spec groupwith(Eq::fun((A, A) -&gt; boolean()), [A]) -&gt; [[A]].
+groupwith(Eq, [X | XS]) when is_function(Eq, 2) -&gt;
+    {YS, ZS} = lists:splitwith(fun (I) -&gt; Eq(X, I) end, XS),
+    [[X | YS] | groupwith(Eq, ZS)];
+groupwith(Eq, []) when is_function(Eq, 2) -&gt;
+    [];
+groupwith(_, _) -&gt;
+    exit(badarg).
+```
+
+[[List]]</pre>
+</div>
+<div created="20210316101256202" modified="20210316101950898" tags="Erlang" title="Erlang Hexdump">
+<pre>```
+-module(hexdump).
+-author('dm.klionsky@gmail.com').
+
+%% external exports
+-export([
+    hexdump_to_list/1,
+    hexdump_to_binary/1,
+    list_to_hexdump/2,
+    binary_to_hexdump/2
+]).
+
+%%%------------------------------------------------------------------------
+%%% API
+%%%------------------------------------------------------------------------
+
+%% hexdump_to_list(&quot;68656C6C6F&quot;) =&gt; &quot;hello&quot;
+-spec hexdump_to_list(string()) -&gt; string().
+hexdump_to_list(HexStr) when is_list(HexStr) -&gt;
+    hexdump_to_list(HexStr, []);
+hexdump_to_list(_) -&gt;
+    exit(badarg).
+
+%% hexdump_to_binary(&lt;&lt;&quot;68656c6c6f&quot;&gt;&gt;) =&gt; &lt;&lt;&quot;hello&quot;&gt;&gt;
+-spec hexdump_to_binary(binary()) -&gt; binary().
+hexdump_to_binary(HexBin) when is_binary(HexBin) -&gt;
+    list_to_binary(hexdump_to_list(binary_to_list(HexBin)));
+hexdump_to_binary(_) -&gt;
+    exit(badarg).
+
+%% list_to_hexdump(&quot;hello&quot;, to_upper) =&gt; &quot;68656C6C6F&quot;
+%% list_to_hexdump(&quot;hello&quot;, to_lower) =&gt; &quot;68656c6c6f&quot;
+-spec list_to_hexdump(list(), to_upper | to_lower) -&gt; string().
+list_to_hexdump(List, Case)
+    when is_list(List) andalso (Case =:= to_upper orelse Case =:= to_lower) -&gt;
+    list_to_hexdump(List, Case, []);
+list_to_hexdump(_, _) -&gt;
+    exit(badarg).
+
+%% binary_to_hexdump(&lt;&lt;&quot;hello&quot;&gt;&gt;, to_upper) =&gt; &lt;&lt;&quot;68656C6C6F&quot;&gt;&gt;
+%% binary_to_hexdump(&lt;&lt;&quot;hello&quot;&gt;&gt;, to_lower) =&gt; &lt;&lt;&quot;68656c6c6f&quot;&gt;&gt;
+-spec binary_to_hexdump(binary(), to_upper | to_lower) -&gt; binary().
+binary_to_hexdump(Bin, Case)
+    when is_binary(Bin) andalso (Case =:= to_upper orelse Case =:= to_lower)-&gt;
+    list_to_binary(list_to_hexdump(binary_to_list(Bin), Case));
+binary_to_hexdump(_, _) -&gt;
+    exit(badarg).
+
+%%%------------------------------------------------------------------------
+%%% Internal
+%%%------------------------------------------------------------------------
+
+hexdump_to_list([], Acc) -&gt;
+    lists:reverse(Acc);
+hexdump_to_list(HexDump, Acc) -&gt;
+    {Hex, Rest} = lists:split(2, HexDump),
+    {ok, [V], []} = io_lib:fread(&quot;~16u&quot;, Hex),
+    hexdump_to_list(Rest, [V | Acc]).
+
+list_to_hexdump([], _Case, Acc) -&gt;
+    lists:flatten(lists:reverse(Acc));
+list_to_hexdump([X | Xs], Case, Acc) -&gt;
+    Fmt = case Case of
+        to_upper -&gt; &quot;~2.16.0B&quot;;
+        to_lower -&gt; &quot;~2.16.0b&quot;
+    end,
+    Hex = io_lib:format(Fmt, [X]),
+    list_to_hexdump(Xs, Case, [Hex | Acc]).
+```
+
+* [[Binary]]
+* [[List]]
+* [[Hexdump]]</pre>
+</div>
 <div created="20200702104624052" modified="20200702104704598" tags="Erlang" title="Erlang how to zip">
 <pre>On disk
 
@@ -18277,6 +18638,24 @@ $ rebar3 do proper -c, cover -v
 <div created="20200717121931080" modified="20200720172935045" tags="Erlang" title="Erlang PropEr Generators">
 <pre>[ext[Generators Reference|pdfx://refs/erl/books/Property_Based_Testing_with_PropEr_Erlang_and_Elixir/property-based-testing-with-proper-erlang-and-elixir.pdf::345]]</pre>
 </div>
+<div created="20210316100506969" modified="20210316100525733" tags="Erlang Algorithm" title="Erlang Queue">
+<pre>https://github.com/ten0s/srsa/blob/master/_includes/sources/erlang/my_queue.erl
+
+[[Queue]]
+</pre>
+</div>
+<div created="20200702104921779" modified="20210316100928624" tags="Erlang" title="Erlang Random Choose">
+<pre>```
+-spec choose([T]) -&gt; T.
+choose([]) -&gt;
+    error(badarg);
+choose(L) -&gt;
+    lists:nth(rand:uniform(length(L)), L).
+```
+
+* [[List]]
+* [[Random]]</pre>
+</div>
 <div created="20200702105319896" modified="20200702105717734" tags="Erlang" title="Erlang run a slave when it can't access the master">
 <pre>The idea is to run epmd on master only and use ssh remote port forwarding
 for epmd and master ports to connect slave to master. Slave thinks that both
@@ -18550,6 +18929,18 @@ start_dist(NamePref, NameType = longnames) -&gt;
 start_dist() -&gt;
     start_dist(?NAME, ?TYPE).
 ```
+</pre>
+</div>
+<div created="20210316101723489" modified="20210316101811045" tags="Erlang" title="Erlang Term to SHA1">
+<pre>```
+calc_sha1(Term) -&gt;
+     crypto:hash_final(crypto:hash_update(
+        crypto:hash_init(sha), term_to_binary(Term))).
+```
+
+* [[Binary]]
+* [[Crypto]]
+* [[SHA]]
 </pre>
 </div>
 <div created="20200709134924724" modified="20200709134941433" tags="Erlang" title="Erlang typer">
@@ -19397,7 +19788,7 @@ Professor Frisby</pre>
 
 Professor Frisby</pre>
 </div>
-<div created="20200628133655395" modified="20200629075954243" tags="Linux" title="Hex and flipped digits words">
+<div created="20200628133655395" modified="20210316101928913" tags="Linux" title="Hex and flipped digits words">
 <pre>&lt;&lt;&lt;
 What words I can make on my calculator when I hold it upside down?
 &lt;&lt;&lt;  [ext[UNIX: A History and a Memoir p.72|pdfx://refs/linux/UNIX_A_History_and_a_Memoir.pdf::72]]
@@ -19423,7 +19814,10 @@ $ grep '^[abcdefghilos]*$' /usr/share/dict/words | tr bghilos 8641705
 ```
 $ grep '^[abcdefghilos]*$' /usr/share/dict/words | awk 'function tr(s) { gsub(&quot;b&quot;, &quot;8&quot;, s); gsub(&quot;g&quot;, &quot;6&quot;, s); gsub(&quot;h&quot;, &quot;4&quot;, s); gsub(&quot;i&quot;, &quot;1&quot;, s); gsub(&quot;l&quot;, &quot;7&quot;, s); gsub(&quot;o&quot;, &quot;0&quot;, s); gsub(&quot;s&quot;, &quot;5&quot;, s); return s} { print $0, tr($0) }' | column -t
 ```
-</pre>
+
+* [[AWK]]
+* [[Grep]]
+* [[RegEx]]</pre>
 </div>
 <div created="20200524145007274" modified="20200528082905838" tags="Definition" title="Hotspot">
 <pre>A hotspot is a physical location where people may obtain Internet access, typically using [[Wi-Fi]] technology.
@@ -20312,6 +20706,19 @@ function delay(timeout) {
     return new Promise(executor);
 }
 ```</pre>
+</div>
+<div created="20210209094037862" modified="20210316100926462" tags="JavaScript" title="JavaScript Random Choose Generator">
+<pre>```
+function* choose(...arr) {
+    while (true) {
+        yield arr[Math.floor(Math.random() * arr.length)]
+    }
+}
+```
+
+* [[JavaScript Generator]]
+* [[Array]]
+* [[Random]]</pre>
 </div>
 <div created="20200606100106709" modified="20200915122831657" tags="JavaScript" title="Javascript rest parameters">
 <pre>[[Javascript spread operator]]
@@ -22706,6 +23113,9 @@ $ getconf -a
 ```
 </pre>
 </div>
+<div created="20210316100539297" modified="20210316100552620" tags="" title="Queue">
+<pre></pre>
+</div>
 <div created="20200428094442029" modified="20210314134144176" tags="TableOfContents" title="Quotes">
 <pre>&lt;&lt;&lt;
 There's a point where a secret club becomes so secret that it has no members
@@ -23552,17 +23962,6 @@ Can't see the forest through the trees
 <pre>https://ramdajs.com
 
 https://egghead.io/courses/functional-programming-in-javascript-with-ramda-js</pre>
-</div>
-<div created="20210209094037862" modified="20210314144146192" tags="JavaScript" title="Random Choose Generator">
-<pre>```
-function* choose(...arr) {
-    while (true) {
-        yield arr[Math.floor(Math.random() * arr.length)]
-    }
-}
-```
-
-* [[JavaScript Generator]]</pre>
 </div>
 <div created="20200429155326651" modified="20200510154249273" tags="[[TW Links]]" title="Random magick">
 <pre>http://tw5magick.tiddlyspot.com/</pre>
@@ -27188,9 +27587,6 @@ https://tritarget.org/
 * Write programs to work together [[Composition]]
 * Write programs to handle text streams, because that is a universal interface
 </pre>
-</div>
-<div title="Untitled">
-<pre>convert binary to hexdump</pre>
 </div>
 <div created="20200423172053785" modified="20200423172119084" tags="Git" title="Untrack tracked files">
 <pre>```
