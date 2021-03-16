@@ -953,6 +953,8 @@ Error message and password prompt
 
 <li>Erlang bind/search</li>
 
+<li>Erlang Bucket Queue</li>
+
 <li>Erlang can't attach to node</li>
 
 <li>Erlang can't connect to node</li>
@@ -1003,6 +1005,8 @@ Error message and password prompt
 
 <li>Erlang how to zip</li>
 
+<li>Erlang Leftist Heap</li>
+
 <li>Erlang libs</li>
 
 <li>Erlang Links</li>
@@ -1035,7 +1039,7 @@ Error message and password prompt
 
 <li>Erlang setup</li>
 
-<li>Erlang shuffle list</li>
+<li>Erlang Shuffle List</li>
 
 <li>Erlang start a slave node on a remote machine</li>
 
@@ -11919,10 +11923,10 @@ Error message and password prompt
 <div created="20200426101718323" modified="20200626201806373" title="$:/state/toc/TableOfContents-Docker--118161433">
 <pre>close</pre>
 </div>
-<div created="20200428110814473" modified="20200509094509737" title="$:/state/toc/TableOfContents-English--118161433">
+<div created="20200428110814473" modified="20210316095906770" title="$:/state/toc/TableOfContents-English--118161433">
 <pre>close</pre>
 </div>
-<div created="20200428110840790" modified="20201201101005350" title="$:/state/toc/TableOfContents-Erlang--118161433">
+<div created="20200428110840790" modified="20210316095952829" title="$:/state/toc/TableOfContents-Erlang--118161433">
 <pre>close</pre>
 </div>
 <div created="20200426101712304" modified="20210111163127370" title="$:/state/toc/TableOfContents-Git--118161433">
@@ -12036,7 +12040,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210315094307280" list="" modified="20210315145251462" title="$:/StoryList">
+<div created="20210316095444210" list="" modified="20210316095929167" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13050,7 +13054,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210315145340751" title="$:/temp/search">
+<div created="20200422190456346" modified="20210316095858947" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -15761,6 +15765,178 @@ ok
 ok
 ```</pre>
 </div>
+<div created="20210316095717811" modified="20210316095853154" tags="Algorithm Erlang" title="Erlang Bucket Queue">
+<pre>```
+-module(bucket_queue).
+
+%% external exports
+-export([
+    new_min/0,
+    new_max/0,
+    new_with/1,
+
+    is_empty/1,
+    insert/2,
+    delete/2,
+    foldl/3,
+    foldr/3,
+    head/1,
+    tail/1,
+    length/1,
+
+    from_list_min/1,
+    from_list_max/1,
+    from_list_with/2,
+
+    to_list/1
+]).
+
+-export_type([
+    type/1,
+    prio_fun/1
+]).
+
+-opaque type(T) :: {prio_fun(T), buckets(T)}.
+-type prio_fun(T) :: fun((T) -&gt; prio()).
+-type buckets(T) :: #{prio() =&gt; T}.
+-type prio() :: any().
+-type length() :: non_neg_integer().
+-type error(_E) :: no_return().
+
+%%%
+%%% Bucket Queue
+%%% https://en.wikipedia.org/wiki/Bucket_queue
+%%%
+%%% Good use case is lots of items with few priorities
+%%%
+
+%%%------------------------------------------------------------------------
+%%% API
+%%%------------------------------------------------------------------------
+
+-spec new_min() -&gt; type(_T).
+new_min() -&gt;
+    {fun min_prio/1, #{}}.
+
+-spec min_prio(T) -&gt; T.
+min_prio(X) -&gt;
+    X.
+
+-spec new_max() -&gt; type(_T).
+new_max() -&gt;
+    {fun max_prio/1, #{}}.
+
+-spec max_prio(T) -&gt; T.
+max_prio(X) -&gt;
+    -X.
+
+-spec new_with(prio_fun(T)) -&gt; type(T).
+new_with(PrioF) when is_function(PrioF, 1) -&gt;
+    {PrioF, #{}}.
+
+%% O of maps:size/1
+-spec is_empty(type(_T)) -&gt; boolean().
+is_empty({_, MapQ}) -&gt;
+    maps:size(MapQ) =:= 0.
+
+%% O(1)
+-spec insert(T, type(T)) -&gt; type(T).
+insert(X, {PrioF, MapQ}) -&gt;
+    {PrioF, maps:update_with(
+        PrioF(X),
+        fun (Queue) -&gt; queue:in(X, Queue) end,
+        queue:from_list([X]),
+        MapQ
+    )}.
+
+%% O(n)
+-spec delete(T, type(T)) -&gt; type(T).
+delete(X, {PrioF, MapQ}) -&gt;
+    {PrioF, maps:update_with(
+        PrioF(X), fun (Queue) -&gt; queue_delete(X, Queue) end,
+        MapQ
+    )}.
+
+%% O(n)
+queue_delete(X, Q) -&gt;
+    queue:from_list(lists:delete(X, queue:to_list(Q))).
+
+%% O(k*lg(k)) + O(n) without accounting ReduceF
+-spec foldl(ReduceF, AccIn, type(T)) -&gt; AccOut
+    when ReduceF :: fun((T, AccIn) -&gt; AccOut),
+         AccIn :: AccOut :: any().
+foldl(ReduceF, AccIn, {_PrioF, MapQ}) -&gt;
+    lists:foldl(fun (Prio, Acc) -&gt;
+        lists:foldl(ReduceF, Acc, queue:to_list(maps:get(Prio, MapQ)))
+    end, AccIn, lists:sort(maps:keys(MapQ))).
+
+%% O(k*lg(k)) + O(n) without accounting ReduceF
+-spec foldr(ReduceF, AccIn, type(T)) -&gt; AccOut
+    when ReduceF :: fun((T, AccIn) -&gt; AccOut),
+         AccIn :: AccOut :: any().
+foldr(ReduceF, AccIn, {_PrioF, MapQ}) -&gt;
+    lists:foldr(fun (Prio, Acc) -&gt;
+        lists:foldr(ReduceF, Acc, queue:to_list(maps:get(Prio, MapQ)))
+    end, AccIn, lists:sort(maps:keys(MapQ))).
+
+%% O(k*lg(k)) + ~O(1)
+-spec head(type(T)) -&gt; T | error(empty).
+head({_PrioF, MapQ}) -&gt;
+    case lists:sort(maps:keys(MapQ)) of
+    [] -&gt;
+       error(empty);
+    [Prio | _] -&gt;
+        %% Invariant: If there's a prio, its queue must NOT be empty
+        queue:head(maps:get(Prio, MapQ))
+    end.
+
+%% O(k*lg(k)) + ~O(1)
+-spec tail(type(T)) -&gt; type(T) | error(empty).
+tail({PrioF, MapQ}) -&gt;
+    case lists:sort(maps:keys(MapQ)) of
+    [] -&gt;
+       error(empty);
+    [Prio | _] -&gt;
+        %% Invariant: If there's a prio, its queue must NOT be empty
+        Queue = queue:tail(maps:get(Prio, MapQ)),
+        case queue:is_empty(Queue) of
+        true -&gt;
+            {PrioF, maps:remove(Prio, MapQ)};
+        false -&gt;
+            {PrioF, maps:put(Prio, Queue, MapQ)}
+        end
+    end.
+
+%% O(n)
+-spec length(type(_T)) -&gt; length().
+length(PQ) -&gt;
+    foldl(fun (_, Acc) -&gt; 1 + Acc end, 0, PQ).
+
+-spec from_list_min([T]) -&gt; type(T).
+from_list_min(Xs) -&gt;
+    from_list_with(fun min_prio/1, Xs).
+
+-spec from_list_max([T]) -&gt; type(T).
+from_list_max(Xs) -&gt;
+    from_list_with(fun max_prio/1, Xs).
+
+%% O(n)
+-spec from_list_with(prio_fun(T), [T]) -&gt; type(T).
+from_list_with(PrioF, Xs) -&gt;
+    lists:foldl(fun insert/2, new_with(PrioF), Xs).
+
+%% O(k*lg(k)) + O(n)
+-spec to_list(type(T)) -&gt; [T].
+to_list({_PrioF, _MapQ} = PQ) -&gt;
+    foldr(fun cons/2, [], PQ).
+
+cons(X, Xs) -&gt;
+    [X | Xs].
+```
+
+* https://en.wikipedia.org/wiki/Bucket_queue
+* [[Priority Queue]]</pre>
+</div>
 <div created="20200629163726674" modified="20200629164422498" tags="Erlang" title="Erlang can't attach to node">
 <pre>If attaching to to_erl fails with ^L
 
@@ -17197,6 +17373,256 @@ Files = [{&quot;foo.txt&quot;, &lt;&lt;&quot;Contents of foo&quot;&gt;&gt;},
 ```
 </pre>
 </div>
+<div created="20210316094718468" modified="20210316095706553" tags="Erlang Algorithm" title="Erlang Leftist Heap">
+<pre>NB: Items with equal priorities are added in LIFO (stack) order
+
+```
+-module(leftist_heap).
+
+%% external exports
+-export([
+    new_min/0,
+    new_max/0,
+    new_with/1,
+
+    is_empty/1,
+    insert/2,
+    delete/2,
+    foldl/3,
+    foldr/3,
+    merge/2,
+    head/1,
+    tail/1,
+    size/1,
+
+    from_list_min/1,
+    from_list_max/1,
+    from_list_with/2,
+
+    to_list/1
+]).
+
+%% support exports
+-export([
+    depth/1,
+    to_dot/1
+]).
+
+-export_type([
+    type/1,
+    prio_fun/1
+]).
+
+-opaque type(T) :: {prio_fun(T), size(), heap(T)}.
+-type prio_fun(T) :: fun((T) -&gt; prio()).
+-type heap(T) :: nil | {rank(), T, heap(T), heap(T)}.
+-type prio() :: any().
+-type rank() :: non_neg_integer().
+-type size() :: non_neg_integer().
+-type error(_E) :: no_return().
+
+%%%
+%%% Weight-biased Leftist Heap
+%%% Purely functional data structures by Chris Okasaki
+%%%
+%%% NB: Items with equal priorities are added in LIFO (stack) order
+%%%
+
+%%%------------------------------------------------------------------------
+%%% API
+%%%------------------------------------------------------------------------
+
+-spec new_min() -&gt; type(_T).
+new_min() -&gt;
+    {fun min_prio/1, 0, nil}.
+
+-spec min_prio(T) -&gt; T.
+min_prio(X) -&gt;
+    X.
+
+-spec new_max() -&gt; type(_T).
+new_max() -&gt;
+    {fun max_prio/1, 0, nil}.
+
+-spec max_prio(T) -&gt; T.
+max_prio(X) -&gt;
+    -X.
+
+-spec new_with(prio_fun(T)) -&gt; type(T).
+new_with(PrioF) when is_function(PrioF, 1) -&gt;
+    {PrioF, 0, nil}.
+
+%% O(1)
+-spec is_empty(type(_T)) -&gt; boolean().
+is_empty({_, 0, nil}) -&gt;
+    true;
+is_empty({_, _, _}) -&gt;
+    false.
+
+%% O(lg(n))
+-spec insert(T, type(T)) -&gt; type(T).
+insert(X, {PrioF, Size, H}) -&gt;
+    {PrioF, Size + 1, merge_with(PrioF, {1, X, nil, nil}, H)}.
+
+%% O(n*lg(n))
+-spec delete(T, type(T)) -&gt; type(T).
+delete(X, {PrioF, _, _} = T) -&gt;
+    foldl(fun
+        (Y, Acc) when X =:= Y -&gt; Acc;
+        (Y, Acc) -&gt; insert(Y, Acc)
+    end, {PrioF, 0, nil}, T).
+
+%% O(n*lg(n)) without accounting ReduceF
+-spec foldl(ReduceF, AccIn, type(T)) -&gt; AccOut
+    when ReduceF :: fun((T, AccIn) -&gt; AccOut),
+         AccIn :: AccOut :: any().
+foldl(_ReduceF, Init, {_, _, nil}) -&gt;
+    Init;
+foldl(ReduceF, Acc, T) -&gt;
+    foldl(ReduceF, ReduceF(head(T), Acc), tail(T)).
+
+%% O(n*lg(n)) without accounting ReduceF
+-spec foldr(ReduceF, AccIn, type(T)) -&gt; AccOut
+    when ReduceF :: fun((T, AccIn) -&gt; AccOut),
+         AccIn :: AccOut :: any().
+foldr(_ReduceF, Init, {_, _, nil}) -&gt;
+    Init;
+foldr(ReduceF, Acc, T) -&gt;
+    ReduceF(head(T), foldr(ReduceF, Acc, tail(T))).
+
+%% O(1)
+-spec head(type(T)) -&gt; T | error(empty).
+head({_, 0, nil}) -&gt;
+    error(empty);
+head({_, _, {_, T, _, _}}) -&gt;
+    T.
+
+%% O(lg(n))
+-spec tail(type(T)) -&gt; type(T) | error(empty).
+tail({_, 0, nil}) -&gt;
+    error(empty);
+tail({PrioF, Size, {_, _, L, R}}) -&gt;
+    {PrioF, Size - 1, merge_with(PrioF, L, R)}.
+
+%% O(1)
+-spec size(type(_T)) -&gt; size().
+size({_, Size, _}) -&gt;
+    Size.
+
+%% O(lg(n))
+-spec merge(type(T), type(T)) -&gt; type(T).
+merge({PrioF, 0, nil}, {_PrioF, S, H}) -&gt;
+    {PrioF, S, H};
+merge({PrioF, S, H}, {_PrioF, 0, nil}) -&gt;
+    {PrioF, S, H};
+merge({PrioF, S1, H1}, {_PrioF, S2, H2}) -&gt;
+    {PrioF, S1 + S2, merge_with(PrioF, H1, H2)}.
+
+%% O(lg(n))
+-spec merge_with(prio_fun(T), heap(T), heap(T)) -&gt; heap(T).
+merge_with(_PrioF, nil, H) -&gt;
+    H;
+merge_with(_PrioF, H, nil) -&gt;
+    H;
+merge_with(PrioF, {_, X1, L1, R1} = H1, {_, X2, L2, R2} = H2) -&gt;
+    case PrioF(X1) =&lt; PrioF(X2) of
+    true -&gt;
+        balance(X1, L1, merge_with(PrioF, R1, H2));
+    false -&gt;
+        balance(X2, L2, merge_with(PrioF, H1, R2))
+    end.
+
+%% O(1)
+-spec balance(T, heap(T), heap(T)) -&gt; heap(T).
+balance(X, H1, H2) -&gt;
+    R1 = rank(H1),
+    R2 = rank(H2),
+    %% Weight-biased leflist heap
+    R = R1 + R2 + 1,
+    case R1 &gt;= R2 of
+    true -&gt;
+        {R, X, H1, H2};
+    false -&gt;
+        {R, X, H2, H1}
+    end.
+
+%% O(1)
+-spec rank(heap(_T)) -&gt; rank().
+rank(nil) -&gt;
+    0;
+rank({R, _, _, _}) -&gt;
+    R.
+
+-spec from_list_min([T]) -&gt; type(T).
+from_list_min(Xs) -&gt;
+    from_list_with(fun min_prio/1, Xs).
+
+-spec from_list_max([T]) -&gt; type(T).
+from_list_max(Xs) -&gt;
+    from_list_with(fun max_prio/1, Xs).
+
+%% O(n)
+%% https://en.wikipedia.org/wiki/Leftist_tree#Initializing_a_height_biased_leftist_tree
+-spec from_list_with(prio_fun(T), [T]) -&gt; type(T).
+from_list_with(PrioF, []) -&gt;
+    new_with(PrioF);
+from_list_with(PrioF, Xs) -&gt;
+    {PrioF, length(Xs), from_queue_with(PrioF, queue:from_list(
+        [{1, X, nil, nil} || X &lt;- Xs]
+    ))}.
+
+-spec from_queue_with(prio_fun(T), queue:queue(heap(T))) -&gt; heap(T).
+from_queue_with(PrioF, Q) -&gt;
+    {{value, H1}, Q1} = queue:out(Q),
+    case queue:out(Q1) of
+    {empty, _} -&gt;
+        H1;
+    {{value, H2}, Q2} -&gt;
+        from_queue_with(PrioF, queue:in(merge_with(PrioF, H1, H2), Q2))
+    end.
+
+%% O(n*lg(n))
+-spec to_list(type(T)) -&gt; [T].
+to_list(T) -&gt;
+    foldr(fun cons/2, [], T).
+
+cons(X, Xs) -&gt;
+    [X | Xs].
+
+-spec to_dot(type(_T)) -&gt; iolist().
+to_dot({_PrioF, _Size, H}) -&gt;
+    [&quot;digraph {\n&quot;,
+      element(2, to_dot_acc(H, {0, []})),
+     &quot;}\n&quot;].
+
+to_dot_acc(nil, {N, Acc}) -&gt;
+    {N+1, [Acc, io_lib:format(&quot;  ~p [shape=point];~n&quot;, [N])]};
+to_dot_acc({Rk, X, L, R}, {N, Acc}) -&gt;
+    %% N is me
+    %% N+1 is first left after me
+    {N2, Acc2} = to_dot_acc(L, {N+1, Acc}),
+    %% N2 is first right after processing left
+    {N3, Acc3} = to_dot_acc(R, {N2, Acc2}),
+    {N3+1, [Acc3, io_lib:format(&quot;  ~p [label=\&quot;~p/~p\&quot;];~n&quot;, [N, X, Rk]),
+                  io_lib:format(&quot;  ~p -&gt; ~p;~n&quot;, [N, N+1]),
+                  io_lib:format(&quot;  ~p -&gt; ~p;~n&quot;, [N, N2])]}.
+
+-spec depth(type(_T)) -&gt; non_neg_integer().
+depth({_PrioF, _Size, H}) -&gt;
+    depth_acc(H, 0).
+
+depth_acc(nil, Acc) -&gt;
+    Acc;
+depth_acc({_, _, L, R}, Acc) -&gt;
+    LAcc = depth_acc(L, Acc),
+    RAcc = depth_acc(R, Acc),
+    1 + max(LAcc, RAcc).
+```
+
+* [ext[Purely Functional Data Structures p. 25|djvux://refs/dev/data_structures/Purely_Functional_Data_Structures.djvu::25]]
+* [[Priority Queue]]
+* [[Heap]]</pre>
+</div>
 <div created="20200428103506590" modified="20200428103515253" tags="Erlang" title="Erlang libs">
 <pre>XMPP video
 ===
@@ -18090,7 +18516,7 @@ set-r15b03-1
 ########### DO NOT MODIFY PATH AFTER HERE ##########
 </pre>
 </div>
-<div created="20200720171623561" modified="20200720171808496" tags="Erlang Algorithm" title="Erlang shuffle list">
+<div created="20200720171623561" modified="20210316095503827" tags="Erlang Algorithm" title="Erlang Shuffle List">
 <pre>```
 shuffle(Xs) -&gt;
     Shuffled = lists:sort([{rand:uniform(), X} || X &lt;- Xs]),
