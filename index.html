@@ -179,6 +179,8 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/edit/references-1186112235</li>
+
 <li>$:/state/plugin-info-334910430-$:/core---1812962263</li>
 
 <li>$:/state/showeditpreview</li>
@@ -1089,6 +1091,8 @@ Error message and password prompt
 
 <li>Erlang Start Distributed Node</li>
 
+<li>Erlang Streams</li>
+
 <li>Erlang Term to SHA1</li>
 
 <li>Erlang Tracing and Profiling</li>
@@ -1185,7 +1189,7 @@ Error message and password prompt
 
 <li>Functional Decomposition</li>
 
-<li>Functional design patterns</li>
+<li>Functional Design Patterns</li>
 
 <li>Functional Javascript (with Underscore.js)</li>
 
@@ -11864,6 +11868,9 @@ Error message and password prompt
 <div created="20200422191459564" modified="20200422191505876" title="$:/SiteTitle">
 <pre>My Wiki</pre>
 </div>
+<div created="20210316112154590" modified="20210316112154590" title="$:/state/edit/references-1186112235">
+<pre>show</pre>
+</div>
 <div created="20200423185634443" modified="20200423185634443" title="$:/state/plugin-info-334910430-$:/core---1812962263">
 <pre>contents</pre>
 </div>
@@ -12050,7 +12057,7 @@ Error message and password prompt
 <div created="20200528083227482" modified="20200720094148124" title="$:/state/toc/TableOfContents-Video--118161433">
 <pre>close</pre>
 </div>
-<div created="20200430150353516" modified="20200527182529247" title="$:/state/toc/TableOfContents-Web--118161433">
+<div created="20200430150353516" modified="20210316111752299" title="$:/state/toc/TableOfContents-Web--118161433">
 <pre>close</pre>
 </div>
 <div created="20200428101546086" modified="20200722131342039" title="$:/state/toc/TableOfContents/Dev-Algorithm--118161433">
@@ -12104,7 +12111,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210316095444210" list="" modified="20210316111622381" title="$:/StoryList">
+<div created="20210316095444210" list="" modified="20210316112004483" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13118,7 +13125,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210316111645784" title="$:/temp/search">
+<div created="20200422190456346" modified="20210316112237545" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -19218,6 +19225,225 @@ start_dist() -&gt;
 
 * [[RPC]]</pre>
 </div>
+<div created="20210316112115592" modified="20210316112234858" tags="Erlang" title="Erlang Streams">
+<pre>```
+%%% -*- mode: erlang;erlang-indent-level: 4;indent-tabs-mode: nil -*-
+%%% ex: ts=4 sw=4 ft=erlang et indentexpr=
+%%%--------------------------------------------------------------------------
+%%% File:    streams.erl
+%%%
+%%% @doc     Lazy streams implementation
+%%% @author  Dmitry Klionsky &lt;dm.klionsky@gmail.com&gt;
+%%% @since   14 Feb 2019
+%%% @end
+%%%-------------------------------------------------------------------------
+-module(streams).
+-author('dm.klionsky@gmail.com').
+
+-export([
+    new/0, from_list/1, to_list/1, seq/2, seq/3,
+    map/2, filter/2, foldl/3,
+    nth/2, take/2, drop/2, zip/2,
+    cycle/1, iterate/2
+]).
+
+%% include files
+-ifndef(TEST).
+%-define(TEST, 1).
+-endif.
+
+-ifdef(TEST).
+-include_lib(&quot;eunit/include/eunit.hrl&quot;).
+-compile([export_all, nowarn_export_all]).
+-endif.
+
+-type promise(T) :: fun(() -&gt; T).
+-type stream(T) :: {} | {T, promise(T)}.
+-type error(_E) :: no_return().
+
+-define(DELAY(E), fun () -&gt; E end).
+-define(FORCE(P), P()).
+
+%%%------------------------------------------------------------------------
+%%% API
+%%%------------------------------------------------------------------------
+
+-spec new() -&gt; stream(_T).
+new() -&gt;
+    {}.
+
+-spec from_list([T]) -&gt; stream(T).
+from_list([]) -&gt;
+    {};
+from_list([X | Xs]) -&gt;
+    {X, ?DELAY(from_list(Xs))}.
+
+-spec to_list(stream(T)) -&gt; [T].
+to_list({}) -&gt;
+    [];
+to_list({X, {}}) -&gt;
+    [X];
+to_list({X, P}) -&gt;
+    [X | to_list(?FORCE(P))].
+
+-spec seq(integer(), integer()) -&gt; stream(integer()).
+seq(From, To) -&gt;
+    seq(From, To, 1).
+
+-spec seq(integer(), integer(), integer()) -&gt; stream(integer()).
+seq(From, To, Step) when (From &lt; To andalso Step &gt; 0) orelse
+                         (From &gt; To andalso Step &lt; 0) -&gt;
+    {From, ?DELAY(seq(From + Step, To, Step))};
+seq(From, From, _) -&gt;
+    {From, ?DELAY({})};
+seq(_, _, _) -&gt;
+    error(badarg).
+
+-spec map(fun((T) -&gt; U), stream(T)) -&gt; stream(U).
+map(_Fun, {}) -&gt;
+    {};
+map(Fun, {X, P}) -&gt;
+    {Fun(X), ?DELAY(map(Fun, ?FORCE(P)))}.
+
+-spec filter(fun((T) -&gt; boolean()), stream(T)) -&gt; stream(T).
+filter(_Pred, {}) -&gt;
+    {};
+filter(Pred, {X, P}) -&gt;
+    case Pred(X) of
+    true -&gt;
+        {X, ?DELAY(filter(Pred, ?FORCE(P)))};
+    false -&gt;
+        filter(Pred, ?FORCE(P))
+    end.
+
+-spec foldl(fun((T, Acc) -&gt; Acc), Acc, stream(T)) -&gt; stream(Acc).
+foldl(_Fun2, Acc, {}) -&gt;
+    {Acc, {}};
+foldl(Fun2, Acc, {X, P}) -&gt;
+    {Acc, ?DELAY(foldl(Fun2, Fun2(X, Acc), ?FORCE(P)))}.
+
+-spec nth(pos_integer(), stream(T)) -&gt; T | error(empty).
+nth(_, {}) -&gt;
+    error(empty);
+nth(1, {X, _}) -&gt;
+    X;
+nth(N, {_, P}) when N &gt; 1 -&gt;
+    nth(N-1, ?FORCE(P)).
+
+-spec take(non_neg_integer(), stream(T)) -&gt; stream(T).
+take(_, {}) -&gt;
+    {};
+take(0, _) -&gt;
+    {};
+take(N, {X, P}) when N &gt; 0 -&gt;
+    {X, ?DELAY(take(N-1, ?FORCE(P)))}.
+
+-spec drop(non_neg_integer(), stream(T)) -&gt; stream(T).
+drop(_, {}) -&gt;
+    {};
+drop(0, {X, P}) -&gt;
+    {X, P};
+drop(N, {_, P}) when N &gt; 0 -&gt;
+    drop(N-1, ?FORCE(P)).
+
+-spec zip(stream(T), stream(U)) -&gt; stream({T, U}).
+zip(_, {}) -&gt;
+    {};
+zip({}, _) -&gt;
+    {};
+zip({X, P}, {Y, R}) -&gt;
+    {{X, Y}, ?DELAY(zip(?FORCE(P), ?FORCE(R)))}.
+
+-spec cycle([T]) -&gt; stream(T).
+cycle([]) -&gt;
+    {};
+cycle(L) -&gt;
+    cycle(L, L).
+
+cycle([], L) -&gt;
+    cycle(L, L);
+cycle([X | Xs], L) -&gt;
+    {X, ?DELAY(cycle(Xs, L))}.
+
+-spec iterate(fun((T) -&gt; T), T) -&gt; stream(T).
+iterate(Next, Init) -&gt;
+    {Init, ?DELAY(iterate(Next, Next(Init)))}.
+
+%%%------------------------------------------------------------------------
+%%% Tests begin
+%%%------------------------------------------------------------------------
+
+-ifdef(TEST).
+
+from_to_test() -&gt;
+    ?assertEqual([], to_list(new())),
+    ?assertEqual([1,2,3,4], to_list(from_list([1,2,3,4]))).
+
+seq_test() -&gt;
+    ?assertEqual([1,2,3], to_list(seq(1,3))),
+    ?assertEqual([1,0,-1], to_list(seq(1,-1,-1))).
+
+s1_to_4() -&gt;
+    seq(1, 4).
+
+s1_to_100() -&gt;
+    seq(1, 100).
+
+map_test() -&gt;
+    ?assertEqual([], to_list(map(fun (X) -&gt; X*X end, new()))),
+    ?assertEqual([1,4,9,16], to_list(map(fun (X) -&gt; X*X end, s1_to_4()))).
+
+filter_test() -&gt;
+    ?assertEqual([], to_list(filter(fun (X) -&gt; X rem 2 == 0 end, new()))),
+    ?assertEqual([2,4], to_list(filter(fun (X) -&gt; X rem 2 == 0 end, s1_to_4()))).
+
+filter_map_test() -&gt;
+    ?assertEqual([4,16], to_list(
+        filter(fun (X) -&gt; X rem 2 == 0 end,
+            map(fun (X) -&gt; X*X end,
+                s1_to_4())))).
+
+nth_test() -&gt;
+    ?assertError(empty, nth(1, new())),
+    ?assertEqual(1, nth(1, s1_to_4())),
+    ?assertEqual(4, nth(4, s1_to_4())),
+    ?assertError(empty, nth(5, s1_to_4())).
+
+take_test() -&gt;
+    ?assertEqual([], to_list(take(100, new()))),
+    ?assertEqual([], to_list(take(0, s1_to_100()))),
+    ?assertEqual([1,2,3], to_list(take(3, s1_to_100()))).
+
+drop_test() -&gt;
+    ?assertEqual([], to_list(drop(100, new()))),
+    ?assertEqual([98,99,100], to_list(drop(97, s1_to_100()))),
+    ?assertEqual([], to_list(drop(100, s1_to_100()))).
+
+zip_test() -&gt;
+    ?assertEqual([], to_list(zip(s1_to_4(), new()))),
+    ?assertEqual([], to_list(zip(new(), s1_to_4()))),
+    ?assertEqual([{1,2},{2,4},{3,6},{4,8}],
+        to_list(zip(s1_to_4(), map(fun (X) -&gt; 2*X end, s1_to_4())))).
+
+cycle_test() -&gt;
+    ?assertEqual([], to_list(cycle([]))),
+    ?assertEqual([3,1,2], to_list(take(3, drop(2, cycle([1,2,3]))))).
+
+iterate_test() -&gt;
+    Ints = iterate(fun (X) -&gt; X+1 end, 0),
+    ?assertEqual([0,1,2], to_list(take(3, Ints))),
+    ?assertEqual([10,11,12], to_list(take(3, drop(10, Ints)))).
+
+-endif.
+
+%%%------------------------------------------------------------------------
+%%% Tests end
+%%%------------------------------------------------------------------------
+```
+
+* [[Functor]]
+* [[List]]</pre>
+</div>
 <div created="20210316101723489" modified="20210316101811045" tags="Erlang" title="Erlang Term to SHA1">
 <pre>```
 calc_sha1(Term) -&gt;
@@ -20173,7 +20399,7 @@ Reduce the number of side effects by explicitly defining all arguments needed fo
 * [[Single Responsibility Principle]]
 </pre>
 </div>
-<div created="20200428101553201" modified="20210314131037325" tags="Algorithm Dev" title="Functional design patterns">
+<div created="20200428101553201" modified="20210316112156726" tags="Algorithm Dev" title="Functional Design Patterns">
 <pre>* If you have a list, db table, etc and you need to change it by applying different modifications, consider to store deltas (change commands) and then apply those. Looks like Event sourcing!
 
 * Place the arguments LESS likely to change first (Data Last). https://glebbahmutov.com/blog/put-callback-first-for-elegance/
@@ -23134,7 +23360,7 @@ $ cat data.xml | xmllint --format -
 A PRI is a method used to connect [[PBX]] to [[PSTN]]. It is one phone line, consisting of two pairs of copper wires terminating on the customer PBX. 
 Although it utilizes one line from the phone service carrier, a PRI line can receive/send up to 23 calls simultaneously! </pre>
 </div>
-<div created="20200428101236702" modified="20210314131045493" tags="Dev" title="Principles">
+<div created="20200428101236702" modified="20210316111959365" tags="Dev" title="Principles">
 <pre>* Parse raw data from file, db, etc into intermediate internal representation (AST)
 
 * Every periodic task should be disableable at startup and/or runtime.
@@ -23155,7 +23381,7 @@ https://www.johndcook.com/blog/2008/06/17/software-in-space/
 * Every server should have UI/API/CLI to change configs
 * Notification handlers should run is separate processes (executor's state changed notitication)
 
-[[Erlang ensure all callbacks implemented]]
+[[Erlang Ensure All Callbacks Implemented]]
 
 * Use opaque data types: https://www.youtube.com/watch?v=hxLh0qFX9oI
 
