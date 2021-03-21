@@ -11986,7 +11986,7 @@ Error message and password prompt
 <div created="20200422191529492" modified="20210314172334422" title="$:/state/tab/sidebar--595412856">
 <pre>TableOfContents</pre>
 </div>
-<div created="20200426101141551" modified="20210321115812217" title="$:/state/toc/TableOfContents-Android--118161433">
+<div created="20200426101141551" modified="20210321120920297" title="$:/state/toc/TableOfContents-Android--118161433">
 <pre>close</pre>
 </div>
 <div created="20200428100846343" modified="20200505083916917" title="$:/state/toc/TableOfContents-AWS--118161433">
@@ -12142,7 +12142,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210321093917431" list="" modified="20210321115449129" title="$:/StoryList">
+<div created="20210321093917431" list="" modified="20210321115942613" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13361,10 +13361,18 @@ $ adb pull /sdcard/demo.mp4
 * https://developer.android.com/studio/command-line/adb#screenrecord
 * [[Android Debug Bridge]]</pre>
 </div>
-<div created="20210321100714843" modified="20210321101717186" tags="Android" title="Adb Run Shell">
+<div created="20210321100714843" modified="20210321120906961" tags="Android" title="Adb Run Shell">
 <pre>```
 $ platform-tools/adb shell
-K10000_Pro:/ $ 
+_ :/ $ 
+```
+
+!!! Troubleshooting
+
+```
+$ platform-tools/adb shell
+db: insufficient permissions for device: missing udev rules? user is in the plugdev group
+See [http://developer.android.com/tools/device.html] for more information
 ```
 
 ```
@@ -13375,7 +13383,7 @@ Try 'adb kill-server' if that seems wrong.
 Otherwise check for a confirmation dialog on your device.
 ```
 
-Accept &quot;Allow USB debugging?&quot;
+''Use USB for'' choose ''File Transfer'' or ''Transfer photos (PTP)''
 
 * https://developer.android.com/studio/command-line/adb#shellcommands
 * [[Adb List Devices]]
