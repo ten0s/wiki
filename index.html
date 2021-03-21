@@ -569,6 +569,8 @@ Error message and password prompt
 
 <li>Adb Copy Files</li>
 
+<li>Adb Disable App</li>
+
 <li>Adb Install APK</li>
 
 <li>Adb List Devices</li>
@@ -11984,7 +11986,7 @@ Error message and password prompt
 <div created="20200422191529492" modified="20210314172334422" title="$:/state/tab/sidebar--595412856">
 <pre>TableOfContents</pre>
 </div>
-<div created="20200426101141551" modified="20210321110343765" title="$:/state/toc/TableOfContents-Android--118161433">
+<div created="20200426101141551" modified="20210321113317110" title="$:/state/toc/TableOfContents-Android--118161433">
 <pre>close</pre>
 </div>
 <div created="20200428100846343" modified="20200505083916917" title="$:/state/toc/TableOfContents-AWS--118161433">
@@ -12140,7 +12142,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210321093917431" list="" modified="20210321110335321" title="$:/StoryList">
+<div created="20210321093917431" list="" modified="20210321112212134" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13154,7 +13156,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210321110345721" title="$:/temp/search">
+<div created="20200422190456346" modified="20210321112012991" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -13302,6 +13304,15 @@ $ adb push &lt;local&gt; &lt;remote&gt;
 * https://developer.android.com/studio/command-line/adb#copyfiles
 * [[Android Debug Bridge]]</pre>
 </div>
+<div created="20210321111956092" modified="20210321113115614" tags="Android" title="Adb Disable App">
+<pre>```
+$ pm disable-user --user 0 com.miui.player
+```
+
+* [[Adb Package Manager]]
+* [[Android Debug Bridge]]
+</pre>
+</div>
 <div created="20210321095206278" modified="20210321104911994" tags="Android" title="Adb Install APK">
 <pre>```
 $ adb install path_to_apk
@@ -13328,7 +13339,7 @@ List of devices attached
 * [[Android Enable USB Debugging]]
 * [[Android Debug Bridge]]</pre>
 </div>
-<div created="20210321100619575" modified="20210321110143547" tags="Android" title="Adb Package Manager">
+<div created="20210321100619575" modified="20210321113312171" tags="Android" title="Adb Package Manager">
 <pre>```
 $ pm list packages
 ```
@@ -13336,6 +13347,7 @@ $ pm list packages
 * https://developer.android.com/studio/command-line/adb#pm
 * [[Adb Install APK]]
 * [[Adb Uninstall App]]
+* [[Adb Disable App]]
 * [[Android Debug Bridge]]</pre>
 </div>
 <div created="20210321100412863" modified="20210321100503990" tags="Android" title="Adb Record Video">
@@ -13389,13 +13401,19 @@ $ adb pull /sdcard/screen.png
 * https://developer.android.com/studio/command-line/adb#screencap
 * [[Android Debug Bridge]]</pre>
 </div>
-<div created="20210321100551464" modified="20210321104856379" tags="Android" title="Adb Uninstall App">
+<div created="20210321100551464" modified="20210321113248276" tags="Android" title="Adb Uninstall App">
 <pre>```
 $ pm uninstall ru.meefik.busybox
 ```
 
+System app
+
+```
+$ pm uninstall -k --user 0 com.miui.player
+```
+
 * https://developer.android.com/studio/command-line/adb#pm
-* [[Adb Install APK]]
+* https://www.xda-developers.com/uninstall-carrier-oem-bloatware-without-root-access/
 * [[Adb Package Manager]]
 * [[Android Debug Bridge]]</pre>
 </div>
