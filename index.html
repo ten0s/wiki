@@ -635,6 +635,8 @@ Error message and password prompt
 
 <li>Android Factory Mode</li>
 
+<li>Android Fastboot</li>
+
 <li>Android handle custom URL</li>
 
 <li>Android Install APK from Google Play</li>
@@ -2140,6 +2142,8 @@ Error message and password prompt
 <li>Upgrade Raspbian Stretch to Buster</li>
 
 <li>URL</li>
+
+<li>USB Vendors</li>
 
 <li>Use curl to post data from stdin</li>
 
@@ -11995,8 +11999,8 @@ Error message and password prompt
 <div created="20200422191529492" modified="20210314172334422" title="$:/state/tab/sidebar--595412856">
 <pre>TableOfContents</pre>
 </div>
-<div created="20200426101141551" modified="20210321122058639" title="$:/state/toc/TableOfContents-Android--118161433">
-<pre>close</pre>
+<div created="20200426101141551" modified="20210322144717918" title="$:/state/toc/TableOfContents-Android--118161433">
+<pre>open</pre>
 </div>
 <div created="20200428100846343" modified="20200505083916917" title="$:/state/toc/TableOfContents-AWS--118161433">
 <pre>close</pre>
@@ -12151,7 +12155,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210322091222809" list="" modified="20210322091222809" title="$:/StoryList">
+<div created="20210322091222809" list="[[Android Fastboot]] [[Android Factory Mode]] [[Android Boot Mode]]" modified="20210322175524847" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13165,7 +13169,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210322091457706" title="$:/temp/search">
+<div created="20200422190456346" modified="20210322191036324" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -13593,7 +13597,7 @@ https://computing.llnl.gov/tutorials/parallel_comp/</pre>
 <div created="20200426101115160" modified="20200426101140488" tags="TableOfContents" title="Android">
 <pre></pre>
 </div>
-<div created="20200603111009413" modified="20210321094520087" tags="Android" title="Android Boot Mode">
+<div created="20200603111009413" modified="20210322174303807" tags="Android" title="Android Boot Mode">
 <pre># Power off 
 # Hold the power button and the volume up
 
@@ -13633,7 +13637,6 @@ Power off
 
 * https://www.online-tech-tips.com/smartphones/can-you-bypass-the-android-lock-screen/
 * https://android.gadgethacks.com/how-to/know-your-android-tools-what-is-fastboot-do-you-use-it-0155640/
-* https://www.androidcentral.com/android-z-what-fastboot
 * https://www.makeuseof.com/tag/use-adb-fastboot-android/</pre>
 </div>
 <div created="20200512073714953" modified="20210321115531138" tags="Android" title="Android Debug Bridge">
@@ -13702,6 +13705,29 @@ Reboot
 [[Android Boot Mode]] | [[Hardware Buttons]]
 
 https://www.online-tech-tips.com/smartphones/can-you-bypass-the-android-lock-screen/</pre>
+</div>
+<div created="20210322175251149" modified="20210322184030374" tags="Android" title="Android Fastboot">
+<pre>```
+$ adb reboot bootloader
+...
+$ fastboot reboot
+```
+
+* Great! https://android.gadgethacks.com/how-to/know-your-android-tools-what-is-fastboot-do-you-use-it-0155640/
+* [[Android Debug Bridge]]
+
+```
+$ platform-tools/fastboot devices
+no permissions (missing udev rules? user is in the plugdev group); see [http://developer.android.com/tools/device.html]	fastboot
+```
+
+Solution:
+
+* https://gist.github.com/smac89/251368c8df2ccd645baedc3e1238fdb4
+* https://medium.com/@yudapramad/solving-stuck-android-fastboot-5dcedd4fff2f
+* https://github.com/M0Rf30/android-udev-rules
+
+[[USB Vendors]]</pre>
 </div>
 <div created="20200530163054137" modified="20200530174415509" tags="Android" title="Android handle custom URL">
 <pre>Custom protocol handlers
@@ -28228,6 +28254,9 @@ $ sudo reboot
 <pre>Uniform Resource Locators
 
 https://www.ietf.org/rfc/rfc1738.txt</pre>
+</div>
+<div created="20210322175540062" modified="20210322175549786" tags="" title="USB Vendors">
+<pre>https://devicehunt.com/all-usb-vendors</pre>
 </div>
 <div created="20200425150651505" modified="20200425150722777" tags="" title="Use curl to post data from stdin">
 <pre>```
