@@ -629,6 +629,8 @@ Error message and password prompt
 
 <li>Android Boot Mode</li>
 
+<li>Android Command Line Tools</li>
+
 <li>Android Debug Bridge</li>
 
 <li>Android Determine Activity from APK</li>
@@ -12188,7 +12190,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210323143804958" list="" modified="20210323163655262" title="$:/StoryList">
+<div created="20210323143804958" list="[[Android Asset Packaging Tool]] [[Android Command Line Tools]]" modified="20210323172940291" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13202,7 +13204,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210323163839616" title="$:/temp/search">
+<div created="20200422190456346" modified="20210323173311686" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -13690,6 +13692,36 @@ Power off
 * https://android.gadgethacks.com/how-to/know-your-android-tools-what-is-fastboot-do-you-use-it-0155640/
 * https://www.makeuseof.com/tag/use-adb-fastboot-android/</pre>
 </div>
+<div created="20210323171923208" modified="20210323173309342" tags="Android" title="Android Command Line Tools">
+<pre>```
+$ wget https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip
+$ unzip commandlinetools-linux-6858069_latest.zip
+```
+
+```
+$ cmdline-tools/bin/sdkmanager --version
+Error: Could not determine SDK root.
+Error: Either specify it explicitly with --sdk_root= or move this package into its expected location: &lt;sdk&gt;/cmdline-tools/latest/
+```
+
+```
+$ ./bin/sdkmanager --sdk_root=. --list
+```
+
+```
+$ /bin/sdkmanager --sdk_root=. &quot;build-tools;30.0.3&quot;
+```
+
+
+* https://developer.android.com/studio/command-line/sdkmanager
+* https://developer.android.com/studio#cmdline-tools
+
+ANDROID_SDK_ROOT
+ANDROID_HOME
+ANDROID_AVD_HOME
+
+</pre>
+</div>
 <div created="20200512073714953" modified="20210321115531138" tags="Android" title="Android Debug Bridge">
 <pre>* [[Android Enable USB Debugging]]
 * [[Adb Setup]]
@@ -13849,9 +13881,33 @@ https://www.makeuseof.com/tag/advanced-android-hacks-dont-need-root/
 
 https://stackoverflow.com/questions/25477424/adb-shell-su-works-but-adb-root-does-not</pre>
 </div>
-<div created="20210323161807120" modified="20210323162454249" tags="Android" title="Android List Packages">
+<div created="20210323161807120" modified="20210323165923009" tags="Android" title="Android List Packages">
 <pre>```
-$ adb shell pm list packages
+$ adb shell pm list packages 
+```
+
+List System Disabled Packages
+
+```
+$ adb shell pm list packages -s -d
+```
+
+List Packages and their APKs
+
+```
+$ adb shell pm list packages -f
+```
+
+Find Package
+
+```
+$ adb shell pm list packages FILTER
+```
+
+Find Package's APK
+
+```
+$ adb shell pm path PACKAGE
 ```
 
 * [[Adb Package Manager]]
