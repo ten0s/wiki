@@ -235,6 +235,8 @@ Error message and password prompt
 
 <li>$:/state/tab-31930720</li>
 
+<li>$:/state/tab-559412452</li>
+
 <li>$:/state/tab-660255949</li>
 
 <li>$:/state/tab-82458196</li>
@@ -12022,6 +12024,9 @@ Error message and password prompt
 <div created="20210316111631275" modified="20210316111631275" title="$:/state/tab-31930720">
 <pre>$:/core/ui/TiddlerInfo/References</pre>
 </div>
+<div created="20210323173333127" modified="20210323173333127" title="$:/state/tab-559412452">
+<pre>$:/core/ui/TiddlerInfo/References</pre>
+</div>
 <div created="20210314162000789" modified="20210314162000789" title="$:/state/tab-660255949">
 <pre>$:/core/ui/TiddlerInfo/References</pre>
 </div>
@@ -12190,7 +12195,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210323143804958" list="[[Android Asset Packaging Tool]] [[Android Command Line Tools]]" modified="20210323172940291" title="$:/StoryList">
+<div created="20210323143804958" list="" modified="20210323173359592" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13204,7 +13209,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210323173311686" title="$:/temp/search">
+<div created="20200422190456346" modified="20210323174038176" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -13633,7 +13638,7 @@ https://computing.llnl.gov/tutorials/parallel_comp/</pre>
 <div created="20200426101115160" modified="20200426101140488" tags="TableOfContents" title="Android">
 <pre></pre>
 </div>
-<div created="20210323160201252" modified="20210323163836159" tags="Android" title="Android Asset Packaging Tool">
+<div created="20210323160201252" modified="20210323174028602" tags="Android" title="Android Asset Packaging Tool">
 <pre>aapt
 
 ```
@@ -13648,7 +13653,13 @@ act=$(aapt dump badging $1|awk -F&quot; &quot; '/launchable-activity/ {print $2}
 adb shell am start -n $pkg/$act
 ```
 
-https://developer.android.com/studio/command-line/aapt2</pre>
+```
+$ aapt d xmltree &lt;path to apk&gt; AndroidManifest.xml
+```
+
+* https://stackoverflow.com/questions/6109234/how-to-run-not-only-install-an-android-application-using-apk-file/57393005#57393005
+
+* https://developer.android.com/studio/command-line/aapt2</pre>
 </div>
 <div created="20200603111009413" modified="20210322174303807" tags="Android" title="Android Boot Mode">
 <pre># Power off 
@@ -14002,7 +14013,7 @@ $ fusermount -u android
 * [[Linux SSH File System]]
 </pre>
 </div>
-<div created="20210323155238659" modified="20210323161144821" tags="Android" title="Android Start App from Shell">
+<div created="20210323155238659" modified="20210323173355549" tags="Android" title="Android Start App from Shell">
 <pre>```
 $ adb shell am start -a android.intent.action.MAIN -n com.android.settings/.Settings
 $ adb shell am start -a android.intent.action.MAIN -n com.android.calculator2/.Calculator
@@ -14010,17 +14021,17 @@ $ adb shell am start -a android.intent.action.VIEW -n com.android.browser/.Brows
 ```
 
 * [[Android Stop App from Shell]]
-* [[Activity Manager]]
+* [[Adb Activity Manager]]
 * [[Android Debug Bridge]]</pre>
 </div>
-<div created="20210323160949698" modified="20210323162019843" tags="Android" title="Android Stop App from Shell">
+<div created="20210323160949698" modified="20210323173407045" tags="Android" title="Android Stop App from Shell">
 <pre>```
 $ adb shell am force-stop com.android.calculator2
 ```
 
 * [[Android List Packages]]
 * [[Android Start App from Shell]]
-* [[Activity Manager]]</pre>
+* [[Adb Activity Manager]]</pre>
 </div>
 <div created="20200517174044704" modified="20210321094319509" tags="Android" title="Android Take Screenshot">
 <pre>Press and hold Power + Volume down buttons. 
