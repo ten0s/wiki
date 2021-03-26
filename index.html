@@ -1169,6 +1169,8 @@ Error message and password prompt
 
 <li>Erlang Upgrades</li>
 
+<li>Erlang warnings_as_errors in library</li>
+
 <li>Erlang Xref Checks</li>
 
 <li>Erlang Xref Ignore</li>
@@ -12207,7 +12209,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[Node.js Releases]]" title="$:/StoryList">
+<div created="20210326173838520" list="" modified="20210326173842374" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13221,7 +13223,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210326144345774" title="$:/temp/search">
+<div created="20200422190456346" modified="20210326174609642" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -20206,6 +20208,19 @@ Tanenbaum this captures a remarkable number of botched upgrades
 * [erlang-questions] A nice code upgrade trick from Andy Tanenbaum http://erlang.org/pipermail/erlang-questions/2015-June/084952.html
 * http://www.metabrew.com/article/erlang-rebar-tutorial-generating-releases-upgrades
 </pre>
+</div>
+<div created="20210326174443709" modified="20210326174630281" tags="Erlang" title="Erlang warnings_as_errors in library">
+<pre>If a project has tests (especially if they're run automatically on code changes), rebar3 can use profiles:
+
+```
+{profiles, [
+    {test, [{erl_opts, [warnings_as_errors]}]}
+]}.
+```
+
+so that way your CI tests should fail and keep your project clean from errors. But at the same time it won't break as a dependency.
+
+http://erlang.org/pipermail/erlang-questions/2018-June/095586.html</pre>
 </div>
 <div created="20210316104243218" modified="20210316105034641" tags="Erlang" title="Erlang Xref Checks">
 <pre>rebar.config:
