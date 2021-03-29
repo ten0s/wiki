@@ -1171,6 +1171,8 @@ Error message and password prompt
 
 <li>Erlang warnings_as_errors in library</li>
 
+<li>Erlang WebSocket Connections</li>
+
 <li>Erlang Xref Checks</li>
 
 <li>Erlang Xref Ignore</li>
@@ -12211,7 +12213,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210326173838520" list="" modified="20210326191815647" title="$:/StoryList">
+<div list="" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13225,7 +13227,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210326191937066" title="$:/temp/search">
+<div created="20200422190456346" modified="20210329103433483" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -20223,6 +20225,14 @@ Tanenbaum this captures a remarkable number of botched upgrades
 so that way your CI tests should fail and keep your project clean from errors. But at the same time it won't break as a dependency.
 
 http://erlang.org/pipermail/erlang-questions/2018-June/095586.html</pre>
+</div>
+<div created="20210329103508648" modified="20210329103554465" tags="Erlang" title="Erlang WebSocket Connections">
+<pre>```
+lists:map(fun (Pid) -&gt; element(18, element(1, sys:get_state(Pid))) end, gproc:lookup_pids({p, l, http_api_notify})).
+```
+
+* [[Cowboy]]
+* [[WebSocket]]</pre>
 </div>
 <div created="20210316104243218" modified="20210316105034641" tags="Erlang" title="Erlang Xref Checks">
 <pre>rebar.config:
