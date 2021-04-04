@@ -663,6 +663,8 @@ Error message and password prompt
 
 <li>Android handle custom URL</li>
 
+<li>Android Hidden Settings</li>
+
 <li>Android Install APK from Google Play</li>
 
 <li>Android IP Address</li>
@@ -672,6 +674,8 @@ Error message and password prompt
 <li>Android List Packages</li>
 
 <li>Android Logs</li>
+
+<li>Android Modem</li>
 
 <li>Android Monkey</li>
 
@@ -12255,7 +12259,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210404174655094" list="" modified="20210404184139333" title="$:/StoryList">
+<div created="20210404174655094" list="[[Android Customize Firmware]]" modified="20210404190635190" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13269,7 +13273,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210404184600187" title="$:/temp/search">
+<div created="20200422190456346" modified="20210404190706633" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -13790,9 +13794,10 @@ ANDROID_AVD_HOME
 
 </pre>
 </div>
-<div created="20210404182620219" modified="20210404182712335" tags="Android" title="Android Customize Firmware">
+<div created="20210404182620219" modified="20210404190704682" tags="Android" title="Android Customize Firmware">
 <pre>* http://wiki.t-firefly.com/en/AIO-3288C/customize_android_firmware.html
-* Unpack / repack system.img https://android.stackexchange.com/questions/215866/how-to-unpack-repack-system-img-of-android-rom</pre>
+* Unpack / repack system.img https://android.stackexchange.com/questions/215866/how-to-unpack-repack-system-img-of-android-rom
+* Extract &quot;Boot img&quot; From Any Android Phone Without Root https://www.youtube.com/watch?v=HR_is-YYlkc&amp;ab_channel=Craxoid</pre>
 </div>
 <div created="20200512073714953" modified="20210404182544353" tags="Android" title="Android Debug Bridge">
 <pre>* [[Android Enable USB Debugging]]
@@ -13890,7 +13895,7 @@ Reboot
 
 https://www.online-tech-tips.com/smartphones/can-you-bypass-the-android-lock-screen/</pre>
 </div>
-<div created="20210322175251149" modified="20210323143858025" tags="Android" title="Android Fastboot">
+<div created="20210322175251149" modified="20210404190310216" tags="Android" title="Android Fastboot">
 <pre>```
 $ adb reboot bootloader
 ...
@@ -13911,12 +13916,22 @@ Solution:
 * https://medium.com/@yudapramad/solving-stuck-android-fastboot-5dcedd4fff2f
 * https://github.com/M0Rf30/android-udev-rules
 
+TODO:
+
+* https://www.xda-developers.com/how-to-discover-hidden-fastboot-commands/amp/
+* https://android.googlesource.com/platform/system/core/+/master/fastboot
+
 [[USB Vendors]]</pre>
 </div>
 <div created="20200530163054137" modified="20200530174415509" tags="Android" title="Android handle custom URL">
 <pre>Custom protocol handlers
 
 https://developer.android.com/training/app-links/deep-linking</pre>
+</div>
+<div created="20210404190146008" modified="20210404190315560" tags="Android" title="Android Hidden Settings">
+<pre>https://www.xda-developers.com/heres-how-to-access-hidden-settings-on-your-phone/
+
+Activity Launcher https://play.google.com/store/apps/details?id=de.szalkowski.activitylauncher&amp;hl=en</pre>
 </div>
 <div created="20200520164313557" modified="20210321114152093" tags="Android" title="Android Install APK from Google Play">
 <pre>Google Play Downloader via Command line https://github.com/matlink/gplaycli
@@ -14002,6 +14017,22 @@ $ adb shell logcat
 ```
 
 * [[Android Debug Bridge]]</pre>
+</div>
+<div created="20210404185518015" modified="20210404190049678" tags="Android" title="Android Modem">
+<pre>* https://android.stackexchange.com/questions/51131/how-to-use-android-modem-without-using-pc
+* https://stackoverflow.com/questions/11111067/how-does-modem-code-talk-to-android-code
+* https://forum.xda-developers.com/t/a-sgs2-serial-how-to-talk-to-the-modem-with-at-commands.1471241/
+* https://weibeld.net/mobcom/at-commands.html
+
+* https://fabiensanglard.net/cellphoneModem/
+* https://fabiensanglard.net/cellphoneModem/index2.php
+
+* Anatomy of contemporary GSM cellphone hardware http://ondoc.logand.com/d/373/pdf
+* http://www.mulliner.org/security/sms/
+
+* /dev/smd0
+* /dev/socket/rild
+</pre>
 </div>
 <div created="20210323160826853" modified="20210323160851543" tags="Android" title="Android Monkey">
 <pre>```
@@ -28859,13 +28890,18 @@ $ xev
 * http://lxlinux.com/uxlta.html
 * https://www.linux.org/threads/xdotool-examples.10705/</pre>
 </div>
-<div created="20210404181732901" modified="20210404183845390" tags="Android" title="Xiaomi Redmi Note 9 Pro">
+<div created="20210404181732901" modified="20210404190430198" tags="Android" title="Xiaomi Redmi Note 9 Pro">
 <pre>Root Instractions
 https://forum.xda-developers.com/t/root-redmi-note-9-pro-curtana-updated-will-work-on-all-normal-versions-and-eu-roms.4072781/
 
 https://twrp.me/xiaomi/xiaomimi10i.html
 
 https://it-handbook.ru/android/ofitsialnaya-razblokirovka-zagruzchika-na-telefonah-xiaomi.html
+
+https://www.gizmochina.com/2020/02/07/download-xiaomi-mi-flash-tool/
+
+https://www.xda-developers.com/how-to-install-sideload-official-android-software-update-stock-rom/how-to-install-stock-official-miui-android-update-xiaomi-mi-redmi-smartphones/?amp
+
 
 </pre>
 </div>
