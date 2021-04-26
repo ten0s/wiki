@@ -735,6 +735,8 @@ Error message and password prompt
 
 <li>Bash</li>
 
+<li>Bash Mocking</li>
+
 <li>Bash process substitution</li>
 
 <li>Bash redirection (stdin, stdout, stderr)</li>
@@ -12273,7 +12275,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210426095446800" list="ToDo [[The Joy of JavaScript]] [[JavaScript: The Good Parts]]" modified="20210426123146013" title="$:/StoryList">
+<div created="20210426095446800" list="[[Bash Mocking]] ToDo [[The Joy of JavaScript]] [[JavaScript: The Good Parts]]" modified="20210426123653333" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13287,7 +13289,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210426095456073" title="$:/temp/search">
+<div created="20200422190456346" modified="20210426142658033" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -14367,6 +14369,26 @@ avg =  4.41667
 </div>
 <div created="20200426101157948" modified="20200426101206992" tags="TableOfContents" title="Bash">
 <pre></pre>
+</div>
+<div created="20210426142538085" modified="20210426142655831" tags="Linux Bash" title="Bash Mocking">
+<pre>```
+$ alias df=&quot;shift;echo -e 'Filesystem Size Used Avail Use% Mounted on';
+    echo -e 'tempfs 511M 31M 481M 6% /dev/shm';
+    echo -e '/dev/sda1 20G 9.9G 9.2G 52% /'&quot;
+```
+
+```
+$ df
+Filesystem Size Used Avail Use% Mounted on
+tempfs 511M 31M 481M 6% /dev/shm
+/dev/sda1 20G 9.9G 9.2G 52% /
+```
+
+```
+$ unalias df
+```
+
+https://www.leadingagile.com/2018/10/unit-testing-shell-scriptspart-one/</pre>
 </div>
 <div created="20200424090903725" modified="20200424090927174" tags="Bash" title="Bash process substitution">
 <pre>```
