@@ -1735,6 +1735,8 @@ Error message and password prompt
 
 <li>PSTN</li>
 
+<li>PTS</li>
+
 <li>PTY</li>
 
 <li>Pure functions</li>
@@ -12156,8 +12158,8 @@ Error message and password prompt
 <div created="20200430080859301" modified="20200626201614360" title="$:/state/toc/TableOfContents-CentOS--118161433">
 <pre>open</pre>
 </div>
-<div created="20200528082909481" modified="20210428171833930" title="$:/state/toc/TableOfContents-Definition--118161433">
-<pre>close</pre>
+<div created="20200528082909481" modified="20210428190841813" title="$:/state/toc/TableOfContents-Definition--118161433">
+<pre>open</pre>
 </div>
 <div created="20200524170259522" modified="20200528082850767" title="$:/state/toc/TableOfContents-Definitions--118161433">
 <pre>close</pre>
@@ -12291,7 +12293,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210428171835383" list="ToDo [[Building the Web of Things]]" modified="20210428171843601" title="$:/StoryList">
+<div created="20210428171835383" list="Definition PTS TTY PTY" modified="20210428191050634" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -24371,11 +24373,21 @@ $ docker image prune
 The PSTN is the network of the copper phone lines we traditionally associate with the &quot;telephone&quot;.
 The PSTN is a circuit switched network, which requires a physical connection between two points to complete a call.</pre>
 </div>
-<div created="20210427171832302" modified="20210427191320137" tags="Definition" title="PTY">
-<pre>''P''seudo-''T''ele''TY''pe (pronounced &quot;pity&quot;)
+<div created="20210428191052683" modified="20210428191524458" tags="Definition" title="PTS">
+<pre>''P''seudo-''T''eletype ''S''lave - A [[pts|PTS]] is the slave part of a [[pty|PTY]].
 
+* https://unix.stackexchange.com/a/21294/59538
+* [ext[Open man|manx:pts]]
+* [[PTY]]
+* [[TTY]]</pre>
+</div>
+<div created="20210427171832302" modified="20210428191515167" tags="Definition" title="PTY">
+<pre>''P''seudo-''T''ele''TY''pe (pronounced &quot;pity&quot;) - A terminal device which is emulated by an other program (example: xterm, screen, or ssh are such programs). A [[pts|PTS]] is the slave part of a [[pty|PTY]].
+
+* https://unix.stackexchange.com/a/21294/59538
 * [ext[Open man|manx:pts]]
 * [ext[Open man|manx:pty]]
+* [[PTS]]
 * [[TTY]]</pre>
 </div>
 <div created="20200528081244363" modified="20200528081422744" tags="Definition" title="Pure functions">
@@ -28613,14 +28625,15 @@ $ sudo tshark -i eth0 port 2905 -a duration:100 -w 10secs.pcap
 
 </pre>
 </div>
-<div created="20210427161113572" modified="20210427191201640" tags="Definition" title="TTY">
-<pre>''T''ele''TY''pe
+<div created="20210427161113572" modified="20210428191507281" tags="Definition" title="TTY">
+<pre>''T''ele''TY''pe - A native terminal device, the backend is either hardware or kernel emulated.
 
 ```
 $ tty
 /dev/pts/0
 ```
 
+* https://unix.stackexchange.com/a/21294/59538
 * [ext[Open man|manx:tty]]
 * [[PTY]]</pre>
 </div>
