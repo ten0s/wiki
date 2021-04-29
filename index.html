@@ -12299,7 +12299,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210429085848483" list="" modified="20210429154216609" title="$:/StoryList">
+<div created="20210429085848483" list="" modified="20210429161619720" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -28652,17 +28652,19 @@ $ sudo tshark -i eth0 port 2905 -a duration:100 -w 10secs.pcap
 
 </pre>
 </div>
-<div created="20210427161113572" modified="20210429161118212" tags="Definition" title="TTY">
+<div created="20210427161113572" modified="20210429161805164" tags="Definition" title="TTY">
 <pre>''T''ele''TY''pe - A native terminal device, the backend is either hardware or kernel emulated.
-
-[img[https://i.stack.imgur.com/X2g7g.jpg]] 
-https://askubuntu.com/a/482244
 
 ```
 $ tty
 /dev/pts/42
+
+$ ls -l /proc/self/fd/0
+lrwx------ 1 user user 64 .... /proc/self/fd/0 -&gt; /dev/pts/42
+
 $ echo hello &gt;/dev/pts/42
 hello
+
 $ cat /dev/pts/42
 hello
 hello
@@ -28678,7 +28680,10 @@ ten0s    tty7         2021-04-29 10:54 (:0)
 * http://www.linusakesson.net/programming/tty/
 * [ext[man tty|manx:tty]]
 * [ext[man stty|manx:stty]]
-* [[PTY]]</pre>
+* [[PTY]]
+
+[img[https://i.stack.imgur.com/X2g7g.jpg]] 
+https://askubuntu.com/a/482244</pre>
 </div>
 <div created="20210427193446495" modified="20210427193833460" tags="Definition" title="TUI">
 <pre>''T''ext ''U''ser ''I''nterface
