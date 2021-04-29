@@ -28652,7 +28652,7 @@ $ sudo tshark -i eth0 port 2905 -a duration:100 -w 10secs.pcap
 
 </pre>
 </div>
-<div created="20210427161113572" modified="20210429163249394" tags="Definition" title="TTY">
+<div created="20210427161113572" modified="20210429163549563" tags="Definition" title="TTY">
 <pre>''T''ele''TY''pe - A native terminal device, the backend is either hardware or kernel emulated.
 
 ```
@@ -28682,9 +28682,10 @@ devpts on /dev/pts type devpts (rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmod
 
 $ ls -l /dev/pts/
 total 0
-crw--w---- 1 user tty  136, 0 Feb 31 10:54 0
-crw--w---- 1 user tty  136, 1 Feb 31 10:54 1
-c--------- 1 root  root   5, 2 Feb 31 10:54 ptmx
+crw--w---- 1 user tty  136, 0 Feb 31 10:54 0      # slave
+crw--w---- 1 user tty  136, 1 Feb 31 10:54 1      # slave
+...
+c--------- 1 root  root   5, 2 Feb 31 10:54 ptmx  # master
 ```
 
 ```
