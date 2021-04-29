@@ -28652,7 +28652,7 @@ $ sudo tshark -i eth0 port 2905 -a duration:100 -w 10secs.pcap
 
 </pre>
 </div>
-<div created="20210427161113572" modified="20210429162906928" tags="Definition" title="TTY">
+<div created="20210427161113572" modified="20210429163249394" tags="Definition" title="TTY">
 <pre>''T''ele''TY''pe - A native terminal device, the backend is either hardware or kernel emulated.
 
 ```
@@ -28660,12 +28660,12 @@ $ tty
 /dev/pts/42
 
 $ ls -l /dev/std{in,out}
-lrwxrwxrwx 1 root root 15 ... /dev/stdin -&gt; /proc/self/fd/0
-lrwxrwxrwx 1 root root 15 ... /dev/stdout -&gt; /proc/self/fd/1
+lrwxrwxrwx 1 root root 15 Feb 31 10:54 /dev/stdin -&gt; /proc/self/fd/0
+lrwxrwxrwx 1 root root 15 Feb 31 10:54 /dev/stdout -&gt; /proc/self/fd/1
 
 $ ls -l /proc/self/fd/{0,1}
-lrwx------ 1 user user 64 .... /proc/self/fd/0 -&gt; /dev/pts/42
-lrwx------ 1 user user 64 .... /proc/self/fd/1 -&gt; /dev/pts/42
+lrwx------ 1 user user 64 Feb 31 10:54 /proc/self/fd/0 -&gt; /dev/pts/42
+lrwx------ 1 user user 64 Feb 31 10:54 /proc/self/fd/1 -&gt; /dev/pts/42
 
 $ echo hello &gt;/dev/pts/42
 hello
@@ -28677,8 +28677,19 @@ hello
 ```
 
 ```
+$ mount | grep pts
+devpts on /dev/pts type devpts (rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=000)
+
+$ ls -l /dev/pts/
+total 0
+crw--w---- 1 user tty  136, 0 Feb 31 10:54 0
+crw--w---- 1 user tty  136, 1 Feb 31 10:54 1
+c--------- 1 root  root   5, 2 Feb 31 10:54 ptmx
+```
+
+```
 $ who
-ten0s    tty7         2021-04-29 10:54 (:0)
+ten0s    tty7         2021-02-31 10:54 (:0)
 ```
 
 * https://unix.stackexchange.com/a/21294/59538
