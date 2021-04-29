@@ -12299,7 +12299,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210429085848483" list="TTY PTY PTS" modified="20210429154216609" title="$:/StoryList">
+<div created="20210429085848483" list="" modified="20210429154216609" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -24394,21 +24394,21 @@ $ docker image prune
 The PSTN is the network of the copper phone lines we traditionally associate with the &quot;telephone&quot;.
 The PSTN is a circuit switched network, which requires a physical connection between two points to complete a call.</pre>
 </div>
-<div created="20210428191052683" modified="20210428191524458" tags="Definition" title="PTS">
+<div created="20210428191052683" modified="20210429161154267" tags="Definition" title="PTS">
 <pre>''P''seudo-''T''eletype ''S''lave - A [[pts|PTS]] is the slave part of a [[pty|PTY]].
 
 * https://unix.stackexchange.com/a/21294/59538
-* [ext[Open man|manx:pts]]
+* [ext[man pts|manx:pts]]
 * [[PTY]]
 * [[TTY]]</pre>
 </div>
-<div created="20210427171832302" modified="20210429105704605" tags="Definition" title="PTY">
+<div created="20210427171832302" modified="20210429161135696" tags="Definition" title="PTY">
 <pre>''P''seudo-''T''ele''TY''pe (pronounced &quot;pity&quot;) - A terminal device which is emulated by an other program (example: xterm, screen, or ssh are such programs). A [[pts|PTS]] is the slave part of a [[pty|PTY]].
 
 * https://unix.stackexchange.com/a/21294/59538
 * https://lwn.net/Articles/688809/
-* [ext[Open man|manx:pts]]
-* [ext[Open man|manx:pty]]
+* [ext[man pts|manx:pts]]
+* [ext[man pty|manx:pty]]
 * [[PTS]]
 * [[TTY]]</pre>
 </div>
@@ -28652,7 +28652,7 @@ $ sudo tshark -i eth0 port 2905 -a duration:100 -w 10secs.pcap
 
 </pre>
 </div>
-<div created="20210427161113572" modified="20210429160343155" tags="Definition" title="TTY">
+<div created="20210427161113572" modified="20210429161118212" tags="Definition" title="TTY">
 <pre>''T''ele''TY''pe - A native terminal device, the backend is either hardware or kernel emulated.
 
 [img[https://i.stack.imgur.com/X2g7g.jpg]] 
@@ -28660,7 +28660,13 @@ https://askubuntu.com/a/482244
 
 ```
 $ tty
-/dev/pts/0
+/dev/pts/42
+$ echo hello &gt;/dev/pts/42
+hello
+$ cat /dev/pts/42
+hello
+hello
+^D
 ```
 
 ```
@@ -28670,7 +28676,8 @@ ten0s    tty7         2021-04-29 10:54 (:0)
 
 * https://unix.stackexchange.com/a/21294/59538
 * http://www.linusakesson.net/programming/tty/
-* [ext[Open man|manx:tty]]
+* [ext[man tty|manx:tty]]
+* [ext[man stty|manx:stty]]
 * [[PTY]]</pre>
 </div>
 <div created="20210427193446495" modified="20210427193833460" tags="Definition" title="TUI">
