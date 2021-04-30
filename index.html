@@ -219,6 +219,8 @@ Error message and password prompt
 
 <li>$:/state/tab--421063277</li>
 
+<li>$:/state/tab--479869182</li>
+
 <li>$:/state/tab--742138798</li>
 
 <li>$:/state/tab--881522150</li>
@@ -739,6 +741,8 @@ Error message and password prompt
 
 <li>Bash Build Multiple Options</li>
 
+<li>Bash Colors</li>
+
 <li>Bash Mocking</li>
 
 <li>Bash process substitution</li>
@@ -844,8 +848,6 @@ Error message and password prompt
 <li>Coding Style Guidelines</li>
 
 <li>Collatz Conjecture Generator</li>
-
-<li>Colors in Bash</li>
 
 <li>Commit changes up to commit</li>
 
@@ -12096,6 +12098,9 @@ Error message and password prompt
 <div created="20210316105806567" modified="20210316105806567" title="$:/state/tab--421063277">
 <pre>$:/core/ui/TiddlerInfo/References</pre>
 </div>
+<div created="20210430150356108" modified="20210430150356108" title="$:/state/tab--479869182">
+<pre>$:/core/ui/TiddlerInfo/References</pre>
+</div>
 <div created="20210330170254882" modified="20210330170305815" title="$:/state/tab--742138798">
 <pre>$:/core/ui/TiddlerInfo/Tagging</pre>
 </div>
@@ -12303,7 +12308,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210430145528765" list="AutoLISP" modified="20210430145528765" title="$:/StoryList">
+<div created="20210430145528765" list="[[Bash Colors]] AutoLISP" modified="20210430145858815" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13317,8 +13322,8 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210430094251610" title="$:/temp/search">
-<pre></pre>
+<div created="20200422190456346" modified="20210430145856833" title="$:/temp/search">
+<pre>\e[</pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
 <pre>loaded</pre>
@@ -14293,7 +14298,7 @@ Something that is impossible to split further.
 
 * [[Single Responsibility Principle]]</pre>
 </div>
-<div created="20200908082804973" modified="20210430145536322" tags="TableOfContents" title="AutoLISP">
+<div created="20200908082804973" modified="20210430150558582" tags="TableOfContents" title="AutoLISP">
 <pre>* https://www.autolisp-exchange.com/
 * https://www.afralisp.net/archive/index.htm
 * http://www.theswamp.org/index.php?board=2.0
@@ -14310,6 +14315,11 @@ setq stands for set quoted
 http://150.164.38.122:8800/AutoLISP/Contents.htm
 
 https://en.wikipedia.org/wiki/ANSI_escape_code
+
+```
+(write-line (strcat (chr 27) &quot;[01;31;47mTEXT&quot; (chr 27) &quot;[0m&quot;))
+```
+[[Bash Colors]]
 </pre>
 </div>
 <div created="20210314152528630" modified="20210314152555330" tags="MentalModel" title="Autonomy">
@@ -14417,6 +14427,21 @@ opts[k++]=&quot;--two=2&quot;
 echo ${opts[@]}
 ```
 </pre>
+</div>
+<div created="20200425151427450" modified="20210430150535864" tags="Bash" title="Bash Colors">
+<pre>```
+$ echo -e &quot;\e[01;31;47mTEXT\e[0m&quot;
+```
+
+```
+&quot;\e[ATTR;FG;BGmTEXT\e[0m&quot;
+
+ATTR ::= 00=none 01=bold 04=underscore 05=blink 07=reverse 08=concealed
+FG ::= 30=black 31=red 32=green 33=yellow 34=blue 35=magenta 36=cyan 37=white
+BG ::= 40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
+```
+
+http://misc.flogisoft.com/bash/tip_colors_and_formatting</pre>
 </div>
 <div created="20210426142538085" modified="20210426142655831" tags="Linux Bash" title="Bash Mocking">
 <pre>```
@@ -14961,21 +14986,6 @@ function* collatz(n) {
 ```
 
 * [[JavaScript Generator]]</pre>
-</div>
-<div created="20200425151427450" modified="20200425151609662" tags="Bash" title="Colors in Bash">
-<pre>```
-$ echo -e &quot;\e[01;32;42mTEXT\e[0m&quot;
-```
-
-```
-&quot;\e[ATTR;FG;BGmTEXT\e[0m&quot;
-
-ATTR ::= 00=none 01=bold 04=underscore 05=blink 07=reverse 08=concealed
-FG ::= 30=black 31=red 32=green 33=yellow 34=blue 35=magenta 36=cyan 37=white
-BG ::= 40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
-```
-
-http://misc.flogisoft.com/bash/tip_colors_and_formatting</pre>
 </div>
 <div created="20200423172338483" modified="20200423190551415" tags="Git" title="Commit changes up to commit">
 <pre>```
