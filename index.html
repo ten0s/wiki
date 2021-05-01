@@ -1995,6 +1995,8 @@ Error message and password prompt
 
 <li>Skip two lines</li>
 
+<li>Slack on Android inside work profile</li>
+
 <li>Socksify</li>
 
 <li>SOFTWARE AS SHE'S DEVELOPED</li>
@@ -2044,8 +2046,6 @@ Error message and password prompt
 <li>SSL certificate</li>
 
 <li>Stack of a thread</li>
-
-<li>Stack on Android inside work profile</li>
 
 <li>Start HTTP server</li>
 
@@ -12044,8 +12044,8 @@ Error message and password prompt
 <div created="20200423185634443" modified="20200423185634443" title="$:/state/plugin-info-334910430-$:/core---1812962263">
 <pre>contents</pre>
 </div>
-<div created="20200512083903594" modified="20210315144633672" title="$:/state/showeditpreview">
-<pre>yes</pre>
+<div created="20200512083903594" modified="20210501055034391" title="$:/state/showeditpreview">
+<pre>no</pre>
 </div>
 <div created="20200423185759928" modified="20210404172044129" title="$:/state/sidebar">
 <pre>yes</pre>
@@ -12149,10 +12149,10 @@ Error message and password prompt
 <div created="20200423185505844" modified="20210314162331099" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Orphans</pre>
 </div>
-<div created="20200422191529492" modified="20210326191854025" title="$:/state/tab/sidebar--595412856">
+<div created="20200422191529492" modified="20210501054622630" title="$:/state/tab/sidebar--595412856">
 <pre>TableOfContents</pre>
 </div>
-<div created="20200426101141551" modified="20210409110242746" title="$:/state/toc/TableOfContents-Android--118161433">
+<div created="20200426101141551" modified="20210501055027095" title="$:/state/toc/TableOfContents-Android--118161433">
 <pre>close</pre>
 </div>
 <div created="20200428100846343" modified="20200505083916917" title="$:/state/toc/TableOfContents-AWS--118161433">
@@ -12173,8 +12173,8 @@ Error message and password prompt
 <div created="20200430080859301" modified="20200626201614360" title="$:/state/toc/TableOfContents-CentOS--118161433">
 <pre>open</pre>
 </div>
-<div created="20200528082909481" modified="20210428190841813" title="$:/state/toc/TableOfContents-Definition--118161433">
-<pre>open</pre>
+<div created="20200528082909481" modified="20210501054402941" title="$:/state/toc/TableOfContents-Definition--118161433">
+<pre>close</pre>
 </div>
 <div created="20200524170259522" modified="20200528082850767" title="$:/state/toc/TableOfContents-Definitions--118161433">
 <pre>close</pre>
@@ -12308,7 +12308,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210430192852516" list="AutoLISP" modified="20210430192852516" title="$:/StoryList">
+<div created="20210501054404225" list="" modified="20210501055210905" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -12359,11 +12359,11 @@ Error message and password prompt
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1920&quot;
+            &quot;text&quot;: &quot;393&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;1080&quot;
+            &quot;text&quot;: &quot;873&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -13322,7 +13322,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210430192851316" title="$:/temp/search">
+<div created="20200422190456346" modified="20210501055408023" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -26019,7 +26019,7 @@ EOF
 <pre>incron (inotify cron daemon)
 </pre>
 </div>
-<div created="20200531182059525" modified="20200531183207087" tags="Android" title="Run stoken on Alpine Linux">
+<div created="20200531182059525" modified="20210501055152148" tags="Android" title="Run stoken on Alpine Linux">
 <pre>!!! Install [[Termux]]
 !!! Install [[Termux SSH]]
 !!! Install [[Termux Alpine Linux]]
@@ -26036,6 +26036,7 @@ Termux:
 
 ```
 $ cp file.sdtid $PREFIX/share/TermuxAlpine/home/
+$ runalpine apk add stoken
 $ runalpine stoken import --file=/home/file.sdtid 
 Enter new password: 
 Confirm new password: 
@@ -27175,6 +27176,13 @@ tail -n+2
 ```
 </pre>
 </div>
+<div created="20201001151607549" modified="20210501054658094" tags="Android" title="Slack on Android inside work profile">
+<pre>* Setup work profile
+* Install Chrome and Stack in work profile
+* Run Chrome in work profile
+* Go XYZ.slack.com
+* Run Slack App</pre>
+</div>
 <div created="20200520085237330" modified="20200520085952578" tags="Socks" title="Socksify">
 <pre>```
 $ sudo apt install dante-client
@@ -27574,13 +27582,6 @@ $ sudo cat /proc/PID/task/TID/stack
 ```
 </pre>
 </div>
-<div created="20201001151607549" modified="20201001151740128" tags="Android" title="Stack on Android inside work profile">
-<pre>* Setup work profile
-* Install Chrome and Stack in work profile
-* Run Chrome in work profile
-* Go XYZ.slack.com
-* Run Slack App</pre>
-</div>
 <div created="20200423195157647" modified="20210425132847609" tags="Python" title="Start HTTP server">
 <pre>Python 3
 
@@ -27633,7 +27634,7 @@ Median == 50th Percentile
 
 [[Statistic Mean]]</pre>
 </div>
-<div created="20200512164622533" modified="20200531182051120" tags="Android" title="Stoken Termux package on Android">
+<div created="20200512164622533" modified="20210501055358934" tags="Android" title="Stoken Termux package on Android">
 <pre>1. Build for/on phone
 https://github.com/cernekee/stoken
 
@@ -27646,7 +27647,8 @@ https://github.com/termux/termux-packages/wiki
 GUI to https://github.com/termux/x11-packages/
 
 CLI to https://github.com/termux/termux-packages
-</pre>
+
+[[Run stoken on Alpine Linux]]</pre>
 </div>
 <div created="20200425165343687" modified="20200425165408772" tags="Linux" title="Stress test CPU, IO, memory">
 <pre>```
