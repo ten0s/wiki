@@ -1393,6 +1393,8 @@ Error message and password prompt
 
 <li>HTML Templates</li>
 
+<li>Huawei 3G USB Modem</li>
+
 <li>Identity Function</li>
 
 <li>Imagemagick</li>
@@ -1918,6 +1920,8 @@ Error message and password prompt
 <li>See network traces</li>
 
 <li>See what the process's threads are doing</li>
+
+<li>Send AT Commands to 3G Huawei USB Modem</li>
 
 <li>Send notification from terminal</li>
 
@@ -12056,8 +12060,8 @@ Error message and password prompt
 <div created="20200423185634443" modified="20200423185634443" title="$:/state/plugin-info-334910430-$:/core---1812962263">
 <pre>contents</pre>
 </div>
-<div created="20200512083903594" modified="20210501055034391" title="$:/state/showeditpreview">
-<pre>no</pre>
+<div created="20200512083903594" modified="20210503155917106" title="$:/state/showeditpreview">
+<pre>yes</pre>
 </div>
 <div created="20200423185759928" modified="20210404172044129" title="$:/state/sidebar">
 <pre>yes</pre>
@@ -12323,7 +12327,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210503101605246" list="" modified="20210503120248805" title="$:/StoryList">
+<div created="20210503132136091" list="[[Send AT Commands to 3G Huawei USB Modem]] AutoLISP" modified="20210503162729922" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13337,7 +13341,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210503120300605" title="$:/temp/search">
+<div created="20200422190456346" modified="20210503170048246" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -21564,6 +21568,17 @@ $(&quot;#dot-code-modal&quot;).remove();
 ```
 </pre>
 </div>
+<div created="20210503165921254" modified="20210503170019934" tags="" title="Huawei 3G USB Modem">
+<pre>* Green (blinking twice every 3s): The USB Stick is powered on
+* Green ( blinking once every 3s): The USB Stick is registering with a 2G network.
+* Blue (blinking once every 3s): The USB Stick is registering with a 3G/3G+ network.
+* Green (solid): The USB Stick is connected to a 2G network
+* Blue (solid): The USB Stick is connected to a 3G network
+* Cyan (solid): The USB Stick is connected to a 3G+ network
+* Off: The USB Stick is removed
+
+https://www.bestresizer.com/2017/05/huawei-e173-usb-modem-lights-meaning/</pre>
+</div>
 <div created="20210314140941599" modified="20210315094824821" title="Identity Function">
 <pre>Identity (I-combinator)
 
@@ -26267,6 +26282,180 @@ http://www.traceroute.org (from diff country)
 $ for tid in `ls /proc/$pid/task`; do echo $tid; sudo cat /proc/$pid/task/$tid/stack; done
 ```
 </pre>
+</div>
+<div created="20210503154425390" modified="20210503170046494" tags="" title="Send AT Commands to 3G Huawei USB Modem">
+<pre>!! Determine device info
+
+```
+$ lsusb
+...
+Bus 001 Device 019: ID 12d1:140c Huawei Technologies Co., Ltd. E180v
+```
+
+!! Determine attached device(s)
+
+```
+$ dmesg | grep ttyUSB
+...
+[ 6881.349587] usb 1-2.4: GSM modem (1-port) converter now attached to ttyUSB0
+[ 6881.445998] usb 1-2.4: GSM modem (1-port) converter now attached to ttyUSB1
+[ 6881.465876] usb 1-2.4: GSM modem (1-port) converter now attached to ttyUSB2
+```
+
+!! Determine device's settings
+
+```
+$ sudo stty -F /dev/ttyUSB0
+speed 9600 baud; line = 0;
+eof = ^A; min = 1; time = 0;
+-brkint -icrnl -imaxbel
+-opost -onlcr
+-isig -icanon -iexten -echo -echoe
+```
+
+!! Connect to device
+
+```
+$ sudo picocom /dev/ttyUSB0
+picocom v2.2
+
+port is        : /dev/ttyUSB0
+flowcontrol    : none
+baudrate is    : 9600
+parity is      : none
+databits are   : 8
+stopbits are   : 1
+escape is      : C-a
+local echo is  : no
+noinit is      : no
+noreset is     : no
+nolock is      : no
+send_cmd is    : sz -vv
+receive_cmd is : rz -vv -E
+imap is        : 
+omap is        : 
+emap is        : crcrlf,delbs,
+
+Type [C-a] [C-h] to see available commands
+
+Terminal ready
+```
+
+!! Enter AT commands
+
+!!! Smoke test
+
+```
+AT
+OK
+```
+
+!!! Get device info
+
+https://m2msupport.net/m2msupport/at-commands-to-get-device-information/
+
+```
+ATI
+Manufacturer: huawei
+Model: E156G
+Revision: 11.609.10.00.327
+IMEI: 0123456789
++GCAP: +CGSM,+DS,+ES
+
+AT+CGMI # Manufacturer
+huawei
+
+AT+GMI    # Manufacturer
+huawei
+
+AT+CGMM # Model
+E156G
+
+AT+CGMR  # Revision
+11.609.10.00.327
+
+AT+CGSN  # IMEI
+0123456789
+
+```
+
+!!!  Are extended errors supported? Enable them
+
+```
+AT+CMEE=?
++CMEE: (0,1,2)
+
+AT+CMEE=2
+OK
+```
+
+!!! List mobile networks
+
+```
+AT+COPS=?
++CME ERROR: SIM failure
+
+AT+COPS=3,0
+AT+COPS?
+```
+
+Get [[IMSI]] number
+
+```
+AT+CIMI
++CME ERROR: SIM failure
+```
+
+AT+CNUM # Personal number
+
+AT+CCID   # ?
+
+AT+CRSM # ?
+
+AT+CSIM # ?
+
+AT+CMD? # ?
+
+AT+CSCS? # ?
+AT+CSCS=? # ?
+
+AT+CSQ # Network signal strength
+
+!!! USSD commands
+
+https://m2msupport.net/m2msupport/ussd-how-to-send-ussd-short-codes-with-at-command/
+
+```
+AT+CUSD=1,&quot;*111#&quot;,&quot;15&quot;  # Get balance
+```
+
+!!! SMS
+
+https://m2msupport.net/m2msupport/sms-at-commands/
+
+```
+AT+CMGF? # Get SMS message format
++CMGF: 0   # 0 - PDU format, 1 - Text format
+
+AT+CMGF=1 # Set SMS message Text mode
+
+AT+CSCA=&quot;+...&quot; # Set SMSC
+
+AT+CMGS=&quot;+...&quot; # Send SMS
+&gt; Hello!!!!
+CTRL-Z - chr(26)
+
+AT+CMGL=&quot;all&quot; # List all SMS
+AT+CMGR=n    # Get SMS
+AT+CMGD=n    # Delete SMS
+```
+
+ATZ - Reset device
+
+* [[Huawei 3G USB Modem]]
+* https://www.developershome.com/sms/atCommandsIntro.asp
+* https://en.wikipedia.org/wiki/Hayes_command_set
+* https://www.twilio.com/docs/iot/supersim/introduction-at-commands</pre>
 </div>
 <div created="20200425151036533" modified="20200425151059622" tags="Linux" title="Send notification from terminal">
 <pre>```
