@@ -2273,6 +2273,8 @@ Error message and password prompt
 
 <li>Use ssh-agent in Docker</li>
 
+<li>Using ModemManager with Huawei 3G USB Modem</li>
+
 <li>Vanilla Javascript without jQuery</li>
 
 <li>vcpkg: C++ package manager</li>
@@ -12329,7 +12331,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210503132136091" list="[[Send AT Commands to Huawei 3G USB Modem]]" modified="20210503172331532" title="$:/StoryList">
+<div created="20210503132136091" list="" modified="20210503172331532" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -26354,7 +26356,7 @@ $ for tid in `ls /proc/$pid/task`; do echo $tid; sudo cat /proc/$pid/task/$tid/s
 ```
 </pre>
 </div>
-<div created="20210503154425390" modified="20210503174719789" tags="Linux" title="Send AT Commands to Huawei 3G USB Modem">
+<div created="20210503154425390" modified="20210503175419066" tags="Linux" title="Send AT Commands to Huawei 3G USB Modem">
 <pre>!! [[Huawei 3G USB Modem Lights]]
 !! [[Connect to Huawei 3G USB Modem]]
 !! Send AT Commands
@@ -26440,9 +26442,10 @@ AT+CGDCONT: 1,&quot;IP&quot;,&quot;internet&quot;,&quot;0.0.0.0&quot;,0,0
 
 !!! USSD commands
 
-https://m2msupport.net/m2msupport/ussd-how-to-send-ussd-short-codes-with-at-command/
-https://blog.marcinchwedczuk.pl/fun-with-at-commands-and-old-modem
-http://smstools3.kekekasvi.com/topic.php?id=288
+* https://m2msupport.net/m2msupport/ussd-how-to-send-ussd-short-codes-with-at-command/
+* https://blog.marcinchwedczuk.pl/fun-with-at-commands-and-old-modem
+* http://smstools3.kekekasvi.com/topic.php?id=288
+* https://onedev.net/post/911
 
 ```
 AT+CUSD=1,&quot;AA180C3602&quot;,&quot;15&quot;  # Get balance
@@ -29213,6 +29216,53 @@ GUEST:
 # ssh -T git@github.com
 Hi ten0s! You've successfully authenticated, but GitHub does not provide shell access.
 ```
+</pre>
+</div>
+<div created="20210503175058576" modified="20210503175356617" tags="Linux" title="Using ModemManager with Huawei 3G USB Modem">
+<pre>!! [[Huawei 3G USB Modem Lights]]
+!! [[Connect to Huawei 3G USB Modem]]
+
+```
+$ mmcli -L
+    /org/freedesktop/ModemManager1/Modem/5 [HUAWEI COMMUNICATION] 33
+```
+
+```
+$ mmcli -m 5
+  --------------------------
+  General  |      dbus path: /org/freedesktop/ModemManager1/Modem/5
+           |      device id: 0ce9c273239e246d8b86f8fe3f3b9785c6e9b541
+  --------------------------
+  Hardware |   manufacturer: HUAWEI COMMUNICATION
+           |          model: 33
+           |       revision: M6246A-KPRBL-1.2.0022_3H   1  [Feb 24 2010 08:52:07]
+           |   h/w revision: 401200E1
+           |      supported: gsm-umts
+           |        current: gsm-umts
+           |   equipment id: 357133039271281
+  --------------------------
+  System   |         device: /sys/devices/pci0000:00/0000:00:14.0/usb1/1-2/1-2.4
+           |        drivers: qmi_wwan, option1
+           |         plugin: Huawei
+           |   primary port: cdc-wdm1
+           |          ports: ttyUSB0 (at), wwp0s20f0u2u4i1 (net), ttyUSB1 (qcdm), 
+           |                 ttyUSB2 (at), cdc-wdm1 (qmi)
+  --------------------------
+  Status   |          state: failed
+           |  failed reason: sim-missing
+           | signal quality: 0% (cached)
+  --------------------------
+  Modes    |      supported: allowed: 2g; preferred: none
+           |                 allowed: 3g; preferred: none
+           |                 allowed: 2g, 3g; preferred: none
+           |        current: allowed: any; preferred: none
+  --------------------------
+  IP       |      supported: ipv4, ipv6, ipv4v6
+
+```
+
+* https://linux.by/viewtopic.php?f=28&amp;t=11366
+* https://wiki.archlinux.org/title/Mobile_broadband_modem
 </pre>
 </div>
 <div created="20200606104021760" modified="20200915122831664" tags="JavaScript Web" title="Vanilla Javascript without jQuery">
