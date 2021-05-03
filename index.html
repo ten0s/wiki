@@ -187,6 +187,8 @@ Error message and password prompt
 
 <li>$:/state/sidebar</li>
 
+<li>$:/state/tab--1091394850</li>
+
 <li>$:/state/tab--1443486922</li>
 
 <li>$:/state/tab--1498284803</li>
@@ -1103,9 +1105,11 @@ Error message and password prompt
 
 <li>Erlang ERL_LIBS</li>
 
+<li>Erlang Etf Parser</li>
+
 <li>Erlang Eval Expression on Remote Mode</li>
 
-<li>Erlang External Term Format Parser</li>
+<li>Erlang External Term Format</li>
 
 <li>Erlang FAQ</li>
 
@@ -12058,6 +12062,9 @@ Error message and password prompt
 <div created="20200423185759928" modified="20210404172044129" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
+<div created="20210503120152612" modified="20210503120152612" title="$:/state/tab--1091394850">
+<pre>$:/core/ui/TiddlerInfo/References</pre>
+</div>
 <div created="20210323162426306" modified="20210323162426306" title="$:/state/tab--1443486922">
 <pre>$:/core/ui/TiddlerInfo/References</pre>
 </div>
@@ -12316,7 +12323,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210503101605246" list="[[Erlang Decode Etf from Stdin]]" modified="20210503114539559" title="$:/StoryList">
+<div created="20210503101605246" list="" modified="20210503120248805" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13330,7 +13337,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210503114553284" title="$:/temp/search">
+<div created="20200422190456346" modified="20210503120300605" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -16809,12 +16816,12 @@ fi
 Define the env var &quot;USE_GDB&quot; before launching Erlang and you'll get a debugger prompt when your NIF/driver crashes. GDB's backtrace command is especially helpful
 </pre>
 </div>
-<div created="20210503115825060" modified="20210503115926675" tags="" title="Erlang Decode Etf from Stdin">
+<div created="20210503115825060" modified="20210503115959965" tags="Erlang" title="Erlang Decode Etf from Stdin">
 <pre>```
 erl -noshell -eval '{ok, Data} = file:read(standard_io, 10000000), io:format(&quot;~p~n&quot;, [binary_to_term(iolist_to_binary(Data))]), init:stop().'
 ```
 
-[[External Term Format]]</pre>
+[[Erlang External Term Format]]</pre>
 </div>
 <div created="20200709135239328" modified="20210316103608529" tags="Erlang" title="Erlang Decompile Beam">
 <pre>Beam must be compiled with ''debug_info''
@@ -16929,33 +16936,7 @@ $ export ERL_LIBS=/usr/lib/erlang/lib/debugger-4.2.1:/usr/lib/erlang/lib/observe
 
 http://erlang.org/doc/man/code.html#code-path</pre>
 </div>
-<div created="20200709174525063" modified="20210316105359684" tags="Erlang" title="Erlang Eval Expression on Remote Mode">
-<pre>```
-$ erl -name n1@127.0.0.1
-```
-
-```
-$ erl -name n2@127.0.0.1
-&gt; net_adm:ping('n1@127.0.0.1').
-pong
-&gt; {ok, Tokens, _} = erl_scan:string(&quot;erlang:node().&quot;).
-{ok,[{atom,1,erlang},
-     {':',1},
-     {atom,1,node},
-     {'(',1},
-     {')',1},
-     {dot,1}],
-    1}
-&gt; {ok, Forms} = erl_parse:parse_exprs(Tokens).
-{ok,[{call,1,{remote,1,{atom,1,erlang},{atom,1,node}},[]}]}
-&gt; rpc:call('n1@127.0.0.1', erl_eval, exprs, [Forms, []]).
-{value,'n1@127.0.0.1',[]}
-```
-
-* [[Parsing]]
-* [[RPC]]</pre>
-</div>
-<div created="20210316101400314" modified="20210316111616589" tags="Erlang" title="Erlang External Term Format Parser">
+<div created="20210316101400314" modified="20210503120221351" tags="Erlang" title="Erlang Etf Parser">
 <pre>```
 -module(etf).
 
@@ -17206,8 +17187,39 @@ tuple_element(N, Etf) -&gt;
     error({badarg, {N, Etf}}).
 ```
 
+* [[Erlang External Term Format]]
 * [[Binary]]
 * [[Parsing]]</pre>
+</div>
+<div created="20200709174525063" modified="20210316105359684" tags="Erlang" title="Erlang Eval Expression on Remote Mode">
+<pre>```
+$ erl -name n1@127.0.0.1
+```
+
+```
+$ erl -name n2@127.0.0.1
+&gt; net_adm:ping('n1@127.0.0.1').
+pong
+&gt; {ok, Tokens, _} = erl_scan:string(&quot;erlang:node().&quot;).
+{ok,[{atom,1,erlang},
+     {':',1},
+     {atom,1,node},
+     {'(',1},
+     {')',1},
+     {dot,1}],
+    1}
+&gt; {ok, Forms} = erl_parse:parse_exprs(Tokens).
+{ok,[{call,1,{remote,1,{atom,1,erlang},{atom,1,node}},[]}]}
+&gt; rpc:call('n1@127.0.0.1', erl_eval, exprs, [Forms, []]).
+{value,'n1@127.0.0.1',[]}
+```
+
+* [[Parsing]]
+* [[RPC]]</pre>
+</div>
+<div created="20210503120022591" modified="20210503120028080" tags="Erlang" title="Erlang External Term Format">
+<pre>http://erlang.org/doc/apps/erts/erl_ext_dist.html
+</pre>
 </div>
 <div created="20200428104307076" modified="20210409140353262" tags="Erlang" title="Erlang FAQ">
 <pre>How to get full call stack while on breakpoint?
