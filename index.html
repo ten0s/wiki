@@ -26354,7 +26354,7 @@ $ for tid in `ls /proc/$pid/task`; do echo $tid; sudo cat /proc/$pid/task/$tid/s
 ```
 </pre>
 </div>
-<div created="20210503154425390" modified="20210503172748866" tags="Linux" title="Send AT Commands to Huawei 3G USB Modem">
+<div created="20210503154425390" modified="20210503174719789" tags="Linux" title="Send AT Commands to Huawei 3G USB Modem">
 <pre>!! [[Huawei 3G USB Modem Lights]]
 !! [[Connect to Huawei 3G USB Modem]]
 !! Send AT Commands
@@ -26432,13 +26432,23 @@ AT+CSCS=? # ?
 
 AT+CSQ # Network signal strength
 
+# https://onedev.net/post/859
+AT+CGDCONT? # List access points
+AT+CGDCONT: 1,&quot;IP&quot;,&quot;internet&quot;,&quot;0.0.0.0&quot;,0,0
+
+
+
 !!! USSD commands
 
 https://m2msupport.net/m2msupport/ussd-how-to-send-ussd-short-codes-with-at-command/
+https://blog.marcinchwedczuk.pl/fun-with-at-commands-and-old-modem
+http://smstools3.kekekasvi.com/topic.php?id=288
 
 ```
-AT+CUSD=1,&quot;*111#&quot;,&quot;15&quot;  # Get balance
+AT+CUSD=1,&quot;AA180C3602&quot;,&quot;15&quot;  # Get balance
 ```
+
+&quot;AA180C3602&quot; is  &quot;*111#&quot; GSM0338 7bit encoded
 
 !!! SMS
 
@@ -26467,7 +26477,8 @@ ATZ - Reset device
 * https://www.developershome.com/sms/atCommandsIntro.asp
 * https://www.engineersgarage.com/tech-articles/at-commands-gsm-at-command-set/
 * https://en.wikipedia.org/wiki/Hayes_command_set
-* https://www.twilio.com/docs/iot/supersim/introduction-at-commands</pre>
+* https://www.twilio.com/docs/iot/supersim/introduction-at-commands
+* https://doc.qt.io/archives/qtextended4.4/atcommands.html</pre>
 </div>
 <div created="20200425151036533" modified="20200425151059622" tags="Linux" title="Send notification from terminal">
 <pre>```
