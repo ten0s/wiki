@@ -1875,6 +1875,8 @@ Error message and password prompt
 
 <li>RPi Enable serial console</li>
 
+<li>RPi Setup Wi-Fi Access Point</li>
+
 <li>Run code on link click</li>
 
 <li>Run command with modified buffering</li>
@@ -1960,8 +1962,6 @@ Error message and password prompt
 <li>Setup USB Webcam</li>
 
 <li>Setup VNC</li>
-
-<li>Setup Wi-Fi access point</li>
 
 <li>Setup WSL in Windows 10</li>
 
@@ -12064,8 +12064,8 @@ Error message and password prompt
 <div created="20200423185634443" modified="20200423185634443" title="$:/state/plugin-info-334910430-$:/core---1812962263">
 <pre>contents</pre>
 </div>
-<div created="20200512083903594" modified="20210503155917106" title="$:/state/showeditpreview">
-<pre>yes</pre>
+<div created="20200512083903594" modified="20210504093911380" title="$:/state/showeditpreview">
+<pre>no</pre>
 </div>
 <div created="20200423185759928" modified="20210404172044129" title="$:/state/sidebar">
 <pre>yes</pre>
@@ -12175,8 +12175,8 @@ Error message and password prompt
 <div created="20200422191529492" modified="20210501054622630" title="$:/state/tab/sidebar--595412856">
 <pre>TableOfContents</pre>
 </div>
-<div created="20200426101141551" modified="20210501094402113" title="$:/state/toc/TableOfContents-Android--118161433">
-<pre>close</pre>
+<div created="20200426101141551" modified="20210504094440314" title="$:/state/toc/TableOfContents-Android--118161433">
+<pre>open</pre>
 </div>
 <div created="20200428100846343" modified="20200505083916917" title="$:/state/toc/TableOfContents-AWS--118161433">
 <pre>close</pre>
@@ -12331,7 +12331,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210504080818741" list="" modified="20210504081924143" title="$:/StoryList">
+<div created="20210504080818741" list="[[Using ModemManager with Huawei 3G USB Modem]]" modified="20210504095343095" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13345,7 +13345,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210504093635463" title="$:/temp/search">
+<div created="20200422190456346" modified="20210504101530242" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -26099,6 +26099,29 @@ sudo screen /dev/ttyUSB0 115200
 
 </pre>
 </div>
+<div created="20200524134424225" modified="20210504094529531" tags="[[Raspberry Pi]]" title="RPi Setup Wi-Fi Access Point">
+<pre>!! Routed AP
+
+* https://www.raspberrypi.org/documentation/configuration/wireless/access-point-routed.md
+* https://howtoraspberrypi.com/create-a-wi-fi-hotspot-in-less-than-10-minutes-with-pi-raspberry/
+* https://learn.sparkfun.com/tutorials/setting-up-a-raspberry-pi-3-as-an-access-point/all
+
+!!! Usage
+
+* [[Setup Tor Router]]
+
+
+!! Bridged AP
+
+Bridge mode is the configuration that disables the NAT feature on the modem and allows a router to function as a DHCP server without an IP Address conflict.
+
+* https://www.raspberrypi.org/documentation/configuration/wireless/access-point-bridged.md
+
+
+!! Additions
+
+https://raspap.com/ https://github.com/billz/raspap-webgui</pre>
+</div>
 <div created="20200430150145592" modified="20200915122831662" tags="Web JavaScript" title="Run code on link click">
 <pre>```
 function doSomething() {
@@ -27230,29 +27253,6 @@ How to change screen resolution of VNC session
 $ sudo rasp-config
 enable vnc
 ```</pre>
-</div>
-<div created="20200524134424225" modified="20200524143838873" tags="[[Raspberry Pi]]" title="Setup Wi-Fi access point">
-<pre>!! Routed AP
-
-* https://www.raspberrypi.org/documentation/configuration/wireless/access-point-routed.md
-* https://howtoraspberrypi.com/create-a-wi-fi-hotspot-in-less-than-10-minutes-with-pi-raspberry/
-* https://learn.sparkfun.com/tutorials/setting-up-a-raspberry-pi-3-as-an-access-point/all
-
-!!! Usage
-
-* [[Setup Tor Router]]
-
-
-!! Bridged AP
-
-Bridge mode is the configuration that disables the NAT feature on the modem and allows a router to function as a DHCP server without an IP Address conflict.
-
-* https://www.raspberrypi.org/documentation/configuration/wireless/access-point-bridged.md
-
-
-!! Additions
-
-https://raspap.com/ https://github.com/billz/raspap-webgui</pre>
 </div>
 <div created="20201017105055538" modified="20201017162651440" tags="Linux Windows" title="Setup WSL in Windows 10">
 <pre>* [[Windows Subsystem for Linux Installation Guide for Windows 10|https://docs.microsoft.com/en-us/windows/wsl/install-win10]]
@@ -29251,19 +29251,19 @@ Hi ten0s! You've successfully authenticated, but GitHub does not provide shell a
 ```
 </pre>
 </div>
-<div created="20210503175058576" modified="20210503175356617" tags="Linux" title="Using ModemManager with Huawei 3G USB Modem">
+<div created="20210503175058576" modified="20210504101609046" tags="Linux" title="Using ModemManager with Huawei 3G USB Modem">
 <pre>!! [[Huawei 3G USB Modem Lights]]
 !! [[Connect to Huawei 3G USB Modem]]
 
 ```
 $ mmcli -L
-    /org/freedesktop/ModemManager1/Modem/5 [HUAWEI COMMUNICATION] 33
+    /org/freedesktop/ModemManager1/Modem/0 [HUAWEI COMMUNICATION] 33
 ```
 
 ```
-$ mmcli -m 5
+$ mmcli -m 0
   --------------------------
-  General  |      dbus path: /org/freedesktop/ModemManager1/Modem/5
+  General  |      dbus path: /org/freedesktop/ModemManager1/Modem/0
            |      device id: 0ce9c273239e246d8b86f8fe3f3b9785c6e9b541
   --------------------------
   Hardware |   manufacturer: HUAWEI COMMUNICATION
@@ -29281,9 +29281,12 @@ $ mmcli -m 5
            |          ports: ttyUSB0 (at), wwp0s20f0u2u4i1 (net), ttyUSB1 (qcdm), 
            |                 ttyUSB2 (at), cdc-wdm1 (qmi)
   --------------------------
-  Status   |          state: failed
-           |  failed reason: sim-missing
-           | signal quality: 0% (cached)
+ Status   |           lock: sim-pin2
+           | unlock retries: sim-pin (3), sim-pin2 (3), sim-puk (10), sim-puk2 (10)
+           |          state: registered
+           |    power state: on
+           |    access tech: umts
+           | signal quality: 76% (recent)
   --------------------------
   Modes    |      supported: allowed: 2g; preferred: none
            |                 allowed: 3g; preferred: none
@@ -29291,9 +29294,72 @@ $ mmcli -m 5
            |        current: allowed: any; preferred: none
   --------------------------
   IP       |      supported: ipv4, ipv6, ipv4v6
-
+  --------------------------
+  3GPP     |           imei: ...
+           |    operator id: 25701
+           |  operator name: BY VELCOM
+           |   registration: home
+  --------------------------
+  SIM      |      dbus path: /org/freedesktop/ModemManager1/SIM/1
 ```
 
+List all values
+
+```
+$ sudo mmcli -m 3 --output-keyvalue
+...
+```
+
+```
+$ sudo mmcli -m 0 --3gpp-scan --timeout=300
+  ---------------------
+  3GPP scan | networks: 25702 - MTS BY (unknown, available)
+            |           25704 - BeST BY (unknown, available)
+            |           25704 - BeST BY (unknown, available)
+            |           25702 - MTS BY (unknown, available)
+            |           25701 - BY VELCOM (unknown, current)
+            |           25701 - BY VELCOM (unknown, current)
+```
+
+```
+$ sudo mmcli -m 0 --simple-connect=&quot;apn=internet&quot;
+successfully connected the modem
+
+$ sudo mmcli --bearer=0
+  --------------------------------
+  General            |  dbus path: /org/freedesktop/ModemManager1/Bearer/0
+                     |       type: default
+  --------------------------------
+  Status             |  connected: yes
+                     |  suspended: no
+                     |  interface: wwp0s20f0u2u4i1
+                     | ip timeout: 20
+  --------------------------------
+  Properties         |        apn: internet
+                     |    roaming: allowed
+  --------------------------------
+  IPv4 configuration |     method: dhcp
+                     |    address: 10.109.158.125
+                     |     prefix: 30
+                     |    gateway: 10.109.158.126
+                     |        dns: 77.74.33.215, 77.74.33.216
+
+$ ifconfig wwp0s20f0u2u4i1
+wwp0s20f0u2u4i1: flags=4098&lt;BROADCAST,MULTICAST&gt;  mtu 1500
+        ether 5e:7f:39:c3:9a:47  txqueuelen 1000  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+https://developer.puri.sm/Librem5/Development_Environment/Boards/HowTo/Data_Connections.html
+https://techship.com/faq/how-to-guide-control-and-set-up-a-data-connection-in-linux-using-modemmanager-as-connection-manager/
+
+$ sudo mmcli -m 0 --simple-disconnect
+successfully disconnected all bearers in the modem
+```
+
+* https://electronproton.com/mmcli-command-examples/
 * https://linux.by/viewtopic.php?f=28&amp;t=11366
 * https://wiki.archlinux.org/title/Mobile_broadband_modem
 </pre>
