@@ -12175,8 +12175,8 @@ Error message and password prompt
 <div created="20200422191529492" modified="20210501054622630" title="$:/state/tab/sidebar--595412856">
 <pre>TableOfContents</pre>
 </div>
-<div created="20200426101141551" modified="20210504094440314" title="$:/state/toc/TableOfContents-Android--118161433">
-<pre>open</pre>
+<div created="20200426101141551" modified="20210504103302304" title="$:/state/toc/TableOfContents-Android--118161433">
+<pre>close</pre>
 </div>
 <div created="20200428100846343" modified="20200505083916917" title="$:/state/toc/TableOfContents-AWS--118161433">
 <pre>close</pre>
@@ -12331,7 +12331,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210504080818741" list="" modified="20210504095343095" title="$:/StoryList">
+<div created="20210504080818741" list="" modified="20210504123038002" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13345,7 +13345,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210504101530242" title="$:/temp/search">
+<div created="20200422190456346" modified="20210504123121102" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -27658,7 +27658,7 @@ $ sudo systemctl reload sshd.service
 ```
 </pre>
 </div>
-<div created="20200519145058657" modified="20210316110944023" tags="SSH Socks" title="SSH dynamic port forwarding">
+<div created="20200519145058657" modified="20210504123119359" tags="SSH Socks" title="SSH dynamic port forwarding">
 <pre>Many different client programs can connect to many different services.
 It creates a SOCKS proxy on the SSH client, and tunnels inbound requests to the SSH server.
 A SOCKS proxy is a generic gateway that can carry any TCP/IP traffic.
@@ -27668,7 +27668,7 @@ A SOCKS proxy is a generic gateway that can carry any TCP/IP traffic.
 [ext[man: DynamicForward | manx:ssh_config::DynamicForward]]
 
 ```
-$ ssh -f -N -D [localIP:]localPort [User@]Host
+$ ssh [-f] -N -D [localIP:]localPort [User@]Host
 ```
 
 * -f run in background
@@ -27685,7 +27685,7 @@ Host ...
 
 [[SSH socks tunnel]]</pre>
 </div>
-<div created="20200424093326631" modified="20210316110944024" tags="SSH" title="SSH local port forwarding">
+<div created="20200424093326631" modified="20210504123053271" tags="SSH" title="SSH local port forwarding">
 <pre>!!! Access a remote port LOCALLY
 
 Redirects one port on the client to one port on the server.
@@ -27698,7 +27698,7 @@ Redirects one port on the client to one port on the server.
 * -N don't run anything, including terminal, remotely
 
 ```
-$ ssh -f -N -L [localIP:]localPort:remoteIP:remotePort [User@]Host
+$ ssh [-f] -N -L [localIP:]localPort:remoteIP:remotePort [User@]Host
 ```
 
 ~/.ssh/config:
@@ -27775,7 +27775,7 @@ $ ssh -v -o KexAlgorithms=ecdh-sha2-nistp521 IP
 <div created="20201120083445917" modified="20210316110944026" tags="Book SSH" title="SSH Mastery">
 <pre>[ext[Open book|pdfx://refs/linux/SSH_Mastery.pdf]]</pre>
 </div>
-<div created="20200424093456058" modified="20210316110944026" tags="SSH" title="SSH remote port forwarding">
+<div created="20200424093456058" modified="20210504123048967" tags="SSH" title="SSH remote port forwarding">
 <pre>!!! Access a local port REMOTELY
 
 Redirects one port on the server to one port on the client.
@@ -27788,7 +27788,7 @@ Redirects one port on the server to one port on the client.
 * -N don't run anything, including terminal, remotely
 
 ```
-$ ssh -f -N -R  [remoteIP:]remotePort:localIP:localPort [User@]Host
+$ ssh [-f] -N -R  [remoteIP:]remotePort:localIP:localPort [User@]Host
 ```
 
 ~/.ssh/config:
