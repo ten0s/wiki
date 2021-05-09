@@ -187,6 +187,8 @@ Error message and password prompt
 
 <li>$:/state/sidebar</li>
 
+<li>$:/state/tab--1000109640</li>
+
 <li>$:/state/tab--1091394850</li>
 
 <li>$:/state/tab--1443486922</li>
@@ -654,6 +656,8 @@ Error message and password prompt
 <li>Android Debug Bridge</li>
 
 <li>Android Determine Activity from APK</li>
+
+<li>Android Determine Started Intent</li>
 
 <li>Android Disable Developer Options</li>
 
@@ -12076,6 +12080,9 @@ Error message and password prompt
 <div created="20200423185759928" modified="20210404172044129" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
+<div created="20210509141911022" modified="20210509141911022" title="$:/state/tab--1000109640">
+<pre>$:/core/ui/TiddlerInfo/References</pre>
+</div>
 <div created="20210503120152612" modified="20210503120152612" title="$:/state/tab--1091394850">
 <pre>$:/core/ui/TiddlerInfo/References</pre>
 </div>
@@ -12340,7 +12347,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210509134400670" list="[[Android Chromedriver]] [[Setup Python3 virtual env]]" modified="20210509134400670" title="$:/StoryList">
+<div created="20210509134400670" list="[[Android Determine Started Intent]] [[Android Start App from Shell]] [[Adb Activity Manager]] [[Android Chromedriver]] [[Setup Python3 virtual env]]" modified="20210509143142908" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13354,7 +13361,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210509141311118" title="$:/temp/search">
+<div created="20200422190456346" modified="20210509144255076" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -13958,6 +13965,17 @@ $ aapt d xmltree &lt;path to apk&gt; AndroidManifest.xml
 
 [[Android Asset Packaging Tool]]</pre>
 </div>
+<div created="20210509142320529" modified="20210509143221232" tags="Android" title="Android Determine Started Intent">
+<pre>
+```
+$ adb shell logcat | grep intent
+...
+05-09 17:26:22.170  1694  5193 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.android.chrome/com.google.android.apps.chrome.Main bnds=[588,186][756,354] (has extras)} from uid 10092
+...
+```
+
+* [[Android Start App from Shell]]</pre>
+</div>
 <div created="20200423193246200" modified="20210321104616527" tags="Android" title="Android Disable Developer Options">
 <pre>Settings -&gt; Storage -&gt; Apps -&gt; Settings -&gt; Clear Data
 
@@ -14235,14 +14253,16 @@ $ fusermount -u android
 * [[Linux SSH File System]]
 </pre>
 </div>
-<div created="20210323155238659" modified="20210323173355549" tags="Android" title="Android Start App from Shell">
+<div created="20210323155238659" modified="20210509143406589" tags="Android" title="Android Start App from Shell">
 <pre>```
 $ adb shell am start -a android.intent.action.MAIN -n com.android.settings/.Settings
 $ adb shell am start -a android.intent.action.MAIN -n com.android.calculator2/.Calculator
 $ adb shell am start -a android.intent.action.VIEW -n com.android.browser/.BrowserActivity https://www.google.com
+$ adb shell am start -a android.intent.action.MAIN -n com.android.chrome/com.google.android.apps.chrome.Main https://www.google.com
 ```
 
 * [[Android Stop App from Shell]]
+* [[Android Determine Started Intent]]
 * [[Adb Activity Manager]]
 * [[Android Debug Bridge]]</pre>
 </div>
