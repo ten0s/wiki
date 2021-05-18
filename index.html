@@ -751,7 +751,9 @@ Error message and password prompt
 
 <li>AWS API Gateway</li>
 
-<li>AWS Autoscaling Group</li>
+<li>AWS ASG</li>
+
+<li>AWS CloudFormation ASG</li>
 
 <li>AWS CloudFormation DynamoDB</li>
 
@@ -12245,8 +12247,8 @@ Error message and password prompt
 <div created="20200426101141551" modified="20210514095406717" title="$:/state/toc/TableOfContents-Android--118161433">
 <pre>close</pre>
 </div>
-<div created="20200428100846343" modified="20210518173107905" title="$:/state/toc/TableOfContents-AWS--118161433">
-<pre>close</pre>
+<div created="20200428100846343" modified="20210518173248322" title="$:/state/toc/TableOfContents-AWS--118161433">
+<pre>open</pre>
 </div>
 <div created="20200426101916708" modified="20200704132312537" title="$:/state/toc/TableOfContents-Bash--118161433">
 <pre>close</pre>
@@ -12398,7 +12400,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210518085357880" list="" modified="20210518172644184" title="$:/StoryList">
+<div created="20210518085357880" list="" modified="20210518174036435" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13412,7 +13414,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210518173109454" title="$:/temp/search">
+<div created="20200422190456346" modified="20210518174041537" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -14629,7 +14631,7 @@ $ curl -H'ContentType:application/json' -XPOST http://localhost:4567/restapis/09
 * [[AWS]]
 * [[AWS Localstack]]</pre>
 </div>
-<div created="20210518170125570" modified="20210518170219340" tags="AWS" title="AWS Autoscaling Group">
+<div created="20210518170125570" modified="20210518173311908" tags="AWS" title="AWS ASG">
 <pre>```
 $ aws autoscaling describe-auto-scaling-groups --auto-scaling-group-names SOME-NAME
 ```
@@ -14643,6 +14645,56 @@ $ aws autoscaling set-instance-health --health-status Unhealthy --instance-id i-
 ```
 
 * [[AWS]]</pre>
+</div>
+<div created="20210518173222230" modified="20210518173741354" tags="AWS" title="AWS CloudFormation ASG">
+<pre>```
+WSTemplateFormatVersion: 2010-09-09
+
+Description: My ASG
+
+Resources:
+  MyLC:
+    Type: AWS::AutoScaling::LaunchConfiguration
+    Properties:
+      ImageId: ami-b73b63a0
+      InstanceType: t2.nano
+      KeyName: my-ssh-key
+      SecurityGroups:
+      - sg-0123456789
+      IamInstanceProfile: my-instance-profile
+      InstanceMonitoring: false
+      UserData: !Base64 |
+        #!/bin/bash
+        echo &quot;`curl -s http://169.254.169.254/latest/meta-data/local-ipv4` `hostname`&quot; &gt;&gt;/etc/hosts
+        yum install -y --enablerepo=epel htop stress sysbench
+
+  MyASG:
+    Type: AWS::AutoScaling::AutoScalingGroup
+    Properties:
+      HealthCheckGracePeriod: 300
+      HealthCheckType: EC2
+      LaunchConfigurationName: !Ref MyLC
+      Tags:
+      - PropagateAtLaunch: true
+        Key: Contact
+        Value: dm.klionsky@gmail.com
+      - PropagateAtLaunch: true
+        Key: Name
+        Value: MyName
+      MinSize: 0
+      DesiredCapacity: 0
+      MaxSize: 5
+      VPCZoneIdentifier:
+      - subnet-0123456789
+
+Outputs:
+  MyASG:
+    Description: Name of newly created ASG
+    Value: !Ref MyASG
+```
+
+* [[AWS]]
+* [[AWS ASG]]</pre>
 </div>
 <div created="20210518165200481" modified="20210518165358165" tags="AWS" title="AWS CloudFormation DynamoDB">
 <pre>```
