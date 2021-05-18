@@ -251,6 +251,8 @@ Error message and password prompt
 
 <li>$:/state/tab-31930720</li>
 
+<li>$:/state/tab-422425460</li>
+
 <li>$:/state/tab-559412452</li>
 
 <li>$:/state/tab-660255949</li>
@@ -749,13 +751,29 @@ Error message and password prompt
 
 <li>AWS API Gateway</li>
 
-<li>AWS Create Cloud Formation Stack</li>
+<li>AWS Autoscaling Group</li>
+
+<li>AWS CloudFormation DynamoDB</li>
+
+<li>AWS CloudFormation S3</li>
+
+<li>AWS CloudFormation SQS</li>
+
+<li>AWS Create CloudFormation Stack</li>
+
+<li>AWS DynamoDB</li>
+
+<li>AWS DynamoDB Local</li>
+
+<li>AWS EC2</li>
 
 <li>AWS Get EC2 Instance Id</li>
 
 <li>AWS Get EC2 Instance Meta Data Categories</li>
 
 <li>AWS Get EC2 Instance Region</li>
+
+<li>AWS Get EC2 Instance Security Credentials</li>
 
 <li>AWS Get EC2 Instance User Data</li>
 
@@ -764,6 +782,10 @@ Error message and password prompt
 <li>AWS Localstack</li>
 
 <li>AWS Localstack Python Client</li>
+
+<li>AWS Mount EC2 EBS Storage</li>
+
+<li>AWS Route53</li>
 
 <li>AWS S3</li>
 
@@ -1104,6 +1126,10 @@ Error message and password prompt
 <li>Erlang</li>
 
 <li>Erlang Absolute Dir</li>
+
+<li>Erlang AWS DynamoDB</li>
+
+<li>Erlang AWS S3</li>
 
 <li>Erlang Binary Matching Performance</li>
 
@@ -12198,6 +12224,9 @@ Error message and password prompt
 <div created="20210316111631275" modified="20210316111631275" title="$:/state/tab-31930720">
 <pre>$:/core/ui/TiddlerInfo/References</pre>
 </div>
+<div created="20210518172543559" modified="20210518172543559" title="$:/state/tab-422425460">
+<pre>$:/core/ui/TiddlerInfo/References</pre>
+</div>
 <div created="20210323173333127" modified="20210323173333127" title="$:/state/tab-559412452">
 <pre>$:/core/ui/TiddlerInfo/References</pre>
 </div>
@@ -12216,7 +12245,7 @@ Error message and password prompt
 <div created="20200426101141551" modified="20210514095406717" title="$:/state/toc/TableOfContents-Android--118161433">
 <pre>close</pre>
 </div>
-<div created="20200428100846343" modified="20210518090626207" title="$:/state/toc/TableOfContents-AWS--118161433">
+<div created="20200428100846343" modified="20210518173107905" title="$:/state/toc/TableOfContents-AWS--118161433">
 <pre>close</pre>
 </div>
 <div created="20200426101916708" modified="20200704132312537" title="$:/state/toc/TableOfContents-Bash--118161433">
@@ -12369,7 +12398,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210518085357880" list="" modified="20210518091452290" title="$:/StoryList">
+<div created="20210518085357880" list="" modified="20210518172644184" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13383,7 +13412,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210518164228311" title="$:/temp/search">
+<div created="20200422190456346" modified="20210518173109454" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -14600,14 +14629,23 @@ $ curl -H'ContentType:application/json' -XPOST http://localhost:4567/restapis/09
 * [[AWS]]
 * [[AWS Localstack]]</pre>
 </div>
-<div created="20210518164230069" modified="20210518164653532" tags="AWS" title="AWS Create Cloud Formation Stack">
+<div created="20210518170125570" modified="20210518170219340" tags="AWS" title="AWS Autoscaling Group">
 <pre>```
-$ aws cloudformation create-stack --stack-name my-stack --template-body file://cf-stack.yaml
+$ aws autoscaling describe-auto-scaling-groups --auto-scaling-group-names SOME-NAME
 ```
 
-cf-stack.yaml
+```
+$ aws autoscaling update-auto-scaling-group --auto-scaling-group-name SOME-NAME --desired-capacity 3
+```
 
 ```
+$ aws autoscaling set-instance-health --health-status Unhealthy --instance-id i-0e8cb6ef4e378d446
+```
+
+* [[AWS]]</pre>
+</div>
+<div created="20210518165200481" modified="20210518165358165" tags="AWS" title="AWS CloudFormation DynamoDB">
+<pre>```
 AWSTemplateFormatVersion: 2010-09-09
 
 Description: My stack
@@ -14648,51 +14686,284 @@ Resources:
             ReadCapacityUnits: 1
             WriteCapacityUnits: 1
 
-  Bucket:
-    Type: AWS::S3::Bucket
-
 Outputs:
   TableName:
     Description: Name of created table
     Value: !Ref Table
+```
 
+* [[AWS]]
+* [[AWS CloudFormation]]</pre>
+</div>
+<div created="20210518165323741" modified="20210518165644396" tags="AWS" title="AWS CloudFormation S3">
+<pre>```
+AWSTemplateFormatVersion: 2010-09-09
+
+Description: My stack
+
+Resources:
+  Bucket:
+    Type: AWS::S3::Bucket
+
+Outputs:
   BucketName:
     Description: Name of created S3 bucket
     Value: !Ref Bucket
 ```
 
 * [[AWS]]
-* https://github.com/bananarepublic/aws_basics/blob/master/7_rds/tk_rds_stack.yaml</pre>
+* [[AWS S3]]
+* [[AWS CloudFormation]]</pre>
 </div>
-<div created="20200504101436053" modified="20210506132032687" tags="AWS" title="AWS Get EC2 Instance Id">
+<div created="20210518165435887" modified="20210518165734169" tags="AWS" title="AWS CloudFormation SQS">
+<pre>```
+AWSTemplateFormatVersion: 2010-09-09
+
+Description: My stack
+
+Resources:
+  EventsQueue:
+    Description: SQS Queue to collect EC2 and ASG events
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: MyQueueName
+      VisibilityTimeout: 30
+      MaximumMessageSize: 262144
+
+  EventsQueuePolicy:
+    Description: SQS Queue policies for EC2 and ASG events
+    Type: AWS::SQS::QueuePolicy
+    Properties:
+      PolicyDocument:
+        Id: SQSPolicy
+        Statement:
+        - Sid: EC2EventsPolicy
+          Effect: Allow
+          Principal: '*'
+          Action: sqs:SendMessage
+          Resource: !GetAtt EventsQueue.Arn
+          Condition:
+            ArnEquals:
+              aws:SourceArn: !GetAtt EC2Events.Arn
+        - Sid: ASGEventsPolicy
+          Effect: Allow
+          Principal: '*'
+          Action: sqs:SendMessage
+          Resource: !GetAtt EventsQueue.Arn
+          Condition:
+            ArnEquals:
+              aws:SourceArn: !GetAtt ASGEvents.Arn
+      Queues:
+      - !Ref EventsQueue
+
+  ASGEvents:
+    Description: ASG specific events
+    Type: AWS::Events::Rule
+    Properties:
+      EventPattern:
+        source:
+        - aws.autoscaling
+        detail-type:
+        - EC2 Instance Launch Successful
+        - EC2 Instance Terminate Successful
+        - EC2 Instance Launch Unsuccessful
+        - EC2 Instance Terminate Unsuccessful
+        - EC2 Instance-launch Lifecycle Action
+        - EC2 Instance-terminate Lifecycle Action
+      State: ENABLED
+      Targets:
+      - Arn: !GetAtt EventsQueue.Arn
+        Id: ASGEventsId
+
+  EC2Events:
+    Description: EC2 specific events
+    Type: AWS::Events::Rule
+    Properties:
+      EventPattern:
+        source:
+        - aws.ec2
+        detail-type:
+        - EC2 Instance State-change Notification
+      State: ENABLED
+      Targets:
+      - Arn: !GetAtt EventsQueue.Arn
+        Id: EC2EventsId
+
+Outputs:
+  EventsQueueURL:
+    Description: URL of newly created SQS Queue
+    Value: !Ref EventsQueue
+  EventsQueueARN:
+    Description: ARN of newly created SQS Queue
+    Value: !GetAtt EventsQueue.Arn
+  EventsQueueName:
+    Description: Name of newly created SQS Queue
+    Value: !GetAtt EventsQueue.QueueName
+  ASGEventsARN:
+    Description: ARN of newly created ASG Events
+    Value: !GetAtt ASGEvents.Arn
+  EC2EventsARN:
+    Description: ARN of newly created EC2 Events
+    Value: !GetAtt EC2Events.Arn
+```
+
+* [[AWS]]
+* [[AWS SQS]]
+* [[AWS CloudFormation]]</pre>
+</div>
+<div created="20210518164230069" modified="20210518165318576" tags="AWS" title="AWS Create CloudFormation Stack">
+<pre>```
+$ aws cloudformation create-stack --stack-name my-stack --template-body file://cf-stack.yaml
+```
+
+* [[AWS]]
+* [[AWS CloudFormation]]</pre>
+</div>
+<div created="20210518171340209" modified="20210518171729091" tags="AWS" title="AWS DynamoDB">
+<pre>```
+$ aws dynamodb list-tables --endpoint-url http://localhost:8000
+```
+
+```
+$ aws dynamodb scan --table-name MyTable --endpoint-url http://localhost:8000
+```
+
+```
+$ aws dynamodb scan --table-name MyTable --return-consumed-capacity TOTAL
+```
+
+```
+$ aws dynamodb scan --table-name MyTable --select COUNT --return-consumed-capacity TOTAL
+```
+
+```
+$ aws dynamodb create-table --table-name HermesRds2 --attribute-definitions AttributeName=RdsName,AttributeType=S --key-schema AttributeName=RdsName,KeyType=HASH --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1
+```
+
+```
+$ aws dynamodb delete-table --table-name HermesRds2
+```
+
+```
+$ aws dynamodb put-item --table-name HermesRds2 --item &quot;{\&quot;RdsName\&quot;:{\&quot;S\&quot;:\&quot;${RDSNAME}\&quot;}, \&quot;MakeTime\&quot;:{\&quot;N\&quot;:\&quot;${MAKETIME}\&quot;}, \&quot;What\&quot;:{\&quot;S\&quot;:\&quot;data\&quot;}}&quot;
+```
+
+```
+$ aws dynamodb get-item --table-name HermesRds --key '{&quot;RdsName&quot;: {&quot;S&quot;: &quot;BET_RDOSET_017d5b42ca7c276f5c56385aec02d55b85777f88&quot;}}'
+```
+
+```
+$ aws dynamodb update-item --table-name HermesRdo --key '{&quot;RdoName&quot;: {&quot;S&quot;: &quot;BET_CG_ID_28d378afb510463807a587be4107a613d90e0954&quot;}}' --update-expression=&quot;SET MakeTime=:val&quot; --expression-attribute-values '{&quot;:val&quot;: {&quot;N&quot;: &quot;1&quot;}}'
+```
+
+```
+$ aws dynamodb scan --table-name HermesRds | jq -r '.Items | .[] | .RdsName.S'
+```
+
+```
+$ aws dynamodb scan --table-name HermesRdo | jq -r '.Items | .[] | .RdoName.S'
+```
+
+```
+$ aws dynamodb scan --table-name HermesRdo --filter-expression 'attribute_not_exists(MakeTime)' | jq -r '.Items | .[] | .RdoName.S'
+```
+
+```
+$ aws dynamodb get-item --table-name HermesRdoNames --key '{&quot;RdsName&quot;: {&quot;S&quot;: &quot;BET_RDOSET_fcd6de79056eea34b1b43939ed5f238e591d21e2&quot;}}' | jq -r .Item.RdoNames.B | base64 -d | tail -c+6 | gunzip - | xargs -d' ' -L1 echo
+```
+
+```
+$ aws dynamodb query --table-name hermes-test-RdoTable-FZWTM8M43EPG --index-name MakeDateTimeIndex --key-condition-expression &quot;MakeDate = :date&quot; --expression-attribute-values '{&quot;:date&quot;:{&quot;N&quot;:&quot;1505952000&quot;}}'
+```
+
+* [[AWS]]
+</pre>
+</div>
+<div created="20210518171229430" modified="20210518171413701" tags="AWS" title="AWS DynamoDB Local">
+<pre>```
+$ wget http://dynamodb-local.s3-website-us-west-2.amazonaws.com/dynamodb_local_latest.tar.gz
+$ tar xfz dynamodb_local_latest.tar.gz
+$ java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb
+```
+
+http://localhost:8000/shell/
+
+```
+$ lsof -i :8000 | tail -1 | awk '{ print $2 }' | xargs --no-run-if-empty kill
+```
+
+
+* [[AWS]]
+* [[AWS DynamoDB]]
+* [[AWS Localstack]]</pre>
+</div>
+<div created="20210518170011255" modified="20210518170233123" tags="AWS" title="AWS EC2">
+<pre>```
+$ aws ec2 describe-instances --instance-ids i-039f27ef93d3671cf i-0e628d3b52ecfffba
+```
+
+```
+$ aws ec2 describe-instances --filters &quot;Name=tag:Environment,Values=...&quot; &quot;Name=tag:Application,Values=...&quot;
+```
+
+* [[AWS]]
+</pre>
+</div>
+<div created="20200504101436053" modified="20210518172629787" tags="AWS" title="AWS Get EC2 Instance Id">
 <pre>```
 $ curl -s http://169.254.169.254/latest/meta-data/instance-id
 ```
 
-[[AWS]]</pre>
+* [[AWS]]
+* [[AWS EC2]]</pre>
 </div>
-<div created="20200504100953620" modified="20210506132101695" tags="AWS" title="AWS Get EC2 Instance Meta Data Categories">
+<div created="20200504100953620" modified="20210518172636292" tags="AWS" title="AWS Get EC2 Instance Meta Data Categories">
 <pre>```
 $ curl -s http://169.254.169.254/latest/meta-data/
 ```
 
 * [ext[Instance metadata categories | https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instancedata-data-categories.html]]
-* [[AWS]]</pre>
+* [[AWS]]
+* [[AWS EC2]]</pre>
 </div>
-<div created="20200504101702464" modified="20210506132120642" tags="AWS" title="AWS Get EC2 Instance Region">
+<div created="20200504101702464" modified="20210518172642850" tags="AWS" title="AWS Get EC2 Instance Region">
 <pre>```
 curl -s http://169.254.169.254/latest/dynamic/instance-identity/document' | jq -r .region
 ```
 
 * [ext[Instance Identity Documents | https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-identity-documents.html]]
-* [[AWS]]</pre>
+* [[AWS]]
+* [[AWS EC2]]</pre>
 </div>
-<div created="20200504101235492" modified="20210506132143453" tags="AWS" title="AWS Get EC2 Instance User Data">
+<div created="20210518172809825" modified="20210518172940887" tags="AWS" title="AWS Get EC2 Instance Security Credentials">
+<pre>```
+$ curl http://169.254.169.254/latest/meta-data/iam/security-credentials/
+some-instance-credentials
+```
+
+```
+curl http://169.254.169.254/latest/meta-data/iam/security-credentials/some-instance-credentials
+{
+  &quot;Code&quot; : &quot;Success&quot;,
+  &quot;LastUpdated&quot; : &quot;...&quot;,
+  &quot;Type&quot; : &quot;AWS-HMAC&quot;,
+  &quot;AccessKeyId&quot; : &quot;...&quot;,
+  &quot;SecretAccessKey&quot; : &quot;...&quot;,
+  &quot;Token&quot; : &quot;...&quot;,
+  &quot;Expiration&quot; : &quot;...&quot;
+}
+```
+
+* [[AWS]]
+* [[AWS EC2]]</pre>
+</div>
+<div created="20200504101235492" modified="20210518172652033" tags="AWS" title="AWS Get EC2 Instance User Data">
 <pre>```
 $ curl -s http://169.254.169.254/latest/user-data/
 ```
 
-[[AWS]]</pre>
+* [[AWS]]
+* [[AWS EC2]]</pre>
 </div>
 <div created="20210518085921775" modified="20210518090132869" tags="AWS" title="AWS Lambda">
 <pre>```
@@ -14851,7 +15122,7 @@ https://lobster1234.github.io/2017/04/05/working-with-localstack-command-line/
 
 [[AWS]]</pre>
 </div>
-<div created="20210518090246073" modified="20210518090332828" tags="AWS" title="AWS Localstack Python Client">
+<div created="20210518090246073" modified="20210518171153461" tags="AWS" title="AWS Localstack Python Client">
 <pre>```
 $ pip install localstack-client
 ```
@@ -14864,9 +15135,95 @@ response = client.list_buckets()
 
 * https://github.com/localstack/localstack-python-client
 * [[AWS]]
+* [[AWS S3]]
 * [[AWS Localstack]]</pre>
 </div>
-<div created="20210518085752845" modified="20210518090143138" tags="AWS" title="AWS S3">
+<div created="20210518172226133" modified="20210518172513789" tags="AWS" title="AWS Mount EC2 EBS Storage">
+<pre>http://rbgeek.wordpress.com/2012/10/08/how-to-mount-ec2-ebs-storage-to-ec2-linux-instance/
+
+Determine mounted disks
+
+```
+$ df -h
+```
+
+Determine available disks
+
+```
+$ sudo fdisk -l
+```
+
+Format disk
+
+```
+$ sudo mkfs -t ext4 /dev/xvdj
+```
+
+Mount disk
+
+```
+$ sudo mkdir -p /mnt/disk
+```
+
+[[/etc/fstab|http://www.tuxfiles.org/linuxhelp/fstab.html]]
+
+```
+/dev/xvdj  /mnt/disk1 ext4   noatime,nodiratime,nobarrier 0 0
+```
+
+```
+$ sudo mount -a # apply what is in /etc/fstab
+```
+
+
+Change disk owner
+
+```
+$ sudo chown ec2-user /mnt/disk
+```
+
+* [[AWS]]
+* [[AWS EC2]]</pre>
+</div>
+<div created="20210518172103283" modified="20210518172202824" tags="AWS" title="AWS Route53">
+<pre>https://oliverhelm.me/sys-admin/updating-aws-dns-records-from-cli
+
+```
+$ aws route53 change-resource-record-sets --hosted-zone-id ZUKNX2V0QA7CN --change-batch '
+{
+    &quot;Comment&quot;: &quot;Dev Hermes Xymon&quot;,
+    &quot;Changes&quot;: [
+        {
+            &quot;Action&quot;: &quot;UPSERT&quot;,
+            &quot;ResourceRecordSet&quot;: {
+                &quot;Name&quot;: &quot;hermes-xymon.awsdev.idt.net&quot;,
+                &quot;Type&quot;: &quot;A&quot;,
+                &quot;TTL&quot;: 300,
+                &quot;ResourceRecords&quot;: [
+                    {
+                        &quot;Value&quot;: &quot;10.252.151.231&quot;
+                    }
+                ]
+            }
+        }
+    ]
+}
+'
+```
+
+http://54im.com/ansible-doc/route53_module.html
+
+```
+$ ansible localhost -m route53 -a 'command=get zone=awsdev.idt.net record=hermes-xymon.awsdev.idt.net type=A'
+```
+
+```
+$ ansible localhost -m route53 -a 'command=get zone=awsdev.idt.net record=hermes-xymon.awsdev.idt.net type=A ttl=300 value=10.252.151.231 overwrite=true wait=true'
+```
+
+* [[AWS]]</pre>
+</div>
+<div created="20210518085752845" modified="20210518170428869" tags="AWS" title="AWS S3">
 <pre>```
 $ aws --endpoint-url=http://localhost:4572 s3 ls s3://
 ```
@@ -14896,6 +15253,18 @@ $ awslocal s3 ls s3://my-bucket/
 2019-02-03 19:24:22          6 hello.txt
 $ awslocal s3 cp s3://my-bucket/hello.txt -
 Hello
+```
+
+Total size of bucket
+
+```
+$ aws s3 ls s3://my-bucket --summarize | grep Total
+```
+
+Remove all files from bucket concurrently
+
+```
+$ aws s3 ls s3://my-bucket | awk '{ print $4 }' | xargs -I{} -P50 aws s3 rm s3://idt-dev-hermes2/{}
 ```
 
 * [[AWS]]
@@ -17048,6 +17417,113 @@ ending_slash(Dir) -&gt;
     end.
 ```
 </pre>
+</div>
+<div created="20210518171800842" modified="20210518172011164" tags="Erlang" title="Erlang AWS DynamoDB">
+<pre>```
+$ git clone https://github.com/coretech/erlcloud
+$ cd erlcloud/
+$ make
+$ erl -pa _build/default/lib/*/ebin
+```
+
+```
+application:ensure_all_started(erlcloud).
+```
+
+```
+rr(&quot;_build/default/lib/erlcloud/include/*.hrl&quot;).
+```
+
+```
+Default = erlcloud_aws:default_config().
+```
+
+```
+f(Config), Config = Default#aws_config{ddb_scheme=&quot;http://&quot;, ddb_host=&quot;localhost&quot;, ddb_port=8000}.
+```
+
+```
+erlcloud_ddb2:list_tables([], Config).
+```
+
+```
+erlcloud_ddb2:create_table(&lt;&lt;&quot;HermesRds&quot;&gt;&gt;, [{&lt;&lt;&quot;RdsName&quot;&gt;&gt;, s}], &lt;&lt;&quot;RdsName&quot;&gt;&gt;, 1, 1, [], Config).
+{ok,{ddb2_table_description,[{&lt;&lt;&quot;RdsName&quot;&gt;&gt;,s}],
+                            1477473617.178,undefined,0,&lt;&lt;&quot;RdsName&quot;&gt;&gt;,undefined,
+                            undefined,undefined,
+                            {ddb2_provisioned_throughput_description,undefined,
+                                                                     undefined,0,1,1},
+                            undefined,
+                            &lt;&lt;&quot;arn:aws:dynamodb:us-east-1:312226949769:table/HermesRds&quot;&gt;&gt;,
+                            &lt;&lt;&quot;HermesRds&quot;&gt;&gt;,0,creating}}
+{error,{&lt;&lt;&quot;ResourceInUseException&quot;&gt;&gt;,
+        &lt;&lt;&quot;Attempt to change a resource which is still in use: Table is being created: HermesRds&quot;&gt;&gt;}}
+```
+
+```
+erlcloud_ddb2:create_table(&lt;&lt;&quot;HermesRdo&quot;&gt;&gt;, [{&lt;&lt;&quot;RdoName&quot;&gt;&gt;, s}], &lt;&lt;&quot;RdoName&quot;&gt;&gt;, 1, 1, [], Config).
+{ok,{ddb2_table_description,[{&lt;&lt;&quot;RdoName&quot;&gt;&gt;,s}],
+                            1477473666.944,undefined,0,&lt;&lt;&quot;RdoName&quot;&gt;&gt;,undefined,
+                            undefined,undefined,
+                            {ddb2_provisioned_throughput_description,undefined,
+                                                                     undefined,0,1,1},
+                            undefined,
+                            &lt;&lt;&quot;arn:aws:dynamodb:us-east-1:312226949769:table/HermesRdo&quot;&gt;&gt;,
+                            &lt;&lt;&quot;HermesRdo&quot;&gt;&gt;,0,creating}}
+```
+
+```
+erlcloud_ddb2:describe_table(&lt;&lt;&quot;HermesRdo&quot;&gt;&gt;).
+{ok,{ddb2_table_description,[{&lt;&lt;&quot;RdoName&quot;&gt;&gt;,s}],
+                            1477473666.944,undefined,0,&lt;&lt;&quot;RdoName&quot;&gt;&gt;,undefined,
+                            undefined,undefined,
+                            {ddb2_provisioned_throughput_description,undefined,
+                                                                     undefined,0,1,1},
+                            undefined,
+                            &lt;&lt;&quot;arn:aws:dynamodb:us-east-1:312226949769:table/HermesRdo&quot;&gt;&gt;,
+                            &lt;&lt;&quot;HermesRdo&quot;&gt;&gt;,0,active}}
+```
+
+```
+erlcloud_ddb2:describe_table(&lt;&lt;&quot;HermesRdo2&quot;&gt;&gt;).
+{error,{&lt;&lt;&quot;ResourceNotFoundException&quot;&gt;&gt;,
+        &lt;&lt;&quot;Requested resource not found: Table: HermesRdo2 not found&quot;&gt;&gt;}}
+```
+
+```
+erlcloud_ddb2:delete_table(&lt;&lt;&quot;HermesRds&quot;&gt;&gt;, [], Config).
+```
+
+```
+erlcloud_ddb2:put_item(&lt;&lt;&quot;HermesRds&quot;&gt;&gt;, [{&lt;&lt;&quot;RdsName&quot;&gt;&gt;, &lt;&lt;&quot;BET_RDOSET_1&quot;&gt;&gt;}, {&lt;&lt;&quot;What&quot;&gt;&gt;, &lt;&lt;&quot;data&quot;&gt;&gt;}, {&lt;&lt;&quot;CreatedAt&quot;&gt;&gt;, &lt;&lt;&quot;2016-10-25T17:53:15Z&quot;&gt;&gt;}], [], Config).
+```
+
+```
+erlcloud_ddb2:get_item(&lt;&lt;&quot;HermesRds&quot;&gt;&gt;, [{&lt;&lt;&quot;RdsName&quot;&gt;&gt;, &lt;&lt;&quot;BET_RDOSET_1&quot;&gt;&gt;}], [], Config).
+```
+
+```
+erlcloud_ddb2:put_item(&lt;&lt;&quot;HermesRdo&quot;&gt;&gt;, [{&lt;&lt;&quot;RdoName&quot;&gt;&gt;, &lt;&lt;&quot;BET_RLS_MT_bb7d8b3c7021ea60009d3037cafc9fd4997cea82&quot;&gt;&gt;}, {&lt;&lt;&quot;RefCount&quot;&gt;&gt;, 0}], [{condition_expression, &lt;&lt;&quot;attribute_not_exists(RdoName)&quot;&gt;&gt;}]).
+{ok, []}
+{error,{&lt;&lt;&quot;ConditionalCheckFailedException&quot;&gt;&gt;,
+        &lt;&lt;&quot;The conditional request failed&quot;&gt;&gt;}}
+```
+
+* [[AWS]]
+* [[AWS DynamoDB]]
+</pre>
+</div>
+<div created="20210518171019533" modified="20210518171202161" tags="Erlang" title="Erlang AWS S3">
+<pre>```
+erlcloud_s3:list_objects(&quot;my-bucket&quot;, [{prefix, &quot;some-prefix&quot;}])
+erlcloud_s3:get_object_metadata(&quot;my-bucket&quot;, &quot;k1&quot;).
+erlcloud_s3:delete_object(&quot;imy-bucket&quot;, &quot;k1&quot;).
+erlcloud_s3:put_object(&quot;my-bucket&quot;, &quot;k1&quot;, &lt;&lt;&gt;&gt;).
+erlcloud_s3:get_object(&quot;my-bucket&quot;, &quot;k1&quot;).
+```
+
+* [[AWS]]
+* [[AWS S3]]</pre>
 </div>
 <div created="20200715140007598" modified="20210316103805406" tags="Erlang" title="Erlang Binary Matching Performance">
 <pre>https://rhye.org/post/erlang-binary-matching-performance/
