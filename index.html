@@ -747,6 +747,8 @@ Error message and password prompt
 
 <li>AWS</li>
 
+<li>AWS API Gateway</li>
+
 <li>AWS Get EC2 Instance Id</li>
 
 <li>AWS Get EC2 Instance Meta Data Categories</li>
@@ -755,7 +757,15 @@ Error message and password prompt
 
 <li>AWS Get EC2 Instance User Data</li>
 
+<li>AWS Lambda</li>
+
 <li>AWS Localstack</li>
+
+<li>AWS Localstack Python Client</li>
+
+<li>AWS S3</li>
+
+<li>AWS SQS</li>
 
 <li>Bash</li>
 
@@ -12204,7 +12214,7 @@ Error message and password prompt
 <div created="20200426101141551" modified="20210514095406717" title="$:/state/toc/TableOfContents-Android--118161433">
 <pre>close</pre>
 </div>
-<div created="20200428100846343" modified="20210506170351227" title="$:/state/toc/TableOfContents-AWS--118161433">
+<div created="20200428100846343" modified="20210518090626207" title="$:/state/toc/TableOfContents-AWS--118161433">
 <pre>close</pre>
 </div>
 <div created="20200426101916708" modified="20200704132312537" title="$:/state/toc/TableOfContents-Bash--118161433">
@@ -12357,7 +12367,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210517180109570" list="[[AWS Localstack]] [[Curl upload files]]" modified="20210517185448492" title="$:/StoryList">
+<div created="20210518085357880" list="" modified="20210518090558265" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13371,7 +13381,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210517190321070" title="$:/temp/search">
+<div created="20200422190456346" modified="20210518090627189" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -13737,12 +13747,13 @@ $ update-mime-database /usr/share/mime
 <div caption="Algorithms" created="20200428101452426" modified="20200428101538393" tags="Dev" title="Algorithm">
 <pre></pre>
 </div>
-<div created="20200425122732985" modified="20210506131937876" tags="Bash" title="Alias with args">
+<div created="20200425122732985" modified="20210518090550628" tags="Bash" title="Alias with args">
 <pre>```
 alias aws=&quot;aws $@ --endpoint-url http://localhost:8000&quot;
 ```
 
-[[AWS]]</pre>
+* [[AWS]]
+* [[Bash Mocking]]</pre>
 </div>
 <div created="20210130110036052" modified="20210130110406146" tags="Haskell Dev task" title="All About Monads">
 <pre>[ext[All About Monads|pdfx://refs/lang/hs/All_About_Monads.pdf]]
@@ -14524,6 +14535,69 @@ avg =  4.41667
 <div created="20200428100434103" modified="20200428100439632" tags="TableOfContents" title="AWS">
 <pre></pre>
 </div>
+<div created="20210518085424449" modified="20210518090117489" tags="AWS" title="AWS API Gateway">
+<pre>* https://serverless.com/
+* https://github.com/temyers/serverless-localstack
+* https://gist.github.com/crypticmind/c75db15fd774fe8f53282c3ccbe3d7ad
+* https://github.com/localstack/localstack/blob/master/localstack/services/apigateway/apigateway_listener.py
+
+```
+$ awslocal apigateway create-rest-api --name math
+{
+    &quot;id&quot;: &quot;0922018983&quot;,
+    &quot;name&quot;: &quot;math&quot;,
+    &quot;createdDate&quot;: 1549304901
+}
+```
+
+```
+$ awslocal apigateway get-resources --rest-api-id 0922018983
+{
+    &quot;items&quot;: [
+        {
+            &quot;id&quot;: &quot;8A-Z33375842&quot;,
+            &quot;resourceMethods&quot;: {
+                &quot;GET&quot;: {}
+            },
+            &quot;path&quot;: &quot;/&quot;
+        }
+    ]
+}
+```
+
+```
+$ awslocal apigateway put-method --rest-api-id 0922018983 --resource-id 8A-Z33375842 --http-method POST --authorization-type NONE
+{
+    &quot;httpMethod&quot;: &quot;POST&quot;,
+    &quot;authorizationType&quot;: &quot;NONE&quot;
+}
+```
+
+```
+$ awslocal apigateway put-integration --rest-api-id 0922018983 --resource-id 8A-Z33375842 --http-method POST --integration-http-method POST --type AWS_PROXY --uri arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:000000000000:function:sum
+{
+    &quot;uri&quot;: &quot;arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:000000000000:function:sum&quot;,
+    &quot;httpMethod&quot;: &quot;POST&quot;,
+    &quot;integrationResponses&quot;: {
+        &quot;200&quot;: {
+            &quot;statusCode&quot;: 200,
+            &quot;responseTemplates&quot;: {
+                &quot;application/json&quot;: null
+            }
+        }
+    },
+    &quot;type&quot;: &quot;AWS_PROXY&quot;
+}
+```
+
+```
+$ curl -H'ContentType:application/json' -XPOST http://localhost:4567/restapis/0922018983/test/_user_request_/ -d '{&quot;a&quot;:1, &quot;b&quot;:2}'
+{&quot;sum&quot;: 3}
+```
+
+* [[AWS]]
+* [[AWS Localstack]]</pre>
+</div>
 <div created="20200504101436053" modified="20210506132032687" tags="AWS" title="AWS Get EC2 Instance Id">
 <pre>```
 $ curl -s http://169.254.169.254/latest/meta-data/instance-id
@@ -14554,12 +14628,92 @@ $ curl -s http://169.254.169.254/latest/user-data/
 
 [[AWS]]</pre>
 </div>
-<div created="20200428100442383" modified="20210517183949460" tags="AWS Python" title="AWS Localstack">
+<div created="20210518085921775" modified="20210518090132869" tags="AWS" title="AWS Lambda">
+<pre>```
+$ awslocal lambda list-functions
+```
+
+```
+$ awslocal lambda delete-function --function-name=sum
+```
+
+```
+$ cat &gt; sum-handler.py &lt;&lt;EOF
+import json
+
+def handler(event, context):
+    print event
+    body = json.loads(event[&quot;body&quot;])
+    print body
+    a = body[&quot;a&quot;]
+    b = body[&quot;b&quot;]
+    res = sum(a, b)
+    return {
+        &quot;statusCode&quot;: 200,
+        &quot;body&quot;: json.dumps({&quot;sum&quot;: res})
+    }
+
+def sum(a, b):
+    return a + b
+EOF
+```
+
+```
+$ zip sum-handler.zip sum-handler.py
+updating: sum-handler.py (deflated 34%)
+```
+
+```
+$ awslocal lambda create-function --function-name=sum --runtime=python2.7 --role=r1 --handler=sum-handler.handler --zip-file fileb://sum-handler.zip
+{
+    &quot;Role&quot;: &quot;r1&quot;,
+    &quot;Handler&quot;: &quot;sum-handler.handler&quot;,
+    &quot;Runtime&quot;: &quot;python2.7&quot;,
+    &quot;FunctionName&quot;: &quot;sum&quot;,
+    &quot;FunctionArn&quot;: &quot;arn:aws:lambda:us-east-1:000000000000:function:sum&quot;,
+    &quot;Environment&quot;: {
+        &quot;Error&quot;: {},
+        &quot;Variables&quot;: {}
+    },
+    &quot;TracingConfig&quot;: {},
+    &quot;VpcConfig&quot;: {
+        &quot;SubnetIds&quot;: [
+            null
+        ],
+        &quot;SecurityGroupIds&quot;: [
+            null
+        ]
+    }
+}
+```
+
+```
+$ awslocal lambda invoke --function-name sum --payload '{&quot;body&quot;: &quot;{\&quot;a\&quot;:1, \&quot;b\&quot;:2}&quot;}' result.log &amp;&amp; cat result.log
+{
+    &quot;StatusCode&quot;: 200
+}
+{
+  &quot;body&quot;: &quot;{\&quot;sum\&quot;: 3}&quot;,
+  &quot;statusCode&quot;: 200
+}
+```
+
+```
+$ awslocal lambda update-function-code --function-name=sum --zip-file fileb://sum-handler.zip
+{
+    &quot;FunctionName&quot;: &quot;sum&quot;
+}
+```
+
+* [[AWS]]
+* [[AWS Localstack]]</pre>
+</div>
+<div created="20200428100442383" modified="20210518090425398" tags="AWS Python" title="AWS Localstack">
 <pre>```
 $ sudo apt-get install python3-dev python3-pip
 ```
 
-!!! Install LocalStack in Python3 virtualenv (DON'T USE, STOPPED WORKING SECOND TIME)
+!!! Install ~LocalStack in Python3 virtualenv (DON'T USE, STOPPED WORKING SECOND TIME)
 
 ```
 $ mkdir localstack
@@ -14569,13 +14723,13 @@ $ . env/bin/activate
 $ pip install localstack
 ```
 
-!!!! Run LocalStack
+!!!! Run ~LocalStack
 
 ```
 $ localstack start
 ```
 
-!!!! Run LocalStack Web
+!!!! Run ~LocalStack Web
 
 ```
 $ localstack web
@@ -14615,11 +14769,24 @@ $ . aws-env/bin/activate
 $ pip install awscli awscli-local
 ```
 
-!!! Install Localstack Python Client
+!!! [[AWS Localstack Python Client]]
 
-https://github.com/localstack/localstack-python-client
+!!! Use ~LocalStack
 
-```
+https://lobster1234.github.io/2017/04/05/working-with-localstack-command-line/
+
+!!! [[AWS S3]]
+
+!!! [[AWS SQS]]
+
+!!! [[AWS Lambda]]
+
+!!! [[AWS API Gateway]]
+
+[[AWS]]</pre>
+</div>
+<div created="20210518090246073" modified="20210518090332828" tags="AWS" title="AWS Localstack Python Client">
+<pre>```
 $ pip install localstack-client
 ```
 
@@ -14629,31 +14796,47 @@ client = boto3.client('s3')
 response = client.list_buckets()
 ```
 
-!!! Use LocalStack
-
-https://lobster1234.github.io/2017/04/05/working-with-localstack-command-line/
-
-!!! S3
+* https://github.com/localstack/localstack-python-client
+* [[AWS]]
+* [[AWS Localstack]]</pre>
+</div>
+<div created="20210518085752845" modified="20210518090143138" tags="AWS" title="AWS S3">
+<pre>```
+$ aws --endpoint-url=http://localhost:4572 s3 ls s3://
+```
 
 ```
-$ aws --endpoint-url=http://localhost:4572 s3 ls s3://
 $ awslocal s3 ls s3://
+```
+
+```
 $ awslocal s3 mb s3://my-bucket
 make_bucket: my-bucket
+```
+
+```
 $ awslocal s3 ls s3://
 2006-02-03 19:45:09 my-bucket
+```
+
+```
 $ echo Hello &gt; hello.txt
 $ awslocal s3 cp hello.txt s3://my-bucket/
 upload: ./hello.txt to s3://my-bucket/hello.txt
+```
+
+```
 $ awslocal s3 ls s3://my-bucket/
 2019-02-03 19:24:22          6 hello.txt
 $ awslocal s3 cp s3://my-bucket/hello.txt -
 Hello
 ```
 
-!!! SQS
-
-Create queue
+* [[AWS]]
+* [[AWS Localstack]]</pre>
+</div>
+<div created="20210518085603458" modified="20210518090154914" tags="AWS" title="AWS SQS">
+<pre>Create queue
 
 ```
 $ awslocal sqs create-queue --queue-name test-queue
@@ -14705,124 +14888,9 @@ Delete message
 $ awslocal sqs delete-message --queue-url http://localhost:4576/queue/test-queue --receipt-handle '92c8a899-80d4-4d3f-bc00-3a5ddb871a4e#c4da314f-5a05-47e7-87f1-6ab0dd19924e'
 ```
 
-!!! Lambda
 
-```
-$ awslocal lambda list-functions
-$ awslocal lambda delete-function --function-name=sum
-$ cat &gt; sum-handler.py &lt;&lt;EOF
-import json
-
-def handler(event, context):
-    print event
-    body = json.loads(event[&quot;body&quot;])
-    print body
-    a = body[&quot;a&quot;]
-    b = body[&quot;b&quot;]
-    res = sum(a, b)
-    return {
-        &quot;statusCode&quot;: 200,
-        &quot;body&quot;: json.dumps({&quot;sum&quot;: res})
-    }
-
-def sum(a, b):
-    return a + b
-EOF
-
-$ zip sum-handler.zip sum-handler.py
-updating: sum-handler.py (deflated 34%)
-
-$ awslocal lambda create-function --function-name=sum --runtime=python2.7 --role=r1 --handler=sum-handler.handler --zip-file fileb://sum-handler.zip
-{
-    &quot;Role&quot;: &quot;r1&quot;,
-    &quot;Handler&quot;: &quot;sum-handler.handler&quot;,
-    &quot;Runtime&quot;: &quot;python2.7&quot;,
-    &quot;FunctionName&quot;: &quot;sum&quot;,
-    &quot;FunctionArn&quot;: &quot;arn:aws:lambda:us-east-1:000000000000:function:sum&quot;,
-    &quot;Environment&quot;: {
-        &quot;Error&quot;: {},
-        &quot;Variables&quot;: {}
-    },
-    &quot;TracingConfig&quot;: {},
-    &quot;VpcConfig&quot;: {
-        &quot;SubnetIds&quot;: [
-            null
-        ],
-        &quot;SecurityGroupIds&quot;: [
-            null
-        ]
-    }
-}
-
-$ awslocal lambda invoke --function-name sum --payload '{&quot;body&quot;: &quot;{\&quot;a\&quot;:1, \&quot;b\&quot;:2}&quot;}' result.log &amp;&amp; cat result.log
-{
-    &quot;StatusCode&quot;: 200
-}
-{
-  &quot;body&quot;: &quot;{\&quot;sum\&quot;: 3}&quot;,
-  &quot;statusCode&quot;: 200
-}
-
-$ awslocal lambda update-function-code --function-name=sum --zip-file fileb://sum-handler.zip
-{
-    &quot;FunctionName&quot;: &quot;sum&quot;
-}
-```
-
-!!! API Gateway
-
-* https://serverless.com/
-* https://github.com/temyers/serverless-localstack
-* https://gist.github.com/crypticmind/c75db15fd774fe8f53282c3ccbe3d7ad
-* https://github.com/localstack/localstack/blob/master/localstack/services/apigateway/apigateway_listener.py
-
-```
-$ awslocal apigateway create-rest-api --name math
-{
-    &quot;id&quot;: &quot;0922018983&quot;,
-    &quot;name&quot;: &quot;math&quot;,
-    &quot;createdDate&quot;: 1549304901
-}
-
-$ awslocal apigateway get-resources --rest-api-id 0922018983
-{
-    &quot;items&quot;: [
-        {
-            &quot;id&quot;: &quot;8A-Z33375842&quot;,
-            &quot;resourceMethods&quot;: {
-                &quot;GET&quot;: {}
-            },
-            &quot;path&quot;: &quot;/&quot;
-        }
-    ]
-}
-
-$ awslocal apigateway put-method --rest-api-id 0922018983 --resource-id 8A-Z33375842 --http-method POST --authorization-type NONE
-{
-    &quot;httpMethod&quot;: &quot;POST&quot;,
-    &quot;authorizationType&quot;: &quot;NONE&quot;
-}
-
-$ awslocal apigateway put-integration --rest-api-id 0922018983 --resource-id 8A-Z33375842 --http-method POST --integration-http-method POST --type AWS_PROXY --uri arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:000000000000:function:sum
-{
-    &quot;uri&quot;: &quot;arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:000000000000:function:sum&quot;,
-    &quot;httpMethod&quot;: &quot;POST&quot;,
-    &quot;integrationResponses&quot;: {
-        &quot;200&quot;: {
-            &quot;statusCode&quot;: 200,
-            &quot;responseTemplates&quot;: {
-                &quot;application/json&quot;: null
-            }
-        }
-    },
-    &quot;type&quot;: &quot;AWS_PROXY&quot;
-}
-
-$ curl -H'ContentType:application/json' -XPOST http://localhost:4567/restapis/0922018983/test/_user_request_/ -d '{&quot;a&quot;:1, &quot;b&quot;:2}'
-{&quot;sum&quot;: 3}
-```
-
-[[AWS]]</pre>
+* [[AWS]]
+* [[AWS Localstack]]</pre>
 </div>
 <div created="20200426101157948" modified="20200426101206992" tags="TableOfContents" title="Bash">
 <pre></pre>
