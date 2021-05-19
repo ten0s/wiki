@@ -1459,6 +1459,8 @@ Error message and password prompt
 
 <li>Huawei 3G USB Modem Lights</li>
 
+<li>IANA</li>
+
 <li>ICANN</li>
 
 <li>Identity Function</li>
@@ -12436,7 +12438,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210519093740123" list="TCP/IP ToDo" modified="20210519142953235" title="$:/StoryList">
+<div created="20210519093740123" list="ARP TCP/IP ToDo" modified="20210519143836005" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13450,7 +13452,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210519143046809" title="$:/temp/search">
+<div created="20200422190456346" modified="20210519143956653" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -14414,12 +14416,12 @@ $ git apply my.patch
 ```
 </pre>
 </div>
-<div created="20210519100254445" modified="20210519143039878" tags="Definition" title="ARP">
+<div created="20210519100254445" modified="20210519144816915" tags="Definition" title="ARP">
 <pre>Address Resolution Protocol resolves [[MAC Address]] from [[IP Address]] in [[LAN]]
 
 | ! | !Source | !Destination | !Info |
-| &lt;- | ab:ab:ab:ab:ab:ab | ff:ff:ff:ff:ff:ff            | Who has 192.168.100.127? Tell 192.168.100.37 |
-| -&gt; | cd:cd:cd:cd:cd:cd | ab:ab:ab:ab:ab:ab | 192.168.100.127 is at cd:cd:cd:cd:cd:cd              |
+| &lt;- | AB:AB:AB:AB:AB:AB | FF:FF:FF:FF:FF:FF      | Who has 192.168.100.127? Tell 192.168.100.37 |
+| -&gt; | CD:CD:CD:CD:CD:CD | AB:AB:AB:AB:AB:AB | 192.168.100.127 is at CD:CD:CD:CD:CD:CD      |
 
 ```
 $ arp -a
@@ -14429,7 +14431,16 @@ $ arp -a
 $ cat /proc/net/arp
 ```
 
+```
+$ arping 192.168.100.127 -I eth0 -c1
+ARPING 192.168.100.127 from 192.168.100.11 eth0
+Unicast reply from 192.168.100.127 [CD:CD:CD:CD:CD:CD]  119.001ms
+Sent 1 probes (1 broadcast(s))
+Received 1 response(s)
+```
+
 * [ext[man arp|manx:arp]]
+* [ext[man arping|manx:arping]]
 * [[RARP]]
 * https://en.wikipedia.org/wiki/Address_Resolution_Protocol
 * https://tools.ietf.org/html/rfc826</pre>
@@ -17047,14 +17058,10 @@ $ sudo chkconfig --list apache2
 $ sudo sysv-rc-conf --list apache2
 ```</pre>
 </div>
-<div created="20210519100848000" modified="20210519135642586" tags="Definition" title="DNS">
+<div created="20210519100848000" modified="20210519143549604" tags="Definition" title="DNS">
 <pre>Domain Name System
 
-!!! Root Zone Database
-
-* iana.org
-* https://www.iana.org/domains/root/db
-* https://en.wikipedia.org/wiki/List_of_Internet_top-level_domains#ICANN-era_generic_top-level_domains
+* [[IANA]]
 </pre>
 </div>
 <div created="20200424084611466" modified="20200424084734096" tags="Linux" title="DNS lookup">
@@ -22749,6 +22756,13 @@ $(&quot;#dot-code-modal&quot;).remove();
 * Off: The USB Stick is removed
 
 https://www.bestresizer.com/2017/05/huawei-e173-usb-modem-lights-meaning/</pre>
+</div>
+<div created="20210519143431975" modified="20210519143551500" tags="Definition" title="IANA">
+<pre>Internet Assigned Numbers Authority
+
+* https://iana.org
+* https://www.iana.org/domains/root/db
+* https://en.wikipedia.org/wiki/List_of_Internet_top-level_domains#ICANN-era_generic_top-level_domains</pre>
 </div>
 <div created="20210519100138321" modified="20210519101129664" tags="Definition" title="ICANN">
 <pre>Internet Corporation for Assigned Names and Numbers - assigns [[Internet domain names|DNS]], [[IP addresses|IP Address]] and globally unique port numbers
