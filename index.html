@@ -719,7 +719,11 @@ Error message and password prompt
 
 <li>Apply a patch</li>
 
-<li>ARP cache</li>
+<li>ARP</li>
+
+<li>ARP Cache</li>
+
+<li>ARPA</li>
 
 <li>Assign CPU to application</li>
 
@@ -1066,6 +1070,8 @@ Error message and password prompt
 <li>Disable systemd-resolved</li>
 
 <li>Disable/enable/list services</li>
+
+<li>DNS</li>
 
 <li>DNS lookup</li>
 
@@ -1455,6 +1461,8 @@ Error message and password prompt
 
 <li>Huawei 3G USB Modem Lights</li>
 
+<li>ICANN</li>
+
 <li>Identity Function</li>
 
 <li>Imagemagick</li>
@@ -1496,6 +1504,10 @@ Error message and password prompt
 <li>Inversion</li>
 
 <li>Investigate WLAN network</li>
+
+<li>IP</li>
+
+<li>IP Address</li>
 
 <li>Irresistible APIs</li>
 
@@ -1587,6 +1599,8 @@ Error message and password prompt
 
 <li>Kurt Godel's incompleteness theorem</li>
 
+<li>LAN</li>
+
 <li>Last argument</li>
 
 <li>Last command</li>
@@ -1651,6 +1665,10 @@ Error message and password prompt
 
 <li>Loss Aversion</li>
 
+<li>MAC</li>
+
+<li>MAC Address</li>
+
 <li>Make 'locate' work</li>
 
 <li>Make a patch</li>
@@ -1704,6 +1722,8 @@ Error message and password prompt
 <li>MTTR</li>
 
 <li>Multiple projects using github deploy keys</li>
+
+<li>NAT</li>
 
 <li>Natural Numbers Generator</li>
 
@@ -1866,6 +1886,8 @@ Error message and password prompt
 <li>Ramda</li>
 
 <li>Random magick</li>
+
+<li>RARP</li>
 
 <li>Raspberry Pi</li>
 
@@ -2175,7 +2197,13 @@ Error message and password prompt
 
 <li>task</li>
 
+<li>TCP</li>
+
 <li>TCP client (w/o netcat)</li>
+
+<li>TCP/IP</li>
+
+<li>Teach Yourself TCP/IP in 24 Hours</li>
 
 <li>Termux</li>
 
@@ -12267,7 +12295,7 @@ Error message and password prompt
 <div created="20200430080859301" modified="20200626201614360" title="$:/state/toc/TableOfContents-CentOS--118161433">
 <pre>open</pre>
 </div>
-<div created="20200528082909481" modified="20210503171129476" title="$:/state/toc/TableOfContents-Definition--118161433">
+<div created="20200528082909481" modified="20210519101243843" title="$:/state/toc/TableOfContents-Definition--118161433">
 <pre>close</pre>
 </div>
 <div created="20200524170259522" modified="20200528082850767" title="$:/state/toc/TableOfContents-Definitions--118161433">
@@ -12402,7 +12430,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210518085357880" list="" modified="20210518175052903" title="$:/StoryList">
+<div created="20210519093740123" list="ToDo [[AWS SQS]]" modified="20210519101136412" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13416,7 +13444,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210518174041537" title="$:/temp/search">
+<div created="20200422190456346" modified="20210519101242630" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -14380,11 +14408,22 @@ $ git apply my.patch
 ```
 </pre>
 </div>
-<div created="20200424081322665" modified="20200424081350270" tags="Linux" title="ARP cache">
+<div created="20210519100254445" modified="20210519100833072" tags="Definition" title="ARP">
+<pre>Address Resolution Protocol resolves [[MAC Address]] from [[IP Address]] in [[LAN]]
+
+* [[RARP]]
+* [[ARP Cache]]</pre>
+</div>
+<div created="20200424081322665" modified="20210519100752057" tags="Linux" title="ARP Cache">
 <pre>```
 $ arp -a
 ```
+
+* [[ARP]]
 </pre>
+</div>
+<div created="20210519094828748" modified="20210519094849777" tags="Definition" title="ARPA">
+<pre>Advanced Research Projects Agency</pre>
 </div>
 <div created="20200425130227902" modified="20200425130242074" tags="Linux" title="Assign CPU to application">
 <pre>taskset
@@ -15859,22 +15898,26 @@ chrome://version
 
 [[Chrome urls]]</pre>
 </div>
-<div created="20210502155355090" modified="20210502164254082" tags="Definition" title="CIDR">
+<div created="20210502155355090" modified="20210519100049465" tags="Definition" title="CIDR">
 <pre>Classless Inter-Domain Routing
 
 CIDR notation is a compact representation of an IP address and its associated network mask
 
-* 192.168.100.14/24 represents the IPv4 address 192.168.100.14 and its associated network prefix 192.168.100.0, or equivalently, its subnet mask 255.255.255.0, which has 24 leading 1-bits.
-* the IPv4 block 192.168.100.0/22 represents the 1024 IPv4 addresses from 192.168.100.0 to 192.168.103.255. 
+* 192.168.100.14/24 represents the [[IPv4]] address 192.168.100.14 and its associated network prefix 192.168.100.0, or equivalently, its subnet mask 255.255.255.0, which has 24 leading 1-bits.
+* the IPv4 block 192.168.100.0/22 represents the 1024 [[IPv4]] addresses from 192.168.100.0 to 192.168.103.255. 
 
 192.168.100.0/22
 11111111.11111111.11111100.00000000
 
-The number of addresses inside a network or subnet may be calculated as 2address length − prefix length, where address length is 128 for IPv6 and 32 for IPv4. For example, in IPv4, the prefix length /29 gives: 232 − 29 = 23 = 8 addresses.
+The number of addresses inside a network or subnet may be calculated as 2^(address length−prefix length), where address length is 128 for [[IPv6]] and 32 for [[IPv4]]. 
+
+For example, in [[IPv4]], the prefix length /29 gives: 232 − 29 = 23 = 8 addresses.
 
 2^(32-22)=2^10=2024
 
 https://ipinfo.io/cidr-to-ip-range-converter
+
+* [[TCP/IP]]
 </pre>
 </div>
 <div created="20201109085018931" modified="20201109085042773" tags="Algorithm" title="Cigarette smokers problem">
@@ -17001,6 +17044,9 @@ $ sudo sysv-rc-conf [--list] # w/o params shows GUI
 $ sudo chkconfig --list apache2
 $ sudo sysv-rc-conf --list apache2
 ```</pre>
+</div>
+<div created="20210519100848000" modified="20210519100947718" tags="Definition" title="DNS">
+<pre>Domain Name System</pre>
 </div>
 <div created="20200424084611466" modified="20200424084734096" tags="Linux" title="DNS lookup">
 <pre>```
@@ -21848,7 +21894,7 @@ References
 <div created="20200610162126307" modified="20200915122831639" tags="JavaScript Book task" title="Exploring ES6">
 <pre>https://exploringjs.com/es6.html</pre>
 </div>
-<div created="20210426105028891" modified="20210426105259084" tags="Book task" title="Exploring Expect">
+<div created="20210426105028891" modified="20210519094603147" tags="Book" title="Exploring Expect">
 <pre>[ext[Open|pdfx://refs/lang/expect/Exploring_Expect.pdf::1]]</pre>
 </div>
 <div created="20200423172455192" modified="20200423172600898" tags="Git" title="Export a branch">
@@ -22695,6 +22741,11 @@ $(&quot;#dot-code-modal&quot;).remove();
 
 https://www.bestresizer.com/2017/05/huawei-e173-usb-modem-lights-meaning/</pre>
 </div>
+<div created="20210519100138321" modified="20210519101129664" tags="Definition" title="ICANN">
+<pre>Internet Corporation for Assigned Names and Numbers - assigns [[Internet domain names|DNS]], [[IP addresses|IP Address]] and globally unique port numbers
+
+* https://www.icann.org/</pre>
+</div>
 <div created="20210314140941599" modified="20210315094824821" title="Identity Function">
 <pre>Identity (I-combinator)
 
@@ -22919,6 +22970,14 @@ https://www.tldp.org/HOWTO/Printing-HOWTO/
 
 kismet
 </pre>
+</div>
+<div created="20210519094731054" modified="20210519094739130" tags="Definition" title="IP">
+<pre>Internet Protocol</pre>
+</div>
+<div created="20210519095406952" modified="20210519095551017" tags="Definition" title="IP Address">
+<pre>[[IP]] address is a ''logical address'' in [[TCP/IP]]
+
+* [[MAC Address]]</pre>
 </div>
 <div created="20200621131617941" modified="20200627165633417" tags="Dev Book task" title="Irresistible APIs">
 <pre>https://www.manning.com/books/irresistible-apis
@@ -23760,6 +23819,9 @@ https://youtu.be/3VQ382QG-y4?t=1575
 
 https://www.quantamagazine.org/how-godels-incompleteness-theorems-work-20200714/</pre>
 </div>
+<div created="20210519094931651" modified="20210519094947688" tags="Definition" title="LAN">
+<pre>Local Area Network</pre>
+</div>
 <div created="20200425121112932" modified="20200425121218131" tags="Bash" title="Last argument">
 <pre>```
 $ ping -c1 google.com
@@ -24076,6 +24138,14 @@ $(&quot;#result&quot;).load(&quot;ajax/test.html&quot;);
 <pre>Loss aversion refers to our tendency to strongly prefer avoiding losses over acquiring gains.
 </pre>
 </div>
+<div created="20210519095023978" modified="20210519095242995" tags="Definition" title="MAC">
+<pre>Media Access Control</pre>
+</div>
+<div created="20210519095210124" modified="20210519095603630" tags="Definition" title="MAC Address">
+<pre>[[MAC]] address is a ''physical address'' of a network adapter in [[Ethernet]]
+
+* [[IP Address]]</pre>
+</div>
 <div created="20200425145405345" modified="20200426101830901" tags="Linux CentOS" title="Make 'locate' work">
 <pre>```
 $ sudo yum install mlocate
@@ -24381,6 +24451,9 @@ Host project-one.github.com
 $  git clone git@project-one.github.com:vendor/project-one.git
 ```
 </pre>
+</div>
+<div created="20210519100115236" modified="20210519100128212" tags="Definition" title="NAT">
+<pre>Network Address Translation</pre>
 </div>
 <div created="20210209093431962" modified="20210314144123839" tags="JavaScript" title="Natural Numbers Generator">
 <pre>```
@@ -26454,6 +26527,11 @@ https://egghead.io/courses/functional-programming-in-javascript-with-ramda-js</p
 </div>
 <div created="20200429155326651" modified="20200510154249273" tags="[[TW Links]]" title="Random magick">
 <pre>http://tw5magick.tiddlyspot.com/</pre>
+</div>
+<div created="20210519100309235" modified="20210519100840395" tags="Definition" title="RARP">
+<pre>Reverse [[ARP]] resolves [[IP Address]] from [[MAC Address]] in [[LAN]]
+
+* [[ARP]]</pre>
 </div>
 <div created="20200511134358651" modified="20200511134629952" tags="TableOfContents" title="Raspberry Pi">
 <pre></pre>
@@ -29024,8 +29102,13 @@ Can be used like https://hexdocs.pm/elixir/IO.html#inspect/2
 
 * [[Functional Combinators]]</pre>
 </div>
-<div created="20200427173158521" list="[[Functional Programming in Javascript]] [[Grokking Simplicity]] [[Professor Frisby Introduces Composable Functional JavaScript]] [[Professor Frisby's Mostly adequate guide to FP]] [[Hardcore Functional Programming in JavaScript]] [[Exploring Expect]] [[Hardcore Functional Architecture Patterns in JavaScript]] [[Working With ADTs]] [[Classroom Coding with Prof. Frisby]] [[All About Monads]] [[The Joy of JavaScript]] [[Fun With Folktale]] [[RxJS in Action]] [[Composing Software]] [[JavaScript Allongé, the &quot;Six&quot; Edition]] [[Secrets of the JavaScript Ninja]] [[Functional Javascript (with Underscore.js)]] [[Fundamentals of Lambda Calculus &amp; Functional Programming in JavaScript]] [[JavaScript: The Good Parts]] [[DCL &amp; AutoLisp]] ANTLR Читать [[ES6 in Depth]] [[Node.js in Action]] [[Mastering REST APIs in Node.js]] [[Building the Web of Things]] [[Lisp - A Language of Stratified Design]] [[Review FP in JS resources]] [[Programming JavaScript Applications]] [[Learn JavaScript Next]] [[Javascript curry function]] [[Understanding ECMAScript 6]] [[Functional Combinators]] [[Exploring ES6]] [[You don't know JS]] [[Foundations of PyGTK Development]] [[Read &quot;Writing Testable Code&quot;]] [[TypeScript Quickly]] [[The Pragmatic Programmer]] [[The Clean Coder]] [[Setup Tor Router]] [[Parallel programming in Erlang]] [[Build it with Nitrogen]] [[Add tar info]] [[Make wiki work offline on Android]] Robots.txt [[Property-Based Testing]] [[Javascript dependency injection]] [[Node.js in Motion]] [[Dependency Inversion Principle]] [[Erlang Safe Foreach]] [[Android phone as Raspberry Pi display]] [[Raspberry Pi Zero Ethernet]] [[Raspberry Pi projects]] [[Install Android Studio]] [[ES6 in Motion]] [[Javascript mixin]] [[WebAssembly in Action]] [[Setup Retropie]] MPS [[Checkout Node.js Cluster API]] [[Irresistible APIs]] [[Introduction to Rust]] [[Rust in Action]] [[Express in Action/Motion]] [[The Design of Web APIs]] [[Understanding the Digital World]] [[Crafting interpreters]] csrf [[Graphql in motion]] [[Javascript context menu]] [[JavaScript setup emacs-eslint]] [[Checkout Hamler]] [[OpenCL in Action]] [[Patterns of Software]] [[Domain Driven Design]] [[Programming Tasks]]" modified="20210426105241095" title="task">
+<div created="20200427173158521" list="[[Functional Programming in Javascript]] [[Grokking Simplicity]] [[Professor Frisby Introduces Composable Functional JavaScript]] [[Professor Frisby's Mostly adequate guide to FP]] [[Hardcore Functional Programming in JavaScript]] [[Teach Yourself TCP/IP in 24 Hours]] [[Exploring Expect]] [[Hardcore Functional Architecture Patterns in JavaScript]] [[Working With ADTs]] [[Classroom Coding with Prof. Frisby]] [[All About Monads]] [[The Joy of JavaScript]] [[Fun With Folktale]] [[RxJS in Action]] [[Composing Software]] [[JavaScript Allongé, the &quot;Six&quot; Edition]] [[Secrets of the JavaScript Ninja]] [[Functional Javascript (with Underscore.js)]] [[Fundamentals of Lambda Calculus &amp; Functional Programming in JavaScript]] [[JavaScript: The Good Parts]] [[DCL &amp; AutoLisp]] ANTLR Читать [[ES6 in Depth]] [[Node.js in Action]] [[Mastering REST APIs in Node.js]] [[Building the Web of Things]] [[Lisp - A Language of Stratified Design]] [[Review FP in JS resources]] [[Programming JavaScript Applications]] [[Learn JavaScript Next]] [[Javascript curry function]] [[Understanding ECMAScript 6]] [[Functional Combinators]] [[Exploring ES6]] [[You don't know JS]] [[Foundations of PyGTK Development]] [[Read &quot;Writing Testable Code&quot;]] [[TypeScript Quickly]] [[The Pragmatic Programmer]] [[The Clean Coder]] [[Setup Tor Router]] [[Parallel programming in Erlang]] [[Build it with Nitrogen]] [[Add tar info]] [[Make wiki work offline on Android]] Robots.txt [[Property-Based Testing]] [[Javascript dependency injection]] [[Node.js in Motion]] [[Dependency Inversion Principle]] [[Erlang Safe Foreach]] [[Android phone as Raspberry Pi display]] [[Raspberry Pi Zero Ethernet]] [[Raspberry Pi projects]] [[Install Android Studio]] [[ES6 in Motion]] [[Javascript mixin]] [[WebAssembly in Action]] [[Setup Retropie]] MPS [[Checkout Node.js Cluster API]] [[Irresistible APIs]] [[Introduction to Rust]] [[Rust in Action]] [[Express in Action/Motion]] [[The Design of Web APIs]] [[Understanding the Digital World]] [[Crafting interpreters]] csrf [[Graphql in motion]] [[Javascript context menu]] [[JavaScript setup emacs-eslint]] [[Checkout Hamler]] [[OpenCL in Action]] [[Patterns of Software]] [[Domain Driven Design]] [[Programming Tasks]] [[Generate all possible string corresponding for RegEx]] [[Review Artificial Intelligence book]] [[Review LISP book]] [[Бивер Говорит]]" modified="20210519094551464" title="task">
 <pre></pre>
+</div>
+<div created="20210519094649646" modified="20210519094748827" tags="Definition" title="TCP">
+<pre>Transport Control Protocol
+
+[[IP]]</pre>
 </div>
 <div created="20200425161848192" modified="20200425161940628" tags="Bash Linux" title="TCP client (w/o netcat)">
 <pre>Server:
@@ -29040,6 +29123,22 @@ Client:
 $ exec 3&lt;&gt;/dev/tcp/localhost/1234 || (echo &quot;Can't connect&quot; ; exit 1)
 $ echo &quot;Hello&quot; &gt;&amp;3
 ```</pre>
+</div>
+<div created="20210519095622496" modified="20210519095646683" tags="Definition" title="TCP/IP">
+<pre>Protocol suite
+
+* [[TCP]]
+* [[UDP]]
+* [[IP]]
+</pre>
+</div>
+<div created="20210519094508512" modified="20210519101236439" tags="Book task" title="Teach Yourself TCP/IP in 24 Hours">
+<pre>[ext[Open|pdfx://refs/net/Teach_Yourself_TCPIP_in_24_Hours.pdf::23]]
+
+* [[TCP/IP]]
+* [[TCP]]
+* [[UDP]]
+* [[IP]]</pre>
 </div>
 <div created="20200511134302365" modified="20200629075132536" tags="Android" title="Termux">
 <pre>!! Install
@@ -30334,8 +30433,8 @@ $ sudo iftop -i eth0 -f 'dst port 5001'
 <pre>''Wi-Fi'' is a wireless networking protocol that uses radio waves to provide network access to mobile devices based on the IEEE 802.11 standards.
 </pre>
 </div>
-<div created="20200524150957588" modified="20200528082905841" tags="Definition" title="WLAN">
-<pre>Wireless LAN (WLAN). Most modern WLANs are based on IEEE 802.11 standards and are marketed under the [[Wi-Fi]] brand name
+<div created="20200524150957588" modified="20210519094956904" tags="Definition" title="WLAN">
+<pre>Wireless [[LAN]] (WLAN). Most modern WLANs are based on IEEE 802.11 standards and are marketed under the [[Wi-Fi]] brand name
 </pre>
 </div>
 <div created="20210216163308194" modified="20210216163335315" tags="JavaScript task" title="Working With ADTs">
