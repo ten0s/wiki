@@ -721,8 +721,6 @@ Error message and password prompt
 
 <li>ARP</li>
 
-<li>ARP Cache</li>
-
 <li>ARPA</li>
 
 <li>Assign CPU to application</li>
@@ -12162,8 +12160,8 @@ Error message and password prompt
 <div created="20200423185634443" modified="20200423185634443" title="$:/state/plugin-info-334910430-$:/core---1812962263">
 <pre>contents</pre>
 </div>
-<div created="20200512083903594" modified="20210515063226243" title="$:/state/showeditpreview">
-<pre>no</pre>
+<div created="20200512083903594" modified="20210519142031906" title="$:/state/showeditpreview">
+<pre>yes</pre>
 </div>
 <div created="20200423185759928" modified="20210404172044129" title="$:/state/sidebar">
 <pre>yes</pre>
@@ -12369,7 +12367,7 @@ Error message and password prompt
 <div created="20210316111100577" modified="20210316111100577" title="$:/state/toc/TableOfContents-SSL--118161433">
 <pre>open</pre>
 </div>
-<div created="20200427165444695" modified="20210315145241878" title="$:/state/toc/TableOfContents-TiddlyWiki--118161433">
+<div created="20200427165444695" modified="20210519142702067" title="$:/state/toc/TableOfContents-TiddlyWiki--118161433">
 <pre>close</pre>
 </div>
 <div created="20201119144222195" modified="20201119144222195" title="$:/state/toc/TableOfContents-ToDo--118161433">
@@ -12438,7 +12436,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210519093740123" list="ARP TCP/IP ToDo" modified="20210519140148025" title="$:/StoryList">
+<div created="20210519093740123" list="TCP/IP ToDo" modified="20210519142600625" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -14416,16 +14414,14 @@ $ git apply my.patch
 ```
 </pre>
 </div>
-<div created="20210519100254445" modified="20210519135119816" tags="Definition" title="ARP">
+<div created="20210519100254445" modified="20210519142635231" tags="Definition" title="ARP">
 <pre>Address Resolution Protocol resolves [[MAC Address]] from [[IP Address]] in [[LAN]]
 
-* [[RARP]]
-* [[ARP Cache]]
-* https://en.wikipedia.org/wiki/Address_Resolution_Protocol
-* https://tools.ietf.org/html/rfc826</pre>
-</div>
-<div created="20200424081322665" modified="20210519132834294" tags="Linux" title="ARP Cache">
-<pre>```
+| ! | !Source | !Destination | !Info |
+| &lt;- | ab:ab:ab:ab:ab:ab | ff:ff:ff:ff:ff:ff            | Who has 192.168.100.127? Tell 192.168.100.37 |
+| -&gt; | cd:cd:cd:cd:cd:cd | ab:ab:ab:ab:ab:ab | 192.168.100.127 is at cd:cd:cd:cd:cd:cd              |
+
+```
 $ arp -a
 ```
 
@@ -14433,8 +14429,9 @@ $ arp -a
 $ cat /proc/net/arp
 ```
 
-* [[ARP]]
-</pre>
+* [[RARP]]
+* https://en.wikipedia.org/wiki/Address_Resolution_Protocol
+* https://tools.ietf.org/html/rfc826</pre>
 </div>
 <div created="20210519094828748" modified="20210519094849777" tags="Definition" title="ARPA">
 <pre>Advanced Research Projects Agency</pre>
