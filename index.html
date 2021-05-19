@@ -829,8 +829,6 @@ Error message and password prompt
 
 <li>Benchmark network throughput (iperf)</li>
 
-<li>Benchmark network throughput (netcat)</li>
-
 <li>Bifunctor</li>
 
 <li>Binary</li>
@@ -1000,6 +998,8 @@ Error message and password prompt
 <li>Database Atomicity</li>
 
 <li>Date tricks</li>
+
+<li>Daylight Saving Time</li>
 
 <li>DCL &amp; AutoLisp</li>
 
@@ -1727,13 +1727,19 @@ Error message and password prompt
 
 <li>Natural Numbers Generator</li>
 
-<li>Netcat HTTP server and client</li>
+<li>Netcat</li>
+
+<li>Netcat Benchmark Network Throughput</li>
+
+<li>Netcat HTTP Server and Client</li>
 
 <li>Netcat port forwarding</li>
 
 <li>Netcat SMTP client</li>
 
-<li>Netcat TCP server and client</li>
+<li>Netcat TCP Server and Client</li>
+
+<li>Netcat Turn Console Process to Server</li>
 
 <li>Network boot</li>
 
@@ -2329,8 +2335,6 @@ Error message and password prompt
 
 <li>turbofish</li>
 
-<li>Turn console process to server (netcat)</li>
-
 <li>TW Links</li>
 
 <li>TypeScript Quickly</li>
@@ -2404,6 +2408,8 @@ Error message and password prompt
 <li>WLAN</li>
 
 <li>Working With ADTs</li>
+
+<li>World time zone</li>
 
 <li>Write a macro</li>
 
@@ -12432,7 +12438,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210519093740123" list="TCP/IP ToDo" modified="20210519132824113" title="$:/StoryList">
+<div created="20210519093740123" list="ARP TCP/IP ToDo" modified="20210519140148025" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13446,7 +13452,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210519132858089" title="$:/temp/search">
+<div created="20200422190456346" modified="20210519140333104" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -14410,11 +14416,13 @@ $ git apply my.patch
 ```
 </pre>
 </div>
-<div created="20210519100254445" modified="20210519100833072" tags="Definition" title="ARP">
+<div created="20210519100254445" modified="20210519135119816" tags="Definition" title="ARP">
 <pre>Address Resolution Protocol resolves [[MAC Address]] from [[IP Address]] in [[LAN]]
 
 * [[RARP]]
-* [[ARP Cache]]</pre>
+* [[ARP Cache]]
+* https://en.wikipedia.org/wiki/Address_Resolution_Protocol
+* https://tools.ietf.org/html/rfc826</pre>
 </div>
 <div created="20200424081322665" modified="20210519132834294" tags="Linux" title="ARP Cache">
 <pre>```
@@ -15635,23 +15643,6 @@ $ iperf -c localhost
 ```
 </pre>
 </div>
-<div created="20200425165156510" modified="20200425165531297" tags="Linux" title="Benchmark network throughput (netcat)">
-<pre>Server:
-
-```
-$ nc -klv &lt;port&gt; &gt;/dev/null
-```
-
-Client (multiply the result to 8):
-
-```
-$ dd if=/dev/zero bs=1024K count=512 | nc -v &lt;host&gt; &lt;port&gt;
-$ dd if=/dev/zero bs=1024K count=512 | pv -a | nc -v &lt;host&gt; &lt;port&gt;
-$ pv -a /dev/zero | nc -v &lt;host&gt; &lt;port&gt;
-$ head -c 10000000 | nc -v &lt;host&gt; &lt;port&gt;
-```
-</pre>
-</div>
 <div created="20210323085832431" modified="20210323090424071" tags="" title="Bifunctor">
 <pre>* [ext[Category Theory for Programmers|pdfx://refs/dev/fp/Category_Theory_for_Programmers.pdf::113]]
 * [[Functor]]</pre>
@@ -15813,7 +15804,7 @@ $ git remote rm origin
 $ git remote add origin &lt;NEW_REPO_PATH&gt;
 ```</pre>
 </div>
-<div created="20200425123025759" modified="20200425123257688" tags="Linux" title="Change timezone">
+<div created="20200425123025759" modified="20210519135418366" tags="Linux" title="Change timezone">
 <pre>* Backup
 ```
 $ sudo mv /etc/localtime /etc/localtime.bak
@@ -15833,7 +15824,8 @@ $ sudo ln -sf /usr/share/zoneinfo/UTC /etc/localtime
 $ sudo ln -s /usr/share/zoneinfo/Europe/Minsk /etc/localtime
 ```
 
-[[Determine timezone]]</pre>
+* [[Determine timezone]]
+* [[World time zone]]</pre>
 </div>
 <div created="20200425120805241" modified="20200425120830763" tags="Bash" title="Change to prev dir">
 <pre>```
@@ -16621,6 +16613,11 @@ $ date +'%d/%m/%Y' -d '2013-04-08 +2 days' # reformat and calculate
 $ TZ=America/New_York date # what time in NYC now
 ```</pre>
 </div>
+<div created="20210519135428240" modified="20210519135503837" tags="" title="Daylight Saving Time">
+<pre>* http://www.webexhibits.org/daylightsaving/
+* https://www.timeanddate.com/time/dst/
+</pre>
+</div>
 <div created="20200820080541224" modified="20201031172352065" tags="task" title="DCL &amp; AutoLisp">
 <pre>* http://entercad.ru/acad_alg.en/
 
@@ -16835,12 +16832,13 @@ $ sudo lsof -i :PORT
 ```
 </pre>
 </div>
-<div created="20200425123050678" modified="20200425123259394" tags="Linux" title="Determine timezone">
+<div created="20200425123050678" modified="20210519135421007" tags="Linux" title="Determine timezone">
 <pre>```
 $ tzselect
 ```
 
-[[Change timezone]]</pre>
+* [[Change timezone]]
+* [[World time zone]]</pre>
 </div>
 <div created="20200425124929470" modified="20200425125044729" tags="Linux" title="Determine what ports process uses">
 <pre>* add 'l' for listening only
@@ -17051,8 +17049,15 @@ $ sudo chkconfig --list apache2
 $ sudo sysv-rc-conf --list apache2
 ```</pre>
 </div>
-<div created="20210519100848000" modified="20210519100947718" tags="Definition" title="DNS">
-<pre>Domain Name System</pre>
+<div created="20210519100848000" modified="20210519135642586" tags="Definition" title="DNS">
+<pre>Domain Name System
+
+!!! Root Zone Database
+
+* iana.org
+* https://www.iana.org/domains/root/db
+* https://en.wikipedia.org/wiki/List_of_Internet_top-level_domains#ICANN-era_generic_top-level_domains
+</pre>
 </div>
 <div created="20200424084611466" modified="20200424084734096" tags="Linux" title="DNS lookup">
 <pre>```
@@ -24473,7 +24478,29 @@ function* naturalNumbers() {
 
 * [[JavaScript Generator]]</pre>
 </div>
-<div created="20200425163839931" modified="20210503114202817" tags="Linux" title="Netcat HTTP server and client">
+<div created="20210519135952957" modified="20210519140035694" tags="Book" title="Netcat">
+<pre>[ext[Open|pdfx://refs/net/Netcat_Power_Tools.pdf]]</pre>
+</div>
+<div created="20200425165156510" modified="20210519140140644" tags="Linux" title="Netcat Benchmark Network Throughput">
+<pre>Server:
+
+```
+$ nc -klv &lt;port&gt; &gt;/dev/null
+```
+
+Client (multiply the result to 8):
+
+```
+$ dd if=/dev/zero bs=1024K count=512 | nc -v &lt;host&gt; &lt;port&gt;
+$ dd if=/dev/zero bs=1024K count=512 | pv -a | nc -v &lt;host&gt; &lt;port&gt;
+$ pv -a /dev/zero | nc -v &lt;host&gt; &lt;port&gt;
+$ head -c 10000000 | nc -v &lt;host&gt; &lt;port&gt;
+```
+
+* [[Netcat]]
+</pre>
+</div>
+<div created="20200425163839931" modified="20210519140321409" tags="Linux" title="Netcat HTTP Server and Client">
 <pre>Server: 
 
 ```
@@ -24497,17 +24524,20 @@ Client:
 ```
 $ echo -en &quot;GET /api/config HTTP/1.1\r\nHost: 127.0.0.1:8080\r\n\r\n&quot; | nc -v -q-1 127.0.0.1 8080
 ```
-</pre>
+
+* [[Netcat]]</pre>
 </div>
-<div created="20200425163511839" modified="20200425163613712" tags="Linux" title="Netcat port forwarding">
+<div created="20200425163511839" modified="20210519140103280" tags="Linux" title="Netcat port forwarding">
 <pre>```
 $ mkfifo /tmp/backpipe
 $ sudo bash -c 'while true; do nc -l 80 &lt; /tmp/backpipe | nc localhost 8080 &gt; /tmp/backpipe; done'
 $ sudo bash -c 'while true; do nc -l 80 &lt; /tmp/backpipe | nc localhost 8080 | tee /tmp/backpipe; done'
 ```
+
+* [[Netcat]]
 </pre>
 </div>
-<div created="20200425170554214" modified="20200425170801936" tags="Linux" title="Netcat SMTP client">
+<div created="20200425170554214" modified="20210519140302972" tags="Linux" title="Netcat SMTP client">
 <pre>https://eax.me/smtp-descr/
 
 ```
@@ -24524,9 +24554,10 @@ quit
 EOF
 ```
 
-[[Postfix via gmail.com]]</pre>
+* [[Postfix via gmail.com]]
+* [[Netcat]]</pre>
 </div>
-<div created="20200425163711467" modified="20200425164959989" tags="Linux" title="Netcat TCP server and client">
+<div created="20200425163711467" modified="20210519140250709" tags="Linux" title="Netcat TCP Server and Client">
 <pre>Server:
 
 ```
@@ -24537,7 +24568,43 @@ Client:
 
 ```
 $ nc localhost 1234
-```</pre>
+```
+
+* [[Netcat]]</pre>
+</div>
+<div created="20200425163925502" modified="20210519140216295" tags="Linux Bash" title="Netcat Turn Console Process to Server">
+<pre>Server single session: 
+
+```
+$ mkfifo /tmp/backpipe
+$ nc -l 1234 &lt; /tmp/backpipe | `which erl` &gt; /tmp/backpipe
+```
+
+Client:
+
+```
+$ nc localhost 1234
+Eshell V8.3  (abort with ^G)
+1&gt; 
+```
+
+Server multiple sessions: 
+
+```
+$ mkfifo /tmp/backpipe
+while true; do
+    nc -z localhost 1234
+    if [[ $? -ne 0 ]]; then
+        sleep 5
+	echo Waiting for session to start...
+    else
+        nc localhost 1234 &lt; /tmp/backpipe | `which erl` &gt; /tmp/backpipe
+	echo Session stopped
+    fi
+done
+```
+
+* [[Netcat]]</pre>
 </div>
 <div created="20200511134816975" modified="20200511134829021" tags="[[Raspberry Pi]]" title="Network boot">
 <pre>https://www.raspberrypi.org/documentation/hardware/raspberrypi/bootmodes/net_tutorial.md</pre>
@@ -29129,7 +29196,7 @@ Can be used like https://hexdocs.pm/elixir/IO.html#inspect/2
 
 [[IP]]</pre>
 </div>
-<div created="20200425161848192" modified="20200425161940628" tags="Bash Linux" title="TCP client (w/o netcat)">
+<div created="20200425161848192" modified="20210519140234218" tags="Bash Linux" title="TCP client (w/o netcat)">
 <pre>Server:
 
 ```
@@ -29141,7 +29208,9 @@ Client:
 ```
 $ exec 3&lt;&gt;/dev/tcp/localhost/1234 || (echo &quot;Can't connect&quot; ; exit 1)
 $ echo &quot;Hello&quot; &gt;&amp;3
-```</pre>
+```
+
+* [[Netcat]]</pre>
 </div>
 <div created="20210519095622496" modified="20210519132316548" tags="Definition" title="TCP/IP">
 <pre>Internet Protocol Suite
@@ -29994,39 +30063,6 @@ mc, curses, vim, emacs, etc
 <pre>https://matematikaadit.github.io/posts/rust-turbofish.html
 </pre>
 </div>
-<div created="20200425163925502" modified="20200425164639116" tags="Linux Bash" title="Turn console process to server (netcat)">
-<pre>Server single session: 
-
-```
-$ mkfifo /tmp/backpipe
-$ nc -l 1234 &lt; /tmp/backpipe | `which erl` &gt; /tmp/backpipe
-```
-
-Client:
-
-```
-$ nc localhost 1234
-Eshell V8.3  (abort with ^G)
-1&gt; 
-```
-
-Server multiple sessions: 
-
-```
-$ mkfifo /tmp/backpipe
-while true; do
-    nc -z localhost 1234
-    if [[ $? -ne 0 ]]; then
-        sleep 5
-	echo Waiting for session to start...
-    else
-        nc localhost 1234 &lt; /tmp/backpipe | `which erl` &gt; /tmp/backpipe
-	echo Session stopped
-    fi
-done
-```
-</pre>
-</div>
 <div created="20200505083936386" modified="20200510140028729" tags="TiddlyWiki" title="TW Links">
 <pre>https://www.youtube.com/playlist?list=PLsA0J_q00ifWyyYBnjx8sXvYIcXh1T7bH
 
@@ -30465,6 +30501,10 @@ $ sudo iftop -i eth0 -f 'dst port 5001'
 <div created="20210216163308194" modified="20210216163335315" tags="JavaScript task" title="Working With ADTs">
 <pre>* https://github.com/evilsoft/working-with-adts
 * https://www.youtube.com/playlist?list=PLjvgv-FpMo7XRVFZjZsWXJ5nVmRJ5a5Hv</pre>
+</div>
+<div created="20210519135229996" modified="20210519135315271" tags="" title="World time zone">
+<pre>* https://24timezones.com/
+* https://www.worldtimezone.com/</pre>
 </div>
 <div created="20200429155727025" modified="20200429155829459" tags="TiddlyWiki" title="Write a macro">
 <pre>* https://tiddlywiki.com/#Macros%20in%20WikiText
