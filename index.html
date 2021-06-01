@@ -24615,12 +24615,12 @@ $ sudo bash -c 'while true; do nc -l 80 &lt; /tmp/backpipe | nc localhost 8080 |
 * [[Netcat]]
 </pre>
 </div>
-<div created="20210601145704961" modified="20210601153939214" tags="" title="Netcat Remote Bash Shell">
+<div created="20210601145704961" modified="20210601154947176" tags="" title="Netcat Remote Bash Shell">
 <pre>Server: 
 
 ```
 $ mkfifo /tmp/backpipe
-$ cat /tmp/backpipe | nc -lk 1234 | bash -i &amp;&gt; /tmp/backpipe
+$ cat /tmp/backpipe | nc -lv 1234 | tee /proc/$$/fd/1 | bash -i &amp;&gt; /tmp/backpipe
 ```
 
 Client:
@@ -24634,20 +24634,19 @@ Eshell V8.3  (abort with ^G)
 * [[Netcat]]
 * [[Bash]]</pre>
 </div>
-<div created="20210601145341200" modified="20210601154118937" tags="" title="Netcat Remote Erlang Shell">
+<div created="20210601145341200" modified="20210601155303046" tags="" title="Netcat Remote Erlang Shell">
 <pre>Server: 
 
 ```
 $ mkfifo /tmp/backpipe
-$ cat /tmp/backpipe | nc -lv 1234 | erl &amp;&gt; /tmp/backpipe
+$ cat /tmp/backpipe | nc -lv 1234 | tee /proc/$$/fd/1 | erl &amp;&gt; /tmp/backpipe
 ```
 
 Client:
 
 ```
 $ nc localhost 1234
-Eshell V8.3  (abort with ^G)
-1&gt; 
+user@host ~/ $
 ```
 
 * [[Netcat]]
