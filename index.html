@@ -1745,11 +1745,13 @@ Error message and password prompt
 
 <li>Netcat port forwarding</li>
 
+<li>Netcat Remote Bash Shell</li>
+
+<li>Netcat Remote Erlang Shell</li>
+
 <li>Netcat SMTP client</li>
 
 <li>Netcat TCP Server and Client</li>
-
-<li>Netcat Turn Console Process to Server</li>
 
 <li>Network boot</li>
 
@@ -12455,7 +12457,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210601100632938" list="" modified="20210601114133413" title="$:/StoryList">
+<div created="20210601142954272" list="[[Netcat Remote Bash Shell]] [[Netcat Remote Erlang Shell]]" modified="20210601143012208" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13469,7 +13471,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210601114510823" title="$:/temp/search">
+<div created="20200422190456346" modified="20210601145702328" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -24613,6 +24615,45 @@ $ sudo bash -c 'while true; do nc -l 80 &lt; /tmp/backpipe | nc localhost 8080 |
 * [[Netcat]]
 </pre>
 </div>
+<div created="20210601145704961" modified="20210601153939214" tags="" title="Netcat Remote Bash Shell">
+<pre>Server: 
+
+```
+$ mkfifo /tmp/backpipe
+$ cat /tmp/backpipe | nc -lk 1234 | bash -i &amp;&gt; /tmp/backpipe
+```
+
+Client:
+
+```
+$ nc localhost 1234
+Eshell V8.3  (abort with ^G)
+1&gt; 
+```
+
+* [[Netcat]]
+* [[Bash]]</pre>
+</div>
+<div created="20210601145341200" modified="20210601154118937" tags="" title="Netcat Remote Erlang Shell">
+<pre>Server: 
+
+```
+$ mkfifo /tmp/backpipe
+$ cat /tmp/backpipe | nc -lv 1234 | erl &amp;&gt; /tmp/backpipe
+```
+
+Client:
+
+```
+$ nc localhost 1234
+Eshell V8.3  (abort with ^G)
+1&gt; 
+```
+
+* [[Netcat]]
+* [[Bash]]
+* [[Erlang]]</pre>
+</div>
 <div created="20200425170554214" modified="20210519140302972" tags="Linux" title="Netcat SMTP client">
 <pre>https://eax.me/smtp-descr/
 
@@ -24644,40 +24685,6 @@ Client:
 
 ```
 $ nc localhost 1234
-```
-
-* [[Netcat]]</pre>
-</div>
-<div created="20200425163925502" modified="20210519140216295" tags="Linux Bash" title="Netcat Turn Console Process to Server">
-<pre>Server single session: 
-
-```
-$ mkfifo /tmp/backpipe
-$ nc -l 1234 &lt; /tmp/backpipe | `which erl` &gt; /tmp/backpipe
-```
-
-Client:
-
-```
-$ nc localhost 1234
-Eshell V8.3  (abort with ^G)
-1&gt; 
-```
-
-Server multiple sessions: 
-
-```
-$ mkfifo /tmp/backpipe
-while true; do
-    nc -z localhost 1234
-    if [[ $? -ne 0 ]]; then
-        sleep 5
-	echo Waiting for session to start...
-    else
-        nc localhost 1234 &lt; /tmp/backpipe | `which erl` &gt; /tmp/backpipe
-	echo Session stopped
-    fi
-done
 ```
 
 * [[Netcat]]</pre>
