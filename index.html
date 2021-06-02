@@ -1005,6 +1005,8 @@ Error message and password prompt
 
 <li>Curl get headers</li>
 
+<li>Curl in cgi-bin</li>
+
 <li>Curl post data from stdin</li>
 
 <li>Curl upload files</li>
@@ -12505,7 +12507,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210602095417724" list="" modified="20210602161805518" title="$:/StoryList">
+<div created="20210602181510489" list="ToDo Netcat" modified="20210602184617255" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13519,7 +13521,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210602161822940" title="$:/temp/search">
+<div created="20200422190456346" modified="20210602184711238" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -14380,7 +14382,7 @@ Use tmux or screen via termux-usb wrapped script
 
 https://www.amazon.com/XDA-Developers-Android-Hackers-Toolkit/dp/1119951380</pre>
 </div>
-<div created="20200506072235996" modified="20210321104709712" tags="Android" title="Android Set Wi-Fi Static IP Address">
+<div created="20200506072235996" modified="20210602184704172" tags="Android" title="Android Set Wi-Fi Static IP Address">
 <pre>Settings -&gt; Wi-Fi -&gt; Access Point -&gt; Modify Network -&gt; Advanced options
 
 * IP settings: Static
@@ -14389,7 +14391,10 @@ https://www.amazon.com/XDA-Developers-Android-Hackers-Toolkit/dp/1119951380</pre
 * Network prefix length: 24 [[Show network interfaces]]
 * DNS 1: 8.8.8.8 
 * DNS 2: 8.8.4.4
-</pre>
+
+---
+
+* [[DNS]]</pre>
 </div>
 <div created="20200629074046061" modified="20210404175744080" tags="Android" title="Android SSH File System">
 <pre>Termux:
@@ -16066,12 +16071,13 @@ https://ipinfo.io/cidr-to-ip-range-converter
 <div created="20210216163845340" modified="20210216163906662" tags="JavaScript task" title="Classroom Coding with Prof. Frisby">
 <pre>https://www.youtube.com/playlist?list=PLK_hdtAJ4KqX0JOs_KMAmUNTNMRYhWEaC</pre>
 </div>
-<div created="20200423195502424" modified="20200606174412125" tags="" title="Clear Chrome internal DNS">
+<div created="20200423195502424" modified="20210602184455657" tags="" title="Clear Chrome internal DNS">
 <pre>```
 chrome://net-internals/#dns
 ```
 
-[[Chrome urls]]</pre>
+* [[Chrome urls]]
+* [[DNS]]</pre>
 </div>
 <div created="20200425131402210" modified="20200425131422887" tags="Linux" title="Clears the screen">
 <pre>```
@@ -16603,12 +16609,29 @@ $ curl -H '...' # add http header
 
 [[curl]]</pre>
 </div>
-<div created="20200425150651505" modified="20210517181333852" tags="" title="Curl post data from stdin">
+<div created="20210602183506472" modified="20210602183543726" tags="" title="Curl in cgi-bin">
+<pre>```
+#!/bin/bash
+
+#
+# This script is supposed to be placed in /usr/lib/xymon/cgi-bin on the Xymon server
+#
+
+KAG_PROTO=http
+KAG_HOST=localhost
+KAG_PORT=8081
+
+curl -s -i -X ${REQUEST_METHOD} &quot;${KAG_PROTO}://${KAG_HOST}:${KAG_PORT}${PATH_INFO}?${QUERY_STRING}&quot; | grep -v HTTP
+```
+
+[[Curl]]</pre>
+</div>
+<div created="20200425150651505" modified="20210602183504467" tags="" title="Curl post data from stdin">
 <pre>```
 $ curl -X POST localhost:8080/cgi-bin/echo.pl -d @- 
 ```
 
-[[curl]]</pre>
+[[Curl]]</pre>
 </div>
 <div created="20210517181027176" modified="20210517181308647" tags="" title="Curl upload files">
 <pre>```
@@ -17036,10 +17059,12 @@ On Motivation:
 http://www.ted.com/talks/dan_pink_on_motivation
 </pre>
 </div>
-<div created="20200511134743026" modified="20200511134758553" tags="[[Raspberry Pi]]" title="DHCP/DNS server">
+<div created="20200511134743026" modified="20210602184511573" tags="[[Raspberry Pi]]" title="DHCP/DNS server">
 <pre>* https://www.itsfullofstars.de/2019/02/dhcp-server-on-linux-with-raspberry-pi/
 * https://blog.michael.franzl.name/2017/02/28/raspberry-pi-gateway-mobile-internet/
-</pre>
+
+* [[DNS]]
+* [[DHCP]]</pre>
 </div>
 <div created="20200425120614329" modified="20200425120713884" tags="Bash" title="Diff binary files">
 <pre>```
@@ -17177,7 +17202,7 @@ $ sudo sysv-rc-conf --list apache2
 * [[IANA]]
 </pre>
 </div>
-<div created="20200424084611466" modified="20200424084734096" tags="Linux" title="DNS lookup">
+<div created="20200424084611466" modified="20210602184442984" tags="Linux" title="DNS lookup">
 <pre>```
 $ dig google.com [@8.8.8.8]
 $ dig google.com [@a.root-servers.net]
@@ -17185,7 +17210,8 @@ $ host google.com [8.8.8.8]
 $ nslookup google.com [8.8.8.8]
 ```
 
-[[Reverse DNS lookup]]</pre>
+* [[Reverse DNS lookup]]
+* [[DNS]]</pre>
 </div>
 <div created="20200424084305050" modified="20200424084453591" tags="Linux" title="DNS servers used">
 <pre>```
@@ -17198,7 +17224,7 @@ $ nmcli device show eth0 # Ubuntu &gt;= 15
 <div created="20200426101256857" modified="20200426101302823" tags="TableOfContents" title="Docker">
 <pre></pre>
 </div>
-<div created="20200424084024304" modified="20200424084124481" tags="Docker Linux" title="Docker fails to resolve names">
+<div created="20200424084024304" modified="20210602184554339" tags="Docker Linux" title="Docker fails to resolve names">
 <pre>* https://development.robinwinslow.uk/2016/06/23/fix-docker-networking-dns/
 * https://serverfault.com/questions/642981/docker-containers-cant-resolve-dns-on-ubuntu-14-04-desktop-host
 
@@ -17231,6 +17257,7 @@ $ sudo systemctl restart docker
 $ sudo service docker restart
 ```
 
+[[DNS]]
 </pre>
 </div>
 <div created="20201016142916464" modified="20201017085214700" tags="Docker" title="Docker X11">
@@ -24628,8 +24655,8 @@ function* naturalNumbers() {
 
 * [[JavaScript Generator]]</pre>
 </div>
-<div created="20210519135952957" modified="20210601201316038" tags="Book task" title="Netcat">
-<pre>[ext[Open Book|pdfx://refs/net/Netcat_Power_Tools.pdf::1]]
+<div created="20210519135952957" modified="20210602181602726" tags="Book task" title="Netcat">
+<pre>[ext[Open Book|pdfx://refs/net/Netcat_Power_Tools.pdf::11]]
 
 ```
 $ sudo apt install netcat-openbsd netcat-traditional
@@ -26916,14 +26943,14 @@ nameserver 8.8.8.8 to /etc/resolv.conf
 * [ext[awk|manx:awk::+++Regular+Expressions]]
 </pre>
 </div>
-<div created="20200428113310376" modified="20200428113544372" tags="Linux" title="Register Dynamic IP via FreeDNS">
+<div created="20200428113310376" modified="20210602184528222" tags="Linux" title="Register Dynamic IP via FreeDNS">
 <pre>```
 DOMAIN=xos.mooo.com
 IP=192.168.100.100
 curl http://[USERNAME]:[PASSWORD]@freedns.afraid.org/nic/update?hostname=${DOMAIN}&amp;myip=${IP}
 ```
 
-</pre>
+[[DNS]]</pre>
 </div>
 <div created="20200423165627536" modified="20210304102815384" tags="Git" title="Remove last commit pushed to server">
 <pre>```
@@ -27153,13 +27180,14 @@ $ bash -i 1&gt;/dev/tcp/127.0.0.1/1234 2&gt;&amp;1 0&gt;&amp;1
 * [[Bash]]
 * [[Netcat Remote Bash Shell]]</pre>
 </div>
-<div created="20200424084644986" modified="20200424084714251" tags="Linux" title="Reverse DNS lookup">
+<div created="20200424084644986" modified="20210602184433938" tags="Linux" title="Reverse DNS lookup">
 <pre>```
 $ dig -x IP
 $ nslookup IP
 ```
 
-[[DNS lookup]]
+* [[DNS lookup]]
+* [[DNS]]
 
 </pre>
 </div>
@@ -27767,14 +27795,15 @@ $ xdg-mime default code.desktop text/plain
 Settings -&gt; Developer Options -&gt; Select USB Configuration
 </pre>
 </div>
-<div created="20200424084529908" modified="20200424084554075" tags="Linux" title="Set DNS">
+<div created="20200424084529908" modified="20210602184425241" tags="Linux" title="Set DNS">
 <pre>```
 $ cat /etc/resolv.conf
 nameserver 8.8.8.8
 nameserver 8.8.4.4
 search example.com
 ```
-</pre>
+
+[[DNS]]</pre>
 </div>
 <div created="20200512162917024" modified="20201231142407881" tags="[[Raspberry Pi]]" title="Setup Kodi">
 <pre>[[Setup LXDE desktop]]
@@ -28035,7 +28064,7 @@ https://0ut3r.space/2020/04/13/first-vps/
 
 https://0ut3r.space/2018/09/03/ufw-simple-firewall/</pre>
 </div>
-<div created="20200428114339943" modified="20200428114352234" tags="Linux" title="Setup printer">
+<div created="20200428114339943" modified="20210602184614373" tags="Linux" title="Setup printer">
 <pre>HP official linux printer drivers
 ==================================
 http://hplipopensource.com/hplip-web/index.html
@@ -28746,7 +28775,7 @@ $ git commit -m MESSAGE
 
 * [[SSL]]</pre>
 </div>
-<div created="20200425115858022" modified="20210316110944021" tags="SSH" title="SSH connection is too slow">
+<div created="20200425115858022" modified="20210602184636957" tags="SSH" title="SSH connection is too slow">
 <pre>https://www.thegeekstuff.com/2010/07/openssh-slow-at-ssh2_msg_service_accept-received/
 
 First start ssh with with versatile key to see what's happening
@@ -28769,7 +28798,10 @@ UseDNS no
 
 ```
 # service sshd restart
-```</pre>
+```
+
+* [[SSH]]
+* [[DNS]]</pre>
 </div>
 <div created="20200518103502395" modified="20210316110944022" tags="SSH" title="SSH disable password authentication">
 <pre>/etc/ssh/sshd_config:
@@ -30703,10 +30735,11 @@ https://www.browserleaks.com/
 <div created="20210323090730777" modified="20210323090735383" tags="" title="When everything is a priority, nothing is a priority">
 <pre></pre>
 </div>
-<div created="20200424084217094" modified="20200424084239198" tags="Linux" title="Where DNS utils">
+<div created="20200424084217094" modified="20210602184419978" tags="Linux" title="Where DNS utils">
 <pre>* CentOS: bind-utils
 * Ubuntu: dnsutils
-</pre>
+
+[[DNS]]</pre>
 </div>
 <div created="20200425165859436" modified="20200425165937451" tags="Linux" title="Who uses network traffic">
 <pre>```
