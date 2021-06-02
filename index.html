@@ -1765,7 +1765,7 @@ Error message and password prompt
 
 <li>Netcat Port Forwarding</li>
 
-<li>Netcat relay</li>
+<li>Netcat Relay</li>
 
 <li>Netcat Remote Bash Shell</li>
 
@@ -1773,7 +1773,7 @@ Error message and password prompt
 
 <li>Netcat Reverse Bash Shell</li>
 
-<li>Netcat scan open ports</li>
+<li>Netcat Scan Open Ports</li>
 
 <li>Netcat SMTP client</li>
 
@@ -12511,7 +12511,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210602181510489" list="Netcat" modified="20210602201432766" title="$:/StoryList">
+<div created="20210602181510489" list="Netcat" modified="20210602202353131" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -24735,13 +24735,13 @@ $ sudo bash -c 'while true; do nc -l 80 &lt;/tmp/backpipe | nc localhost 8080 | 
 * [[Tee]]
 </pre>
 </div>
-<div created="20210602201549004" modified="20210602202054696" tags="" title="Netcat relay">
+<div created="20210602201549004" modified="20210602202429302" tags="" title="Netcat Relay">
 <pre>Terminal #1 (source)
 
 ```
 $ nc -v localhost 12345
-&lt; ping
-&gt; pong
+&lt;1 ping
+&gt;4 pong
 ```
 
 Terminal #2 (middle man)
@@ -24755,8 +24755,8 @@ Terminal #3 (target)
 
 ```
 $ nc -vl 54321
-&gt; ping
-&lt; pong
+&gt;2 ping
+&lt;3 pong
 ```
 
 * [ext[Netcat Book but with two-way connection|pdfx://refs/net/Netcat_Power_Tools.pdf::24]]
@@ -24824,7 +24824,7 @@ $ cat /tmp/backpipe | bash -i 2&gt;&amp;1 | nc -v 127.0.0.1 1234 &gt;/tmp/backpi
 * [[Bash]]
 * [[Netcat Remote Bash Shell]]</pre>
 </div>
-<div created="20210602185340974" modified="20210602185425428" tags="" title="Netcat scan open ports">
+<div created="20210602185340974" modified="20210602202341159" tags="" title="Netcat Scan Open Ports">
 <pre>```
 $ nc -vz localhost 1-65535 2&gt;&amp;1 | grep -v refused
 Connection to localhost 22 port [tcp/ssh] succeeded!
