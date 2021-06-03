@@ -12517,7 +12517,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210603101222182" list="[[ZTE Router]] [[Nmap Scan Network for Open Ports]] ToDo Netcat" modified="20210603145919518" title="$:/StoryList">
+<div created="20210603101222182" list="[[ZTE Router]] [[Nmap Scan Network for Open Ports]] ToDo Netcat" modified="20210603170717182" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13531,7 +13531,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210603152657726" title="$:/temp/search">
+<div created="20200422190456346" modified="20210603170812045" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -30845,10 +30845,18 @@ $ sudo iftop -i eth0 -f 'dst port 5001'
 <pre>* https://24timezones.com/
 * https://www.worldtimezone.com/</pre>
 </div>
-<div created="20210603145446506" modified="20210603145609690" tags="Definition" title="WPS">
+<div created="20210603145446506" modified="20210603170808289" tags="Definition" title="WPS">
 <pre>[[Wi-Fi]] Protected Setup
 
-Must be disabled on ALL routers due to https://en.wikipedia.org/wiki/Wi-Fi_Protected_Setup#Vulnerabilities</pre>
+Must be disabled on ALL routers due to https://en.wikipedia.org/wiki/Wi-Fi_Protected_Setup#Vulnerabilities
+
+```
+# sendcmd 1 DB p WLANWPS
+# sendcmd 1 DB set WLANWPS 0 Enable 0
+# sendcmd 1 DB save
+```
+
+[[ZTE Router]]</pre>
 </div>
 <div created="20200429155727025" modified="20200429155829459" tags="TiddlyWiki" title="Write a macro">
 <pre>* https://tiddlywiki.com/#Macros%20in%20WikiText
@@ -31015,7 +31023,7 @@ Turns reading into ideas hunting.
 # Don't delete old notes. Instead create new notes that explain why the olds are wrong
 </pre>
 </div>
-<div created="20210603155450637" modified="20210603165759143" tags="task" title="ZTE Router">
+<div created="20210603155450637" modified="20210603170713336" tags="task" title="ZTE Router">
 <pre>F660V2.0
 
 # https://forum.ixbt.com/topic.cgi?id=42:20822
@@ -31125,6 +31133,14 @@ Show device info
 &lt;/Tbl&gt;
 ```
 
+Show WLAN infos
+
+```
+# sendcmd 1 DB p WLANWPS
+# sendcmd 1 DB p WLANBase
+# sendcmd 1 DB p WLANCfg
+```
+
 Show LAN info
 
 ```
@@ -31143,9 +31159,13 @@ Show PPP info including contract info
 # sendcmd 1 DB p WANCPPP
 ```
 
+Checkout:
+
+http:/x.y.z.1/hidden_version_switch.gch
 
 Some info:
 
+* https://yosmelvin.wordpress.com/category/router/
 * https://vasvir.wordpress.com/2015/03/08/reverse-engineering-trendchip-firmware-zte-h108ns-part-i/
 * https://vasvir.wordpress.com/2015/04/16/trendchip-firmware-zte-h108ns-build-custom-software-add-namecheap-ddns-support/</pre>
 </div>
