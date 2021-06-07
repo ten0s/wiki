@@ -823,6 +823,8 @@ Error message and password prompt
 
 <li>Bash Fix Command</li>
 
+<li>Bash interrupt process</li>
+
 <li>Bash Last Argument</li>
 
 <li>Bash Last Command</li>
@@ -831,6 +833,8 @@ Error message and password prompt
 
 <li>Bash process substitution</li>
 
+<li>Bash quit process</li>
+
 <li>Bash redirection (stdin, stdout, stderr)</li>
 
 <li>Bash Run Command Editor</li>
@@ -838,6 +842,8 @@ Error message and password prompt
 <li>Bash substitutions</li>
 
 <li>Bash substrings</li>
+
+<li>Bash suspend and resume process</li>
 
 <li>Bash TCP Client (w/o netcat)</li>
 
@@ -1626,6 +1632,8 @@ Error message and password prompt
 <li>Keep SSH tunnel on</li>
 
 <li>Kernel profiler</li>
+
+<li>Kill all processes you can kill</li>
 
 <li>KISS</li>
 
@@ -12526,7 +12534,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210607102141853" list="" modified="20210607110419544" title="$:/StoryList">
+<div created="20210607144804861" list="" modified="20210607145621933" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13540,7 +13548,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210607103231435" title="$:/temp/search">
+<div created="20200422190456346" modified="20210607152605065" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -15592,6 +15600,25 @@ Run editor and edit last command
 $ fc 
 ```</pre>
 </div>
+<div created="20210607152408584" modified="20210607152556294" tags="Bash" title="Bash interrupt process">
+<pre>Start and then press Control-C
+
+```
+$ sleep 1000
+^C
+```
+
+```
+[1] 16883
+$ kill -INT %1
+[1]+  Interrupt               sleep 1000
+```
+
+* [ext[man signal SIGINT|manx:signal(7)::SIGINT]]
+* [[Kill]]
+* [[Coredump]]
+* [[Bash]]</pre>
+</div>
 <div created="20200425121112932" modified="20210601112818534" tags="Bash" title="Bash Last Argument">
 <pre>```
 $ ping -c1 google.com
@@ -15641,6 +15668,27 @@ $ man bash | less +/&quot;   Process Substitution&quot;
 * &lt;(list)
 * &gt;(list)
 </pre>
+</div>
+<div created="20210607151149261" modified="20210607152332568" tags="Bash" title="Bash quit process">
+<pre>Start and then press Control-\
+
+```
+$ sleep 1000
+^\Quit (core dumped)
+```
+
+```
+$ sleep 1000 &amp;
+[1] 15294
+$ kill -QUIT 15294
+$ jobs
+[1]+  Quit                    (core dumped) sleep 1000
+```
+
+* [ext[man signal SIGQUIT|manx:signal(7)::SIGQUIT]]
+* [[Kill]]
+* [[Coredump]]
+* [[Bash]]</pre>
 </div>
 <div created="20200424090746103" modified="20200424090851760" tags="Bash" title="Bash redirection (stdin, stdout, stderr)">
 <pre>```
@@ -15713,6 +15761,35 @@ $ echo ${str:0:${#str}}
 $ OTP_VER=R15B03-1
 $ echo ${OTP_VER%-*}
 ```
+</pre>
+</div>
+<div created="20210607145524513" modified="20210607152318321" tags="Bash" title="Bash suspend and resume process">
+<pre>Start and then press Control-Z
+
+```
+$ sleep 1000
+^Z
+[1]+  Stopped                 sleep 1000
+```
+
+```
+$ sleep 1000 &amp;
+[1] 16131
+$ kill -TSTP %1
+[1]+  Stopped                 sleep 1000
+$ jobs
+[1]+  Stopped                 sleep 1000
+$ kill -CONT %1
+$ jobs
+[1]+  Running                 sleep 1000 &amp;
+```
+
+---
+* [ext[man signal SIGTSTP|manx:signal(7)::SIGTSTP]]
+* [ext[man signal SIGCONT|manx:signal(7)::SIGCONT]]
+* [[Kill]]
+* [[Bash]]
+
 </pre>
 </div>
 <div created="20200425161848192" modified="20210601163415055" tags="Bash Linux" title="Bash TCP Client (w/o netcat)">
@@ -23115,11 +23192,8 @@ $ python setup.py install
 
 </pre>
 </div>
-<div created="20200424081836261" modified="20200424081902945" tags="Linux" title="Interact with X Window Manager">
-<pre>```
-$ man wmctrl
-```
-</pre>
+<div created="20200424081836261" modified="20210607145314289" tags="Linux" title="Interact with X Window Manager">
+<pre>[ext[man wmctrl|manx:wmctrl]]</pre>
 </div>
 <div created="20210314125303957" modified="20210314125335181" title="Interface Segregation Principle">
 <pre>It's better to have multiple simple interfaces, than a big one</pre>
@@ -24002,6 +24076,16 @@ autossh
 sudo apt install linux-tools-common
 ```
 </pre>
+</div>
+<div created="20210607144820345" modified="20210607150843965" tags="Linux" title="Kill all processes you can kill">
+<pre>```
+$ kill -KILL -1
+```
+
+---
+* [ext[man kill|manx:kill::kill+-9+-1]]
+* [ext[man signal|manx:signal(7)::SIGKILL]]
+* [[Kill]]</pre>
 </div>
 <div created="20210329160824326" modified="20210329161035770" tags="" title="KISS">
 <pre>Keep it Simple and Stupid
@@ -25054,7 +25138,7 @@ xdg-open
 [[Create custom URI handler]]
 </pre>
 </div>
-<div created="20200424090413095" modified="20200428182939156" tags="Bash Linux" title="Open man page on first pattern match">
+<div created="20200424090413095" modified="20210607145502548" tags="Bash Linux" title="Open man page on first pattern match">
 <pre>```
 $ man grep | less +/&quot;REGULAR EXPRESSIONS&quot;
 $ man grep | less --pattern &quot;REGULAR EXPRESSIONS&quot;
@@ -28686,17 +28770,22 @@ $:/core/ui/TopBar/menu
 
 $:/state/sidebar</pre>
 </div>
-<div created="20200425150202311" modified="20200425154835304" tags="Linux" title="Show/kill/signal process that use file or socket">
+<div created="20200425150202311" modified="20210607145250591" tags="Linux" title="Show/kill/signal process that use file or socket">
 <pre>```
 $ fuser FILE
 ```
+
+[ext[man fuser|manx:fuser]]
 </pre>
 </div>
-<div created="20200425131310085" modified="20200425131332464" tags="Linux" title="Show/kill/signal processes by names">
+<div created="20200425131310085" modified="20210607150525953" tags="Linux" title="Show/kill/signal processes by names">
 <pre>* pgrep
 * pkill
 * killall
 
+---
+* [[Kill]]
+* [[Grep]]
 </pre>
 </div>
 <div created="20200704155117366" modified="20200704155215198" tags="Bash Linux" title="Shuffle files">
