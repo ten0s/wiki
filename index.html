@@ -1649,6 +1649,8 @@ Error message and password prompt
 
 <li>Lex and Yacc</li>
 
+<li>Libpcap</li>
+
 <li>Light DOM</li>
 
 <li>Lindy effect</li>
@@ -1852,6 +1854,8 @@ Error message and password prompt
 <li>Phrasal verbs</li>
 
 <li>Play DVD disks</li>
+
+<li>Port Knocking</li>
 
 <li>POSIX</li>
 
@@ -2262,6 +2266,8 @@ Error message and password prompt
 <li>TCP</li>
 
 <li>TCP/IP</li>
+
+<li>Tcpdump</li>
 
 <li>Teach Yourself TCP/IP in 24 Hours</li>
 
@@ -12534,7 +12540,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210607144804861" list="" modified="20210607153213074" title="$:/StoryList">
+<div created="20210607144804861" list="ToDo Netcat" modified="20210607165628131" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13548,7 +13554,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210607153645048" title="$:/temp/search">
+<div created="20200422190456346" modified="20210607165706160" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -17410,7 +17416,7 @@ $ youtube-dl -f bestvideo+bestaudio FILE_OR_PLAYLIST_URL
 <div created="20210314134852918" modified="20210314134906696" tags="MentalModel" title="Duality">
 <pre></pre>
 </div>
-<div created="20200425153107784" modified="20210602201412974" tags="Linux" title="Dump network traffic on specific port">
+<div created="20200425153107784" modified="20210607165652338" tags="Linux" title="Dump network traffic on specific port">
 <pre>```
 $ sudo tcpdump -ni docker0 port 5061 -v # print whole message bodies to console
 $ sudo tcpdump -ni lo port \(2775 or 8001\) -w dump.pcap
@@ -23198,9 +23204,11 @@ $ python setup.py install
 <div created="20210314125303957" modified="20210314125335181" title="Interface Segregation Principle">
 <pre>It's better to have multiple simple interfaces, than a big one</pre>
 </div>
-<div created="20200424081533952" modified="20200424081556131" tags="Linux" title="Internet Printing Protocol (IPP)">
-<pre>https://www.pwg.org/ipp/ippguide.html
-https://www.tldp.org/HOWTO/Printing-HOWTO/
+<div created="20200424081533952" modified="20210607163548639" tags="Linux" title="Internet Printing Protocol (IPP)">
+<pre>* https://www.pwg.org/ipp/ippguide.html
+* https://www.tldp.org/HOWTO/Printing-HOWTO/
+* [[Net]]
+
 </pre>
 </div>
 <div created="20200512160958245" modified="20200528083101418" tags="Rust task Video" title="Introduction to Rust">
@@ -24133,6 +24141,21 @@ EFL
 
 MLFL
 
+</pre>
+</div>
+<div created="20210607164938953" modified="20210607165519294" tags="Definition" title="Libpcap">
+<pre>''P''acket ''cap''ture library
+
+Read/write to Data Link Layer of [[OSI]]
+
+* https://github.com/the-tcpdump-group/libpcap
+* http://www.tcpdump.org/pcap.htm
+* https://web.archive.org/web/20210225083911/http://yuba.stanford.edu/~casado/pcap/section1.html
+* https://web.archive.org/web/20070627163035/http://www.tengu.be/index.php?option=com_content&amp;task=blogcategory&amp;id=22&amp;Itemid=43
+
+---
+* [[Tcpdump]]
+* [[Net]]
 </pre>
 </div>
 <div created="20200511132839659" modified="20200511132848286" tags="[[Web Components]]" title="Light DOM">
@@ -25334,6 +25357,12 @@ come along good/bad -- to be good/bad with something</pre>
 
 http://www.redrobe.com/mike/play-dvd-disk-on-raspberry-pi/
 </pre>
+</div>
+<div created="20210607163210508" modified="20210607163500978" tags="" title="Port Knocking">
+<pre>* https://putty.org.ru/articles/port-knocking.html
+* https://zeroflux.org/projects/knock
+* https://github.com/jvinet/knock
+* [[Net]]</pre>
 </div>
 <div created="20210429104351285" modified="20210429104411722" tags="Definition" title="POSIX">
 <pre>Portable Operating System Interface
@@ -29642,6 +29671,9 @@ Can be used like https://hexdocs.pm/elixir/IO.html#inspect/2
 * https://en.wikipedia.org/wiki/Internet_protocol_suite
 </pre>
 </div>
+<div created="20210607165634399" modified="20210607165638498" title="Tcpdump">
+<pre>[[Libpcap]]</pre>
+</div>
 <div created="20210519094508512" modified="20210601180719197" tags="Book task" title="Teach Yourself TCP/IP in 24 Hours">
 <pre>[ext[Open Book|pdfx://refs/net/Teach_Yourself_TCPIP_in_24_Hours.pdf::35]]
 
@@ -30939,11 +30971,13 @@ https://www.browserleaks.com/
 
 [[DNS]]</pre>
 </div>
-<div created="20200425165859436" modified="20200425165937451" tags="Linux" title="Who uses network traffic">
+<div created="20200425165859436" modified="20210607163557922" tags="Linux" title="Who uses network traffic">
 <pre>```
 $ sudo iftop -nNB (press `d' for aggregated view)
 $ sudo iftop -i eth0 -f 'dst port 5001'
-```</pre>
+```
+
+[[Net]]</pre>
 </div>
 <div created="20200524150237347" modified="20210604095504269" tags="Definition" title="WiFi">
 <pre>''WiFi'' is a wireless networking protocol that uses radio waves to provide network access to mobile devices based on the IEEE 802.11 standards.
