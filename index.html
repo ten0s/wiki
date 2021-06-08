@@ -12589,7 +12589,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210608082348383" list="[[TLS Tunnel]] TLS OpenSSL" modified="20210608175938434" title="$:/StoryList">
+<div created="20210608082348383" list="" modified="20210608175938434" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -30622,17 +30622,75 @@ https://joearms.github.io/#2019-02-26%20Setting%20up%20a%20TiddlyWiki%20website%
 * [[PKI]]
 * [[SSH]]</pre>
 </div>
-<div created="20200424085339651" modified="20210608143918927" tags="" title="TLS Tunnel">
-<pre>https://www.stunnel.org/index.html
+<div created="20200424085339651" modified="20210608190016960" tags="" title="TLS Tunnel">
+<pre>Add [[TLS]] encryption to existing clients and servers
 
-Add TLS encryption to existing clients and servers
+!!! Install
 
 ```
 $ sudo apt install stunnel4
 ```
 
+!!! Server
+
+Generate self-signed SSL certificate
+
+* -new Generate a new key
+* -x509 Generate an X509 certificate (self sign)
+* -nodes (no DES) Don't put a password on this key
+* -out Where to put the SSL certificate
+* -keyout Where to put the key
+* -days 365 Valid for 1 year
+
+```
+$ openssl req -new -x509 -nodes -out stunnel.pem -keyout stunnel.key -days 365
+```
+
+```
+$ sudo mv stunnel.* /etc/stunnel
+```
+
+```
+$ cat /etc/stunnel/stunnel.conf
+cert = /etc/stunnel/stunnel.pem
+key  = /etc/stunnel/stunnel.key
+
+[netcat_server]
+accept = 6140
+connect = 7140
+```
+
+```
+$ sudo stunnel
+```
+
+```
+$ nc -vkl 7140
+Listening on [0.0.0.0] (family 2, port 7140)
+```
+
+!!! Client
+
+```
+$ cat /etc/stunnel/stunnel.conf 
+[netcat_client]
+client = yes
+accept = 127.0.0.1:5140
+connect = REMOTE_HOST:6140
+```
+
+```
+$ sudo stunnel
+```
+
+```
+$ nc -v localhost 5140
+Connection to localhost 5140 port [tcp/*] succeeded!
+```
+
 * [[TLS]]
 * Encrypted [[Tunnel]]
+* [[Netcat]]
 * [[Net]]</pre>
 </div>
 <div created="20200509094004711" modified="20200509094026869" tags="English" title="To cause more problems than solve">
