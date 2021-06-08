@@ -647,8 +647,6 @@ Error message and password prompt
 
 <li>Add tar info</li>
 
-<li>Add TLS encryption to existing clients and servers</li>
-
 <li>Add top navigation bar</li>
 
 <li>Add user to group</li>
@@ -1559,6 +1557,8 @@ Error message and password prompt
 
 <li>IP Address</li>
 
+<li>IPSec</li>
+
 <li>Irresistible APIs</li>
 
 <li>ITSP</li>
@@ -1806,8 +1806,6 @@ Error message and password prompt
 <li>Network emulation (netem)</li>
 
 <li>Network Manager tool</li>
-
-<li>Network utils</li>
 
 <li>Nmap Scan Network for Open Ports</li>
 
@@ -2395,6 +2393,8 @@ Error message and password prompt
 
 <li>TiddlyWiki on Node.js</li>
 
+<li>TLS Tunnel</li>
+
 <li>To cause more problems than solve</li>
 
 <li>ToDo</li>
@@ -2488,6 +2488,8 @@ Error message and password prompt
 <li>Who uses network traffic</li>
 
 <li>WiFi</li>
+
+<li>Wireshark</li>
 
 <li>WLAN</li>
 
@@ -12416,8 +12418,8 @@ Error message and password prompt
 <div created="20200423185505844" modified="20210314162331099" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Orphans</pre>
 </div>
-<div created="20200422191529492" modified="20210608082308899" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/Recent</pre>
+<div created="20200422191529492" modified="20210608094103629" title="$:/state/tab/sidebar--595412856">
+<pre>TableOfContents</pre>
 </div>
 <div created="20200426101141551" modified="20210603145437592" title="$:/state/toc/TableOfContents-Android--118161433">
 <pre>close</pre>
@@ -12575,7 +12577,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210608082348383" list="[[SSH VPN]] [[Add TLS encryption to existing clients and servers]]" modified="20210608094047203" title="$:/StoryList">
+<div created="20210608082348383" list="ToDo Netcat [[SSH VPN]] [[TLS Tunnel]]" modified="20210608095457981" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13589,7 +13591,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210608094059638" title="$:/temp/search">
+<div created="20200422190456346" modified="20210608095506918" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -13914,9 +13916,6 @@ $ nl
 </div>
 <div created="20200430090022291" modified="20200430090034928" tags="task" title="Add tar info">
 <pre>https://linuxize.com/post/how-to-extract-unzip-tar-xz-file/</pre>
-</div>
-<div created="20200424085339651" modified="20200424085351431" tags="" title="Add TLS encryption to existing clients and servers">
-<pre>https://www.stunnel.org/index.html</pre>
 </div>
 <div created="20200620093208760" modified="20200620093227318" tags="TiddlyWiki" title="Add top navigation bar">
 <pre>https://tiddlywiki.com/</pre>
@@ -23297,6 +23296,12 @@ kismet
 
 * [[MAC Address]]</pre>
 </div>
+<div created="20210608094726839" modified="20210608094802505" tags="Definition Net" title="IPSec">
+<pre>''I''nternet ''P''rotocol ''Sec''urity
+
+* [[VPN]]
+* [[Net]]</pre>
+</div>
 <div created="20200621131617941" modified="20200627165633417" tags="Dev Book task" title="Irresistible APIs">
 <pre>https://www.manning.com/books/irresistible-apis
 
@@ -24177,7 +24182,7 @@ MLFL
 
 </pre>
 </div>
-<div created="20210607164938953" modified="20210607165519294" tags="Definition" title="Libpcap">
+<div created="20210607164938953" modified="20210608094552577" tags="Definition" title="Libpcap">
 <pre>''P''acket ''cap''ture library
 
 Read/write to Data Link Layer of [[OSI]]
@@ -24189,6 +24194,8 @@ Read/write to Data Link Layer of [[OSI]]
 
 ---
 * [[Tcpdump]]
+* [[Wireshark]]
+* [[Ngrep]]
 * [[Net]]
 </pre>
 </div>
@@ -24825,8 +24832,8 @@ function* naturalNumbers() {
 
 * [[JavaScript Generator]]</pre>
 </div>
-<div created="20210519135952957" modified="20210607194353306" tags="Book task" title="Netcat">
-<pre>[ext[Open Book|pdfx://refs/net/Netcat_Power_Tools.pdf::220]]
+<div created="20210519135952957" modified="20210608095505302" tags="Book task" title="Netcat">
+<pre>[ext[Open Book|pdfx://refs/net/Netcat_Power_Tools.pdf::203]]
 
 * Netcat OpenBSD
 * Netcat Traditional
@@ -24847,6 +24854,18 @@ $ sudo update-alternatives --config nc
 
 ```
 $ sudo apt install nmap
+```
+
+* Cryptcat
+
+```
+$ sudo apt install cryptcat
+```
+
+* Socat
+
+```
+$ sudo apt install socat
 ```
 </pre>
 </div>
@@ -25055,16 +25074,6 @@ $ man tc
 </div>
 <div created="20200424084502615" modified="20200424084519639" tags="Linux" title="Network Manager tool">
 <pre>nm-tool
-</pre>
-</div>
-<div created="20200425154907375" modified="20210607175512873" tags="Linux" title="Network utils">
-<pre>* nc
-* ncat
-* ngrep
-* socat
-* tshark
-* wireshark
-* tcpdump
 </pre>
 </div>
 <div created="20200425124740390" modified="20210603105503445" tags="Linux" title="Nmap Scan Network for Open Ports">
@@ -28960,10 +28969,11 @@ tail -n+2
 * Go XYZ.slack.com
 * Run Slack App</pre>
 </div>
-<div created="20210607170656508" modified="20210607170721846" tags="" title="Sniffer">
+<div created="20210607170656508" modified="20210608094446054" tags="" title="Sniffer">
 <pre>Sniff the raw interface traffic
 
 * [[Tcpdump]]
+* [[Wireshark]]
 * [[Libpcap]]
 * [[Net]]</pre>
 </div>
@@ -30492,6 +30502,19 @@ https://tiddlywiki.com/#Generating%20Static%20Sites%20with%20TiddlyWiki
 
 https://joearms.github.io/#2019-02-26%20Setting%20up%20a%20TiddlyWiki%20website%20on%20GitHub%20Pages</pre>
 </div>
+<div created="20200424085339651" modified="20210608095446237" tags="" title="TLS Tunnel">
+<pre>https://www.stunnel.org/index.html
+
+Add TLS encryption to existing clients and servers
+
+```
+$ sudo apt install stunnel4
+```
+
+* [[TLS]]
+* Encrypted [[Tunnel]]
+* [[Net]]</pre>
+</div>
 <div created="20200509094004711" modified="20200509094026869" tags="English" title="To cause more problems than solve">
 <pre></pre>
 </div>
@@ -31090,6 +31113,12 @@ $ sudo iftop -i eth0 -f 'dst port 5001'
 <div created="20200524150237347" modified="20210604095504269" tags="Definition" title="WiFi">
 <pre>''WiFi'' is a wireless networking protocol that uses radio waves to provide network access to mobile devices based on the IEEE 802.11 standards.
 </pre>
+</div>
+<div created="20210608094451124" modified="20210608094609067" title="Wireshark">
+<pre>* [[Tshark]]
+* [[Sniffer]]
+* [[Libpcap]]
+* [[Net]]</pre>
 </div>
 <div created="20200524150957588" modified="20210604095429471" tags="Definition" title="WLAN">
 <pre>Wireless [[LAN]] (WLAN). Most modern WLANs are based on IEEE 802.11 standards and are marketed under the [[WiFi]] brand name
