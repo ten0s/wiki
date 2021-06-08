@@ -263,6 +263,8 @@ Error message and password prompt
 
 <li>$:/state/tab-1749438307</li>
 
+<li>$:/state/tab-1898025425</li>
+
 <li>$:/state/tab-1969647263</li>
 
 <li>$:/state/tab-2005303146</li>
@@ -1503,6 +1505,8 @@ Error message and password prompt
 
 <li>HTML Templates</li>
 
+<li>HTTP Proxy</li>
+
 <li>Huawei 3G USB Modem Lights</li>
 
 <li>IANA</li>
@@ -2205,7 +2209,7 @@ Error message and password prompt
 
 <li>SSH Local Port Forwarding</li>
 
-<li>SSH login hangs under VPN</li>
+<li>SSH Login Hangs under VPN</li>
 
 <li>SSH Mastery</li>
 
@@ -2216,6 +2220,8 @@ Error message and password prompt
 <li>SSH SOCKS Tunnel</li>
 
 <li>SSH tricks</li>
+
+<li>SSH VPN</li>
 
 <li>SSH X11 Forwarding</li>
 
@@ -12377,6 +12383,9 @@ Error message and password prompt
 <div created="20200422190448118" modified="20210515063550815" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
+<div created="20210608092950296" modified="20210608092950296" title="$:/state/tab-1898025425">
+<pre>$:/core/ui/TiddlerInfo/References</pre>
+</div>
 <div created="20210601194404060" modified="20210601194404060" title="$:/state/tab-1969647263">
 <pre>$:/core/ui/TiddlerInfo/References</pre>
 </div>
@@ -12566,7 +12575,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210608082348383" list="[[Add TLS encryption to existing clients and servers]]" modified="20210608091835318" title="$:/StoryList">
+<div created="20210608082348383" list="[[SSH VPN]] [[Add TLS encryption to existing clients and servers]]" modified="20210608094047203" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13580,7 +13589,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210608091721546" title="$:/temp/search">
+<div created="20200422190456346" modified="20210608094059638" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -23028,6 +23037,11 @@ $(&quot;#dot-code-modal&quot;).remove();
 ```
 </pre>
 </div>
+<div created="20210608092919002" modified="20210608093528756" tags="Net Definition" title="HTTP Proxy">
+<pre>* [[HTTP]]
+* [[Proxy]]
+* [[Net]]</pre>
+</div>
 <div created="20210503165921254" modified="20210504093622360" tags="" title="Huawei 3G USB Modem Lights">
 <pre>* Green (blinking twice every 3s): The USB Stick is powered on
 * Green (blinking once every 3s): The USB Stick is registering with a 2G network.
@@ -28331,12 +28345,14 @@ Hello
 * http://www.wolfram.com/language/elementary-introduction/2nd-ed/?source=footer
 </pre>
 </div>
-<div created="20200518090803415" modified="20200518090844286" tags="Linux" title="Setup my own VPN server">
+<div created="20200518090803415" modified="20210608093433224" tags="Linux" title="Setup my own VPN server">
 <pre>https://0ut3r.space/2020/04/16/vpn-on-vps/
 
 https://0ut3r.space/2020/04/13/first-vps/
 
-https://0ut3r.space/2018/09/03/ufw-simple-firewall/</pre>
+https://0ut3r.space/2018/09/03/ufw-simple-firewall/
+
+* [[VPN]]</pre>
 </div>
 <div created="20200428114339943" modified="20210602184614373" tags="Linux" title="Setup printer">
 <pre>HP official linux printer drivers
@@ -28951,7 +28967,7 @@ tail -n+2
 * [[Libpcap]]
 * [[Net]]</pre>
 </div>
-<div created="20210608084738239" modified="20210608091903546" tags="Net" title="SOCKS">
+<div created="20210608084738239" modified="20210608092226198" tags="Net" title="SOCKS">
 <pre>''Sock''et ''S''ecure
 
 * Routes traffic through a proxy server.
@@ -28962,6 +28978,7 @@ tail -n+2
 * [[SSH SOCKS Tunnel]]
 * [[SOCKS 5|https://datatracker.ietf.org/doc/html/rfc1928]]
 * [[Tor]]
+* [[Proxy]]
 * [[Net]]</pre>
 </div>
 <div created="20200520085237330" modified="20210608091815674" tags="SOCKS" title="Socksify">
@@ -29129,7 +29146,7 @@ $ sudo systemctl reload sshd.service
 ```
 </pre>
 </div>
-<div created="20200519145058657" modified="20210608084547408" tags="SSH SOCKS" title="SSH Dynamic Port Forwarding">
+<div created="20200519145058657" modified="20210608092653639" tags="SSH SOCKS" title="SSH Dynamic Port Forwarding">
 <pre>Many different client programs can connect to many different services.
 It creates a [[SOCKS]] proxy on the SSH client, and tunnels inbound requests to the SSH server.
 A [[SOCKS]] proxy is a generic gateway that can carry any TCP/IP traffic.
@@ -29152,7 +29169,8 @@ Host ...
 
 * [ext[SSH Mastery: Dynamic Port Forwarding|pdfx://refs/linux/SSH_Mastery.pdf::138]]
 * [ext[man: DynamicForward|manx:ssh_config::DynamicForward]]
-* [[SSH SOCKS Tunnel]]</pre>
+* [[SSH SOCKS Tunnel]]
+* [[SOCKS]]</pre>
 </div>
 <div created="20200424093049547" modified="20210608091710235" tags="SSH" title="SSH Keep Tunnel On">
 <pre>https://www.everythingcli.org/ssh-tunnelling-for-fun-and-profit-autossh/
@@ -29217,7 +29235,7 @@ $ mongo localhost:57017
 * [ext[man: LocalForward | manx:ssh_config::LocalForward]]
 * [[SSH Remote Port Forwarding]]</pre>
 </div>
-<div created="20200917085353463" modified="20210316110944026" tags="SSH" title="SSH login hangs under VPN">
+<div created="20200917085353463" modified="20210608093516772" tags="SSH" title="SSH Login Hangs under VPN">
 <pre>```
 $ ssh -v IP
 ...
@@ -29244,6 +29262,9 @@ $ ssh -v -o KexAlgorithms=ecdh-sha2-nistp521 IP
 
 * https://serverfault.com/questions/210408/cannot-ssh-debug1-expecting-ssh2-msg-kex-dh-gex-reply
 * https://www.seei.biz/ssh-fails-to-connect-with-debug1-expecting-ssh2_msg_kex_ecdh_reply/
+
+* [[SSH]]
+* [[VPN]]
 </pre>
 </div>
 <div created="20201120083445917" modified="20210316110944026" tags="Book SSH" title="SSH Mastery">
@@ -29360,6 +29381,9 @@ E.F.G.H
 * https://heipei.github.io/2015/02/26/SSH-Agent-Forwarding-considered-harmful/
 
 </pre>
+</div>
+<div created="20210608094056009" modified="20210608094056009" title="SSH VPN">
+<pre></pre>
 </div>
 <div created="20200424093620809" modified="20210608082909185" tags="SSH" title="SSH X11 Forwarding">
 <pre>```
@@ -30919,8 +30943,12 @@ https://wiki.videolan.org/VLC_HowTo/Jump_to_a_certain_time/</pre>
 <div created="20200531152913109" modified="20201217091529794" tags="Definition" title="VNC">
 <pre>Virtual Network Computing</pre>
 </div>
-<div created="20200524150858554" modified="20200528082905840" tags="Definition" title="VPN">
-<pre>Virtual Private Network (VPN)</pre>
+<div created="20200524150858554" modified="20210608093727315" tags="Definition" title="VPN">
+<pre>Virtual Private Network (VPN)
+
+* [[IPSec]]
+* [[OpenVPN]]
+* [[SSH VPN]]</pre>
 </div>
 <div created="20200524151228685" modified="20200528082905840" tags="Definition" title="WAP">
 <pre>[[Access point]]</pre>
