@@ -12593,7 +12593,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210609092328771" list="" modified="20210609135114796" title="$:/StoryList">
+<div created="20210609092328771" list="" modified="20210609140941289" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13607,7 +13607,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210609135513546" title="$:/temp/search">
+<div created="20200422190456346" modified="20210609141023517" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -14577,12 +14577,14 @@ $ git apply my.patch
 ```
 </pre>
 </div>
-<div created="20210519100254445" modified="20210519144816915" tags="Definition" title="ARP">
-<pre>Address Resolution Protocol resolves [[MAC Address]] from [[IP Address]] in [[LAN]]
+<div created="20210519100254445" modified="20210609141537320" tags="Definition" title="ARP">
+<pre>''A''ddress ''R''esolution ''P''rotocol resolves [[MAC Address]] from [[IP Address]] in [[LAN]]
 
 | ! | !Source | !Destination | !Info |
 | &lt;- | AB:AB:AB:AB:AB:AB | FF:FF:FF:FF:FF:FF      | Who has 192.168.100.127? Tell 192.168.100.37 |
 | -&gt; | CD:CD:CD:CD:CD:CD | AB:AB:AB:AB:AB:AB | 192.168.100.127 is at CD:CD:CD:CD:CD:CD      |
+
+!!! ARP cache
 
 ```
 $ arp -a
@@ -14592,6 +14594,8 @@ $ arp -a
 $ cat /proc/net/arp
 ```
 
+!!! ARP ping
+
 ```
 $ arping 192.168.100.127 -I eth0 -c1
 ARPING 192.168.100.127 from 192.168.100.11 eth0
@@ -14600,8 +14604,27 @@ Sent 1 probes (1 broadcast(s))
 Received 1 response(s)
 ```
 
+!!! ARP scan
+
+```
+$ sudo apt install arp-scan
+```
+```
+$ sudo arp-scan 192.168.100.0/24 -I eth0
+```
+```
+$ sudo arp-scan --localnet -I eth0
+```
+```
+Interface: eth0, datalink type: EN10MB (Ethernet)
+Starting arp-scan 1.9 with 256 hosts (http://www.nta-monitor.com/tools/arp-scan/)
+192.168.100.1	AB:AB:AB:AB:AB:AB    XYZ Corporation
+192.168.100.2   CD:CD:CD:CD:CD:CD    ABC Foundation
+```
+
 * [ext[man arp|manx:arp]]
 * [ext[man arping|manx:arping]]
+* [ext[man arp-scan|manx:arp-scan]]
 * [[RARP]]
 * https://en.wikipedia.org/wiki/Address_Resolution_Protocol
 * https://tools.ietf.org/html/rfc826</pre>
@@ -27207,8 +27230,8 @@ https://egghead.io/courses/functional-programming-in-javascript-with-ramda-js</p
 <div created="20200429155326651" modified="20200510154249273" tags="[[TW Links]]" title="Random magick">
 <pre>http://tw5magick.tiddlyspot.com/</pre>
 </div>
-<div created="20210519100309235" modified="20210519100840395" tags="Definition" title="RARP">
-<pre>Reverse [[ARP]] resolves [[IP Address]] from [[MAC Address]] in [[LAN]]
+<div created="20210519100309235" modified="20210609140022451" tags="Definition" title="RARP">
+<pre>''R''everse [[ARP]] resolves [[IP Address]] from [[MAC Address]] in [[LAN]]
 
 * [[ARP]]</pre>
 </div>
@@ -29436,7 +29459,7 @@ Check permissions if is not possible to login using the ssh keys:
 
 [[SSH]]</pre>
 </div>
-<div created="20200520081546982" modified="20210609124701868" tags="SSH SOCKS" title="SSH SOCKS Tunnel">
+<div created="20200520081546982" modified="20210609141007093" tags="SSH SOCKS" title="SSH SOCKS Tunnel">
 <pre>```
 $ curl ipinfo.io/ip
 A.B.C.D
@@ -29461,7 +29484,7 @@ E.F.G.H
 ```
 
 ```
-$ sudo apt install dante-client
+$ sudo apt install libdsocksd0
 ```
 
 NB: [ext[/etc/dante.conf|openx:///etc/dante.conf]] is NOT used here. Otherwise see [[Socksify]]
