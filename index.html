@@ -181,6 +181,8 @@ Error message and password prompt
 
 <li>$:/state/edit/references--1961518991</li>
 
+<li>$:/state/edit/references--404481959</li>
+
 <li>$:/state/edit/references--660854695</li>
 
 <li>$:/state/edit/references-1186112235</li>
@@ -1445,7 +1447,7 @@ Error message and password prompt
 
 <li>Generate Random Password</li>
 
-<li>Generate random string of length 50</li>
+<li>Generate Random String</li>
 
 <li>Get default gateway</li>
 
@@ -1913,6 +1915,8 @@ Error message and password prompt
 
 <li>Prune unused images</li>
 
+<li>PSK</li>
+
 <li>PSTN</li>
 
 <li>PTS</li>
@@ -2225,7 +2229,7 @@ Error message and password prompt
 
 <li>SSH Setup Key</li>
 
-<li>SSH SOCKS Tunnel</li>
+<li>SSH SOCKS Proxy</li>
 
 <li>SSH tricks</li>
 
@@ -2254,6 +2258,10 @@ Error message and password prompt
 <li>Stoken Termux package on Android</li>
 
 <li>Stress test CPU, IO, memory</li>
+
+<li>Stunnel SOCKS Proxy</li>
+
+<li>Stunnel Tunnel</li>
 
 <li>Stylesheet</li>
 
@@ -2410,8 +2418,6 @@ Error message and password prompt
 <li>TiddlyWiki on Node.js</li>
 
 <li>TLS</li>
-
-<li>TLS Tunnel</li>
 
 <li>To cause more problems than solve</li>
 
@@ -12278,6 +12284,9 @@ Error message and password prompt
 <div created="20210608083620399" modified="20210608083620399" title="$:/state/edit/references--1961518991">
 <pre>show</pre>
 </div>
+<div created="20210609143126517" modified="20210609143126517" title="$:/state/edit/references--404481959">
+<pre>show</pre>
+</div>
 <div created="20210608084242142" modified="20210608084242142" title="$:/state/edit/references--660854695">
 <pre>show</pre>
 </div>
@@ -12593,7 +12602,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210609092328771" list="" modified="20210609140941289" title="$:/StoryList">
+<div created="20210609092328771" list="" modified="20210609190255799" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13607,7 +13616,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210609141023517" title="$:/temp/search">
+<div created="20200422190456346" modified="20210609190328539" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -22795,23 +22804,29 @@ https://github.com/bowman/Regexp-Genex
 https://github.com/arcanis/pxeger
 https://fent.github.io/randexp.js/</pre>
 </div>
-<div created="20200425145656395" modified="20210608174942708" tags="Linux" title="Generate Random Password">
+<div created="20200425145656395" modified="20210609184140400" tags="Linux" title="Generate Random Password">
 <pre>```
-$ pwgen -1
-$ pwgen | cut -c1-8
+$ pwgen &lt;LENGHT&gt; [COUNT]
+$ pwgen 20 1
 ```
 
 ```
-$ openssl passwd -1 PASSWD
+$ openssl passwd -1 [PASSWD]
 ```
 
-[[OpenSSL]]</pre>
+```
+$ openssl rand -base64 &lt;LENGHT&gt;
+```
+
+* [[OpenSSL]]
+* [[Generate Random String]]</pre>
 </div>
-<div created="20200424081758913" modified="20200424081829913" tags="Linux Bash" title="Generate random string of length 50">
+<div created="20200424081758913" modified="20210609190144566" tags="Linux Bash" title="Generate Random String">
 <pre>```
-base64 /dev/urandom | head -1 | cut -c1-50
+$ base64 /dev/urandom | cut -c1-50 | head -1
 ```
-</pre>
+
+[[Generate Random Password]]</pre>
 </div>
 <div created="20200506071642845" modified="20200506072226828" tags="Linux" title="Get default gateway">
 <pre>```
@@ -23125,11 +23140,11 @@ https://www.bestresizer.com/2017/05/huawei-e173-usb-modem-lights-meaning/</pre>
 <div created="20200426101305817" modified="20200719144140521" title="Imagemagick">
 <pre></pre>
 </div>
-<div created="20200425154049157" modified="20210608085942084" tags="Linux" title="Implement library function hooking">
+<div created="20200425154049157" modified="20210609143255512" tags="Linux" title="Implement library function hooking">
 <pre>Hooking Interposition
 
 * LD_PRELOAD, dlsym(RTLD_NEXT, &quot;ioctl&quot;)
-* [[SSH SOCKS Tunnel]]
+* [[SSH SOCKS Proxy]]
 * https://github.com/kumina/fakemac
 * http://www.logix.cz/michal/devel/faketime/
 * https://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html
@@ -26132,6 +26147,9 @@ $ docker image prune
 
 </pre>
 </div>
+<div created="20210609144404815" modified="20210609144426802" tags="Definition" title="PSK">
+<pre>''P''re-''s''hared ''K''ey</pre>
+</div>
 <div created="20201217091001885" modified="20201217091821429" tags="Definition" title="PSTN">
 <pre>Public Switched Telephone Network
 
@@ -29073,7 +29091,7 @@ tail -n+2
 * [[Libpcap]]
 * [[Net]]</pre>
 </div>
-<div created="20210608084738239" modified="20210609124550634" tags="Net" title="SOCKS">
+<div created="20210608084738239" modified="20210609150852714" tags="Net" title="SOCKS">
 <pre>''Sock''et ''S''ecure
 
 [[Socks proxy list|https://sockslist.net/]]
@@ -29086,12 +29104,13 @@ tail -n+2
 
 ---
 * [[SOCKS 5 RFC|https://datatracker.ietf.org/doc/html/rfc1928]]
-* [[SSH SOCKS Tunnel]]
+* [[SSH SOCKS Proxy]]
+* [[Stunnel SOCKS Proxy]]
 * [[Tor]]
 * [[Proxy]]
 * [[Net]]</pre>
 </div>
-<div created="20200520085237330" modified="20210609124618350" tags="SOCKS" title="Socksify">
+<div created="20200520085237330" modified="20210609143218756" tags="SOCKS" title="Socksify">
 <pre>!!! Install
 
 ```
@@ -29136,7 +29155,7 @@ $ ftp ftp.example.org
 ```
 
 * [ext[man socksify|manx:socksify]]
-* [[SSH SOCKS Tunnel]]
+* [[SSH SOCKS Proxy]]
 * [[SOCKS]]</pre>
 </div>
 <div created="20200512075558764" modified="20200512075612207" tags="[[TW Links]]" title="SOFTWARE AS SHE'S DEVELOPED">
@@ -29270,7 +29289,7 @@ $ sudo systemctl reload sshd.service
 ```
 </pre>
 </div>
-<div created="20200519145058657" modified="20210608092653639" tags="SSH SOCKS" title="SSH Dynamic Port Forwarding">
+<div created="20200519145058657" modified="20210609143342901" tags="SSH SOCKS" title="SSH Dynamic Port Forwarding">
 <pre>Many different client programs can connect to many different services.
 It creates a [[SOCKS]] proxy on the SSH client, and tunnels inbound requests to the SSH server.
 A [[SOCKS]] proxy is a generic gateway that can carry any TCP/IP traffic.
@@ -29293,7 +29312,7 @@ Host ...
 
 * [ext[SSH Mastery: Dynamic Port Forwarding|pdfx://refs/linux/SSH_Mastery.pdf::138]]
 * [ext[man: DynamicForward|manx:ssh_config::DynamicForward]]
-* [[SSH SOCKS Tunnel]]
+* [[SSH SOCKS Proxy]]
 * [[SOCKS]]</pre>
 </div>
 <div created="20200424093049547" modified="20210608091710235" tags="SSH" title="SSH Keep Tunnel On">
@@ -29459,7 +29478,7 @@ Check permissions if is not possible to login using the ssh keys:
 
 [[SSH]]</pre>
 </div>
-<div created="20200520081546982" modified="20210609141007093" tags="SSH SOCKS" title="SSH SOCKS Tunnel">
+<div created="20200520081546982" modified="20210609150230749" tags="SSH SOCKS" title="SSH SOCKS Proxy">
 <pre>```
 $ curl ipinfo.io/ip
 A.B.C.D
@@ -29501,9 +29520,11 @@ $ lynx -dump ipinfo.io/ip
 E.F.G.H
 ```
 
+* [[Stunnel SOCKS Proxy]]
 * [[Determine External IP]]
 * [[SSH Dynamic Port Forwarding]]
-* [[SOCKS]]</pre>
+* [[SOCKS]]
+* [[Proxy]]</pre>
 </div>
 <div created="20200424092922789" modified="20210316110944028" tags="SSH" title="SSH tricks">
 <pre>* https://help.ubuntu.com/community/SSH
@@ -29662,6 +29683,161 @@ CLI to https://github.com/termux/termux-packages
 <pre>```
 $ stress --cpu 4
 ```</pre>
+</div>
+<div created="20210609143048461" modified="20210609190315426" tags="SOCKS" title="Stunnel SOCKS Proxy">
+<pre>!!! Install
+
+```
+$ sudo apt install stunnel4
+```
+
+!!! Generate [[PSK]] file
+
+```
+$ echo &quot;user:$(openssl rand -base64 30)&quot; &gt; psk.txt
+```
+
+!!! Copy to Server and Client
+
+```
+$ mv psk.txt /etc/stunnel/psk
+$ sudo chmod 600 /etc/stunnel/psk.txt
+```
+
+!!! Server
+
+```
+$ cat /etc/stunnel/stunnel.conf
+sslVersion = TLSv1.2
+
+foreground = no # yes
+debug = 6
+
+[socks_server]
+accept = 1081
+protocol = socks
+PSKsecrets = /etc/stunnel/psk.txt
+```
+
+```
+$ sudo systemctl start stunnel4.service
+```
+
+!!! Client
+
+```
+$ cat /etc/stunnel/stunnel.conf
+foreground = no # yes
+debug = 6
+
+[socks_client]
+client = yes
+accept = 127.0.0.1:1080
+connect =192.168.100.21:1081
+PSKsecrets = /etc/stunnel/psk.txt
+```
+
+```
+$ sudo systemctl start stunnel4.service
+```
+
+!!! Connect
+
+```
+$ curl --socks5-hostname 127.0.0.1:1080 ipinfo.io/ip
+```
+
+```
+$ netstat -tn | grep 192.168.100.21
+tcp        0      0 192.168.100.11:44646    192.168.100.21:1081     TIME_WAIT  
+```
+
+* [[SSH SOCKS Proxy]]
+* [[Stunnel Tunnel]]
+* [[Socksify]]
+* [[TLS]]
+* Encrypted [[Tunnel]]
+* [[SOCKS]]
+* [[Proxy]]
+* [[Net]]
+* [[Generate Random Password]]</pre>
+</div>
+<div created="20200424085339651" modified="20210609153022832" tags="" title="Stunnel Tunnel">
+<pre>Add [[TLS]] encryption to existing clients and servers
+
+!!! Install
+
+```
+$ sudo apt install stunnel4
+```
+
+!!! Server
+
+Generate self-signed SSL certificate
+
+* -new Generate a new key
+* -x509 Generate an X509 certificate (self sign)
+* -nodes (no DES) Don't put a password on this key
+* -out Where to put the SSL certificate
+* -keyout Where to put the key
+* -days 365 Valid for 1 year
+
+```
+$ openssl req -new -x509 -nodes -out stunnel.pem -keyout stunnel.key -days 365
+```
+
+```
+$ sudo mv stunnel.* /etc/stunnel
+```
+
+```
+$ cat /etc/stunnel/stunnel.conf
+cert = /etc/stunnel/stunnel.pem
+key  = /etc/stunnel/stunnel.key
+
+[netcat_server]
+accept = 6140
+connect = 7140
+```
+
+```
+$ sudo systemctl start stunnel4.service
+```
+
+```
+$ nc -vkl 7140
+Listening on [0.0.0.0] (family 2, port 7140)
+```
+
+!!! Client
+
+```
+$ cat /etc/stunnel/stunnel.conf 
+[netcat_client]
+client = yes
+accept = 127.0.0.1:5140
+connect = 192.168.100.21:6140
+```
+
+```
+$ sudo systemctl start stunnel4.service
+```
+
+```
+$ nc -v localhost 5140
+Connection to localhost 5140 port [tcp/*] succeeded!
+```
+
+```
+$ netstat -tn | grep 192.168.100.21
+tcp        0      0 192.168.100.11:58508    192.168.100.21:6140     ESTABLISHED
+```
+
+* [[Stunnel SOCKS Proxy]]
+* [[TLS]]
+* Encrypted [[Tunnel]]
+* [[Netcat]]
+* [[Net]]</pre>
 </div>
 <div created="20200511101924836" modified="20200620092911401" tags="$:/tags/Stylesheet TiddlyWiki" title="Stylesheet">
 <pre>.tc-tagged-Locked button[title=&quot;Edit this tiddler&quot;]   {display: inline;}
@@ -30687,77 +30863,6 @@ https://joearms.github.io/#2019-02-26%20Setting%20up%20a%20TiddlyWiki%20website%
 * [[SSL]]
 * [[PKI]]
 * [[SSH]]</pre>
-</div>
-<div created="20200424085339651" modified="20210608190016960" tags="" title="TLS Tunnel">
-<pre>Add [[TLS]] encryption to existing clients and servers
-
-!!! Install
-
-```
-$ sudo apt install stunnel4
-```
-
-!!! Server
-
-Generate self-signed SSL certificate
-
-* -new Generate a new key
-* -x509 Generate an X509 certificate (self sign)
-* -nodes (no DES) Don't put a password on this key
-* -out Where to put the SSL certificate
-* -keyout Where to put the key
-* -days 365 Valid for 1 year
-
-```
-$ openssl req -new -x509 -nodes -out stunnel.pem -keyout stunnel.key -days 365
-```
-
-```
-$ sudo mv stunnel.* /etc/stunnel
-```
-
-```
-$ cat /etc/stunnel/stunnel.conf
-cert = /etc/stunnel/stunnel.pem
-key  = /etc/stunnel/stunnel.key
-
-[netcat_server]
-accept = 6140
-connect = 7140
-```
-
-```
-$ sudo stunnel
-```
-
-```
-$ nc -vkl 7140
-Listening on [0.0.0.0] (family 2, port 7140)
-```
-
-!!! Client
-
-```
-$ cat /etc/stunnel/stunnel.conf 
-[netcat_client]
-client = yes
-accept = 127.0.0.1:5140
-connect = REMOTE_HOST:6140
-```
-
-```
-$ sudo stunnel
-```
-
-```
-$ nc -v localhost 5140
-Connection to localhost 5140 port [tcp/*] succeeded!
-```
-
-* [[TLS]]
-* Encrypted [[Tunnel]]
-* [[Netcat]]
-* [[Net]]</pre>
 </div>
 <div created="20200509094004711" modified="20200509094026869" tags="English" title="To cause more problems than solve">
 <pre></pre>
