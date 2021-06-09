@@ -1677,6 +1677,8 @@ Error message and password prompt
 
 <li>Linux links</li>
 
+<li>Linux Setup Printer</li>
+
 <li>Linux special files</li>
 
 <li>Linux SSH File System</li>
@@ -1778,6 +1780,8 @@ Error message and password prompt
 <li>NAT</li>
 
 <li>Natural Numbers Generator</li>
+
+<li>Net Send for Linux</li>
 
 <li>Netcat</li>
 
@@ -2108,8 +2112,6 @@ Error message and password prompt
 <li>Setup Mathematica</li>
 
 <li>Setup my own VPN server</li>
-
-<li>Setup printer</li>
 
 <li>Setup Python3 virtual env</li>
 
@@ -12591,7 +12593,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210609092328771" list="" modified="20210609124407677" title="$:/StoryList">
+<div created="20210609092328771" list="" modified="20210609135114796" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13605,7 +13607,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210609124706460" title="$:/temp/search">
+<div created="20200422190456346" modified="20210609135513546" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -24367,6 +24369,44 @@ commandlinefu
 http://www.commandlinefu.com/commands/browse
 </pre>
 </div>
+<div created="20200428114339943" modified="20210609135255968" tags="Linux" title="Linux Setup Printer">
+<pre>!!! HP official linux printer drivers
+http://hplipopensource.com/hplip-web/index.html
+
+```
+$ sudo hp-setup
+```
+
+!!! Linux HP Printer Installer (local printer)
+http://hplipopensource.com/hplip-web/index.html
+
+
+!!! Setup networked LaserJet P1005
+
+# Applications -&gt; System -&gt; Printers
+# Add -&gt; Network Printer -&gt; Windows Printer via SAMBA -&gt; Browse
+# Find Printer -&gt; LasetJet P1005 -&gt; Forward
+# Select printer from database -&gt; HP -&gt; LasetJet p1005 -&gt; HP LasetJet P1005 Foomatic/foo2xqx -&gt; Forward
+
+!!! Setup Kyocera Mita ECOSYS M2535dn printer
+
+# Download 'Linux driver' from https://www.kyoceradocumentsolutions.eu/index/service/dlc.html and extract
+# Application -&gt; System -&gt; Printers
+# Add -&gt; Network Printer -&gt; Find Network Printer
+# Choose Printer -&gt; LPD network printer via DNS-SD -&gt; Forward
+# Provide PPD file and choose Linux/Global/English/Kyocera ECOSYS M2535dn.PPD -&gt; Forward
+
+!!! Setup windows shared/network printer
+http://www.geeksite.in/how-tos/linux/linux-mint-how-tos/how-to-add-printer-in-linux-mint-12.html
+
+```
+$ sudo aptitude install smbclient
+$ sudo system-config-printer
+http://localhost:631
+```
+
+[[SAMBA]]</pre>
+</div>
 <div created="20200424090639849" modified="20200424090717856" tags="Linux" title="Linux special files">
 <pre>* /dev/null
 * /dev/zero
@@ -24859,6 +24899,19 @@ function* naturalNumbers() {
 ```
 
 * [[JavaScript Generator]]</pre>
+</div>
+<div created="20210609135304640" modified="20210609135510601" tags="" title="Net Send for Linux">
+<pre>```
+$ smbclient --message HOST &quot;Hello&quot; 
+```
+
+or 
+
+```
+$ echo &quot;Hello&quot; | smbclient -M HOST
+```
+
+[[SAMBA]]</pre>
 </div>
 <div created="20210519135952957" modified="20210608095505302" tags="Book task" title="Netcat">
 <pre>[ext[Open Book|pdfx://refs/net/Netcat_Power_Tools.pdf::203]]
@@ -28409,40 +28462,6 @@ https://0ut3r.space/2020/04/13/first-vps/
 https://0ut3r.space/2018/09/03/ufw-simple-firewall/
 
 * [[VPN]]</pre>
-</div>
-<div created="20200428114339943" modified="20210602184614373" tags="Linux" title="Setup printer">
-<pre>HP official linux printer drivers
-==================================
-http://hplipopensource.com/hplip-web/index.html
-$ sudo hp-setup
-
-Linux HP Printer Installer (local printer)
-===
-http://hplipopensource.com/hplip-web/index.html
-
-Setup networked LaserJet P1005
-===
-1. Applications -&gt; System -&gt; Printers
-2. Add -&gt; Network Printer -&gt; Windows Printer via SAMBA -&gt; Browse
-3. Find Printer -&gt; LasetJet P1005 -&gt; Forward
-4. Select printer from database -&gt; HP -&gt; LasetJet p1005 -&gt; HP LasetJet P1005 Foomatic/foo2xqx -&gt; Forward
-
-How to install Kyocera Mita ECOSYS M2535dn printer?
-===
-1. Download 'Linux driver' from https://www.kyoceradocumentsolutions.eu/index/service/dlc.html and extract
-2. Application -&gt; System -&gt; Printers
-3. Add -&gt; Network Printer -&gt; Find Network Printer
-4. Choose Printer -&gt; LPD network printer via DNS-SD -&gt; Forward
-5. Provide PPD file and choose Linux/Global/English/Kyocera ECOSYS M2535dn.PPD -&gt; Forward
-
-Setup windows shared/network printer
-====================================
-http://www.geeksite.in/how-tos/linux/linux-mint-how-tos/how-to-add-printer-in-linux-mint-12.html
-
-$ sudo aptitude install smbclient
-$ sudo system-config-printer
-http://localhost:631
-</pre>
 </div>
 <div created="20200428115223435" modified="20200504104955528" tags="Python" title="Setup Python3 virtual env">
 <pre>```
