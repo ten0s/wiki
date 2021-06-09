@@ -12048,7 +12048,7 @@ Error message and password prompt
     &quot;tiddlers&quot;: {
         &quot;Untitled&quot;: {
             &quot;title&quot;: &quot;Untitled&quot;,
-            &quot;text&quot;: &quot;Create file system on file&quot;
+            &quot;text&quot;: &quot;&lt;pre style=\&quot;box-sizing: border-box; font-family: SFMono-Regular, Consolas, &amp;quot;Liberation Mono&amp;quot;, Menlo, Courier, monospace; font-size: 15px; display: block; margin-top: 1em; margin-bottom: 1em; word-break: normal; overflow-wrap: break-word; white-space: pre-wrap; background-color: rgb(245, 245, 245); border: 1px solid rgb(204, 204, 204); padding: 0px 3px 2px; border-radius: 3px; color: rgb(51, 51, 51); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\&quot;&gt;&lt;code style=\&quot;box-sizing: border-box; font-family: SFMono-Regular, Consolas, &amp;quot;Liberation Mono&amp;quot;, Menlo, Courier, monospace; font-size: 1em; color: inherit; background-color: inherit; border: none; white-space: pre-wrap; padding: 0px; border-radius: 3px;\&quot;&gt; socksify curl ipinfo.io/ip\n$ socksify ftp ftp.example.org&lt;/code&gt;&lt;/pre&gt;&quot;
         }
     }
 }</pre>
@@ -12591,7 +12591,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210609092328771" list="SOCKS Socksify" modified="20210609092329928" title="$:/StoryList">
+<div created="20210609092328771" list="" modified="20210609124407677" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13605,7 +13605,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210609092449565" title="$:/temp/search">
+<div created="20200422190456346" modified="20210609124706460" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -23062,8 +23062,10 @@ $(&quot;#dot-code-modal&quot;).remove();
 ```
 </pre>
 </div>
-<div created="20210608092919002" modified="20210608093528756" tags="Net Definition" title="HTTP Proxy">
-<pre>* [[HTTP]]
+<div created="20210608092919002" modified="20210609124455293" tags="Net Definition" title="HTTP Proxy">
+<pre>[[HTTP Proxy list|https://proxyhttp.net/]]
+
+* [[HTTP]]
 * [[Proxy]]
 * [[Net]]</pre>
 </div>
@@ -29029,8 +29031,10 @@ tail -n+2
 * [[Libpcap]]
 * [[Net]]</pre>
 </div>
-<div created="20210608084738239" modified="20210609092446581" tags="Net" title="SOCKS">
+<div created="20210608084738239" modified="20210609124550634" tags="Net" title="SOCKS">
 <pre>''Sock''et ''S''ecure
+
+[[Socks proxy list|https://sockslist.net/]]
 
 * Routes traffic through a proxy server.
 * Remote server sees the IP address of the proxy server.
@@ -29045,7 +29049,7 @@ tail -n+2
 * [[Proxy]]
 * [[Net]]</pre>
 </div>
-<div created="20200520085237330" modified="20210608100615427" tags="SOCKS" title="Socksify">
+<div created="20200520085237330" modified="20210609124618350" tags="SOCKS" title="Socksify">
 <pre>!!! Install
 
 ```
@@ -29065,6 +29069,9 @@ route {
 }
 ```
 
+[[SSH Dynamic Port Forwarding]] is used as a [[SOCKS]] server.
+Otherwise configure/use a remote [[SOCKS]] server like ''danted'' (dante-server).
+
 ```
 $ ssh -ND 3128 [User@]Host
 ```
@@ -29074,6 +29081,7 @@ $ ssh -ND 3128 [User@]Host
 In terminal
 
 ```
+$ socksify curl ipinfo.io/ip
 $ socksify ftp ftp.example.org
 ```
 
@@ -29081,9 +29089,7 @@ Network calls interception
 
 ```
 $ export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libdsocksd.so.0
-$ export SOCKS_SERVER=localhost:8181
-
-$ curl example.org
+$ curl ipinfo.io/ip
 $ ftp ftp.example.org
 ```
 
@@ -29411,7 +29417,7 @@ Check permissions if is not possible to login using the ssh keys:
 
 [[SSH]]</pre>
 </div>
-<div created="20200520081546982" modified="20210608085829220" tags="SSH SOCKS" title="SSH SOCKS Tunnel">
+<div created="20200520081546982" modified="20210609124701868" tags="SSH SOCKS" title="SSH SOCKS Tunnel">
 <pre>```
 $ curl ipinfo.io/ip
 A.B.C.D
@@ -29437,6 +29443,13 @@ E.F.G.H
 
 ```
 $ sudo apt install dante-client
+```
+
+NB: [ext[/etc/dante.conf|openx:///etc/dante.conf]] is NOT used here. Otherwise see [[Socksify]]
+
+Network calls interception
+
+```
 $ export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libdsocksd.so.0
 $ export SOCKS_SERVER=localhost:8181
 
@@ -29448,7 +29461,6 @@ E.F.G.H
 
 * [[Determine External IP]]
 * [[SSH Dynamic Port Forwarding]]
-* [[Socksify]]
 * [[SOCKS]]</pre>
 </div>
 <div created="20200424092922789" modified="20210316110944028" tags="SSH" title="SSH tricks">
