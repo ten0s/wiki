@@ -2213,6 +2213,12 @@ Error message and password prompt
 
 <li>SSH</li>
 
+<li>SSH Agent in Docker Build</li>
+
+<li>SSH Agent in Docker Run</li>
+
+<li>SSH Agent Troubleshoot</li>
+
 <li>SSH connection is too slow</li>
 
 <li>SSH disable password authentication</li>
@@ -2230,6 +2236,8 @@ Error message and password prompt
 <li>SSH Mastery</li>
 
 <li>SSH Remote Port Forwarding</li>
+
+<li>SSH Scan Public Keys from Host</li>
 
 <li>SSH Setup Key</li>
 
@@ -2435,8 +2443,6 @@ Error message and password prompt
 
 <li>Trace system calls and signals</li>
 
-<li>Troubleshoot ssh-agent forwarding</li>
-
 <li>Trunk</li>
 
 <li>Tshark use</li>
@@ -2474,8 +2480,6 @@ Error message and password prompt
 <li>Use emacs in visudo</li>
 
 <li>Use pstree</li>
-
-<li>Use ssh-agent in Docker</li>
 
 <li>Using ModemManager with Huawei 3G USB Modem</li>
 
@@ -12609,7 +12613,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210609092328771" list="[[Stunnel SOCKS Proxy]] [[Determine process that uses port]]" modified="20210609191818645" title="$:/StoryList">
+<div created="20210610101233690" list="" modified="20210610113258176" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13623,7 +13627,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210609192410762" title="$:/temp/search">
+<div created="20200422190456346" modified="20210610115105077" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -29237,6 +29241,92 @@ $ git commit -m MESSAGE
 * [[TLS]]
 * [[Net]]</pre>
 </div>
+<div created="20210610114025022" modified="20210610115042739" tags="SSH Docker Git" title="SSH Agent in Docker Build">
+<pre>Dockerfile:
+
+```
+RUN mkdir -m 700 /root/.ssh 
+
+# Either
+
+RUN touch -m 600 /root/.ssh/config &amp;&amp; \
+    echo &quot;StrictHostKeyChecking no&quot; &gt;&gt; /root/.ssh/config
+
+# Or
+
+RUN ssh-keyscan github.com &gt;&gt; ~/.ssh/known_hosts
+
+# Check
+
+RUN --mount=type=ssh ssh-add -L
+RUN --mount=type=ssh ssh -T git@github.com
+```
+
+Run build
+
+```
+$ ssh-add
+$ DOCKER_BUILDKIT=1 BUILDKIT_PROGRESS=plain docker build --ssh default .
+```
+
+* [[SSH Agent in Docker Run]]
+* [[Docker]]
+* [[Git]]
+* [[SSH]]</pre>
+</div>
+<div created="20200423191811323" modified="20210610115055248" tags="Git SSH Docker" title="SSH Agent in Docker Run">
+<pre>HOST:
+
+```
+$ ssh-add ~/.ssh/id_rsa
+$ docker run -ti --rm -v $SSH_AUTH_SOCK:/ssh-agent -e SSH_AUTH_SOCK=/ssh-agent ubuntu bash
+```
+
+GUEST:
+
+```
+# apt update &amp;&amp; apt -y install openssh-client
+# ssh -T git@github.com
+Hi ten0s! You've successfully authenticated, but GitHub does not provide shell access.
+```
+
+* [[SSH Agent in Docker Build]]
+* [[Docker]]
+* [[Git]]
+* [[SSH]]
+</pre>
+</div>
+<div created="20200424093131169" modified="20210610115023962" tags="SSH" title="SSH Agent Troubleshoot">
+<pre>https://developer.github.com/guides/using-ssh-agent-forwarding/
+
+* Make sure local identity work
+
+* Add ForwardAgent yes to remote ~/.ssh/config
+
+* ssh to the server
+
+* Check locally and remotely the output is NOT empty
+
+```
+$ echo &quot;$SSH_AUTH_SOCK&quot;
+/tmp/ssh-4Cf2gNq2uZc2/agent.1741
+```
+
+*  Check locally
+
+```
+$ ssh-add -L
+The agent has no identities.
+```
+
+* If above has 'no identites' then
+
+```
+$ ssh-add [-k ~/.ssh/id_rsa]
+```
+
+[[SSH]]</pre>
+</div>
 <div created="20200425115858022" modified="20210602184636957" tags="SSH" title="SSH connection is too slow">
 <pre>https://www.thegeekstuff.com/2010/07/openssh-slow-at-ssh2_msg_service_accept-received/
 
@@ -29471,6 +29561,14 @@ ssh -N -R 0.0.0.0:4369:localhost:4369 ten0s@xos.mooo.com
 * [ext[SSH Mastery: Remote Port Forwarding|pdfx://refs/linux/SSH_Mastery.pdf::135]]
 * [ext[man: RemoteForward|manx:ssh_config::RemoteForward]]
 * [[SSH Local Port Forwarding]]</pre>
+</div>
+<div created="20210610113739700" modified="20210610114952906" tags="SSH" title="SSH Scan Public Keys from Host">
+<pre>```
+$ ssh-keyscan github.com [&gt;&gt; ~/.ssh/known_hosts]
+```
+
+[[SSH]]
+</pre>
 </div>
 <div created="20200425115702390" modified="20210608084326446" tags="SSH" title="SSH Setup Key">
 <pre>```
@@ -30932,36 +31030,6 @@ $ strace COMMAND [ARGS]
 
 [[Trace dynamic libs calls]]</pre>
 </div>
-<div created="20200424093131169" modified="20210316110944029" tags="SSH" title="Troubleshoot ssh-agent forwarding">
-<pre>https://developer.github.com/guides/using-ssh-agent-forwarding/
-
-* make sure local identity work
-
-* add ForwardAgent yes to remote ~/.ssh/config
-
-* ssh to the server
-
-* check locally and remotely the output is NOT empty
-
-```
-$ echo &quot;$SSH_AUTH_SOCK&quot;
-/tmp/ssh-4Cf2gNq2uZc2/agent.1741
-```
-
-*  check locally
-
-```
-$ ssh-add -L
-The agent has no identities.
-```
-
-* if above 'no identites' then
-
-```
-$ ssh-add -k id_rsa
-```
-</pre>
-</div>
 <div created="20201217095938812" modified="20201217100648648" tags="Definition" title="Trunk">
 <pre>Transmission channel between two points</pre>
 </div>
@@ -31169,23 +31237,6 @@ https://www.ietf.org/rfc/rfc1738.txt</pre>
 <pre>```
 $ pstree -hapc | less -R
 ```</pre>
-</div>
-<div created="20200423191811323" modified="20210316110944030" tags="Git SSH Docker" title="Use ssh-agent in Docker">
-<pre>HOST:
-
-```
-$ ssh-add ~/.ssh/id_rsa
-$ docker run -ti --rm -v $SSH_AUTH_SOCK:/ssh-agent -e SSH_AUTH_SOCK=/ssh-agent ubuntu bash
-```
-
-GUEST:
-
-```
-# apt update &amp;&amp; apt -y install openssh-client
-# ssh -T git@github.com
-Hi ten0s! You've successfully authenticated, but GitHub does not provide shell access.
-```
-</pre>
 </div>
 <div created="20210503175058576" modified="20210504103256901" tags="Linux" title="Using ModemManager with Huawei 3G USB Modem">
 <pre>!! [[Huawei 3G USB Modem Lights]]
