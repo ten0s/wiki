@@ -617,6 +617,8 @@ Error message and password prompt
 
 <li>ACID</li>
 
+<li>ACL</li>
+
 <li>adafruit.com</li>
 
 <li>Adb Activity Manager</li>
@@ -1527,6 +1529,8 @@ Error message and password prompt
 
 <li>Increase VirtualBox vdi disk size</li>
 
+<li>Inetd</li>
+
 <li>Info about IP</li>
 
 <li>Init local file system repo</li>
@@ -1811,6 +1815,8 @@ Error message and password prompt
 
 <li>Netcat TCP Server and Client</li>
 
+<li>Netrc</li>
+
 <li>Network boot</li>
 
 <li>Network emulation (netem)</li>
@@ -1856,6 +1862,8 @@ Error message and password prompt
 <li>OSI</li>
 
 <li>Oukitel K1000 Pro</li>
+
+<li>PAM</li>
 
 <li>Panorama viewer</li>
 
@@ -2319,6 +2327,8 @@ Error message and password prompt
 
 <li>TCP</li>
 
+<li>TCP Wrappers</li>
+
 <li>TCP/IP</li>
 
 <li>TCP/UDP Proxy over HTTP</li>
@@ -2542,6 +2552,8 @@ Error message and password prompt
 <li>Xdotool</li>
 
 <li>Xiaomi Redmi Note 9 Pro</li>
+
+<li>Xinetd</li>
 
 <li>Xvfb</li>
 
@@ -12312,8 +12324,8 @@ Error message and password prompt
 <div created="20200423185634443" modified="20200423185634443" title="$:/state/plugin-info-334910430-$:/core---1812962263">
 <pre>contents</pre>
 </div>
-<div created="20200512083903594" modified="20210612092155084" title="$:/state/showeditpreview">
-<pre>no</pre>
+<div created="20200512083903594" modified="20210614102624706" title="$:/state/showeditpreview">
+<pre>yes</pre>
 </div>
 <div created="20200423185759928" modified="20210404172044129" title="$:/state/sidebar">
 <pre>yes</pre>
@@ -12615,7 +12627,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210612092133377" list="" modified="20210612092302798" title="$:/StoryList">
+<div created="20210614094928172" list="ToDo" modified="20210614110412672" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -12666,11 +12678,11 @@ Error message and password prompt
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;396&quot;
+            &quot;text&quot;: &quot;1920&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;880&quot;
+            &quot;text&quot;: &quot;1080&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -13629,7 +13641,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210612092410299" title="$:/temp/search">
+<div created="20200422190456346" modified="20210614110539326" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -13759,6 +13771,9 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 * [[Isolation]]
 * [[Durability]]
 </pre>
+</div>
+<div created="20210614103141049" modified="20210614103152338" tags="Definition" title="ACL">
+<pre>''A''ccess ''C''ontrol ''L''ist</pre>
 </div>
 <div created="20200512161556705" modified="20200512161627253" tags="[[Raspberry Pi Links]]" title="adafruit.com">
 <pre>https://io.adafruit.com/
@@ -16380,7 +16395,7 @@ $ clear
 * [[GUI]]
 * [[TUI]]</pre>
 </div>
-<div created="20200423170939522" modified="20200423171111103" tags="Git" title="Clone Github repo via https">
+<div created="20200423170939522" modified="20210614110408153" tags="Git" title="Clone Github repo via https">
 <pre>http://stackoverflow.com/questions/5343068/is-there-a-way-to-skip-password-typing-when-using-https-github
 
 ```
@@ -16395,7 +16410,7 @@ machine github.com login USER password PASSWORD
 $ git clone https://github.com/organization/repo.git
 ```
 
-</pre>
+[[Netrc]]</pre>
 </div>
 <div created="20200428093525928" modified="20200428093536682" tags="MentalModel" title="Cocktail party situation">
 <pre>Friends vs Strangers</pre>
@@ -23265,6 +23280,18 @@ $ git cherry-pick HASH
 
 </pre>
 </div>
+<div created="20210614110115811" modified="20210614110535704" title="Inetd">
+<pre>Super server
+
+```
+$ sudo apt install openbsd-inetd
+```
+
+/etc/inetd.conf
+
+* [[Xinetd]]
+* [[Net]]</pre>
+</div>
 <div created="20200424084749322" modified="20200424084809587" tags="Linux" title="Info about IP">
 <pre>```
 $ whois IP
@@ -25283,6 +25310,11 @@ $ nc localhost 1234
 
 * [[Netcat]]</pre>
 </div>
+<div created="20210614110314115" modified="20210614110503069" tags="" title="Netrc">
+<pre>[ext[man netrc|manx:netrc]]
+
+* [[Net]]</pre>
+</div>
 <div created="20200511134816975" modified="20200511134829021" tags="[[Raspberry Pi]]" title="Network boot">
 <pre>https://www.raspberrypi.org/documentation/hardware/raspberrypi/bootmodes/net_tutorial.md</pre>
 </div>
@@ -25492,6 +25524,9 @@ $ openssl ciphers -v
 </div>
 <div created="20210404182726449" modified="20210404182748882" tags="Android" title="Oukitel K1000 Pro">
 <pre>https://forum.xda-developers.com/t/oukitel-k10000-pro-development-support.3627904/</pre>
+</div>
+<div created="20210614094939259" modified="20210614095033811" tags="Definition" title="PAM">
+<pre>Pluggable Authentication Modules</pre>
 </div>
 <div created="20200510073755982" modified="20200510154229237" tags="[[Web Links]] [[TW Links]]" title="Panorama viewer">
 <pre>https://github.com/mpetroff/pannellum
@@ -30310,6 +30345,52 @@ Can be used like https://hexdocs.pm/elixir/IO.html#inspect/2
 
 [[IP]]</pre>
 </div>
+<div created="20210614101544593" modified="20210614110110297" tags="" title="TCP Wrappers">
+<pre>[[ACL]] based on client's address
+
+!!! Usage
+
+* Execution of tcpd before service in [[Inetd]], [[Xinetd]]
+* Using libwrap
+
+!!! Config
+
+* /etc/hosts.allow
+* /etc/hosts.deny
+* tcpd
+* tcpdchk
+* tcpdmatch
+
+* [ext[man hosts_access|manx:hosts_access(5)]]
+* [ext[man hosts_options|manx:hosts_options]]
+* [ext[man tcpd|manx:tcpd]]
+
+!!! Check service is built with libwrap support
+
+```
+$ ldd $(which sshd) | grep libwrap
+	libwrap.so.0 =&gt; /lib/x86_64-linux-gnu/libwrap.so.0 (0x00007fd649104000)
+```
+
+!!! Development
+
+```
+sudo apt install libwrap0-dev
+```
+
+```
+$ locate libwrap.a
+/usr/lib/x86_64-linux-gnu/libwrap.a
+```
+
+* [ext[man 3 hosts_access|manx:hosts_access(3)]]
+* [ext[/usr/include/tcpd.h|openx:///usr/include/tcpd.h]]
+* https://github.com/syzdek/spear/blob/master/src/garage/c/socket/libwrap.c
+
+---
+* https://web.mit.edu/rhel-doc/5/RHEL-5-manual/Deployment_Guide-en-US/ch-tcpwrappers.html
+* [[Net]]</pre>
+</div>
 <div created="20210519095622496" modified="20210521181433768" tags="Definition" title="TCP/IP">
 <pre>Internet Protocol Suite
 
@@ -31736,6 +31817,16 @@ https://www.xda-developers.com/how-to-install-sideload-official-android-software
 
 
 </pre>
+</div>
+<div created="20210614110204379" modified="20210614110514648" title="Xinetd">
+<pre>Super server
+
+```
+$ sudo apt install xinetd
+```
+
+* [[Inetd]]
+* [[Net]]</pre>
 </div>
 <div created="20201206133116062" modified="20201206144225997" tags="Linux Imagemagick X11" title="Xvfb">
 <pre>!! X virtual framebuffer
