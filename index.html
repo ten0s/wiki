@@ -12629,7 +12629,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210614094928172" list="ToDo" modified="20210614142113818" title="$:/StoryList">
+<div created="20210614094928172" list="ToDo" modified="20210614150052634" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13643,7 +13643,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210614142320523" title="$:/temp/search">
+<div created="20200422190456346" modified="20210614150107433" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -21369,58 +21369,88 @@ process_item(Item) -&gt;
 * [[ETS]]
 * [[Match Spec]]</pre>
 </div>
-<div created="20200428103642253" modified="20200428103653367" tags="Erlang" title="Erlang setup">
-<pre>export OTP_LIB_DIR=/opt/r16b03-1/lib
+<div created="20200428103642253" modified="20210614150046416" tags="Erlang" title="Erlang setup">
+<pre>```
+export OTP_LIB_DIR=/opt/r16b03-1/lib
 dialyzer --build_plt --apps `ls -d $OTP_LIB_DIR/*/ebin | sed -E &quot;s:$OTP_LIB_DIR/(.*)-.*:\1:&quot; | xargs`
 dialyzer -r ebin deps/*/ebin
+```
 
 # build global plt
+```
 dialyzer --build_plt --output_plt ~/.r18.1.plt --apps kernel stdlib erts crypto public_key mnesia sasl common_test eunit ssh ssl asn1 compiler syntax_tools tools inets snmp xmerl
+```
 # built local plt
+```
 dialyzer --add_to_plt --plt ~/.r18.1.plt --output_plt ./.dyn_tracer.plt -r ./deps/*/ebin/ ./apps/*/ebin/
+```
 # check
+```
 dialyzer --plt .dyn_tracer.plt -r ./apps/*/ebin/ -Wno_improper_lists
+```
 
-kerl
-====
+!!! kerl
 
 Debian/Ubuntu
+
+```
 $ sudo apt-get install build-essential libwxgtk2.8-dev libglu-dev xsltproc libssl-dev libncurses5-dev fop unixodbc-dev default-jdk libtk-img-dev
+```
+
 RHEL/CentOS
+
+```
 $ sudo yum install gcc glibc-devel make ncurses-devel openssl-devel autoconf wxGTK-devel fop unixODBC-devel java-1.6.0-openjdk-devel libxslt # with wx, javac
 $ sudo yum install gcc glibc-devel make ncurses-devel openssl-devel autoconf # without
+```
 
+```
 cat &gt; ~/.kerlrc
 KERL_CONFIGURE_OPTIONS=&quot;--with-wx&quot; # &quot;--without-wx --without-javac --without-odbc&quot;
 KERL_DEFAULT_INSTALL_DIR=/opt
 KERL_INSTALL_MANPAGES=
 KERL_INSTALL_HTMLDOCS=0
+```
 
+```
 sudo mkdir -p /opt/bin
-
 pushd /opt/bin
 sudo curl -O https://raw.githubusercontent.com/spawngrid/kerl/master/kerl
 sudo chmod +x kerl
 pushd /etc/bash_completion.d
 sudo curl -O https://raw.githubusercontent.com/yrashk/kerl/master/bash_completion/kerl
 popd
+```
 
 add to /etc/profile
+
+```
 export PATH=/opt/bin:$PATH
+```
 
+```
 kerl list releases
+```
 
+```
 kerl build R15B03-1 r15b03-1
 kerl build R16B03-1 r16b03-1
 kerl build 17.5 r17.5
+```
 
+```
 kerl list builds
+```
+
+```
 sudo kerl install r15b03-1
 sudo kerl install r16b03-1
 sudo kerl install r17.5
-
+```
 
 R16B03-1
+
+```
 $ wget http://www.erlang.org/download/otp_src_R16B03-1.tar.gz
 $ wget http://www.erlang.org/download/otp_doc_html_R16B03-1.tar.gz
 $ wget http://www.erlang.org/download/otp_doc_man_R16B03-1.tar.gz
@@ -21433,13 +21463,17 @@ $ sudo tar xfz otp_doc_html_R16B03-1.tar.gz -C /opt/otp-r16b03-1/lib/erlang
 $ sudo tar xfz otp_doc_man_R16B03-1.tar.gz -C /opt/otp-r16b03-1/lib/erlang
 $ cd ~/.emacs.d
 $ find /opt/otp-r16b03-1/lib/erlang/lib -name &quot;*.[e,h]rl&quot; -print | sudo etags -
+```
 
-!!
-!! CentOS 6.5 and probably RHEL specific
-!! CFLAGS=&quot;-DOPENSSL_NO_EC=1 -g -O2&quot;
-!!
+!!! CentOS 6.5 and probably RHEL specific
+
+```
+CFLAGS=&quot;-DOPENSSL_NO_EC=1 -g -O2&quot;
+```
 
 R17
+
+```
 $ wget http://www.erlang.org/download/otp_src_17.0.tar.gz
 $ wget http://www.erlang.org/download/otp_doc_html_17.0.tar.gz
 $ tar xfz otp_src_17.0.tar.gz
@@ -21448,8 +21482,11 @@ $ ./configure --prefix=/opt/otp-r17
 $ make
 $ sudo make install
 $ sudo tar xfz otp_doc_html_17.0.tar.gz -C /opt/otp-r17/lib/erlang
+```
 
 2. Download, build, and install Erlang R14B04 release
+
+```
 $ wget http://www.erlang.org/download/otp_src_R14B04.tar.gz
 $ wget http://www.erlang.org/download/otp_doc_html_R14B04.tar.gz
 $ wget http://www.erlang.org/download/otp_doc_man_R14B04.tar.gz
@@ -21460,8 +21497,11 @@ $ make
 $ sudo make install
 $ sudo tar xfz otp_doc_html_R14B04.tar.gz -C /opt/otp-r14b04/lib/erlang
 $ sudo tar xfz otp_doc_man_R14B04.tar.gz  -C /opt/otp-r14b04/lib/erlang
+```
 
 3. Download, build, and install Erlang R15B01 release
+
+```
 $ wget http://www.erlang.org/download/otp_src_R15B01.tar.gz
 $ wget http://www.erlang.org/download/otp_doc_html_R15B01.tar.gz
 $ wget http://www.erlang.org/download/otp_doc_man_R15B01.tar.gz
@@ -21472,8 +21512,11 @@ $ make
 $ sudo make install
 $ sudo tar xfz otp_doc_html_R15B01.tar.gz -C /opt/otp-r15b01/lib/erlang
 $ sudo tar xfz otp_doc_man_R15B01.tar.gz -C /opt/otp-r15b01/lib/erlang
+```
 
 R15B03-1
+
+```
 $ wget http://www.erlang.org/download/otp_src_R15B03-1.tar.gz
 $ wget http://www.erlang.org/download/otp_doc_html_R15B03-1.tar.gz
 $ wget http://www.erlang.org/download/otp_doc_man_R15B03-1.tar.gz
@@ -21484,17 +21527,21 @@ $ make
 $ sudo make install
 $ sudo tar xfz otp_doc_html_R15B03-1.tar.gz -C /opt/otp-r15b03-1/lib/erlang
 $ sudo tar xfz otp_doc_man_R15B03-1.tar.gz -C /opt/otp-r15b03-1/lib/erlang
+```
 
 4. Insert into /etc/manpath.config
 
+```
 MANPATH_MAP /opt/otp-r14b04/bin    /opt/otp-r14b04/lib/erlang/man
 MANPATH_MAP /opt/otp-r15b01/bin    /opt/otp-r15b01/lib/erlang/man
 MANPATH_MAP /opt/otp-r15b03-1/bin    /opt/otp-r15b03-1/lib/erlang/man
 
 MANPATH_MAP /opt/otp-r16b03/bin    /opt/otp-r16b03/lib/erlang/man
+```
 
 5. Append to the .bashrc
 
+```
 ########### SHOULD BE THE LAST SECTION ##############
 
 function set-erlang-root() {
@@ -21518,6 +21565,7 @@ function set-r15b03-1() {
 set-r15b03-1
 
 ########### DO NOT MODIFY PATH AFTER HERE ##########
+```
 </pre>
 </div>
 <div created="20200720171623561" modified="20210316102613005" tags="Erlang Algorithm" title="Erlang Shuffle List">
