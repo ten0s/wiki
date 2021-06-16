@@ -1153,6 +1153,8 @@ Error message and password prompt
 
 <li>Electron in Action</li>
 
+<li>ELF</li>
+
 <li>Emacs Lisp Eval</li>
 
 <li>Emacs/Vim file headers</li>
@@ -14685,8 +14687,8 @@ Starting arp-scan 1.9 with 256 hosts (http://www.nta-monitor.com/tools/arp-scan/
 <div created="20210519094828748" modified="20210519094849777" tags="Definition" title="ARPA">
 <pre>Advanced Research Projects Agency</pre>
 </div>
-<div created="20210615155206098" modified="20210616161739321" tags="Book Linux task" title="Assembly Language Step by Step">
-<pre>[ext[Open|pdfx://refs/lang/asm/Assembly_Language_Step_by_Step.pdf::161]]
+<div created="20210615155206098" modified="20210616185805263" tags="Book Linux task" title="Assembly Language Step by Step">
+<pre>[ext[Open|pdfx://refs/lang/asm/Assembly_Language_Step_by_Step.pdf::191]]
 
 [[Book site|http://www.duntemann.com/assembly.html]]
 
@@ -14699,10 +14701,29 @@ Memory models:
 ---
 
 * [ext[Real mode flat model|pdfx://refs/lang/asm/Assembly_Language_Step_by_Step.pdf::133]]
-
 * [ext[Real mode segmented model|pdfx://refs/lang/asm/Assembly_Language_Step_by_Step.pdf::136]]
-
 * [ext[Protected mode flat mode|pdfx://refs/lang/asm/Assembly_Language_Step_by_Step.pdf::139]]
+
+---
+
+```
+$ sudo apt install nasm
+$ sudo apt install kdbg
+```
+
+Compile for 32-bit
+
+```
+$ nasm -f elf -g -F stabs ex.asm
+$ ld -m elf_i386 -o ex ex.o
+```
+
+Compile for 64-bit
+
+```
+$ nasm -f elf64 -g -F stabs ex.asm
+$ ld -o ex ex.o 
+```
 </pre>
 </div>
 <div created="20200425130227902" modified="20200425130242074" tags="Linux" title="Assign CPU to application">
@@ -17780,6 +17801,11 @@ function css( element, property ) {
 }
 
 css( object, 'font-size' ) // returns '16px' for instance</pre>
+</div>
+<div created="20210616181750174" modified="20210616182311281" tags="Definition" title="ELF">
+<pre>''E''xecutable and ''L''inkable ''F''ormat
+
+https://en.wikipedia.org/wiki/Executable_and_Linkable_Format</pre>
 </div>
 <div created="20200916141035629" modified="20200916141156208" tags="Emacs" title="Emacs Lisp Eval">
 <pre>* In *scratch* C-j
