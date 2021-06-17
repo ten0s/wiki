@@ -1005,7 +1005,7 @@ Error message and password prompt
 
 <li>Create a new user</li>
 
-<li>Create and use a shared library</li>
+<li>Create and Use Shared Libraries</li>
 
 <li>Create annotated tag</li>
 
@@ -1456,6 +1456,8 @@ Error message and password prompt
 <li>Functor Laws</li>
 
 <li>Fundamentals of Lambda Calculus &amp; Functional Programming in JavaScript</li>
+
+<li>Gdb</li>
 
 <li>Generate all possible string corresponding for RegEx</li>
 
@@ -12647,7 +12649,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210617101434549" list="[[Assembly Language Step by Step]]" modified="20210617112638396" title="$:/StoryList">
+<div created="20210617101434549" list="Gdb [[Assembly Language Step by Step]]" modified="20210617160527718" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13661,7 +13663,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210616151457161" title="$:/temp/search">
+<div created="20200422190456346" modified="20210617161319816" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -14689,8 +14691,8 @@ Starting arp-scan 1.9 with 256 hosts (http://www.nta-monitor.com/tools/arp-scan/
 <div created="20210519094828748" modified="20210519094849777" tags="Definition" title="ARPA">
 <pre>Advanced Research Projects Agency</pre>
 </div>
-<div created="20210615155206098" modified="20210617113308103" tags="Book Linux task" title="Assembly Language Step by Step">
-<pre>[ext[Open|pdfx://refs/lang/asm/Assembly_Language_Step_by_Step.pdf::191]]
+<div created="20210615155206098" modified="20210617161318176" tags="Book Linux task" title="Assembly Language Step by Step">
+<pre>[ext[Open|pdfx://refs/lang/asm/Assembly_Language_Step_by_Step.pdf::237]]
 
 [[Book site|http://www.duntemann.com/assembly.html]]
 
@@ -14716,17 +14718,19 @@ $ sudo apt install kdbg
 Compile for 32-bit
 
 ```
-$ nasm -f elf -g -F stabs ex.asm
+$ nasm -f elf -g -F dwarf ex.asm
 $ ld -m elf_i386 -o ex ex.o
 ```
 
 Compile for 64-bit
 
 ```
-$ nasm -f elf64 -g -F stabs ex.asm
+$ nasm -f elf64 -g -F dwarf ex.asm
 $ ld -o ex ex.o 
 ```
 
+* [[Nasm]]
+* [[Gdb]]
 * [[Linux System Calls]]
 * [[Assembly Programming Tutorial|https://www.tutorialspoint.com/assembly_programming/index.htm]]</pre>
 </div>
@@ -16794,10 +16798,15 @@ USER  ALL=NOPASSWD: ALL
 ```
 </pre>
 </div>
-<div created="20200425152005993" modified="20200425152025244" tags="Linux" title="Create and use a shared library">
-<pre>http://www.cprogramming.com/tutorial/shared-libraries-linux-gcc.html
-http://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html
-</pre>
+<div created="20200425152005993" modified="20210617160918484" tags="Linux" title="Create and Use Shared Libraries">
+<pre>* http://www.cprogramming.com/tutorial/shared-libraries-linux-gcc.html
+* http://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html
+* [ext[How to Write Shared Libraries|pdfx://refs/lang/c/How_to_Write_Shared_Libraries.pdf]]
+
+---
+
+* [[Gcc]]
+* [[Ldd]]</pre>
 </div>
 <div created="20200423173246385" modified="20200423190857269" tags="Git" title="Create annotated tag">
 <pre>Annotated tag stores dates, author, comment
@@ -18409,7 +18418,7 @@ choose_node_by_hash(SomeID) -&gt;
 
 * [[Compiling]]</pre>
 </div>
-<div created="20200428103115323" modified="20210608174607405" tags="Erlang" title="Erlang core dump">
+<div created="20200428103115323" modified="20210617155221336" tags="Erlang" title="Erlang core dump">
 <pre>https://www.erlang-solutions.com/blog/how-to-analyse-a-beam-core-dump.html
 https://rkallos.com/blog/2018/04/22/erlang-debug-vms-what-why-and-how/
 
@@ -18472,7 +18481,8 @@ $ gdb /usr/local/lib/erlang/erts-8.3.5/bin/beam.smp ~/core.23344 -d otp/erts/emu
 (gdb) source otp/erts/etc/unix/etp-commands.in
 (gdb) bt
 ```
-</pre>
+
+[[Gdb]]</pre>
 </div>
 <div created="20200428103002758" modified="20200717164647021" tags="Erlang" title="Erlang Cover">
 <pre>http://www.erlang.org/documentation/doc-5.10.4/lib/tools-2.6.13/doc/html/cover.html
@@ -18534,7 +18544,7 @@ env ERL_CRASH_DUMP_BYTES, from 19.2
 ```
 </pre>
 </div>
-<div created="20200629163613437" modified="20200629163651739" tags="Erlang" title="Erlang debug (gdb) errors in linked-in drivers or nif loaded as shared library">
+<div created="20200629163613437" modified="20210617155235710" tags="Erlang" title="Erlang debug (gdb) errors in linked-in drivers or nif loaded as shared library">
 <pre>I've edited the erl script which comes with the standard Erlang release to allow easy use of GDB for just such situations:
 
 ```
@@ -18546,7 +18556,8 @@ fi
 ```
 
 Define the env var &quot;USE_GDB&quot; before launching Erlang and you'll get a debugger prompt when your NIF/driver crashes. GDB's backtrace command is especially helpful
-</pre>
+
+[[Gdb]]</pre>
 </div>
 <div created="20210503115825060" modified="20210503115959965" tags="Erlang" title="Erlang Decode Etf from Stdin">
 <pre>```
@@ -19987,7 +19998,7 @@ referenced by a given process in bytes, and may allow for far finer-grained mana
 The function basically sums up the memory tuples from `process_info(Pid, binary)` to give an accurate count for refc bins.
 </pre>
 </div>
-<div created="20200629163512669" modified="20210316110359715" tags="Erlang" title="Erlang GDB Segmentation Fault">
+<div created="20200629163512669" modified="20210617155247400" tags="Erlang" title="Erlang GDB Segmentation Fault">
 <pre>```
 $ ulimit -c unlimited
 ...
@@ -19995,7 +20006,8 @@ $ gdb /home/ten0s/dsiload/dsiload/rel/dsiload/erts-5.9.3.1/bin/beam.smp core.130
 (gdb) bt
 ```
 
-* [[Debug]]</pre>
+* [[Debug]]
+* [[Gdb]]</pre>
 </div>
 <div created="20200709135032548" modified="20210316110153639" tags="Erlang" title="Erlang Generate Crash Dump">
 <pre>```
@@ -23040,6 +23052,18 @@ F.of   |            | F.of
 * https://github.com/glebec/lambda-talk
 
 https://gist.github.com/Avaq/1f0636ec5c8d6aed2e45</pre>
+</div>
+<div created="20210617155557376" modified="20210617161205397" tags="" title="Gdb">
+<pre>Compile with debug symbols
+
+```
+$ gcc -g ...
+$ nasm -g ...
+```
+
+* [[Gcc]]
+* [[Nasm]]
+</pre>
 </div>
 <div created="20210429114450588" modified="20210429115401395" tags="task" title="Generate all possible string corresponding for RegEx">
 <pre>To blog
