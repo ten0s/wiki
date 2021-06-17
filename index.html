@@ -1707,6 +1707,8 @@ Error message and password prompt
 
 <li>Linux Standard Base</li>
 
+<li>Linux System Calls</li>
+
 <li>Linux Temp Memory File System</li>
 
 <li>Linux words</li>
@@ -12645,7 +12647,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210616112801223" list="[[Assembly Language Step by Step]]" modified="20210616143830563" title="$:/StoryList">
+<div created="20210617101434549" list="[[Assembly Language Step by Step]]" modified="20210617112638396" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -14687,7 +14689,7 @@ Starting arp-scan 1.9 with 256 hosts (http://www.nta-monitor.com/tools/arp-scan/
 <div created="20210519094828748" modified="20210519094849777" tags="Definition" title="ARPA">
 <pre>Advanced Research Projects Agency</pre>
 </div>
-<div created="20210615155206098" modified="20210616185805263" tags="Book Linux task" title="Assembly Language Step by Step">
+<div created="20210615155206098" modified="20210617113308103" tags="Book Linux task" title="Assembly Language Step by Step">
 <pre>[ext[Open|pdfx://refs/lang/asm/Assembly_Language_Step_by_Step.pdf::191]]
 
 [[Book site|http://www.duntemann.com/assembly.html]]
@@ -14724,7 +14726,9 @@ Compile for 64-bit
 $ nasm -f elf64 -g -F stabs ex.asm
 $ ld -o ex ex.o 
 ```
-</pre>
+
+* [[Linux System Calls]]
+* [[Assembly Programming Tutorial|https://www.tutorialspoint.com/assembly_programming/index.htm]]</pre>
 </div>
 <div created="20200425130227902" modified="20200425130242074" tags="Linux" title="Assign CPU to application">
 <pre>taskset
@@ -24741,6 +24745,21 @@ $ fusermount -u mountpoint
 * man 7 hier
 * https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html
 </pre>
+</div>
+<div created="20210617111409865" modified="20210617113301324" tags="Linux" title="Linux System Calls">
+<pre>* [ext[asm/unistd.h|openx:///usr/include/x86_64-linux-gnu/asm/unistd.h]]
+* [ext[asm/unistd_32.h|openx:///usr/include/x86_64-linux-gnu/asm/unistd_32.h]]
+* [ext[asm/unistd_64.h|openx:///usr/include/x86_64-linux-gnu/asm/unistd_64.h]]
+
+---
+
+* [ext[man 2 syscall|manx:syscall(2)]]
+* [ext[man 2 syscalls|manx:syscalls(2)]]
+
+---
+
+* [[Anatomy of a system call, part1|https://lwn.net/Articles/604287/]]
+* [[Anatomy of a system call, part2|https://lwn.net/Articles/604515/]]</pre>
 </div>
 <div created="20210601113150778" modified="20210601113921537" tags="Linux" title="Linux Temp Memory File System">
 <pre>```
