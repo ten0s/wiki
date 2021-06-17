@@ -14691,8 +14691,8 @@ Starting arp-scan 1.9 with 256 hosts (http://www.nta-monitor.com/tools/arp-scan/
 <div created="20210519094828748" modified="20210519094849777" tags="Definition" title="ARPA">
 <pre>Advanced Research Projects Agency</pre>
 </div>
-<div created="20210615155206098" modified="20210617174849117" tags="Book Linux task" title="Assembly Language Step by Step">
-<pre>[ext[Open|pdfx://refs/lang/asm/Assembly_Language_Step_by_Step.pdf::237]]
+<div created="20210615155206098" modified="20210617175553326" tags="Book Linux task" title="Assembly Language Step by Step">
+<pre>[ext[Open|pdfx://refs/lang/asm/Assembly_Language_Step_by_Step.pdf::240]]
 
 [[Book site|http://www.duntemann.com/assembly.html]]
 
@@ -14744,14 +14744,14 @@ _start:
 Compile for 32-bit
 
 ```
-$ nasm -f elf -g -F dwarf hello.asm
+$ nasm -f elf -g -F dwarf -l hello.lst hello.asm
 $ ld -m elf_i386 -o hello hello.o
 ```
 
 Compile for 64-bit
 
 ```
-$ nasm -f elf64 -g -F dwarf hello.asm
+$ nasm -f elf64 -g -F dwarf -l hello.lst hello.asm
 $ ld -o hello hello.o 
 ```
 
