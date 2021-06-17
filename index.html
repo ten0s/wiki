@@ -12649,7 +12649,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210617101434549" list="Gdb [[Assembly Language Step by Step]]" modified="20210617160527718" title="$:/StoryList">
+<div created="20210617101434549" list="Gdb [[Assembly Language Step by Step]]" modified="20210617171200306" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -14691,7 +14691,7 @@ Starting arp-scan 1.9 with 256 hosts (http://www.nta-monitor.com/tools/arp-scan/
 <div created="20210519094828748" modified="20210519094849777" tags="Definition" title="ARPA">
 <pre>Advanced Research Projects Agency</pre>
 </div>
-<div created="20210615155206098" modified="20210617161318176" tags="Book Linux task" title="Assembly Language Step by Step">
+<div created="20210615155206098" modified="20210617172943109" tags="Book Linux task" title="Assembly Language Step by Step">
 <pre>[ext[Open|pdfx://refs/lang/asm/Assembly_Language_Step_by_Step.pdf::237]]
 
 [[Book site|http://www.duntemann.com/assembly.html]]
@@ -14715,18 +14715,58 @@ $ sudo apt install nasm
 $ sudo apt install kdbg
 ```
 
+hello.asm:
+
+```
+section .data                               ; Initialized data section
+    msg: db &quot;Hello World&quot;, 0x0a
+    .len: equ $ - msg
+
+section .bss                                ; Uninitialized data section
+
+section .text                               ; Code section
+
+global _start                               ; Entry point
+_start:
+    nop                                     ; Make gdb happy...
+	
+    mov eax, 4                              ; SYS_write/__NR_write system call
+    mov ebx, 1                              ; File Descriptor 1: stdout
+    mov ecx, msg                            ; Message address
+    mov edx, msg.len                        ; Message length
+    int 0x80                                ; Make system call
+
+    mov eax, 1                              ; SYS_exit/__NR_exit system call
+    mov ebx, 0                              ; Normal exit: 0
+    int 0x80                                ; Make system call
+```
+
 Compile for 32-bit
 
 ```
-$ nasm -f elf -g -F dwarf ex.asm
-$ ld -m elf_i386 -o ex ex.o
+$ nasm -f elf -g -F dwarf hello.asm
+$ ld -m elf_i386 -o hello hello.o
 ```
 
 Compile for 64-bit
 
 ```
-$ nasm -f elf64 -g -F dwarf ex.asm
-$ ld -o ex ex.o 
+$ nasm -f elf64 -g -F dwarf hello.asm
+$ ld -o hello hello.o 
+```
+
+Debug
+
+```
+$ gdb hello
+&gt; b _start
+&gt; layout src
+&gt; layout regs
+&gt; run
+&gt; next
+&gt; print $eax
+&gt; info reg (i r)
+&gt; cont
 ```
 
 * [[Nasm]]
@@ -24770,7 +24810,7 @@ $ fusermount -u mountpoint
 * https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html
 </pre>
 </div>
-<div created="20210617111409865" modified="20210617113301324" tags="Linux" title="Linux System Calls">
+<div created="20210617111409865" modified="20210617172309640" tags="Linux" title="Linux System Calls">
 <pre>* [ext[asm/unistd.h|openx:///usr/include/x86_64-linux-gnu/asm/unistd.h]]
 * [ext[asm/unistd_32.h|openx:///usr/include/x86_64-linux-gnu/asm/unistd_32.h]]
 * [ext[asm/unistd_64.h|openx:///usr/include/x86_64-linux-gnu/asm/unistd_64.h]]
@@ -24779,6 +24819,7 @@ $ fusermount -u mountpoint
 
 * [ext[man 2 syscall|manx:syscall(2)]]
 * [ext[man 2 syscalls|manx:syscalls(2)]]
+* [ext[bits/syscall.h|openx:///usr/include/x86_64-linux-gnu/bits/syscall.h]]
 
 ---
 
