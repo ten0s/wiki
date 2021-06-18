@@ -1469,6 +1469,8 @@ Error message and password prompt
 
 <li>Gdb</li>
 
+<li>Gdb Output to Different Terminal</li>
+
 <li>Generate all possible string corresponding for RegEx</li>
 
 <li>Generate Random Password</li>
@@ -1818,6 +1820,8 @@ Error message and password prompt
 <li>Multiple projects using github deploy keys</li>
 
 <li>Nasm</li>
+
+<li>Nasm Flags Register</li>
 
 <li>Nasm Hello World</li>
 
@@ -12677,7 +12681,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210618085708903" list="[[Assembly Language Step by Step]]" modified="20210618161549559" title="$:/StoryList">
+<div created="20210618085708903" list="[[Assembly Language Step by Step]]" modified="20210618173604806" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -14719,8 +14723,8 @@ Starting arp-scan 1.9 with 256 hosts (http://www.nta-monitor.com/tools/arp-scan/
 <div created="20210519094828748" modified="20210519094849777" tags="Definition" title="ARPA">
 <pre>Advanced Research Projects Agency</pre>
 </div>
-<div created="20210615155206098" modified="20210618155946304" tags="Book Linux task" title="Assembly Language Step by Step">
-<pre>[ext[Open|pdfx://refs/lang/asm/Assembly_Language_Step_by_Step.pdf::246]]
+<div created="20210615155206098" modified="20210618191422793" tags="Book Linux task" title="Assembly Language Step by Step">
+<pre>[ext[Open|pdfx://refs/lang/asm/Assembly_Language_Step_by_Step.pdf::257]]
 
 [[Book site|http://www.duntemann.com/assembly.html]]
 
@@ -23103,7 +23107,7 @@ https://gist.github.com/Avaq/1f0636ec5c8d6aed2e45</pre>
 <div created="20210618160353655" modified="20210618160353655" title="Gcc">
 <pre></pre>
 </div>
-<div created="20210617155557376" modified="20210617174824630" tags="" title="Gdb">
+<div created="20210617155557376" modified="20210618172128608" tags="" title="Gdb">
 <pre>Compile with debug symbols
 
 ```
@@ -23118,6 +23122,7 @@ $ nasm -g ...
 * http://ece-research.unm.edu/jimp/310/nasm/gdb.pdf
 * https://www.csee.umbc.edu/portal/help/nasm/nasm.shtml
 * https://www.cs.umb.edu/~cheungr/cs341/Using_gdb_for_Assembly.pdf
+* https://l.wzm.me/_nezumi/gdb.htm
 
 ---
 
@@ -23127,6 +23132,23 @@ $ nasm -g ...
 * [[Gcc]]
 * [[Nasm]]
 </pre>
+</div>
+<div created="20210618173613347" modified="20210618173839063" tags="" title="Gdb Output to Different Terminal">
+<pre>Terminal #1
+
+```
+$ tty
+/dev/pts/1
+```
+
+Terminal #2
+
+```
+$ gdb
+(gdb) tty /dev/pts/1
+```
+
+* [[Gdb]]</pre>
 </div>
 <div created="20210429114450588" modified="20210429115401395" tags="task" title="Generate all possible string corresponding for RegEx">
 <pre>To blog
@@ -25308,7 +25330,12 @@ $  git clone git@project-one.github.com:vendor/project-one.git
 <div created="20210618155805461" modified="20210618155805461" title="Nasm">
 <pre></pre>
 </div>
-<div created="20210618155812649" modified="20210618155846570" tags="" title="Nasm Hello World">
+<div created="20210618175424955" modified="20210618175501074" tags="" title="Nasm Flags Register">
+<pre>[ext[Open|pdfx://refs/lang/asm/Assembly_Language_Step_by_Step.pdf::249]]
+
+[[Nasm]]</pre>
+</div>
+<div created="20210618155812649" modified="20210618174444835" tags="" title="Nasm Hello World">
 <pre>```
 $ sudo apt install nasm
 $ sudo apt install kdbg
@@ -25317,8 +25344,10 @@ $ sudo apt install kdbg
 hello.asm:
 
 ```
+;;; mode: asm-mode; asm-indent-level: 4; indent-tabs-mode: nil
+
 section .data                               ; Initialized data section
-    msg: db &quot;Hello World&quot;, 0x0a
+    msg: db &quot;Hello World&quot;, 10
     .len: equ $ - msg
 
 section .bss                                ; Uninitialized data section
