@@ -999,7 +999,9 @@ Error message and password prompt
 
 <li>Connect to Huawei 3G USB Modem</li>
 
-<li>Convert bases in terminal</li>
+<li>Convert Bases in GDB</li>
+
+<li>Convert Bases in Terminal</li>
 
 <li>Convert binary to hexdump</li>
 
@@ -12554,8 +12556,8 @@ Error message and password prompt
 <div created="20200423185505844" modified="20210314162331099" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Orphans</pre>
 </div>
-<div created="20200422191529492" modified="20210622162521640" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/Recent</pre>
+<div created="20200422191529492" modified="20210622170603981" title="$:/state/tab/sidebar--595412856">
+<pre>TableOfContents</pre>
 </div>
 <div created="20200426101141551" modified="20210603145437592" title="$:/state/toc/TableOfContents-Android--118161433">
 <pre>close</pre>
@@ -12713,7 +12715,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210622150815727" list="[[Assembly Language Step by Step]]" modified="20210622164300174" title="$:/StoryList">
+<div created="20210622150815727" list="[[Assembly Language Step by Step]]" modified="20210622165650345" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13727,7 +13729,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210622162609711" title="$:/temp/search">
+<div created="20200422190456346" modified="20210622170602594" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -14755,8 +14757,8 @@ Starting arp-scan 1.9 with 256 hosts (http://www.nta-monitor.com/tools/arp-scan/
 <div created="20210519094828748" modified="20210519094849777" tags="Definition" title="ARPA">
 <pre>Advanced Research Projects Agency</pre>
 </div>
-<div created="20210615155206098" modified="20210622164319529" tags="Book Linux task" title="Assembly Language Step by Step">
-<pre>[ext[Open|pdfx://refs/lang/asm/Assembly_Language_Step_by_Step.pdf::257]]
+<div created="20210615155206098" modified="20210622170600440" tags="Book Linux task" title="Assembly Language Step by Step">
+<pre>[ext[Open|pdfx://refs/lang/asm/Assembly_Language_Step_by_Step.pdf::262]]
 
 [[Book site|http://www.duntemann.com/assembly.html]]
 
@@ -16776,7 +16778,38 @@ AT
 OK
 ```</pre>
 </div>
-<div created="20200425124418046" modified="20200425124502054" tags="Bash" title="Convert bases in terminal">
+<div created="20210622165720128" modified="20210622170501934" tags="gdb" title="Convert Bases in GDB">
+<pre>```
+$ gdb -q &lt;&lt;&lt; &quot;p/x 255&quot;
+(gdb) $1 = 0xff
+(gdb) quit
+```
+
+```
+(gdb) p/z 255
+$1 = 0x000000ff
+```
+
+```
+(gdb) p/d 0xff
+$1 = 255
+```
+
+```
+(gdb) p/t 42
+$1 = 101010
+```
+
+```
+(gdb) p/x -42
+$1 = 0xffffffd6
+```
+
+* https://ftp.gnu.org/old-gnu/Manuals/gdb/html_node/gdb_54.html
+* [[Gdb]]
+* [[Convert Bases in Terminal]]</pre>
+</div>
+<div created="20200425124418046" modified="20210622170430783" tags="Bash" title="Convert Bases in Terminal">
 <pre>```
 $ bc &lt;&lt;&lt; &quot;obase=16; 255&quot; # dec2hex
 FF
@@ -16786,7 +16819,9 @@ $ bc &lt;&lt;&lt; &quot;obase=2; 12&quot; # dec2bin
 1100
 $ bc &lt;&lt;&lt; &quot;ibase=2; obase=A; 10&quot; # bin2dec (note A as obase)
 2
-```</pre>
+```
+
+[[Convert Bases in GDB]]</pre>
 </div>
 <div created="20200425161502971" modified="20210524122917110" tags="Linux" title="Convert binary to hexdump">
 <pre>```
