@@ -189,6 +189,10 @@ Error message and password prompt
 
 <li>$:/state/edit/references-1276861187</li>
 
+<li>$:/state/edit/references-1320272793</li>
+
+<li>$:/state/edit/references-874809697</li>
+
 <li>$:/state/edit/references-889547905</li>
 
 <li>$:/state/plugin-info-334910430-$:/core---1812962263</li>
@@ -925,7 +929,7 @@ Error message and password prompt
 
 <li>Calculate File Digest</li>
 
-<li>Calling convention</li>
+<li>Calling Conventions</li>
 
 <li>CentOS</li>
 
@@ -1859,7 +1863,9 @@ Error message and password prompt
 
 <li>Nasm Flags Register</li>
 
-<li>Nasm Hello World</li>
+<li>Nasm Hello World (int 0x80)</li>
+
+<li>Nasm Hello World (syscall)</li>
 
 <li>NAT</li>
 
@@ -12398,6 +12404,12 @@ Error message and password prompt
 <div created="20210608085820535" modified="20210608085820535" title="$:/state/edit/references-1276861187">
 <pre>show</pre>
 </div>
+<div created="20210623153543039" modified="20210623153543039" title="$:/state/edit/references-1320272793">
+<pre>show</pre>
+</div>
+<div created="20210623160930557" modified="20210623160930557" title="$:/state/edit/references-874809697">
+<pre>show</pre>
+</div>
 <div created="20210608082843645" modified="20210608082843645" title="$:/state/edit/references-889547905">
 <pre>show</pre>
 </div>
@@ -12650,7 +12662,7 @@ Error message and password prompt
 <div created="20210316111100577" modified="20210316111100577" title="$:/state/toc/TableOfContents-SSL--118161433">
 <pre>open</pre>
 </div>
-<div created="20200427165444695" modified="20210601114746051" title="$:/state/toc/TableOfContents-TiddlyWiki--118161433">
+<div created="20200427165444695" modified="20210623153251539" title="$:/state/toc/TableOfContents-TiddlyWiki--118161433">
 <pre>close</pre>
 </div>
 <div created="20201119144222195" modified="20201119144222195" title="$:/state/toc/TableOfContents-ToDo--118161433">
@@ -12719,7 +12731,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210623090137219" list="ToDo [[Assembly Language Step by Step]]" modified="20210623101851203" title="$:/StoryList">
+<div created="20210623090137219" list="ToDo" modified="20210623161010830" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13733,7 +13745,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210623101923953" title="$:/temp/search">
+<div created="20200422190456346" modified="20210623161008626" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -14761,7 +14773,7 @@ Starting arp-scan 1.9 with 256 hosts (http://www.nta-monitor.com/tools/arp-scan/
 <div created="20210519094828748" modified="20210519094849777" tags="Definition" title="ARPA">
 <pre>Advanced Research Projects Agency</pre>
 </div>
-<div created="20210615155206098" modified="20210622170600440" tags="Book Linux task" title="Assembly Language Step by Step">
+<div created="20210615155206098" modified="20210623160957211" tags="Book Linux task" title="Assembly Language Step by Step">
 <pre>[ext[Open|pdfx://refs/lang/asm/Assembly_Language_Step_by_Step.pdf::262]]
 
 [[Book site|http://www.duntemann.com/assembly.html]]
@@ -14782,19 +14794,26 @@ Memory models:
 
 Examples:
 
-* [[Nasm Hello World]]
+* [[Nasm Hello World (int 0x80)]]
+* [[Nasm Hello World (syscall)]]
+
+* [[TODO cdecl asm -&gt; c]]
+* [[TODO cdecl c -&gt; asm]]
+* [[TODO stdcall asm -&gt; c]]
+* [[TODO stdcall c -&gt; asm]]
 
 ---
 
 Jumps 
 https://www.cs.bgu.ac.il/~caspl162/wiki.files/PS01_162[2].pdf
 
+---
 
-[ext[Calling conventions|pdfx://refs/lang/asm/NASM.pdf]]
+Topics:
 
-[[Two's Complement]]
-
-[ext[Ascii Table|pdfx://refs/lang/ascii.pdf]]
+* [[Two's Complement]]
+* [[Calling Conventions]]
+* [ext[Ascii Table|pdfx://refs/lang/ascii.pdf]]
 
 ---
 
@@ -16395,13 +16414,18 @@ SHA256(file.txt)= 66a045b452102c59d840ec097d59d9467e13a3f34f6494e539ffd32c1bb35f
 * [[Crypto]]
 * [[OpenSSL]]</pre>
 </div>
-<div created="20210621083159244" modified="20210621083650459" tags="Definition" title="Calling convention">
+<div created="20210621083159244" modified="20210623161028043" tags="Definition" title="Calling Conventions">
 <pre>* cdecl
 * stdcall
-* other
+* pascal
+* fastcall
+* thiscall
+* etc
 
 ---
+* [ext[Calling conventions|pdfx://refs/lang/asm/NASM.pdf]]
 * https://flint.cs.yale.edu/cs421/papers/x86-asm/asm.html#calling
+* https://www.agner.org/optimize/calling_conventions.pdf
 * [[Gcc]]
 * [[Nasm]]</pre>
 </div>
@@ -17107,8 +17131,11 @@ $ git tag &quot;1.0.0&quot;
 * [ext[Open djvu|djvux://refs/anki2/pfds.djvu::10]]
 * [ext[Open file|openx:///usr/share/applications/defaults.list]]</pre>
 </div>
-<div created="20200428124444319" modified="20200620092811587" tags="TiddlyWiki" title="Create tables">
-<pre>https://tiddlywiki.com/static/Tables%2520in%2520WikiText.html
+<div created="20200428124444319" modified="20210623152432408" tags="TiddlyWiki" title="Create tables">
+<pre>|!Cell1 |!Cell2 |
+|Cell3 |Cell3 |
+
+https://tiddlywiki.com/static/Tables%2520in%2520WikiText.html
 </pre>
 </div>
 <div created="20200510170552106" modified="20200510170604557" tags="TiddlyWiki" title="Create tabs">
@@ -23395,12 +23422,27 @@ https://gist.github.com/Avaq/1f0636ec5c8d6aed2e45</pre>
 <div created="20210618160353655" modified="20210618160353655" title="Gcc">
 <pre></pre>
 </div>
-<div created="20210617155557376" modified="20210618172128608" tags="" title="Gdb">
+<div created="20210617155557376" modified="20210623153447134" tags="" title="Gdb">
 <pre>Compile with debug symbols
 
 ```
 $ gcc -g ...
 $ nasm -g ...
+```
+
+Debug
+
+```
+$ gdb ...
+&gt; set disassembly-flavor intel
+&gt; b _start
+&gt; layout src
+&gt; layout regs
+&gt; run
+&gt; next
+&gt; print $eax
+&gt; info reg (i r)
+&gt; cont
 ```
 
 ---
@@ -23417,6 +23459,7 @@ $ nasm -g ...
 * [ext[GDB Cheat Sheet|pdfx://refs/lang/c/gdb/GDB_Cheat_Sheet.pdf]]
 * [[GDB Commands|https://www.tutorialspoint.com/gnu_debugger/gdb_commands.htm]]
 * [ext[Debugging with GDB|pdfx://refs/lang/c/gdb/Debugging_with_GDB.pdf]]
+* [[Debugging with GDB (online/latest)|https://sourceware.org/gdb/current/onlinedocs/gdb]]
 * [[Gcc]]
 * [[Nasm]]
 </pre>
@@ -25147,10 +25190,24 @@ $ fusermount -u mountpoint
 * https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html
 </pre>
 </div>
-<div created="20210617111409865" modified="20210617172309640" tags="Linux" title="Linux System Calls">
-<pre>* [ext[asm/unistd.h|openx:///usr/include/x86_64-linux-gnu/asm/unistd.h]]
-* [ext[asm/unistd_32.h|openx:///usr/include/x86_64-linux-gnu/asm/unistd_32.h]]
-* [ext[asm/unistd_64.h|openx:///usr/include/x86_64-linux-gnu/asm/unistd_64.h]]
+<div created="20210617111409865" modified="20210623153644570" tags="Linux" title="Linux System Calls">
+<pre>!! int 0x80
+
+Both x86 and x86_64
+
+| ![ext[syscall|openx:///usr/include/x86_64-linux-gnu/asm/unistd_32.h]] | !arg1 | !arg2 | !arg3 | !arg4 | !arg5 | !arg6 | !result |
+| eax | ebx | ecx | edx | esi | edi | ebp | eax |
+
+[[Nasm Hello World (int 0x80)]]
+
+!! syscall
+
+Only x86_64
+
+| ![ext[syscall|openx:///usr/include/x86_64-linux-gnu/asm/unistd_64.h]] | !arg1 | !arg2 | !arg3 | !arg4 | !arg5 | !arg6 | !result |
+| rax | rdi | rsi | rdx | 	r10 | r8 | r9 | rax |
+
+[[Nasm Hello World (syscall)]]
 
 ---
 
@@ -25160,6 +25217,7 @@ $ fusermount -u mountpoint
 
 ---
 
+* https://en.wikibooks.org/wiki/X86_Assembly/Interfacing_with_Linux
 * [[Anatomy of a system call, part1|https://lwn.net/Articles/604287/]]
 * [[Anatomy of a system call, part2|https://lwn.net/Articles/604515/]]</pre>
 </div>
@@ -25615,21 +25673,19 @@ $  git clone git@project-one.github.com:vendor/project-one.git
 ```
 </pre>
 </div>
-<div created="20210618155805461" modified="20210618155805461" title="Nasm">
-<pre></pre>
+<div created="20210618155805461" modified="20210623153328805" title="Nasm">
+<pre>```
+$ sudo apt install nasm
+```
+</pre>
 </div>
 <div created="20210618175424955" modified="20210618175501074" tags="" title="Nasm Flags Register">
 <pre>[ext[Open|pdfx://refs/lang/asm/Assembly_Language_Step_by_Step.pdf::249]]
 
 [[Nasm]]</pre>
 </div>
-<div created="20210618155812649" modified="20210618174444835" tags="" title="Nasm Hello World">
-<pre>```
-$ sudo apt install nasm
-$ sudo apt install kdbg
-```
-
-hello.asm:
+<div created="20210618155812649" modified="20210623153604421" tags="" title="Nasm Hello World (int 0x80)">
+<pre>hello.asm:
 
 ```
 ;;; mode: asm-mode; asm-indent-level: 4; indent-tabs-mode: nil
@@ -25671,19 +25727,45 @@ $ nasm -f elf64 -g -F dwarf -l hello.lst hello.asm
 $ ld -o hello hello.o 
 ```
 
-Debug
+* [[Nasm]]
+* [[Gdb]]
+* [[Linux System Calls]]
+* [[Assembly Programming Tutorial|https://www.tutorialspoint.com/assembly_programming/index.htm]]</pre>
+</div>
+<div created="20210623153649466" modified="20210623154406700" tags="" title="Nasm Hello World (syscall)">
+<pre>hello64.asm:
 
 ```
-$ gdb hello
-&gt; set disassembly-flavor intel
-&gt; b _start
-&gt; layout src
-&gt; layout regs
-&gt; run
-&gt; next
-&gt; print $eax
-&gt; info reg (i r)
-&gt; cont
+;;; mode: asm-mode; asm-indent-level: 4; indent-tabs-mode: nil
+
+section .data                               ; Initialized data section
+    msg: db &quot;Hello World&quot;, 10
+    .len: equ $ - msg
+
+section .bss                                ; Uninitialized data section
+
+section .text                               ; Code section
+    global _start                           ; Entry point
+
+_start:
+    nop                                     ; Make gdb happy...
+	
+    mov rax, 1                              ; SYS_write/__NR_write system call
+    mov rdi, 1                              ; File Descriptor 1: stdout
+    mov rsi, msg                            ; Message address
+    mov rdx, msg.len                        ; Message length
+    syscall                                 ; Make system call
+
+    mov rax, 60                             ; SYS_exit/__NR_exit system call
+    mov rdi, 0                              ; Normal exit: 0
+    syscall                                 ; Make system call
+```
+
+Compile
+
+```
+$ nasm -f elf64 -g -F dwarf -l hello64.lst hello64.asm
+$ ld -o hello64 hello64.o
 ```
 
 * [[Nasm]]
