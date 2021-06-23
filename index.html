@@ -893,6 +893,8 @@ Error message and password prompt
 
 <li>Binary sed</li>
 
+<li>BIOS</li>
+
 <li>Bit</li>
 
 <li>Blame in terminal</li>
@@ -904,6 +906,8 @@ Error message and password prompt
 <li>Bookmarklet</li>
 
 <li>Boot into single user mode using GRUB</li>
+
+<li>Boot Sector Hello World</li>
 
 <li>Breakaway/Escape velocity</li>
 
@@ -12715,7 +12719,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210622150815727" list="[[Assembly Language Step by Step]]" modified="20210622165650345" title="$:/StoryList">
+<div created="20210623090137219" list="ToDo [[Assembly Language Step by Step]] [[Nasm Hello World]]" modified="20210623100717246" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -13729,7 +13733,7 @@ This plugin also requires the JSZip plugin ([[$:/plugins/tiddlywiki/jszip]]) to 
 <div author="JeremyRuston" core-version="&gt;=5.0.0" created="20200517103310535" dependents="" description="Basic theme" modified="20200517103310535" name="Vanilla" original-plugin-type="theme" original-tags="" original-title="$:/themes/tiddlywiki/vanilla" original-type="application/json" plugin-priority="0" requires-reload="no" server-url="https://tiddlywiki.com/library/v5.1.22/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/https://tiddlywiki.com/library/v5.1.22/index.html/$:/themes/tiddlywiki/vanilla" type="text/vnd.tiddlywiki" version="5.1.22">
 <pre></pre>
 </div>
-<div created="20200422190456346" modified="20210622170602594" title="$:/temp/search">
+<div created="20200422190456346" modified="20210623100732813" title="$:/temp/search">
 <pre></pre>
 </div>
 <div created="20200517103310478" modified="20200517103310478" tags="$:/tags/ServerConnection" title="$:/temp/ServerConnection/https://tiddlywiki.com/library/v5.1.22/index.html" url="https://tiddlywiki.com/library/v5.1.22/index.html">
@@ -16153,6 +16157,11 @@ $ iperf -c localhost
 <pre>bbe - binary block editor
 </pre>
 </div>
+<div created="20210623092707752" modified="20210623092743773" tags="Definition" title="BIOS">
+<pre>''B''asic ''I''nput/''O''utput ''S''ystem
+
+[[UEFI]]</pre>
+</div>
 <div created="20210621082614459" modified="20210621082639059" tags="Definition" title="Bit">
 <pre>''B''asic ''i''nformation uni''t''</pre>
 </div>
@@ -16197,6 +16206,58 @@ javascript:alert(location.href);
 # Scroll to end and add '1', or 'init=/bin/bash', or 'single', or 'emergency'. This tells the kernel to boot in runlevel 1. Press ENTER.
 # Press 'b'.
 </pre>
+</div>
+<div created="20210623100733443" modified="20210623101152517" tags="" title="Boot Sector Hello World">
+<pre>boot.asm:
+
+```
+;;; https://en.wikipedia.org/wiki/BIOS_interrupt_call
+;;; https://en.wikipedia.org/wiki/INT_10H
+	
+    mov ah, 0x0e                ; display character
+    
+    mov al, 'a'
+lower: 
+    int 0x10                    ; bios video service call
+    inc al
+    cmp al, 'z'+1
+    jne lower
+    
+    mov al, 0x0d
+    int 0x10
+    mov al, 0x0a
+    int 0x10
+    
+    mov al, 'A'
+upper: 
+    int 0x10
+    inc al
+    cmp al, 'Z'+1
+    jne upper
+	
+    mov al, 0x0d
+    int 0x10
+    mov al, 0x0a
+    int 0x10
+
+exit: 
+    jmp $
+	
+    times 510-($-$$) db 0x00      ; boot sector must be 512 bytes long and 
+    db 0x55, 0xaa                 ; end with 0x55, 0xaa
+```
+
+```
+$ nasm -f bin boot.asm -o boot.bin
+```
+
+```
+$ qemu-system-x86_64 -drive format=raw,file=boot.bin
+```
+
+* https://www.youtube.com/watch?v=APiHPkPmwwU
+* [[QEMU]]
+* [[NASM]]</pre>
 </div>
 <div created="20200428091837166" modified="20200428092343691" tags="MentalModel" title="Breakaway/Escape velocity">
 <pre>* https://en.wikipedia.org/wiki/Escape_velocity
@@ -27999,7 +28060,7 @@ https://www.w3schools.com/nodejs/nodejs_raspberrypi.asp</pre>
 <div created="20200512161738835" modified="20200524181111960" tags="task [[Raspberry Pi]]" title="Raspberry Pi Zero Ethernet">
 <pre>https://www.circuitbasics.com/raspberry-pi-zero-ethernet-gadget/</pre>
 </div>
-<div created="20200512162013708" modified="20200512162107632" tags="[[Raspberry Pi]]" title="Raspbian on x86">
+<div created="20200512162013708" modified="20210623100715390" tags="[[Raspberry Pi]]" title="Raspbian on x86">
 <pre>```
 sudo apt-get install qemu-user-static
 docker run -v /usr/bin/qemu-arm-static:/usr/bin/qemu-arm-static --rm -ti raspbian/stretch /bin/bash
@@ -28026,7 +28087,8 @@ sudo apt-get dist-upgrade wolfram-engine
 ```
 sudo apt-get update &amp;&amp; sudo apt-get install -y binfmt-support qemu qemu-user-static
 ```
-</pre>
+
+[[QEMU]]</pre>
 </div>
 <div created="20200427170828372" modified="20201230141237321" tags="TiddlyWiki" title="Read &quot;Customise TW&quot;">
 <pre></pre>
@@ -31226,9 +31288,10 @@ Both can be obtained through https://play.google.com/store/apps/details?id=sk.st
 <pre>* https://wiki.termux.com/wiki/PRoot
 * https://proot-me.github.io</pre>
 </div>
-<div created="20200530162352117" modified="20200606115224118" tags="Android" title="Termux QEMU">
+<div created="20200530162352117" modified="20210623100728746" tags="Android" title="Termux QEMU">
 <pre>https://yadominjinta.github.io/2018/08/22/QEMU-on-termux.html
-</pre>
+
+[[QEMU]]</pre>
 </div>
 <div created="20200530161510969" modified="20200530161851978" tags="Android" title="Termux send sensor info">
 <pre>```
