@@ -1167,10 +1167,6 @@ Error message and password prompt
 
 <li>Download video from Youtube</li>
 
-<li>Draft of 'Connect to Huawei 3G USB Modem'</li>
-
-<li>Draft of 'Send AT Commands to Huawei 3G USB Modem'</li>
-
 <li>DraggableTaskTemplate</li>
 
 <li>Duality</li>
@@ -2212,6 +2208,8 @@ Error message and password prompt
 <li>Set default USB connection type</li>
 
 <li>Set DNS</li>
+
+<li>Setup D-Link DIR-320 with Huawei 3G USB Modem</li>
 
 <li>Setup Home Wi-Fi</li>
 
@@ -12712,7 +12710,7 @@ Error message and password prompt
 <div created="20210316111100577" modified="20210316111100577" title="$:/state/toc/TableOfContents-SSL--118161433">
 <pre>open</pre>
 </div>
-<div created="20200427165444695" modified="20210623153251539" title="$:/state/toc/TableOfContents-TiddlyWiki--118161433">
+<div created="20200427165444695" modified="20210630194620246" title="$:/state/toc/TableOfContents-TiddlyWiki--118161433">
 <pre>close</pre>
 </div>
 <div created="20201119144222195" modified="20201119144222195" title="$:/state/toc/TableOfContents-ToDo--118161433">
@@ -12781,7 +12779,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210630155059797" list="[[Switch Huawei 3G USB Modem Modes]] [[Draft of 'Send AT Commands to Huawei 3G USB Modem']] [[Draft of 'Connect to Huawei 3G USB Modem']] [[Huawei 3G USB Modem Lights]]" modified="20210630182616920" title="$:/StoryList">
+<div created="20210630155059797" list="" modified="20210630193528915" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200426080944127" modified="20200702105901170" title="$:/temp/advancedsearch">
@@ -16846,7 +16844,7 @@ $ erl -sname b -setcookie 123
 pong
 ```</pre>
 </div>
-<div created="20210503171134723" modified="20210630181851507" tags="Linux" title="Connect to Huawei 3G USB Modem">
+<div created="20210503171134723" modified="20210630191847000" tags="Linux" title="Connect to Huawei 3G USB Modem">
 <pre>[[Huawei 3G USB Modem Lights]]
 
 !! Determine device info
@@ -17194,9 +17192,11 @@ $ git tag &quot;1.0.0&quot;
 * [ext[Open djvu|djvux://refs/anki2/pfds.djvu::10]]
 * [ext[Open file|openx:///usr/share/applications/defaults.list]]</pre>
 </div>
-<div created="20200428124444319" modified="20210623152432408" tags="TiddlyWiki" title="Create tables">
-<pre>|!Cell1 |!Cell2 |
-|Cell3 |Cell3 |
+<div created="20200428124444319" modified="20210630194600718" tags="TiddlyWiki" title="Create tables">
+<pre>| !Cell1 | !Cell2 |
+| Cell3 | Cell4 |
+|Cell5 |&lt;|
+|&gt;| Cell6|
 
 https://tiddlywiki.com/static/Tables%2520in%2520WikiText.html
 </pre>
@@ -17958,246 +17958,6 @@ $ youtube-dl --extract-audio --audio-format mp3 URL
 <pre>```
 $ youtube-dl -f bestvideo+bestaudio FILE_OR_PLAYLIST_URL
 ```</pre>
-</div>
-<div created="20210503171134723" draft.of="Connect to Huawei 3G USB Modem" draft.title="Connect to Huawei 3G USB Modem" modified="20210630182724687" tags="Linux" title="Draft of 'Connect to Huawei 3G USB Modem'">
-<pre>[[Huawei 3G USB Modem Lights]]
-
-!! Determine device info
-
-```
-$ lsusb
-...
-Bus 001 Device 019: ID 12d1:140c Huawei Technologies Co., Ltd. E180v
-```
-
-!! Determine attached device(s)
-
-```
-$ dmesg | grep ttyUSB
-...
-[ 6881.349587] usb 1-2.4: GSM modem (1-port) converter now attached to ttyUSB0
-[ 6881.445998] usb 1-2.4: GSM modem (1-port) converter now attached to ttyUSB1
-[ 6881.465876] usb 1-2.4: GSM modem (1-port) converter now attached to ttyUSB2
-```
-
-!! Determine device's settings
-
-```
-$ sudo stty -F /dev/ttyUSB0
-speed 9600 baud; line = 0;
-eof = ^A; min = 1; time = 0;
--brkint -icrnl -imaxbel
--opost -onlcr
--isig -icanon -iexten -echo -echoe
-```
-
-!! Connect to device
-
-```
-$ sudo picocom /dev/ttyUSB0
-picocom v2.2
-
-port is        : /dev/ttyUSB0
-flowcontrol    : none
-baudrate is    : 9600
-parity is      : none
-databits are   : 8
-stopbits are   : 1
-escape is      : C-a
-local echo is  : no
-noinit is      : no
-noreset is     : no
-nolock is      : no
-send_cmd is    : sz -vv
-receive_cmd is : rz -vv -E
-imap is        : 
-omap is        : 
-emap is        : crcrlf,delbs,
-
-Type [C-a] [C-h] to see available commands
-
-Terminal ready
-```
-
-!! Enable echo
-
-[C-a] [C-c]
-
-```
-*** local echo: yes ***
-```
-
-!! Enter AT commands
-
-!!! Smoke test
-
-```
-AT
-OK
-```
-
-* picocom
-* cutecom</pre>
-</div>
-<div created="20210503154425390" draft.of="Send AT Commands to Huawei 3G USB Modem" draft.title="Send AT Commands to Huawei 3G USB Modem" modified="20210630182701853" tags="Linux" title="Draft of 'Send AT Commands to Huawei 3G USB Modem'">
-<pre>!! [[Huawei 3G USB Modem Lights]]
-!! [[Connect to Huawei 3G USB Modem]]
-!! Send AT Commands
-
-!!! Get device info
-
-https://m2msupport.net/m2msupport/at-commands-to-get-device-information/
-
-```
-ATI
-Manufacturer: huawei
-Model: E156G
-Revision: 11.609.10.00.327
-IMEI: 0123456789
-+GCAP: +CGSM,+DS,+ES
-
-AT+CGMI # Manufacturer
-huawei
-
-AT+GMI    # Manufacturer
-huawei
-
-AT+CGMM # Model
-E156G
-
-AT+CGMR  # Revision
-11.609.10.00.327
-
-AT+CGSN  # IMEI
-0123456789
-
-```
-
-!!!  Are extended errors supported? Enable them
-
-```
-AT+CMEE=?
-+CMEE: (0,1,2)
-
-AT+CMEE=2
-OK
-```
-
-!!! Mobile networks
-
-```
-AT+COPS=?
-+COPS: (2,&quot;A1 BY #STAYONLIN&quot;,&quot;A1 BY #S&quot;,&quot;25701&quot;,2),(1,&quot;BY VELCOM&quot;,&quot;VELCOM&quot;,&quot;25701&quot;,0),(1,&quot;MTS BY&quot;,&quot;MTS&quot;,&quot;25702&quot;,0),(1,&quot;MTS BY&quot;,&quot;MTS&quot;,&quot;25702&quot;,2),(1,&quot;BeST BY&quot;,&quot;BeST&quot;,&quot;25704&quot;,0),(1,&quot;BeST BY&quot;,&quot;BeST&quot;,&quot;25704&quot;,2),,(0,1,2,3,4),(0,1,2)␍␊
-
-AT+COPS?
-+COPS: 0,2,&quot;25701&quot;,2
-
-AT+COPS=3,0 ?
-
-AT+CIMI # IMSI
-25701...
-
-AT+CNUM # Personal number
-OK             # Empty response :(
-
-AT+CGREG? # Network registration status. 1 is registered
-+CGREG: 0,1
-
-AT+CSQ # Network signal strength (0-31), bit error rate (99 - not supported)
-+CSQ: 27,99
-
-AT+CSCS=? # All encodings
-+CSCS: (&quot;IRA&quot;,&quot;GSM&quot;,&quot;UCS2&quot;)
-
-AT+CSCS? #  Current encoding
-+CSCS: &quot;IRA&quot;
-```
-
-# https://onedev.net/post/859
-
-```
-AT+CGDCONT=? # Get what?
-+CGDCONT: (1-16),&quot;IP&quot;,,,(0-2),(0-3)
-+CGDCONT: (1-16),&quot;PPP&quot;,,,(0-2),(0-3)
-+CGDCONT: (1-16),&quot;IPV6&quot;,,,(0-2),(0-3)
-
-AT+CGDCONT? # Get access points
- +CGDCONT: 1,&quot;IP&quot;,&quot;vmi.velcom.by&quot;,&quot;0.0.0.0&quot;,0,0
- +CGDCONT: 2,&quot;IP&quot;,&quot;vmi.velcom.by&quot;,&quot;0.0.0.0&quot;,0,0
- +CGDCONT: 3,&quot;IP&quot;,&quot;internet.life.com.by&quot;,&quot;0.0.0.0&quot;,0,0
- +CGDCONT: 4,&quot;IP&quot;,&quot;internet.mts.by&quot;,&quot;0.0.0.0&quot;,0,0
- +CGDCONT: 5,&quot;IP&quot;,&quot;web3.velcom.by&quot;,&quot;0.0.0.0&quot;,0,0
-
-AT+CGDCONT: 1,&quot;IP&quot;,&quot;internet&quot;,&quot;0.0.0.0&quot;,0,0
-```
-
-!!! USSD commands
-
-* https://m2msupport.net/m2msupport/ussd-how-to-send-ussd-short-codes-with-at-command/
-* https://blog.marcinchwedczuk.pl/fun-with-at-commands-and-old-modem
-* http://smstools3.kekekasvi.com/topic.php?id=288
-* https://onedev.net/post/911
-
-```
-AT+CUSD=1,&quot;AA180C3602&quot;,&quot;15&quot;  # Get balance
-OK  # Empty response :(
-```
-
-&quot;AA180C3602&quot; is  &quot;*100#&quot; GSM0338 7bit encoded
-
-!!! SMS
-
-https://m2msupport.net/m2msupport/sms-at-commands/
-
-```
-AT+CMGF=? # Get all SMS message formats
-+CMGF: (0-1)
-
-AT+CMGF? # Get current SMS message format
-+CMGF: 1 # 0 - PDU format, 1 - Text format
-
-AT+CMGF=1 # Set SMS message Text mode
-
-AT+CSCA? # Get SMSC
-+CSCA: &quot;+375296009000&quot;,145
-
-AT+CSCA=&quot;+...&quot; # Set SMSC
-
-AT+CMGS=&quot;+...&quot; # Send SMS
-&gt; Hello!!!!
-CTRL-Z - chr(26) 0x1A
-
-AT+CMGL=?      # List SMS types
-+CMGL: (&quot;REC UNREAD&quot;,&quot;REC READ&quot;,&quot;STO UNSENT&quot;,&quot;STO SENT&quot;,&quot;ALL&quot;)
-
-AT+CMGL=&quot;all&quot; # List all SMS
-AT+CMGR=n    # Get SMS
-AT+CMGD=n    # Delete SMS
-```
-
-Errors?
-
-```
-AT+CCID   # ?
-ERROR
-
-AT+CRSM # ?
-ERROR
-
-AT+CSIM # ?
-ERROR
-
-AT+CMD? # ?
-ERROR
-```
-
-ATZ - Reset device
-
-* https://www.developershome.com/sms/atCommandsIntro.asp
-* https://www.engineersgarage.com/tech-articles/at-commands-gsm-at-command-set/
-* https://en.wikipedia.org/wiki/Hayes_command_set
-* https://www.twilio.com/docs/iot/supersim/introduction-at-commands
-* https://doc.qt.io/archives/qtextended4.4/atcommands.html</pre>
 </div>
 <div created="20180307153530187" modified="20200427171503827" tags="TiddlyWiki" title="DraggableTaskTemplate" type="text/vnd.tiddlywiki">
 <pre>&lt;$checkbox tag=&quot;done&quot;&gt; &lt;$link to={{!!title}}&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt;&lt;/$checkbox&gt;</pre>
@@ -29184,7 +28944,7 @@ $ for tid in `ls /proc/$pid/task`; do echo $tid; sudo cat /proc/$pid/task/$tid/s
 ```
 </pre>
 </div>
-<div created="20210503154425390" modified="20210504093549115" tags="Linux" title="Send AT Commands to Huawei 3G USB Modem">
+<div created="20210503154425390" modified="20210630191853197" tags="Linux" title="Send AT Commands to Huawei 3G USB Modem">
 <pre>!! [[Huawei 3G USB Modem Lights]]
 !! [[Connect to Huawei 3G USB Modem]]
 !! Send AT Commands
@@ -29430,6 +29190,39 @@ search example.com
 ```
 
 [[DNS]]</pre>
+</div>
+<div created="20210630192931823" modified="20210630194315104" tags="" title="Setup D-Link DIR-320 with Huawei 3G USB Modem">
+<pre>!! Enable ''Modem Mode'' only [[Switch Huawei 3G USB Modem Modes]]
+
+!! Insert Modem
+
+!! Go to http://192.168.0.1
+
+USB модем -&gt; Информация
+
+Ensure modem is accessible
+
+!! Setup 3G Modem
+
+Сеть -&gt; Соединения -&gt; Добавить
+
+| !Главные настройки |&lt;|
+|Имя: | 3g_usb0_0 |
+|Тип соединения: | 3G |
+|Разрешить: | true |
+| !Физический уровень |&lt;|
+|Физический интерфейс: | USB |
+|Режим: | auto |
+| !Настройки PPP |&lt;|
+|PPP Имя пользователя: | |
+|Без авторизации: | true |
+|Алгоритм аутентификации: | PAP |
+|APN: | internet |
+|Номер дозвона: | *99# |
+|MTU: | 1370 |
+
+* https://www.dlink.ru/ru/faq/391/1045.html
+* https://ftp.dlink.ru/pub/Router/DIR-320/Firmware/</pre>
 </div>
 <div created="20210603122104101" modified="20210603155446394" tags="" title="Setup Home Wi-Fi">
 <pre>* https://lan1.by/384
